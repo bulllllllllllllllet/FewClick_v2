@@ -41,6 +41,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--min-transcripts", type=int, default=30)
     parser.add_argument("--max-cells", type=int, default=1200)
     parser.add_argument("--clusters", type=int, default=3)
+    parser.add_argument("--rna-shuffle-seed", type=int, default=20260831)
     return parser.parse_args()
 
 
@@ -196,9 +197,14 @@ def main() -> None:
     visual, crop = visual_features(he, boxes, args.x, args.y, args.size)
     visual_result = spatial_cv(visual, labels, boxes.center_x.to_numpy(), boxes.center_y.to_numpy(), args.x, args.y, args.size)
     fused_result = spatial_cv(np.concatenate((visual, rna_feature), axis=1), labels, boxes.center_x.to_numpy(), boxes.center_y.to_numpy(), args.x, args.y, args.size)
+    shuffled_rna = rna_feature[np.random.default_rng(args.rna_shuffle_seed).permutation(len(rna_feature))]
+    shuffled_result = spatial_cv(np.concatenate((visual, shuffled_rna), axis=1), labels, boxes.center_x.to_numpy(), boxes.center_y.to_numpy(), args.x, args.y, args.size)
     delta_f1 = fused_result["macro_f1_mean"] - visual_result["macro_f1_mean"]
     delta_balanced = fused_result["balanced_accuracy_mean"] - visual_result["balanced_accuracy_mean"]
+    shuffled_drop_f1 = fused_result["macro_f1_mean"] - shuffled_result["macro_f1_mean"]
+    shuffled_drop_balanced = fused_result["balanced_accuracy_mean"] - shuffled_result["balanced_accuracy_mean"]
     passed = delta_f1 >= 0.02 and delta_balanced >= 0.02
+    shuffle_control_passed = shuffled_drop_f1 >= 0.10 and shuffled_drop_balanced >= 0.10
     boxes["molecular_cluster"] = labels
     boxes["rna_transcript_count"] = count.sum(axis=1).to_numpy(dtype=int)
     boxes.to_csv(output / "cell_summary.csv", index=False)
@@ -211,14 +217,18 @@ def main() -> None:
         "rna_feature_genes": len(rna_feature_genes), "label_genes": len(label_genes),
         "rna_feature_dim": int(rna_feature.shape[1]), "molecular_label_dim": int(molecular.shape[1]),
         "clusters": int(args.clusters), "visual_only": visual_result, "visual_plus_rna": fused_result,
+        "visual_plus_shuffled_rna": shuffled_result, "rna_shuffle_seed": int(args.rna_shuffle_seed),
         "delta_macro_f1": float(delta_f1), "delta_balanced_accuracy": float(delta_balanced),
+        "shuffled_rna_drop_macro_f1": float(shuffled_drop_f1), "shuffled_rna_drop_balanced_accuracy": float(shuffled_drop_balanced),
         "acceptance": "delta macro-F1 and balanced accuracy >= 0.02", "passed_preliminary_gate": bool(passed),
+        "shuffle_control_acceptance": "real RNA exceeds shuffled RNA by >= 0.10 on both metrics",
+        "shuffle_control_passed": bool(shuffle_control_passed),
     }
     (output / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
     (output / "README.md").write_text(
         "# COAD Xenium RNA feature pilot\n\n"
         f"Preliminary gate: **{'passed' if passed else 'not passed'}**. This compares spatial-block validation of handcrafted H&E/geometry features with the same features plus an independent RNA feature view. It does not measure final FewClick segmentation quality.\n\n"
-        f"- retained cells: {len(boxes)}\n- visual macro-F1: {visual_result['macro_f1_mean']:.4f}\n- fused macro-F1: {fused_result['macro_f1_mean']:.4f}\n- delta macro-F1: {delta_f1:.4f}\n- visual balanced accuracy: {visual_result['balanced_accuracy_mean']:.4f}\n- fused balanced accuracy: {fused_result['balanced_accuracy_mean']:.4f}\n- delta balanced accuracy: {delta_balanced:.4f}\n",
+        f"- retained cells: {len(boxes)}\n- visual macro-F1: {visual_result['macro_f1_mean']:.4f}\n- fused macro-F1: {fused_result['macro_f1_mean']:.4f}\n- delta macro-F1: {delta_f1:.4f}\n- visual balanced accuracy: {visual_result['balanced_accuracy_mean']:.4f}\n- fused balanced accuracy: {fused_result['balanced_accuracy_mean']:.4f}\n- delta balanced accuracy: {delta_balanced:.4f}\n- shuffled-RNA macro-F1: {shuffled_result['macro_f1_mean']:.4f}\n- shuffled-RNA balanced accuracy: {shuffled_result['balanced_accuracy_mean']:.4f}\n- real-versus-shuffled macro-F1 drop: {shuffled_drop_f1:.4f}\n- real-versus-shuffled balanced-accuracy drop: {shuffled_drop_balanced:.4f}\n- shuffled-RNA control: **{'passed' if shuffle_control_passed else 'not passed'}**\n",
         encoding="utf-8",
     )
     print(json.dumps({"event": "complete", "output": str(output), **metrics}, ensure_ascii=False), flush=True)
