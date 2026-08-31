@@ -35,3 +35,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/rna_pilot/xenium_xcell_baseline_0831_111806/`
 - Docs record: `docs/建议_XCell视觉基线_0831_111806.md`（recommendation）；`docs/运行记录_XCell视觉基线_0831_111806.md`（run record）
 - Commit: included in `Evaluate XCell visual baseline`
+
+## 08-31 12:14:08
+
+- Purpose: 使用 COAD Xenium 数据提供方的 `annotation` 验证 RNA 对真实细胞类型注释分类的增益。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/export_xenium_annotations.py`; `benchmarks/v5/phase_3_cell_region/tools/run_xenium_celltype_pilot.py`; `docs/建议_真实细胞类型分类验证_0831_121408.md`; `docs/运行记录_真实细胞类型分类验证_0831_121408.md`
+- Validation: `conda run -n muf-clust python benchmarks/v5/phase_3_cell_region/tools/export_xenium_annotations.py --output …/annotations.csv`；`conda run -n aligner python benchmarks/v5/phase_3_cell_region/tools/run_xenium_celltype_pilot.py --annotations …/annotations.csv --output-dir …` — passed；941 个细胞、四类注释均跨四空间块存在，正确 RNA 相对打乱 RNA 的 macro-F1 / balanced accuracy 增益为 `0.7026` / `0.6160`。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/rna_pilot/xenium_celltype_pilot_0831_121408/`
+- Docs record: `docs/建议_真实细胞类型分类验证_0831_121408.md`（recommendation）；`docs/运行记录_真实细胞类型分类验证_0831_121408.md`（run record）
+- Commit: included in `Evaluate annotated cell types`
