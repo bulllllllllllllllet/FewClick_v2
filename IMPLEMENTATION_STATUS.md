@@ -26,3 +26,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/rna_pilot/xenium_rna_feature_pilot_0831_023421/`
 - Docs record: `docs/建议_RNA打乱对照_0831_023209.md`（recommendation）；`docs/运行记录_RNA打乱对照_0831_023421.md`（run record）
 - Commit: included in `Add RNA shuffle control`
+
+## 08-31 11:18:06
+
+- Purpose: 用冻结 v4 的真实 `CTransPath -> XCellFormer reg-64` 视觉编码器复核 RNA 特征小实验。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/run_xenium_xcell_baseline.py`; `docs/建议_XCell视觉基线_0831_111806.md`; `docs/运行记录_XCell视觉基线_0831_111806.md`
+- Validation: `conda run -n aligner python -m py_compile benchmarks/v5/phase_3_cell_region/tools/run_xenium_xcell_baseline.py`；`CUDA_VISIBLE_DEVICES=1 conda run -n aligner python benchmarks/v5/phase_3_cell_region/tools/run_xenium_xcell_baseline.py --timestamp 0831_111806 --device cuda:0`（tmux）— passed；1,020 个细胞的 XCell `reg-64` 均为有限值，XCell+RNA macro-F1 / balanced accuracy 为 `0.9007` / `0.9088`，正确 RNA 相对打乱 RNA 的差为 `0.5263` / `0.4751`。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/rna_pilot/xenium_xcell_baseline_0831_111806/`
+- Docs record: `docs/建议_XCell视觉基线_0831_111806.md`（recommendation）；`docs/运行记录_XCell视觉基线_0831_111806.md`（run record）
+- Commit: included in `Evaluate XCell visual baseline`
