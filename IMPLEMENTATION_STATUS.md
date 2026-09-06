@@ -62,3 +62,12 @@
 - Artifacts: 无
 - Docs record: `docs/建议_多癌种数据就绪性审计_0907_012142.md`（recommendation）
 - Commit: included in `Audit multicancer data readiness`
+
+## 09-07 01:28:47
+
+- Purpose: 对数据集目录 CSV 的全部服务器路径做有界、只读存在性和模态线索审计，筛选多癌种细胞学习候选。
+- Changed: `benchmarks/v5/tools/audit_dataset_catalog.py`; `docs/运行记录_数据集目录全量审计_0907_012847.md`
+- Validation: `conda run -n aligner python benchmarks/v5/tools/audit_dataset_catalog.py --timestamp 0907_013108` — passed；`audit.csv` 含 44 条记录，32 条存在、12 条缺失、0 条错误；平台粒度区分后得到 6 个已解压的 Xenium/CosMx RNA+边界候选。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/dataset_catalog_audit_0907_012847/`; `/nfs-medical3/zyh/fewclick_v2/dataset_audit/dataset_catalog_audit_0907_013108/`
+- Docs record: `docs/运行记录_数据集目录全量审计_0907_012847.md`（run record）
+- Commit: included in `Audit dataset catalog paths`
