@@ -1,0 +1,7 @@
+# Install into a v5-only overlay with --no-deps; do not alter the frozen v4
+# dependency contract or replace its already verified PyTorch/CUDA packages.
+# The aligner environment already supplies torch==2.9.1, huggingface_hub and
+# safetensors.  tokenizers is explicitly upgraded because transformers 4.49
+# requires a newer compatible release than the frozen environment provides.
+transformers==4.49.0
+tokenizers==0.21.4
