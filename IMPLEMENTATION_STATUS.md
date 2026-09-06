@@ -80,3 +80,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/cell_supervision_audit_0907_014551/`
 - Docs record: `docs/运行记录_细胞监督候选深度审计_0907_013258.md`（run record）
 - Commit: included in `Audit cell supervision cohorts`
+
+## 09-07 01:52:33
+
+- Purpose: 统计可用 cohort 的可证明 section/donor 证据，并将跨癌种 H5AD `annotation` 映射为第一版 broad cell ontology。
+- Changed: `benchmarks/v5/tools/audit_cell_ontology.py`; `docs/运行记录_细胞队列样本与本体审计_0907_015233.md`
+- Validation: `conda run -n muf-clust python benchmarks/v5/tools/audit_cell_ontology.py --timestamp 0907_015339` — passed；5 个 contract-passing cohort 各发现 1 个 H&E section，所有已注释原始标签映射至 8 个 broad classes，未映射类别为 0；donor 数被正确保留为 unknown。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/cell_ontology_audit_0907_015339/`
+- Docs record: `docs/运行记录_细胞队列样本与本体审计_0907_015233.md`（run record）
+- Commit: included in `Audit cell ontology`
