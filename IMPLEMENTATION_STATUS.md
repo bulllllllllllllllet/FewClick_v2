@@ -44,3 +44,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/rna_pilot/xenium_celltype_pilot_0831_121408/`
 - Docs record: `docs/建议_真实细胞类型分类验证_0831_121408.md`（recommendation）；`docs/运行记录_真实细胞类型分类验证_0831_121408.md`（run record）
 - Commit: included in `Evaluate annotated cell types`
+
+## 09-07 01:05:49
+
+- Purpose: 梳理冻结 v4 的真实训练链路，并形成 FewClick_v2 大规模重训的分阶段方案与前置门禁。
+- Changed: `docs/建议_大规模重训总体方案_0907_010549.md`
+- Validation: 核查 `benchmarks/v4` Phase 1–6 训练入口、配置、cache 构建器、联调台账及现有 v4 checkpoint 目录 — passed
+- Artifacts: 无
+- Docs record: `docs/建议_大规模重训总体方案_0907_010549.md`（recommendation）
+- Commit: included in `Plan large-scale retraining`
