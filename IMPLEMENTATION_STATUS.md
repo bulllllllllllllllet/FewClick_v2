@@ -53,3 +53,12 @@
 - Artifacts: 无
 - Docs record: `docs/建议_大规模重训总体方案_0907_010549.md`（recommendation）
 - Commit: included in `Plan large-scale retraining`
+
+## 09-07 01:21:42
+
+- Purpose: 区分单癌种/多癌种训练要求，并审计当前本地多癌种数据对细胞预训练与组织分割主训练的就绪性。
+- Changed: `docs/建议_多癌种数据就绪性审计_0907_012142.md`
+- Validation: 对数据目录 CSV 的候选条目、COAD/HCC/OV 的 Xenium/CosMx 实际文件、肺/乳腺/肾/前列腺 Xenium archive 合约及存储规模完成只读抽查 — passed
+- Artifacts: 无
+- Docs record: `docs/建议_多癌种数据就绪性审计_0907_012142.md`（recommendation）
+- Commit: included in `Audit multicancer data readiness`
