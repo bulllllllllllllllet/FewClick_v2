@@ -98,3 +98,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/xenium_archive_audit_0907_020223/`
 - Docs record: `docs/运行记录_其他癌种Xenium归档审计_0907_020223.md`（run record）
 - Commit: included in `Audit Xenium cancer archives`
+
+## 09-07 02:13:03
+
+- Purpose: 选择替代 CTransPath 的 v5 病理 backbone，并预注册区分 backbone、细胞训练与 RNA 辅助训练收益的验证设计。
+- Changed: `docs/建议_PhikonV2替代CTransPath与验证设计_0907_021303.md`; `IMPLEMENTATION_STATUS.md`
+- Validation: 核查冻结 v4 的 `CTransPath-768 -> XCellFormer` 输入/checkpoint 合约、v5 已审计的细胞监督 cohort、Phikon-v2 官方模型卡与 UNI/H-optimus 官方发布信息 — passed；未下载权重、未修改 v4 或启动训练。
+- Artifacts: 无
+- Docs record: `docs/建议_PhikonV2替代CTransPath与验证设计_0907_021303.md`（recommendation）
+- Commit: included in `Plan Phikon v2 evaluation`
