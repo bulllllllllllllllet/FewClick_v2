@@ -89,3 +89,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/cell_ontology_audit_0907_015339/`
 - Docs record: `docs/运行记录_细胞队列样本与本体审计_0907_015233.md`（run record）
 - Commit: included in `Audit cell ontology`
+
+## 09-07 02:02:23
+
+- Purpose: 审计肺、乳腺、肾、前列腺和皮肤黑色素瘤等其余 Xenium cancer archive 的 H&E 与 cell metadata 合约。
+- Changed: `benchmarks/v5/tools/audit_xenium_archives.py`; `docs/运行记录_其他癌种Xenium归档审计_0907_020223.md`
+- Validation: `conda run -n muf-clust python benchmarks/v5/tools/audit_xenium_archives.py --timestamp 0907_020223` — passed；11/11 root 存在，除 Prime lung 的 archive 内部成员读取异常外，其他 archive 的 `cells.parquet` metadata 均可读；累计可读 cells metadata `2,603,858` 行。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/xenium_archive_audit_0907_020223/`
+- Docs record: `docs/运行记录_其他癌种Xenium归档审计_0907_020223.md`（run record）
+- Commit: included in `Audit Xenium cancer archives`
