@@ -71,3 +71,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/dataset_catalog_audit_0907_012847/`; `/nfs-medical3/zyh/fewclick_v2/dataset_audit/dataset_catalog_audit_0907_013108/`
 - Docs record: `docs/运行记录_数据集目录全量审计_0907_012847.md`（run record）
 - Commit: included in `Audit dataset catalog paths`
+
+## 09-07 01:32:58
+
+- Purpose: 深度审计 COAD/HCC/OV 的 Xenium/CosMx 六个候选 cohort，验证 H&E、边界、H5AD annotation 和转录本的实际数据合约。
+- Changed: `benchmarks/v5/tools/audit_cell_supervision_cohorts.py`; `docs/运行记录_细胞监督候选深度审计_0907_013258.md`
+- Validation: `conda run -n muf-clust python benchmarks/v5/tools/audit_cell_supervision_cohorts.py --timestamp 0907_014551`（tmux）— passed；5/6 cohort 通过，H5AD—边界 ID overlap `0.9996–1.0000`、annotation 覆盖约 `90%`；CosMx-OV 因转录本 Parquet footer 异常降级为 review。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/cell_supervision_audit_0907_014551/`
+- Docs record: `docs/运行记录_细胞监督候选深度审计_0907_013258.md`（run record）
+- Commit: included in `Audit cell supervision cohorts`
