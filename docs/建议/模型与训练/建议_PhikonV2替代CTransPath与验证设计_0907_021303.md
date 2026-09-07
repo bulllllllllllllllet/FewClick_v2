@@ -112,4 +112,4 @@ RNA、蛋白和 annotation 只在训练时作为监督目标；新 WSI 的离线
 - Phikon-v2 论文：<https://arxiv.org/abs/2409.09173>。
 - UNI 官方仓库：<https://github.com/mahmoodlab/UNI>（UNI2-h 于 2025 年发布、ViT-H/14、训练图像规模及下载入口）。
 - H-optimus-0 官方模型卡：<https://huggingface.co/bioptimus/H-optimus-0>（当前访问受 gating 约束）。
-- 本项目资料：`docs/建议_大规模重训总体方案_0907_010549.md`、`docs/建议_多癌种数据就绪性审计_0907_012142.md`、`docs/运行记录_细胞队列样本与本体审计_0907_015233.md`。
+- 本项目资料：`docs/建议/模型与训练/建议_大规模重训总体方案_0907_010549.md`、`docs/建议/数据与评估/建议_多癌种数据就绪性审计_0907_012142.md`、`docs/运行记录/数据审计/运行记录_细胞队列样本与本体审计_0907_015233.md`。
