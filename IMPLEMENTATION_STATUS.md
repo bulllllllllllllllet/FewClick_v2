@@ -305,3 +305,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/v4_tls_cell_ablation/v4_tls_cell_zero_smoke_0907_234217/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_v4下游TLS细胞置零消融_0907_234105.md`（run record）。
 - Commit: included in `Add downstream cell ablation adapter`.
+
+## 09-08 00:05:40
+
+- Purpose: 恢复严格 TLS 下游消融所需的 KFB reader，并修正 v5 adapter 的独立 overlap scratch 路径。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/run_v4_cell_zero_inference.py`; `docs/运行记录/模型实验/运行记录_v4下游TLS细胞置零消融_0907_234105.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `PYTHONPATH=/home/zhaoyh/vipa-slide-reader/src conda run -n aligner python` 导入 `pyvips` + 冻结 `SlideReader` 并读取真实 KFB RGB tile — passed（`70040×71841`）；真实 rank-4 TLS J5 cell-zero run `0908_000540` 已通过模型载入与首批 tile，`4/2162` completed、`failures.jsonl` 为空，仍在运行。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/v4_tls_cell_ablation/v4_tls_cell_zero_smoke_0908_000540/`; worker PID `846921`; tmux `v5_tls_cellzero_0908_000540`。
+- Docs record: `docs/运行记录/模型实验/运行记录_v4下游TLS细胞置零消融_0907_234105.md`（run record updated）。
+- Commit: included in `Fix cell ablation scratch`.

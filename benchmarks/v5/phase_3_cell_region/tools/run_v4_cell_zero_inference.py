@@ -58,6 +58,11 @@ def main(argv: list[str] | None = None) -> None:
         original_argv = sys.argv
         sys.argv = [original_argv[0], *remaining]
         args = v4_inference.parse_args()
+        # v4 creates ``output`` before constructing its overlap accumulator;
+        # its default scratch path is the already-created output directory.
+        # Give this v5 adapter a sibling scratch parent without changing v4.
+        if args.scratch_root is None:
+            args.scratch_root = args.output_root / "_scratch"
         timestamp = args.timestamp
         output = args.output_root / f"wsi_inference_{timestamp}"
         v4_inference.main(args)
