@@ -251,3 +251,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/regularized_linear_cell_probe/regularized_linear_cell_probe_0907_180000/`; log `/nfs-medical3/zyh/fewclick_v2/regularized_linear_cell_probe/logs/regularized_linear_probe_0907_180000.log`。
 - Docs record: `docs/运行记录/模型实验/运行记录_正则线性跨域Probe_0907_175159.md`（run record updated）。
 - Commit: included in `Record linear probe results`.
+
+## 09-07 19:39:28
+
+- Purpose: 按用户要求检查 UNI2-h 是否可作为更新的病理 backbone 对照。
+- Changed: `docs/运行记录/特征缓存/运行记录_UNI2h访问检查_0907_193928.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `HfApi.list_repo_files('MahmoodLab/UNI2-h')` — passed（仓库元数据可见）；`HfApi.whoami()` — blocked（`LocalTokenNotFoundError`，本机没有 Hugging Face 登录 token，权重受访问条款控制）。未下载权重、未启动模型或训练。
+- Artifacts: 无；计划的 smoke 输出根为 `/nfs-medical3/zyh/fewclick_v2/uni2h_smoke/`，待获得访问权限后创建。
+- Docs record: `docs/运行记录/特征缓存/运行记录_UNI2h访问检查_0907_193928.md`（access-check record）。
+- Commit: included in `Record UNI2h access check`.
