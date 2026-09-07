@@ -18,7 +18,8 @@ from sklearn.metrics import balanced_accuracy_score, f1_score
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest-dir", type=Path, required=True)
-    parser.add_argument("--smoke-dir", type=Path, required=True)
+    parser.add_argument("--smoke-dir", type=Path, help="legacy combined smoke artifact")
+    parser.add_argument("--cache-dir", type=Path, help="cohort-sharded feature cache artifact")
     parser.add_argument("--output-root", type=Path, default=Path("/nfs-medical3/zyh/fewclick_v2/multisection_cell_gate"))
     parser.add_argument("--timestamp")
     parser.add_argument("--device", default="cuda:0")
@@ -66,6 +67,39 @@ def train_fold(x_train: np.ndarray, y_train: np.ndarray, x_test: np.ndarray, cla
     return np.asarray([classes[index] for index in prediction]), float(loss.detach().cpu()), state
 
 
+def load_features(args: argparse.Namespace) -> tuple[pd.DataFrame, np.ndarray, str]:
+    """Load either legacy combined smoke output or an identity-checked shard cache."""
+    if bool(args.smoke_dir) == bool(args.cache_dir):
+        raise ValueError("provide exactly one of --smoke-dir or --cache-dir")
+    if args.smoke_dir:
+        cells = pd.read_csv(args.smoke_dir / "smoked_cells.csv", dtype={"cell_id": str})
+        # The legacy extractor emits one cohort at a time in sorted cohort order.
+        cells = cells.sort_values("cohort_id", kind="stable").reset_index(drop=True)
+        features = np.load(args.smoke_dir / "phikon_dualview_features.npz")
+        observed_ids = features["cell_id"].astype(str)
+        expected_ids = cells.cell_id.to_numpy(dtype=str)
+        if len(cells) != len(observed_ids) or not np.array_equal(expected_ids, observed_ids):
+            raise RuntimeError("feature-to-cell identity mismatch")
+        values = np.concatenate([features["phikon_cls_256px"], features["phikon_cls_384px"]], axis=1).astype(np.float32)
+        return cells, values, str(args.smoke_dir)
+    index = json.loads((args.cache_dir / "index.json").read_text(encoding="utf-8"))
+    if not index.get("all_complete"):
+        raise RuntimeError("cache index is not complete")
+    frames, matrices = [], []
+    for cohort in sorted(index["cohorts"]):
+        shard = args.cache_dir / cohort
+        cells = pd.read_csv(shard / "cells.csv", dtype={"cell_id": str})
+        features = np.load(shard / "phikon_dualview_features.npz")
+        ids = features["cell_id"].astype(str)
+        if len(cells) != len(ids) or not np.array_equal(cells.cell_id.to_numpy(dtype=str), ids):
+            raise RuntimeError(f"{cohort}: feature-to-cell identity mismatch")
+        if not cells.cohort_id.eq(cohort).all():
+            raise RuntimeError(f"{cohort}: shard cohort identity mismatch")
+        values = np.concatenate([features["phikon_cls_256px"], features["phikon_cls_384px"]], axis=1).astype(np.float32)
+        frames.append(cells); matrices.append(values)
+    return pd.concat(frames, ignore_index=True), np.concatenate(matrices, axis=0), str(args.cache_dir)
+
+
 def main() -> None:
     args = parse_args()
     if args.epochs < 1 or args.lr <= 0:
@@ -78,17 +112,7 @@ def main() -> None:
     device = torch.device(args.device)
     if device.type == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("requested CUDA device is unavailable")
-    cells = pd.read_csv(args.smoke_dir / "smoked_cells.csv", dtype={"cell_id": str})
-    # The smoke extractor encodes one cohort at a time in sorted cohort order.
-    # Preserve intra-cohort manifest order, then make that feature order explicit
-    # before checking IDs or constructing train/test folds.
-    cells = cells.sort_values("cohort_id", kind="stable").reset_index(drop=True)
-    features = np.load(args.smoke_dir / "phikon_dualview_features.npz")
-    observed_ids = features["cell_id"].astype(str)
-    expected_ids = cells.cell_id.to_numpy(dtype=str)
-    if len(cells) != len(observed_ids) or not np.array_equal(expected_ids, observed_ids):
-        raise RuntimeError("feature-to-cell identity mismatch")
-    values = np.concatenate([features["phikon_cls_256px"], features["phikon_cls_384px"]], axis=1).astype(np.float32)
+    cells, values, feature_source = load_features(args)
     if values.shape != (len(cells), 2048) or not np.isfinite(values).all():
         raise RuntimeError(f"invalid dual-view feature matrix: {values.shape}")
     classes = sorted(cells.broad_annotation.unique())
@@ -118,7 +142,7 @@ def main() -> None:
     summaries = {}
     for arm in all_truth:
         summaries[arm] = {"macro_f1": float(f1_score(all_truth[arm], all_prediction[arm], average="macro", zero_division=0)), "balanced_accuracy": float(balanced_accuracy_score(all_truth[arm], all_prediction[arm])), "fold_macro_f1_mean": float(fold_frame[fold_frame.arm.eq(arm)].macro_f1.mean()), "fold_balanced_accuracy_mean": float(fold_frame[fold_frame.arm.eq(arm)].balanced_accuracy.mean())}
-    report = {"purpose": "frozen H&E dual-view cross-cohort cell-adapter gate; RNA is not model input", "manifest_dir": str(args.manifest_dir), "smoke_dir": str(args.smoke_dir), "manifest_sha256": hashlib.sha256((args.manifest_dir / "sampled_cells.csv").read_bytes()).hexdigest(), "smoked_cells": len(cells), "feature_shape": list(values.shape), "classes": classes, "held_out_cohorts": sorted(cells.cohort_id.unique()), "seeds": args.seeds, "epochs": args.epochs, "summaries": summaries, "acceptance": "paired_he macro-F1 and balanced accuracy must exceed shuffled_he; this is not donor-level generalization"}
+    report = {"purpose": "frozen H&E dual-view cross-cohort cell-adapter gate; RNA is not model input", "manifest_dir": str(args.manifest_dir), "feature_source": feature_source, "manifest_sha256": hashlib.sha256((args.manifest_dir / "sampled_cells.csv").read_bytes()).hexdigest(), "smoked_cells": len(cells), "feature_shape": list(values.shape), "classes": classes, "held_out_cohorts": sorted(cells.cohort_id.unique()), "seeds": args.seeds, "epochs": args.epochs, "summaries": summaries, "acceptance": "paired_he macro-F1 and balanced accuracy must exceed shuffled_he; this is not donor-level generalization"}
     (output / "metrics.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({"event": "complete", "output": str(output), "summaries": summaries}, ensure_ascii=False), flush=True)
 

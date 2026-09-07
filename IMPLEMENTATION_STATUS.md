@@ -215,3 +215,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/multisection_cell_feature_cache/multisection_cell_feature_cache_0907_162801/`
 - Docs record: `docs/运行记录_中规模多CohortFeatureCache_0907_161725.md`（run record updated）
 - Commit: included in `Record feature cache completion`
+
+## 09-07 16:33:00
+
+- Purpose: 使冻结多 section gate 支持 cohort-sharded feature cache，并运行 2,266-cell 五 cohort leave-one-cohort-out 对照实验。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/run_multisection_frozen_cell_gate.py`; `docs/运行记录_中规模五Cohort冻结Gate_0907_163300.md`
+- Validation: `CUDA_VISIBLE_DEVICES=1 conda run -n aligner python ...run_multisection_frozen_cell_gate.py --cache-dir ...multisection_cell_feature_cache_0907_162801 --timestamp 0907_163300` — passed with `EXIT_CODE=0`；五 shard identity、`[2266,2048]` finite features 和 split isolation 均通过；paired macro-F1/BA `0.1247/0.1305`，shuffled `0.1264/0.1273`，不通过预注册双指标 gate（有效负结果）。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multisection_cell_gate/multisection_frozen_gate_0907_163300/`
+- Docs record: `docs/运行记录_中规模五Cohort冻结Gate_0907_163300.md`（run record）
+- Commit: included in `Gate cached multisection features`
