@@ -49,4 +49,7 @@ Smoke artifact：`/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_smoke/ctr
 
 ## 当前状态
 
-准备启动；长作业完成后在本记录追加实际 PID、退出码和全部三臂指标。
+已于 09-08 02:40 启动。tmux 为 `fewclick_ctrans_rna_0908_024000`，真实 Python
+worker PID 为 `1482398`（GPU 1）；输出目录为
+`/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_gate/ctranspath_rna_teacher_gate_0908_024000/`。
+长作业完成后在本记录追加退出码和全部三臂指标。

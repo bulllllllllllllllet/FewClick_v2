@@ -332,3 +332,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_smoke/ctranspath_rna_teacher_gate_0908_154500/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_CTransPathRNA教师训练Gate_0908_023909.md`（run record）。
 - Commit: `a601b1a` (`Add CTransPath RNA teacher gate`).
+
+## 09-08 02:40:00
+
+- Purpose: 启动 CTransPath RNA 教师三臂空间块训练 gate；RNA 仅作训练监督，所有评估为 H&E-only。
+- Changed: `docs/运行记录/模型实验/运行记录_CTransPathRNA教师训练Gate_0908_023909.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `tmux fewclick_ctrans_rna_0908_024000` — running，真实 worker PID `1482398`，GPU 1；已确认 tmux、conda worker 和 Python 训练进程存在。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_gate/ctranspath_rna_teacher_gate_0908_024000/`; log `/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_gate/logs/ctranspath_rna_teacher_0908_024000.log`。
+- Docs record: `docs/运行记录/模型实验/运行记录_CTransPathRNA教师训练Gate_0908_023909.md`（run record updated）。
+- Commit: included in `Launch CTransPath RNA teacher gate`.
