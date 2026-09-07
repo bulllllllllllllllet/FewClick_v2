@@ -64,8 +64,9 @@ def main() -> None:
     if device.type == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("requested CUDA device is unavailable")
     rows = pd.read_csv(args.manifest_dir / "sampled_cells.csv")
-    eligible = rows[rows.coordinate_status == "ready_for_he_crop_smoke"].copy().reset_index(drop=True)
-    excluded = rows[rows.coordinate_status != "ready_for_he_crop_smoke"].copy()
+    eligible_mask = rows.coordinate_status.astype(str).str.startswith("ready_for_he_crop_smoke")
+    eligible = rows[eligible_mask].copy().reset_index(drop=True)
+    excluded = rows[~eligible_mask].copy()
     if eligible.empty:
         raise RuntimeError("manifest has no H&E crop-smoke eligible cells")
     encoder = PhikonV2Encoder(args.model_dir, device=device, dtype=torch.float16 if device.type == "cuda" else None)

@@ -79,6 +79,10 @@ def main() -> None:
     if device.type == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("requested CUDA device is unavailable")
     cells = pd.read_csv(args.smoke_dir / "smoked_cells.csv", dtype={"cell_id": str})
+    # The smoke extractor encodes one cohort at a time in sorted cohort order.
+    # Preserve intra-cohort manifest order, then make that feature order explicit
+    # before checking IDs or constructing train/test folds.
+    cells = cells.sort_values("cohort_id", kind="stable").reset_index(drop=True)
     features = np.load(args.smoke_dir / "phikon_dualview_features.npz")
     observed_ids = features["cell_id"].astype(str)
     expected_ids = cells.cell_id.to_numpy(dtype=str)
