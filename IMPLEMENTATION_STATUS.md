@@ -242,3 +242,12 @@
 - Artifacts: smoke `/nfs-medical3/zyh/fewclick_v2/regularized_linear_cell_probe/regularized_linear_cell_probe_0907_175700_smoke/`; full output pending `/nfs-medical3/zyh/fewclick_v2/regularized_linear_cell_probe/regularized_linear_cell_probe_0907_180000/`; log `/nfs-medical3/zyh/fewclick_v2/regularized_linear_cell_probe/logs/regularized_linear_probe_0907_180000.log`。
 - Docs record: `docs/运行记录/模型实验/运行记录_正则线性跨域Probe_0907_175159.md`（run record）。
 - Commit: included in `Add regularized linear probe`.
+
+## 09-07 18:09:00
+
+- Purpose: 完成正则线性跨域 probe，并记录全 cohort、同平台跨癌种及同癌种跨平台的 paired-vs-shuffled 结果。
+- Changed: `docs/运行记录/模型实验/运行记录_正则线性跨域Probe_0907_175159.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `tmux fewclick_linear_probe_0907_180000` — passed，`EXIT_CODE=0`；读取 `protocol_summary.csv` 与 `paired_deltas.csv` 确认 `loco_all` 不通过、同平台跨癌种仅有弱正向迹象、跨平台无稳定 macro-F1 增益。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/regularized_linear_cell_probe/regularized_linear_cell_probe_0907_180000/`; log `/nfs-medical3/zyh/fewclick_v2/regularized_linear_cell_probe/logs/regularized_linear_probe_0907_180000.log`。
+- Docs record: `docs/运行记录/模型实验/运行记录_正则线性跨域Probe_0907_175159.md`（run record updated）。
+- Commit: included in `Record linear probe results`.
