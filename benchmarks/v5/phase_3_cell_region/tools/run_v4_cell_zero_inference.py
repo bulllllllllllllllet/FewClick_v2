@@ -11,6 +11,7 @@ other input, checkpoint, prompt, and tile remains unchanged.
 from __future__ import annotations
 
 import argparse
+import errno
 import json
 import sys
 from pathlib import Path
@@ -65,7 +66,18 @@ def main(argv: list[str] | None = None) -> None:
             args.scratch_root = args.output_root / "_scratch"
         timestamp = args.timestamp
         output = args.output_root / f"wsi_inference_{timestamp}"
-        v4_inference.main(args)
+        try:
+            v4_inference.main(args)
+        except OSError as exc:
+            # The frozen entry point writes its complete metadata before
+            # deleting memmaps, then may race with NFS directory cleanup.
+            # Treat only that post-output cleanup error as non-fatal.
+            completed_metadata = output / "metadata.json"
+            if exc.errno != errno.ENOTEMPTY or not completed_metadata.is_file():
+                raise
+            metadata = json.loads(completed_metadata.read_text(encoding="utf-8"))
+            if metadata.get("status") != "complete" or not metadata.get("mask_returned"):
+                raise
     finally:
         v4_inference.CellFeatureStore = original_store
         sys.argv = original_argv

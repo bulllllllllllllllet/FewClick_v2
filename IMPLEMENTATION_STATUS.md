@@ -314,3 +314,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/v4_tls_cell_ablation/v4_tls_cell_zero_smoke_0908_000540/`; worker PID `846921`; tmux `v5_tls_cellzero_0908_000540`。
 - Docs record: `docs/运行记录/模型实验/运行记录_v4下游TLS细胞置零消融_0907_234105.md`（run record updated）。
 - Commit: included in `Fix cell ablation scratch`.
+
+## 09-08 01:12:59
+
+- Purpose: 完成 v4 J5 TLS cell-zero 下游 smoke，修复已完成输出后 NFS scratch 清理导致的 v5 adapter 假失败。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/run_v4_cell_zero_inference.py`; `docs/运行记录/模型实验/运行记录_v4下游TLS细胞置零消融_0907_234105.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `v5_tls_cellzero_0908_000540` — 2,162/2,162 tile、空 failures、complete metadata 和三份 TIFF 均 passed；TLS evaluator 单独重放 — `EXIT_CODE=0`。full vs zero 的 held-out censored Dice 为 `0.7612` vs `0.6992`，仅为单 WSI smoke。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/v4_tls_cell_ablation/v4_tls_cell_zero_smoke_0908_000540/wsi_inference_0908_000540/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_v4下游TLS细胞置零消融_0907_234105.md`（run record updated）。
+- Commit: included in `Record downstream cell smoke`.
