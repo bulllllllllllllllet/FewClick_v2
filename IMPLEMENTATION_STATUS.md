@@ -260,3 +260,12 @@
 - Artifacts: 无；计划的 smoke 输出根为 `/nfs-medical3/zyh/fewclick_v2/uni2h_smoke/`，待获得访问权限后创建。
 - Docs record: `docs/运行记录/特征缓存/运行记录_UNI2h访问检查_0907_193928.md`（access-check record）。
 - Commit: included in `Record UNI2h access check`.
+
+## 09-07 19:43:00
+
+- Purpose: 按用户要求复核 UNI2-h 是否有可用的国内镜像。
+- Changed: `docs/运行记录/特征缓存/运行记录_UNI2h访问检查_0907_193928.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 只读 HTTP 检查 — `hf-mirror.com/MahmoodLab/UNI2-h` 最终重定向至官方 Hugging Face 页面；ModelScope 的 `MahmoodLab/UNI2-h/resolve/master/{config.json,pytorch_model.bin}` 均为 HTTP `404`。未发现可下载的合规国内镜像。
+- Artifacts: 无下载或缓存产物。
+- Docs record: `docs/运行记录/特征缓存/运行记录_UNI2h访问检查_0907_193928.md`（access-check record updated）。
+- Commit: included in `Record UNI2h mirror check`.
