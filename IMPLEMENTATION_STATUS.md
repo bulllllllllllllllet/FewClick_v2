@@ -206,3 +206,12 @@
 - Artifacts: 正在写入 `/nfs-medical3/zyh/fewclick_v2/multisection_cell_feature_cache/multisection_cell_feature_cache_0907_162801/`; 日志 `/nfs-medical3/zyh/fewclick_v2/multisection_cell_feature_cache/logs/feature_cache_full_0907_162801.log`
 - Docs record: `docs/运行记录_中规模多CohortFeatureCache_0907_161725.md`（run record）
 - Commit: included in `Launch medium feature cache`
+
+## 09-07 16:28:01 (completed)
+
+- Purpose: 完成并验收 64 cell/class 的五 cohort 中规模 H&E-only dual-view feature cache。
+- Changed: `docs/运行记录_中规模多CohortFeatureCache_0907_161725.md`; `IMPLEMENTATION_STATUS.md`
+- Validation: `tmux fewclick_featurecache_full_0907_162801` 日志 — passed，`EXIT_CODE=0`；root `index.json` 为 `all_complete=true`，五 shard 共 2,266 cells 的 256px/384px `[N,1024]` feature 全部 finite。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multisection_cell_feature_cache/multisection_cell_feature_cache_0907_162801/`
+- Docs record: `docs/运行记录_中规模多CohortFeatureCache_0907_161725.md`（run record updated）
+- Commit: included in `Record feature cache completion`
