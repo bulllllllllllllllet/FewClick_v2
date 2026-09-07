@@ -278,3 +278,12 @@
 - Artifacts: 权重目标 `/nfs-medical3/zyh/fewclick_v2/model_weights/kaiko_vit_large_patch14_reg4/kaiko_0907_194700/`; overlay `/nfs-medical3/zyh/fewclick_v2/vendor/kaiko_timm_0907_194700/`; log `/nfs-medical3/zyh/fewclick_v2/model_weights/logs/kaiko_download_0907_194700.log`。
 - Docs record: `docs/运行记录/特征缓存/运行记录_Kaiko公开Backbone下载与Smoke_0907_194700.md`（run record）。
 - Commit: included in `Stage Kaiko backbone smoke`.
+
+## 09-07 22:10:00
+
+- Purpose: 完成公开 Kaiko 病理 backbone 的断点续传、权重校验及真实 H&E 前向 smoke。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/smoke_kaiko_pathology.py`; `docs/运行记录/特征缓存/运行记录_Kaiko公开Backbone下载与Smoke_0907_194700.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 官方 CDN `curl -C -` 断点续传 + SHA-256 — passed，权重 `model.safetensors` 校验为 `149c8b21…b83f20e69`，`EXIT_CODE=0`；`CUDA_VISIBLE_DEVICES=1 conda run -n aligner python ...smoke_kaiko_pathology.py --device cuda:0 --timestamp 0907_221000` — passed，真实 518px H&E crop 输出 finite `[1,1024]`。
+- Artifacts: 权重 `/nfs-medical3/zyh/fewclick_v2/model_weights/kaiko_vit_large_patch14_reg4/kaiko_0907_194700/`; overlay `/nfs-medical3/zyh/fewclick_v2/vendor/kaiko_timm_0907_194700/`; smoke `/nfs-medical3/zyh/fewclick_v2/kaiko_smoke/kaiko_pathology_smoke_0907_221000/`; logs `/nfs-medical3/zyh/fewclick_v2/model_weights/logs/kaiko_{download_0907_194700,resume_0907_202000,curl_0907_202500}.log`。
+- Docs record: `docs/运行记录/特征缓存/运行记录_Kaiko公开Backbone下载与Smoke_0907_194700.md`（run record updated）。
+- Commit: included in `Smoke Kaiko pathology backbone`.
