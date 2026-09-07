@@ -269,3 +269,12 @@
 - Artifacts: 无下载或缓存产物。
 - Docs record: `docs/运行记录/特征缓存/运行记录_UNI2h访问检查_0907_193928.md`（access-check record updated）。
 - Commit: included in `Record UNI2h mirror check`.
+
+## 09-07 19:47:00
+
+- Purpose: 因 UNI2-h 无可用合规镜像，改用公开的 Kaiko ViT-L/14-reg4 病理 backbone 作为可复现对照候选，并启动权重下载。
+- Changed: `docs/运行记录/特征缓存/运行记录_Kaiko公开Backbone下载与Smoke_0907_194700.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: Hugging Face metadata/README — passed（`gated=false`、约 1.22GB `model.safetensors`、1024-d output contract）；v5-only `timm==1.0.24` overlay — passed（可枚举 `vit_large_patch14_reg4_dinov2`，未改动 `aligner` 内置 `timm==0.9.8` 或 v4）。下载任务已在 `tmux fewclick_kaiko_download_0907_194700` 启动，worker PID `172372`；等待完整权重后真实 H&E smoke。
+- Artifacts: 权重目标 `/nfs-medical3/zyh/fewclick_v2/model_weights/kaiko_vit_large_patch14_reg4/kaiko_0907_194700/`; overlay `/nfs-medical3/zyh/fewclick_v2/vendor/kaiko_timm_0907_194700/`; log `/nfs-medical3/zyh/fewclick_v2/model_weights/logs/kaiko_download_0907_194700.log`。
+- Docs record: `docs/运行记录/特征缓存/运行记录_Kaiko公开Backbone下载与Smoke_0907_194700.md`（run record）。
+- Commit: included in `Stage Kaiko backbone smoke`.
