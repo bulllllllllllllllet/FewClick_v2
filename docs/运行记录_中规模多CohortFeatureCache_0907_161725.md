@@ -33,3 +33,11 @@
 - smoke artifact：`/nfs-medical3/zyh/fewclick_v2/multisection_cell_feature_cache/multisection_cell_feature_cache_0907_161900/`。
 
 完整 2,266-cell cache 将在 code commit 后以同一 manifest 启动；tmux session、GPU PID 和每个 cohort shard 状态会在其运行时记录。
+
+## 完整 cache 启动
+
+- Timestamp/output：`0907_162801`，`/nfs-medical3/zyh/fewclick_v2/multisection_cell_feature_cache/multisection_cell_feature_cache_0907_162801/`
+- Code revision：`cfd12ba`。
+- Command：`CUDA_VISIBLE_DEVICES=1 ... cache_multisection_cell_features.py --manifest-dir ...multisection_cell_manifest_0907_161850 --timestamp 0907_162801 --device cuda:0`。
+- tmux：`fewclick_featurecache_full_0907_162801`；日志 `/nfs-medical3/zyh/fewclick_v2/multisection_cell_feature_cache/logs/feature_cache_full_0907_162801.log`；`TMPDIR` 与 `VIPS_TMPDIR` 均使用 NFS 临时目录。
+- 预计：单 GPU、约 1 小时量级；以 root `index.json` 中的 cohort completion record 监控，所有五 shard `complete` 且 `all_complete=true` 才结束。
