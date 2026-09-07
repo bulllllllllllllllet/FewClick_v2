@@ -331,4 +331,4 @@
 - Validation: `CUDA_VISIBLE_DEVICES=1 conda run -n aligner python ...train_ctranspath_rna_teacher_gate.py --epochs 1 --folds 2 --arms label_only` — passed training path: two real folds completed with finite loss and 31 final-stage parameter tensors tuned; front-end time limit interrupted only final aggregation.
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_smoke/ctranspath_rna_teacher_gate_0908_154500/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_CTransPathRNA教师训练Gate_0908_023909.md`（run record）。
-- Commit: `adfa4e0` (`Add CTransPath RNA teacher gate`).
+- Commit: `a601b1a` (`Add CTransPath RNA teacher gate`).
