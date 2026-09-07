@@ -287,3 +287,12 @@
 - Artifacts: 权重 `/nfs-medical3/zyh/fewclick_v2/model_weights/kaiko_vit_large_patch14_reg4/kaiko_0907_194700/`; overlay `/nfs-medical3/zyh/fewclick_v2/vendor/kaiko_timm_0907_194700/`; smoke `/nfs-medical3/zyh/fewclick_v2/kaiko_smoke/kaiko_pathology_smoke_0907_221000/`; logs `/nfs-medical3/zyh/fewclick_v2/model_weights/logs/kaiko_{download_0907_194700,resume_0907_202000,curl_0907_202500}.log`。
 - Docs record: `docs/运行记录/特征缓存/运行记录_Kaiko公开Backbone下载与Smoke_0907_194700.md`（run record updated）。
 - Commit: included in `Smoke Kaiko pathology backbone`.
+
+## 09-07 22:30:00
+
+- Purpose: 完成 Kaiko 与 CTransPath/Phikon 的同 crop 冻结 backbone 三方 gate，并记录所有失败重跑与有效负结果。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/run_kaiko_backbone_probe.py`; `docs/运行记录/模型实验/运行记录_Kaiko冻结BackboneGate_0907_221500.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `0907_221500` 与 `0907_222500` 因缺失 Phikon overlay、旧/新 timm 导入顺序停止；`0907_222700` 识别出 CTransPath helper 与 timm 1.0 API 冲突后停止，均无结果。修正为复用已审计的历史 CTransPath `[941,768]` 并逐 ID 验证后，`CUDA_VISIBLE_DEVICES=1 ...run_kaiko_backbone_probe.py --timestamp 0907_223000` — passed，`EXIT_CODE=0`，Kaiko `[941,1024]` finite；Kaiko Macro-F1/BA `0.2265/0.2430` 低于 CTransPath `0.2515/0.2850`，且 Macro-F1 低于 shuffle `0.2425`，不通过 gate。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/backbone_probe/kaiko_backbone_probe_0907_223000/`; logs `/nfs-medical3/zyh/fewclick_v2/backbone_probe/logs/kaiko_backbone_probe_{0907_221500,0907_222500,0907_222700,0907_223000}.log`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Kaiko冻结BackboneGate_0907_221500.md`（run record updated）。
+- Commit: included in `Record Kaiko backbone result`.
