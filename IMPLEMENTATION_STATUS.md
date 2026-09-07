@@ -296,3 +296,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/backbone_probe/kaiko_backbone_probe_0907_223000/`; logs `/nfs-medical3/zyh/fewclick_v2/backbone_probe/logs/kaiko_backbone_probe_{0907_221500,0907_222500,0907_222700,0907_223000}.log`。
 - Docs record: `docs/运行记录/模型实验/运行记录_Kaiko冻结BackboneGate_0907_221500.md`（run record updated）。
 - Commit: included in `Record Kaiko backbone result`.
+
+## 09-07 23:41:05
+
+- Purpose: 新增冻结 v4 J5 下游 TLS 的严格 cell-token 置零消融入口，不修改 v4。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/run_v4_cell_zero_inference.py`; `docs/运行记录/模型实验/运行记录_v4下游TLS细胞置零消融_0907_234105.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `conda run -n aligner python -m py_compile benchmarks/v5/phase_3_cell_region/tools/run_v4_cell_zero_inference.py` — passed；真实 rank-4 TLS WSI 推理 — blocked，冻结入口缺少 `vipa_slide_reader`（日志 `.../v4_tls_cell_zero_smoke_0907_234217/logs/run.log`，`EXIT_CODE=1`）。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/v4_tls_cell_ablation/v4_tls_cell_zero_smoke_0907_234217/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_v4下游TLS细胞置零消融_0907_234105.md`（run record）。
+- Commit: included in `Add downstream cell ablation adapter`.
