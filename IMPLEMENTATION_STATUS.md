@@ -494,3 +494,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_053000/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_CosMx语义RNAPhase3Gate_0908_053000.md`（run record）。
 - Commit: included in `Record CosMx RNA gate`.
+
+## 09-08 05:50:00
+
+- Purpose: 将 CosMx 语义 RNA cache 从单视野扩展至四个空间分离 view，并在 36 patch、16 个 `window × quadrant` 空间组上复验 paired-vs-shuffled Phase 3 gate。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/train_phase3_region_rna_aux_gate.py`; `docs/运行记录/特征缓存/运行记录_CosMx语义区域RNA目标Smoke_0908_052000.md`; `docs/运行记录/模型实验/运行记录_CosMx多视野语义RNAPhase3Gate_0908_055000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 三个 `tmux fewclick_cosmx_windows_0908_054000` cache run 均 `EXIT_CODE=0`；`tmux fewclick_cosmx_multi_0908_055000` — passed（24/24 fold finite），但 paired/shuffled mean R² 为 `-0.070393/-0.043057`，差 `-0.027336`，未通过稳定可预测性门禁。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cosmx_region_rna_target_smoke/cosmx_region_rna_target_smoke_0908_05400{1,2,3}/`; `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_055000/`。
+- Docs record: `docs/运行记录/特征缓存/运行记录_CosMx语义区域RNA目标Smoke_0908_052000.md`; `docs/运行记录/模型实验/运行记录_CosMx多视野语义RNAPhase3Gate_0908_055000.md`。
+- Commit: included in `Evaluate multiwindow RNA gate`.
