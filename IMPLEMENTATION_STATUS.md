@@ -566,3 +566,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/phase3_seg_rna_joint_smoke_0908_221400_s<seed>/`（运行中）。
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase3全切片RNA联合分割Gate_0908_213000.md`（run record updated）。
 - Commit: pending.
+
+## 09-08 22:16:38
+
+- Purpose: 收尾三 seed 全切片 RNA 联合 Phase 3 分割 gate 并判定是否进入完整下游消融。
+- Changed: `docs/运行记录/模型实验/运行记录_Phase3全切片RNA联合分割Gate_0908_213000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 三个 `joint_fullslide_0908_221400_s<seed>.log` 均 `EXIT_CODE=0`；读取三份 `metrics.json` 确认全部 finite — passed；平均 validation region accuracy 为 seg-only/paired/shuffled `0.917837/0.915706/0.915869`，paired 未优于任一对照。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/phase3_seg_rna_joint_smoke_0908_221400_s{20260908,20260909,20260910}/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Phase3全切片RNA联合分割Gate_0908_213000.md`（run record updated）。
+- Commit: pending.

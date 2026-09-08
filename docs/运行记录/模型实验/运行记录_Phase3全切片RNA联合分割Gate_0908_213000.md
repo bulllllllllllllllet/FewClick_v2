@@ -13,3 +13,7 @@
 下一步：三个 seed 各 200 steps，固定每 seed 的 GDPH 64 train/64 val patch，RNA batch 为 36 patch。仅在 paired RNA 相对 `seg_only` 不退化、且相对 shuffled 有一致方向差异时，才进入真正的 Phase 3 cache 到 Phase 4–6 Dice/IoU 消融。
 
 启动：2026-09-08 22:14（UTC+08:00）已启动三个独立 seed：`20260908/20260909/20260910`，分别使用 GPU `1/3/4`。tmux 为 `fewclick_joint_rna_0908_221400_s<seed>`，真实 Python worker 为 `2472313/2472314/2472315`；日志为 `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/joint_fullslide_0908_221400_s<seed>.log`。每个任务 200 steps、64 GDPH train 与 64 GDPH val patch、每步随机 36 个 RNA patch；最终将检查三 seed 的 `seg_only`、`paired_rna`、`shuffled_rna` region accuracy。
+
+结果：三个任务均在约 2.5 分钟内 `EXIT_CODE=0`，三 arm 的 loss/metric 全 finite。GDPH validation region accuracy 的三 seed 平均为：`seg_only=0.917837`、`paired_rna=0.915706`、`shuffled_rna=0.915869`。因此 paired RNA 相对原始分割为 `-0.002130`（约 -0.21 个百分点），相对 shuffled 为 `-0.000163`，没有一致的正向差异；三个 seed 中 paired 均略低于 seg-only，且仅第一个 seed 略高于 shuffled。paired 的 RNA auxiliary MSE 均低于 shuffled（`1.606/1.529/1.645` 对 `1.620/1.545/1.667`），说明 RNA target 确实被优化，但该微弱分子信号没有转化为 GDPH region 分类收益。
+
+结论：在当前“冻结 Phase 2、仅 200 step 更新 Phase 3、GDPH 分割与同切片 COAD RNA 交替 batch”的设定下，RNA loss **不通过下游增益门槛**。不应继续投入 Phase 4–6 的 Dice/IoU 消融，也不应替换原始 v4 分割模型；后续若重试，需要改变监督/任务配对，而不只是扩大同一 RNA 数据量。
