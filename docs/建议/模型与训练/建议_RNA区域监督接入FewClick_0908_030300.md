@@ -67,6 +67,28 @@ RNA 分类实验。
 - 不再仅因 RNA 自身分类高分而把原始 RNA feature 塞入推理输入；新 WSI 通常没有该模态，且会造成部署不一致。
 - 不在当前单 COAD section 阴性 cell-type gate 后直接做全量 LoRA 或端到端六模块重训。
 
+## 更新：交替 GDPH/COAD 结果后的路径选择
+
+中等规模三 seed 交替训练显示，正确 RNA 与打乱 RNA 在 GDPH Phase 3 region accuracy 上
+没有稳定差异；因此**停止**把通用 hash gene program 作为 GDPH 12 类组织分割的 auxiliary
+loss 扩大到 Phase 4–6。它能在 COAD 内被 H&E token 预测，不代表它和 GDPH 的组织类别或
+最终分割边界有因果相关。
+
+后续按优先级考虑：
+
+1. **任务对齐的 RNA target（推荐）**：以 TLS/免疫任务为例，使用 T/B、髓系、趋化、
+   淋巴滤泡等预定义 program，构造 RNA immune/TLS region score；只在具有相同或可比
+   TLS/免疫 H&E 标签的数据上验证真实 RNA、shuffle、无 RNA 的 Dice/Boundary-F1。RNA
+   监督目标与 FewClick task 语义相同，才有合理的迁移路径。
+2. **同域配对训练集**：寻找同时具备 H&E、RNA 和组织/TLS 标签的多个 COAD section/donor；
+   在同一队列内完成 train/val/test，再讨论是否迁移到 GDPH。当前“COAD RNA → GDPH”同时
+   改变癌种/染色/扫描/标注域，不适合判定 RNA 的价值。
+3. **显式多模态模式**：若未来病例真的提供 spatial RNA，可单列 H&E+RNA 推理模式；它可
+   直接使用 RNA region token，但必须与普适 H&E-only FewClick 分开报告。
+
+不优先做 domain-adversarial、LoRA 或更大规模交替训练：在 paired 与 shuffled 下游相同前，
+这些更复杂方法只会增加容量，不能证明 RNA 配对信息被使用。
+
 ## 验收与风险
 
 首个小实验应采用一个与 TLS/免疫相关的 region RNA program，报告 paired-vs-shuffled

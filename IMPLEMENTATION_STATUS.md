@@ -431,3 +431,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/rna_geometry_audit/rna_geometry_audit_0908_040200/`。
 - Docs record: `docs/运行记录/数据审计/运行记录_COADRNAHE坐标配准审计_0908_040000.md`。
 - Commit: included in `Audit COAD RNA geometry`.
+
+## 09-08 04:10:00
+
+- Purpose: 根据三 seed GDPH/COAD 交替训练中 paired 与 shuffled 无下游差异的结果，更新 RNA 接入策略为任务对齐、同域配对优先。
+- Changed: `docs/建议/模型与训练/建议_RNA区域监督接入FewClick_0908_030300.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 汇总三个 `0908_03500{1,2,3}` 完整 run（均 `EXIT_CODE=0`）— paired 平均 val region accuracy `0.91767`，shuffled `0.91792`，不支持泛 program 扩大训练。
+- Artifacts: 已有 `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/phase3_seg_rna_joint_smoke_0908_03500{1,2,3}/`。
+- Docs record: `docs/建议/模型与训练/建议_RNA区域监督接入FewClick_0908_030300.md`（recommendation updated）。
+- Commit: included in `Refine RNA supervision strategy`.
