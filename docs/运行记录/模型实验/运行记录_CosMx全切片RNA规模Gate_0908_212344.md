@@ -8,4 +8,4 @@
 
 验收标准：64 个 contract 均可加载、训练损失及指标 finite；主要判据为 paired 平均 `R²_vs_train_mean` 高于 shuffled 平均值。即使通过，这也只证明本切片内 H&E→RNA 的辅助监督信号，不代表跨病人泛化或下游分割改进；若不通过，将否定“此前仅因样本量少”这一解释。
 
-当前状态：已完成输入完整性核验，待启动训练。
+启动状态：2026-09-08 21:25:10（UTC+08:00）已在 GPU 1 启动。tmux `fewclick_cosmx_fullgate_0908_212344`；launcher PID `2236180`，真实 Python worker PID `2236493`。日志为 `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/fullgate_0908_212344.log`；启动后 GPU 利用率 90%、显存 1,442 MiB，64 个 contract 已被脚本接受。完成后将在本记录补充 24 fold 指标和结论。

@@ -530,3 +530,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cosmx_fullslide_rna_cache/cosmx_region_rna_target_smoke_0908_062000_x*_y*/`。
 - Docs record: 上述特征缓存 record（updated）与模型实验 record（run record）。
 - Commit: `4ab6f0d` (`Record fullslide RNA gate`)；随后仅回填本条 commit 字段并 amend。
+
+## 09-08 21:25:10
+
+- Purpose: 启动 CosMx 全切片 RNA paired-vs-shuffled 规模 gate。
+- Changed: `docs/运行记录/模型实验/运行记录_CosMx全切片RNA规模Gate_0908_212344.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 64 个 contract 已由真实训练 worker 加载，GPU 1 利用率 90%、显存 1,442 MiB — running；完成后检查 24/24 fold 的 finite 指标和 `EXIT_CODE`。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_212344/`（运行中）；日志 `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/fullgate_0908_212344.log`。
+- Docs record: `docs/运行记录/模型实验/运行记录_CosMx全切片RNA规模Gate_0908_212344.md`（run record updated）。
+- Commit: pending.
