@@ -458,3 +458,12 @@
 - Artifacts: 无。
 - Docs record: `docs/运行记录/数据审计/运行记录_空间病理RNA候选数据可用性核验_0908_045000.md`（data audit record）。
 - Commit: included in `Audit RNA data candidates`.
+
+## 09-08 04:55:00
+
+- Purpose: 补充核验乳腺/肺 Xenium archive 内 gene panel 的组织与 TLS marker 覆盖。
+- Changed: `docs/运行记录/数据审计/运行记录_空间病理RNA候选数据可用性核验_0908_045000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `bsdtar -tf` 读取 archive 清单、`rg` 读取 `gene_panel.json` — passed；乳腺 IDC 具上皮、间质、免疫、血管/肌成纤维和脂肪 marker，肺具上皮与 TLS marker。
+- Artifacts: 无。
+- Docs record: `docs/运行记录/数据审计/运行记录_空间病理RNA候选数据可用性核验_0908_045000.md`（data audit record updated）。
+- Commit: included in `Verify Xenium marker panels`.
