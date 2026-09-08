@@ -9,3 +9,7 @@
 验收标准：64 个 contract 均可加载、训练损失及指标 finite；主要判据为 paired 平均 `R²_vs_train_mean` 高于 shuffled 平均值。即使通过，这也只证明本切片内 H&E→RNA 的辅助监督信号，不代表跨病人泛化或下游分割改进；若不通过，将否定“此前仅因样本量少”这一解释。
 
 启动状态：2026-09-08 21:25:10（UTC+08:00）已在 GPU 1 启动。tmux `fewclick_cosmx_fullgate_0908_212344`；launcher PID `2236180`，真实 Python worker PID `2236493`。日志为 `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/fullgate_0908_212344.log`；启动后 GPU 利用率 90%、显存 1,442 MiB，64 个 contract 已被脚本接受。完成后将在本记录补充 24 fold 指标和结论。
+
+结果：任务于 21:25:39 正常结束（约 29 秒，`EXIT_CODE=0`），24/24 个 fold 的 loss 与指标均 finite。真实配对 RNA 的平均 `R²_vs_train_mean=0.035376±0.012828`，打乱对照为 `-0.000828±0.000856`，差值 `+0.036204`；对应 normalized MSE 为 `0.964624` 与 `1.000828`。因此在该**同一张切片、空间 quadrant 折分**下，扩大到 576 patch 后，H&E Phase 2/3 特征对真实 RNA 组织 program 的预测确实优于随机配对，支持先前结果受样本量影响的解释。
+
+边界：绝对 R² 仍很低，说明可解释 RNA 方差仅约 3.5%，不能表述为强 RNA 预测能力，更不能直接推出下游分割会提升。每个 tile 的不同 quadrant 可落入不同 fold，故该 gate 也不隔离相邻区域；它只回答用户指定的“同切片扩大数量级后是否高于随机”的问题。下一阶段若要证明 FewClick 获益，应把这个 auxiliary loss 接入分割训练，并以独立的任务 mask Dice/IoU 消融验收。

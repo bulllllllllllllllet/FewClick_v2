@@ -539,3 +539,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_212344/`（运行中）；日志 `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/fullgate_0908_212344.log`。
 - Docs record: `docs/运行记录/模型实验/运行记录_CosMx全切片RNA规模Gate_0908_212344.md`（run record updated）。
 - Commit: pending.
+
+## 09-08 21:25:39
+
+- Purpose: 收尾 CosMx 全切片 RNA paired-vs-shuffled 规模 gate，并记录其可解释范围。
+- Changed: `docs/运行记录/模型实验/运行记录_CosMx全切片RNA规模Gate_0908_212344.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `fullgate_0908_212344.log` 的 `EXIT_CODE=0`；读取 `fold_metrics.csv` 确认 24/24 行 finite — passed；paired/shuffled 平均 R² `0.035376/-0.000828`，差 `+0.036204`。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_212344/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_CosMx全切片RNA规模Gate_0908_212344.md`（run record updated）。
+- Commit: pending.
