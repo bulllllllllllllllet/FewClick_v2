@@ -485,3 +485,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cosmx_region_rna_target_smoke/cosmx_region_rna_target_smoke_0908_052000/`。
 - Docs record: `docs/运行记录/特征缓存/运行记录_CosMx语义区域RNA目标Smoke_0908_052000.md`（run record）。
 - Commit: included in `Build CosMx RNA cache`.
+
+## 09-08 05:30:00
+
+- Purpose: 用 CosMx 语义组织/TLS region RNA target 运行 v4-contract Phase 3 paired-vs-shuffled 机制 gate。
+- Changed: `docs/运行记录/模型实验/运行记录_CosMx语义RNAPhase3Gate_0908_053000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `tmux fewclick_cosmx_semantic_0908_053000` — passed，`EXIT_CODE=0`，24/24 fold finite；paired/shuffled mean R² `-0.146505/-0.207221`，差 `+0.060716`。单 window 结果未通过稳定可预测性门禁。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_053000/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_CosMx语义RNAPhase3Gate_0908_053000.md`（run record）。
+- Commit: included in `Record CosMx RNA gate`.
