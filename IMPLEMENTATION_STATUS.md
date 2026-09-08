@@ -377,3 +377,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/region_rna_target_smoke/region_rna_target_smoke_0908_032000/`; `/nfs-medical3/zyh/fewclick_v2/region_rna_prediction_gate/region_rna_prediction_gate_0908_032500/`。
 - Docs record: `docs/运行记录/特征缓存/运行记录_Phase2软区域RNA目标Smoke_0908_031500.md`; `docs/运行记录/模型实验/运行记录_软区域RNA预测Gate_0908_032500.md`。
 - Commit: included in `Build region RNA gate`.
+
+## 09-08 03:30:00
+
+- Purpose: 新增并验证冻结 Phase 2、可训练 v4-contract `CellToRegionAttention + RNA head` 的区域 RNA auxiliary gate；RNA 始终为 target。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/train_phase3_region_rna_aux_gate.py`; `docs/运行记录/模型实验/运行记录_Phase3区域RNA辅助头Gate_0908_033000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `CUDA_VISIBLE_DEVICES=1 conda run -n aligner python ...train_phase3_region_rna_aux_gate.py --timestamp 0908_032900 --epochs 1 --seeds 20260908` — passed；2 arms × 4 spatial folds 的真实 model/loss/evaluation 均有限。1 epoch 不用于质量结论。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_032900/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Phase3区域RNA辅助头Gate_0908_033000.md`（run record）。
+- Commit: included in `Add Phase3 RNA auxiliary gate`.
