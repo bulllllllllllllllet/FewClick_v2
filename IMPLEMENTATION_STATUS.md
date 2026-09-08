@@ -422,3 +422,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/phase3_seg_rna_joint_smoke_0908_03500{1,2,3}/`; logs `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/logs/joint_rna_0908_03500{1,2,3}.log`。
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase3分割RNA交替训练Smoke_0908_034000.md`（run record updated）。
 - Commit: included in `Launch joint RNA stability gate`.
+
+## 09-08 04:02:00
+
+- Purpose: 独立审计 COAD transcript、cell boundary 与 H&E 的坐标一致性。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/audit_xenium_he_rna_geometry.py`; `docs/运行记录/数据审计/运行记录_COADRNAHE坐标配准审计_0908_040000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 50 cells/43,614 transcripts geometry audit `0908_040200` — passed with 2px tolerance；strict inside 0.9289、within 2px 1.0、median signed distance +1.27px。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/rna_geometry_audit/rna_geometry_audit_0908_040200/`。
+- Docs record: `docs/运行记录/数据审计/运行记录_COADRNAHE坐标配准审计_0908_040000.md`。
+- Commit: included in `Audit COAD RNA geometry`.
