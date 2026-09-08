@@ -413,3 +413,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/phase3_seg_rna_joint_smoke_0908_034200/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase3分割RNA交替训练Smoke_0908_034000.md`（run record updated）。
 - Commit: included in `Run joint RNA segmentation smoke`.
+
+## 09-08 03:50:00
+
+- Purpose: 将交替 GDPH segmentation/COAD RNA 辅助训练扩展为三个 seed、随机固定 64/64 GDPH patch、200 steps 的中等规模 Phase 3 稳定性 gate。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/run_phase3_seg_rna_joint_smoke.py`; `docs/运行记录/模型实验/运行记录_Phase3分割RNA交替训练Smoke_0908_034000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `py_compile` — passed；tmux `fewclick_joint_rna_0908_035000` 已启动，第一个真实 worker PID `3938106` 在 GPU 1 运行。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/phase3_seg_rna_joint_smoke_0908_03500{1,2,3}/`; logs `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/logs/joint_rna_0908_03500{1,2,3}.log`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Phase3分割RNA交替训练Smoke_0908_034000.md`（run record updated）。
+- Commit: included in `Launch joint RNA stability gate`.

@@ -26,12 +26,12 @@ VAL_ROUTE=Path('/nfs-medical3/zyh/v4/phase3/data/xcell_hybrid_manifest_val_20260
 P3CKPT=Path('/nfs-medical3/zyh/v4/phase3/runs/phase_3_cell_region_train_20260719_025025/checkpoint_epoch_026.pth')
 
 def args():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--contract-dir',type=Path,required=True);p.add_argument('--output-root',type=Path,default=Path('/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke'));p.add_argument('--timestamp',required=True);p.add_argument('--device',default='cuda:0');p.add_argument('--steps',type=int,default=20);p.add_argument('--rna-weight',type=float,default=.1);p.add_argument('--limit-train',type=int,default=8);p.add_argument('--limit-val',type=int,default=8);return p.parse_args()
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--contract-dir',type=Path,required=True);p.add_argument('--output-root',type=Path,default=Path('/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke'));p.add_argument('--timestamp',required=True);p.add_argument('--device',default='cuda:0');p.add_argument('--steps',type=int,default=20);p.add_argument('--rna-weight',type=float,default=.1);p.add_argument('--limit-train',type=int,default=8);p.add_argument('--limit-val',type=int,default=8);p.add_argument('--seed',type=int,default=20260908);return p.parse_args()
 def main():
  a=args();out=a.output_root/f'phase3_seg_rna_joint_smoke_{a.timestamp}'
  if out.exists():raise FileExistsError(out)
  d=torch.device(a.device);p2c=load_config(P2CFG);p3c=load_config(P3CFG)
- train=Subset(CellRegionDataset(PATCH,SLIC,TRAIN_ROUTE,p2c,'train'),list(range(a.limit_train)));val=Subset(CellRegionDataset(PATCH,SLIC,VAL_ROUTE,p2c,'val'),list(range(a.limit_val)))
+ train_full=CellRegionDataset(PATCH,SLIC,TRAIN_ROUTE,p2c,'train');val_full=CellRegionDataset(PATCH,SLIC,VAL_ROUTE,p2c,'val');rng=np.random.default_rng(a.seed);train=Subset(train_full,sorted(rng.choice(len(train_full),a.limit_train,replace=False).tolist()));val=Subset(val_full,sorted(rng.choice(len(val_full),a.limit_val,replace=False).tolist()))
  coll=lambda x:collate_cell_region(x,int(p3c['data']['max_cells_per_patch']))
  tl=DataLoader(train,batch_size=2,shuffle=False,collate_fn=coll,num_workers=0);vl=DataLoader(val,batch_size=2,shuffle=False,collate_fn=coll,num_workers=0)
  phase2=DeepRegionEncoder(p2c,len(p2c['data']['class_map']),64,256).to(d);phase2.load_state_dict(torch.load(p3c['model']['phase2_checkpoint'],map_location=d,weights_only=False)['model']);phase2.eval()
@@ -40,7 +40,7 @@ def main():
  mean,std=target.reshape(-1,target.shape[-1]).mean(0),target.reshape(-1,target.shape[-1]).std(0).clamp_min(1e-6)
  result=[]
  for arm in ('seg_only','paired_rna','shuffled_rna'):
-  torch.manual_seed(20260908);cell=CellToRegionAttention(256,74).to(d);cell.load_state_dict(base['cell']);head=torch.nn.Linear(256,12).to(d);head.load_state_dict(base['head']);rna=torch.nn.Linear(256,target.shape[-1]).to(d);opt=torch.optim.AdamW(list(cell.parameters())+list(head.parameters())+list(rna.parameters()),lr=1e-4)
+  torch.manual_seed(a.seed);cell=CellToRegionAttention(256,74).to(d);cell.load_state_dict(base['cell']);head=torch.nn.Linear(256,12).to(d);head.load_state_dict(base['head']);rna=torch.nn.Linear(256,target.shape[-1]).to(d);opt=torch.optim.AdamW(list(cell.parameters())+list(head.parameters())+list(rna.parameters()),lr=1e-4)
   y=target.clone()
   if arm=='shuffled_rna': y=y.reshape(-1,y.shape[-1])[torch.randperm(y.numel()//y.shape[-1],device=d)].reshape_as(y)
   losses=[]
@@ -55,5 +55,5 @@ def main():
    for batch in vl:
     z=phase2(batch['image'].to(d),return_full_assignment=False,return_tokens=True);c=batch['cells'].to(d);v=batch['cell_valid'].to(d);m=F.grid_sample(z['assignment_low'],(c[...,:2]*2-1).unsqueeze(1),align_corners=False).squeeze(2);pred=head(cell(z['region_tokens'],m,c,v,batch['total_cell_count'].to(d))['fused_tokens']).argmax(-1);lab=region_labels(z['assignment_low'],batch['mask'].to(d),12,255);keep=lab!=255;correct+=((pred==lab)&keep).sum().item();total+=keep.sum().item()
   result.append({'arm':arm,'steps':a.steps,'mean_seg_loss':float(np.mean([x[0] for x in losses])),'mean_rna_loss':float(np.mean([x[1] for x in losses])),'val_region_acc':correct/max(total,1)})
- out.mkdir(parents=True);(out/'metrics.json').write_text(json.dumps({'purpose':'alternating GDPH segmentation and COAD RNA auxiliary smoke; not a formal downstream result','steps':a.steps,'rna_weight':a.rna_weight,'results':result,'acceptance':'all finite and paired arm must not materially reduce GDPH val region accuracy vs seg_only'},indent=2),encoding='utf-8');print(json.dumps({'event':'complete','output':str(out),'results':result},ensure_ascii=False))
+ out.mkdir(parents=True);(out/'metrics.json').write_text(json.dumps({'purpose':'alternating GDPH segmentation and COAD RNA auxiliary smoke; not a formal downstream result','seed':a.seed,'steps':a.steps,'rna_weight':a.rna_weight,'results':result,'acceptance':'all finite and paired arm must not materially reduce GDPH val region accuracy vs seg_only'},indent=2),encoding='utf-8');print(json.dumps({'event':'complete','output':str(out),'results':result},ensure_ascii=False))
 if __name__=='__main__':main()

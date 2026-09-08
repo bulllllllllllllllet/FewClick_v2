@@ -28,3 +28,11 @@ downstream gain。下一步的正式 gate 必须增加固定 GDPH train/val 样�
 并以 Dice/mIoU/Boundary-F1 而非 region accuracy 评估。
 
 artifact：`/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/phase3_seg_rna_joint_smoke_0908_034200/`。
+
+## 中等规模重复计划
+
+以三个 seed 各自随机但固定抽取 64 个 GDPH train patch 与 64 个独立 val patch，运行 200
+交替步骤，仍比较 seg-only、paired RNA、shuffled RNA。Phase 2 和初始正式 Phase 3 checkpoint
+固定；仅加 RNA head/auxiliary loss。该运行继续只报告 Phase 3 region accuracy 的稳定性，
+不是 Dice/mIoU/Boundary-F1 下游结论；若三 seed 都不出现实质性退化，才有资格开始重建
+token cache 并进入 Phase 4–6 的真正下游消融。
