@@ -47,9 +47,27 @@ Smoke artifact：`/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_smoke/ctr
 
 验收条件：所有 12 个 fold 的 cell/RNA/边界合约、有限 loss、有限指标均成立；且 `paired_rna` 的 macro-F1 必须同时高于 `label_only` 和 `shuffled_rna`，否则仅报告负结果，不接入 FewClick 下游。
 
-## 当前状态
+## 完成结果
 
-已于 09-08 02:40 启动。tmux 为 `fewclick_ctrans_rna_0908_024000`，真实 Python
-worker PID 为 `1482398`（GPU 1）；输出目录为
-`/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_gate/ctranspath_rna_teacher_gate_0908_024000/`。
-长作业完成后在本记录追加退出码和全部三臂指标。
+作业的 12 个 fold 已全部完成；tmux 记录的 `EXIT_CODE=1` 来自最后序列化 metadata
+时将 NumPy array 错用为 pandas `Index`（`labels.unique()`）的异常。该异常发生在
+`fold_metrics.csv` 写入之后，不影响任何训练、预测或 fold 指标。修复入口并从原始
+fold 文件生成了独立汇总，不覆盖原目录。
+
+| Arm | macro-F1（mean ± std） | balanced accuracy（mean ± std） |
+| --- | ---: | ---: |
+| `label_only` | 0.185373 ± 0.070619 | 0.268239 ± 0.049921 |
+| `paired_rna` | 0.184954 ± 0.074460 | 0.265556 ± 0.035741 |
+| `shuffled_rna` | 0.185191 ± 0.073989 | 0.265556 ± 0.035741 |
+
+- paired − label-only macro-F1：`-0.000419`。
+- paired − shuffled macro-F1：`-0.000237`。
+
+**结论：不通过 RNA-teacher gate。** 正确配对 RNA 没有超过仅标签监督，且没有超过
+打乱 RNA 对照；不能据此声称 RNA 监督提升了 H&E-only CTransPath 表征，也不能将它接入
+FewClick 下游。这个结论与此前冻结 Phikon RNA teacher 的阴性结果方向一致。
+
+原始 fold 产物：
+`/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_gate/ctranspath_rna_teacher_gate_0908_024000/fold_metrics.csv`。
+正式汇总：
+`/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_gate_summary/ctranspath_rna_teacher_summary_0908_030100/`。

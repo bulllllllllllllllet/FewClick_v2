@@ -341,3 +341,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_gate/ctranspath_rna_teacher_gate_0908_024000/`; log `/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_gate/logs/ctranspath_rna_teacher_0908_024000.log`。
 - Docs record: `docs/运行记录/模型实验/运行记录_CTransPathRNA教师训练Gate_0908_023909.md`（run record updated）。
 - Commit: included in `Launch CTransPath RNA teacher gate`.
+
+## 09-08 03:01:00
+
+- Purpose: 修复 CTransPath RNA 教师训练结束时的 metadata 序列化错误，并从已完成的 12 个 fold 生成不可变正式汇总，不重训也不覆盖原产物。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/train_ctranspath_rna_teacher_gate.py`; `benchmarks/v5/phase_3_cell_region/tools/summarize_ctranspath_rna_teacher_gate.py`; `docs/运行记录/模型实验/运行记录_CTransPathRNA教师训练Gate_0908_023909.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `conda run -n aligner python ...summarize_ctranspath_rna_teacher_gate.py --fold-metrics ...0908_024000/fold_metrics.csv --output-dir ...0908_030100 --run-exit-code 1` — passed；12/12 fold 指标有限并生成 `summary.csv`、`metrics.json`。paired macro-F1 相对 label-only/shuffled 为 `-0.000419/-0.000237`，RNA gate 不通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_gate_summary/ctranspath_rna_teacher_summary_0908_030100/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_CTransPathRNA教师训练Gate_0908_023909.md`（run record updated）。
+- Commit: included in `Summarize CTransPath RNA gate`.

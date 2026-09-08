@@ -170,7 +170,7 @@ def main():
                 print(json.dumps({'event': 'fold_complete', **rows[-1]}, ensure_ascii=False), flush=True)
     result = pd.DataFrame(rows); result.to_csv(output / 'fold_metrics.csv', index=False)
     summary = result.groupby('arm')[['macro_f1', 'balanced_accuracy']].agg(['mean', 'std']).round(6).to_dict()
-    metadata = {'purpose': 'CTransPath final-stage H&E-only RNA-teacher spatial-block gate', 'cells': len(cells), 'classes': sorted(labels.unique().tolist()), 'rna_dim': int(rna.shape[1]), 'arms': args.arms, 'seeds': args.seeds, 'folds': args.folds, 'epochs': args.epochs, 'checkpoint': str(args.checkpoint), 'acceptance': 'paired_rna must exceed label_only and shuffled_rna; this gate does not authorize v4 replacement.', 'summary': {str(key): value for key, value in summary.items()}}
+    metadata = {'purpose': 'CTransPath final-stage H&E-only RNA-teacher spatial-block gate', 'cells': len(cells), 'classes': sorted(np.unique(labels).tolist()), 'rna_dim': int(rna.shape[1]), 'arms': args.arms, 'seeds': args.seeds, 'folds': args.folds, 'epochs': args.epochs, 'checkpoint': str(args.checkpoint), 'acceptance': 'paired_rna must exceed label_only and shuffled_rna; this gate does not authorize v4 replacement.', 'summary': {str(key): value for key, value in summary.items()}}
     (output / 'metrics.json').write_text(json.dumps(metadata, indent=2), encoding='utf-8')
     print(json.dumps({'event': 'complete', 'output': str(output), **metadata}, ensure_ascii=False), flush=True)
 
