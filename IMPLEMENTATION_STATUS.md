@@ -359,3 +359,12 @@
 - Artifacts: 无。
 - Docs record: `docs/建议/模型与训练/建议_RNA区域监督接入FewClick_0908_030300.md`（recommendation record）。
 - Commit: included in `Recommend RNA region supervision`.
+
+## 09-08 03:10:00
+
+- Purpose: 澄清并锁定 RNA region-supervision 的空间范围：必须沿用 v4 Phase 2 的软 region assignment 在 cell centroid 聚合 RNA program，不能误用单细胞 RNA target、四象限或独立 spot 网格。
+- Changed: `docs/建议/模型与训练/建议_RNA区域监督接入FewClick_0908_030300.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 核对 `benchmarks/v4/phase_2_region_encoder/src/model.py` 的 `[B,K,D]` soft token 与 `benchmarks/v4/phase_3_cell_region/src/model.py` 的 `[B,K,N]` cell assignment/attention contract — passed。
+- Artifacts: 无。
+- Docs record: `docs/建议/模型与训练/建议_RNA区域监督接入FewClick_0908_030300.md`（recommendation record updated）。
+- Commit: included in `Clarify RNA region target`.

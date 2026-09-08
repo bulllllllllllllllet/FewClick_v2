@@ -26,6 +26,29 @@ region feature 生成 token，RNA 不输入也不缓存。
 该方案不要求“单个细胞外观足以分辨全部 RNA 类型”，而检验组织邻域形态是否能反映
 区域分子生态；这更贴合 FewClick 的聚合结构。
 
+### 与现有 cell feature 的范围区别（实现约束）
+
+这里的 Region 不能简单理解为一个固定的方格，也不能复用之前 cell-level pilot 的
+“一个细胞一条 RNA SVD target”。v4 的实际链路是：
+
+- 每个 cell feature 是一个细胞 soft-attention H&E crop 的 `reg-64`，外加细胞的坐标、面积、核类别；其感受野是局部细胞邻域。
+- Phase 2 先从整个输入 patch 的特征图产生 `K` 个**软** region token；Phase 3 对每个 cell 取该 `K` 个 token 的 assignment，再以 attention 聚合 cell feature。
+
+所以 RNA teacher target 必须用同一个 soft assignment 构造。对 region token `k`，应由所有
+坐标在该 patch 内、且拥有合格 transcript 的细胞计算：
+
+`program_target[k] = sum_i assignment[k,i] * program_score[i] / sum_i assignment[k,i]`。
+
+其中 `assignment[k,i]` 直接取 Phase 2 在 cell centroid 的双线性采样值；不能用四象限、
+任意 crop 边界或另一个 RNA spot 网格代替。即使 v4 为内存限制只向 attention 提供了
+确定性抽样的 cells，RNA target 仍应先在全部可用 RNA cells 上算出，再与 token 对齐；
+并另存 coverage/有效细胞数，防止低 coverage token 的伪标签污染训练。
+
+首个实现将使用独立的 gene-program set，而非此前用于单细胞 RNA SVD 的哈希 gene view；
+同时固定 transcript qv、cell-id、Phase 2 checkpoint、patch/坐标变换及 train-only
+normalization。这样它才是“用区域 RNA 监督现有 region token”，而不是换了一个范围的
+RNA 分类实验。
+
 ## 必须的 gate
 
 1. 同一 region 划分下比较：视觉/分割 loss only、加真实 RNA program、加 region 行打乱 RNA program。
