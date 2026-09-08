@@ -404,3 +404,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_033000/`; log `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/logs/phase3_region_rna_aux_0908_033000.log`。
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase3区域RNA辅助头Gate_0908_033000.md`（run record updated）。
 - Commit: included in `Record Phase3 RNA auxiliary result`.
+
+## 09-08 03:42:00
+
+- Purpose: 实现 GDPH segmentation 与 COAD region-RNA auxiliary loss 的交替 Phase 3 smoke，并用历史正式匹配的 multiscale/SLIC/routing 契约完成重跑。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/run_phase3_seg_rna_joint_smoke.py`; `docs/运行记录/模型实验/运行记录_Phase3分割RNA交替训练Smoke_0908_034000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 首次早期 SLIC index coverage mismatch 后，替换为 v4 正式 `multiscale_index_20260716_150251` + `slic_mmap_trainval_20260717_151426`；`CUDA_VISIBLE_DEVICES=1 ...run_phase3_seg_rna_joint_smoke.py --timestamp 0908_034200` — passed，三臂 20 alternating steps 和 GDPH val 均 finite。paired/seg-only val region accuracy 为 `0.85742/0.85938`，不可作正式收益结论。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/phase3_seg_rna_joint_smoke_0908_034200/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Phase3分割RNA交替训练Smoke_0908_034000.md`（run record updated）。
+- Commit: included in `Run joint RNA segmentation smoke`.
