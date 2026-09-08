@@ -548,3 +548,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_212344/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_CosMx全切片RNA规模Gate_0908_212344.md`（run record updated）。
 - Commit: pending.
+
+## 09-08 21:31:00
+
+- Purpose: 扩展 Phase 3 联合分割/RNA smoke，使其使用全切片 64 个 CosMx contract 的随机 RNA batch。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/run_phase3_seg_rna_joint_smoke.py`; `docs/运行记录/模型实验/运行记录_Phase3全切片RNA联合分割Gate_0908_213000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `conda run -n aligner python -m py_compile ...run_phase3_seg_rna_joint_smoke.py`，以及真实 20-step `0908_213100` — passed（3 arm 全 finite；region accuracy `0.870588/0.874510/0.874510`）。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/phase3_seg_rna_joint_smoke_0908_213100/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Phase3全切片RNA联合分割Gate_0908_213000.md`（run record）。
+- Commit: pending.
