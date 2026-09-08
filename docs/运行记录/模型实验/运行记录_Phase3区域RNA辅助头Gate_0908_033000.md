@@ -34,3 +34,8 @@ RNA head。验证实现的是“Phase 3 融合 token 后接 RNA prediction head�
 head、train-only shuffle、loss 与 held-out evaluation 链路真实可运行。
 
 下一步将以新目录运行 3 seeds × 2 arms × 4 folds × 100 epochs；完成后在此追加最终指标。
+
+已于 09-08 03:31 启动：tmux `fewclick_phase3_rna_0908_033000`，真实 Python worker
+PID `3902382`，GPU 1（进程内 `cuda:0`）。日志为
+`/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/logs/phase3_region_rna_aux_0908_033000.log`，
+结束时将追加 `EXIT_CODE`。

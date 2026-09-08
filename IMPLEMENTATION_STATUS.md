@@ -386,3 +386,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_032900/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase3区域RNA辅助头Gate_0908_033000.md`（run record）。
 - Commit: included in `Add Phase3 RNA auxiliary gate`.
+
+## 09-08 03:31:00
+
+- Purpose: 启动 Phase 3 region RNA auxiliary head 的 paired/shuffled 三 seed 空间折训练 gate。
+- Changed: `docs/运行记录/模型实验/运行记录_Phase3区域RNA辅助头Gate_0908_033000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `tmux fewclick_phase3_rna_0908_033000` — running；确认 tmux、conda 与真实 worker PID `3902382` 存在，分配 GPU 1。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_033000/`; log `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/logs/phase3_region_rna_aux_0908_033000.log`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Phase3区域RNA辅助头Gate_0908_033000.md`（run record updated）。
+- Commit: included in `Launch Phase3 RNA auxiliary gate`.
