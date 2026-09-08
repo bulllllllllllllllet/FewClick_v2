@@ -350,3 +350,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/ctranspath_rna_teacher_gate_summary/ctranspath_rna_teacher_summary_0908_030100/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_CTransPathRNA教师训练Gate_0908_023909.md`（run record updated）。
 - Commit: included in `Summarize CTransPath RNA gate`.
+
+## 09-08 03:03:00
+
+- Purpose: 基于 CTransPath/Phikon RNA-teacher 阴性 gate 与 v4 TLS cell 分支下游证据，记录 RNA 改为 region-program 训练监督的建议及其严格 paired/shuffle/downstream 验收条件。
+- Changed: `docs/建议/模型与训练/建议_RNA区域监督接入FewClick_0908_030300.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 逐项核对 CTransPath 12-fold 正式汇总、既有 RNA 打乱对照及 v4 TLS cell-zero 消融记录 — passed；建议不改变任何模型、数据或 NFS artifact。
+- Artifacts: 无。
+- Docs record: `docs/建议/模型与训练/建议_RNA区域监督接入FewClick_0908_030300.md`（recommendation record）。
+- Commit: included in `Recommend RNA region supervision`.
