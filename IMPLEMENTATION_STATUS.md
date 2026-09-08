@@ -440,3 +440,21 @@
 - Artifacts: 已有 `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/phase3_seg_rna_joint_smoke_0908_03500{1,2,3}/`。
 - Docs record: `docs/建议/模型与训练/建议_RNA区域监督接入FewClick_0908_030300.md`（recommendation updated）。
 - Commit: included in `Refine RNA supervision strategy`.
+
+## 09-08 04:10:00
+
+- Purpose: 审计现有 COAD Xenium panel 的组织/TLS marker 覆盖，筛除不能表达组织语义的泛 hash RNA target。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/audit_coad_tissue_rna_markers.py`; `docs/运行记录/数据审计/运行记录_COAD组织TLSMarker审计_0908_041000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `conda run -n aligner python benchmarks/v5/phase_3_cell_region/tools/audit_coad_tissue_rna_markers.py --output-dir /nfs-medical3/zyh/fewclick_v2/tissue_rna_marker_audit/tissue_marker_audit_0908_041000` — passed（1,020 cells；上皮 2/7、TLS 4/9，其余大部分组织 program 未覆盖）。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/tissue_rna_marker_audit/tissue_marker_audit_0908_041000/`。
+- Docs record: `docs/运行记录/数据审计/运行记录_COAD组织TLSMarker审计_0908_041000.md`（run record）。
+- Commit: included in `Audit RNA data candidates`.
+
+## 09-08 04:50:00
+
+- Purpose: 从本地数据目录核验可替代的空间病理 RNA 候选，区分细胞级和 Visium HD 区域级数据。
+- Changed: `docs/运行记录/数据审计/运行记录_空间病理RNA候选数据可用性核验_0908_045000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 只读检查 CSV 索引、CosMx/Visium/Xenium 的图像、表达、边界和 archive 内容 — passed；尚未将任何数据纳入训练。
+- Artifacts: 无。
+- Docs record: `docs/运行记录/数据审计/运行记录_空间病理RNA候选数据可用性核验_0908_045000.md`（data audit record）。
+- Commit: included in `Audit RNA data candidates`.
