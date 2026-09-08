@@ -13,6 +13,7 @@ import pandas as pd
 import pyarrow.dataset as ds
 import pyvips
 import torch
+import cv2
 
 HERE = Path(__file__).resolve().parent
 ROOT = Path(__file__).resolve().parents[4]
@@ -42,6 +43,7 @@ def parse_args():
     p.add_argument('--phase2-config', type=Path, default=Path('/nfs-medical3/zyh/v4/phase2/runs/phase_2_region_encoder_train_20260717_161240/config_snapshot.json'))
     p.add_argument('--phase2-checkpoint', type=Path, default=Path('/nfs-medical3/zyh/v4/phase2/runs/phase_2_region_encoder_train_20260717_161240/checkpoint_epoch_028.pth'))
     p.add_argument('--output-root', type=Path, default=Path('/nfs-medical3/zyh/fewclick_v2/cosmx_region_rna_target_smoke'))
+    p.add_argument('--cell-index', type=Path, help='optional derived full-slide cell_rna_index.csv.gz; avoids per-tile transcript parquet scans')
     p.add_argument('--timestamp', required=True); p.add_argument('--device', default='cuda:0')
     p.add_argument('--x', type=int, default=25500); p.add_argument('--y', type=int, default=34750)
     p.add_argument('--size', type=int, default=1536); p.add_argument('--patch-size', type=int, default=512)
@@ -83,6 +85,18 @@ def choose_xcell_cells(cells, x0, y0, size, maximum):
     return pd.concat(selected,ignore_index=True)
 
 
+def visible_xcell_cells(cells, polygons, size):
+    """Remove cells fully occluded when overlapping vendor polygons are rasterized."""
+    mask = np.zeros((size, size), np.int32)
+    for label, cell_id in enumerate(cells.cell_id, start=1): cv2.fillPoly(mask, [polygons[cell_id]], label)
+    visible = [cell_id for label, cell_id in enumerate(cells.cell_id, start=1) if (mask == label).any()]
+    result = cells[cells.cell_id.isin(visible)].copy()
+    if len(result) != len(visible): raise RuntimeError('visible polygon ID contract failed')
+    for region, count in result.region.value_counts().items():
+        if count < 20: raise RuntimeError(f'polygon rasterization leaves only {count} XCell cells in quadrant {region}')
+    return result
+
+
 def rna_programs(path, cells, x0, y0, size, width, height):
     gx0,gy0=global_from_he(x0,y0,width,height); gx1,gy1=global_from_he(x0+size,y0+size,width,height)
     source=ds.dataset(path,format='parquet')
@@ -102,9 +116,21 @@ def main():
     device=torch.device(a.device); image_vips=pyvips.Image.new_from_file(str(a.data_root/'HE.tif'),access='sequential'); width,height=image_vips.width,image_vips.height
     if a.x<0 or a.y<0 or a.x+a.size>width or a.y+a.size>height: raise ValueError('requested H&E window outside raster')
     all_cells, all_polygons=cells_and_polygons(a.data_root/'segmentation_mask/polygons.csv',a.x,a.y,a.size,width,height)
-    program, tx, marker_coverage=rna_programs(a.data_root/'transcripts/tx_file.parquet',all_cells,a.x,a.y,a.size,width,height)
-    keep=np.flatnonzero(np.isin(all_cells.cell_id,tx.cell_id.unique())); all_cells=all_cells.iloc[keep].reset_index(drop=True); program=program[keep]
-    xcells=choose_xcell_cells(all_cells,a.x,a.y,a.size,a.max_cells_per_quadrant); pos=pd.Index(all_cells.cell_id).get_indexer(xcells.cell_id)
+    if a.cell_index:
+        indexed = pd.read_csv(a.cell_index, dtype={'cell_id': str})
+        program_cols = [f'program_{name}' for name in PROGRAMS]
+        required = ['cell_id', 'transcripts', *program_cols]
+        if any(name not in indexed for name in required): raise RuntimeError('cell index lacks required RNA program columns')
+        all_cells = all_cells.merge(indexed[required], on='cell_id', how='inner', validate='one_to_one')
+        if all_cells.empty: raise RuntimeError('no polygon cells matched derived full-slide index')
+        program = all_cells[program_cols].to_numpy(np.float32)
+        tx = None; marker_coverage = {name: 'from_derived_fullslide_index' for name in PROGRAMS}
+    else:
+        program, tx, marker_coverage=rna_programs(a.data_root/'transcripts/tx_file.parquet',all_cells,a.x,a.y,a.size,width,height)
+        keep=np.flatnonzero(np.isin(all_cells.cell_id,tx.cell_id.unique())); all_cells=all_cells.iloc[keep].reset_index(drop=True); program=program[keep]
+    xcells=choose_xcell_cells(all_cells,a.x,a.y,a.size,a.max_cells_per_quadrant)
+    xcells=visible_xcell_cells(xcells, all_polygons, a.size)
+    pos=pd.Index(all_cells.cell_id).get_indexer(xcells.cell_id)
     image=np.ndarray(buffer=image_vips.crop(a.x,a.y,a.size,a.size).write_to_memory(),dtype=np.uint8,shape=(a.size,a.size,image_vips.bands))[:,:,:3]
     xpolys={key:all_polygons[key] for key in xcells.cell_id}; ctp=load_ctranspath(Path('/home/zhaoyh/FewClick/module/checkpoint/ctranspath.pth'),device); xcell=load_xcell(Path('/home/zhaoyh/FewClick/module/checkpoint/he_model_best.pth'),device)
     reg=extract_xcell(image,xcells,xpolys,a.x,a.y,ctp,xcell,device,64,a.max_cells_per_quadrant)
@@ -127,7 +153,7 @@ def main():
     for i,e in enumerate(examples): cells[i,:len(e[2])]=e[2];valid[i,:len(e[2])]=True;assignment[i,:,:len(e[2])]=e[3]
     out.mkdir(parents=True); np.savez_compressed(out/'region_rna_contract.npz',region_tokens=np.stack([e[4] for e in examples]),cells=cells,cell_valid=valid,assignment_at_cells=assignment,rna_targets=np.stack([e[5] for e in examples]),rna_coverage=np.stack([e[6] for e in examples]))
     pd.DataFrame([{'patch_index':i,'left_px':e[0],'top_px':e[1],'input_he_cells':len(e[2]),'rna_target_cells':e[8],'cell_id_sha256':__import__('hashlib').sha256('|'.join(e[7]).encode()).hexdigest()} for i,e in enumerate(examples)]).to_csv(out/'patch_manifest.csv',index=False)
-    meta={'purpose':'CosMx semantic region RNA target; RNA target only and input reg64 is H&E-only frozen XCellFormer','window_he':[a.x,a.y,a.size],'patches':n,'all_rna_cells':len(all_cells),'xcell_input_cells':len(xcells),'transcript_rows':len(tx),'program_names':list(PROGRAMS),'marker_coverage':marker_coverage,'cell_feature_shape':list(cells.shape),'assignment_shape':list(assignment.shape),'rna_target_shape':[n,64,len(PROGRAMS)],'acceptance':{'finite':bool(np.isfinite(cells).all() and np.isfinite(assignment).all()),'assignment_sums_one':bool(np.allclose(assignment.sum(1)[valid],1,atol=1e-4))}}
+    meta={'purpose':'CosMx semantic region RNA target; RNA target only and input reg64 is H&E-only frozen XCellFormer','window_he':[a.x,a.y,a.size],'patches':n,'all_rna_cells':len(all_cells),'xcell_input_cells':len(xcells),'transcript_rows':None if tx is None else len(tx),'cell_index':None if a.cell_index is None else str(a.cell_index),'program_names':list(PROGRAMS),'marker_coverage':marker_coverage,'cell_feature_shape':list(cells.shape),'assignment_shape':list(assignment.shape),'rna_target_shape':[n,64,len(PROGRAMS)],'acceptance':{'finite':bool(np.isfinite(cells).all() and np.isfinite(assignment).all()),'assignment_sums_one':bool(np.allclose(assignment.sum(1)[valid],1,atol=1e-4)),'xcell_polygons_raster_visible':True}}
     (out/'metadata.json').write_text(json.dumps(meta,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); print(json.dumps({'event':'complete','output':str(out),**meta},ensure_ascii=False))
 
 

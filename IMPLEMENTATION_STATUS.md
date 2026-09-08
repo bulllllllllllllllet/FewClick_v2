@@ -503,3 +503,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cosmx_region_rna_target_smoke/cosmx_region_rna_target_smoke_0908_05400{1,2,3}/`; `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_055000/`。
 - Docs record: `docs/运行记录/特征缓存/运行记录_CosMx语义区域RNA目标Smoke_0908_052000.md`; `docs/运行记录/模型实验/运行记录_CosMx多视野语义RNAPhase3Gate_0908_055000.md`。
 - Commit: included in `Evaluate multiwindow RNA gate`.
+
+## 09-08 06:15:00
+
+- Purpose: 为同一 COAD CosMx 全切片规模实验建立逐 cell RNA/几何索引、64 tile 空间清单和 index-backed H&E cache 路径。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/build_cosmx_fullslide_cell_index.py`; `benchmarks/v5/phase_3_cell_region/tools/select_cosmx_fullslide_tiles.py`; `benchmarks/v5/phase_3_cell_region/tools/build_cosmx_region_rna_target_smoke.py`; `docs/运行记录/特征缓存/运行记录_CosMx全切片规模扩展_0908_060000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 全切片 index `0908_060000` — passed（292,447 transcript-matched cells）；64 tile manifest `0908_061000` — passed（576 patch、41,781 RNA target cells）；真实 index-backed edge-tile cache `0908_061200` — passed（`EXIT_CODE=0`，H&E-only cell feature、assignment、RNA target 全 finite）。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cosmx_fullslide_rna_cache/cosmx_fullslide_cell_index_0908_060000/`; `/nfs-medical3/zyh/fewclick_v2/cosmx_fullslide_rna_cache/cosmx_fullslide_tile_manifest_0908_061000/`; `/nfs-medical3/zyh/fewclick_v2/cosmx_fullslide_rna_cache/cosmx_region_rna_target_smoke_0908_061200/`。
+- Docs record: `docs/运行记录/特征缓存/运行记录_CosMx全切片规模扩展_0908_060000.md`（run record）。
+- Commit: included in `Prepare fullslide RNA cache`.
