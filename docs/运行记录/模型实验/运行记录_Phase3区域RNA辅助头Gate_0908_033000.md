@@ -39,3 +39,24 @@ head、train-only shuffle、loss 与 held-out evaluation 链路真实可运行�
 PID `3902382`，GPU 1（进程内 `cuda:0`）。日志为
 `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/logs/phase3_region_rna_aux_0908_033000.log`，
 结束时将追加 `EXIT_CODE`。
+
+## 完成结果
+
+完成，`EXIT_CODE=0`。3 seeds × 2 arms × 4 spatial folds × 100 epochs 的所有 24 个
+fold 均完成且数值有限。
+
+| Arm | normalized MSE（mean ± std） | R2 vs train mean（mean ± std） |
+| --- | ---: | ---: |
+| paired RNA target | 0.656166 ± 0.143650 | 0.343834 ± 0.143650 |
+| shuffled RNA target | 1.200843 ± 0.093383 | -0.200843 ± 0.093383 |
+
+paired − shuffled mean R2 = **`+0.544677`**，通过机制 gate：在这个 COAD 9-patch
+设置中，真实 Phase 2 token + 真实 `CellToRegionAttention` 融合的 H&E-only token 能学习
+对应的 RNA program；把训练 RNA target 打乱后不成立。
+
+边界仍然重要：这不证明辅助 loss 会提高 FewClick 分割，也不证明跨 section 泛化；当前
+cell feature 的 nuclei-class slots 仍为零。它只授权下一步构建“segmentation loss + RNA
+auxiliary loss”的 Phase 3 受控下游实验，而不能接入默认 v4 模型。
+
+artifact：
+`/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_033000/`。

@@ -395,3 +395,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_033000/`; log `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/logs/phase3_region_rna_aux_0908_033000.log`。
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase3区域RNA辅助头Gate_0908_033000.md`（run record updated）。
 - Commit: included in `Launch Phase3 RNA auxiliary gate`.
+
+## 09-08 03:33:00
+
+- Purpose: 完成并记录 Phase 3 region RNA auxiliary head 的 paired/shuffled 三 seed 空间折机制 gate。
+- Changed: `docs/运行记录/模型实验/运行记录_Phase3区域RNA辅助头Gate_0908_033000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `fewclick_phase3_rna_0908_033000` — passed，`EXIT_CODE=0`；24/24 fold finite。paired/shuffled mean R2 为 `0.343834/-0.200843`，差 `+0.544677`；限于 9 patch mechanism gate。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/phase3_region_rna_aux_gate_0908_033000/`; log `/nfs-medical3/zyh/fewclick_v2/phase3_region_rna_aux_gate/logs/phase3_region_rna_aux_0908_033000.log`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Phase3区域RNA辅助头Gate_0908_033000.md`（run record updated）。
+- Commit: included in `Record Phase3 RNA auxiliary result`.
