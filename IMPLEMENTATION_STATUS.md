@@ -512,3 +512,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cosmx_fullslide_rna_cache/cosmx_fullslide_cell_index_0908_060000/`; `/nfs-medical3/zyh/fewclick_v2/cosmx_fullslide_rna_cache/cosmx_fullslide_tile_manifest_0908_061000/`; `/nfs-medical3/zyh/fewclick_v2/cosmx_fullslide_rna_cache/cosmx_region_rna_target_smoke_0908_061200/`。
 - Docs record: `docs/运行记录/特征缓存/运行记录_CosMx全切片规模扩展_0908_060000.md`（run record）。
 - Commit: included in `Prepare fullslide RNA cache`.
+
+## 09-08 06:20:00
+
+- Purpose: 启动 COAD CosMx 全切片 64 个不重叠 tile 的 H&E-only cell feature / semantic RNA target 离线 cache，扩大 Phase 3 gate 的同切片样本量。
+- Changed: `docs/运行记录/特征缓存/运行记录_CosMx全切片规模扩展_0908_060000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `tmux fewclick_cosmx_fullcache_0908_062000` 已启动；首个真实 worker PID `1653635` 在 GPU 1 运行，按 tile 独立日志与 `EXIT_CODE` 持久化。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cosmx_fullslide_rna_cache/cosmx_region_rna_target_smoke_0908_062000_x*_y*/`; logs `/nfs-medical3/zyh/fewclick_v2/cosmx_fullslide_rna_cache/logs/fullcache_0908_062000_*.log`。
+- Docs record: `docs/运行记录/特征缓存/运行记录_CosMx全切片规模扩展_0908_060000.md`（run record updated）。
+- Commit: included in `Launch fullslide RNA cache`.
