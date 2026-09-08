@@ -11,3 +11,5 @@
 20-step smoke：`0908_213100` 已通过真实 GDPH loader、冻结 Phase 2、原始 Phase 3 checkpoint、64 个 CosMx contract 和联合 loss 路径。三 arm 均为 finite：`seg_only/paired_rna/shuffled_rna` 的 validation region accuracy 为 `0.870588/0.874510/0.874510`，mean segmentation loss 为 `0.231522/0.233257/0.233193`。结论是扩大后的 RNA batch 没有出现立即的分割退化；但 paired 与 shuffled 在 20 steps 持平，尚无下游提升证据。
 
 下一步：三个 seed 各 200 steps，固定每 seed 的 GDPH 64 train/64 val patch，RNA batch 为 36 patch。仅在 paired RNA 相对 `seg_only` 不退化、且相对 shuffled 有一致方向差异时，才进入真正的 Phase 3 cache 到 Phase 4–6 Dice/IoU 消融。
+
+启动：2026-09-08 22:14（UTC+08:00）已启动三个独立 seed：`20260908/20260909/20260910`，分别使用 GPU `1/3/4`。tmux 为 `fewclick_joint_rna_0908_221400_s<seed>`，真实 Python worker 为 `2472313/2472314/2472315`；日志为 `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/joint_fullslide_0908_221400_s<seed>.log`。每个任务 200 steps、64 GDPH train 与 64 GDPH val patch、每步随机 36 个 RNA patch；最终将检查三 seed 的 `seg_only`、`paired_rna`、`shuffled_rna` region accuracy。

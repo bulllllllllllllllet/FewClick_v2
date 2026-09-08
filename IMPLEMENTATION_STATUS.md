@@ -557,3 +557,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/phase3_seg_rna_joint_smoke_0908_213100/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase3全切片RNA联合分割Gate_0908_213000.md`（run record）。
 - Commit: pending.
+
+## 09-08 22:14:05
+
+- Purpose: 启动三 seed 的全切片 RNA 联合 Phase 3 分割 gate。
+- Changed: `docs/运行记录/模型实验/运行记录_Phase3全切片RNA联合分割Gate_0908_213000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 3 个真实 Python worker 均已加载 64 个 contract，GPU 1/3/4 各占用约 1,654 MiB — running；最终验收为每个 seed 的三 arm 指标 finite 和 `EXIT_CODE=0`。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/phase3_seg_rna_joint_smoke_0908_221400_s<seed>/`（运行中）。
+- Docs record: `docs/运行记录/模型实验/运行记录_Phase3全切片RNA联合分割Gate_0908_213000.md`（run record updated）。
+- Commit: pending.
