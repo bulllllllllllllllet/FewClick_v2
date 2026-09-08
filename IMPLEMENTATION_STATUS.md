@@ -467,3 +467,12 @@
 - Artifacts: 无。
 - Docs record: `docs/运行记录/数据审计/运行记录_空间病理RNA候选数据可用性核验_0908_045000.md`（data audit record updated）。
 - Commit: included in `Verify Xenium marker panels`.
+
+## 09-08 05:10:00
+
+- Purpose: 验证 COAD CosMx 的转录本 cell ID、已审计 H&E affine 与组织/TLS marker 是否满足区域 RNA 监督的数据契约。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/audit_cosmx_rna_contract.py`; `docs/运行记录/数据审计/运行记录_CosMxCOADRNA区域监督契约审计_0908_051000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `conda run -n aligner python benchmarks/v5/phase_3_cell_region/tools/audit_cosmx_rna_contract.py --output-dir /nfs-medical3/zyh/fewclick_v2/cosmx_rna_contract_audit/cosmx_rna_contract_audit_0908_051000` — passed（56/56 cell ID match、62,081 transcripts、H&E in-bounds 1.0；上皮/间质/T/TLS/髓系/肌成纤维 program 均有完整 marker 覆盖）。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cosmx_rna_contract_audit/cosmx_rna_contract_audit_0908_051000/`。
+- Docs record: `docs/运行记录/数据审计/运行记录_CosMxCOADRNA区域监督契约审计_0908_051000.md`（run record）。
+- Commit: included in `Audit CosMx RNA contract`.
