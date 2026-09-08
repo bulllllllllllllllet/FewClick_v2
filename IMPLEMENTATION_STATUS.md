@@ -476,3 +476,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cosmx_rna_contract_audit/cosmx_rna_contract_audit_0908_051000/`。
 - Docs record: `docs/运行记录/数据审计/运行记录_CosMxCOADRNA区域监督契约审计_0908_051000.md`（run record）。
 - Commit: included in `Audit CosMx RNA contract`.
+
+## 09-08 05:20:00
+
+- Purpose: 用 COAD CosMx 构建首个由 H&E-only cell `reg-64` 输入和语义组织/TLS RNA target 组成的 Phase 2 soft-region cache smoke。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/build_cosmx_region_rna_target_smoke.py`; `docs/运行记录/特征缓存/运行记录_CosMx语义区域RNA目标Smoke_0908_052000.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: `tmux fewclick_cosmx_region_0908_052000` — passed，`EXIT_CODE=0`；9 patches、881 RNA target cells、847 H&E-only input cells，`cells=[9,153,74]`、`assignment=[9,64,153]`、`rna_targets=[9,64,6]` 全 finite，assignment sum=1。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cosmx_region_rna_target_smoke/cosmx_region_rna_target_smoke_0908_052000/`。
+- Docs record: `docs/运行记录/特征缓存/运行记录_CosMx语义区域RNA目标Smoke_0908_052000.md`（run record）。
+- Commit: included in `Build CosMx RNA cache`.
