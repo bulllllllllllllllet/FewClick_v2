@@ -368,3 +368,12 @@
 - Artifacts: 无。
 - Docs record: `docs/建议/模型与训练/建议_RNA区域监督接入FewClick_0908_030300.md`（recommendation record updated）。
 - Commit: included in `Clarify RNA region target`.
+
+## 09-08 03:25:00
+
+- Purpose: 实现并验证 v4 Phase 2 soft assignment 对齐的区域 RNA target cache 与 paired-vs-shuffled 区域 RNA 预测 gate；RNA 只作 target。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/build_region_rna_soft_target_smoke.py`; `benchmarks/v5/phase_3_cell_region/tools/run_region_rna_prediction_gate.py`; `docs/运行记录/特征缓存/运行记录_Phase2软区域RNA目标Smoke_0908_031500.md`; `docs/运行记录/模型实验/运行记录_软区域RNA预测Gate_0908_032500.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: Phase 2 soft target smoke `0908_032000` — passed（9 patches、64-way assignment per cell sums to one、全部 tensor finite）；spatial group prediction gate `0908_032500` — passed，paired/shuffled R2 为 `0.371491/-0.014517`。仅 9 patch mechanism gate，非 segmentation 结论。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/region_rna_target_smoke/region_rna_target_smoke_0908_032000/`; `/nfs-medical3/zyh/fewclick_v2/region_rna_prediction_gate/region_rna_prediction_gate_0908_032500/`。
+- Docs record: `docs/运行记录/特征缓存/运行记录_Phase2软区域RNA目标Smoke_0908_031500.md`; `docs/运行记录/模型实验/运行记录_软区域RNA预测Gate_0908_032500.md`。
+- Commit: included in `Build region RNA gate`.
