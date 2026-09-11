@@ -613,3 +613,4 @@
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC训练候选坐标与标签核验_0911_194537.md`。
 - Findings: CRC_1对应2019-00538F；12,541个eligible primary niches；五类fraction分母不是全部细胞；panel2局部原路径不可访问。候选清单不具备verified训练状态，CRC正式训练尚未开始。
 - Commit: pending; `Audit CRC training candidates`。
+- Commit result: `059f735` — `Audit CRC training candidates`；审计与图像导出真实运行通过，原始NFS数据未修改。
