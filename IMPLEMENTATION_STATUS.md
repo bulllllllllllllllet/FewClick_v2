@@ -602,3 +602,4 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/real_smoke_0911_151006/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase3身份组成首版实现_0911_151006.md`；`docs/建议/模型与训练/建议_Phase3细胞身份与组织结构改造方案_0910_233031.md`。
 - Commit: pending; implementation commit titled `Add semantic cell-to-region baseline`。
+- Commit result: `680c94a` — `Add semantic cell-to-region baseline`；实现、测试、建议及运行记录已提交，未包含原始数据或模型产物。
