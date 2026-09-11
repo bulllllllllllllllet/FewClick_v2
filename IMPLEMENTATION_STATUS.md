@@ -623,3 +623,4 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_he_feature_probe_0911_212850/`；日志同级 `crc_he_probe_0911_212850.log`。
 - Docs record: `docs/运行记录/特征缓存/运行记录_CRC局部图块HE细胞特征试提取_0911_212850.md`。
 - Commit: pending; `Prepare CRC H&E cell feature probe`。
+- Commit result: `d6f3f22` — `Prepare CRC H&E cell feature probe`；提交前全套20项测试通过。
