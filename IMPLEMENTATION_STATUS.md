@@ -575,3 +575,30 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/phase3_seg_rna_joint_smoke/phase3_seg_rna_joint_smoke_0908_221400_s{20260908,20260909,20260910}/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase3全切片RNA联合分割Gate_0908_213000.md`（run record updated）。
 - Commit: pending.
+
+## 09-10 23:30:31
+
+- Purpose: 根据第二次组会要求制定面向组织分割的 Phase 3 细胞身份、组成、空间关系与区域残差融合详细方案，明确阶段训练、病例划分、消融和三级指标门槛。
+- Changed: `docs/建议/模型与训练/建议_Phase3细胞身份与组织结构改造方案_0910_233031.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 对照冻结 Phase 3 模型、配置、训练与测试源码及已有实验记录核验接口；`git diff --check` 检查文档格式。本文为设计建议，数值门槛尚未实测，未修改模型代码、未启动训练。
+- Artifacts: 无新增模型或数据产物。
+- Docs record: `docs/建议/模型与训练/建议_Phase3细胞身份与组织结构改造方案_0910_233031.md`（recommendation）。
+- Commit: 本次仅新增设计文档并追加记录，未创建代码提交。
+
+## 09-10 23:48:57
+
+- Purpose: 按用户确认将预训练初始化的自有细胞编码器列为第二项目阶段，第一阶段保留冻结XCell基线。
+- Changed: `docs/建议/模型与训练/建议_Phase3细胞身份与组织结构改造方案_0910_233031.md`; `IMPLEMENTATION_STATUS.md`。
+- Validation: 核对第一/第二项目阶段与A/B/C训练步骤的一致性，补充核类别标签泄漏约束、编码器微调与缓存更新、独立细胞任务和组织分割双重验收；`git diff --check`。
+- Artifacts: 无；未启动训练。
+- Docs record: `docs/建议/模型与训练/建议_Phase3细胞身份与组织结构改造方案_0910_233031.md`（recommendation updated）。
+- Commit: 仅文档更新，未创建代码提交。
+
+## 09-11 16:03:30
+
+- Purpose: 实现第一项目阶段的细胞身份、组成与Phase3残差融合，并验证真实H&E/组织GT训练计算路径。
+- Changed: `benchmarks/v5/phase_3_cell_region/src/{semantic_cells,composition,frozen_cell_region,semantic_cell_region,semantic_losses,semantic_contract,semantic_training}.py`，训练/评价/smoke工具、两份测试、`SEMANTIC_PHASE3.md`；建议文档及运行记录一并归档，v4不变。
+- Validation: aligner `unittest discover -s benchmarks/v5/phase_3_cell_region/tests -p 'test_semantic*.py' -v` — 16 passed；真实GDPH 96-cell patch forward/backward/checkpoint reload/cache通过，初始和reload误差0；`git diff --check`。未执行CRC正式训练或最终点击分割评价。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/real_smoke_0911_151006/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Phase3身份组成首版实现_0911_151006.md`；`docs/建议/模型与训练/建议_Phase3细胞身份与组织结构改造方案_0910_233031.md`。
+- Commit: pending; implementation commit titled `Add semantic cell-to-region baseline`。
