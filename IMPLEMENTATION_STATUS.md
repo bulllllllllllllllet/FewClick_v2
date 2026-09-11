@@ -614,3 +614,12 @@
 - Findings: CRC_1对应2019-00538F；12,541个eligible primary niches；五类fraction分母不是全部细胞；panel2局部原路径不可访问。候选清单不具备verified训练状态，CRC正式训练尚未开始。
 - Commit: pending; `Audit CRC training candidates`。
 - Commit result: `059f735` — `Audit CRC training candidates`；审计与图像导出真实运行通过，原始NFS数据未修改。
+
+## 09-11 21:38:42
+
+- Purpose: 接入用户提供的panel2迁移路径，在真实CRC配准H&E上重新检测并试提取冻结XCell特征，避免将DAPI mask作为视觉输入。
+- Changed: `benchmarks/v5/tools/prepare_crc_he_feature_probe.py`、`render_crc_cell_probe.py`、`benchmarks/v5/phase_3_cell_region/tests/test_crc_feature_probe.py`及相关运行记录。
+- Validation: GPU1/PID3558468试提取结束，EXIT_CODE=0但metadata如实记录partial（4/6计划patch）；335条reg64 finite、191个待核验候选身份、源DAPI坐标误差<9e-12 px；4项单元测试和4幅可视化生成通过；未启动正式分类训练。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_he_feature_probe_0911_212850/`；日志同级 `crc_he_probe_0911_212850.log`。
+- Docs record: `docs/运行记录/特征缓存/运行记录_CRC局部图块HE细胞特征试提取_0911_212850.md`。
+- Commit: pending; `Prepare CRC H&E cell feature probe`。
