@@ -603,3 +603,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase3身份组成首版实现_0911_151006.md`；`docs/建议/模型与训练/建议_Phase3细胞身份与组织结构改造方案_0910_233031.md`。
 - Commit: pending; implementation commit titled `Add semantic cell-to-region baseline`。
 - Commit result: `680c94a` — `Add semantic cell-to-region baseline`；实现、测试、建议及运行记录已提交，未包含原始数据或模型产物。
+
+## 09-11 19:53:38
+
+- Purpose: 深入CRC公共坐标细胞表和niche数据，纠正CRC_1病例关联并生成正式训练前的复核候选。
+- Changed: `benchmarks/v5/tools/audit_crc_training_candidates.py`、`render_crc_review_candidates.py`；CRC原审计报告更正、数据核验运行记录及本文件。
+- Validation: aligner实际执行审计脚本（六表共120,000行抽读、三份完整offset0 niche表）与图像导出（36 crops、3 contact sheets），均完成；三例矩阵组合误差0、抽样坐标最大误差<6e-11 px，尺寸/MPP一致；人工查看一张contact sheet确认图像可读，未进行病理或配准验收；`git diff --check`。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_candidate_audit_0911_194537/`。
+- Docs record: `docs/运行记录/数据审计/运行记录_CRC训练候选坐标与标签核验_0911_194537.md`。
+- Findings: CRC_1对应2019-00538F；12,541个eligible primary niches；五类fraction分母不是全部细胞；panel2局部原路径不可访问。候选清单不具备verified训练状态，CRC正式训练尚未开始。
+- Commit: pending; `Audit CRC training candidates`。
