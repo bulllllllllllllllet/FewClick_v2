@@ -714,4 +714,4 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{crc_pooled_identity_manifest_0915_203638,identity_0915_203639,identity_0915_203640,evaluate_val_0915_203641}/`。
 - Result: 最佳直接平均内部val macro-F1为0.253330；CD8/Treg/B_cell F1均0。结果为同病例内部图块验证，不是患者独立泛化，候选不进入fusion。
 - Docs record: `docs/运行记录/模型实验/运行记录_CRC混合病例身份训练_0915_203500.md`（运行记录）。
-- Commit: pending; `Add pooled CRC identity protocol`。
+- Commit result: `5f2e55f` — `Add pooled CRC identity protocol`；协议显式标注同病例内部验证，未将指标表述为患者独立泛化。
