@@ -665,3 +665,4 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_manual_review_excel_0915_131134/CRC_manual_review_blinded.xlsx`。
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC人工复核Excel交付_0915_131134.md`（运行记录）。
 - Commit: pending；不修改源标签、不自动verified，等待两位审核者完成xlsx。
+- Commit result: `01b078d` — `Deliver CRC review workbook`；单文件Excel交付、运行记录和接口说明已提交，原始数据未修改。
