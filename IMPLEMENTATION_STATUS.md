@@ -694,4 +694,4 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{crc_identity_phase3_manifest_0915_201819,crc_identity_phase3_manifest_0915_202108,identity_0915_202109,evaluate_test_0915_202110}/`。
 - Docs record: `docs/运行记录/特征缓存/运行记录_CRC身份训练契约与Smoke_0915_201819.md`（运行记录）。
 - Result: val/test病例macro-F1为0.274683/0.243927；罕见CD8/Treg/B_cell未识别，当前非平衡基线不进入fusion。
-- Commit: pending; `Build CRC identity training contract`。
+- Commit result: `8938beb` — `Build CRC identity training contract`；真实训练产物仅写入FewClick NFS，原始医生审核标签和源图像未改写。
