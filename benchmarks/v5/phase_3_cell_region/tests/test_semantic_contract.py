@@ -79,6 +79,12 @@ class ContractTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "multiple splits"):
             SemanticDataset(self.manifest, "train")
 
+    def test_explicit_pooled_protocol_allows_internal_case_overlap(self):
+        self.spec["samples"][1]["case_id"] = "train"
+        self.spec["provenance"]["split_protocol"] = "pooled_case_overlapping_patch_internal_v1"
+        self.write_manifest()
+        self.assertEqual(len(SemanticDataset(self.manifest, "train")), 1)
+
     def test_truth_class_provenance_rejected(self):
         self.spec["provenance"]["nuclei_class_source"] = "ground_truth"
         self.write_manifest()

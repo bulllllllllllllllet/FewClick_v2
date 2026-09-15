@@ -705,3 +705,13 @@
 - Result: loss-only与loss+patch重采样test macro-F1为0.223774/0.208525，均低于非平衡基线0.243927，且CD8/Treg/B_cell F1仍为0；候选拒绝，未进入fusion。
 - Docs record: `docs/运行记录/模型实验/运行记录_CRC身份类别平衡训练_0915_202500.md`（运行记录）。
 - Commit result: `446cefc` — `Add train-only identity balancing`；平衡统计、重采样和两次候选评价均未读取封存test标签参与训练或模型选择。
+
+## 09-15 20:36:38
+
+- Purpose: 按项目负责人要求建立三个CRC病例混合训练的图块级内部验证协议，并测试直接平均训练与平衡训练。
+- Changed: `semantic_contract.py`、`semantic_training.py`、`tools/build_crc_pooled_identity_manifest.py`、`tests/test_semantic_contract.py`、`tests/test_crc_pooled_manifest.py`、`docs/运行记录/模型实验/运行记录_CRC混合病例身份训练_0915_203500.md`及本文件。
+- Validation: aligner `python -m unittest discover -s benchmarks/v5/phase_3_cell_region/tests -v` — 38 passed；真实manifest SHA检查通过；GPU1两次混合训练均EXIT_CODE=0；内部val checkpoint/manifest指纹评价完成。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{crc_pooled_identity_manifest_0915_203638,identity_0915_203639,identity_0915_203640,evaluate_val_0915_203641}/`。
+- Result: 最佳直接平均内部val macro-F1为0.253330；CD8/Treg/B_cell F1均0。结果为同病例内部图块验证，不是患者独立泛化，候选不进入fusion。
+- Docs record: `docs/运行记录/模型实验/运行记录_CRC混合病例身份训练_0915_203500.md`（运行记录）。
+- Commit: pending; `Add pooled CRC identity protocol`。

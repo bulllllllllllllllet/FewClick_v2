@@ -41,6 +41,7 @@ class SemanticDataset(Dataset):
                 raise ValueError(f"missing provenance {key}")
         if provenance["registration_qc"] not in ("cell_correspondence_verified", "region_correspondence_verified", "same_he_annotation"):
             raise ValueError("unverified registration cannot supervise this trainer")
+        pooled_internal = provenance.get("split_protocol") == "pooled_case_overlapping_patch_internal_v1"
         seen_cases, seen_samples, seen_paths = {}, set(), set()
         for row in self.spec["samples"]:
             if row["split"] not in ("train", "val", "test"):
@@ -53,7 +54,7 @@ class SemanticDataset(Dataset):
             seen_samples.add(row["sample_id"])
             seen_paths.add(sample_path)
             old = seen_cases.setdefault(row["case_id"], row["split"])
-            if old != row["split"]:
+            if old != row["split"] and not pooled_internal:
                 raise ValueError("case appears in multiple splits")
         self.rows = [row for row in self.spec["samples"] if row["split"] == split]
         if not self.rows:

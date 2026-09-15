@@ -73,5 +73,6 @@ def evaluate(model, dataset, device):
                      composition_mae=record["composition_error_sum"] / record["composition_count"] if record["composition_count"] else None)
         summaries[case] = value
     scores = [r["macro_f1"] for r in summaries.values() if r["macro_f1"] is not None]
+    pooled = dataset.spec["provenance"].get("split_protocol") == "pooled_case_overlapping_patch_internal_v1"
     return {"cases": summaries, "patient_macro_f1": sum(scores) / len(scores) if scores else None,
-            "stage": model.stage, "scope": "classification probe; not final click segmentation"}
+            "stage": model.stage, "scope": "pooled internal patch classification; not patient-independent or final click segmentation" if pooled else "classification probe; not final click segmentation"}
