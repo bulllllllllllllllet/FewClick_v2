@@ -656,3 +656,12 @@
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC人工复核包构建_0915_122944.md`（运行记录）。
 - Commit: pending；不修改源标签、不自动提升verified，等待两名审核者结果。
 - Commit result: `2ee3dca` — `Build blinded CRC cell review package`；构建工具、测试、接口说明和运行记录已提交，原始数据未修改。
+
+## 09-15 13:11:34
+
+- Purpose: 因Windows单HTML在`file:`安全源与CSV下载上失败，改为单文件Excel人工复核交付，嵌入全部证据图并保留盲法。
+- Changed: `benchmarks/v5/tools/build_crc_review_workbook.py`、Phase3接口说明及Excel交付运行记录。
+- Validation: 3项真实smoke通过；正式任务EXIT_CODE=0，xlsx重新由LibreOffice打开，354行/媒体/绘图对象、R0001–R0354和判定/置信度LIST验证均通过；OOXML检查无每行自动标签、病例或风险层泄漏。提交前待复跑现有测试与脚本编译检查。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_manual_review_excel_0915_131134/CRC_manual_review_blinded.xlsx`。
+- Docs record: `docs/运行记录/数据审计/运行记录_CRC人工复核Excel交付_0915_131134.md`（运行记录）。
+- Commit: pending；不修改源标签、不自动verified，等待两位审核者完成xlsx。
