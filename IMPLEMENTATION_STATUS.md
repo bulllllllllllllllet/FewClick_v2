@@ -645,3 +645,4 @@
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC五类候选监督核验_0915_121053.md`（运行记录）。
 - Commit: pending；不修改原始标签、不放行verified、不启动训练。
 - Final validation: EXIT_CODE=0，36块/32,412个DAPI实例八通道原始强度重算通过（最大绝对误差0.000476563），阳性与完整类别规则不一致均0；16,762个候选有12,665个多marker竞争，6,544个通过几何诊断，去上界对照改变6,576个，联合诊断通过1,543个（Treg 0）。导出全部66个Treg的11页复核图，实际查看三例18个；不将诊断筛选等同身份真值，verified提升0。26项测试通过。
+- Commit result: `35e14ac` — `Audit CRC candidate supervision against raw mIF`；核验工具、测试与结论已提交，原始数据及上轮特征缓存未修改。
