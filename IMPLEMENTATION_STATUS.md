@@ -724,4 +724,4 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{spatial_identity_0915_212502,evaluate_spatial_val_0915_212503}/`。
 - Result: 内部macro-F1 0.258831略高于直接MLP 0.253330，但CD8/Treg F1仍0，B_cell仅2019病例0.007692；候选拒绝，不进入fusion。
 - Docs record: `docs/运行记录/模型实验/运行记录_CRC空间上下文身份探针_0915_212501.md`（运行记录）。
-- Commit: pending; `Probe spatial CRC identity context`。
+- Commit result: `109e1e7` — `Probe spatial CRC identity context`；H&E-only空间上下文真实运行完成，未使用mIF marker或标签作为模型输入。
