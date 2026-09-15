@@ -715,3 +715,13 @@
 - Result: 最佳直接平均内部val macro-F1为0.253330；CD8/Treg/B_cell F1均0。结果为同病例内部图块验证，不是患者独立泛化，候选不进入fusion。
 - Docs record: `docs/运行记录/模型实验/运行记录_CRC混合病例身份训练_0915_203500.md`（运行记录）。
 - Commit result: `5f2e55f` — `Add pooled CRC identity protocol`；协议显式标注同病例内部验证，未将指标表述为患者独立泛化。
+
+## 09-15 21:25:01
+
+- Purpose: 使用现有reg64、xy近邻和冻结Phase2区域token验证显式空间上下文能否改善CRC五类身份预测。
+- Changed: `spatial_identity.py`、`tools/train_crc_spatial_identity.py`、`tools/evaluate_crc_spatial_identity.py`、`tests/test_spatial_identity.py`、`docs/运行记录/模型实验/运行记录_CRC空间上下文身份探针_0915_212501.md`及本文件。
+- Validation: 空间模型单元forward/backward通过；真实GPU1训练EXIT_CODE=0；checkpoint/manifest一致的内部val评价完成；待提交前全套测试与`git diff --check`复跑。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{spatial_identity_0915_212502,evaluate_spatial_val_0915_212503}/`。
+- Result: 内部macro-F1 0.258831略高于直接MLP 0.253330，但CD8/Treg F1仍0，B_cell仅2019病例0.007692；候选拒绝，不进入fusion。
+- Docs record: `docs/运行记录/模型实验/运行记录_CRC空间上下文身份探针_0915_212501.md`（运行记录）。
+- Commit: pending; `Probe spatial CRC identity context`。
