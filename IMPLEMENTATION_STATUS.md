@@ -684,4 +684,4 @@
 - Validation: aligner `python -m unittest discover -s benchmarks/v5/phase_3_cell_region/tests -v` — 31 passed；真实36图块采用运行完成，逐文件SHA256、`reg64`有限性、接受掩码及五类计数复核通过（16,762 = 5,021/1,786/66/2,401/7,488）；`git diff --check`通过。
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_expert_reviewed_mif_labels_0915_200001/`。
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC专家审核标签采用_0915_200000.md`（运行记录）。
-- Commit: pending; `Adopt expert reviewed CRC labels`。
+- Commit result: `47d7ecb` — `Adopt expert reviewed CRC labels`；新缓存仅派生写入，原始mIF、标签表、probe与既有复核交付物均未修改。
