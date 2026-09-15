@@ -676,3 +676,12 @@
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC辅助复核Excel交付_0915_194854.md`（运行记录）。
 - Commit: pending；显示原标签仅为辅助核验，不自动verified或启动训练。
 - Commit result: `3953947` — `Add assisted CRC review workbook`；辅助模式、接口说明与运行记录已提交，原始标签和特征缓存未修改。
+
+## 09-15 20:14:09
+
+- Purpose: 按项目负责人确认直接采用医生审核的CRC panel2 mIF身份标签，生成不改写原始缓存的可追溯训练监督派生产物。
+- Changed: `benchmarks/v5/tools/adopt_crc_expert_reviewed_labels.py`、`benchmarks/v5/phase_3_cell_region/tests/test_crc_label_adoption.py`、`SEMANTIC_PHASE3.md`、`docs/运行记录/数据审计/运行记录_CRC专家审核标签采用_0915_200000.md`及本文件。
+- Validation: aligner `python -m unittest discover -s benchmarks/v5/phase_3_cell_region/tests -v` — 31 passed；真实36图块采用运行完成，逐文件SHA256、`reg64`有限性、接受掩码及五类计数复核通过（16,762 = 5,021/1,786/66/2,401/7,488）；`git diff --check`通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_expert_reviewed_mif_labels_0915_200001/`。
+- Docs record: `docs/运行记录/数据审计/运行记录_CRC专家审核标签采用_0915_200000.md`（运行记录）。
+- Commit: pending; `Adopt expert reviewed CRC labels`。

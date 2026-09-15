@@ -41,7 +41,7 @@ sample 字段：`sample_id`、`case_id`（患者级规范分组）、`organ`、`
 
 2026-09-11：16项测试通过；真实GDPH smoke 使用patch `1001258-20-HE-DX1__x2048_y1536` 的96个细胞、真实组织mask和冻结Phase2/Phase3 checkpoint。读入像素尺度0.25200000394 µm/px，组织loss三步为0.917275/0.874323/0.871028，初始化和保存重载最大误差均为0，输出 `[1,64,256]`。身份头在该smoke中为随机冻结头，仅验证形状与融合计算，不能据此评价身份或分割增益。
 
-首轮正式CRC训练尚缺经过核验的H&E细胞特征—身份标签配对manifest及组织监督范围。直接检查 `crc_label/data/{1,2,3}/summary.json` 均只记录一个Tumor annotation，其他类仅在classifiers中有名称；这只说明该QuPath入口未提供结构组织多类标注，不排除更深的派生目录另有候选ROI。后续先核对这些ROI与配准，再构建manifest和正式训练，不能将现有mIF规则标签自动视为H&E逐细胞真值。
+首轮正式CRC训练仍缺组织监督范围与患者独立评测病例数；但身份监督不再缺失：项目负责人于2026-09-15确认原始panel2 mIF类别已经过医生审核，可直接采用。`crc_expert_reviewed_mif_labels_0915_200001/`将其通过原有互近邻、≤4注册图块像素的H&E/DAPI对应关系转移到H&E重新检测细胞，已知五类行写为`identity_verified=true`。这里的匹配QC只保证来源ID和传输规则可追溯，不重新判定医生审核的mIF身份，也不要求医生再审核H&E检测器mask。直接检查 `crc_label/data/{1,2,3}/summary.json` 均只记录一个Tumor annotation，其他类仅在classifiers中有名称；这只说明该QuPath入口未提供结构组织多类标注，不排除更深的派生目录另有候选ROI。
 
 ## 验证
 
@@ -49,17 +49,17 @@ sample 字段：`sample_id`、`case_id`（患者级规范分组）、`organ`、`
 
 `benchmarks/v5/tools/prepare_crc_he_feature_probe.py --timestamp MMDD_HHMMSS --device cuda:1 --per-case 12 --selection balanced --ontology fine5 --grouped-xcell --max-dapi-cells 1200 --max-he-cells 1024`
 
-使用aligner Python运行。五类为CD4_T、CD8_T、Treg、B_cell、CD163_Macrophage；不是全细胞词表。全表两遍流式读取，稀有类别轮流优先并惩罚重复空间块；完整保留所选图块的未知标签细胞。2019病例读取mif_only表。候选是H&E重新检测与DAPI的互近邻、≤4注册图块像素匹配，始终`identity_verified=false`。
+使用aligner Python运行。五类为CD4_T、CD8_T、Treg、B_cell、CD163_Macrophage；不是全细胞词表。全表两遍流式读取，稀有类别轮流优先并惩罚重复空间块；完整保留所选图块的未知标签细胞。2019病例读取mif_only表。候选是H&E重新检测与DAPI的互近邻、≤4注册图块像素匹配。原始probe为可追溯中间层，`identity_verified=false`；其派生的专家标签缓存则对五类已知匹配行写入`identity_verified=true`，标签来源为`expert_reviewed_mif_transferred_by_mutual_nearest_4px`。
 
-显式`--grouped-xcell`按y/x顺序每255个细胞独立编码，保存`xcell_group_id`；不截断检测清单，但组间不做attention，不能宣称等价于整块联合XCell。默认不启用该模式，保留旧三类小图块入口。所有输出仍为诊断候选schema，不可直接喂给要求verified的正式训练入口。
+显式`--grouped-xcell`按y/x顺序每255个细胞独立编码，保存`xcell_group_id`；不截断检测清单，但组间不做attention，不能宣称等价于整块联合XCell。默认不启用该模式，保留旧三类小图块入口。原始probe仍是诊断候选schema；专家标签派生缓存可作为身份训练监督输入，但不能凭此虚构背景类别、完整细胞组成真值或多类组织ROI。
 
-完成后执行`benchmarks/v5/tools/validate_crc_he_feature_probe.py --probe-dir <输出目录>`，核对SHA256、完整检测ID、reg64有限值、分组ID、匹配阈值、候选一对一及类别计数，新增`integrity_audit.json`、`class_summary.csv`。仅验证技术完整性，不代替细胞身份或配准的人工核验。
+完成后执行`benchmarks/v5/tools/validate_crc_he_feature_probe.py --probe-dir <输出目录>`，核对SHA256、完整检测ID、reg64有限值、分组ID、匹配阈值、候选一对一及类别计数，新增`integrity_audit.json`、`class_summary.csv`。仅验证技术完整性；mIF身份本身以医生审核结果为准，配准检查仅约束该身份如何转移到H&E检测细胞。
 
-人工复核包由`benchmarks/v5/tools/build_crc_manual_review_package.py`生成。它对非Treg按病例/自动类别和风险层抽样，Treg候选全纳入；输出默认隐藏自动标签的离线HTML、匿名H&E+DAPI+六marker证据图、私有源映射和空结果模板。两名审核者应独立选择五类/不确定/配准错误/质量差并导出CSV；私有分配表不得在盲审前提供给审核者。人工结果必须另行做一致性和仲裁检查，不能因为界面选择了类别就自动写入`identity_verified=true`。
+人工复核HTML/Excel由早期流程生成，现保留为可选图像查看工具，不是训练门槛，也不应将同一批已经审核的医生标签回送复核。
 
-Windows离线人工审核优先使用`build_crc_review_workbook.py`生成的单文件`.xlsx`，而非复制HTML文本。它将证据图嵌入复核表，C/D列为人工判定/置信度下拉框，不包含每行自动标签、病例或风险层；审核人直接另存xlsx。该工具依赖系统Python与LibreOffice UNO（不是aligner），仅用于交付工作簿。返回的两份xlsx仍须进行ID、完整性、一致性和仲裁检查，才可能形成新的训练监督。
+Windows离线人工审核优先使用`build_crc_review_workbook.py`生成的单文件`.xlsx`，而非复制HTML文本；但在本CRC专家审核标签采用流程中，该文件没有前置审核职责。
 
-`build_crc_review_workbook.py --mode assisted`是当前核验已有自动标签的实用版本：显示原自动类别，审核结论为CONFIRM_AUTO/CHANGE_LABEL/不确定/配准错误/质量差；CHANGE_LABEL时必须单独选择修正五类。置信度是审核者对该结论的把握，不是模型概率。`--mode blinded`保留为无原标签的独立判读版本；两种模式不可混淆统计。
+`build_crc_review_workbook.py --mode assisted`和`--mode blinded`仍可用于未来新数据的显示或独立判读；本次已由医生审核的CRC标签不依赖它们形成训练监督。
 
 `conda run -n aligner python -m unittest discover -s benchmarks/v5/phase_3_cell_region/tests -p 'test_semantic*.py' -v`
 
