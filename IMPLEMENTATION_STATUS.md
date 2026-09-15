@@ -685,3 +685,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_expert_reviewed_mif_labels_0915_200001/`。
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC专家审核标签采用_0915_200000.md`（运行记录）。
 - Commit result: `47d7ecb` — `Adopt expert reviewed CRC labels`；新缓存仅派生写入，原始mIF、标签表、probe与既有复核交付物均未修改。
+
+## 09-15 20:21:10
+
+- Purpose: 从医生审核CRC身份标签构建真实Phase 3 identity训练契约，并完成病例隔离的身份训练与封存test评价。
+- Changed: `benchmarks/v5/tools/build_crc_identity_phase3_manifest.py`、`benchmarks/v5/phase_3_cell_region/tests/test_crc_identity_phase3_manifest.py`、`docs/运行记录/特征缓存/运行记录_CRC身份训练契约与Smoke_0915_201819.md`及本文件。
+- Validation: aligner `python -m unittest discover -s benchmarks/v5/phase_3_cell_region/tests -v` — 32 passed；GPU1实际构建3图块smoke和36图块全量契约均为EXIT_CODE=0；真实identity训练EXIT_CODE=0；checkpoint/manifest指纹匹配的2022封存评价完成。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{crc_identity_phase3_manifest_0915_201819,crc_identity_phase3_manifest_0915_202108,identity_0915_202109,evaluate_test_0915_202110}/`。
+- Docs record: `docs/运行记录/特征缓存/运行记录_CRC身份训练契约与Smoke_0915_201819.md`（运行记录）。
+- Result: val/test病例macro-F1为0.274683/0.243927；罕见CD8/Treg/B_cell未识别，当前非平衡基线不进入fusion。
+- Commit: pending; `Build CRC identity training contract`。
