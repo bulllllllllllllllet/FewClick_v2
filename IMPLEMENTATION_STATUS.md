@@ -704,4 +704,4 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{identity_0915_202502,evaluate_test_0915_202503,identity_0915_202505,evaluate_test_0915_202506}/`。
 - Result: loss-only与loss+patch重采样test macro-F1为0.223774/0.208525，均低于非平衡基线0.243927，且CD8/Treg/B_cell F1仍为0；候选拒绝，未进入fusion。
 - Docs record: `docs/运行记录/模型实验/运行记录_CRC身份类别平衡训练_0915_202500.md`（运行记录）。
-- Commit: pending; `Add train-only identity balancing`。
+- Commit result: `446cefc` — `Add train-only identity balancing`；平衡统计、重采样和两次候选评价均未读取封存test标签参与训练或模型选择。
