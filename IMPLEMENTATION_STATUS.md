@@ -666,3 +666,12 @@
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC人工复核Excel交付_0915_131134.md`（运行记录）。
 - Commit: pending；不修改源标签、不自动verified，等待两位审核者完成xlsx。
 - Commit result: `01b078d` — `Deliver CRC review workbook`；单文件Excel交付、运行记录和接口说明已提交，原始数据未修改。
+
+## 09-15 19:48:54
+
+- Purpose: 根据用户反馈，补充显示原自动类别的辅助复核Excel，使审核者能核验“确认/改类/不确定”并给出结论置信度。
+- Changed: `benchmarks/v5/tools/build_crc_review_workbook.py`、Phase3接口说明及辅助复核运行记录。
+- Validation: 3项真实smoke和正式354项任务均通过；354个媒体/绘图对象、R0001–R0354和三组LIST下拉验证通过；xlsx A/B列与私有分配表354/354一致；系统Python脚本编译通过。提交前待复跑现有测试。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_manual_review_assisted_excel_0915_194854/CRC_manual_review_assisted.xlsx`。
+- Docs record: `docs/运行记录/数据审计/运行记录_CRC辅助复核Excel交付_0915_194854.md`（运行记录）。
+- Commit: pending；显示原标签仅为辅助核验，不自动verified或启动训练。

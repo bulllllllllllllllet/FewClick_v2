@@ -59,6 +59,8 @@ sample 字段：`sample_id`、`case_id`（患者级规范分组）、`organ`、`
 
 Windows离线人工审核优先使用`build_crc_review_workbook.py`生成的单文件`.xlsx`，而非复制HTML文本。它将证据图嵌入复核表，C/D列为人工判定/置信度下拉框，不包含每行自动标签、病例或风险层；审核人直接另存xlsx。该工具依赖系统Python与LibreOffice UNO（不是aligner），仅用于交付工作簿。返回的两份xlsx仍须进行ID、完整性、一致性和仲裁检查，才可能形成新的训练监督。
 
+`build_crc_review_workbook.py --mode assisted`是当前核验已有自动标签的实用版本：显示原自动类别，审核结论为CONFIRM_AUTO/CHANGE_LABEL/不确定/配准错误/质量差；CHANGE_LABEL时必须单独选择修正五类。置信度是审核者对该结论的把握，不是模型概率。`--mode blinded`保留为无原标签的独立判读版本；两种模式不可混淆统计。
+
 `conda run -n aligner python -m unittest discover -s benchmarks/v5/phase_3_cell_region/tests -p 'test_semantic*.py' -v`
 
 单元测试使用显式合成fixture验证计算，不用于科学指标。真实数据smoke另登记输入、标签来源和允许的结论。
