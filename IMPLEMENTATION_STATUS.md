@@ -675,3 +675,4 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_manual_review_assisted_excel_0915_194854/CRC_manual_review_assisted.xlsx`。
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC辅助复核Excel交付_0915_194854.md`（运行记录）。
 - Commit: pending；显示原标签仅为辅助核验，不自动verified或启动训练。
+- Commit result: `3953947` — `Add assisted CRC review workbook`；辅助模式、接口说明与运行记录已提交，原始标签和特征缓存未修改。
