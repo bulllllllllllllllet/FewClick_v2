@@ -45,6 +45,16 @@ sample 字段：`sample_id`、`case_id`（患者级规范分组）、`organ`、`
 
 ## 验证
 
+### CRC五类候选准备（2026-09-15）
+
+`benchmarks/v5/tools/prepare_crc_he_feature_probe.py --timestamp MMDD_HHMMSS --device cuda:1 --per-case 12 --selection balanced --ontology fine5 --grouped-xcell --max-dapi-cells 1200 --max-he-cells 1024`
+
+使用aligner Python运行。五类为CD4_T、CD8_T、Treg、B_cell、CD163_Macrophage；不是全细胞词表。全表两遍流式读取，稀有类别轮流优先并惩罚重复空间块；完整保留所选图块的未知标签细胞。2019病例读取mif_only表。候选是H&E重新检测与DAPI的互近邻、≤4注册图块像素匹配，始终`identity_verified=false`。
+
+显式`--grouped-xcell`按y/x顺序每255个细胞独立编码，保存`xcell_group_id`；不截断检测清单，但组间不做attention，不能宣称等价于整块联合XCell。默认不启用该模式，保留旧三类小图块入口。所有输出仍为诊断候选schema，不可直接喂给要求verified的正式训练入口。
+
+完成后执行`benchmarks/v5/tools/validate_crc_he_feature_probe.py --probe-dir <输出目录>`，核对SHA256、完整检测ID、reg64有限值、分组ID、匹配阈值、候选一对一及类别计数，新增`integrity_audit.json`、`class_summary.csv`。仅验证技术完整性，不代替细胞身份或配准的人工核验。
+
 `conda run -n aligner python -m unittest discover -s benchmarks/v5/phase_3_cell_region/tests -p 'test_semantic*.py' -v`
 
 单元测试使用显式合成fixture验证计算，不用于科学指标。真实数据smoke另登记输入、标签来源和允许的结论。

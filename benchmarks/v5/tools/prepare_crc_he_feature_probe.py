@@ -23,6 +23,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "benchmarks/v5/phase_3_cell_region/tools"))
 from run_xenium_xcell_baseline import load_ctranspath, load_xcell, crop_region, crop_mask, soft_attention
 from benchmarks.v5.phase_3_cell_region.src.semantic_contract import sha256_file
+from benchmarks.v5.phase_3_cell_region.src.crc_sampling import FINE_CLASSES, fine_class, balanced_table
 
 
 def relocate(value, root):
@@ -62,6 +63,12 @@ def main():
     parser.add_argument("--device", default="cuda:1")
     parser.add_argument("--per-case", type=int, default=2)
     parser.add_argument("--sample-rows", type=int, default=20000)
+    parser.add_argument("--selection", choices=("head", "balanced"), default="head")
+    parser.add_argument("--ontology", choices=("broad3", "fine5"), default="broad3")
+    parser.add_argument("--grouped-xcell", action="store_true", help="Explicitly encode all y/x-sorted cells in groups of <=255")
+    parser.add_argument("--max-dapi-cells", type=int, default=180)
+    parser.add_argument("--max-he-cells", type=int, default=255)
+    parser.add_argument("--cases", nargs="+", choices=("2017-23800D", "2019-00538F", "2022-39941E"), default=["2017-23800D", "2019-00538F", "2022-39941E"])
     args = parser.parse_args()
     if not re.fullmatch(r"\d{4}_\d{6}", args.timestamp) or args.per_case < 1:
         raise ValueError("valid timestamp and positive per-case budget required")
@@ -82,13 +89,22 @@ def main():
     preprocess = transforms.Compose([transforms.ToTensor(), transforms.Resize((224, 224)),
                                      transforms.Normalize([.485, .456, .406], [.229, .224, .225])])
     records = []
-    for case in ("2017-23800D", "2019-00538F", "2022-39941E"):
+    selection_reports = {}
+    class_names = list(FINE_CLASSES) if args.ontology == "fine5" else ["T_cell", "B_cell", "Myeloid"]
+    label_fn = fine_class if args.ontology == "fine5" else broad_class
+    for case in args.cases:
         folder = "cell_annotations_mif_only" if case == "2019-00538F" else "cell_annotations"
         table_path = args.registration_root / case / folder / f"{case}_registered_celltypes.tsv"
-        table = pd.read_csv(table_path, sep="\t", nrows=args.sample_rows)
+        if args.selection == "balanced":
+            groups, selection_reports[case] = balanced_table(table_path, args.per_case * 3, args.max_dapi_cells)
+            (out / f"selection_{case}.json").write_text(json.dumps(selection_reports[case], indent=2))
+            print(json.dumps({"event": "selection_ready", "case": case, **selection_reports[case]}), flush=True)
+        else:
+            table = pd.read_csv(table_path, sep="\t", nrows=args.sample_rows)
+            groups = table.groupby("patch_name", sort=False)
         complete = 0
-        for stem, frame in table.groupby("patch_name", sort=False):
-            if not 30 <= len(frame) <= 180:
+        for stem, frame in groups:
+            if not 30 <= len(frame) <= args.max_dapi_cells:
                 continue
             he_path = relocate(frame.registered_he_patch.iloc[0], args.registration_root)
             transform_path = relocate(frame.local_transform.iloc[0], args.registration_root)
@@ -111,14 +127,15 @@ def main():
                 raise ValueError("registered image / DAPI geometry mismatch")
             he_mask = np.asarray(detector.eval(he, diameter=18, batch_size=1)[0], dtype=np.int32)
             he_ids, he_xy = centers(he_mask)
-            if not 1 <= len(he_ids) <= 255:
+            maximum = args.max_he_cells if args.grouped_xcell else min(255, args.max_he_cells)
+            if not 1 <= len(he_ids) <= maximum:
                 with (out / "skipped.jsonl").open("a") as stream:
-                    stream.write(json.dumps({"case": case, "patch": stem, "he_cells": len(he_ids), "reason": "outside complete 1..255 inventory budget"}) + "\n")
+                    stream.write(json.dumps({"case": case, "patch": stem, "he_cells": len(he_ids), "reason": f"outside complete 1..{maximum} inventory budget"}) + "\n")
                 continue
             distance, index = cKDTree(xy).query(he_xy)
             _, reverse = cKDTree(he_xy).query(xy)
             mutual = reverse[index] == np.arange(len(he_xy))
-            labels = np.array([broad_class(value) for value in frame["class"]], dtype=np.int64)
+            labels = np.array([label_fn(value) for value in frame["class"]], dtype=np.int64)
             candidate = mutual & (distance <= 4.0) & (labels[index] >= 0)
             tensors = []
             for label, (cx, cy) in zip(he_ids, he_xy):
@@ -126,23 +143,28 @@ def main():
                 tensors.append(preprocess(Image.fromarray((np.clip(image, 0, 1) * 255).astype(np.uint8))))
             with torch.inference_mode():
                 raw = torch.cat([ctp(torch.stack(tensors[start:start+32]).to(device)).float() for start in range(0, len(tensors), 32)])
-                padded = torch.zeros(1, 255, 768, device=device)
-                valid = torch.zeros(1, 255, device=device)
-                padded[0, :len(raw)] = raw
-                valid[0, :len(raw)] = 1
-                _, reg, _, _ = xcell(None, padded, valid)
-                features = reg[0, :len(raw)].float().cpu().numpy()
+                outputs = []
+                for start in range(0, len(raw), 255):
+                    part = raw[start:start + 255]
+                    padded = torch.zeros(1, 255, 768, device=device)
+                    valid = torch.zeros(1, 255, device=device)
+                    padded[0, :len(part)] = part
+                    valid[0, :len(part)] = 1
+                    _, reg, _, _ = xcell(None, padded, valid)
+                    outputs.append(reg[0, :len(part)].float().cpu().numpy())
+                features = np.concatenate(outputs)
             if features.shape != (len(he_ids), 64) or not np.isfinite(features).all():
                 raise ValueError("invalid reg64 feature result")
             filename = f"{case}_{stem}.npz"
             np.savez_compressed(out / filename, reg_features=features, he_cell_ids=he_ids, he_xy=he_xy,
                                 he_mask=he_mask, matched_dapi_id=ids[index], match_distance_px=distance,
                                 candidate_class=labels[index], candidate_valid=candidate,
+                                xcell_group_id=np.arange(len(he_ids)) // 255,
                                 identity_verified=np.zeros(len(he_ids), bool))
             record = {"case_id": case, "patch_name": stem, "path": filename, "he_path": str(he_path),
                       "transform_path": str(transform_path), "source_table": str(table_path),
                       "dapi_cells": len(ids), "he_cells": len(he_ids), "candidate_labels": int(candidate.sum()),
-                      "candidate_class_counts": np.bincount(labels[index][candidate], minlength=3).tolist(),
+                      "candidate_class_counts": np.bincount(labels[index][candidate], minlength=len(class_names)).tolist(),
                       "dapi_table_max_error_px": float(error.max()), "sha256": sha256_file(out / filename),
                       "verified_training_sample": False}
             records.append(record)
@@ -152,8 +174,11 @@ def main():
             complete += 1
             if complete >= args.per_case:
                 break
-    metadata = {"schema": "crc_panel2_he_weak_candidates_v1", "status": "complete" if len(records) == 3 * args.per_case else "partial",
-                "identity_classes": ["T_cell", "B_cell", "Myeloid"], "records": records,
+    metadata = {"schema": "crc_panel2_he_weak_candidates_v2", "status": "complete" if len(records) == len(args.cases) * args.per_case else "partial",
+                "identity_classes": class_names, "records": records,
+                "selection_reports": selection_reports,
+                "xcell_context": "y/x-sorted groups <=255" if args.grouped_xcell else "complete patch <=255",
+                "config": {key: str(value) if isinstance(value, Path) else value for key, value in vars(args).items()},
                 "checkpoint_sha256": {key: sha256_file(path) for key, path in checkpoints.items()},
                 "registration_root": str(args.registration_root), "device": args.device,
                 "feature_input": "registered H&E + newly detected H&E mask; DAPI used only for candidate targets",

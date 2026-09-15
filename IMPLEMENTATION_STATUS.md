@@ -624,3 +624,13 @@
 - Docs record: `docs/运行记录/特征缓存/运行记录_CRC局部图块HE细胞特征试提取_0911_212850.md`。
 - Commit: pending; `Prepare CRC H&E cell feature probe`。
 - Commit result: `d6f3f22` — `Prepare CRC H&E cell feature probe`；提交前全套20项测试通过。
+
+## 09-15 11:56:07
+
+- Purpose: CRC候选身份由三类细分至五类，并从全表按稀有类别和空间分散采样；扩量目标三例各12块。
+- Changed: `benchmarks/v5/phase_3_cell_region/src/crc_sampling.py`、`benchmarks/v5/tools/prepare_crc_he_feature_probe.py`、`tests/test_crc_feature_probe.py`及运行记录。
+- Validation: aligner `python -m unittest discover -s benchmarks/v5/phase_3_cell_region/tests -v` — 22项通过；真实单块五类提取EXIT_CODE=0（207个HE检测、191个弱候选）；36块扩量运行中，PID887831/GPU1。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_he_feature_probe_0915_115607/`；单块验证为同级`crc_he_feature_probe_0915_115608/`。
+- Docs record: `docs/运行记录/特征缓存/运行记录_CRC五类均衡扩量_0915_115607.md`（运行记录）。
+- Commit: pending; 尚未将弱候选提升为verified真值，未启动正式分类训练。
+- Final validation: 36/36图块完成、EXIT_CODE=0；20,210条有限reg64，16,762个五类弱候选（5,021/1,786/66/2,401/7,488）；26块实际覆盖多组XCell且完整保留检测。新增`validate_crc_he_feature_probe.py`真实检查通过，输出`integrity_audit.json`与`class_summary.csv`；最终23项unittest通过，接口文档同步更新。
