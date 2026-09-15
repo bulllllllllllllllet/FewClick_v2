@@ -635,3 +635,13 @@
 - Commit: pending; 尚未将弱候选提升为verified真值，未启动正式分类训练。
 - Final validation: 36/36图块完成、EXIT_CODE=0；20,210条有限reg64，16,762个五类弱候选（5,021/1,786/66/2,401/7,488）；26块实际覆盖多组XCell且完整保留检测。新增`validate_crc_he_feature_probe.py`真实检查通过，输出`integrity_audit.json`与`class_summary.csv`；最终23项unittest通过，接口文档同步更新。
 - Commit result: `79ea4f7` — `Expand CRC candidate sampling to five classes`；另生成36幅匹配复核图，原始数据和冻结v4未修改。
+
+## 09-15 12:10:53
+
+- Purpose: 按用户要求核验CRC五类弱候选监督，从原始mIF重算强度、复核规则与HE/DAPI几何，统计歧义和阈值敏感性。
+- Changed: `benchmarks/v5/tools/audit_crc_candidate_supervision.py`、`benchmarks/v5/phase_3_cell_region/tests/test_crc_supervision_audit.py`及审计运行记录。
+- Validation: 26项unittest通过；36份原特征缓存只读完整性检查通过；原始八通道核验运行中，CPU/PID937702。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_candidate_qc_0915_121053/`及同级日志。
+- Docs record: `docs/运行记录/数据审计/运行记录_CRC五类候选监督核验_0915_121053.md`（运行记录）。
+- Commit: pending；不修改原始标签、不放行verified、不启动训练。
+- Final validation: EXIT_CODE=0，36块/32,412个DAPI实例八通道原始强度重算通过（最大绝对误差0.000476563），阳性与完整类别规则不一致均0；16,762个候选有12,665个多marker竞争，6,544个通过几何诊断，去上界对照改变6,576个，联合诊断通过1,543个（Treg 0）。导出全部66个Treg的11页复核图，实际查看三例18个；不将诊断筛选等同身份真值，verified提升0。26项测试通过。
