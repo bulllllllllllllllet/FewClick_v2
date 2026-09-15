@@ -646,3 +646,12 @@
 - Commit: pending；不修改原始标签、不放行verified、不启动训练。
 - Final validation: EXIT_CODE=0，36块/32,412个DAPI实例八通道原始强度重算通过（最大绝对误差0.000476563），阳性与完整类别规则不一致均0；16,762个候选有12,665个多marker竞争，6,544个通过几何诊断，去上界对照改变6,576个，联合诊断通过1,543个（Treg 0）。导出全部66个Treg的11页复核图，实际查看三例18个；不将诊断筛选等同身份真值，verified提升0。26项测试通过。
 - Commit result: `35e14ac` — `Audit CRC candidate supervision against raw mIF`；核验工具、测试与结论已提交，原始数据及上轮特征缓存未修改。
+
+## 09-15 12:29:44
+
+- Purpose: 将CRC五类候选核验落地为盲法人工复核包，覆盖三例、五类和三种风险层，支持离线审核与CSV导出。
+- Changed: `benchmarks/v5/tools/build_crc_manual_review_package.py`、`tests/test_crc_manual_review_package.py`、Phase3接口说明及本运行记录。
+- Validation: 真实2022病例12项smoke EXIT_CODE=0；正式354项任务EXIT_CODE=0，354个ID/源细胞/图片均唯一，全部图片解码为1040×154，CSV/HTML引用一致；Chrome实际加载正式页面并查看三例各一项；全套29项unittest通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_manual_review_0915_122944/`；日志为同级`crc_manual_review_0915_122944.log`。
+- Docs record: `docs/运行记录/数据审计/运行记录_CRC人工复核包构建_0915_122944.md`（运行记录）。
+- Commit: pending；不修改源标签、不自动提升verified，等待两名审核者结果。

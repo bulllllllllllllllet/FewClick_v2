@@ -55,6 +55,8 @@ sample 字段：`sample_id`、`case_id`（患者级规范分组）、`organ`、`
 
 完成后执行`benchmarks/v5/tools/validate_crc_he_feature_probe.py --probe-dir <输出目录>`，核对SHA256、完整检测ID、reg64有限值、分组ID、匹配阈值、候选一对一及类别计数，新增`integrity_audit.json`、`class_summary.csv`。仅验证技术完整性，不代替细胞身份或配准的人工核验。
 
+人工复核包由`benchmarks/v5/tools/build_crc_manual_review_package.py`生成。它对非Treg按病例/自动类别和风险层抽样，Treg候选全纳入；输出默认隐藏自动标签的离线HTML、匿名H&E+DAPI+六marker证据图、私有源映射和空结果模板。两名审核者应独立选择五类/不确定/配准错误/质量差并导出CSV；私有分配表不得在盲审前提供给审核者。人工结果必须另行做一致性和仲裁检查，不能因为界面选择了类别就自动写入`identity_verified=true`。
+
 `conda run -n aligner python -m unittest discover -s benchmarks/v5/phase_3_cell_region/tests -p 'test_semantic*.py' -v`
 
 单元测试使用显式合成fixture验证计算，不用于科学指标。真实数据smoke另登记输入、标签来源和允许的结论。
