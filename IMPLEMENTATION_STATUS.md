@@ -634,3 +634,4 @@
 - Docs record: `docs/运行记录/特征缓存/运行记录_CRC五类均衡扩量_0915_115607.md`（运行记录）。
 - Commit: pending; 尚未将弱候选提升为verified真值，未启动正式分类训练。
 - Final validation: 36/36图块完成、EXIT_CODE=0；20,210条有限reg64，16,762个五类弱候选（5,021/1,786/66/2,401/7,488）；26块实际覆盖多组XCell且完整保留检测。新增`validate_crc_he_feature_probe.py`真实检查通过，输出`integrity_audit.json`与`class_summary.csv`；最终23项unittest通过，接口文档同步更新。
+- Commit result: `79ea4f7` — `Expand CRC candidate sampling to five classes`；另生成36幅匹配复核图，原始数据和冻结v4未修改。
