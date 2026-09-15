@@ -4,7 +4,7 @@ from __future__ import annotations
 import torch
 
 
-def partial_identity_loss(logits, allowed, valid):
+def partial_identity_loss(logits, allowed, valid, class_weights=None):
     if allowed.shape != logits.shape or valid.shape != logits.shape[:-1]:
         raise ValueError("identity supervision shapes disagree")
     if allowed.dtype != torch.bool or valid.dtype != torch.bool:
@@ -14,7 +14,15 @@ def partial_identity_loss(logits, allowed, valid):
     if not selected.any():
         return logits.sum() * 0, 0
     logp = logits[selected].float().log_softmax(-1)
-    loss = -logp.masked_fill(~allowed[selected], -torch.inf).logsumexp(-1).mean()
+    per_cell = -logp.masked_fill(~allowed[selected], -torch.inf).logsumexp(-1)
+    if class_weights is not None:
+        if class_weights.shape != (logits.shape[-1],) or not torch.isfinite(class_weights).all() or (class_weights <= 0).any():
+            raise ValueError("class_weights must be finite positive values for every identity class")
+        # A partial label contributes the mean weight of its permitted classes.
+        weight = (allowed[selected].float() * class_weights.to(logits)).sum(-1) / allowed[selected].sum(-1)
+        loss = (per_cell * weight).sum() / weight.sum().clamp_min(1e-8)
+    else:
+        loss = per_cell.mean()
     return loss, int(selected.sum())
 
 

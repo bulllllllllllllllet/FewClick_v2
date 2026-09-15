@@ -6,10 +6,10 @@ import torch
 from .semantic_losses import partial_identity_loss, distribution_loss
 
 
-def training_loss(model, output, targets, cell_valid):
+def training_loss(model, output, targets, cell_valid, identity_class_weights=None):
     if model.stage == "identity":
         return partial_identity_loss(output["identity_logits"], targets["identity_allowed"],
-                                     targets["identity_valid"] & cell_valid)
+                                     targets["identity_valid"] & cell_valid, identity_class_weights)
     tissue, nt = distribution_loss(output["tissue_logits"], targets["tissue_target"], targets["tissue_valid"])
     composition, nc = distribution_loss(output["composition_logits"], targets["composition_target"],
                                          targets["composition_valid"] & output["evidence_valid"])

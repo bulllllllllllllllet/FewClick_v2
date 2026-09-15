@@ -695,3 +695,13 @@
 - Docs record: `docs/运行记录/特征缓存/运行记录_CRC身份训练契约与Smoke_0915_201819.md`（运行记录）。
 - Result: val/test病例macro-F1为0.274683/0.243927；罕见CD8/Treg/B_cell未识别，当前非平衡基线不进入fusion。
 - Commit result: `8938beb` — `Build CRC identity training contract`；真实训练产物仅写入FewClick NFS，原始医生审核标签和源图像未改写。
+
+## 09-15 20:25:00
+
+- Purpose: 处理CRC五类身份训练的类别不均衡，实施并比较train-only有效样本数加权和稀有类图块重采样。
+- Changed: `semantic_losses.py`、`semantic_training.py`、`tools/train_semantic_phase3.py`、`tests/test_semantic_phase3.py`、`tests/test_identity_balancing.py`、`docs/运行记录/模型实验/运行记录_CRC身份类别平衡训练_0915_202500.md`及本文件。
+- Validation: aligner `python -m unittest discover -s benchmarks/v5/phase_3_cell_region/tests -v` — 36 passed；GPU1一图块smoke与全量训练均EXIT_CODE=0；两份checkpoint均通过manifest指纹封存test评价。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{identity_0915_202502,evaluate_test_0915_202503,identity_0915_202505,evaluate_test_0915_202506}/`。
+- Result: loss-only与loss+patch重采样test macro-F1为0.223774/0.208525，均低于非平衡基线0.243927，且CD8/Treg/B_cell F1仍为0；候选拒绝，未进入fusion。
+- Docs record: `docs/运行记录/模型实验/运行记录_CRC身份类别平衡训练_0915_202500.md`（运行记录）。
+- Commit: pending; `Add train-only identity balancing`。

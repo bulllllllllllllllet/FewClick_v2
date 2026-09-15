@@ -87,6 +87,14 @@ class SemanticTest(unittest.TestCase):
         self.assertEqual(count, 0)
         self.assertEqual(float(loss.detach()), 0.)
 
+    def test_class_weighted_identity_loss_emphasizes_rare_class(self):
+        logits = torch.tensor([[[2., 0.], [2., 0.]]], requires_grad=True)
+        allowed = torch.tensor([[[True, False], [False, True]]])
+        plain, _ = partial_identity_loss(logits, allowed, torch.tensor([[True, True]]))
+        weighted, _ = partial_identity_loss(logits, allowed, torch.tensor([[True, True]]), torch.tensor([1., 5.]))
+        self.assertGreater(float(weighted.detach()), float(plain.detach()))
+        weighted.backward()
+
     def test_fusion_gradient_and_checkpoint_reload(self):
         data = self.inputs()
         optimizer = torch.optim.AdamW([p for p in self.model.parameters() if p.requires_grad], lr=.001)
