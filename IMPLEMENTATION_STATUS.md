@@ -804,4 +804,4 @@
 - Artifacts: 本机NFS容错缓存`/home/zhaoyh/FewClick_v2/.cache/semantic_phase3/{crc_ctranspath_cell_features_nfs6_0916_222359,ctranspath_identity_smoke_0916_233800,ctranspath_identity_0916_234100}/`；源H&E只读镜像为`/nfs-medical6/zyh/SRRSH_CRC_HE_selected_0916_215326/`。
 - Docs record: `docs/运行记录/特征缓存/运行记录_CRC直接CTransPath细胞特征替换_0916_135000.md`与`docs/运行记录/模型实验/运行记录_CRC直接CTransPath身份训练_0916_233415.md`（运行记录）。
 - Result: 最优内部`patient_macro_f1=0.200883`（epoch 11），低于`reg64` DRW 0.221140；Treg F1仍为0，候选拒绝，不进入组织分割fusion。
-- Commit: `151aaac` — `Train direct CTransPath CRC identity probe`。
+- Commit: `fd0f358` — `Train direct CTransPath CRC identity probe`。
