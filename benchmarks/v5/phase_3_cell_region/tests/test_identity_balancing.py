@@ -22,6 +22,24 @@ class IdentityBalancingTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             MODULE.effective_number_weights(torch.tensor([1, 0]), .999, 5.)
 
+    def test_inverse_frequency_equalizes_total_class_loss_mass(self):
+        counts = torch.tensor([44210, 39492, 1731, 31214, 282920])
+        weights = MODULE.inverse_frequency_weights(counts)
+        torch.testing.assert_close(weights * counts, torch.full((5,), float((weights * counts).mean())), rtol=1e-5, atol=1e-3)
+        self.assertGreater(float(weights[2]), float(weights[4]))
+
+    def test_square_root_inverse_is_between_uniform_and_strict_inverse(self):
+        counts = torch.tensor([44210, 39492, 1731, 31214, 282920])
+        tempered = MODULE.power_inverse_frequency_weights(counts, .5)
+        strict = MODULE.inverse_frequency_weights(counts)
+        self.assertGreater(float(tempered[2]), float(tempered[4]))
+        self.assertLess(float(tempered[2] / tempered[4]), float(strict[2] / strict[4]))
+        self.assertAlmostEqual(float(tempered.mean()), 1., places=6)
+
+    def test_invalid_power_inverse_alpha_is_rejected(self):
+        with self.assertRaises(ValueError):
+            MODULE.power_inverse_frequency_weights(torch.tensor([1, 2]), 0.)
+
     def test_patch_sampling_upweights_patch_containing_rare_class(self):
         class Dummy:
             spec = {"identity_classes": ["a", "b"]}

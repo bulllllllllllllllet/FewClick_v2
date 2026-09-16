@@ -540,6 +540,16 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_CosMx全切片RNA规模Gate_0908_212344.md`（run record updated）。
 - Commit: pending.
 
+## 09-16 11:37:00
+
+- Purpose: 针对扩量CRC五类身份训练中严格逆频率导致Treg过预测的问题，新增可控幂次逆频率加权，并完成平方根权重的真实训练与独立验证。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/train_semantic_phase3.py`、`benchmarks/v5/phase_3_cell_region/tests/test_identity_balancing.py`、`docs/建议/模型与训练/建议_CRC长尾细胞身份训练调整_0916_113507.md`、`docs/运行记录/模型实验/运行记录_CRC平方根逆频率身份训练_0916_113507.md`及本文件。
+- Validation: `conda run -n aligner python -m unittest benchmarks.v5.phase_3_cell_region.tests.test_identity_balancing -v` — 6 passed；`py_compile`与`git diff --check`通过；GPU1真实训练15 epoch完成，最佳checkpoint独立val评价`EXIT_CODE=0`。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{identity_0916_113507,evaluate_val_0916_113700}/`。
+- Docs record: `建议_CRC长尾细胞身份训练调整_0916_113507.md`（建议）与`运行记录_CRC平方根逆频率身份训练_0916_113507.md`（运行记录）。
+- Result: patient macro-F1=0.215664；严格逆频率的Treg泛滥预测被抑制，但Treg仍F1=0，候选不进入fusion。
+- Commit: pending.
+
 ## 09-16 11:12:00
 
 - Purpose: 对扩量`reg64`身份基线的异常零F1进行训练/标签/划分诊断，不修改医生审核标签或启动新训练。

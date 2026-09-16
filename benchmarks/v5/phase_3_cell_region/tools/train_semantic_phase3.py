@@ -26,6 +26,29 @@ def effective_number_weights(counts, beta, cap):
     return weights.clamp(max=cap).float()
 
 
+def inverse_frequency_weights(counts):
+    """Strict train-only class balancing: every observed class has equal total loss mass."""
+    values = torch.as_tensor(counts, dtype=torch.float64)
+    if values.ndim != 1 or (values <= 0).any():
+        raise ValueError("positive train-only class counts are required")
+    weights = values.reciprocal()
+    return (weights / weights.mean()).float()
+
+
+def power_inverse_frequency_weights(counts, alpha):
+    """Temper inverse-frequency reweighting without making every class equally massive.
+
+    ``alpha=1`` is strict inverse frequency, while ``alpha=.5`` is the
+    square-root rule.  Counts must be computed exclusively from the training
+    split; validation labels never participate in the weights.
+    """
+    values = torch.as_tensor(counts, dtype=torch.float64)
+    if values.ndim != 1 or (values <= 0).any() or not 0 < alpha <= 1:
+        raise ValueError("positive train-only class counts and 0<alpha<=1 are required")
+    weights = values.pow(-alpha)
+    return (weights / weights.mean()).float()
+
+
 def train_identity_counts(dataset):
     counts = torch.zeros(len(dataset.spec["identity_classes"]), dtype=torch.long)
     for item in dataset:
@@ -63,7 +86,8 @@ def main():
     parser.add_argument("--seed", type=int, default=20260911)
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--threads", type=int, default=4)
-    parser.add_argument("--identity-balance", choices=("none", "effective_num"), default="none")
+    parser.add_argument("--identity-balance", choices=("none", "effective_num", "inverse_frequency", "power_inverse"), default="none")
+    parser.add_argument("--power-inverse-alpha", type=float, default=.5)
     parser.add_argument("--effective-num-beta", type=float, default=.999)
     parser.add_argument("--max-class-weight", type=float, default=5.)
     parser.add_argument("--identity-patch-sampling", choices=("uniform", "effective_num"), default="uniform")
@@ -84,13 +108,19 @@ def main():
     identity_weights = None
     identity_counts = None
     patch_weights = None
-    if args.stage == "identity" and args.identity_balance == "effective_num":
+    if args.stage == "identity" and args.identity_balance != "none":
         identity_counts = train_identity_counts(train)
-        identity_weights = effective_number_weights(identity_counts, args.effective_num_beta, args.max_class_weight).to(device)
+        if args.identity_balance == "effective_num":
+            identity_weights = effective_number_weights(identity_counts, args.effective_num_beta, args.max_class_weight)
+        elif args.identity_balance == "inverse_frequency":
+            identity_weights = inverse_frequency_weights(identity_counts)
+        else:
+            identity_weights = power_inverse_frequency_weights(identity_counts, args.power_inverse_alpha)
+        identity_weights = identity_weights.to(device)
         if args.identity_patch_sampling == "effective_num":
             patch_weights = identity_patch_sampling_weights(train, identity_weights.cpu())
     elif args.identity_patch_sampling != "uniform":
-        raise ValueError("effective_num patch sampling requires effective_num identity balance")
+        raise ValueError("non-uniform patch sampling requires identity balancing")
     model = SemanticCellToRegion(len(train.spec["identity_classes"]), len(train.spec["tissue_classes"])).to(device)
     baseline = torch.load(args.baseline_checkpoint, map_location="cpu", weights_only=False)
     model.baseline.load_state_dict(baseline["cell"], strict=True)
