@@ -580,6 +580,16 @@
 - Result: patient macro-F1=0.174523；2019 Treg recall=0.6585但precision=0.0114，候选拒绝，不进入fusion。
 - Commit: pending.
 
+## 09-16 13:45:00
+
+- Purpose: 在扩量CRC身份任务上验证H&E-only细胞空间上下文（reg64、xy、面积、KNN及冻结区域token），并修复真实padding/无监督图块训练路径。
+- Changed: `spatial_identity.py`、`train_crc_spatial_identity.py`、`test_spatial_identity.py`、`docs/运行记录/模型实验/运行记录_CRC扩量空间上下文身份训练_0916_122500.md`及本文件。
+- Validation: 新增padding无有效邻居有限性测试通过；真实1 epoch smoke通过；GPU1正式训练与最佳checkpoint独立val评价完成。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{spatial_identity_0916_133300,spatial_identity_0916_133500,evaluate_spatial_val_0916_134500}/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_CRC扩量空间上下文身份训练_0916_122500.md`（运行记录）。
+- Result: patient macro-F1=0.203774，低于DRW 0.221140；CD8_T/Treg均为0，候选拒绝，不进入fusion。
+- Commit: pending.
+
 ## 09-16 11:12:00
 
 - Purpose: 对扩量`reg64`身份基线的异常零F1进行训练/标签/划分诊断，不修改医生审核标签或启动新训练。

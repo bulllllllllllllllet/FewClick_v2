@@ -8,3 +8,11 @@ class SpatialIdentityTest(unittest.TestCase):
         cells=torch.randn(1,4,74); cells[...,:2]=torch.tensor([[[.1,.1],[.2,.1],[.8,.8],[.9,.8]]]); cells[...,3]=1
         mass=torch.rand(1,4,4).softmax(1); out=model(torch.randn(1,4,256),cells,torch.tensor([[True,True,True,True]]),mass)
         self.assertEqual(tuple(out['identity_logits'].shape),(1,4,5)); out['identity_logits'].sum().backward(); self.assertIsNotNone(model.region[1].weight.grad)
+
+    def test_padding_with_no_valid_neighbor_stays_finite(self):
+        model=SpatialContextIdentity(5,neighbors=3)
+        cells=torch.randn(1,4,74); cells[...,:2]=.5
+        valid=torch.tensor([[True,False,False,False]])
+        mass=torch.rand(1,2,4).softmax(1)
+        out=model(torch.randn(1,2,256),cells,valid,mass)
+        self.assertTrue(torch.isfinite(out['identity_logits']).all())

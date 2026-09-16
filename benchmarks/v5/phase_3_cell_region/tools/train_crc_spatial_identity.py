@@ -33,10 +33,16 @@ def main():
     meta={'schema':'crc_spatial_identity_v1','manifest_sha256':train.manifest_hash,'identity_classes':train.spec['identity_classes'],'config':{k:str(v) if isinstance(v,Path) else v for k,v in vars(a).items()},'input':'H&E-only reg64, xy, log_area, frozen phase2 region token, xy-KNN; no labels or marker values'};(out/'metadata.json').write_text(json.dumps(meta,indent=2));best=-1;stale=0
     for epoch in range(a.epochs):
         model.train();loss_sum=0.;steps=0
-        for _ in range(len(train)):
-            item=train[rng.randrange(len(train))];x={k:v.to(device) for k,v in item['inputs'].items()};y={k:v.to(device) for k,v in item['targets'].items()};opt.zero_grad();pred=model(x['region_tokens'],x['cells'],x['cell_valid'],x['assignment_at_cells']);loss,count=partial_identity_loss(pred['identity_logits'],y['identity_allowed'],y['identity_valid']&x['cell_valid'])
-            if not count or not torch.isfinite(loss):raise RuntimeError('invalid identity supervision/loss')
-            loss.backward();torch.nn.utils.clip_grad_norm_(model.parameters(),5.,error_if_nonfinite=True);opt.step();loss_sum+=float(loss.detach());steps+=1
+        for step in range(len(train)):
+            index=rng.randrange(len(train));item=train[index];x={k:v.to(device) for k,v in item['inputs'].items()};y={k:v.to(device) for k,v in item['targets'].items()};opt.zero_grad();pred=model(x['region_tokens'],x['cells'],x['cell_valid'],x['assignment_at_cells']);loss,count=partial_identity_loss(pred['identity_logits'],y['identity_allowed'],y['identity_valid']&x['cell_valid'])
+            if not count:
+                continue
+            if not torch.isfinite(loss).item():
+                raise RuntimeError(f'invalid identity supervision/loss at epoch={epoch} step={step} index={index} sample={item["sample_id"]} count={count} logits_finite={torch.isfinite(pred["identity_logits"]).all().item()} loss={float(loss.detach())}')
+            loss.backward();torch.nn.utils.clip_grad_norm_(model.parameters(),5.,error_if_nonfinite=True);opt.step()
+            if not all(torch.isfinite(parameter).all().item() for parameter in model.parameters()):
+                raise RuntimeError(f'non-finite spatial model parameter after epoch={epoch} step={step} index={index} sample={item["sample_id"]}')
+            loss_sum+=float(loss.detach());steps+=1
         metrics=evaluate(model,val,device);row={'epoch':epoch,'loss':loss_sum/steps,**metrics};(out/'metrics.jsonl').open('a').write(json.dumps(row)+'\n');score=metrics['patient_macro_f1'];print(json.dumps({'epoch':epoch,'loss':row['loss'],'patient_macro_f1':score}),flush=True)
         if score>best:best=score;stale=0;torch.save({**meta,'epoch':epoch,'model':model.state_dict()},out/f'best_epoch_{epoch:03d}.pth')
         else:stale+=1

@@ -33,8 +33,11 @@ class SpatialContextIdentity(nn.Module):
             neighbor=torch.gather(base[:,None].expand(-1,n,-1,-1),2,gather)
             nxy=torch.gather(xy[:,None].expand(-1,n,-1,-1),2,index[...,None].expand(-1,-1,-1,2))
             delta=nxy-xy[:,:,None]
-            message=self.message(torch.cat((neighbor,delta,values[...,None]),-1))
             usable=torch.isfinite(values)[...,None]
+            # Padding yields inf distances.  Masking *after* the MLP would retain
+            # NaNs (`NaN * 0` is NaN), so make the invalid distance finite first.
+            safe_values=values.masked_fill(~torch.isfinite(values),0.)
+            message=self.message(torch.cat((neighbor,delta,safe_values[...,None]),-1))
             aggregate=(message*usable).sum(2)/usable.sum(2).clamp_min(1)
         logits=self.head(torch.cat((base,aggregate),-1))
         return {"identity_logits":logits,"identity_probabilities":logits.float().softmax(-1),"neighbor_context":aggregate}
