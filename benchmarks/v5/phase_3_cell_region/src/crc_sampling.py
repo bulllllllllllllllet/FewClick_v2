@@ -84,3 +84,37 @@ def balanced_table(path, budget, max_dapi_cells):
               "selection": "rare-class round-robin with repeated 2048px block penalty",
               "bias": "label-enriched selection; not population composition"}
     return groups, report
+
+
+def quota_patch_table(path, targets, max_dapi_cells, block_px=2048):
+    """Select spatially dispersed source patches until per-class mIF quotas are met."""
+    if set(targets) != set(FINE_CLASSES) or any(value < 0 for value in targets.values()):
+        raise ValueError("targets must be non-negative values for every fine class")
+    totals = None; cell_counts = None; source_rows = 0
+    for chunk in pd.read_csv(path, sep="\t", usecols=["patch_name", "class"], chunksize=200000):
+        source_rows += len(chunk); sizes = chunk.groupby("patch_name").size()
+        cell_counts = sizes if cell_counts is None else cell_counts.add(sizes, fill_value=0)
+        chunk["identity"] = chunk["class"].map(fine_class)
+        table = pd.crosstab(chunk.loc[chunk.identity >= 0, "patch_name"], chunk.loc[chunk.identity >= 0, "identity"]).reindex(columns=range(5), fill_value=0)
+        totals = table if totals is None else totals.add(table, fill_value=0)
+    if totals is None or cell_counts is None: raise ValueError("empty source table")
+    totals = totals.fillna(0).astype(np.int64); totals.columns = list(FINE_CLASSES)
+    eligible = totals.loc[cell_counts.reindex(totals.index).between(30, max_dapi_cells)].copy()
+    achieved = {key: 0 for key in FINE_CLASSES}; selected=[]; occupied={}
+    while len(eligible):
+        deficit={key:max(0,targets[key]-achieved[key]) for key in FINE_CLASSES}
+        if not any(deficit.values()): break
+        ranked=[]
+        for stem,row in eligible.iterrows():
+            match=re.fullmatch(r"x(\d+)_y(\d+)",str(stem))
+            if match is None: raise ValueError(f"invalid patch name {stem}")
+            block=(int(match[1])//block_px,int(match[2])//block_px)
+            gain=sum(min(int(row[key]),deficit[key])/max(1,targets[key]) for key in FINE_CLASSES if deficit[key])
+            if gain: ranked.append((-gain/(1+occupied.get(block,0)),str(stem),block))
+        if not ranked: break
+        _,stem,block=min(ranked); row=eligible.loc[stem]
+        selected.append(stem); occupied[block]=occupied.get(block,0)+1
+        for key in FINE_CLASSES: achieved[key]+=int(row[key])
+        eligible=eligible.drop(stem)
+    report={"source_rows":source_rows,"source_class_counts":{key:int(totals[key].sum()) for key in FINE_CLASSES},"eligible_patches":int(len(cell_counts[cell_counts.between(30,max_dapi_cells)])),"targets":{key:int(targets[key]) for key in FINE_CLASSES},"achieved_source_candidates":achieved,"selected_patches":selected,"selection":"greedy quota gain with 2048px block reuse penalty","bias":"label-enriched source selection; H&E matching has not yet occurred"}
+    return report

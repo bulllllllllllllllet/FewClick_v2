@@ -1,5 +1,6 @@
 """Pure invariants of the CRC candidate feature preparation path."""
 import unittest
+import tempfile
 from pathlib import Path
 from unittest.mock import patch
 
@@ -7,7 +8,7 @@ import numpy as np
 import pandas as pd
 
 from benchmarks.v5.tools.prepare_crc_he_feature_probe import broad_class, centers, relocate
-from benchmarks.v5.phase_3_cell_region.src.crc_sampling import FINE_CLASSES, fine_class, choose_balanced_patches, balanced_table
+from benchmarks.v5.phase_3_cell_region.src.crc_sampling import FINE_CLASSES, fine_class, choose_balanced_patches, balanced_table, quota_patch_table
 
 
 class CRCFeatureProbeTest(unittest.TestCase):
@@ -65,6 +66,16 @@ class CRCFeatureProbeTest(unittest.TestCase):
         self.assertEqual(report["source_rows"], 31)
         self.assertEqual(report["source_class_counts"]["Treg"], 1)
         self.assertEqual(report["eligible_patches"], 1)
+
+    def test_quota_selector_reaches_available_targets(self):
+        labels = (["CD4_T"] * 10 + ["Treg"] * 2 + ["Undefined"] * 19,
+                  ["CD8_T"] * 10 + ["B_cell"] * 10 + ["CD163_Macrophage"] * 10 + ["Undefined"])
+        frame = pd.concat([pd.DataFrame({"patch_name": f"x{index * 2048}_y0", "class": values}) for index, values in enumerate(labels)], ignore_index=True)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "cells.tsv"; frame.to_csv(path, sep="\t", index=False)
+            report = quota_patch_table(path, {"CD4_T": 10, "CD8_T": 10, "Treg": 2, "B_cell": 10, "CD163_Macrophage": 10}, 40)
+        self.assertEqual(len(report["selected_patches"]), 2)
+        self.assertEqual(report["achieved_source_candidates"]["Treg"], 2)
 
 
 if __name__ == "__main__":

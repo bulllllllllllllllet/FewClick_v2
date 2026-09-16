@@ -126,6 +126,12 @@ class SemanticTest(unittest.TestCase):
         self.assertFalse(self.model.delta.weight.requires_grad)
         self.assertFalse(self.model.baseline.training)
 
+    def test_identity_stage_does_not_call_frozen_region_baseline(self):
+        self.model.set_stage("identity")
+        self.model.baseline.forward = lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError("baseline must be bypassed"))
+        result = self.model(**self.inputs())
+        self.assertEqual(tuple(result["identity_logits"].shape), (2, 5, 3))
+
     def test_supported_class_metrics_retain_false_positives(self):
         value = summarize_confusion(torch.tensor([[2, 1, 1], [0, 0, 0], [0, 0, 0]]))
         self.assertAlmostEqual(value["macro_f1"], 2 / 3)

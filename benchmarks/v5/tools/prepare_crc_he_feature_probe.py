@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""H&E-detected XCell features plus explicitly unverified mIF identity candidates."""
+"""Cache H&E-detected XCell features and technically transferred expert mIF labels."""
 from __future__ import annotations
 
 import argparse
@@ -69,12 +69,42 @@ def main():
     parser.add_argument("--max-dapi-cells", type=int, default=180)
     parser.add_argument("--max-he-cells", type=int, default=255)
     parser.add_argument("--cases", nargs="+", choices=("2017-23800D", "2019-00538F", "2022-39941E"), default=["2017-23800D", "2019-00538F", "2022-39941E"])
+    parser.add_argument("--patch-manifest", type=Path, help="JSONL source-patch manifest produced by build_crc_quota_manifest")
+    parser.add_argument("--shard", type=int, help="required with --patch-manifest; select this shard id")
+    parser.add_argument("--max-planned-patches", type=int,
+                        help="optional manifest-mode cap, used only for an end-to-end smoke run")
     args = parser.parse_args()
     if not re.fullmatch(r"\d{4}_\d{6}", args.timestamp) or args.per_case < 1:
         raise ValueError("valid timestamp and positive per-case budget required")
     if not args.output_root.resolve().is_relative_to(Path("/nfs-medical3/zyh/fewclick_v2")):
         raise ValueError("use FewClick artifact root")
-    out = args.output_root / f"crc_he_feature_probe_{args.timestamp}"
+    if (args.patch_manifest is None) != (args.shard is None):
+        raise ValueError("--patch-manifest and --shard must be provided together")
+    if args.patch_manifest is not None:
+        planned = {}
+        for line in args.patch_manifest.read_text().splitlines():
+            row = json.loads(line)
+            if int(row["shard"]) == args.shard:
+                planned.setdefault(row["case_id"], []).append(row["patch_name"])
+        if not planned:
+            raise ValueError(f"no patches assigned to shard {args.shard}")
+        if args.max_planned_patches is not None:
+            if args.max_planned_patches < 1:
+                raise ValueError("--max-planned-patches must be positive")
+            remaining = args.max_planned_patches
+            capped = {}
+            for case in sorted(planned):
+                take = planned[case][:remaining]
+                if take:
+                    capped[case] = take
+                    remaining -= len(take)
+                if remaining == 0:
+                    break
+            planned = capped
+        out = args.output_root / f"crc_he_feature_shard_{args.timestamp}_{args.shard:02d}"
+    else:
+        planned = None
+        out = args.output_root / f"crc_he_feature_probe_{args.timestamp}"
     out.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(4)
     torch.manual_seed(20260911)
@@ -92,10 +122,20 @@ def main():
     selection_reports = {}
     class_names = list(FINE_CLASSES) if args.ontology == "fine5" else ["T_cell", "B_cell", "Myeloid"]
     label_fn = fine_class if args.ontology == "fine5" else broad_class
-    for case in args.cases:
+    for case in (sorted(planned) if planned is not None else args.cases):
         folder = "cell_annotations_mif_only" if case == "2019-00538F" else "cell_annotations"
         table_path = args.registration_root / case / folder / f"{case}_registered_celltypes.tsv"
-        if args.selection == "balanced":
+        if planned is not None:
+            wanted = planned[case]
+            rows = []
+            for chunk in pd.read_csv(table_path, sep="\t", usecols=["x", "y", "class", "patch_name", "cell_id", "registered_he_patch", "local_transform"], chunksize=200000):
+                subset = chunk[chunk.patch_name.isin(wanted)]
+                if len(subset):
+                    rows.append(subset)
+            selected = pd.concat(rows, ignore_index=True)
+            groups = [(stem, selected[selected.patch_name == stem]) for stem in wanted]
+            selection_reports[case] = {"selection": "external quota manifest", "planned_patches": len(wanted)}
+        elif args.selection == "balanced":
             groups, selection_reports[case] = balanced_table(table_path, args.per_case * 3, args.max_dapi_cells)
             (out / f"selection_{case}.json").write_text(json.dumps(selection_reports[case], indent=2))
             print(json.dumps({"event": "selection_ready", "case": case, **selection_reports[case]}), flush=True)
@@ -172,18 +212,19 @@ def main():
                 stream.write(json.dumps(record) + "\n")
             print(json.dumps(record), flush=True)
             complete += 1
-            if complete >= args.per_case:
+            if planned is None and complete >= args.per_case:
                 break
-    metadata = {"schema": "crc_panel2_he_weak_candidates_v2", "status": "complete" if len(records) == len(args.cases) * args.per_case else "partial",
+    expected = sum(len(value) for value in planned.values()) if planned is not None else len(args.cases) * args.per_case
+    metadata = {"schema": "crc_panel2_he_expert_label_candidates_v3", "status": "complete" if len(records) == expected else "partial",
                 "identity_classes": class_names, "records": records,
                 "selection_reports": selection_reports,
                 "xcell_context": "y/x-sorted groups <=255" if args.grouped_xcell else "complete patch <=255",
                 "config": {key: str(value) if isinstance(value, Path) else value for key, value in vars(args).items()},
                 "checkpoint_sha256": {key: sha256_file(path) for key, path in checkpoints.items()},
-                "registration_root": str(args.registration_root), "device": args.device,
+                "registration_root": str(args.registration_root), "device": args.device, "patch_manifest": str(args.patch_manifest) if args.patch_manifest else None, "shard": args.shard,
                 "feature_input": "registered H&E + newly detected H&E mask; DAPI used only for candidate targets",
                 "source_rule": "registered annotation uses inclusive min AND max marker thresholds",
-                "scope": "technical feature probe; mIF-assisted image registration; weak matches not verified; no accuracy claim"}
+                "scope": "expert-reviewed mIF identity reference labels transferred only after technical H&E/DAPI registration checks; this cache does not itself establish H&E classifier accuracy"}
     (out / "metadata.json").write_text(json.dumps(metadata, indent=2))
     print(json.dumps({"status": metadata["status"], "patches": len(records), "output": str(out)}), flush=True)
 

@@ -725,3 +725,13 @@
 - Result: 内部macro-F1 0.258831略高于直接MLP 0.253330，但CD8/Treg F1仍0，B_cell仅2019病例0.007692；候选拒绝，不进入fusion。
 - Docs record: `docs/运行记录/模型实验/运行记录_CRC空间上下文身份探针_0915_212501.md`（运行记录）。
 - Commit result: `109e1e7` — `Probe spatial CRC identity context`；H&E-only空间上下文真实运行完成，未使用mIF marker或标签作为模型输入。
+
+## 09-16 11:07:00
+
+- Purpose: 扩量CRC缓存完成后，采用1,553个成功图块的医生审核mIF转移标签，训练并独立验证五类H&E `reg64` 身份基线。
+- Changed: `crc_sampling.py`、`prepare_crc_he_feature_probe.py`、`adopt_crc_expert_reviewed_labels.py`、`build_crc_quota_manifest.py`、`build_crc_cached_identity_manifest.py`、`semantic_cell_region.py`、`semantic_training.py`及对应测试/运行记录。新增多分片partial缓存的显式合并、缓存直连身份契约，以及身份阶段绕过冻结区域分支的接口；后者不改变fusion路径。
+- Validation: `python -m unittest`相关19项通过，`py_compile`与`git diff --check`通过；1,553图块标签采用、3图块契约冒烟、1,553图块全量契约、1 epoch身份训练冒烟、15 epoch正式训练与best checkpoint独立val重评估均为`EXIT_CODE=0`；checkpoint/manifest SHA256一致。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{crc_expert_reviewed_mif_labels_0916_105600,crc_cached_identity_manifest_0916_110100,crc_pooled_identity_manifest_0916_110200,identity_0916_110500,evaluate_val_0916_110700}/`。
+- Docs record: `docs/运行记录/特征缓存/运行记录_CRC五类5万级扩量准备_0915_214116.md`与`docs/运行记录/模型实验/运行记录_CRC扩量身份训练_0916_105533.md`（运行记录）。
+- Result: patient macro-F1 0.196451；CD8_T/Treg F1均为0，B_cell F1为0.004007。扩量纯`reg64`候选拒绝，不进入fusion；后续仅可在明确标为实验候选的空间/组织上下文设置下继续。
+- Commit: pending.

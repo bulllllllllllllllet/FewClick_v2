@@ -59,6 +59,12 @@ class SemanticCellToRegion(nn.Module):
         if (xy < 0).any() or (xy > 1).any():
             raise ValueError("valid cell positions must be normalized in [0,1]")
         identity = self.identity(cells[..., 10:74])
+        # Identity pretraining is deliberately H&E-cache-only.  Region tokens are
+        # needed by fusion, but computing the frozen baseline here would make a
+        # cell-only classifier depend on source-slide availability without changing
+        # its loss or gradients.
+        if self.stage == "identity":
+            return identity
         stats = pool_composition(assignment_at_cells, cell_valid, identity["identity_probabilities"],
                                  identity["hidden"], identity["uncertainty"], region_area_um2)
         base = self.baseline(region_tokens, assignment_at_cells, cells, cell_valid)

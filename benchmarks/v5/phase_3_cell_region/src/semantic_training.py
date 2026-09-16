@@ -58,11 +58,12 @@ def evaluate(model, dataset, device):
             for idx in range(15):
                 selected = bins == idx
                 record["bins"][idx] += torch.tensor([int(selected.sum()), float(conf[selected].sum()), float((pred[selected] == truth[selected]).sum())])
-        valid_comp = targets["composition_valid"] & result["evidence_valid"]
-        if valid_comp.any():
-            error = (result["composition"][valid_comp] - targets["composition_target"][valid_comp]).abs().mean(-1)
-            record["composition_error_sum"] += float(error.sum())
-            record["composition_count"] += len(error)
+        if model.stage != "identity":
+            valid_comp = targets["composition_valid"] & result["evidence_valid"]
+            if valid_comp.any():
+                error = (result["composition"][valid_comp] - targets["composition_target"][valid_comp]).abs().mean(-1)
+                record["composition_error_sum"] += float(error.sum())
+                record["composition_count"] += len(error)
     summaries = {}
     for case, record in cases.items():
         count = record["count"]
