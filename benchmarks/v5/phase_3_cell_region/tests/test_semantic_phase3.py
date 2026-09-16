@@ -8,7 +8,7 @@ import torch
 
 from benchmarks.v5.phase_3_cell_region.src.semantic_cell_region import SemanticCellToRegion
 from benchmarks.v5.phase_3_cell_region.src.composition import pool_composition, physical_region_area
-from benchmarks.v5.phase_3_cell_region.src.semantic_losses import partial_identity_loss, distribution_loss
+from benchmarks.v5.phase_3_cell_region.src.semantic_losses import balanced_softmax_identity_loss, partial_identity_loss, distribution_loss
 from benchmarks.v5.phase_3_cell_region.src.semantic_training import summarize_confusion
 from benchmarks.v4.phase_3_cell_region.src.model import CellToRegionAttention as FrozenV4
 
@@ -94,6 +94,15 @@ class SemanticTest(unittest.TestCase):
         weighted, _ = partial_identity_loss(logits, allowed, torch.tensor([[True, True]]), torch.tensor([1., 5.]))
         self.assertGreater(float(weighted.detach()), float(plain.detach()))
         weighted.backward()
+
+    def test_balanced_softmax_uses_train_counts_only_in_loss(self):
+        logits = torch.zeros(1, 2, 2)
+        allowed = torch.tensor([[[True, False], [False, True]]])
+        head, _ = balanced_softmax_identity_loss(logits[:, :1], allowed[:, :1], torch.tensor([[True]]), torch.tensor([100, 1]))
+        tail, _ = balanced_softmax_identity_loss(logits[:, 1:], allowed[:, 1:], torch.tensor([[True]]), torch.tensor([100, 1]))
+        self.assertGreater(float(tail), float(head))
+        with self.assertRaises(ValueError):
+            balanced_softmax_identity_loss(logits, allowed, torch.ones(1, 2, dtype=torch.bool), torch.tensor([1, 0]))
 
     def test_fusion_gradient_and_checkpoint_reload(self):
         data = self.inputs()

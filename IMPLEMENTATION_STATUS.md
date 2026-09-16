@@ -570,6 +570,16 @@
 - Result: patient macro-F1=0.172248；2019 Treg recall=0.9024但precision=0.0101，且2017 Macrophage F1=0.00726，强制等量采样候选拒绝，不进入fusion。
 - Commit: pending.
 
+## 09-16 12:22:00
+
+- Purpose: 实现并检验CRC身份分类的Balanced Softmax训练期决策边界校正，作为不重采样、不加类别权重的独立长尾对照。
+- Changed: `semantic_losses.py`、`semantic_training.py`、`tools/train_semantic_phase3.py`、`tests/test_semantic_phase3.py`、`docs/运行记录/模型实验/运行记录_CRC_BalancedSoftmax身份训练_0916_121600.md`及本文件。
+- Validation: 21项相关单元测试通过；GPU1真实smoke、正式训练和最佳checkpoint独立val均完成。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{identity_0916_121700,identity_0916_121800,evaluate_val_0916_122200}/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_CRC_BalancedSoftmax身份训练_0916_121600.md`（运行记录）。
+- Result: patient macro-F1=0.174523；2019 Treg recall=0.6585但precision=0.0114，候选拒绝，不进入fusion。
+- Commit: pending.
+
 ## 09-16 11:12:00
 
 - Purpose: 对扩量`reg64`身份基线的异常零F1进行训练/标签/划分诊断，不修改医生审核标签或启动新训练。

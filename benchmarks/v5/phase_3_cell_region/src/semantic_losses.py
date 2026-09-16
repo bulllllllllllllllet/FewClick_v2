@@ -26,6 +26,26 @@ def partial_identity_loss(logits, allowed, valid, class_weights=None):
     return loss, int(selected.sum())
 
 
+def balanced_softmax_identity_loss(logits, allowed, valid, train_class_counts):
+    """Balanced-Softmax identity loss using only positive train-split class counts."""
+    if allowed.shape != logits.shape or valid.shape != logits.shape[:-1]:
+        raise ValueError("identity supervision shapes disagree")
+    if allowed.dtype != torch.bool or valid.dtype != torch.bool:
+        raise ValueError("allowed/valid must be boolean")
+    counts = torch.as_tensor(train_class_counts, dtype=torch.float32, device=logits.device)
+    if counts.shape != (logits.shape[-1],) or not torch.isfinite(counts).all() or (counts <= 0).any():
+        raise ValueError("Balanced Softmax requires finite positive train-only counts for every class")
+    selected = valid & allowed.any(-1) & ~allowed.all(-1)
+    if not selected.any():
+        return logits.sum() * 0, 0
+    # log(n_c) participates in both numerator and denominator during training;
+    # ordinary logits are retained for inference.
+    adjusted = logits[selected].float() + counts.log()
+    logp = adjusted.log_softmax(-1)
+    per_cell = -logp.masked_fill(~allowed[selected], -torch.inf).logsumexp(-1)
+    return per_cell.mean(), int(selected.sum())
+
+
 def distribution_loss(logits, target, valid):
     """Soft CE for independently verified, full-distribution region targets."""
     if logits.shape != target.shape or valid.shape != logits.shape[:-1] or valid.dtype != torch.bool:

@@ -3,11 +3,17 @@ from __future__ import annotations
 
 import torch
 
-from .semantic_losses import partial_identity_loss, distribution_loss
+from .semantic_losses import balanced_softmax_identity_loss, partial_identity_loss, distribution_loss
 
 
-def training_loss(model, output, targets, cell_valid, identity_class_weights=None):
+def training_loss(model, output, targets, cell_valid, identity_class_weights=None, identity_balanced_softmax_counts=None):
     if model.stage == "identity":
+        if identity_class_weights is not None and identity_balanced_softmax_counts is not None:
+            raise ValueError("do not combine class weighting and Balanced Softmax in one identity loss")
+        if identity_balanced_softmax_counts is not None:
+            return balanced_softmax_identity_loss(output["identity_logits"], targets["identity_allowed"],
+                                                  targets["identity_valid"] & cell_valid,
+                                                  identity_balanced_softmax_counts)
         return partial_identity_loss(output["identity_logits"], targets["identity_allowed"],
                                      targets["identity_valid"] & cell_valid, identity_class_weights)
     tissue, nt = distribution_loss(output["tissue_logits"], targets["tissue_target"], targets["tissue_valid"])

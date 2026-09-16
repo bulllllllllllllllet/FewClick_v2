@@ -141,6 +141,7 @@ def main():
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--identity-balance", choices=("none", "effective_num", "inverse_frequency", "power_inverse"), default="none")
+    parser.add_argument("--identity-loss", choices=("cross_entropy", "balanced_softmax"), default="cross_entropy")
     parser.add_argument("--power-inverse-alpha", type=float, default=.5)
     parser.add_argument("--identity-reweight-start-epoch", type=int, default=0,
                         help="DRW warm-up: use uniform loss before this zero-based epoch")
@@ -169,21 +170,27 @@ def main():
     identity_counts = None
     patch_weights = None
     balanced_pool = None
-    if args.stage == "identity" and args.identity_balance != "none":
+    if args.stage == "identity" and (args.identity_balance != "none" or args.identity_loss == "balanced_softmax"):
         identity_counts = train_identity_counts(train)
         if args.identity_balance == "effective_num":
             identity_weights = effective_number_weights(identity_counts, args.effective_num_beta, args.max_class_weight)
         elif args.identity_balance == "inverse_frequency":
             identity_weights = inverse_frequency_weights(identity_counts)
-        else:
+        elif args.identity_balance == "power_inverse":
             identity_weights = power_inverse_frequency_weights(identity_counts, args.power_inverse_alpha)
-        identity_weights = identity_weights.to(device)
-        if args.identity_patch_sampling == "effective_num":
+        if identity_weights is not None:
+            identity_weights = identity_weights.to(device)
+        if args.identity_patch_sampling == "effective_num" and identity_weights is not None:
             patch_weights = identity_patch_sampling_weights(train, identity_weights.cpu())
     elif args.identity_patch_sampling != "uniform" or args.identity_reweight_start_epoch:
         raise ValueError("non-uniform patch sampling requires identity balancing")
+    if args.identity_patch_sampling != "uniform" and identity_weights is None:
+        raise ValueError("non-uniform patch sampling requires a class-weighting policy")
+    if args.identity_loss == "balanced_softmax" and (args.stage != "identity" or args.identity_balance != "none"
+                                                        or args.identity_reweight_start_epoch):
+        raise ValueError("Balanced Softmax is an identity-only, no-class-weighting experiment")
     if args.identity_cell_sampling == "balanced":
-        if (args.stage != "identity" or args.identity_balance != "none" or args.identity_reweight_start_epoch
+        if (args.stage != "identity" or args.identity_balance != "none" or args.identity_loss != "cross_entropy" or args.identity_reweight_start_epoch
                 or args.identity_patch_sampling != "uniform"):
             raise ValueError("balanced cell sampling is an identity-only, no-loss-reweighting experiment")
         balanced_pool = balanced_identity_cell_pool(train)
@@ -208,6 +215,7 @@ def main():
                 "baseline_sha256": sha256_file(args.baseline_checkpoint), "stage": args.stage,
                 "identity_classes": train.spec["identity_classes"], "tissue_classes": train.spec["tissue_classes"],
                 "identity_balance": args.identity_balance,
+                "identity_loss": args.identity_loss,
                 "identity_train_class_counts": identity_counts.tolist() if identity_counts is not None else None,
                 "identity_class_weights": identity_weights.cpu().tolist() if identity_weights is not None else None,
                 "identity_reweight_start_epoch": args.identity_reweight_start_epoch,
@@ -249,7 +257,8 @@ def main():
         for inputs, targets in batches:
             optimizer.zero_grad(set_to_none=True)
             result = model(**inputs)
-            loss, count = training_loss(model, result, targets, inputs["cell_valid"], epoch_identity_weights)
+            loss, count = training_loss(model, result, targets, inputs["cell_valid"], epoch_identity_weights,
+                                        identity_counts.to(device) if args.identity_loss == "balanced_softmax" else None)
             if not count:
                 continue
             if not torch.isfinite(loss):
