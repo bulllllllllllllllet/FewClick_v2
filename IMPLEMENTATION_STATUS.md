@@ -550,6 +550,16 @@
 - Result: patient macro-F1=0.215664；严格逆频率的Treg泛滥预测被抑制，但Treg仍F1=0，候选不进入fusion。
 - Commit: pending.
 
+## 09-16 11:54:00
+
+- Purpose: 实现并验证CRC身份分类的延迟重加权（DRW）：前三个epoch使用均匀损失，之后启用train-only平方根逆频率权重。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/train_semantic_phase3.py`、`benchmarks/v5/phase_3_cell_region/tests/test_identity_balancing.py`、`docs/运行记录/模型实验/运行记录_CRC延迟重加权身份训练_0916_115000.md`及本文件。
+- Validation: `conda run -n aligner python -m unittest benchmarks.v5.phase_3_cell_region.tests.test_identity_balancing -v` — 7 passed；真实GPU1训练15 epoch完成，metrics前3 epoch `identity_reweighting_applied=false`、之后为true；最佳checkpoint独立val评价完成。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{identity_0916_115000,evaluate_val_0916_115400}/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_CRC延迟重加权身份训练_0916_115000.md`（运行记录）。
+- Result: patient macro-F1=0.221140，超过直接平方根权重0.215664；Treg在三个病例中仍均为F1=0，候选不进入fusion。
+- Commit: pending.
+
 ## 09-16 11:12:00
 
 - Purpose: 对扩量`reg64`身份基线的异常零F1进行训练/标签/划分诊断，不修改医生审核标签或启动新训练。

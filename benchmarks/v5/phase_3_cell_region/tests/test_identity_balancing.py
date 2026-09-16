@@ -40,6 +40,13 @@ class IdentityBalancingTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             MODULE.power_inverse_frequency_weights(torch.tensor([1, 2]), 0.)
 
+    def test_delayed_reweighting_keeps_warmup_uniform(self):
+        weights = torch.tensor([.5, 2.])
+        self.assertIsNone(MODULE.identity_loss_weights_for_epoch(weights, 3, 2))
+        self.assertTrue(torch.equal(MODULE.identity_loss_weights_for_epoch(weights, 3, 3), weights))
+        with self.assertRaises(ValueError):
+            MODULE.identity_loss_weights_for_epoch(weights, -1, 0)
+
     def test_patch_sampling_upweights_patch_containing_rare_class(self):
         class Dummy:
             spec = {"identity_classes": ["a", "b"]}

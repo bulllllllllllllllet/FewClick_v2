@@ -49,6 +49,13 @@ def power_inverse_frequency_weights(counts, alpha):
     return (weights / weights.mean()).float()
 
 
+def identity_loss_weights_for_epoch(weights, reweight_start_epoch, epoch):
+    """Return no class weights during the DRW warm-up, then fixed train-only weights."""
+    if reweight_start_epoch < 0 or epoch < 0:
+        raise ValueError("epochs must be non-negative")
+    return weights if weights is not None and epoch >= reweight_start_epoch else None
+
+
 def train_identity_counts(dataset):
     counts = torch.zeros(len(dataset.spec["identity_classes"]), dtype=torch.long)
     for item in dataset:
@@ -88,11 +95,14 @@ def main():
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--identity-balance", choices=("none", "effective_num", "inverse_frequency", "power_inverse"), default="none")
     parser.add_argument("--power-inverse-alpha", type=float, default=.5)
+    parser.add_argument("--identity-reweight-start-epoch", type=int, default=0,
+                        help="DRW warm-up: use uniform loss before this zero-based epoch")
     parser.add_argument("--effective-num-beta", type=float, default=.999)
     parser.add_argument("--max-class-weight", type=float, default=5.)
     parser.add_argument("--identity-patch-sampling", choices=("uniform", "effective_num"), default="uniform")
     args = parser.parse_args()
-    if not re.fullmatch(r"\d{4}_\d{6}", args.timestamp) or args.epochs < 1 or args.patience < 1:
+    if (not re.fullmatch(r"\d{4}_\d{6}", args.timestamp) or args.epochs < 1 or args.patience < 1
+            or args.identity_reweight_start_epoch < 0):
         raise ValueError("timestamp MMDD_HHMMSS and positive budgets required")
     if not args.output_root.resolve().is_relative_to(Path("/nfs-medical3/zyh/fewclick_v2")):
         raise ValueError("generated outputs must stay in FewClick artifact root")
@@ -119,7 +129,7 @@ def main():
         identity_weights = identity_weights.to(device)
         if args.identity_patch_sampling == "effective_num":
             patch_weights = identity_patch_sampling_weights(train, identity_weights.cpu())
-    elif args.identity_patch_sampling != "uniform":
+    elif args.identity_patch_sampling != "uniform" or args.identity_reweight_start_epoch:
         raise ValueError("non-uniform patch sampling requires identity balancing")
     model = SemanticCellToRegion(len(train.spec["identity_classes"]), len(train.spec["tissue_classes"])).to(device)
     baseline = torch.load(args.baseline_checkpoint, map_location="cpu", weights_only=False)
@@ -142,6 +152,7 @@ def main():
                 "identity_balance": args.identity_balance,
                 "identity_train_class_counts": identity_counts.tolist() if identity_counts is not None else None,
                 "identity_class_weights": identity_weights.cpu().tolist() if identity_weights is not None else None,
+                "identity_reweight_start_epoch": args.identity_reweight_start_epoch,
                 "identity_patch_sampling": args.identity_patch_sampling,
                 "identity_patch_sampling_weights": patch_weights,
                 "config": {key: str(value) if isinstance(value, Path) else value for key, value in vars(args).items()},
@@ -154,6 +165,7 @@ def main():
     history = []
     for epoch in range(args.epochs):
         model.train()
+        epoch_identity_weights = identity_loss_weights_for_epoch(identity_weights, args.identity_reweight_start_epoch, epoch)
         loss_sum, steps, supervised = 0., 0, 0
         # One patch per optimizer step; sample cases uniformly, then patches.
         for _ in range(len(train)):
@@ -168,7 +180,7 @@ def main():
             targets = {key: value.to(device) for key, value in item["targets"].items()}
             optimizer.zero_grad(set_to_none=True)
             result = model(**inputs)
-            loss, count = training_loss(model, result, targets, inputs["cell_valid"], identity_weights)
+            loss, count = training_loss(model, result, targets, inputs["cell_valid"], epoch_identity_weights)
             if not count:
                 continue
             if not torch.isfinite(loss):
@@ -185,7 +197,8 @@ def main():
         score = metrics["patient_macro_f1"]
         if score is None:
             raise RuntimeError("validation has no supported classification labels")
-        record = {"epoch": epoch, "loss": loss_sum / steps, "steps": steps, "supervised": supervised, **metrics}
+        record = {"epoch": epoch, "loss": loss_sum / steps, "steps": steps, "supervised": supervised,
+                  "identity_reweighting_applied": epoch_identity_weights is not None, **metrics}
         history.append(record)
         with (output / "metrics.jsonl").open("a") as stream:
             stream.write(json.dumps(record) + "\n")
