@@ -540,6 +540,16 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_CosMx全切片RNA规模Gate_0908_212344.md`（run record updated）。
 - Commit: pending.
 
+## 09-16 11:12:00
+
+- Purpose: 对扩量`reg64`身份基线的异常零F1进行训练/标签/划分诊断，不修改医生审核标签或启动新训练。
+- Changed: 更新`docs/运行记录/模型实验/运行记录_CRC扩量身份训练_0916_105533.md`，记录训练侧独立评价、权重饱和与逐细胞标签一致性检查。
+- Validation: `evaluate_train_0916_111000`为`EXIT_CODE=0`；train+val五类计数精确恢复统一缓存总数；13个跨病例缓存-契约样本逐细胞标签完全一致。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/evaluate_train_0916_111000/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_CRC扩量身份训练_0916_105533.md`（运行记录）。
+- Result: `effective_num_beta=0.999`使四个数万级类别权重饱和为同一值，当前训练并未真正平衡CD8_T/B_cell与Macrophage；应先修正平衡诊断，再判断reg64信息量。
+- Commit: pending.
+
 ## 09-08 21:25:39
 
 - Purpose: 收尾 CosMx 全切片 RNA paired-vs-shuffled 规模 gate，并记录其可解释范围。
