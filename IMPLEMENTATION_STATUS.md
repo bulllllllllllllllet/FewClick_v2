@@ -795,3 +795,13 @@
 - Docs record: `docs/运行记录/特征缓存/运行记录_CRC五类5万级扩量准备_0915_214116.md`与`docs/运行记录/模型实验/运行记录_CRC扩量身份训练_0916_105533.md`（运行记录）。
 - Result: patient macro-F1 0.196451；CD8_T/Treg F1均为0，B_cell F1为0.004007。扩量纯`reg64`候选拒绝，不进入fusion；后续仅可在明确标为实验候选的空间/组织上下文设置下继续。
 - Commit: pending.
+
+## 09-16 23:41:00
+
+- Purpose: 以冻结的直接 CTransPath-768 H&E细胞及局部上下文特征替换`reg64`，在固定CRC pooled内部协议下训练五类身份分类候选。
+- Changed: `benchmarks/v5/tools/cache_crc_ctranspath_cell_features.py`、`benchmarks/v5/tools/train_crc_ctranspath_identity.py`、`docs/运行记录/特征缓存/运行记录_CRC直接CTransPath细胞特征替换_0916_135000.md`、`docs/运行记录/模型实验/运行记录_CRC直接CTransPath身份训练_0916_233415.md`及本文件。
+- Validation: aligner `python -m py_compile benchmarks/v5/tools/train_crc_ctranspath_identity.py`通过；3图块真实特征smoke、1,553图块全量缓存、1 epoch训练smoke与15 epoch GPU1正式训练均为`EXIT_CODE=0`；全量特征复核为1,553个文件、0个无效、768维有限值且cell-id逐行对齐。
+- Artifacts: 本机NFS容错缓存`/home/zhaoyh/FewClick_v2/.cache/semantic_phase3/{crc_ctranspath_cell_features_nfs6_0916_222359,ctranspath_identity_smoke_0916_233800,ctranspath_identity_0916_234100}/`；源H&E只读镜像为`/nfs-medical6/zyh/SRRSH_CRC_HE_selected_0916_215326/`。
+- Docs record: `docs/运行记录/特征缓存/运行记录_CRC直接CTransPath细胞特征替换_0916_135000.md`与`docs/运行记录/模型实验/运行记录_CRC直接CTransPath身份训练_0916_233415.md`（运行记录）。
+- Result: 最优内部`patient_macro_f1=0.200883`（epoch 11），低于`reg64` DRW 0.221140；Treg F1仍为0，候选拒绝，不进入组织分割fusion。
+- Commit: `151aaac` — `Train direct CTransPath CRC identity probe`。
