@@ -47,6 +47,21 @@ class IdentityBalancingTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             MODULE.identity_loss_weights_for_epoch(weights, -1, 0)
 
+    def test_balanced_cell_batches_have_equal_class_counts(self):
+        indices = [torch.tensor([0, 1]), torch.tensor([2]), torch.tensor([3, 4, 5])]
+        batches = list(MODULE.balanced_identity_batch_indices(indices, 5, 2, torch.Generator().manual_seed(1)))
+        self.assertEqual(len(batches), 3)
+        self.assertEqual([len(batch) for batch in batches], [6, 6, 3])
+        self.assertTrue(all(torch.isin(batch, torch.cat(indices)).all() for batch in batches))
+
+    def test_identity_cell_batch_has_no_label_model_input(self):
+        features = torch.randn(4, 64)
+        labels = torch.tensor([0, 1, 1, 2])
+        inputs, targets = MODULE.identity_cell_batch(features, labels, 3, torch.device("cpu"))
+        self.assertEqual(tuple(inputs["cells"].shape), (4, 1, 74))
+        self.assertTrue(torch.allclose(inputs["cells"][..., :2], torch.full((4, 1, 2), .5)))
+        self.assertEqual(tuple(targets["identity_allowed"].shape), (4, 1, 3))
+
     def test_patch_sampling_upweights_patch_containing_rare_class(self):
         class Dummy:
             spec = {"identity_classes": ["a", "b"]}

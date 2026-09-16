@@ -560,6 +560,16 @@
 - Result: patient macro-F1=0.221140，超过直接平方根权重0.215664；Treg在三个病例中仍均为F1=0，候选不进入fusion。
 - Commit: pending.
 
+## 09-16 12:09:00
+
+- Purpose: 实现并检验CRC身份分类的细胞级类别感知均衡采样，单独排查少类有效训练曝光不足。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/train_semantic_phase3.py`、`benchmarks/v5/phase_3_cell_region/tests/test_identity_balancing.py`、`docs/运行记录/模型实验/运行记录_CRC细胞级类别感知采样身份训练_0916_120300.md`及本文件。
+- Validation: 9项平衡采样单元测试通过；GPU1真实1 epoch smoke与正式训练均完成；最佳checkpoint独立val评价完成。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/{identity_0916_120400,identity_0916_120500,evaluate_val_0916_120900}/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_CRC细胞级类别感知采样身份训练_0916_120300.md`（运行记录）。
+- Result: patient macro-F1=0.172248；2019 Treg recall=0.9024但precision=0.0101，且2017 Macrophage F1=0.00726，强制等量采样候选拒绝，不进入fusion。
+- Commit: pending.
+
 ## 09-16 11:12:00
 
 - Purpose: 对扩量`reg64`身份基线的异常零F1进行训练/标签/划分诊断，不修改医生审核标签或启动新训练。

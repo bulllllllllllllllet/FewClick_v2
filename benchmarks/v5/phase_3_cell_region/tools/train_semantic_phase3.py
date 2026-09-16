@@ -10,6 +10,7 @@ import sys
 from pathlib import Path
 
 import torch
+import torch.nn.functional as F
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
 from benchmarks.v5.phase_3_cell_region.src.semantic_cell_region import SemanticCellToRegion
@@ -56,6 +57,52 @@ def identity_loss_weights_for_epoch(weights, reweight_start_epoch, epoch):
     return weights if weights is not None and epoch >= reweight_start_epoch else None
 
 
+def balanced_identity_cell_pool(dataset):
+    """Collect only train-split, exactly labelled reg64 cells for a balanced sampler."""
+    features, labels = [], []
+    for item in dataset:
+        allowed = item["targets"]["identity_allowed"][0]
+        valid = item["targets"]["identity_valid"][0] & item["inputs"]["cell_valid"][0]
+        exact = valid & (allowed.sum(-1) == 1)
+        if exact.any():
+            features.append(item["inputs"]["cells"][0, exact, 10:74].cpu())
+            labels.append(allowed[exact].long().argmax(-1).cpu())
+    if not features:
+        raise ValueError("balanced identity sampling requires exact train labels")
+    features, labels = torch.cat(features), torch.cat(labels)
+    classes = len(dataset.spec["identity_classes"])
+    indices = [torch.where(labels == cls)[0] for cls in range(classes)]
+    if any(len(index) == 0 for index in indices):
+        raise ValueError("balanced identity sampling requires every class in train")
+    return features, labels, indices
+
+
+def balanced_identity_batch_indices(class_indices, cells_per_class, batch_size_per_class, generator):
+    """Yield class-balanced cell indices; rare classes are sampled with replacement."""
+    if cells_per_class < 1 or batch_size_per_class < 1 or not class_indices:
+        raise ValueError("positive balanced cell budgets and non-empty class indices are required")
+    steps = (cells_per_class + batch_size_per_class - 1) // batch_size_per_class
+    for step in range(steps):
+        count = min(batch_size_per_class, cells_per_class - step * batch_size_per_class)
+        parts = [index[torch.randint(len(index), (count,), generator=generator)] for index in class_indices]
+        yield torch.cat(parts)
+
+
+def identity_cell_batch(features, labels, classes, device):
+    """Make a valid one-cell semantic input batch without exposing labels to the model."""
+    batch = len(labels)
+    cells = torch.zeros((batch, 1, 74), dtype=features.dtype, device=device)
+    cells[..., :2] = .5
+    cells[..., 10:74] = features.to(device)[:, None]
+    inputs = {"region_tokens": torch.zeros((batch, 1, 256), dtype=features.dtype, device=device),
+              "cells": cells, "cell_valid": torch.ones((batch, 1), dtype=torch.bool, device=device),
+              "assignment_at_cells": torch.ones((batch, 1, 1), dtype=features.dtype, device=device),
+              "region_area_um2": torch.ones((batch, 1), dtype=features.dtype, device=device)}
+    targets = {"identity_allowed": F.one_hot(labels.to(device), classes).bool()[:, None],
+               "identity_valid": torch.ones((batch, 1), dtype=torch.bool, device=device)}
+    return inputs, targets
+
+
 def train_identity_counts(dataset):
     counts = torch.zeros(len(dataset.spec["identity_classes"]), dtype=torch.long)
     for item in dataset:
@@ -100,6 +147,9 @@ def main():
     parser.add_argument("--effective-num-beta", type=float, default=.999)
     parser.add_argument("--max-class-weight", type=float, default=5.)
     parser.add_argument("--identity-patch-sampling", choices=("uniform", "effective_num"), default="uniform")
+    parser.add_argument("--identity-cell-sampling", choices=("uniform", "balanced"), default="uniform")
+    parser.add_argument("--balanced-cells-per-class-epoch", type=int, default=50000)
+    parser.add_argument("--balanced-cell-batch-size-per-class", type=int, default=64)
     args = parser.parse_args()
     if (not re.fullmatch(r"\d{4}_\d{6}", args.timestamp) or args.epochs < 1 or args.patience < 1
             or args.identity_reweight_start_epoch < 0):
@@ -118,6 +168,7 @@ def main():
     identity_weights = None
     identity_counts = None
     patch_weights = None
+    balanced_pool = None
     if args.stage == "identity" and args.identity_balance != "none":
         identity_counts = train_identity_counts(train)
         if args.identity_balance == "effective_num":
@@ -131,6 +182,13 @@ def main():
             patch_weights = identity_patch_sampling_weights(train, identity_weights.cpu())
     elif args.identity_patch_sampling != "uniform" or args.identity_reweight_start_epoch:
         raise ValueError("non-uniform patch sampling requires identity balancing")
+    if args.identity_cell_sampling == "balanced":
+        if (args.stage != "identity" or args.identity_balance != "none" or args.identity_reweight_start_epoch
+                or args.identity_patch_sampling != "uniform"):
+            raise ValueError("balanced cell sampling is an identity-only, no-loss-reweighting experiment")
+        balanced_pool = balanced_identity_cell_pool(train)
+    if args.balanced_cells_per_class_epoch < 1 or args.balanced_cell_batch_size_per_class < 1:
+        raise ValueError("balanced cell sampling budgets must be positive")
     model = SemanticCellToRegion(len(train.spec["identity_classes"]), len(train.spec["tissue_classes"])).to(device)
     baseline = torch.load(args.baseline_checkpoint, map_location="cpu", weights_only=False)
     model.baseline.load_state_dict(baseline["cell"], strict=True)
@@ -155,6 +213,8 @@ def main():
                 "identity_reweight_start_epoch": args.identity_reweight_start_epoch,
                 "identity_patch_sampling": args.identity_patch_sampling,
                 "identity_patch_sampling_weights": patch_weights,
+                "identity_cell_sampling": args.identity_cell_sampling,
+                "identity_cell_pool_counts": [int(len(x)) for x in balanced_pool[2]] if balanced_pool else None,
                 "config": {key: str(value) if isinstance(value, Path) else value for key, value in vars(args).items()},
                 "calibration": "temperature=1; fitting calibration remains a separate development-set step"}
     (output / "metadata.json").write_text(json.dumps(metadata, indent=2))
@@ -167,17 +227,26 @@ def main():
         model.train()
         epoch_identity_weights = identity_loss_weights_for_epoch(identity_weights, args.identity_reweight_start_epoch, epoch)
         loss_sum, steps, supervised = 0., 0, 0
-        # One patch per optimizer step; sample cases uniformly, then patches.
-        for _ in range(len(train)):
-            case = rng.choice(sorted(groups))
-            indices = groups[case]
-            if patch_weights is None:
-                selected = rng.choice(indices)
-            else:
-                selected = rng.choices(indices, weights=[patch_weights[index] for index in indices], k=1)[0]
-            item = train[selected]
-            inputs = {key: value.to(device) for key, value in item["inputs"].items()}
-            targets = {key: value.to(device) for key, value in item["targets"].items()}
+        if balanced_pool is None:
+            def patch_batches():
+                # One patch per optimizer step; sample cases uniformly, then patches.
+                for _ in range(len(train)):
+                    case = rng.choice(sorted(groups))
+                    indices = groups[case]
+                    selected = (rng.choice(indices) if patch_weights is None else
+                                rng.choices(indices, weights=[patch_weights[index] for index in indices], k=1)[0])
+                    item = train[selected]
+                    yield ({key: value.to(device) for key, value in item["inputs"].items()},
+                           {key: value.to(device) for key, value in item["targets"].items()})
+            batches = patch_batches()
+        else:
+            features, pool_labels, class_indices = balanced_pool
+            generator = torch.Generator().manual_seed(args.seed + epoch)
+            batches = (identity_cell_batch(features[index], pool_labels[index], len(class_indices), device)
+                       for index in balanced_identity_batch_indices(
+                           class_indices, args.balanced_cells_per_class_epoch,
+                           args.balanced_cell_batch_size_per_class, generator))
+        for inputs, targets in batches:
             optimizer.zero_grad(set_to_none=True)
             result = model(**inputs)
             loss, count = training_loss(model, result, targets, inputs["cell_valid"], epoch_identity_weights)
