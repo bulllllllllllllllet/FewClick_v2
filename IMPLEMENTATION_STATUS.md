@@ -805,3 +805,12 @@
 - Docs record: `docs/运行记录/特征缓存/运行记录_CRC直接CTransPath细胞特征替换_0916_135000.md`与`docs/运行记录/模型实验/运行记录_CRC直接CTransPath身份训练_0916_233415.md`（运行记录）。
 - Result: 最优内部`patient_macro_f1=0.200883`（epoch 11），低于`reg64` DRW 0.221140；Treg F1仍为0，候选拒绝，不进入组织分割fusion。
 - Commit: `fd0f358` — `Train direct CTransPath CRC identity probe`。
+
+## 09-17 20:52:58
+
+- Purpose: 固化项目负责人确认的 SRRSH CRC 临床医生人工校验数据标准口径。
+- Changed: `docs/数据集情况/SRRSH_CRC_数据目录审计报告_20260909_165250.md` 及本文件。
+- Validation: `git diff --check` — passed；已复核新增说明与原有标签说明的一致性。
+- Artifacts: 无。
+- Docs record: `docs/数据集情况/SRRSH_CRC_数据目录审计报告_20260909_165250.md`（数据集情况更新）。
+- Commit: pending.
