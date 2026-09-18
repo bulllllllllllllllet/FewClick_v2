@@ -540,6 +540,15 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_CosMx全切片RNA规模Gate_0908_212344.md`（run record updated）。
 - Commit: pending.
 
+## 09-18 15:46:15
+
+- Purpose: 忽略 Python 缓存及常见本地开发、测试和打包生成文件，避免其进入 Git 工作区。
+- Changed: `.gitignore` 及本文件。
+- Validation: `git check-ignore -v` 覆盖 `__pycache__`、`.pyc`、`.cache`、`.pytest_cache` 和 `.venv` — passed；`git diff --check` — passed。
+- Artifacts: 无。
+- Docs record: 无。
+- Commit: `0328cd4` — `Ignore Python generated files`。
+
 ## 09-16 11:37:00
 
 - Purpose: 针对扩量CRC五类身份训练中严格逆频率导致Treg过预测的问题，新增可控幂次逆频率加权，并完成平方根权重的真实训练与独立验证。
