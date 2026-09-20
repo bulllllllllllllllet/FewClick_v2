@@ -832,3 +832,12 @@
 - Artifacts: 无。
 - Docs record: `docs/建议/模型与训练/方案_可扩展原型与组学监督_0920_210632.md`（建议记录）。
 - Commit: pending.
+
+## 09-20 21:56:52
+
+- Purpose: 在 v5 建立可扩展交互任务的空间划分契约和正负多原型匹配首批接口，为 CRC 真实任务 manifest 与后续提示训练提供可验证基础。
+- Changed: `benchmarks/v5/phase_5_prompt_encoder/{__init__.py,src/__init__.py,src/extensible_task_contract.py,src/multi_prototype.py,tests/test_extensible_task_contract.py,tests/test_multi_prototype.py}`、`docs/建议/模型与训练/方案_可扩展原型与组学监督_0920_210632.md` 及本文件。
+- Validation: `conda run -n aligner python -m unittest discover -s benchmarks/v5/phase_5_prompt_encoder/tests -v` — 7 tests passed；`conda run -n aligner python -m unittest discover -s benchmarks/v5/phase_3_cell_region/tests -p 'test_semantic_contract.py' -v` — 8 tests passed；`conda run -n aligner python -m py_compile benchmarks/v5/phase_5_prompt_encoder/src/extensible_task_contract.py benchmarks/v5/phase_5_prompt_encoder/src/multi_prototype.py` 与 `git diff --check` — passed。
+- Artifacts: 无；未启动训练或生成数据缓存。
+- Docs record: `docs/建议/模型与训练/方案_可扩展原型与组学监督_0920_210632.md`（建议记录更新）。
+- Commit: pending.
