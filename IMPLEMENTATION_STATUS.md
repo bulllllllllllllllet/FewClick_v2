@@ -823,3 +823,12 @@
 - Artifacts: 无。
 - Docs record: `docs/数据集情况/SRRSH_CRC_数据目录审计报告_20260909_165250.md`（数据集情况更新）。
 - Commit: pending.
+
+## 09-20 21:45:02
+
+- Purpose: 记录 FewClick 面向可扩展组织/病理任务的多原型与蛋白/组学监督方案，并将“不按病例划分且尽量避免数据泄露”固化为 FewClick skill 规则。
+- Changed: `docs/建议/模型与训练/方案_可扩展原型与组学监督_0920_210632.md`、`/home/zhaoyh/.codex/skills/fewclick-v2/SKILL.md` 及本文件。
+- Validation: `python /home/zhaoyh/.codex/skills/.system/skill-creator/scripts/quick_validate.py /home/zhaoyh/.codex/skills/fewclick-v2` — passed；`git diff --check` — passed。
+- Artifacts: 无。
+- Docs record: `docs/建议/模型与训练/方案_可扩展原型与组学监督_0920_210632.md`（建议记录）。
+- Commit: pending.
