@@ -56,3 +56,16 @@ def distribution_loss(logits, target, valid):
     if not torch.isfinite(y).all() or (y < 0).any() or not torch.allclose(y.sum(-1), torch.ones_like(y[:, 0]), atol=1e-4):
         raise ValueError("valid distribution targets must be probabilities")
     return -(y * logits[valid].float().log_softmax(-1)).sum(-1).mean(), int(valid.sum())
+
+def observed_composition_loss(logits, counts, observed_cells, coverage, min_observed_cells=1):
+    """CE over mapped panel classes only; low coverage and absent observations are ignored/weighted."""
+    if logits.shape != counts.shape or observed_cells.shape != logits.shape[:-1] or coverage.shape != logits.shape[:-1]:
+        raise ValueError("observed composition shapes disagree")
+    if min_observed_cells < 1 or not torch.isfinite(counts).all() or not torch.isfinite(coverage).all() or (counts < 0).any() or (coverage < 0).any() or (coverage > 1).any():
+        raise ValueError("invalid observed composition evidence")
+    mapped = counts.sum(-1); valid = (observed_cells >= min_observed_cells) & (mapped > 0) & (coverage > 0)
+    if not valid.any(): return logits.sum() * 0, 0
+    target = counts[valid].float() / mapped[valid, None]
+    per = -(target * logits[valid].float().log_softmax(-1)).sum(-1)
+    weight = coverage[valid].float()
+    return (per * weight).sum() / weight.sum().clamp_min(1e-8), int(valid.sum())

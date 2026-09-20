@@ -859,3 +859,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_region_supervision_inventory_0921_004107/`。
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC区域细胞蛋白证据清单_0921_000100.md`（运行记录）。
 - Commit: pending.
+
+## 09-21 01:35:00
+
+- Purpose: 为 CRC 区域证据新增 panel 分开的结构/免疫观测组成头和覆盖率加权损失，避免将局部 panel 观察值混为完整组织组成。
+- Changed: `benchmarks/v5/phase_3_cell_region/src/{observed_region_evidence.py,semantic_losses.py}`、`tests/test_observed_region_evidence.py`、`docs/建议/模型与训练/方案_可扩展原型与组学监督_0920_210632.md` 及本文件。
+- Validation: `conda run -n aligner python -m unittest benchmarks.v5.phase_3_cell_region.tests.test_observed_region_evidence benchmarks.v5.phase_3_cell_region.tests.test_crc_region_supervision -v` — 2 tests passed；`py_compile` 与 `git diff --check` — passed。
+- Artifacts: 无；尚未启动训练。
+- Docs record: `docs/建议/模型与训练/方案_可扩展原型与组学监督_0920_210632.md`（建议记录更新）。
+- Commit: pending.
