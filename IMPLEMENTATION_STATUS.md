@@ -850,3 +850,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/extensible_prompt/crc_tumor_roi_manifest_0920_221101/`。
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC肿瘤ROI空间任务清单_0920_221101.md`（运行记录）。
 - Commit: pending.
+
+## 09-21 00:41:07
+
+- Purpose: 将 SRRSH CRC 双 panel 公共坐标细胞表流式聚合为 H&E 物理网格的结构/免疫区域证据 inventory，保留 panel、观测量与映射覆盖率边界。
+- Changed: `benchmarks/v5/phase_3_cell_region/src/crc_region_supervision.py`、`tools/build_crc_region_supervision_inventory.py`、`tests/test_crc_region_supervision.py`、`docs/运行记录/数据审计/运行记录_CRC区域细胞蛋白证据清单_0921_000100.md` 及本文件。
+- Validation: `PYTHONPATH=. conda run -n aligner python benchmarks/v5/phase_3_cell_region/tools/build_crc_region_supervision_inventory.py --timestamp 0921_004107` — completed；三例 panel1/panel2 总观测计数与公共坐标 manifest 一致；单元测试 passed；`py_compile` 与 `git diff --check` — passed。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_region_supervision_inventory_0921_004107/`。
+- Docs record: `docs/运行记录/数据审计/运行记录_CRC区域细胞蛋白证据清单_0921_000100.md`（运行记录）。
+- Commit: pending.
