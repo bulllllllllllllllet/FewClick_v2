@@ -841,3 +841,12 @@
 - Artifacts: 无；未启动训练或生成数据缓存。
 - Docs record: `docs/建议/模型与训练/方案_可扩展原型与组学监督_0920_210632.md`（建议记录更新）。
 - Commit: pending.
+
+## 09-20 22:11:01
+
+- Purpose: 构建并审计 SRRSH CRC 三例 Tumor ROI 的首个空间任务 manifest；ROI 外不推断为非肿瘤。
+- Changed: `benchmarks/v5/phase_5_prompt_encoder/tools/build_crc_tumor_roi_manifest.py`、`benchmarks/v5/phase_5_prompt_encoder/tests/test_crc_tumor_roi_manifest.py`、`docs/运行记录/数据审计/运行记录_CRC肿瘤ROI空间任务清单_0920_221101.md` 及本文件。
+- Validation: `PYTHONPATH=. conda run -n aligner python benchmarks/v5/phase_5_prompt_encoder/tools/build_crc_tumor_roi_manifest.py --timestamp 0920_221101` — `EXIT_CODE=0`；54 个空间组通过 manifest 校验；单元测试 8 passed。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/extensible_prompt/crc_tumor_roi_manifest_0920_221101/`。
+- Docs record: `docs/运行记录/数据审计/运行记录_CRC肿瘤ROI空间任务清单_0920_221101.md`（运行记录）。
+- Commit: pending.
