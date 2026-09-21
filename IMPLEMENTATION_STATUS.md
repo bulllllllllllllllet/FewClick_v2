@@ -904,3 +904,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_panel2_observed_probe_0921_174112/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_CRC_Panel2冻结Phase2区域监督Probe_0921_174112.md`（运行记录）及方案更新。
 - Commit: pending.
+
+## 09-21 21:56:49
+
+- Purpose: 为可扩展组织任务建立显式正负标签契约和统一像素评测，完成原Phase5/单原型/多原型的真实配对诊断。
+- Changed: v5 phase_5_prompt_encoder 的 `src/tissue_tasks.py`、`src/tissue_evaluation.py`、两个对应测试、`tools/evaluate_tissue_prototypes.py`、`tools/render_tissue_diagnostic.py`及运行记录。
+- Validation: phase5 v5测试13项通过；GPU1真实单episode及分层36episode执行完成，EXIT_CODE=0；20张WSI、36个patch，所有方法相同support/GT；缓存Phase2来源核对为epoch028；可视化已检查。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/extensible_prompt/tissue_prototype_eval_0921_210659/`（最终分层诊断）；先前顺序取样目录保留。
+- Docs record: `docs/运行记录/模型实验/运行记录_组织原型统一像素评测_0921_210136.md`（运行记录）。
+- Result: 未提示区域task-macro Dice为Phase5 0.600216、单原型0.479809、多原型0.479165；仅已知组织诊断，不是新类别或等预算训练比较。
+- Commit: pending.
