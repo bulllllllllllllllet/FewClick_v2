@@ -924,3 +924,13 @@
 - Docs record: `docs/运行记录/数据审计/运行记录_组织原型空间划分_0922_001235.md`（运行记录）。
 - Result: 53534个patch，三个split覆盖全部组织和提示尺寸；保留历史暴露警示，仅支持内部冻结编码器任务头比较，尚未启动新训练。
 - Commit: pending.
+
+## 09-22 00:36:00
+
+- Purpose: 实现可学习单/多原型，并完成固定空间任务上的原Phase5等更新预算对照。
+- Changed: v5 Phase5 `src/learnable_tissue_prototype.py`、对应测试、`tools/train_tissue_prototype_comparison.py`及运行记录；v4未修改。
+- Validation: aligner unittest 18项通过；三方法真实2步冒烟及3seed×100步对照均EXIT_CODE=0；所有checkpoint重载预测一致；保存mask重算216+648条指标完全一致；git diff --check通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/extensible_prompt/tissue_head_comparison_0922_003020/`及`tissue_head_comparison_0922_003340/`；同根tmux日志记录EXIT_CODE。
+- Docs record: `docs/运行记录/模型实验/运行记录_组织可学习原型等步数对照_0922_003020.md`（运行记录）。
+- Result: 未提示像素task-macro Dice三seed均值Phase5 0.532423，单原型0.649928，多原型0.637241。仅小预算已见组织内部验证，test未使用，不宣称收敛后的架构优劣或新组织泛化。
+- Commit: pending.
