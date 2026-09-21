@@ -934,3 +934,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_组织可学习原型等步数对照_0922_003020.md`（运行记录）。
 - Result: 未提示像素task-macro Dice三seed均值Phase5 0.532423，单原型0.649928，多原型0.637241。仅小预算已见组织内部验证，test未使用，不宣称收敛后的架构优劣或新组织泛化。
 - Commit: pending.
+
+## 09-22 00:50:45
+
+- Purpose: 扩大固定任务集，比较0/100/300/1000步学习曲线及恒等token对照，检查训练预算影响。
+- Changed: v5 Phase5训练runner的多快照/零训练对照/逐任务指标持久化；新增学习曲线汇总与mask复核工具、对应单测及运行记录；v4不变。
+- Validation: aligner unittest 19项通过；真实多快照冒烟EXIT_CODE=0，与旧无中间快照第2步权重逐tensor严格一致；扩大实验9条1000步轨迹及36次checkpoint重载通过、EXIT_CODE=0；冒烟792条和扩大实验8208条像素指标由mask重算完全一致；本次diff检查通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/extensible_prompt/tissue_head_comparison_0922_004328/`及`tissue_head_comparison_0922_004524/`，同根tmux日志。
+- Docs record: `docs/运行记录/模型实验/运行记录_组织原型学习曲线_0922_004328.md`（运行记录）。
+- Result: 1000步未提示Dice三seed均值Phase5 0.489811、单原型0.563333、多原型0.562369；Phase5仍改善，原型接近平台；与前轮样本不同不可直接比较。test未使用。
+- Commit: pending.

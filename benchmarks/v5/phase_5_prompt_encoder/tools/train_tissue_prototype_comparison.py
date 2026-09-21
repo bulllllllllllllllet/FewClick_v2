@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Equal-update internal head comparison, with fresh heads and fixed data seeds."""
 import argparse
+import copy
 import hashlib
 import json
 import os
@@ -22,7 +23,7 @@ from benchmarks.v4.phase_5_prompt_encoder.src.dataset import PromptEpisodeDatase
 from benchmarks.v4.phase_5_prompt_encoder.src.model import PromptRegionModel
 from benchmarks.v4.phase_6_mask_decoder.src.model import project_region_probabilities
 from benchmarks.v5.phase_5_prompt_encoder.src.learnable_tissue_prototype import LearnableTissuePrototype, unprompted_bce
-from benchmarks.v5.phase_5_prompt_encoder.src.tissue_evaluation import pixel_metrics, task_macro
+from benchmarks.v5.phase_5_prompt_encoder.src.tissue_evaluation import pixel_metrics, task_macro, prototype_logits
 
 
 def build_model(method):
@@ -47,6 +48,8 @@ def main():
     p.add_argument('--split-dir', type=Path, default=Path('/nfs-medical3/zyh/fewclick_v2/extensible_prompt/tissue_spatial_split_0922_001235'))
     p.add_argument('--device', default='cuda:1')
     p.add_argument('--steps', type=int, default=100)
+    p.add_argument('--milestones', type=int, nargs='+', default=None)
+    p.add_argument('--include-controls', action='store_true')
     p.add_argument('--batch-size', type=int, default=12)
     p.add_argument('--train-per-stratum', type=int, default=8)
     p.add_argument('--val-per-stratum', type=int, default=1)
@@ -54,6 +57,10 @@ def main():
     a = p.parse_args()
     if not re.fullmatch(r'\d{4}_\d{6}', a.timestamp) or min(a.steps, a.batch_size, a.train_per_stratum, a.val_per_stratum) < 1:
         raise ValueError('invalid arguments')
+    milestones = sorted(set(a.milestones or [a.steps]))
+    if min(milestones) < 1 or max(milestones) > a.steps or len(set(a.seeds)) != len(a.seeds):
+        raise ValueError('invalid milestones or duplicate seeds')
+    milestones = sorted(set(milestones + [a.steps]))
     out = Path('/nfs-medical3/zyh/fewclick_v2/extensible_prompt')/('tissue_head_comparison_'+a.timestamp)
     out.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(4)
@@ -68,7 +75,13 @@ def main():
         tuple(range(12)), eligibility_index=split/'eligibility_index.parquet') for s in ('train', 'val')}
     chosen = {s: stratified_indices(ds, a.train_per_stratum if s == 'train' else a.val_per_stratum, 20260922)
               for s, ds in datasets.items()}
-    items = {s: [ds[i] for i in chosen[s]] for s, ds in datasets.items()}
+    items = {}
+    for s, ds in datasets.items():
+        items[s] = []
+        for j, i in enumerate(chosen[s]):
+            items[s].append(ds[i])
+            if j % 100 == 0:
+                print(json.dumps(dict(event='loading', split=s, loaded=j+1, total=len(chosen[s]), pid=os.getpid())), flush=True)
     if set(x['patch_id'] for x in items['train']) & set(x['patch_id'] for x in items['val']):
         raise ValueError('patch leakage')
     rng = np.random.default_rng(20260922)
@@ -100,12 +113,32 @@ def main():
     def batch(xs):
         return {k:v.to(device) if torch.is_tensor(v) else v for k,v in collate_prompt_episodes(xs).items()}
     models = {}
+    def snapshot(model, optimizer, seed, method, step):
+        # deepcopy and strict reload into the copy do not consume RNG or change
+        # the live model/optimizer: all milestones belong to one trajectory.
+        restored = copy.deepcopy(model).cpu().eval()
+        path = out/f'{method}_seed{seed}_step{step}.pth'
+        torch.save(dict(model=restored.state_dict(), method=method, seed=seed, steps=step,
+                        optimizer=optimizer.state_dict(), data_hash=manifest['data_hash']), path)
+        restored.load_state_dict(torch.load(path, map_location='cpu', weights_only=False)['model'], strict=True)
+        was_training = model.training
+        model.eval()
+        probe = batch(items['train'][:1])
+        with torch.no_grad():
+            reference = model(probe)['logits'].cpu()
+            torch.testing.assert_close(reference, restored.to(device)(probe)['logits'].cpu(), rtol=1e-5, atol=1e-6)
+        model.train(was_training)
+        models[(seed, method, step)] = restored.cpu()
+        log(dict(event='checkpoint_verified', seed=seed, method=method, step=step,
+                 parameters=sum(p.numel() for p in model.parameters())))
     for seed in a.seeds:
         for method in ('phase5', 'single', 'multi'):
             torch.manual_seed(seed)
             torch.cuda.manual_seed_all(seed)
             model = build_model(method).to(device).train()
             optimizer = torch.optim.AdamW(model.parameters(), lr=.001, weight_decay=.0001)
+            if a.include_controls:
+                snapshot(model, optimizer, seed, method, 0)
             start = time.monotonic()
             for step in range(a.steps):
                 b = batch([items['train'][i] for i in order[step*a.batch_size:(step+1)*a.batch_size]])
@@ -117,21 +150,9 @@ def main():
                 torch.nn.utils.clip_grad_norm_(model.parameters(), 1., error_if_nonfinite=True)
                 optimizer.step()
                 log(dict(event='step', seed=seed, method=method, step=step+1, loss=float(loss.detach()), elapsed=time.monotonic()-start))
-            model.eval()
-            probe = batch(items['train'][:1])
-            with torch.no_grad():
-                reference = model(probe)['logits'].cpu()
-            path = out/f'{method}_seed{seed}_final.pth'
-            torch.save(dict(model=model.cpu().state_dict(), method=method, seed=seed, steps=a.steps,
-                            optimizer=optimizer.state_dict(), data_hash=manifest['data_hash']), path)
-            restored = build_model(method).to(device)
-            restored.load_state_dict(torch.load(path, map_location=device, weights_only=False)['model'], strict=True)
-            restored.eval()
-            with torch.no_grad():
-                torch.testing.assert_close(reference, restored(probe)['logits'].cpu(), rtol=1e-5, atol=1e-6)
-            models[(seed, method)] = restored.cpu()
-            log(dict(event='checkpoint_verified', seed=seed, method=method, parameters=sum(p.numel() for p in model.parameters())))
-            del optimizer, model, restored
+                if step + 1 in milestones:
+                    snapshot(model, optimizer, seed, method, step+1)
+            del optimizer, model
     root = Path('/nfs-medical3/zyh/v4/phase2/runs/phase_2_region_encoder_train_20260717_161240')
     cfg = load_config(root/'config_snapshot.json')
     phase2 = load_phase2(cfg, root/'checkpoint_epoch_028.pth', device)
@@ -149,24 +170,34 @@ def main():
             assignment = phase2(pixel['image'][None].to(device), return_full_assignment=True)['assignment']
             excluded = item['all_prompted_regions'].numpy()[assignment.argmax(1)[0].cpu().numpy()]
             masks = dict(gt=target, valid=valid, prompt_excluded=excluded)
-            for (seed, method), model in models.items():
+            predictions = {}
+            for (seed, method, step), model in models.items():
                 model.to(device)
-                prob = project_region_probabilities(assignment, model(b)['logits'])['pixel_probability'][0].cpu().numpy()
+                predictions[(seed, method, step)] = model(b)['logits']
                 model.cpu()
+            if a.include_controls:
+                for mode in ('single', 'multi'):
+                    predictions[(-1, 'identity_'+mode, 0)] = prototype_logits(b, mode)
+            for (seed, method, step), logits in predictions.items():
+                prob = project_region_probabilities(assignment, logits)['pixel_probability'][0].cpu().numpy()
                 if not np.isfinite(prob).all():
                     raise ValueError('nonfinite prediction')
-                masks[f'{method}_{seed}'] = prob >= .5
+                masks[f'{method}_{seed}_step{step}'] = prob >= .5
                 for scope, mask in [('all', valid), ('unprompted', valid & ~excluded)]:
-                    results.append(dict(episode_id=position, seed=seed, method=method, scope=scope,
+                    results.append(dict(episode_id=position, seed=seed, method=method, step=step, scope=scope,
                         task_id=str(int(item['target_class'])), prompt_size=item['prompt_size'], **pixel_metrics(prob >= .5, target, mask)))
         np.savez_compressed(out/f'val_{position:04d}.npz', **masks)
+        with (out/'episode_metrics.jsonl').open('a') as f:
+            for result in results[-2*len(predictions):]:
+                f.write(json.dumps(result)+'\n')
         log(dict(event='val_episode', episode=position, patch_id=item['patch_id']))
-    report = {f'{method}_{seed}': {scope: task_macro([r for r in results if r['seed']==seed and r['method']==method and r['scope']==scope])
-              for scope in ('all','unprompted')} for seed, method in models}
-    for seed, method in models:
+    keys = sorted(set((r['seed'], r['method'], r['step']) for r in results))
+    report = {f'{method}_{seed}_step{step}': {scope: task_macro([r for r in results if r['seed']==seed and r['method']==method and r['step']==step and r['scope']==scope])
+              for scope in ('all','unprompted')} for seed, method, step in keys}
+    for seed, method, step in keys:
         for scope in ('all', 'unprompted'):
-            values = [r for r in results if r['seed']==seed and r['method']==method and r['scope']==scope]
-            report[f'{method}_{seed}'][scope]['foreground'] = task_macro([r for r in values if r['task_id'] != '2'])
+            values = [r for r in results if r['seed']==seed and r['method']==method and r['step']==step and r['scope']==scope]
+            report[f'{method}_{seed}_step{step}'][scope]['foreground'] = task_macro([r for r in values if r['task_id'] != '2'])
     (out/'episode_metrics.json').write_text(json.dumps(results, indent=2))
     (out/'metrics.json').write_text(json.dumps(report, indent=2))
     log(dict(event='complete', output=str(out)))
