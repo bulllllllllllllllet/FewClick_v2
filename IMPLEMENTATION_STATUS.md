@@ -914,3 +914,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_组织原型统一像素评测_0921_210136.md`（运行记录）。
 - Result: 未提示区域task-macro Dice为Phase5 0.600216、单原型0.479809、多原型0.479165；仅已知组织诊断，不是新类别或等预算训练比较。
 - Commit: pending.
+
+## 09-22 00:15:10
+
+- Purpose: 固定组织原型任务头对照的空间划分，不按病例分组，保守隔离完整三尺度上下文。
+- Changed: v5 Phase5 `src/tissue_spatial_split.py`、`tools/build_tissue_spatial_split.py`、对应单测及审计记录。
+- Validation: aligner `python -m unittest discover -s benchmarks/v5/phase_5_prompt_encoder/tests -v` — 16项通过；真实全量索引构建完成；train/val/test各读取一项真实缓存，有限token及正负support检查通过；git diff --check通过。pytest未安装，未改环境。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/extensible_prompt/tissue_spatial_split_0922_001235/`。
+- Docs record: `docs/运行记录/数据审计/运行记录_组织原型空间划分_0922_001235.md`（运行记录）。
+- Result: 53534个patch，三个split覆盖全部组织和提示尺寸；保留历史暴露警示，仅支持内部冻结编码器任务头比较，尚未启动新训练。
+- Commit: pending.
