@@ -886,3 +886,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_panel2_region_evidence_smoke_0921_172704/`；失败目录 `..._0921_171839/` 不可使用。
 - Docs record: `docs/运行记录/模型实验/运行记录_CRC_Panel2区域证据真实Token冒烟_{0921_171839,修正_0921_172704}.md`（运行记录）及方案更新。
 - Commit: pending.
+
+## 09-21 17:35:23
+
+- Purpose: 为 CRC panel_2 观测组成监督建立不按病例切分、但以物理 block 与 256 µm 足迹缓冲隔离的 train/val/test manifest。
+- Changed: `benchmarks/v5/phase_3_cell_region/src/panel2_spatial_manifest.py`、`tools/build_crc_panel2_spatial_manifest.py`、`tests/test_panel2_spatial_manifest.py`、`docs/运行记录/数据审计/运行记录_CRC_Panel2空间隔离训练清单_0921_173523.md` 及本文件。
+- Validation: 相关空间清单及 ExtensibleTaskContract 单元测试 6 passed；真实构建 `--timestamp 0921_173523` — `EXIT_CODE=0`，1,553 个候选中剔除 415 个跨 split 缓冲重叠 patch，保留 train/val/test=861/188/89；manifest overlap 审计通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_panel2_spatial_manifest_0921_173523/`。
+- Docs record: `docs/运行记录/数据审计/运行记录_CRC_Panel2空间隔离训练清单_0921_173523.md`（运行记录）。
+- Commit: pending.
