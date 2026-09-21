@@ -974,3 +974,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_组织跨patch提示训练_0922_005700.md`（运行记录）。
 - Result: 仅报告训练loss；尚未运行固定96对Dice/IoU评测。
 - Commit: pending.
+
+## 09-22 01:30:00
+
+- Purpose: 用固定96对跨patch迁移集评估完整训练的三seed checkpoint。
+- Changed: evaluator增加`--checkpoint-root/--seeds`以读取独立跨patch训练产物；更新训练运行记录。
+- Validation: 三seed评测均EXIT_CODE=0；固定配对、mask与指标路径完成；git diff --check通过。
+- Artifacts: `tissue_cross_patch_0922_012000/012001/012002`及评测日志；训练产物`cross_patch_train_0922_011700/011701/011702`。
+- Docs record: `docs/运行记录/模型实验/运行记录_组织跨patch提示训练_0922_005700.md`（运行记录）。
+- Result: cross Dice均值Phase5 0.1714、单原型0.4829、多原型0.4977，低于未跨patch训练模型0.4534/0.5334/0.5411；本版跨patch训练不采用，先审计任务构造与坐标/数量分布。
+- Commit: pending.

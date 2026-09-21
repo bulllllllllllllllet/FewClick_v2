@@ -24,8 +24,10 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--timestamp', required=True)
     p.add_argument('--run', type=Path, default=Path('/nfs-medical3/zyh/fewclick_v2/extensible_prompt/tissue_head_comparison_0922_004524'))
+    p.add_argument('--checkpoint-root', type=Path, default=None)
     p.add_argument('--device', default='cuda:1')
     p.add_argument('--max-queries', type=int, default=108)
+    p.add_argument('--seeds', type=int, nargs='+', default=[17,29,43])
     a = p.parse_args()
     if not re.fullmatch(r'\d{4}_\d{6}', a.timestamp) or a.max_queries < 1:
         raise ValueError('invalid arguments')
@@ -70,11 +72,12 @@ def main():
         raise ValueError('no valid pairs; do not silently relax spatial constraints')
     models = {}
     checkpoint_hashes = {}
-    for seed in (17,29,43):
+    for seed in a.seeds:
         for method in ('phase5','single','multi'):
-            path = a.run/f'{method}_seed{seed}_step1000.pth'
+            checkpoint_root = a.checkpoint_root or a.run
+            path = checkpoint_root/f'{method}_seed{seed}_step1000.pth'
             payload = torch.load(path, map_location='cpu', weights_only=False)
-            if payload['data_hash'] != previous['data_hash']:
+            if a.checkpoint_root is None and payload['data_hash'] != previous['data_hash']:
                 raise ValueError('checkpoint/data mismatch')
             model = build_model(method)
             model.load_state_dict(payload['model'], strict=True)
