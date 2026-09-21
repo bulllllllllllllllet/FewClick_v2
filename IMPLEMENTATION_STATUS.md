@@ -944,3 +944,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_组织原型学习曲线_0922_004328.md`（运行记录）。
 - Result: 1000步未提示Dice三seed均值Phase5 0.489811、单原型0.563333、多原型0.562369；Phase5仍改善，原型接近平台；与前轮样本不同不可直接比较。test未使用。
 - Commit: pending.
+
+## 09-22 00:57:00
+
+- Purpose: 验证现有1000步模型的同片跨patch提示迁移，不重新训练，不使用test。
+- Changed: v5 Phase5 `src/cross_patch_support.py`、对应测试、`tools/evaluate_cross_patch_tissue.py`及运行记录；保持support/query局部坐标独立，隔离完整上下文。
+- Validation: aligner unittest 21项通过；真实单query冒烟与完整评测EXIT_CODE=0；2112条指标由保存mask重算一致；所有local指标精确复现上轮对应query；本次diff检查通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/extensible_prompt/tissue_cross_patch_0922_005255/`及`tissue_cross_patch_0922_005516/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_组织跨patch提示迁移_0922_005255.md`（运行记录）。
+- Result: 96/108对合格，全部12类覆盖；Phase5/单原型/多原型cross Dice为0.453415/0.533374/0.541090。精确标注数匹配70对子集趋势一致，26对数量差异已披露。仅同片内部迁移，不是新类别或跨癌种泛化。
+- Commit: pending.
