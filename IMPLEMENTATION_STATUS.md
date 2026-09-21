@@ -954,3 +954,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_组织跨patch提示迁移_0922_005255.md`（运行记录）。
 - Result: 96/108对合格，全部12类覆盖；Phase5/单原型/多原型cross Dice为0.453415/0.533374/0.541090。精确标注数匹配70对子集趋势一致，26对数量差异已披露。仅同片内部迁移，不是新类别或跨癌种泛化。
 - Commit: pending.
+
+## 09-22 01:02:00
+
+- Purpose: 增加跨patch support/query episodic训练入口，support与query使用完整上下文空间隔离。
+- Changed: v5 `tools/train_cross_patch_tissue.py`、跨训练单测及运行记录；v4不变。
+- Validation: aligner unittest 22项通过；真实GPU1两步冒烟36个空间配对、三方法checkpoint和loss均完成，EXIT_CODE=0；修正边界单测后重跑通过；未读取test。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/extensible_prompt/cross_patch_train_0922_005700/`及日志。
+- Docs record: `docs/运行记录/模型实验/运行记录_组织跨patch提示训练_0922_005700.md`（运行记录）。
+- Result: 训练链路可运行，尚未形成效果结论；下一步扩大任务和seed并在固定96对迁移验证集比较。
+- Commit: pending.
