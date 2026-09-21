@@ -895,3 +895,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_panel2_spatial_manifest_0921_173523/`。
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC_Panel2空间隔离训练清单_0921_173523.md`（运行记录）。
 - Commit: pending.
+
+## 09-21 17:41:12
+
+- Purpose: 在空间隔离 CRC panel_2 清单上运行冻结 H&E Phase 2 token 的区域观测组成小规模 probe，先判断辅助监督是否具有可学习信号。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/train_crc_panel2_observed_probe.py`、`docs/运行记录/模型实验/运行记录_CRC_Panel2冻结Phase2区域监督Probe_0921_174112.md`、方案文档及本文件。
+- Validation: 真实 GPU 1 训练 `--train-per-case 32 --val-per-case 10 --epochs 10` — `EXIT_CODE=0`；96/30 个三病例均衡 patch，1,819 个 val token，best val CE=0.754778 小于 train-only mean baseline=0.770354；产物 checkpoint 和 metrics 已复核，`py_compile` 与 `git diff --check` passed。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_panel2_observed_probe_0921_174112/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_CRC_Panel2冻结Phase2区域监督Probe_0921_174112.md`（运行记录）及方案更新。
+- Commit: pending.
