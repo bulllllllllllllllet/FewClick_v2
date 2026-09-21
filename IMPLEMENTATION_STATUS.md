@@ -877,3 +877,12 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_patch_region_alignment_0921_170938/`。
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC局部Patch_Panel2区域证据候选对齐_0921_170938.md`（运行记录）及方案更新。
 - Commit: pending.
+
+## 09-21 17:27:04
+
+- Purpose: 建立 Phase 2 软 assignment 到 CRC panel_2 公共物理网格的显式 footprint 契约，并用真实 H&E token 运行 panel_2 区域观测组成 loss 的 forward/backward 冒烟。
+- Changed: `benchmarks/v5/phase_3_cell_region/src/region_footprint_contract.py`、`tools/smoke_crc_panel2_region_evidence.py`、`tests/test_region_footprint_contract.py`、两份 CRC panel_2 token 运行记录、方案文档及本文件。
+- Validation: 几何/目标门控单元测试 4 passed；首次 `0921_171839` 因低分辨率坐标步长错误失败且已归档，修正后 `PYTHONPATH=. conda run -n aligner python .../smoke_crc_panel2_region_evidence.py --timestamp 0921_172704 --device cuda:1` — `EXIT_CODE=0`，三病例各一真实 patch 的有效 token 数 58/64/61，loss 均有限。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_panel2_region_evidence_smoke_0921_172704/`；失败目录 `..._0921_171839/` 不可使用。
+- Docs record: `docs/运行记录/模型实验/运行记录_CRC_Panel2区域证据真实Token冒烟_{0921_171839,修正_0921_172704}.md`（运行记录）及方案更新。
+- Commit: pending.
