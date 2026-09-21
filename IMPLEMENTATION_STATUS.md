@@ -868,3 +868,12 @@
 - Artifacts: 无；尚未启动训练。
 - Docs record: `docs/建议/模型与训练/方案_可扩展原型与组学监督_0920_210632.md`（建议记录更新）。
 - Commit: pending.
+
+## 09-21 17:09:38
+
+- Purpose: 优先建立 CRC panel_2 五类免疫细胞区域证据与医生审核 H&E 局部 patch 的空间候选对应，为真实 token-footprint 契约前的可审计输入准备。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/build_crc_patch_region_alignment.py`、`tests/test_crc_patch_region_alignment.py`、`docs/运行记录/数据审计/运行记录_CRC局部Patch_Panel2区域证据候选对齐_0921_170938.md`、`docs/建议/模型与训练/方案_可扩展原型与组学监督_0920_210632.md` 及本文件。
+- Validation: `PYTHONPATH=. conda run -n aligner python benchmarks/v5/phase_3_cell_region/tools/build_crc_patch_region_alignment.py --timestamp 0921_170938` — `EXIT_CODE=0`，生成 2,473 条/1,553 patch 记录；相关单元测试 3 passed，`py_compile` 与 `git diff --check` passed。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_patch_region_alignment_0921_170938/`。
+- Docs record: `docs/运行记录/数据审计/运行记录_CRC局部Patch_Panel2区域证据候选对齐_0921_170938.md`（运行记录）及方案更新。
+- Commit: pending.
