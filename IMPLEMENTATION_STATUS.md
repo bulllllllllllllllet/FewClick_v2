@@ -964,3 +964,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_组织跨patch提示训练_0922_005700.md`（运行记录）。
 - Result: 训练链路可运行，尚未形成效果结论；下一步扩大任务和seed并在固定96对迁移验证集比较。
 - Commit: pending.
+
+## 09-22 01:12:00
+
+- Purpose: 完成跨patch support/query训练，准备固定迁移验证。
+- Changed: 修正跨patch runner按每个组织×提示尺寸收集`per_stratum`配对；更新训练记录。
+- Validation: 训练前CPU 1步72对检查通过；GPU1三seed完整运行各288对、1000步、三模型，均EXIT_CODE=0；产物及3000条/seed loss记录存在。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/extensible_prompt/cross_patch_train_0922_011700/`、`011701/`、`011702/`及日志。
+- Docs record: `docs/运行记录/模型实验/运行记录_组织跨patch提示训练_0922_005700.md`（运行记录）。
+- Result: 仅报告训练loss；尚未运行固定96对Dice/IoU评测。
+- Commit: pending.

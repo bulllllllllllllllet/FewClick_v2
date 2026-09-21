@@ -25,14 +25,14 @@ def main():
  for c in range(12):
   for z in ('point','small','large'):
    qs=np.flatnonzero((d.target_classes==c)&(d.prompt_sizes==z)); rng.shuffle(qs)
+   found_count=0
    for qi in qs:
     cand=np.flatnonzero((d.wsi_ids==d.wsi_ids[qi])&(d.target_classes==c)&(d.prompt_sizes==z)); rng.shuffle(cand)
     si=next((int(x) for x in cand if int(x)!=int(qi) and separated_contexts(box(d.patch_ids[qi]),box(d.patch_ids[x]))),None)
-    if si is not None: pairs.append((int(qi),si)); break
-   if len([x for x in pairs if d.target_classes[x[0]]==c and d.prompt_sizes[x[0]]==z])<a.per_stratum: raise ValueError('no pair')
-   # retain requested count deterministically by continuing if needed
-   while len([x for x in pairs if d.target_classes[x[0]]==c and d.prompt_sizes[x[0]]==z])<a.per_stratum: raise ValueError('insufficient pair')
- pairs=pairs[:12*3*a.per_stratum]
+    if si is not None:
+     pairs.append((int(qi),si)); found_count += 1
+     if found_count >= a.per_stratum: break
+   if found_count < a.per_stratum: raise ValueError(f'insufficient pair class={c} size={z}: {found_count}')
  items=[(d[q],d[s]) for q,s in pairs]; order=np.resize(np.arange(len(items)),a.steps*a.batch_size)
  def batch(xs): return {k:v.to(a.device) if torch.is_tensor(v) else v for k,v in collate_prompt_episodes(xs).items()}
  torch.manual_seed(a.seed); torch.cuda.manual_seed_all(a.seed); records=[]
