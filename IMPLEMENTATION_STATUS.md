@@ -1071,3 +1071,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase3_CRC_Panel1联合分割对照Smoke_0922_221900.md`、`docs/运行记录/模型实验/运行记录_Phase3_CRC_Panel1联合分割Gate_0922_222700.md`（运行记录）。
 - Result: Panel1 CE 平均降低0.0402，但GDPH val region accuracy平均变化-0.000327；未发现分割提升，未启动点击评测。
 - Commit: `663f6e1`.
+
+## 09-23 00:26:00
+
+- Purpose: 修复Panel1对照输入和取样，补实际像素分割及交互点击评测。
+- Changed: v5 `src/panel1_controlled.py`、`tools/run_panel1_controlled.py`、`tests/test_panel1_controlled.py`；运行记录及本文件。
+- Validation: helper 6项与已有observed loss/输入契约3项测试通过；真实GPU1五臂两步smoke `panel1_controlled_0923_002800` 完成、EXIT_CODE=0；checkpoint重载及保存mask指标复算通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_controlled_0923_002800/`，worker PID 1454829。
+- Docs record: `docs/运行记录/模型实验/运行记录_Panel1输入统一与像素点击对照_0923_001800.md`（运行记录）。
+- Result: 统一屏蔽缺失面积/类别；覆盖三例CRC和空间组；独立固定数据seed；五臂同初始化、共同主任务日程；保存权重、像素mask、逐类Dice/IoU、真实2/4/6点击和NoC；历史val诊断，不使用test。
+- Commit: 本次实现提交，后续结果条目记录版本。
