@@ -984,3 +984,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_组织跨patch提示训练_0922_005700.md`（运行记录）。
 - Result: cross Dice均值Phase5 0.1714、单原型0.4829、多原型0.4977，低于未跨patch训练模型0.4534/0.5334/0.5411；本版跨patch训练不采用，先审计任务构造与坐标/数量分布。
 - Commit: pending.
+
+## 09-22 12:35:00
+
+- Purpose: 以相同任务数量、顺序、实际support数量和初始化严格比较local与cross-patch训练。
+- Changed: 新增`paired_training.py`、严格配对训练runner及单测；新增运行记录，未修改v4。
+- Validation: aligner unittest 25项通过；真实2步冒烟EXIT_CODE=0；完整18条1000步训练轨迹与checkpoint重载通过、EXIT_CODE=0；70个固定验证对的2520条指标均由保存mask重算；九组初始化hash及训练/验证patch隔离核对通过；git diff --check通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/extensible_prompt/paired_tissue_training_0922_120811/`和`paired_tissue_training_0922_122000/`及同根日志。
+- Docs record: `docs/运行记录/模型实验/运行记录_本地与跨patch严格配对对照_0922_120811.md`（运行记录）。
+- Result: 冻结70对cross Dice：Phase5 cross训练0.4858，相对local+0.0696；单/多原型cross训练0.4943/0.4989，相对local-0.0472/-0.0329。仅内部已见组织评测，test未使用。
+- Commit: pending.
