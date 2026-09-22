@@ -1024,3 +1024,12 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_缺失目标拒识训练_0922_134102.md`（运行记录）。
 - Result: reject相对同轮mixed将空目标activation 0.7188降至0.6510、FPA 0.2672降至0.2366，cross Dice 0.5440升至0.5517；仅内部空间区域验证。
 - Commit: c03a382.
+
+## 09-22 18:27:38
+
+- Purpose: 修复 Phase 3 与 CRC panel_2 联合 smoke 的 cell-to-region 参数顺序，并补全独立 CRC validation observed-composition CE。
+- Changed: `benchmarks/v5/phase_3_cell_region/src/panel2_joint_contract.py`、`tools/run_phase3_seg_panel2_joint_smoke.py`、`tests/test_panel2_joint_contract.py`、两份 `docs/运行记录/模型实验/运行记录_Phase3分割与CRC_Panel2联合对照Smoke*0922_*.md` 及本文件。
+- Validation: `conda run -n aligner python -m unittest discover -s benchmarks/v5/phase_3_cell_region/tests -v` — 60 passed；真实 GPU1 12-step `seg_only`/`seg_plus_panel2` 对照两次均 `EXIT_CODE=0`，所有 loss 有限，GDPH validation region accuracy 均为 `0.896484375`，CRC validation panel_2 CE 为 `1.7737813/1.5642970`。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/phase3_seg_panel2_joint_smoke_{0922_182700,0922_184000}/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Phase3分割与CRC_Panel2联合对照Smoke复跑_0922_182700.md` 与 `docs/运行记录/模型实验/运行记录_Phase3分割与CRC_Panel2联合对照Smoke验证补全_0922_184000.md`（运行记录）。
+- Commit: pending.
