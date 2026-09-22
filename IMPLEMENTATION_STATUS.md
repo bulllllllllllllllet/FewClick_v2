@@ -1023,4 +1023,4 @@
 - Artifacts: `paired_tissue_training_0922_135357/`、`paired_tissue_training_0922_135508/`、`absent_tissue_target_0922_140800/`、`0922_140801/`、`0922_140802/`及同根日志；首次约束审计失败记录`reject_training_full_0922_134910.log`。
 - Docs record: `docs/运行记录/模型实验/运行记录_缺失目标拒识训练_0922_134102.md`（运行记录）。
 - Result: reject相对同轮mixed将空目标activation 0.7188降至0.6510、FPA 0.2672降至0.2366，cross Dice 0.5440升至0.5517；仅内部空间区域验证。
-- Commit: pending.
+- Commit: c03a382.
