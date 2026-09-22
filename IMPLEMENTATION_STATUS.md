@@ -1060,4 +1060,4 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_multpanel_token_contract_0922_201100/`；`crc_panel1_cached_train_0922_215417_{17,29,43}/`；`crc_panel1_cached_train_0922_215800_{17,29,43}/`；Panel2 `crc_panel2_cached_train_0922_210000_{17,29,43}/`。
 - Docs record: `docs/运行记录/特征缓存/运行记录_CRC多Panel冻结Token合同缓存_0922_202200.md`、`docs/运行记录/模型实验/运行记录_CRC_Panel2缓存长程训练_0922_210000.md`、`docs/运行记录/模型实验/运行记录_CRC_Panel1缓存训练Gate_0922_215417.md`、`docs/运行记录/模型实验/运行记录_CRC_Panel1缓存长程训练_0922_215800.md`（运行记录）。
 - Result: Panel1 确认性 CE `1.4406±0.0158` 优于常数先验 `1.5207`；Panel2 CE 未超过其常数先验，停止扩量。均未证明 FewClick 分割收益。
-- Commit: `c8ae3f0` (superseded by amend).
+- Commit: `16d5ab3`.
