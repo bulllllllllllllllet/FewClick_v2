@@ -1,6 +1,6 @@
 import unittest
 import torch
-from benchmarks.v5.phase_5_prompt_encoder.src.paired_training import shuffled_order, state_hash, support_counts
+from benchmarks.v5.phase_5_prompt_encoder.src.paired_training import shuffled_order, mixed_cross_mask, state_hash, support_counts
 
 
 class PairedTrainingTests(unittest.TestCase):
@@ -20,3 +20,8 @@ class PairedTrainingTests(unittest.TestCase):
     def test_counts_are_actual_not_padded_capacity(self):
         self.assertEqual(support_counts(dict(positive_mask=torch.tensor([True,False,True]),
                                             negative_mask=torch.tensor([True,False]))), (2,1))
+
+    def test_mixed_mask_is_fixed_and_has_requested_fraction(self):
+        mask = mixed_cross_mask(100, .25)
+        self.assertEqual(int(mask.sum()), 25)
+        self.assertTrue(torch.equal(torch.from_numpy(mask), torch.from_numpy(mixed_cross_mask(100,.25))))

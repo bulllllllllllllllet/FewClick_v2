@@ -14,6 +14,15 @@ def shuffled_order(count, length, seed=20260922):
     return np.concatenate([rng.permutation(count) for _ in range((length+count-1)//count)])[:length].tolist()
 
 
+def mixed_cross_mask(length, fraction, seed=20260923):
+    if length < 1 or not 0 < fraction < 1:
+        raise ValueError('positive length and fraction strictly between zero and one required')
+    result = np.zeros(length, dtype=bool)
+    rng = np.random.default_rng(seed)
+    result[rng.permutation(length)[:round(length*fraction)]] = True
+    return result
+
+
 def state_hash(model):
     digest = hashlib.sha256()
     for name, value in sorted(model.state_dict().items()):

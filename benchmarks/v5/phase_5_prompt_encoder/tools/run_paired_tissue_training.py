@@ -21,7 +21,7 @@ from benchmarks.v5.phase_5_prompt_encoder.tools.train_tissue_prototype_compariso
     LabelSourceDataset, project_region_probabilities, pixel_metrics, task_macro)
 from benchmarks.v5.phase_5_prompt_encoder.src.cross_patch_support import transfer_support, separated_contexts
 from benchmarks.v5.phase_5_prompt_encoder.src.learnable_tissue_prototype import unprompted_bce
-from benchmarks.v5.phase_5_prompt_encoder.src.paired_training import support_counts, shuffled_order, state_hash
+from benchmarks.v5.phase_5_prompt_encoder.src.paired_training import support_counts, shuffled_order, mixed_cross_mask, state_hash
 
 ROOT = Path('/nfs-medical3/zyh/fewclick_v2/extensible_prompt')
 SPLIT = ROOT/'tissue_spatial_split_0922_001235'
@@ -35,10 +35,14 @@ def main():
     p.add_argument('--per-stratum', type=int, default=64)
     p.add_argument('--batch-size', type=int, default=12)
     p.add_argument('--seeds', type=int, nargs='+', default=[17,29,43])
+    p.add_argument('--methods', nargs='+', choices=('phase5','single','multi'), default=['phase5','single','multi'])
+    p.add_argument('--arms', nargs='+', choices=('local','cross','mixed'), default=['local','cross'])
+    p.add_argument('--mixed-cross-fraction', type=float, default=.25)
     p.add_argument('--val-limit', type=int, default=70)
     p.add_argument('--device', default='cuda:4')
     a = p.parse_args()
-    if not re.fullmatch(r'\d{4}_\d{6}', a.timestamp) or min(a.steps,a.per_stratum,a.batch_size,a.val_limit)<1 or len(a.seeds)!=len(set(a.seeds)):
+    if (not re.fullmatch(r'\d{4}_\d{6}', a.timestamp) or min(a.steps,a.per_stratum,a.batch_size,a.val_limit)<1
+            or len(a.seeds)!=len(set(a.seeds)) or not a.methods or not a.arms or not 0 < a.mixed_cross_fraction < 1):
         raise ValueError('invalid configuration')
     out = ROOT/('paired_tissue_training_'+a.timestamp)
     out.mkdir(parents=True, exist_ok=False)
@@ -129,11 +133,16 @@ def main():
                 **{k:x[k].tolist() for k in ('positive_slot_indices','negative_slot_indices','positive_xy','negative_xy','positive_mask','negative_mask')})
         return dict(query=item(qi),support=item(si))
     order=shuffled_order(len(train_pairs),a.steps*a.batch_size)
+    mixed_mask=np.zeros(len(order),dtype=bool)
+    if 'mixed' in a.arms:
+        mixed_mask=mixed_cross_mask(len(order),a.mixed_cross_fraction)
     manifest=dict(args=vars(a),pid=os.getpid(),split_audit=fixed['split_audit'],
         frozen_val_source=str(FIXED),frozen_val_sha256=hashlib.sha256(FIXED.read_bytes()).hexdigest(),
         train_pairs=[describe(train,*pair) for pair in train_pairs],
         val_pairs=[dict(original_episode_id=orig,**describe(val,qi,si)) for qi,si,orig in val_pairs],
         excluded_count_mismatch=excluded,rejected_training_candidates=dict(rejected),order=order,
+        mixed_cross_fraction=a.mixed_cross_fraction if 'mixed' in a.arms else None,
+        mixed_cross_episode_count=int(mixed_mask.sum()) if 'mixed' in a.arms else 0,
         initialization={},scope='within-cohort seen tissues, historical encoder exposure, simulated region supports',
         loss='same unprompted query regions for both arms, per-episode BCE; support-local xy',
         budget='same query/order/update/optimizer/actual support counts; patch input content differs by treatment')
@@ -145,12 +154,12 @@ def main():
     def batch(items): return {k:v.to(device) if torch.is_tensor(v) else v for k,v in collate_prompt_episodes(items).items()}
     models={}
     for seed in a.seeds:
-        for method in ('phase5','single','multi'):
+        for method in a.methods:
             torch.manual_seed(seed)
             torch.cuda.manual_seed_all(seed)
             initial=build_model(method)
             initial_hash=state_hash(initial)
-            for arm in ('local','cross'):
+            for arm in a.arms:
                 torch.manual_seed(seed)
                 torch.cuda.manual_seed_all(seed)
                 model=copy.deepcopy(initial).to(device).train()
@@ -160,9 +169,11 @@ def main():
                 optimizer=torch.optim.AdamW(model.parameters(),lr=.001,weight_decay=.0001)
                 for step in range(a.steps):
                     selected=[]
-                    for index in order[step*a.batch_size:(step+1)*a.batch_size]:
+                    for offset,index in enumerate(order[step*a.batch_size:(step+1)*a.batch_size]):
                         qi,si=train_pairs[index]; q,s=get(train,qi),get(train,si)
-                        selected.append(q if arm=='local' else transfer_support(q,s))
+                        global_index=step*a.batch_size+offset
+                        use_cross=arm=='cross' or (arm=='mixed' and mixed_mask[global_index])
+                        selected.append(transfer_support(q,s) if use_cross else q)
                     b=batch(selected)
                     optimizer.zero_grad(set_to_none=True)
                     loss=unprompted_bce(model(b)['logits'],b)
@@ -224,12 +235,12 @@ def main():
     report={pr:{name:task_macro([r for r in results if r['protocol']==pr and r['name']==name]) for name in models} for pr in ('local','cross')}
     (out/'metrics.json').write_text(json.dumps(report,indent=2))
     summary=[]
-    for method in ('phase5','single','multi'):
+    for method in a.methods:
         for pr in ('local','cross'):
-            values={arm:[report[pr][f'{method}_{seed}_{arm}']['task_macro_dice'] for seed in a.seeds] for arm in ('local','cross')}
+            values={arm:[report[pr][f'{method}_{seed}_{arm}']['task_macro_dice'] for seed in a.seeds] for arm in a.arms}
             summary.append(dict(method=method,evaluation=pr,by_seed=values,
-                local_training_mean=float(np.mean(values['local'])),cross_training_mean=float(np.mean(values['cross'])),
-                paired_delta_mean=float(np.mean(np.array(values['cross'])-values['local']))))
+                means={arm:float(np.mean(value)) for arm,value in values.items()},
+                deltas_from_local={arm:float(np.mean(np.array(value)-values['local'])) for arm,value in values.items() if arm!='local'}))
     (out/'summary.json').write_text(json.dumps(summary,indent=2))
     log(dict(event='complete',output=str(out),verified_metric_rows=len(results),summary=summary))
 

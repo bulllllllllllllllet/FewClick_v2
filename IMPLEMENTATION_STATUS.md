@@ -994,3 +994,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_本地与跨patch严格配对对照_0922_120811.md`（运行记录）。
 - Result: 冻结70对cross Dice：Phase5 cross训练0.4858，相对local+0.0696；单/多原型cross训练0.4943/0.4989，相对local-0.0472/-0.0329。仅内部已见组织评测，test未使用。
 - Commit: pending.
+
+## 09-22 13:20:00
+
+- Purpose: 按组织错误模式测试75% local＋25% cross混合episode，缓解原型全cross训练退化。
+- Changed: 新增组织TP/FP/FN错误分析模块、测试和分析工具；严格配对runner支持methods/arms及固定混合掩膜；更新运行记录。
+- Validation: aligner unittest 28项通过；错误分析输入2520条记录完成；混合真实2步冒烟EXIT_CODE=0；完整18条1000步轨迹及70对验证EXIT_CODE=0；2520条mask指标即时重算；6组混合臂初始化hash与local/cross严格相同；git diff --check通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/extensible_prompt/paired_tissue_training_0922_130100/`、`paired_tissue_training_0922_130300/`及`paired_tissue_training_0922_122000/error_analysis.json`。
+- Docs record: `docs/运行记录/模型实验/运行记录_跨patch组织错误分析_0922_124500.md`（运行记录）。
+- Result: 远处提示Dice单原型local/mixed/cross=0.5415/0.5391/0.4943；多原型=0.5318/0.5365/0.4989。75/25混合多原型为当前兼顾local/远处提示的内部基线，test未使用。
+- Commit: pending.
