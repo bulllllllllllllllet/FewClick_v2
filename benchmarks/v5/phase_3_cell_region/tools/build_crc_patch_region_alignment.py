@@ -24,7 +24,8 @@ def main():
   hit=re.fullmatch(r'x(\d+)_y(\d+)',r['patch_name']);x,y=map(float,hit.groups());q=corners(x,y,z.patch_side_px,m)*z.mpp;lo=q.min(0);hi=q.max(0)
   selected=intersecting_regions(inventories[case],lo,hi)
   for _,v in selected.iterrows():
+   panel1={k:(int(v[k]) if k.endswith('_count') or k.endswith('_cells') else float(v[k])) for k in v.index if k.startswith('panel1_')}
    panel2={k:(int(v[k]) if k.endswith('_count') or k.endswith('_cells') else float(v[k])) for k in v.index if k.startswith('panel2_')}
-   rows.append({'case_id':case,'patch_name':r['patch_name'],'cache_path':r['path'],'transform_path':r['transform_path'],'he_tissue_fraction':t['he_tissue_fraction'],'footprint_um':[float(lo[0]),float(lo[1]),float(hi[0]),float(hi[1])],'spatial_group_id':v.spatial_group_id,'grid_x':int(v.grid_x),'grid_y':int(v.grid_y),'panel1_coverage':float(v.panel1_coverage),**panel2,'candidate_only':True})
+   rows.append({'case_id':case,'patch_name':r['patch_name'],'cache_path':r['path'],'transform_path':r['transform_path'],'he_tissue_fraction':t['he_tissue_fraction'],'footprint_um':[float(lo[0]),float(lo[1]),float(hi[0]),float(hi[1])],'spatial_group_id':v.spatial_group_id,'grid_x':int(v.grid_x),'grid_y':int(v.grid_y),**panel1,**panel2,'candidate_only':True})
  pd.DataFrame(rows).to_json(out/'alignment_candidates.jsonl',orient='records',lines=True);(out/'metadata.json').write_text(json.dumps({'schema':'crc_patch_region_alignment_candidate_v1','records':len(rows),'candidate_only':True,'reason':'footprint/grid overlap and local QC do not prove region-token correspondence'},indent=2));print(json.dumps({'output':str(out),'records':len(rows)}))
 if __name__=='__main__':main()

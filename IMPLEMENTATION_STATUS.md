@@ -540,6 +540,15 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_CosMx全切片RNA规模Gate_0908_212344.md`（run record updated）。
 - Commit: pending.
 
+## 09-22 19:10:00
+
+- Purpose: 整理 CRC panel_1 结构证据和 panel_2 免疫证据的共享 patch×公共网格候选层，为后续可复用 token contract 准备输入。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/build_crc_patch_region_alignment.py`、`docs/运行记录/数据审计/运行记录_CRC_Panel1_Panel2共享候选数据整理_0922_191000.md` 及本文件。
+- Validation: `conda run -n aligner python -m unittest benchmarks.v5.phase_3_cell_region.tests.test_crc_patch_region_alignment -v` — 2 passed；真实构建 `--timestamp 0922_191000` — `EXIT_CODE=0`，2,473 条候选字段与 inventory 一致。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_patch_region_alignment_0922_191000/`。
+- Docs record: `docs/运行记录/数据审计/运行记录_CRC_Panel1_Panel2共享候选数据整理_0922_191000.md`（运行记录）。
+- Commit: pending.
+
 ## 09-18 15:46:15
 
 - Purpose: 忽略 Python 缓存及常见本地开发、测试和打包生成文件，避免其进入 Git 工作区。
