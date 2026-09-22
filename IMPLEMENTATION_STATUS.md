@@ -1014,3 +1014,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_组织缺失目标拒识评测_0922_132442.md`（运行记录）。
 - Result: mixed多原型空目标误触发率0.7448，平均错误阳性面积0.2909；当前0.5阈值下拒识不足，需增加缺失目标训练任务后再评估。
 - Commit: pending.
+
+## 09-22 14:10:00
+
+- Purpose: 将组织缺失目标作为显式负监督episode，并在固定存在/缺失目标集上与local、mixed严格对照。
+- Changed: `paired_training.py`新增可复现的reject日程和全负query目标；paired runner新增同WSI空间隔离缺失query构造及`reject`臂；缺失目标evaluator支持冻结pair、多臂/seed/checkpoint步数；扩展单测与运行记录，未修改v4。
+- Validation: aligner单测10项、`py_compile`和`git diff --check`通过；真实2步三臂训练冒烟、checkpoint重载、mask复算及1对缺失目标评测均EXIT_CODE=0；完整9 checkpoint×1000步、70对存在目标（1260指标）和64对缺失目标×3臂评测均EXIT_CODE=0。
+- Artifacts: `paired_tissue_training_0922_135357/`、`paired_tissue_training_0922_135508/`、`absent_tissue_target_0922_140800/`、`0922_140801/`、`0922_140802/`及同根日志；首次约束审计失败记录`reject_training_full_0922_134910.log`。
+- Docs record: `docs/运行记录/模型实验/运行记录_缺失目标拒识训练_0922_134102.md`（运行记录）。
+- Result: reject相对同轮mixed将空目标activation 0.7188降至0.6510、FPA 0.2672降至0.2366，cross Dice 0.5440升至0.5517；仅内部空间区域验证。
+- Commit: pending.

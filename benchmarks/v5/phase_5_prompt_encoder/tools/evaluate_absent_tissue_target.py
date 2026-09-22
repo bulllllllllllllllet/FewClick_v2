@@ -24,6 +24,7 @@ from benchmarks.v5.phase_5_prompt_encoder.src.tissue_evaluation import absent_ta
 ROOT = Path('/nfs-medical3/zyh/fewclick_v2/extensible_prompt')
 SPLIT = ROOT/'tissue_spatial_split_0922_001235'
 RUN = ROOT/'paired_tissue_training_0922_130300'
+FROZEN = ROOT/'absent_tissue_target_0922_133000/manifest.json'
 NAMES = ('tumor_epithelium','tumor_stroma','background','necrosis','normal_gland','normal_stroma',
          'submucosa_serosa','muscle','lymphocyte_aggregate','mucus','fat','blood')
 
@@ -33,11 +34,17 @@ def main():
     p.add_argument('--timestamp',required=True)
     p.add_argument('--device',default='cuda:1')
     p.add_argument('--max-pairs',type=int,default=70)
+    p.add_argument('--run',type=Path,default=RUN)
+    p.add_argument('--frozen-pairs',type=Path,default=FROZEN)
+    p.add_argument('--method',choices=('phase5','single','multi'),default='multi')
+    p.add_argument('--arm',choices=('local','cross','mixed','reject'),default='mixed')
+    p.add_argument('--seeds',type=int,nargs='+',default=[17,29,43])
+    p.add_argument('--steps',type=int,default=1000)
     a=p.parse_args()
     if not re.fullmatch(r'\d{4}_\d{6}',a.timestamp) or a.max_pairs<1: raise ValueError('invalid arguments')
     out=ROOT/('absent_tissue_target_'+a.timestamp); out.mkdir(parents=True,exist_ok=False)
     torch.set_num_threads(4); device=torch.device(a.device)
-    run=json.loads((RUN/'manifest.json').read_text())
+    run=json.loads((a.run/'manifest.json').read_text())
     spatial=pd.read_parquet(SPLIT/'spatial_manifest.parquet').set_index('patch_id')
     if hashlib.sha256((SPLIT/'spatial_manifest.parquet').read_bytes()).hexdigest()!=run['split_audit']['manifest_sha256']:
         raise ValueError('spatial manifest changed')
@@ -52,26 +59,33 @@ def main():
         r=spatial.loc[pid]; return [float(r[k]) for k in ('context_x0','context_y0','context_x1','context_y1')]
     by_wsi=defaultdict(list)
     for i,wsi in enumerate(ds.wsi_ids): by_wsi[wsi].append(i)
-    pairs=[]; skipped=[]; rng=np.random.default_rng(20260924)
-    for support_row in run['val_pairs']:
-        support_index=int(support_row['support']['dataset_index']); support=ds[support_index]
-        target=int(support_row['query']['task']); candidates=[]
-        for query_index in by_wsi[support['wsi_id']]:
-            if query_index==support_index or target in label(query_index): continue
-            if separated_contexts(box(support['patch_id']),box(ds.patch_ids[query_index])): candidates.append(query_index)
-        if candidates:
-            query_index=int(rng.choice(candidates))
-            pairs.append(dict(target_class=target,target_name=NAMES[target],support_index=support_index,
-                support_patch_id=support['patch_id'],query_index=query_index,query_patch_id=ds.patch_ids[query_index],
-                wsi_id=support['wsi_id'],support_context=box(support['patch_id']),query_context=box(ds.patch_ids[query_index])))
-        else: skipped.append(dict(target_class=target,support_patch_id=support['patch_id'],reason='no same-slide absent target with context gap'))
-        if len(pairs)>=a.max_pairs: break
+    pairs=[]; skipped=[]
+    if a.frozen_pairs:
+        frozen=json.loads(a.frozen_pairs.read_text())
+        pairs=frozen['pairs'][:a.max_pairs]
+        skipped=frozen['skipped']
+    else:
+        rng=np.random.default_rng(20260924)
+        for support_row in run['val_pairs']:
+            support_index=int(support_row['support']['dataset_index']); support=ds[support_index]
+            target=int(support_row['query']['task']); candidates=[]
+            for query_index in by_wsi[support['wsi_id']]:
+                if query_index==support_index or target in label(query_index): continue
+                if separated_contexts(box(support['patch_id']),box(ds.patch_ids[query_index])): candidates.append(query_index)
+            if candidates:
+                query_index=int(rng.choice(candidates))
+                pairs.append(dict(target_class=target,target_name=NAMES[target],support_index=support_index,
+                    support_patch_id=support['patch_id'],query_index=query_index,query_patch_id=ds.patch_ids[query_index],
+                    wsi_id=support['wsi_id'],support_context=box(support['patch_id']),query_context=box(ds.patch_ids[query_index])))
+            else: skipped.append(dict(target_class=target,support_patch_id=support['patch_id'],reason='no same-slide absent target with context gap'))
+            if len(pairs)>=a.max_pairs: break
     if not pairs: raise ValueError('no absent-target pairs; constraints were not relaxed')
     models={}
-    for seed in (17,29,43):
-        path=RUN/f'multi_{seed}_mixed_step1000.pth'; payload=torch.load(path,map_location='cpu',weights_only=False)
-        if payload['data_hash']!=run['data_hash'] or payload['arm']!='mixed': raise ValueError('checkpoint provenance mismatch')
-        model=build_model('multi'); model.load_state_dict(payload['model'],strict=True); models[seed]=model.to(device).eval()
+    for seed in a.seeds:
+        path=a.run/f'{a.method}_{seed}_{a.arm}_step{a.steps}.pth'; payload=torch.load(path,map_location='cpu',weights_only=False)
+        if payload['data_hash']!=run['data_hash'] or payload['arm']!=a.arm or payload['method']!=a.method:
+            raise ValueError('checkpoint provenance mismatch')
+        model=build_model(a.method); model.load_state_dict(payload['model'],strict=True); models[seed]=model.to(device).eval()
     cfgroot=Path('/nfs-medical3/zyh/v4/phase2/runs/phase_2_region_encoder_train_20260717_161240')
     cfg=load_config(cfgroot/'config_snapshot.json'); phase2=load_phase2(cfg,cfgroot/'checkpoint_epoch_028.pth',device)
     table=pd.read_parquet(SPLIT/'patches_index.parquet').set_index('patch_id')
@@ -81,6 +95,10 @@ def main():
     for position,pair in enumerate(pairs):
         support,query=ds[pair['support_index']],ds[pair['query_index']]
         if pair['target_class'] in label(pair['query_index']): raise ValueError('target unexpectedly present')
+        if (support['patch_id']!=pair['support_patch_id'] or query['patch_id']!=pair['query_patch_id']
+                or support['wsi_id']!=query['wsi_id']
+                or not separated_contexts(box(support['patch_id']),box(query['patch_id']))):
+            raise ValueError('frozen pair identity/geometry mismatch')
         item=transfer_support(query,support); pixel=source[position]; gt=pixel['mask'].numpy(); valid=np.isin(gt,range(12))
         with torch.inference_mode():
             assignment=phase2(pixel['image'][None].to(device),return_full_assignment=True)['assignment']
@@ -88,18 +106,19 @@ def main():
             for seed,model in models.items():
                 prob=project_region_probabilities(assignment,model(batch(item))['logits'])['pixel_probability'][0].cpu().numpy()
                 pred=prob>=.5
-                masks[f'multi_mixed_{seed}']=pred
-                rows.append(dict(episode_id=position,seed=seed,**pair,**absent_target_metrics(pred,valid)))
+                masks[f'{a.method}_{a.arm}_{seed}']=pred
+                rows.append(dict(episode_id=position,method=a.method,arm=a.arm,seed=seed,**pair,**absent_target_metrics(pred,valid)))
         np.savez_compressed(out/f'episode_{position:04d}.npz',**masks)
         with (out/'metrics.jsonl').open('a') as f:
-            for row in rows[-3:]: f.write(json.dumps(row)+'\n')
+            for row in rows[-len(models):]: f.write(json.dumps(row)+'\n')
         print(json.dumps(dict(event='episode',position=position,total=len(pairs),pid=os.getpid())),flush=True)
     by_task=defaultdict(list)
     for row in rows: by_task[row['target_name']].append(row)
     by_seed={str(s):dict(activation_rate=float(np.mean([r['activated'] for r in rows if r['seed']==s])),
         false_positive_area=float(np.mean([r['false_positive_area'] for r in rows if r['seed']==s]))) for s in models}
     report=dict(protocol='same-slide spatially separated absent-target query, fixed threshold=0.5',
-        source_run=str(RUN),threshold=.5,pairs=pairs,skipped=skipped,
+        source_run=str(a.run),frozen_pairs=str(a.frozen_pairs) if a.frozen_pairs else None,
+        method=a.method,arm=a.arm,threshold=.5,pairs=pairs,skipped=skipped,
         total_pairs=len(pairs),metric_rows=len(rows),
         aggregate=dict(activation_rate=float(np.mean([r['activated'] for r in rows])),
                        mean_false_positive_area=float(np.mean([r['false_positive_area'] for r in rows])),

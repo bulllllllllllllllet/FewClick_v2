@@ -1,6 +1,7 @@
 import unittest
 import torch
-from benchmarks.v5.phase_5_prompt_encoder.src.paired_training import shuffled_order, mixed_cross_mask, state_hash, support_counts
+from benchmarks.v5.phase_5_prompt_encoder.src.paired_training import (shuffled_order, mixed_cross_mask,
+    rejection_task_masks, absent_query_target, state_hash, support_counts)
 
 
 class PairedTrainingTests(unittest.TestCase):
@@ -25,3 +26,21 @@ class PairedTrainingTests(unittest.TestCase):
         mask = mixed_cross_mask(100, .25)
         self.assertEqual(int(mask.sum()), 25)
         self.assertTrue(torch.equal(torch.from_numpy(mask), torch.from_numpy(mixed_cross_mask(100,.25))))
+
+    def test_rejection_masks_are_disjoint_and_fixed(self):
+        absent, cross = rejection_task_masks(100, .10, .15)
+        self.assertEqual(int(absent.sum()), 10)
+        self.assertEqual(int(cross.sum()), 15)
+        self.assertFalse(bool((absent & cross).any()))
+        again = rejection_task_masks(100, .10, .15)
+        self.assertTrue(torch.equal(torch.from_numpy(absent), torch.from_numpy(again[0])))
+        smoke_absent, smoke_cross = rejection_task_masks(4, .10, .15)
+        self.assertEqual(int(smoke_absent.sum()), 1)
+        self.assertEqual(int(smoke_cross.sum()), 1)
+
+    def test_absent_target_preserves_ignore_and_removes_prompt_exclusion(self):
+        item = dict(binary_target=torch.tensor([1, 0, 255]),
+                    all_prompted_regions=torch.tensor([True, False, True]))
+        result = absent_query_target(item)
+        self.assertTrue(torch.equal(result['binary_target'], torch.tensor([0, 0, 255])))
+        self.assertTrue(torch.equal(result['all_prompted_regions'], torch.tensor([False, False, False])))

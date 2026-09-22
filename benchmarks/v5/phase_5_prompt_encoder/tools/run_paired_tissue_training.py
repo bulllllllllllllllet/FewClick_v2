@@ -21,7 +21,9 @@ from benchmarks.v5.phase_5_prompt_encoder.tools.train_tissue_prototype_compariso
     LabelSourceDataset, project_region_probabilities, pixel_metrics, task_macro)
 from benchmarks.v5.phase_5_prompt_encoder.src.cross_patch_support import transfer_support, separated_contexts
 from benchmarks.v5.phase_5_prompt_encoder.src.learnable_tissue_prototype import unprompted_bce
-from benchmarks.v5.phase_5_prompt_encoder.src.paired_training import support_counts, shuffled_order, mixed_cross_mask, state_hash
+from benchmarks.v5.phase_5_prompt_encoder.src.paired_training import (
+    support_counts, shuffled_order, mixed_cross_mask, rejection_task_masks,
+    absent_query_target, state_hash)
 
 ROOT = Path('/nfs-medical3/zyh/fewclick_v2/extensible_prompt')
 SPLIT = ROOT/'tissue_spatial_split_0922_001235'
@@ -36,13 +38,17 @@ def main():
     p.add_argument('--batch-size', type=int, default=12)
     p.add_argument('--seeds', type=int, nargs='+', default=[17,29,43])
     p.add_argument('--methods', nargs='+', choices=('phase5','single','multi'), default=['phase5','single','multi'])
-    p.add_argument('--arms', nargs='+', choices=('local','cross','mixed'), default=['local','cross'])
+    p.add_argument('--arms', nargs='+', choices=('local','cross','mixed','reject'), default=['local','cross'])
     p.add_argument('--mixed-cross-fraction', type=float, default=.25)
+    p.add_argument('--reject-absent-fraction', type=float, default=.10)
+    p.add_argument('--reject-cross-present-fraction', type=float, default=.15)
     p.add_argument('--val-limit', type=int, default=70)
     p.add_argument('--device', default='cuda:4')
     a = p.parse_args()
     if (not re.fullmatch(r'\d{4}_\d{6}', a.timestamp) or min(a.steps,a.per_stratum,a.batch_size,a.val_limit)<1
-            or len(a.seeds)!=len(set(a.seeds)) or not a.methods or not a.arms or not 0 < a.mixed_cross_fraction < 1):
+            or len(a.seeds)!=len(set(a.seeds)) or not a.methods or not a.arms or not 0 < a.mixed_cross_fraction < 1
+            or not 0 < a.reject_absent_fraction < 1 or not 0 <= a.reject_cross_present_fraction < 1
+            or a.reject_absent_fraction+a.reject_cross_present_fraction >= 1):
         raise ValueError('invalid configuration')
     out = ROOT/('paired_tissue_training_'+a.timestamp)
     out.mkdir(parents=True, exist_ok=False)
@@ -76,9 +82,20 @@ def main():
     by_slide = defaultdict(list)
     for i, (w,c,z) in enumerate(zip(train.wsi_ids,train.target_classes,train.prompt_sizes)):
         by_slide[(w,int(c),z)].append(i)
+    train_by_wsi = defaultdict(list)
+    for index, wsi in enumerate(train.wsi_ids): train_by_wsi[wsi].append(index)
+    label_cache = {}
+    def label(index):
+        index = int(index)
+        if index not in label_cache: label_cache[index] = np.load(train.label_paths[index])
+        return label_cache[index]
     rng = np.random.default_rng(20260922)
+    absent_rng = np.random.default_rng(20260925)
     train_pairs = []
+    absent_train_pairs = []
+    absent_train_targets = []
     rejected = Counter()
+    absent_rejected = Counter()
     for cls in range(12):
         for size in ('point','small','large'):
             candidates = np.flatnonzero((train.target_classes==cls)&(train.prompt_sizes==size))
@@ -95,7 +112,15 @@ def main():
                         continue
                     valid = (q['binary_target']!=255)&q['fine_active'].bool()&~q['all_prompted_regions'].bool()
                     if not valid.any(): raise ValueError('no valid query supervision')
+                    absent_candidates = [candidate for candidate in train_by_wsi[s['wsi_id']]
+                                         if candidate != si and cls not in label(candidate)
+                                         and check_geometry(train.patch_ids[candidate],s['patch_id'],'train')]
+                    if not absent_candidates:
+                        absent_rejected['support_without_absent_query'] += 1
+                        continue
                     train_pairs.append((qi,si))
+                    absent_train_pairs.append((int(absent_rng.choice(absent_candidates)),si))
+                    absent_train_targets.append(cls)
                     selected+=1
                     break
                 else:
@@ -105,6 +130,11 @@ def main():
             if selected != a.per_stratum:
                 raise ValueError(f'insufficient exact-count pairs: {cls}/{size}: {selected}')
             log(dict(event='stratum',cls=cls,size=size,selected=selected))
+    # A reject episode has a real remote support, but a spatially separated query
+    # from the same WSI where that requested target is absent.  This creates an
+    # all-negative query objective without using its labels as model input.
+    for (qi, _), target in zip(absent_train_pairs, absent_train_targets):
+        if target in label(qi): raise ValueError('absent training query contains requested target')
     val_pairs = []
     excluded = []
     for original_id, pair in enumerate(fixed['pairs']):
@@ -136,17 +166,29 @@ def main():
     mixed_mask=np.zeros(len(order),dtype=bool)
     if 'mixed' in a.arms:
         mixed_mask=mixed_cross_mask(len(order),a.mixed_cross_fraction)
+    reject_absent_mask=np.zeros(len(order),dtype=bool)
+    reject_cross_mask=np.zeros(len(order),dtype=bool)
+    if 'reject' in a.arms:
+        reject_absent_mask,reject_cross_mask=rejection_task_masks(
+            len(order),a.reject_absent_fraction,a.reject_cross_present_fraction)
     manifest=dict(args=vars(a),pid=os.getpid(),split_audit=fixed['split_audit'],
         frozen_val_source=str(FIXED),frozen_val_sha256=hashlib.sha256(FIXED.read_bytes()).hexdigest(),
         train_pairs=[describe(train,*pair) for pair in train_pairs],
+        absent_train_pairs=[dict(requested_target=target,**describe(train,*pair))
+                            for (pair,target) in zip(absent_train_pairs,absent_train_targets)],
         val_pairs=[dict(original_episode_id=orig,**describe(val,qi,si)) for qi,si,orig in val_pairs],
         excluded_count_mismatch=excluded,rejected_training_candidates=dict(rejected),order=order,
         mixed_cross_fraction=a.mixed_cross_fraction if 'mixed' in a.arms else None,
         mixed_cross_episode_count=int(mixed_mask.sum()) if 'mixed' in a.arms else 0,
+        reject_absent_fraction=a.reject_absent_fraction if 'reject' in a.arms else None,
+        reject_cross_present_fraction=a.reject_cross_present_fraction if 'reject' in a.arms else None,
+        reject_absent_episode_count=int(reject_absent_mask.sum()) if 'reject' in a.arms else 0,
+        reject_cross_present_episode_count=int(reject_cross_mask.sum()) if 'reject' in a.arms else 0,
+        rejected_absent_training_candidates=dict(absent_rejected),
         initialization={},scope='within-cohort seen tissues, historical encoder exposure, simulated region supports',
-        loss='same unprompted query regions for both arms, per-episode BCE; support-local xy',
-        budget='same query/order/update/optimizer/actual support counts; patch input content differs by treatment')
-    manifest['data_hash']=hashlib.sha256(json.dumps([manifest['train_pairs'],manifest['val_pairs'],order],sort_keys=True).encode()).hexdigest()
+        loss='per-episode BCE on unprompted regions; reject episodes make every valid query region negative',
+        budget='same update/order/optimizer/initialization/actual support counts; reject arm has 75% local-present, 15% cross-present, 10% cross-absent queries')
+    manifest['data_hash']=hashlib.sha256(json.dumps([manifest['train_pairs'],manifest['absent_train_pairs'],manifest['val_pairs'],order],sort_keys=True).encode()).hexdigest()
     manifest['code_sha256']={str(path):hashlib.sha256(path.read_bytes()).hexdigest() for path in (
         Path(__file__),Path('benchmarks/v5/phase_5_prompt_encoder/src/paired_training.py'))}
     (out/'manifest.json').write_text(json.dumps(manifest,indent=2))
@@ -172,8 +214,12 @@ def main():
                     for offset,index in enumerate(order[step*a.batch_size:(step+1)*a.batch_size]):
                         qi,si=train_pairs[index]; q,s=get(train,qi),get(train,si)
                         global_index=step*a.batch_size+offset
-                        use_cross=arm=='cross' or (arm=='mixed' and mixed_mask[global_index])
-                        selected.append(transfer_support(q,s) if use_cross else q)
+                        use_cross=arm=='cross' or (arm=='mixed' and mixed_mask[global_index]) or (arm=='reject' and reject_cross_mask[global_index])
+                        if arm=='reject' and reject_absent_mask[global_index]:
+                            absent_q, absent_s = absent_train_pairs[index]
+                            selected.append(transfer_support(absent_query_target(get(train,absent_q)),get(train,absent_s)))
+                        else:
+                            selected.append(transfer_support(q,s) if use_cross else q)
                     b=batch(selected)
                     optimizer.zero_grad(set_to_none=True)
                     loss=unprompted_bce(model(b)['logits'],b)
