@@ -1051,3 +1051,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/phase3_seg_panel2_joint_smoke_{0922_182700,0922_184000}/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase3分割与CRC_Panel2联合对照Smoke复跑_0922_182700.md` 与 `docs/运行记录/模型实验/运行记录_Phase3分割与CRC_Panel2联合对照Smoke验证补全_0922_184000.md`（运行记录）。
 - Commit: pending.
+
+## 09-22 22:02:00
+
+- Purpose: 建立双 panel 冻结 token 合同，并用可比常数先验验证 Panel1/Panel2 区域组成训练。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/cache_crc_multpanel_token_contract.py`、`benchmarks/v5/phase_3_cell_region/tools/train_crc_panel2_cached.py`；缓存与 Panel1/Panel2 训练运行记录及本文件。训练器新增 `--panel`、step-0 validation、按训练采样口径的常数先验和封存评估对比。
+- Validation: `conda run -n aligner python -m py_compile ...` — passed；真实 GPU `cuda:1` 两步 smoke — passed；Panel1 gate 三 seed×200 step 与长程三 seed×1000 step 均 `EXIT_CODE=0`、指标有限且 test token 均为 5,432。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_multpanel_token_contract_0922_201100/`；`crc_panel1_cached_train_0922_215417_{17,29,43}/`；`crc_panel1_cached_train_0922_215800_{17,29,43}/`；Panel2 `crc_panel2_cached_train_0922_210000_{17,29,43}/`。
+- Docs record: `docs/运行记录/特征缓存/运行记录_CRC多Panel冻结Token合同缓存_0922_202200.md`、`docs/运行记录/模型实验/运行记录_CRC_Panel2缓存长程训练_0922_210000.md`、`docs/运行记录/模型实验/运行记录_CRC_Panel1缓存训练Gate_0922_215417.md`、`docs/运行记录/模型实验/运行记录_CRC_Panel1缓存长程训练_0922_215800.md`（运行记录）。
+- Result: Panel1 确认性 CE `1.4406±0.0158` 优于常数先验 `1.5207`；Panel2 CE 未超过其常数先验，停止扩量。均未证明 FewClick 分割收益。
+- Commit: `c8ae3f0` (superseded by amend).
