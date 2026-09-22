@@ -1081,3 +1081,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_Panel1输入统一与像素点击对照_0923_001800.md`（运行记录）。
 - Result: 统一屏蔽缺失面积/类别；覆盖三例CRC和空间组；独立固定数据seed；五臂同初始化、共同主任务日程；保存权重、像素mask、逐类Dice/IoU、真实2/4/6点击和NoC；历史val诊断，不使用test。
 - Commit: 本次实现提交，后续结果条目记录版本。
+
+## 09-23 00:34:00
+
+- Purpose: 完成修正后的Panel1三seed五臂像素/点击对照并归档全部结果。
+- Changed: `tools/summarize_panel1_controlled.py`、Panel1输入统一运行记录和本文件；训练与评测实现版本`0ae68cb`。
+- Validation: 相关unit tests 9项通过；真实两步smoke通过；正式15臂全部完成、3日志EXIT_CODE=0；21个训练checkpoint保存；mask即时复算通过；跨seed固定manifest、每seed初始化/日程/首轮158个点击任务相同的汇总审计通过；报告工具在smoke和正式产物上均通过；示例图已查看，视觉质量最终由用户判断。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_controlled_0923_003000_{17,29,43}/`；汇总`panel1_controlled_report_0923_003300/`，launch/logs `panel1_launch_0923_003000/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Panel1输入统一与像素点击对照_0923_001800.md`（运行记录）。
+- Result: seg_only像素/6点击Dice=0.695062/0.509877；joint_003=0.695265/0.511074，2/4点击及NoC未改善；joint_010=0.695472/0.506055；预训练=0.693765/0.506298；额外分割预算=0.693790/0.502943。CRC辅助臂CE未超过同口径常数先验。历史val fine-only冻结点击头诊断，尚无可靠部署收益。
+- Commit: 实现`0ae68cb`；本条与汇总工具/结果记录一起提交。
