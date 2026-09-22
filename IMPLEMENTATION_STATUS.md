@@ -540,6 +540,15 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_CosMx全切片RNA规模Gate_0908_212344.md`（run record updated）。
 - Commit: pending.
 
+## 09-22 20:00:00
+
+- Purpose: 在 CRC 双 panel 共享候选层上建立空间隔离、双 target 绑定的 manifest，作为 token 缓存和后续 panel_2/panel_1 训练的共同输入。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/build_crc_panel2_spatial_manifest.py`、`docs/运行记录/数据审计/运行记录_CRC多Panel空间隔离清单_0922_195841.md` 及本文件。
+- Validation: `conda run -n aligner python -m unittest benchmarks.v5.phase_3_cell_region.tests.test_panel2_spatial_manifest -v` — 2 passed；真实构建 `--timestamp 0922_195841` — `EXIT_CODE=0`，861/188/89 patch 的跨 split buffer 审计通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/crc_multpanel_spatial_manifest_0922_195841/`。
+- Docs record: `docs/运行记录/数据审计/运行记录_CRC多Panel空间隔离清单_0922_195841.md`（运行记录）。
+- Commit: pending.
+
 ## 09-22 19:10:00
 
 - Purpose: 整理 CRC panel_1 结构证据和 panel_2 免疫证据的共享 patch×公共网格候选层，为后续可复用 token contract 准备输入。
