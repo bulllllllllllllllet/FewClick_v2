@@ -1070,4 +1070,4 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/phase3_seg_panel1_joint_smoke_0922_222500/`及`phase3_seg_panel1_joint_smoke_0922_222700_{17,29,43}/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase3_CRC_Panel1联合分割对照Smoke_0922_221900.md`、`docs/运行记录/模型实验/运行记录_Phase3_CRC_Panel1联合分割Gate_0922_222700.md`（运行记录）。
 - Result: Panel1 CE 平均降低0.0402，但GDPH val region accuracy平均变化-0.000327；未发现分割提升，未启动点击评测。
-- Commit: pending.
+- Commit: `663f6e1`.
