@@ -1061,3 +1061,13 @@
 - Docs record: `docs/运行记录/特征缓存/运行记录_CRC多Panel冻结Token合同缓存_0922_202200.md`、`docs/运行记录/模型实验/运行记录_CRC_Panel2缓存长程训练_0922_210000.md`、`docs/运行记录/模型实验/运行记录_CRC_Panel1缓存训练Gate_0922_215417.md`、`docs/运行记录/模型实验/运行记录_CRC_Panel1缓存长程训练_0922_215800.md`（运行记录）。
 - Result: Panel1 确认性 CE `1.4406±0.0158` 优于常数先验 `1.5207`；Panel2 CE 未超过其常数先验，停止扩量。均未证明 FewClick 分割收益。
 - Commit: `16d5ab3`.
+
+## 09-22 22:30:00
+
+- Purpose: 比较 Panel1 组成辅助监督对冻结 Phase2 下 GDPH 区域分割主指标的影响。
+- Changed: `benchmarks/v5/phase_3_cell_region/tools/run_phase3_seg_panel1_joint_smoke.py`；Panel1 联合 smoke 与三 seed gate 运行记录；本文件。
+- Validation: `py_compile` 通过；真实 GPU `cuda:1` 12-step smoke 与三 seed×100-step gate 均 `EXIT_CODE=0`。固定初始化、GDPH patch 选择和顺序，CRC contract 空间划分一致。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/phase3_seg_panel1_joint_smoke_0922_222500/`及`phase3_seg_panel1_joint_smoke_0922_222700_{17,29,43}/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Phase3_CRC_Panel1联合分割对照Smoke_0922_221900.md`、`docs/运行记录/模型实验/运行记录_Phase3_CRC_Panel1联合分割Gate_0922_222700.md`（运行记录）。
+- Result: Panel1 CE 平均降低0.0402，但GDPH val region accuracy平均变化-0.000327；未发现分割提升，未启动点击评测。
+- Commit: pending.
