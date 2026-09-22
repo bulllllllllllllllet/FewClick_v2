@@ -1,10 +1,13 @@
 import unittest
 import numpy as np
 import torch
-from benchmarks.v5.phase_5_prompt_encoder.src.tissue_evaluation import pixel_metrics, task_macro, prototype_logits
+from benchmarks.v5.phase_5_prompt_encoder.src.tissue_evaluation import absent_target_metrics, pixel_metrics, task_macro, prototype_logits
 
 
 class TissueEvaluationTests(unittest.TestCase):
+    def test_absent_target_reports_false_positive_area_without_dice(self):
+        value = absent_target_metrics(np.array([[True, False], [True, False]]), np.array([[True, True], [False, True]]))
+        self.assertEqual(value, dict(valid_pixels=3, predicted_pixels=1, false_positive_area=1/3, activated=True))
     def test_ignore_and_empty_target(self):
         a = np.array([True, False, True])
         y = np.array([True, True, False])

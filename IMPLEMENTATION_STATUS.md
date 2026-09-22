@@ -1004,3 +1004,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_跨patch组织错误分析_0922_124500.md`（运行记录）。
 - Result: 远处提示Dice单原型local/mixed/cross=0.5415/0.5391/0.4943；多原型=0.5318/0.5365/0.4989。75/25混合多原型为当前兼顾local/远处提示的内部基线，test未使用。
 - Commit: pending.
+
+## 09-22 13:40:00
+
+- Purpose: 在固定0.5阈值下评测当前mixed多原型对缺失目标query的拒识能力。
+- Changed: `tissue_evaluation.py`增加空目标FP指标，新增缺失目标评测工具和运行记录；v4未修改。
+- Validation: aligner unittest 29项通过；修正工具报告字典语法后py_compile通过；真实1对冒烟和64对完整评测均EXIT_CODE=0；192条指标从保存mask重算一致，缺失标签与空间隔离检查通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/extensible_prompt/absent_tissue_target_0922_132600/`及`absent_tissue_target_0922_133000/`和日志。
+- Docs record: `docs/运行记录/模型实验/运行记录_组织缺失目标拒识评测_0922_132442.md`（运行记录）。
+- Result: mixed多原型空目标误触发率0.7448，平均错误阳性面积0.2909；当前0.5阈值下拒识不足，需增加缺失目标训练任务后再评估。
+- Commit: pending.

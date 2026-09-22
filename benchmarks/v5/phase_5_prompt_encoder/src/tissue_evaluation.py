@@ -23,6 +23,18 @@ def pixel_metrics(prediction, target, valid):
                 false_positive_area=fp/len(y) if len(y) else None)
 
 
+def absent_target_metrics(prediction, valid):
+    """Metrics for a query whose annotation contains no requested target class."""
+    prediction, valid = (np.asarray(x) for x in (prediction, valid))
+    if prediction.shape != valid.shape or prediction.dtype != np.bool_ or valid.dtype != np.bool_:
+        raise ValueError('prediction and valid must be equal-shape boolean masks')
+    predicted_pixels = int(prediction[valid].sum())
+    valid_pixels = int(valid.sum())
+    return dict(valid_pixels=valid_pixels, predicted_pixels=predicted_pixels,
+                false_positive_area=predicted_pixels/valid_pixels if valid_pixels else None,
+                activated=bool(predicted_pixels > 0))
+
+
 def task_macro(rows):
     groups = defaultdict(list)
     for row in rows:
