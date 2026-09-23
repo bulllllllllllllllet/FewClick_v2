@@ -1141,3 +1141,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_cell_context_audit_0923_141206/`；包含总览、五张逐类图、`sample_audit.csv`及`audit.json`。
 - Docs record: `docs/运行记录/数据审计/运行记录_Panel1五类细胞HE上下文可视抽查_0923_140603.md`。
 - Commit: 本次可视化实现提交；本条与记录一并提交。
+
+## 09-23 15:15:31
+
+- Purpose: 对比Panel1五类细胞的128、256及双视野H&E特征，审计淋巴内皮在源匹配数据与固定清单中的覆盖。
+- Changed: `benchmarks/v5/tools/probe_crc_panel1_multiscale_context.py`、`docs/运行记录/模型实验/运行记录_Panel1多尺度细胞上下文与淋巴标签审计_0923_144220.md`、本文件。
+- Validation: Python编译通过；真实2图块12细胞smoke通过；全量425图块10,082细胞特征提取完成、源hash/维度/有限性检查通过、EXIT_CODE=0；三臂及0.25/0.5/0.75/1上下文权重对照完成、EXIT_CODE=0；128 test逐细胞预测复现既有线性模型；源审计3,968个空间候选patch，所选细胞与源候选对账无缺失。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_multiscale_0923_144220_{audit,smoke,features,compare}/`及`panel1_multiscale_weighted_0923_151043/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Panel1多尺度细胞上下文与淋巴标签审计_0923_144220.md`。
+- Result: val macro-F1为128=0.3890、256=0.3476、直接拼接=0.3333、低权重0.25融合=0.3848；扩大上下文无整体增益。已通过基本匹配/空间筛选的独立淋巴内皮候选train/val/test=159/99/54，固定清单仅107/18/2；该类既稀少，评估清单又明显漏抽。未选候选尚未逐个复核核mask。
+- Commit: 本次实现提交；完整hash见Git历史。
