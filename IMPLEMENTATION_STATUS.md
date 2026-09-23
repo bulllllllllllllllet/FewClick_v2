@@ -1111,3 +1111,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_Panel1五类失败原因诊断_0923_122824.md`（运行记录）。
 - Result: 五类标准化RBF的test macro-F1=0.3504，上皮/血管/淋巴/CAF/SMA的F1=0.879/0.291/0/0.072/0.510；二类模型对其他148个细胞中的114个误判为血管。test曾被前序实验使用，仅供诊断。
 - Commit: 本次提交；完整hash见Git历史。
+
+## 09-23 13:10:00
+
+- Purpose: 用额外独立Panel1匹配细胞扩充五类训练集，并检验淋巴内皮/CAF训练图像增强的增益。
+- Changed: `benchmarks/v5/tools/expand_crc_panel1_cell_identity.py`、`docs/运行记录/模型实验/运行记录_Panel1训练细胞扩量与稀有类增强_0923_124600.md`、本文件。
+- Validation: 原val/test细胞逐行一致、train/eval空间组不交叉、旧特征校验复用；合成增强mask几何检查通过，真实120图块smoke通过；正式5,049个新增真实细胞特征和760个稀有类训练增强视图均有限，日志EXIT_CODE=0；旧/扩量/增强三臂模型及固定线性对照完整运行，指标产物status=complete；Python编译和定向diff检查通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_cell_expand_0923_124600/`、`panel1_cell_expand_features_0923_130008/`、`panel1_cell_expand_compare_0923_130424/`、`panel1_cell_expand_compare_0923_130633/`；真实smoke另见运行记录。
+- Docs record: `docs/运行记录/模型实验/运行记录_Panel1训练细胞扩量与稀有类增强_0923_124600.md`（运行记录）。
+- Result: 固定平衡线性分类器的旧/扩量/增强test五类macro-F1=0.4235/0.4413/0.4457；增强使CAF test F1=0.220，但血管和SMA相对仅扩量下降，淋巴test仍只有2个、F1=0。旧test多次使用，均为探索性结果。
+- Commit: 本次提交；完整hash见Git历史。
