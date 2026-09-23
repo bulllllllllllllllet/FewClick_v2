@@ -1151,3 +1151,12 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_Panel1多尺度细胞上下文与淋巴标签审计_0923_144220.md`。
 - Result: val macro-F1为128=0.3890、256=0.3476、直接拼接=0.3333、低权重0.25融合=0.3848；扩大上下文无整体增益。已通过基本匹配/空间筛选的独立淋巴内皮候选train/val/test=159/99/54，固定清单仅107/18/2；该类既稀少，评估清单又明显漏抽。未选候选尚未逐个复核核mask。
 - Commit: 本次实现提交；完整hash见Git历史。
+## 09-23 16:13:29
+
+- Purpose: 逐个复核Panel1未选淋巴内皮匹配，构建五类均衡补充评估清单并复测冻结多尺度模型。
+- Changed: `benchmarks/v5/tools/audit_crc_panel1_eval_candidates.py`、`benchmarks/v5/tools/evaluate_crc_panel1_supplement.py`、两份Panel1补充评估运行记录、本文件。
+- Validation: 两工具编译通过；真实源数据扫描与500细胞双视野提取/冻结分类器复测均`EXIT_CODE=0`；133个未选淋巴候选逐一核mask复核通过，500个补充细胞通过源hash与空间分组检查。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_eval_supplement_0923_155834/`和`panel1_eval_supplement_scores_0923_155610/`。
+- Docs record: `docs/运行记录/数据审计/运行记录_Panel1未选淋巴细胞复核与补充评估_0923_155448.md`、`docs/运行记录/模型实验/运行记录_Panel1补充评估清单多尺度复测_0923_155610.md`。
+- Result: 补充test五类各50个；128准确率0.408、macro-F1 0.393，256为0.344/0.332，直接融合为0.368/0.347；淋巴内皮128识别11/50。
+- Commit: 本次实现提交；完整hash见Git历史。
