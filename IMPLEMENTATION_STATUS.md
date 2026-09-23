@@ -1091,3 +1091,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_Panel1输入统一与像素点击对照_0923_001800.md`（运行记录）。
 - Result: seg_only像素/6点击Dice=0.695062/0.509877；joint_003=0.695265/0.511074，2/4点击及NoC未改善；joint_010=0.695472/0.506055；预训练=0.693765/0.506298；额外分割预算=0.693790/0.502943。CRC辅助臂CE未超过同口径常数先验。历史val fine-only冻结点击头诊断，尚无可靠部署收益。
 - Commit: 实现`0ae68cb`；本条与汇总工具/结果记录一起提交。
+
+## 09-23 12:14:00
+
+- Purpose: 验证Panel1已定位新H&E细胞的身份识别，重点评价上皮与血管内皮。
+- Changed: `benchmarks/v5/tools/run_crc_panel1_cell_identity.py`、`refit_crc_panel1_cell_identity.py`、`run_crc_panel1_binary.py`、`benchmarks/v5/phase_3_cell_region/tests/test_crc_panel1_cell_identity.py`、本文件及Panel1单细胞试验记录。
+- Validation: Python编译通过；2项空间/标签/逐类指标契约测试通过；真实40图块smoke和160图块正式特征提取/训练完成；五类三seed、缩放修正三seed、二类模型真实运行；二类模型从真实H&E图像及核mask独立加载推理成功；测试预测表与混淆矩阵复核。`aligner`环境未装pytest，因此契约函数通过直接调用执行。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_cell_identity_smoke_0923_115500/`、`panel1_cell_identity_0923_120304/`、`panel1_cell_identity_refit_0923_121156/`、`panel1_cell_binary_0923_121320/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Panel1单细胞分类试验_0923_115000.md`（运行记录）。
+- Result: 五类分类头macro-F1=0.16099，全判上皮；特征缩放后macro-F1均值约0.251，血管F1仍低。上皮/血管内皮二选一在同一病例空间划分、已成功匹配的测试细胞上血管precision/recall/F1=0.864/0.911/0.887，test macro-F1=0.936；同一test经前序实验使用，属于探索性结果。其他细胞强制二选一，新病例未验证。
+- Commit: 本次提交；完整hash见Git历史。
