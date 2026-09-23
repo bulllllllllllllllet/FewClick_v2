@@ -1121,3 +1121,14 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_Panel1训练细胞扩量与稀有类增强_0923_124600.md`（运行记录）。
 - Result: 固定平衡线性分类器的旧/扩量/增强test五类macro-F1=0.4235/0.4413/0.4457；增强使CAF test F1=0.220，但血管和SMA相对仅扩量下降，淋巴test仍只有2个、F1=0。旧test多次使用，均为探索性结果。
 - Commit: 本次提交；完整hash见Git历史。
+
+## 09-23 13:46:00
+
+- Purpose: 在Panel1现有可用训练空间组内，从未使用的匹配patch补充五类真实细胞，并复核扩量和稀有类增强的影响。
+- Changed: `benchmarks/v5/tools/supplement_crc_panel1_spatial.py`、本运行记录、本文件。
+- Validation: 新增1,178个细胞、61个patch，覆盖22个训练空间组；五类都增加，原val/test逐行一致且train/eval空间组隔离；新增特征1,178个、旧特征8,904个复用，896个稀有类增强视图；对照三臂完整、EXIT_CODE=0；Python编译检查通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_spatial_add_0923_131606/`、`panel1_spatial_features_0923_134100/`、`panel1_spatial_compare_0923_134500/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Panel1空间分散五类训练补充_0923_131606.md`。
+- Result: 旧训练/新增真实patch/再加增强的验证macro-F1=0.3726/0.3872/0.4146，既有test macro-F1=0.4413/0.4309/0.4499。真实扩量单独未改善test总分；增强臂较旧训练高0.0086，但淋巴test仅2个仍F1=0，血管/SMA未同时改善。既有test多次使用，结果仅探索性。
+- Limitation: 此前43个未覆盖train空间组没有通过当前匹配表/配准筛选的可用细胞；新增样本来自原22个可用训练组内的新patch。未做跨病例验证。
+- Commit: 本次实现提交；本条与实验记录一起提交。
