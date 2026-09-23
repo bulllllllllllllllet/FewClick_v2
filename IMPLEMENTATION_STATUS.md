@@ -1101,3 +1101,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_Panel1单细胞分类试验_0923_115000.md`（运行记录）。
 - Result: 五类分类头macro-F1=0.16099，全判上皮；特征缩放后macro-F1均值约0.251，血管F1仍低。上皮/血管内皮二选一在同一病例空间划分、已成功匹配的测试细胞上血管precision/recall/F1=0.864/0.911/0.887，test macro-F1=0.936；同一test经前序实验使用，属于探索性结果。其他细胞强制二选一，新病例未验证。
 - Commit: 本次提交；完整hash见Git历史。
+
+## 09-23 12:32:00
+
+- Purpose: 查明Panel1五类分类失败及二类高分的条件。
+- Changed: `benchmarks/v5/tools/diagnose_crc_panel1_five_class.py`、`docs/运行记录/模型实验/运行记录_Panel1五类失败原因诊断_0923_122824.md`、前轮Panel1单细胞记录的后续诊断引用、本文件。
+- Validation: 同一固定manifest的3,855个真实细胞特征完成train-only标准化、五类线性/RBF验证集选择、既有test逐类评估及10组类别两两验证探针，status=complete；二类模型在全部五类test细胞上的误判数量复核；Python编译通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_cell_five_diagnostic_0923_123026/`；首轮原样保留`panel1_cell_five_diagnostic_0923_122824/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_Panel1五类失败原因诊断_0923_122824.md`（运行记录）。
+- Result: 五类标准化RBF的test macro-F1=0.3504，上皮/血管/淋巴/CAF/SMA的F1=0.879/0.291/0/0.072/0.510；二类模型对其他148个细胞中的114个误判为血管。test曾被前序实验使用，仅供诊断。
+- Commit: 本次提交；完整hash见Git历史。
