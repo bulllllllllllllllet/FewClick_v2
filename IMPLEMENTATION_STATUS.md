@@ -1132,3 +1132,12 @@
 - Result: 旧训练/新增真实patch/再加增强的验证macro-F1=0.3726/0.3872/0.4146，既有test macro-F1=0.4413/0.4309/0.4499。真实扩量单独未改善test总分；增强臂较旧训练高0.0086，但淋巴test仅2个仍F1=0，血管/SMA未同时改善。既有test多次使用，结果仅探索性。
 - Limitation: 此前43个未覆盖train空间组没有通过当前匹配表/配准筛选的可用细胞；新增样本来自原22个可用训练组内的新patch。未做跨病例验证。
 - Commit: 本次实现提交；本条与实验记录一起提交。
+
+## 09-23 14:12:06
+
+- Purpose: 为Panel1五类细胞制作H&E局部/空间上下文并排抽查图，供人工判断当前128px视野是否缺少上下文。
+- Changed: `benchmarks/v5/tools/visualize_crc_panel1_context_audit.py`、本数据审计记录、本文件。
+- Validation: `python -m py_compile ...`通过；实际生成20例，目标HE核均存在、图像与mask尺寸一致、核质心误差≤0.1px；mIF来源标签及test预测逐行归档。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_cell_context_audit_0923_141206/`；包含总览、五张逐类图、`sample_audit.csv`及`audit.json`。
+- Docs record: `docs/运行记录/数据审计/运行记录_Panel1五类细胞HE上下文可视抽查_0923_140603.md`。
+- Commit: 本次可视化实现提交；本条与记录一并提交。
