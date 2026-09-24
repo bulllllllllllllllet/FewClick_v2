@@ -1246,3 +1246,19 @@
 - Docs record: `docs/运行记录/数据审计/运行记录_Panel1未选淋巴细胞复核与补充评估_0923_155448.md`、`docs/运行记录/模型实验/运行记录_Panel1补充评估清单多尺度复测_0923_155610.md`。
 - Result: 补充test五类各50个；128准确率0.408、macro-F1 0.393，256为0.344/0.332，直接融合为0.368/0.347；淋巴内皮128识别11/50。
 - Commit: 本次实现提交；完整hash见Git历史。
+
+## 09-24 13:43:24
+
+- Purpose: 三例 Panel1 全量候选特征准备，修正全类型最近邻匹配并记录逐图块进度。
+- Changed: benchmarks/v5/tools/extract_crc_panel1_three_case_cells.py。
+- Validation: 前版两例真实 smoke 完成；修正版待真实 smoke。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_three_case_smoke_0924_134324_CASE。
+- Docs record: docs/运行记录/特征缓存/运行记录_Panel1三例候选特征全量提取_0924_134324.md（运行记录）；补记此前 运行记录_Panel1三例全切片细胞特征可行性_0923_201237.md。
+- Commit: pending。
+
+## 09-24 三例特征 smoke 验收
+
+- Validation: 三例各32真实图块全部EXIT_CODE=0；逐NPZ有限768维、匹配距离、ID唯一性和计数检查通过；候选特征469/205/602。
+- Artifacts: panel1_three_case_smoke_0924_134324_{2017-23800D,2019-00538F,2022-39941E}，位于semantic_phase3。
+- Docs record: docs/运行记录/特征缓存/运行记录_Panel1三例候选特征全量提取_0924_134324.md。
+- Status: 启动三例全量候选缓存；不视为标签已复核或训练已完成。
