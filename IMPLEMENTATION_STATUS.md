@@ -1281,3 +1281,12 @@
 - Docs record: docs/建议/模型与训练/建议_Panel1图块内细胞交叉注意力_0924_140000.md；docs/运行记录/模型实验/运行记录_Panel1图块细胞注意力对照_0924_141000.md。
 - Result: 补充test小幅改善，原test无稳定提升；保留可选结构，暂不替换默认头。
 - Commit: pending。
+
+## 09-24 16:03:26
+
+- Purpose: 检索并对照 2024–2026 H&E 单细胞识别与分子监督研究。
+- Changed: docs/建议/模型与训练/建议_Panel1细胞识别近期文献对照_0924_160326.md。
+- Validation: 核对 CytoFormer、Li 等、MIPHEI、GHIST、CGT、Hist2Cell 原文定义及评价指标；标注不可直接比较的口径。
+- Artifacts: 无。
+- Docs record: docs/建议/模型与训练/建议_Panel1细胞识别近期文献对照_0924_160326.md（建议）。
+- Commit: pending。
