@@ -1262,3 +1262,22 @@
 - Artifacts: panel1_three_case_smoke_0924_134324_{2017-23800D,2019-00538F,2022-39941E}，位于semantic_phase3。
 - Docs record: docs/运行记录/特征缓存/运行记录_Panel1三例候选特征全量提取_0924_134324.md。
 - Status: 启动三例全量候选缓存；不视为标签已复核或训练已完成。
+
+## 09-24 14:00:00
+
+- Purpose: 设计 Panel1 图块内细胞交叉注意力及同条件对照。
+- Changed: docs/建议/模型与训练/建议_Panel1图块内细胞交叉注意力_0924_140000.md。
+- Validation: 核对扩量缓存 14,984 个细胞具有 patch/HE 坐标/空间 split；补充集 500 个细胞具备相同字段。
+- Artifacts: 待运行。
+- Docs record: docs/建议/模型与训练/建议_Panel1图块内细胞交叉注意力_0924_140000.md（建议）。
+- Commit: pending。
+
+## 09-24 14:12:00
+
+- Purpose: 实现 Panel1 目标细胞与同图块其他细胞的交叉注意力，核验128/128+256双视野效果。
+- Changed: benchmarks/v5/tools/train_crc_panel1_patch_attention.py；建议及实验记录各一份。
+- Validation: py_compile通过；真实两轮smoke通过；三种子×两输入视野×两模型全部完成EXIT_CODE=0，空间组核对、特征有限值及无邻居通路检查通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_patch_attention_{full_0924_140700,seed23_0924_141500,seed47_0924_141500,dual_seed11_0924_141000,dual_seed23_0924_141000,dual_seed47_0924_141000}。
+- Docs record: docs/建议/模型与训练/建议_Panel1图块内细胞交叉注意力_0924_140000.md；docs/运行记录/模型实验/运行记录_Panel1图块细胞注意力对照_0924_141000.md。
+- Result: 补充test小幅改善，原test无稳定提升；保留可选结构，暂不替换默认头。
+- Commit: pending。
