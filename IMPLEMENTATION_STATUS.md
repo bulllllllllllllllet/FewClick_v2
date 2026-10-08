@@ -1320,3 +1320,13 @@
 - Docs record: docs/运行记录/数据审计/运行记录_Panel1三例配准一图抽查_1008_141000.md（运行记录）。
 - Result: 三例各强/低对照图块均在单张总览图中展示，供人工确认局部配准；不以抽样图计算标签准确率。
 - Commit: pending。
+
+## 10-08 14:48:27
+
+- Purpose: 比较Panel1 16/32/64/128像素单细胞视野并制作同细胞尺寸可视化。
+- Changed: benchmarks/v5/tools/probe_crc_panel1_small_cell_crops.py；benchmarks/v5/tools/visualize_crc_panel1_small_crops.py；docs/运行记录/模型实验/运行记录_Panel1小视野细胞特征对照_1008_143551.md。
+- Validation: 真实50细胞smoke和3,177细胞正式提取/同名单分类评估通过，正式日志EXIT_CODE=0；核掩膜保留、源图/mask哈希、空间组隔离及有限768维特征核对通过；可视化六行真实图完成，py_compile与git diff --check通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_small_cell_crop_full_1008_143551；panel1_small_crop_visual_1008_144519。
+- Docs record: docs/运行记录/模型实验/运行记录_Panel1小视野细胞特征对照_1008_143551.md（运行记录）。
+- Result: 16px有734/3,177核掩膜保留不足90%；32px原val macro-F1较128高0.024，但均衡补充test几乎持平，暂不替换默认输入。
+- Commit: pending。
