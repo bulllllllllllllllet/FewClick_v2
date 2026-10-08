@@ -1290,3 +1290,13 @@
 - Artifacts: 无。
 - Docs record: docs/建议/模型与训练/建议_Panel1细胞识别近期文献对照_0924_160326.md（建议）。
 - Commit: pending。
+
+## 10-08 13:34:00
+
+- Purpose: 评估Panel1细胞128像素与周边256像素特征的自然聚类及融合权重。
+- Changed: benchmarks/v5/tools/evaluate_crc_panel1_dualview_clustering.py；docs/运行记录/模型实验/运行记录_Panel1双视野细胞特征聚类_1008_132510.md。
+- Validation: `python -m py_compile`、真实双臂权重smoke及五种表示×K=5/10/20完整评估均通过，正式日志均`EXIT_CODE=0`；空间组与特征有限值检查通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_dualview_cluster_{full_1008_132510,weighted_1008_133128}。
+- Docs record: docs/运行记录/模型实验/运行记录_Panel1双视野细胞特征聚类_1008_132510.md（运行记录）。
+- Result: 原始双视野等权或3:1/9:1融合未稳定优于单用细胞128视野；暂不接入Phase3。
+- Commit: pending。
