@@ -1340,3 +1340,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_Panel1_32细胞512图块全核注意力对照_1008_145700.md（运行记录）。
 - Result: 补充test三种子MLP macro-F1为32px目标0.2684、加512px整图0.2393、再加全核注意力0.2150；线性32px为0.3677、加512px为0.3745但原test从0.3970降到0.3353，无稳健提升；保持32px线性基线。
 - Commit: pending。
+
+## 10-08 20:44:53
+
+- Purpose: 在固定Panel1空间清单上检验三级细胞表征检索、多原型匹配与组成诊断，并准备官方CytoFormer同名单特征接口。
+- Changed: benchmarks/v5/tools/extract_crc_panel1_metric_views.py；evaluate_crc_panel1_metric_matching.py；extract_crc_panel1_cytoformer.py；download_cytoformer_checkpoint.py；docs/运行记录/模型实验/运行记录_Panel1三级细胞表征匹配与组成Probe_1008_152525.md；本文件。
+- Validation: 真实主图块smoke与3,177细胞/717图块冻结CTransPath全量提取通过，日志EXIT_CODE=0；四视野三级/五类检索、原型、聚类完整评估EXIT_CODE=0；外部CytoFormer接口用官方随机架构做真实112px裁剪前向，另用明确标记的轻量fixture跑通严格加载/数据读取/保存；下载器经1MB本地HTTP/SHA256端到端smoke；py_compile与git diff --check通过。官方完整checkpoint传输未成功，未宣称其表征成绩。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_metric_views_1008_152914；panel1_metric_matching_1008_153231；cytoformer_source_raw_1008_203300；cytoformer_adapter_smoke_1008_204305；cytoformer_download_smoke_1008_204400。
+- Docs record: docs/运行记录/模型实验/运行记录_Panel1三级细胞表征匹配与组成Probe_1008_152525.md（运行记录）。
+- Result: 补充test三级5-NN macro-F1为CTransPath 32px soft 0.512、128px soft 0.527、112px raw 0.524；按图块bootstrap均无稳定大视野收益，K=3聚类ARI接近0。CytoFormer权重访问已授权，但服务器CDN传输极慢/不稳定；等待本机完整checkpoint后才能完成官方编码器对照。全部细胞组成缺unknown/other真值，不具备可靠分割接入评价。
+- Commit: pending。
