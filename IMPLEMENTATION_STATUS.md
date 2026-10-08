@@ -1330,3 +1330,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_Panel1小视野细胞特征对照_1008_143551.md（运行记录）。
 - Result: 16px有734/3,177核掩膜保留不足90%；32px原val macro-F1较128高0.024，但均衡补充test几乎持平，暂不替换默认输入。
 - Commit: pending。
+
+## 10-08 15:11:17
+
+- Purpose: 验证32px目标细胞结合512px整图与同图块全部检测核cross-attention对Panel1五类识别的影响。
+- Changed: benchmarks/v5/tools/extract_crc_panel1_fullpatch_cell32.py；train_crc_panel1_fullpatch_cross_attention.py；probe_crc_panel1_patch512_linear.py；docs/运行记录/模型实验/运行记录_Panel1_32细胞512图块全核注意力对照_1008_145700.md；本文件。
+- Validation: 真实图块smoke中新旧32px特征余弦≥0.9999999；全量717图块、266,574核提取，四分片日志EXIT_CODE=0；三臂真实反传/评估smoke及三种子完整训练日志EXIT_CODE=0；线性对照完成；py_compile和git diff --check通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_fullpatch_cell32_1008_145700_shard{0,1,2,3}；panel1_fullpatch_cross_attention_1008_150718_seed{11,23,47}；panel1_patch512_linear_1008_151145。
+- Docs record: docs/运行记录/模型实验/运行记录_Panel1_32细胞512图块全核注意力对照_1008_145700.md（运行记录）。
+- Result: 补充test三种子MLP macro-F1为32px目标0.2684、加512px整图0.2393、再加全核注意力0.2150；线性32px为0.3677、加512px为0.3745但原test从0.3970降到0.3353，无稳健提升；保持32px线性基线。
+- Commit: pending。
