@@ -1310,3 +1310,13 @@
 - Docs record: docs/运行记录/数据审计/运行记录_Panel1三例候选细胞标签与特征复核_1008_134723.md（运行记录）。
 - Result: 缓存内部无误；可作弱标签探索训练，但缺独立细胞配准QC，三例全量不能作已验证训练/测试真值。
 - Commit: pending。
+
+## 10-08 14:18:51
+
+- Purpose: 生成三例Panel1 H&E与mIF DAPI配准的一张人工抽查总览图，并澄清2017原始标注的独立NFS挂载。
+- Changed: benchmarks/v5/tools/visualize_crc_panel1_three_case_registration.py；docs/运行记录/数据审计/运行记录_Panel1三例配准一图抽查_1008_141000.md。
+- Validation: 真实图块smoke及三例六图块正式绘图通过；六组512×512原图、84个展示细胞坐标和≤4px匹配距离核对通过；py_compile与git diff --check通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_registration_contact_sheet_1008_141725/three_case_registration_contact_sheet.png；同目录displayed_cells.csv。
+- Docs record: docs/运行记录/数据审计/运行记录_Panel1三例配准一图抽查_1008_141000.md（运行记录）。
+- Result: 三例各强/低对照图块均在单张总览图中展示，供人工确认局部配准；不以抽样图计算标签准确率。
+- Commit: pending。
