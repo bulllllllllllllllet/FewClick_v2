@@ -1300,3 +1300,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_Panel1双视野细胞特征聚类_1008_132510.md（运行记录）。
 - Result: 原始双视野等权或3:1/9:1融合未稳定优于单用细胞128视野；暂不接入Phase3。
 - Commit: pending。
+
+## 10-08 14:05:52
+
+- Purpose: 复核Panel1三例候选细胞特征、源mIF标签与训练可用性。
+- Changed: benchmarks/v5/tools/audit_crc_panel1_candidate_integrity.py；docs/运行记录/数据审计/运行记录_Panel1三例候选细胞标签与特征复核_1008_134723.md。
+- Validation: 三例379,756条缓存一致性全量通过；2019/2022共177,977条源表SHA256、ID/坐标、六marker数值阈值和标签规则全量通过，日志均EXIT_CODE=0；真实图块smoke、py_compile通过。2017源表NFS5超时，未宣称复核完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_candidate_integrity_cache_full_1008_135230；panel1_candidate_marker_numeric_full_1008_140200。
+- Docs record: docs/运行记录/数据审计/运行记录_Panel1三例候选细胞标签与特征复核_1008_134723.md（运行记录）。
+- Result: 缓存内部无误；可作弱标签探索训练，但缺独立细胞配准QC，三例全量不能作已验证训练/测试真值。
+- Commit: pending。
