@@ -1350,3 +1350,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_Panel1三级细胞表征匹配与组成Probe_1008_152525.md（运行记录）。
 - Result: 补充test三级5-NN macro-F1为CTransPath 32px soft 0.512、128px soft 0.527、112px raw 0.524；按图块bootstrap均无稳定大视野收益，K=3聚类ARI接近0。CytoFormer权重访问已授权，但服务器CDN传输极慢/不稳定；等待本机完整checkpoint后才能完成官方编码器对照。全部细胞组成缺unknown/other真值，不具备可靠分割接入评价。
 - Commit: pending。
+
+## 10-08 21:41:17
+
+- Purpose: 用用户提供的官方 CytoFormer 完整权重，完成固定 Panel1 清单的真实表征提取与同协议匹配比较。
+- Changed: docs/运行记录/模型实验/运行记录_Panel1官方CytoFormer表征匹配_1008_213625.md；本文件。
+- Validation: 官方权重 SHA256 与 2,726,343,169 字节元数据一致；真实单图块 strict 加载 smoke 通过；717 图块/3,177 细胞全量提取和匹配评估日志均 EXIT_CODE=0；特征哈希、有限 `(3177,1536)` 输出、源清单同一性及配对图块 bootstrap 核验通过；文档 whitespace 检查通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/semantic_phase3/cytoformer_official_features_1008_213625；panel1_cytoformer_matching_1008_213625。
+- Docs record: docs/运行记录/模型实验/运行记录_Panel1官方CytoFormer表征匹配_1008_213625.md（运行记录）。
+- Result: 补充 test 三级 5-NN macro-F1 CytoFormer 0.646、CTransPath 128px soft 0.527，按图块 bootstrap 差值 +0.119，95% 区间 [+0.030,+0.215]；五类 0.478 对 0.328。仅单病例空间清单，不代表全核组成或组织分割增益。
+- Commit: 本次提交（哈希见 Git 历史）。
