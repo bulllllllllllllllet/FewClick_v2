@@ -1371,3 +1371,13 @@
 - Docs record: `docs/建议/模型与训练/建议_组织边界像素细化对照_1014_172905.md`（建议）；`docs/运行记录/模型实验/运行记录_组织边界像素细化_1014_172905.md`（运行记录）。
 - Result: 边界臂诊断最佳epoch2，BF1@2 0.378112→0.383427、macro Dice 0.746599→0.748918、micro Dice 0.837744→0.835600、边界带IoU@2 0.229588→0.233230。增益CI均跨0且新增1个提示质心符号违约，eligible为空；普通像素臂边界退化。不晋升、不替换J5。仅开发性空间验证，旧初始化历史暴露、val同时选模，未读取test。
 - Commit: 本次独立提交；保留用户原有staged和unstaged内容，台账仅提交本条追加，不包含既有删除。
+
+## 10-14 18:53:23
+
+- Purpose: 系统审计组织边界瓶颈与历史训练，形成稠密解码、高分辨率融合和独立图块扩量路线。
+- Changed: `benchmarks/v5/phase_6_mask_decoder/audit_boundary_capacity.py`、`tests/test_boundary_capacity.py`；本次建议、运行记录与本条。
+- Validation: aligner定向unittest 2项通过；2例真实smoke及两次64例完整审计均EXIT_CODE=0；最终重放误差0、最小二乘KKT残差≤1.91e-8、两次summary完全一致、最终源码哈希匹配；108份历史metadata/230条epoch汇总与图示完成；git diff --check通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/boundary_refinement/audit_verified_1014_185010/`及日志；smoke/初版`audit_smoke_1014_184115`、`audit_1014_184115`保留。最终worker PID3570470，已完成。
+- Docs record: `docs/建议/模型与训练/建议_组织边界系统诊断与扩量路线_1014_184115.md`（建议）；`docs/运行记录/模型实验/运行记录_组织边界历史与表达能力审计_1014_184115.md`（运行记录）。
+- Result: 原Phase6已做30×20k episode联合训练，后续J5仅layer4微调；不能把7-26去cell/固定SLIC消融解释成正常结构重训失败。64例BF1：J5=0.378112、GT拟合固定64区域=0.416137、固定12类semantic head=0.648730、GT 64×64重建=0.907478；后二类诊断不等于相同提示协议的模型提升或理论上界。现有train有37,230独立patch，上轮128 episode只有127 patch。推荐先提示条件稠密输出，再高分辨率和3k/12k/全量扩量；未启动新模型大训练、未晋升checkpoint，历史暴露限制仍在。
+- Commit: 本次独立提交，仅包含上述实现、测试、两份文档及本条追加。
