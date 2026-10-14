@@ -1381,3 +1381,13 @@
 - Docs record: `docs/建议/模型与训练/建议_组织边界系统诊断与扩量路线_1014_184115.md`（建议）；`docs/运行记录/模型实验/运行记录_组织边界历史与表达能力审计_1014_184115.md`（运行记录）。
 - Result: 原Phase6已做30×20k episode联合训练，后续J5仅layer4微调；不能把7-26去cell/固定SLIC消融解释成正常结构重训失败。64例BF1：J5=0.378112、GT拟合固定64区域=0.416137、固定12类semantic head=0.648730、GT 64×64重建=0.907478；后二类诊断不等于相同提示协议的模型提升或理论上界。现有train有37,230独立patch，上轮128 episode只有127 patch。推荐先提示条件稠密输出，再高分辨率和3k/12k/全量扩量；未启动新模型大训练、未晋升checkpoint，历史暴露限制仍在。
 - Commit: 本次独立提交，仅包含上述实现、测试、两份文档及本条追加。
+
+## 10-14 19:10:10
+
+- Purpose: 按用户授权实施提示条件稠密像素解码与高分辨率对照，完成真实链路验证并启动3000/1024正式pilot。
+- Changed: `dense_prompt_decoder.py`、`train_dense_boundary.py`、`report_dense_boundary.py`、`tests/test_dense_prompt_decoder.py`；本次运行记录与本条，均位于v5或文档目录。
+- Validation: 3项定向unittest通过；4train/2val/1轮两臂真实smoke EXIT_CODE=0，checkpoint重载误差均0；配对空间块bootstrap/逐类/回归子集报告和曲线真实smoke通过；git diff --check通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/boundary_refinement/dense_smoke_1014_190217/`（complete）；`dense_pilot_1014_190217/`及训练/后处理日志（running）。
+- Docs record: `docs/运行记录/模型实验/运行记录_提示稠密解码与高分辨率对照_1014_190217.md`（运行记录）；设计依据既有`建议_组织边界系统诊断与扩量路线_1014_184115.md`。
+- Result: 正式worker3646816，GPU4、两臂各8轮、3000独立train patch/1024独立val patch，已启动缓存准备；后台后处理等待完成后输出报告，未完成则退出。正式质量结果待运行，不晋升、不替换J5。旧初始化历史暴露，固定提示开发性验证。
+- Commit: 本次独立提交，仅包含上述实现、测试、运行记录与本条追加。
