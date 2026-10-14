@@ -1360,3 +1360,14 @@
 - Docs record: docs/运行记录/模型实验/运行记录_Panel1官方CytoFormer表征匹配_1008_213625.md（运行记录）。
 - Result: 补充 test 三级 5-NN macro-F1 CytoFormer 0.646、CTransPath 128px soft 0.527，按图块 bootstrap 差值 +0.119，95% 区间 [+0.030,+0.215]；五类 0.478 对 0.328。仅单病例空间清单，不代表全核组成或组织分割增益。
 - Commit: 本次提交（哈希见 Git 历史）。
+
+
+## 10-14 17:39:00
+
+- Purpose: 暂停细胞探索后，开发并验证组织边界像素残差细化，完成冻结全预算J5配对对照。
+- Changed: `benchmarks/v5/phase_6_mask_decoder/{boundary_data.py,boundary_refinement.py,probe_boundary_refinement.py,visualize_boundary_refinement.py,tests/test_boundary_refinement.py}`；建议、运行记录与本条。未修改冻结v4。
+- Validation: 5项定向unittest通过；4/2真实smoke及独立数据模块smoke均EXIT_CODE=0；128 train/64 val、两臂各4 epochs正式开发对照EXIT_CODE=0；checkpoint严格重载误差0，带外修改0；配对bootstrap与原提示坐标可视化完成，git diff --check通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/boundary_refinement/{smoke_1014_172905,development_1014_172905,standalone_smoke_1014_173832}`及配套日志。正式worker PID3239497。
+- Docs record: `docs/建议/模型与训练/建议_组织边界像素细化对照_1014_172905.md`（建议）；`docs/运行记录/模型实验/运行记录_组织边界像素细化_1014_172905.md`（运行记录）。
+- Result: 边界臂诊断最佳epoch2，BF1@2 0.378112→0.383427、macro Dice 0.746599→0.748918、micro Dice 0.837744→0.835600、边界带IoU@2 0.229588→0.233230。增益CI均跨0且新增1个提示质心符号违约，eligible为空；普通像素臂边界退化。不晋升、不替换J5。仅开发性空间验证，旧初始化历史暴露、val同时选模，未读取test。
+- Commit: 本次独立提交；保留用户原有staged和unstaged内容，台账仅提交本条追加，不包含既有删除。
