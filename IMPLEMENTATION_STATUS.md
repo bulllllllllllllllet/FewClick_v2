@@ -1421,3 +1421,13 @@
 - Docs record: `docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md`（更新状态）；`docs/运行记录/模型实验/运行记录_组织边界复现扩量与有限解冻_1014_200033.md`（最终结果）；`docs/运行记录/模型实验/运行记录_组织边界同更新预算对照_1014_221710.md`（新增控制）。
 - Result: BF1原3k/第二种子/12k=0.523092/0.522969/0.555609；同24k步12k=0.522660，无明确数据独立优势；解冻最后轮0.535022 vs匹配head0.529435。补3k×32轮=96k步避免把更多更新收益全归因于数据。开发val/历史暴露限制保留，不替换J5。
 - Commit: 本次结果与续跑记录独立提交，仅上述文档和本条。
+
+## 10-14 23:46:23
+
+- Purpose: 归档同96k预算对照，继续任务条件不确定像素细化，保持续跑清单可独立恢复。
+- Changed: `point_boundary_detail.py`、`train_point_boundary.py`、`tests/test_point_boundary_detail.py`；新建议/运行记录、续跑清单、同预算记录及本条。
+- Validation: 3项单测通过；4/2/1真实两臂smoke EXIT_CODE=0、重载误差0、GT独立选点/带外精确不变；smoke自动报告通过；同96k预算对照complete、固定1024val报告核查；git diff --check通过。
+- Artifacts: `next_stage_1014_200033/training_budget_comparison_1014_221710.json` complete；`point_detail_1014_233341/smoke_1014_233341` complete；正式`pilot_1014_233341` worker806827/GPU4 running。
+- Docs record: `建议_组织边界不确定像素细化_1014_233341.md`（建议）；`运行记录_组织边界不确定像素细化_1014_233341.md`（运行记录）；续跑清单与同预算记录更新。
+- Result: 同96k步3k/12k BF1=0.557040/0.555609，差CI跨0，无明确扩量独立优势。采用3k32轮冻结coarse，新增256px RGB细特征+语义条件点MLP，4096训练点/65536推理点，uniform vs uncertain同预算。新正式收益待完成，不把旧J5增益当本轮收益，不替换默认模型。
+- Commit: 本次独立提交，仅上述实现、测试、文档与本条。
