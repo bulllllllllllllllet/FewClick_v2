@@ -1401,3 +1401,13 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_提示稠密解码与高分辨率对照_1014_190217.md`（运行记录，追加最终结果）。
 - Result: 同1024 val，J5/dense64/dense128 BF1=0.329043/0.515206/0.523092，macro Dice=0.727406/0.786990/0.790749；dense128提升19.4及6.3个百分点，12类平均方向为正，预设开发门槛通过。仅单种子、val同时选模且旧初始化历史暴露，不替换J5；后续复核尚未启动。
 - Commit: 本次结果归档独立提交，仅运行记录及本条。
+
+## 10-14 20:14:36
+
+- Purpose: 持久化组织边界续跑清单，按授权启动第二种子、12k嵌套扩量、匹配head/layer4有限解冻对照。
+- Changed: `continue_dense_boundary.py`、`tests/test_dense_continuation.py`、`report_dense_boundary.py`；续跑清单、新运行记录及本条。
+- Validation: 2项定向unittest通过；replay/expand/finetune三种真实smoke均EXIT_CODE=0、重载误差0；layer4梯度2.8763、参数变化4.02e-6；扩量真实新增4缓存/嵌套prefix核查通过；配对新报告真实执行通过；git diff --check通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/boundary_refinement/next_stage_1014_200033/`，三种smoke complete；replica worker3953937/GPU4、finetune worker3954005/GPU5运行中，12k排队；suite_plan及自动汇总脚本留存。
+- Docs record: `docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md`（续跑建议与任务状态）；`docs/运行记录/模型实验/运行记录_组织边界复现扩量与有限解冻_1014_200033.md`（运行记录）。
+- Result: 数据seed/原1024val/提示固定，复现只改训练seed；12k嵌套包含原3k，记录24k更新量对照；head与layer4控制从原candidate同起点/重置AdamW/同预算。真实解冻重新计算图像特征且冻结BN，非缓存假解冻。正式性能待完成，不替换J5；历史初始化暴露仍在，细胞探索继续暂停。
+- Commit: 本次独立提交，仅上述代码、测试、两文档和本条。
