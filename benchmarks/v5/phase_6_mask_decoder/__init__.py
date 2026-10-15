@@ -22,6 +22,7 @@ _MODULE_GROUPS = {
     ],
     'diagnostics': [
         'audit_boundary_capacity', 'report_dense_boundary', 'visualize_boundary_refinement',
+        'visualize_test_boundary',
     ],
 }
 

@@ -1508,3 +1508,14 @@
 - Docs record: `建议_原生多层特征稠密解码对照_1015_133617.md`（建议）；`运行记录_原生多层特征稠密解码_1015_133617.md`（运行）；组织边界续跑清单更新。
 - Result: control/native/middle/full256同coarse0.557040暖启动、更新量/数据/目标；新分支零输出，原生浅/中/stem逐级融合，FP16独立cache约104GB。smoke解码约1.01/1.74/1.91/2.44ms，仅缓存后模型时延；正式质量待完成，不替换默认模型，不把更高分辨率与更强特征等同。
 - Commit: 本次实现独立提交，保留既有无关暂存和状态文档改动。
+
+
+## 10-15 14:37:43
+
+- Purpose: 按用户明确授权，在固定test图块可视化边界优化，并预先锁定未完成多尺度最后轮用于自动追加。
+- Changed: diagnostics/visualize_test_boundary.py、test_boundary_visualization.py、模块登记/README；固定测试可视化运行记录、续跑清单及本条。训练算法/参数不变。
+- Validation: 33项完整检查通过；首smoke Python API错误已修正并保留失败，smoke_v2真实一例/GT置换/图布局检查通过；正式12类各1例可视化EXIT_CODE=0；使用真实多尺度epoch0 smoke单独验证追加路径，原结果不变、标注非正式，生产固定epoch7。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/boundary_refinement/test_visualization_1015_141753/`；selection/test cache/预测/12图/3总览/HTML/CSV/report与日志；images/test_boundary_1015_141753为图库链接，不提交图片产物。
+- Docs record: `运行记录_固定测试图块边界可视化_1015_141753.md`（运行）；组织边界续跑清单/Phase6 README。
+- Result: 展示12例J5/dense/point BF1=0.352816/0.654047/0.657356；dense12升，point7升5降。历史来源train11/val1，不是完整或未见测试结论。多尺度还在训练，等待进程637492将固定full256 epoch7在同12例重放，失败停止、不替代中途模型；已校正耗时预估。
+- Commit: 本次可视化实现与记录独立提交，保留既有无关暂存和状态文档改动。

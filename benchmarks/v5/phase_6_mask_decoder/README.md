@@ -45,6 +45,8 @@ python -m benchmarks.v5.phase_6_mask_decoder.report_dense_boundary --help
 
 每个入口使用独立输出目录，所有产物写入 `/nfs-medical3/zyh/fewclick_v2/` 的带时间戳目录。`module_source("模块名")`用于获取整理后的源码位置，跨目录的源码哈希记录不再假定所有文件互为相邻文件。新增模块需登记在根 `__init__.py` 的 `_MODULE_GROUPS`。
 
+固定测试可视化入口：[visualize_test_boundary.py](diagnostics/visualize_test_boundary.py)。按预先固定的test图块和原提示生成GT/预测/放大图，模型检查点预先指定；`--prepared`复用同一批样本追加已完成多尺度模型。测试展示不参与训练或选模，逐例记录旧encoder历史暴露，不能把少量图当完整test成绩。
+
 ## 数据与结果记录
 
 使用既有空间分块数据，不重新按病例分组；同病例可跨split。旧J5初始化对部分验证区域存在历史暴露，当前验证仍属开发评价。GT可用于训练损失和声明过的模拟点击，不进入实际推理选点或模型输入。
