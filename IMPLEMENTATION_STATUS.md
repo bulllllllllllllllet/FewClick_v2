@@ -1464,3 +1464,14 @@
 - Docs record: `建议_点细化边界监督与整图目标对照_1015_125213.md`（建议）；`运行记录_点细化目标调整_1015_125213.md`（运行）；组织边界探索续跑清单更新。
 - Result: control保持采样BCE+点Dice；boundary加0.5完整推理mask边界带BCE；global仅进一步替换为整图Dice。三臂均前向69632点，较历史计算增加、反向开销不完全相同，不误称同FLOPs。正式收益待完成，coarse BF1=0.557040仍为门槛参照，不替换默认模型。
 - Commit: 本次独立实现及文档提交，保留用户已有其他暂存和状态文档改动。
+
+
+## 10-15 13:30:19
+
+- Purpose: 按用户要求整理Phase6混合实验目录，保留公共模块名、CLI及checkpoint类路径。
+- Changed: 20个源码模块归入iterative/boundary/dense/point/diagnostics；新增根包路径登记与module_source；3处源码哈希路径记账调整；根README、原交互README迁移、源码迁移表、新布局测试；目录整理运行记录与续跑清单更新。
+- Validation: 28项测试通过（21 unittest+7函数测试）；11个CLI --help通过；真实dense/point checkpoint前后预测差0；三臂4/2/1真实smoke训练/报告EXIT_CODE=0、重载差0；跨独立GPU smoke权重差1.49e-8，在2e-6容差内；17模块字节不变、3模块仅路径记账差异校验通过；git diff --check通过。pytest不可用已记录，全部函数测试通过FunctionTestCase执行，无跳过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/code_organization/phase6_1015_132345/`；源SHA256/索引快照、迁移验证、测试与CLI日志、预测对照、新独立smoke及报告。
+- Docs record: `docs/运行记录/模型实验/运行记录_Phase6代码目录整理_1015_132345.md`（运行）；Phase6根README与LAYOUT_MIGRATION_1015_132345.md；组织边界探索续跑清单更新。
+- Result: 阅读稠密分支从dense/dense_prompt_decoder.py开始，点细化在point/，报告在diagnostics/；原python -m模块名保持可用，历史source哈希按登记路径仍严格检查。原交互未跟踪源按用户本次指定范围原样迁移，原未跟踪测试不变。正式目标训练/报告在移动前已complete，未改权重、数据、模型计算或默认模型。
+- Commit: 本次独立目录整理提交，保留其他既有暂存和状态文档改动。

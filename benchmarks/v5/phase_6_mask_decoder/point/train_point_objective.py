@@ -8,6 +8,7 @@ import time
 from pathlib import Path
 import numpy as np
 import torch
+from . import module_source
 from .continue_dense_boundary import DenseContextModel
 from .point_boundary_detail import PointBoundaryDetail, training_indices
 from .point_objective import inference_indices, inference_composite, objective
@@ -26,7 +27,7 @@ def main():
     source_path = Path('/nfs-medical3/zyh/fewclick_v2/boundary_refinement/point_detail_1014_233341/pilot_1014_233341/run.json')
     source = json.loads(source_path.read_text())
     for p, digest in source['source_sha256'].items():
-        if hashlib.sha256(Path(p).read_bytes()).hexdigest() != digest:
+        if hashlib.sha256(module_source(Path(p).stem).read_bytes()).hexdigest() != digest:
             raise RuntimeError('historical point source changed')
     refs = source['refs']
     if args.smoke:
@@ -40,8 +41,7 @@ def main():
     coarse = DenseContextModel().to(device)
     coarse.load_state_dict(coarse_state, strict=True)
     coarse.requires_grad_(False).eval()
-    code = Path(__file__).parent
-    paths = [code/name for name in ['train_point_objective.py', 'point_objective.py', 'point_boundary_detail.py',
+    paths = [module_source(name.removesuffix('.py')) for name in ['train_point_objective.py', 'point_objective.py', 'point_boundary_detail.py',
                                    'continue_dense_boundary.py', 'dense_prompt_decoder.py', 'train_dense_boundary.py']]
     run = {'args': {**source['args'], 'epochs': args.epochs, 'smoke': args.smoke, 'seed': seed},
            'refs': refs, 'source': str(source_path), 'coarse_checkpoint': source['coarse_checkpoint'],

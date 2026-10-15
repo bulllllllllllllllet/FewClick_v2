@@ -17,6 +17,7 @@ import torch.nn.functional as F
 from scipy.ndimage import distance_transform_cdt
 from scipy.optimize import minimize
 
+from . import module_source
 from .boundary_data import load_baseline, make_loader, move_batch
 from .boundary_refinement import BoundaryPixelRefiner
 from .probe_boundary_refinement import metrics, summarize
@@ -72,8 +73,8 @@ def main():
                 'limit': args.limit, 'seed': ref['seed'], 'test_images_used': False,
                 'scope': 'GT-assisted development diagnostic, historical exposure; NOT model quality or a Dice upper bound',
                 'source_sha256': {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in
-                                  [Path(__file__), Path(__file__).with_name('boundary_data.py'),
-                                   Path(__file__).with_name('probe_boundary_refinement.py')]}}
+                                  [Path(__file__), module_source('boundary_data'),
+                                   module_source('probe_boundary_refinement')]}}
     (args.output/'run.json').write_text(json.dumps(manifest, indent=2))
     for i, batch in enumerate(make_loader(loader_args, metadata, 'val')):
         if i >= args.limit:

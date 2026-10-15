@@ -13,6 +13,7 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, Subset
 
+from . import module_source
 from .boundary_data import load_baseline, make_loader, move_batch
 from .dense_prompt_decoder import DensePromptDecoder, prompt_maps
 from .probe_boundary_refinement import metrics, summarize, prompt_violations
@@ -127,7 +128,7 @@ def main():
     if set(r['identity']['patch_id'] for r in refs['train']) & set(r['identity']['patch_id'] for r in refs['val']):raise RuntimeError('train/val overlap')
     run={'args':{k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()},'refs':refs,'worker_pid':os.getpid(),
          'checkpoint':str(baseline_root/'checkpoint_epoch_004.pth'),'test_used':False,'scope':'development spatial validation, historical initialization exposure',
-         'cache_seconds':time.time()-started,'cache_bytes':image_bytes,'source_sha256':{str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in [Path(__file__),Path(__file__).with_name('dense_prompt_decoder.py'),Path(__file__).with_name('boundary_data.py')]}}
+         'cache_seconds':time.time()-started,'cache_bytes':image_bytes,'source_sha256':{str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in [Path(__file__),Path(__file__).with_name('dense_prompt_decoder.py'),module_source('boundary_data')]}}
     (args.output/'run.json').write_text(json.dumps(run,indent=2))
     baseline,base_rows=evaluate(None,refs['val'],device,args.output/'baseline_rows.json')
     result={'baseline':baseline,'arms':{}};print('BASELINE',json.dumps(baseline),flush=True)
