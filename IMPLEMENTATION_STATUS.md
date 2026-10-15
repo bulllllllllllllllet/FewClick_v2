@@ -1549,3 +1549,13 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/pixel_prompt_1015_164227，含smoke、日志、正式启动脚本；尚未将smoke视为质量结论。
 - Docs record: docs/运行记录/模型实验/运行记录_逐点视觉提示稠密交互_1015_164227.md。
 - Commit: 本实现提交（可由git log定位）。
+
+
+## 10-15 16:50:20
+
+- Purpose: 记录已启动的逐点视觉提示正式三臂训练。
+- Changed: docs/运行记录/模型实验/运行记录_逐点视觉提示稠密交互_1015_164227.md; docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md。
+- Validation: worker1339627存活、run.json源码957ddcc、实际refs=3k/1024、8轮；启动脚本与smoke一致，smoke和报告EXIT_CODE=0。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/pixel_prompt_1015_164227/pilot_1015_164227; tmux pixel_prompt_formal_1015_164227，GPU2。
+- Docs record: docs/运行记录/模型实验/运行记录_逐点视觉提示稠密交互_1015_164227.md，正式结果待完成。
+- Commit: 本启动归档提交（可由git log定位）。
