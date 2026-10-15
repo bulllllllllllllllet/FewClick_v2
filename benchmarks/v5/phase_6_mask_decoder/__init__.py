@@ -12,7 +12,10 @@ _MODULE_GROUPS = {
         'prepare_spatial_routing', 'train_iterative', 'evaluate_iterative',
     ],
     'boundary': ['boundary_data', 'boundary_refinement', 'probe_boundary_refinement'],
-    'dense': ['dense_prompt_decoder', 'train_dense_boundary', 'continue_dense_boundary'],
+    'dense': [
+        'dense_prompt_decoder', 'train_dense_boundary', 'continue_dense_boundary',
+        'multiscale_dense_decoder', 'prepare_multiscale_cache', 'train_multiscale_dense',
+    ],
     'point': [
         'point_boundary_detail', 'point_objective',
         'train_point_boundary', 'train_point_objective',

@@ -85,6 +85,13 @@ def main():
             report['matched_arm_comparisons'][candidate+'_vs_'+reference]={
                 'optimizer_steps':c['optimizer_steps'],
                 'fixed_final_epoch':paired_delta(final_rows[candidate],final_rows[reference])}
+        if run.get('additional_reference_rows'):
+            report['additional_references']={}
+            for label,filename in run['additional_reference_rows'].items():
+                external=json.loads((a.run/filename).read_text())
+                report['additional_references'][label]={
+                    'summary':summarize(external),
+                    'fixed_final_epoch_comparisons':{name:paired_delta(rows,external) for name,rows in final_rows.items()}}
     fig.suptitle('Paired validation curves; developmental checkpoint selection');fig.tight_layout();fig.savefig(a.run/f'learning_curves_{a.timestamp}.png',dpi=160);plt.close(fig)
     destination.write_text(json.dumps(report,indent=2))
     print(json.dumps(report),flush=True)

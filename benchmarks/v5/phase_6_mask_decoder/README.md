@@ -15,6 +15,8 @@
 
 阅读稠密分支建议按：`dense_prompt_decoder.py`（模型）→ `train_dense_boundary.py`（初训/特征缓存）→ `continue_dense_boundary.py`（复现、扩量、有限解冻）。`high_resolution=True`使用128×128浅层特征融合；输出是加到原预测logit上的像素残差。
 
+新增多尺度对照阅读入口：[multiscale_dense_decoder.py](dense/multiscale_dense_decoder.py)（原生浅层/中层/stem逐级融合）→ [prepare_multiscale_cache.py](dense/prepare_multiscale_cache.py)（冻结encoder缓存）→ [train_multiscale_dense.py](dense/train_multiscale_dense.py)（control/native/middle/full256四臂暖启动对照）。这条路线保留完整原生特征，经可学习投影融合；当前处于实验验证阶段。
+
 点细化建议按：`point_boundary_detail.py`（模型与采样）→ `train_point_boundary.py`（原采样点损失对照）→ `point_objective.py`（恢复边界监督/整图Dice）→ `train_point_objective.py`（三臂训练）。点细化是实验路线，不能视为已经替换稠密分支。
 
 交互分支另有7项pytest风格的函数测试；完整验证方式见本次[整理运行记录](../../../docs/运行记录/模型实验/运行记录_Phase6代码目录整理_1015_132345.md)。安装pytest的环境也可使用 `python -m pytest benchmarks/v5/phase_6_mask_decoder/tests` 统一运行。

@@ -1497,3 +1497,14 @@
 - Docs record: `docs/建议/模型与训练/建议_边界优化下一阶段结构与训练路线_1015_133520.md`（建议）；`组织边界探索续跑清单_1014_200033.md`（状态）。
 - Result: 首选原生浅/中/深层特征的完整稠密解码；之后有限联合训练、难例与采样匹配；真实20x/独立交互模型为备选。不承诺提升幅度，不盲目延长小头或扩37k，未启动训练。
 - Commit: 本次建议独立提交，保留既有无关暂存和状态文档改动。
+
+
+## 10-15 13:46:35
+
+- Purpose: 实现用户授权的原生多层特征稠密解码，冻结encoder做逐项结构对照并启动正式流程。
+- Changed: dense/multiscale_dense_decoder.py、prepare_multiscale_cache.py、train_multiscale_dense.py及test_multiscale_dense.py；注册模块、报告新增外部参考配对、README；本轮建议/运行记录/续跑清单及本条。
+- Validation: 32项完整检查通过；真实4train/2val缓存encoder deep/shallow复算误差0；四臂1轮smoke训练/报告EXIT_CODE=0、初始/严格重载误差0、GT独立、新分支梯度有限非零；缓存尺寸/原split身份核查；git diff --check通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/boundary_refinement/multiscale_1015_133617/`；smoke complete，正式缓存worker409517/GPU4运行中，之后自动四臂8轮及报告。
+- Docs record: `建议_原生多层特征稠密解码对照_1015_133617.md`（建议）；`运行记录_原生多层特征稠密解码_1015_133617.md`（运行）；组织边界续跑清单更新。
+- Result: control/native/middle/full256同coarse0.557040暖启动、更新量/数据/目标；新分支零输出，原生浅/中/stem逐级融合，FP16独立cache约104GB。smoke解码约1.01/1.74/1.91/2.44ms，仅缓存后模型时延；正式质量待完成，不替换默认模型，不把更高分辨率与更强特征等同。
+- Commit: 本次实现独立提交，保留既有无关暂存和状态文档改动。
