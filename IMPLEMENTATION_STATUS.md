@@ -1599,3 +1599,13 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/external_interactive_1015_200654/pilot_1015_200654; paired_report_1015_200654.json，FP32缓存约57GB。
 - Docs record: docs/运行记录/模型实验/运行记录_SegNext同提示组织适配_1015_200654.md；本次配置未胜过dense基准，未自动启动新训练。
 - Commit: 本最终归档提交（可由git log定位）。
+
+
+## 10-16 00:48:12
+
+- Purpose: 为SegNext保持冻结编码器延长至总32轮，实现可审计权重续训与后续完整状态恢复。
+- Changed: external/run_segnext.py、tests/test_segnext_continuation.py、README；docs/运行记录/模型实验/运行记录_SegNext冻结编码器续训32轮_1016_004100.md; docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md。
+- Validation: 完整48项检查通过；CPU optimizer/Dropout RNG恢复逐权重一致；GPU2真实4/2 reset/restore续训及报告EXIT_CODE=0、backbone不变、重载0；完整源清单/旧8轮指标检查通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/segnext_continue_1016_004100；复用旧57GB缓存。
+- Docs record: docs/运行记录/模型实验/运行记录_SegNext冻结编码器续训32轮_1016_004100.md，明确旧checkpoint优化器重建，新增24轮待正式启动。
+- Commit: 本实现提交（可由git log定位）。

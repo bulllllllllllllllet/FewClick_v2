@@ -22,6 +22,8 @@
 
 SegNext是独立系统对照：相同512图块与点击，内部按预训练配置插值到1024，使用官方ViT-B、密集提示融合与FPN。先编码FP32特征，再冻结backbone适配原生交互/分割头。上游MIT许可与修改清单在[segnext_vendor/](external/segnext_vendor/)。依赖使用独立target目录和[固定版本清单](external/segnext_requirements.txt)，不修改aligner现有torch。公共入口为`python -m benchmarks.v5.phase_6_mask_decoder.run_segnext --stage prepare/train ...`，细节见[运行记录](../../../docs/运行记录/模型实验/运行记录_SegNext同提示组织适配_1015_200654.md)。
 
+SegNext续训用`--resume <checkpoint> --optimizer-policy reset/restore --epochs <总轮数>`，轮数为累计目标；保留绝对epoch样本顺序。旧8轮checkpoint缺少optimizer/RNG，需要明确reset；新checkpoint完整保存训练状态，可显式restore，状态缺失或cache不一致时报错。正式曲线继承旧轮次并标明新训练起点，16/24/32轮记录milestones。[续训记录](../../../docs/运行记录/模型实验/运行记录_SegNext冻结编码器续训32轮_1016_004100.md)。
+
 点细化建议按：`point_boundary_detail.py`（模型与采样）→ `train_point_boundary.py`（原采样点损失对照）→ `point_objective.py`（恢复边界监督/整图Dice）→ `train_point_objective.py`（三臂训练）。点细化是实验路线，不能视为已经替换稠密分支。
 
 交互分支另有7项pytest风格的函数测试；完整验证方式见本次[整理运行记录](../../../docs/运行记录/模型实验/运行记录_Phase6代码目录整理_1015_132345.md)。安装pytest的环境也可使用 `python -m pytest benchmarks/v5/phase_6_mask_decoder/tests` 统一运行。
