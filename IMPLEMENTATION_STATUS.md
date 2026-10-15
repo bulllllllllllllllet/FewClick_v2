@@ -1609,3 +1609,13 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/segnext_continue_1016_004100；复用旧57GB缓存。
 - Docs record: docs/运行记录/模型实验/运行记录_SegNext冻结编码器续训32轮_1016_004100.md，明确旧checkpoint优化器重建，新增24轮待正式启动。
 - Commit: 本实现提交（可由git log定位）。
+
+
+## 10-16 00:49:05
+
+- Purpose: 记录SegNext从8轮权重延长到总32轮的正式续训启动。
+- Changed: docs/运行记录/模型实验/运行记录_SegNext冻结编码器续训32轮_1016_004100.md; docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md。
+- Validation: worker3614682存活，源码f2a521f；run.json确认start8/end32、新增24、3k/1024、显式optimizer reset；48项检查/真实reset及restore smoke通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/segnext_continue_1016_004100/pilot_1016_004100; GPU2/CPU4，tmux segnext_continue_1016_004100。
+- Docs record: docs/运行记录/模型实验/运行记录_SegNext冻结编码器续训32轮_1016_004100.md，新增质量待完成。
+- Commit: 本启动归档提交（可由git log定位）。
