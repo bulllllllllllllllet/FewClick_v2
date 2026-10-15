@@ -1475,3 +1475,14 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_Phase6代码目录整理_1015_132345.md`（运行）；Phase6根README与LAYOUT_MIGRATION_1015_132345.md；组织边界探索续跑清单更新。
 - Result: 阅读稠密分支从dense/dense_prompt_decoder.py开始，点细化在point/，报告在diagnostics/；原python -m模块名保持可用，历史source哈希按登记路径仍严格检查。原交互未跟踪源按用户本次指定范围原样迁移，原未跟踪测试不变。正式目标训练/报告在移动前已complete，未改权重、数据、模型计算或默认模型。
 - Commit: 本次独立目录整理提交，保留其他既有暂存和状态文档改动。
+
+
+## 10-15 13:31:43
+
+- Purpose: 核查并归档点细化监督调整正式三臂结果。
+- Changed: 目标调整运行记录、组织边界续跑清单及本条；无代码/权重变更。
+- Validation: 三臂各8轮complete，训练/报告EXIT_CODE=0，strict reload误差0；1024val/107空间块固定最后轮与最佳轮报告核查，eligible_epochs均为空。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/boundary_refinement/point_objective_1015_125213/pilot_1015_125213/`，paired_report/learning_curves_1015_125213保留。
+- Docs record: `运行记录_点细化目标调整_1015_125213.md`（运行）；`组织边界探索续跑清单_1014_200033.md`（状态）。
+- Result: 最后轮coarse/control/boundary/global BF1=0.557040/0.554386/0.558671/0.559498；boundary vs control+0.004284且空间块区间全正；global额外+0.000828区间跨0。最佳global0.559950仍未达+0.01门槛，不部署、不新启训练，开发val/历史暴露限制保留。
+- Commit: 本次仅结果记录独立提交，保留既有无关修改。
