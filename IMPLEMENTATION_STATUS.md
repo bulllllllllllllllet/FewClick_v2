@@ -1529,3 +1529,13 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/multiscale_1015_133617; /nfs-medical3/zyh/fewclick_v2/boundary_refinement/test_visualization_1015_141753/multiscale_final_1015_141753。
 - Docs record: 上述训练与可视化运行记录最终归档。
 - Commit: 本归档提交（可由git log定位）。
+
+
+## 10-15 16:32:54
+
+- Purpose: 复核多层稠密平台期后的突破路线，并以固定64例诊断检验语义差距/提示硬选类/残余错误距离。
+- Changed: docs/建议/模型与训练/建议_稠密解码平台期后的突破方向_1015_162425.md; docs/运行记录/模型实验/运行记录_稠密解码剩余瓶颈诊断_1015_162425.md; docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md。
+- Validation: CPU4诊断64例EXIT_CODE=0；已存三模型指标逐例重算<1e-7、身份匹配、选类GT独立；文献为一手论文及官方实现；文档diff检查。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/remaining_bottleneck_1015_162425（diagnose.py、report.json、rows.json、selection.json、cases.json、diagnostic.log）。
+- Docs record: 上述建议记录与运行记录，未启动新长训练。
+- Commit: 本路线归档提交（可由git log定位）。
