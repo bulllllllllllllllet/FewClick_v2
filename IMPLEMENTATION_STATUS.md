@@ -1519,3 +1519,13 @@
 - Docs record: `运行记录_固定测试图块边界可视化_1015_141753.md`（运行）；组织边界续跑清单/Phase6 README。
 - Result: 展示12例J5/dense/point BF1=0.352816/0.654047/0.657356；dense12升，point7升5降。历史来源train11/val1，不是完整或未见测试结论。多尺度还在训练，等待进程637492将固定full256 epoch7在同12例重放，失败停止、不替代中途模型；已校正耗时预估。
 - Commit: 本次可视化实现与记录独立提交，保留既有无关暂存和状态文档改动。
+
+
+## 10-15 16:17:51
+
+- Purpose: 归档原生多层稠密解码四组训练及固定测试图追加的最终结果。
+- Changed: docs/运行记录/模型实验/运行记录_原生多层特征稠密解码_1015_133617.md; docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md; docs/运行记录/模型实验/运行记录_固定测试图块边界可视化_1015_141753.md。
+- Validation: 正式四组各8轮/报告 EXIT_CODE=0，重载误差0；12例正式追加 EXIT_CODE=0；JSON状态与轮数/门槛一致性检查通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/multiscale_1015_133617; /nfs-medical3/zyh/fewclick_v2/boundary_refinement/test_visualization_1015_141753/multiscale_final_1015_141753。
+- Docs record: 上述训练与可视化运行记录最终归档。
+- Commit: 本归档提交（可由git log定位）。
