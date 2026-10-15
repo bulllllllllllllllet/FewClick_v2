@@ -1579,3 +1579,13 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/external_interactive_1015_200654，权重/独立依赖/检查点不提交源码。
 - Docs record: docs/运行记录/模型实验/运行记录_SegNext同提示组织适配_1015_200654.md。
 - Commit: 本实现提交（可由git log定位）。
+
+
+## 10-15 20:24:22
+
+- Purpose: 记录SegNext独立对照正式缓存/适配/报告流程启动。
+- Changed: docs/运行记录/模型实验/运行记录_SegNext同提示组织适配_1015_200654.md; docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md。
+- Validation: 缓存worker2382677存活，源码0d9aa10，正式3k/1024；实际缓存进度已增加；45项检查与native真实smoke均通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/external_interactive_1015_200654; tmux segnext_formal_1015_200654，GPU2/CPU4。
+- Docs record: docs/运行记录/模型实验/运行记录_SegNext同提示组织适配_1015_200654.md，当前缓存阶段，正式质量待完成。
+- Commit: 本启动归档提交（可由git log定位）。
