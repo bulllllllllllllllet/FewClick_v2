@@ -62,7 +62,7 @@ def main():
         for ax,key in zip(axes,['bf1_2','dice']):
             ax.plot([h['epoch']+1 for h in arm['history']],[h[key] for h in arm['history']],'-o',label=name)
     for ax,key in zip(axes,['bf1_2','dice']):
-        ax.axhline(summary['baseline'][key],ls='--',color='black',label='frozen J5');ax.set(xlabel='Epoch',ylabel=key);ax.legend();ax.grid(alpha=.2)
+        ax.axhline(summary['baseline'][key],ls='--',color='black',label=run.get('baseline_label','Frozen baseline'));ax.set(xlabel='Epoch',ylabel=key);ax.legend();ax.grid(alpha=.2)
     if 'reference_candidate' in summary:report['reference_candidate']=summary['reference_candidate']
     if {'head_continue','layer4_continue'}<=set(summary['arms']):
         last_head=summary['arms']['head_continue']['history'][-1]['epoch']
@@ -71,6 +71,20 @@ def main():
         head_rows=json.loads((a.run/f'head_continue_epoch_{last_head:03}_rows.json').read_text())
         encoder_rows=json.loads((a.run/f'layer4_continue_epoch_{last_encoder:03}_rows.json').read_text())
         report['layer4_vs_head_at_fixed_final_epoch']=paired_delta(encoder_rows,head_rows)
+    if run.get('comparison_pairs'):
+        report['fixed_final_epoch']={}
+        report['matched_arm_comparisons']={}
+        final_rows={}
+        for name,arm in summary['arms'].items():
+            last=arm['history'][-1]
+            final_rows[name]=json.loads((a.run/f'{name}_epoch_{last["epoch"]:03}_rows.json').read_text())
+            report['fixed_final_epoch'][name]={'summary':last,'vs_baseline':paired_delta(final_rows[name],base)}
+        for candidate,reference in run['comparison_pairs']:
+            c=summary['arms'][candidate]['history'][-1];r=summary['arms'][reference]['history'][-1]
+            if c['optimizer_steps']!=r['optimizer_steps']:raise RuntimeError('unmatched arm update budgets')
+            report['matched_arm_comparisons'][candidate+'_vs_'+reference]={
+                'optimizer_steps':c['optimizer_steps'],
+                'fixed_final_epoch':paired_delta(final_rows[candidate],final_rows[reference])}
     fig.suptitle('Paired validation curves; developmental checkpoint selection');fig.tight_layout();fig.savefig(a.run/f'learning_curves_{a.timestamp}.png',dpi=160);plt.close(fig)
     destination.write_text(json.dumps(report,indent=2))
     print(json.dumps(report),flush=True)

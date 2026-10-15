@@ -1453,3 +1453,14 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_边界细化负结果诊断_1015_122728.md`（运行）；`docs/建议/模型与训练/建议_边界细化诊断后的优化优先级_1015_123014.md`（建议）；`组织边界探索续跑清单_1014_200033.md`（状态）。
 - Result: 24val中uncertain epoch0修好18345/改坏31729像素；被测残差缩放均未超过coarse。选区漏掉21.97%边界带错误；12train中训练点与推理选区重合uniform31.50%/uncertain73.09%。代码确认未保留边界带BCE、整图Dice改为点Dice；因果贡献待受控验证，优先逐项核查目标与采样，再决定完整多尺度特征。未新训练、不替换默认模型，小诊断不替代1024val正式负结果。
 - Commit: 本次独立文档提交；保留已有无关暂存及状态文档改动。
+
+
+## 10-15 12:55:46
+
+- Purpose: 按用户授权调整点细化监督，逐项对照恢复边界带BCE与整图Dice，保留同前向点数的原损失控制。
+- Changed: v5 point_objective.py/train_point_objective.py、tests/test_point_objective.py；report_dense_boundary新增固定最后轮相邻臂配对及正确基线标签；新建议/运行记录、续跑清单及本条。
+- Validation: 原模型3项+新目标3项测试通过；4/2/1真实三臂smoke训练/报告EXIT_CODE=0、严格重载误差0、梯度有限非零、GT独立/带外精确不变、训练合成与推理一致≤2e-6；git diff --check通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/boundary_refinement/point_objective_1015_125213/`；smoke complete，正式pilot worker181687/GPU4运行中，固定3k/1024×8轮三臂。
+- Docs record: `建议_点细化边界监督与整图目标对照_1015_125213.md`（建议）；`运行记录_点细化目标调整_1015_125213.md`（运行）；组织边界探索续跑清单更新。
+- Result: control保持采样BCE+点Dice；boundary加0.5完整推理mask边界带BCE；global仅进一步替换为整图Dice。三臂均前向69632点，较历史计算增加、反向开销不完全相同，不误称同FLOPs。正式收益待完成，coarse BF1=0.557040仍为门槛参照，不替换默认模型。
+- Commit: 本次独立实现及文档提交，保留用户已有其他暂存和状态文档改动。
