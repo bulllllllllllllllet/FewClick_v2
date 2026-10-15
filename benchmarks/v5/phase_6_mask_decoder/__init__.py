@@ -25,6 +25,7 @@ _MODULE_GROUPS = {
         'audit_boundary_capacity', 'report_dense_boundary', 'visualize_boundary_refinement',
         'visualize_test_boundary',
     ],
+    'external': ['segnext_adapter', 'run_segnext'],
 }
 
 _SOURCE_ROOT = Path(__file__).parent

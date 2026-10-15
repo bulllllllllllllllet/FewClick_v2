@@ -1,0 +1,9 @@
+# Install into a separate --target directory; use the existing aligner torch.
+# Already provided by aligner: torch, torchvision, numpy, cv2, matplotlib,
+# packaging, platformdirs, rich, scipy, pandas, PyYAML.
+mmcv-lite==2.1.0
+mmengine==0.10.7
+addict==2.4.0
+yapf==0.43.0
+tomli==2.2.1
+termcolor==2.5.0

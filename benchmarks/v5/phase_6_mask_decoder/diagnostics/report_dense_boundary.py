@@ -71,7 +71,7 @@ def main():
         head_rows=json.loads((a.run/f'head_continue_epoch_{last_head:03}_rows.json').read_text())
         encoder_rows=json.loads((a.run/f'layer4_continue_epoch_{last_encoder:03}_rows.json').read_text())
         report['layer4_vs_head_at_fixed_final_epoch']=paired_delta(encoder_rows,head_rows)
-    if run.get('comparison_pairs'):
+    if run.get('comparison_pairs') or run.get('report_fixed_final_epoch'):
         report['fixed_final_epoch']={}
         report['matched_arm_comparisons']={}
         final_rows={}
@@ -79,7 +79,7 @@ def main():
             last=arm['history'][-1]
             final_rows[name]=json.loads((a.run/f'{name}_epoch_{last["epoch"]:03}_rows.json').read_text())
             report['fixed_final_epoch'][name]={'summary':last,'vs_baseline':paired_delta(final_rows[name],base)}
-        for candidate,reference in run['comparison_pairs']:
+        for candidate,reference in run.get('comparison_pairs',[]):
             c=summary['arms'][candidate]['history'][-1];r=summary['arms'][reference]['history'][-1]
             if c['optimizer_steps']!=r['optimizer_steps']:raise RuntimeError('unmatched arm update budgets')
             report['matched_arm_comparisons'][candidate+'_vs_'+reference]={

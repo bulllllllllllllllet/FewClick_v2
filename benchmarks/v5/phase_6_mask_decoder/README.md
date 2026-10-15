@@ -11,6 +11,7 @@
 | [iterative/](iterative/) | 根据后续正负点击迭代修正；图块及整张切片状态 | [iterative_decoder.py](iterative/iterative_decoder.py)、[原分支说明](iterative/README.md) |
 | [boundary/](boundary/) | 早期RGB修边实验；共享的冻结J5加载与空间数据读取 | [boundary_data.py](boundary/boundary_data.py)、[boundary_refinement.py](boundary/boundary_refinement.py) |
 | [diagnostics/](diagnostics/) | 容量/错误诊断、配对报告、可视化 | [report_dense_boundary.py](diagnostics/report_dense_boundary.py) |
+| [external/](external/) | 独立交互模型对照；官方SegNext最小源码、输入桥接与适配训练 | [segnext_adapter.py](external/segnext_adapter.py)、[run_segnext.py](external/run_segnext.py) |
 | [tests/](tests/) | 上述模块的测试 | `python -m unittest discover -s benchmarks/v5/phase_6_mask_decoder/tests` |
 
 阅读稠密分支建议按：`dense_prompt_decoder.py`（模型）→ `train_dense_boundary.py`（初训/特征缓存）→ `continue_dense_boundary.py`（复现、扩量、有限解冻）。`high_resolution=True`使用128×128浅层特征融合；输出是加到原预测logit上的像素残差。
@@ -18,6 +19,8 @@
 新增多尺度对照阅读入口：[multiscale_dense_decoder.py](dense/multiscale_dense_decoder.py)（原生浅层/中层/stem逐级融合）→ [prepare_multiscale_cache.py](dense/prepare_multiscale_cache.py)（冻结encoder缓存）→ [train_multiscale_dense.py](dense/train_multiscale_dense.py)（control/native/middle/full256四臂暖启动对照）。这条路线保留完整原生特征，经可学习投影融合；当前处于实验验证阶段。
 
 逐点视觉交互入口：[pixel_prompt_decoder.py](dense/pixel_prompt_decoder.py) → [train_pixel_prompt.py](dense/train_pixel_prompt.py)。保留原稠密预测，读取每个点击附近的缓存图像特征，通过正负分开的attention修正像素；control/pooled/per_click三臂检验继续训练、汇总提示和逐点提示。该路线与多尺度加层实验独立，固定提示，不包含动态纠错或编码器解冻。
+
+SegNext是独立系统对照：相同512图块与点击，内部按预训练配置插值到1024，使用官方ViT-B、密集提示融合与FPN。先编码FP32特征，再冻结backbone适配原生交互/分割头。上游MIT许可与修改清单在[segnext_vendor/](external/segnext_vendor/)。依赖使用独立target目录和[固定版本清单](external/segnext_requirements.txt)，不修改aligner现有torch。公共入口为`python -m benchmarks.v5.phase_6_mask_decoder.run_segnext --stage prepare/train ...`，细节见[运行记录](../../../docs/运行记录/模型实验/运行记录_SegNext同提示组织适配_1015_200654.md)。
 
 点细化建议按：`point_boundary_detail.py`（模型与采样）→ `train_point_boundary.py`（原采样点损失对照）→ `point_objective.py`（恢复边界监督/整图Dice）→ `train_point_objective.py`（三臂训练）。点细化是实验路线，不能视为已经替换稠密分支。
 

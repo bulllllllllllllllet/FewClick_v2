@@ -1569,3 +1569,13 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/pixel_prompt_1015_164227/pilot_1015_164227，paired_report_1015_164227.json；实际约31分钟，17:19:55结束。
 - Docs record: docs/运行记录/模型实验/运行记录_逐点视觉提示稠密交互_1015_164227.md。
 - Commit: 本结果归档提交（可由git log定位）。
+
+
+## 10-15 20:23:11
+
+- Purpose: 接入官方SegNext同提示独立对照，准备冻结图像编码器的组织适配训练。
+- Changed: external/segnext_adapter.py、run_segnext.py、最小MIT vendor与迁移哈希、依赖清单、4项输入测试、单臂固定最后轮报告、模块注册与README；docs/运行记录/模型实验/运行记录_SegNext同提示组织适配_1015_200654.md; docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md。
+- Validation: 完整45项检查通过；真实4/2 native缓存/训练/报告EXIT_CODE=0，官方编码/概率误差0、重载0、backbone不变；SDPA初次失败及移除原因已归档。自有源码diff检查，vendor保持上游格式并逐文件核验哈希。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/external_interactive_1015_200654，权重/独立依赖/检查点不提交源码。
+- Docs record: docs/运行记录/模型实验/运行记录_SegNext同提示组织适配_1015_200654.md。
+- Commit: 本实现提交（可由git log定位）。

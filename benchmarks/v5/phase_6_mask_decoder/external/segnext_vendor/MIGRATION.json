@@ -1,0 +1,72 @@
+{
+  "upstream": "https://github.com/uncbiag/SegNext",
+  "revision": "4c45ce8bfa8d3121d36d71f0ff263555805dad89",
+  "timestamp": "1015_200654",
+  "files": [
+    {
+      "upstream": "segnext/isegm/model/is_plainvit_model.py",
+      "local": "model.py",
+      "upstream_sha256": "a03d6980a29a43fe374a6d81f11e39e799d895a7e2a71b50fd377c4c8e0ea7f7",
+      "local_sha256": "2ad4537843c633f0ad2fd443243253b63f8aff9f9af36cbec53cbdb619a1dd81",
+      "changes": {
+        "from isegm.model.ops import": "from .ops import",
+        "from isegm.model.modeling.models_vit import": "from .models_vit import",
+        "from isegm.model.modeling.cross_attention import": "from .cross_attention import",
+        "from isegm.utils.serialization import": "from .serialization import"
+      }
+    },
+    {
+      "upstream": "segnext/isegm/model/ops.py",
+      "local": "ops.py",
+      "upstream_sha256": "f3cd9d2b74a2e65b7d48b1ec6430084fed5a71330737b1bf170655ff2feb15ad",
+      "local_sha256": "c52632ef28a356adeaf3785cc4ea175cf7a7af06f1f06cc3d81602d9332b0e17",
+      "changes": {
+        "import isegm.model.initializer as initializer": "from . import initializer"
+      }
+    },
+    {
+      "upstream": "segnext/isegm/model/initializer.py",
+      "local": "initializer.py",
+      "upstream_sha256": "eaaedc8e0d87c08faa4d72770d3c578696da639841e9e13bef342f72433c838f",
+      "local_sha256": "eaaedc8e0d87c08faa4d72770d3c578696da639841e9e13bef342f72433c838f",
+      "changes": {}
+    },
+    {
+      "upstream": "segnext/isegm/model/modeling/models_vit.py",
+      "local": "models_vit.py",
+      "upstream_sha256": "98b1b9d1ae5c6b229f89717afe861bd2dbbc840df9b40e4e8f5950858f9bda25",
+      "local_sha256": "98b1b9d1ae5c6b229f89717afe861bd2dbbc840df9b40e4e8f5950858f9bda25",
+      "changes": {}
+    },
+    {
+      "upstream": "segnext/isegm/model/modeling/pos_embed.py",
+      "local": "pos_embed.py",
+      "upstream_sha256": "7242de7837a59c1bf9e1de08e373ac8227bd9b49075d7e928608c4285e1e3b35",
+      "local_sha256": "7242de7837a59c1bf9e1de08e373ac8227bd9b49075d7e928608c4285e1e3b35",
+      "changes": {}
+    },
+    {
+      "upstream": "segnext/isegm/model/modeling/cross_attention.py",
+      "local": "cross_attention.py",
+      "upstream_sha256": "5dbd3eaaaa50a7169a93a92b5c8c13dfb3fd044bba34fa55430b21ccd06f4c8a",
+      "local_sha256": "5dbd3eaaaa50a7169a93a92b5c8c13dfb3fd044bba34fa55430b21ccd06f4c8a",
+      "changes": {}
+    },
+    {
+      "upstream": "segnext/isegm/utils/serialization.py",
+      "local": "serialization.py",
+      "upstream_sha256": "57736c1b0178fdf022e041f471b03ed2db0d4fd0667836b11962d47c4c04d08c",
+      "local_sha256": "57736c1b0178fdf022e041f471b03ed2db0d4fd0667836b11962d47c4c04d08c",
+      "changes": {}
+    },
+    {
+      "upstream": "LICENSE",
+      "local": "LICENSE",
+      "upstream_sha256": "b7e8896de07ca3136853a8b2c45102986129ea664bd22ca0a2414710c8e0aeea",
+      "local_sha256": "b7e8896de07ca3136853a8b2c45102986129ea664bd22ca0a2414710c8e0aeea",
+      "changes": {}
+    }
+  ],
+  "excluded": "weights, data, GUI, assets, training framework, compiled extensions",
+  "notes": "Only package imports changed. CPU cython distance maps and generic checkpoint deserializer are unused; configured native torch DistMaps and explicit constructor only."
+}
