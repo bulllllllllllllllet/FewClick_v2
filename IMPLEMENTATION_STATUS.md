@@ -1589,3 +1589,13 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/external_interactive_1015_200654; tmux segnext_formal_1015_200654，GPU2/CPU4。
 - Docs record: docs/运行记录/模型实验/运行记录_SegNext同提示组织适配_1015_200654.md，当前缓存阶段，正式质量待完成。
 - Commit: 本启动归档提交（可由git log定位）。
+
+
+## 10-16 00:29:42
+
+- Purpose: 归档SegNext同提示组织适配正式结果。
+- Changed: docs/运行记录/模型实验/运行记录_SegNext同提示组织适配_1015_200654.md; docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md。
+- Validation: 缓存/8轮24k步/报告均EXIT_CODE=0，重载误差0、backbone不变、配对指标/门槛核验；正式完成时间10-15 21:51:47。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/external_interactive_1015_200654/pilot_1015_200654; paired_report_1015_200654.json，FP32缓存约57GB。
+- Docs record: docs/运行记录/模型实验/运行记录_SegNext同提示组织适配_1015_200654.md；本次配置未胜过dense基准，未自动启动新训练。
+- Commit: 本最终归档提交（可由git log定位）。
