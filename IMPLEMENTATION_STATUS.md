@@ -1431,3 +1431,14 @@
 - Docs record: `建议_组织边界不确定像素细化_1014_233341.md`（建议）；`运行记录_组织边界不确定像素细化_1014_233341.md`（运行记录）；续跑清单与同预算记录更新。
 - Result: 同96k步3k/12k BF1=0.557040/0.555609，差CI跨0，无明确扩量独立优势。采用3k32轮冻结coarse，新增256px RGB细特征+语义条件点MLP，4096训练点/65536推理点，uniform vs uncertain同预算。新正式收益待完成，不把旧J5增益当本轮收益，不替换默认模型。
 - Commit: 本次独立提交，仅上述实现、测试、文档与本条。
+
+
+## 10-15 组织边界点细化完成归档
+
+- Purpose: 归档两臂8轮正式细化对照，更新可独立恢复的续跑清单。
+- Changed: 不确定像素细化运行记录、组织边界探索续跑清单及本条；未修改模型或默认权重。
+- Validation: status complete；训练/报告EXIT_CODE=0；严格重载误差0；1024开发val/107空间块配对报告，两臂eligible_epochs为空。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/boundary_refinement/point_detail_1014_233341/pilot_1014_233341/`，paired_report及learning_curves_1014_233341保留。
+- Result: coarse BF1=0.557040；uniform/uncertain诊断最佳BF1=0.542808/0.555540，均下降。最后轮uncertain提示违约124优于154但分割仍下降。保留3k×32轮coarse候选，未部署、未自动启动新训练；历史验证暴露限制保留。
+- Docs record: `运行记录_组织边界不确定像素细化_1014_233341.md`；`组织边界探索续跑清单_1014_200033.md`。
+- Commit: 仅上述文档及本条独立提交。
