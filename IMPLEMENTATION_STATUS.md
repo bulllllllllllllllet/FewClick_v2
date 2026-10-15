@@ -1539,3 +1539,13 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/remaining_bottleneck_1015_162425（diagnose.py、report.json、rows.json、selection.json、cases.json、diagnostic.log）。
 - Docs record: 上述建议记录与运行记录，未启动新长训练。
 - Commit: 本路线归档提交（可由git log定位）。
+
+
+## 10-15 16:48:55
+
+- Purpose: 实现逐点视觉token与稠密query交互，提供同参数pooled消融及原模型继续训练控制。
+- Changed: dense/pixel_prompt_decoder.py、dense/train_pixel_prompt.py、tests/test_pixel_prompt_decoder.py、Phase6注册与README；docs/运行记录/模型实验/运行记录_逐点视觉提示稠密交互_1015_164227.md; docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md。
+- Validation: 新增8项/总41项检查通过；GPU2真实4/2 smoke三臂训练与报告EXIT_CODE=0，初始/重载误差0、新增参数全部有梯度、GT独立。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/pixel_prompt_1015_164227，含smoke、日志、正式启动脚本；尚未将smoke视为质量结论。
+- Docs record: docs/运行记录/模型实验/运行记录_逐点视觉提示稠密交互_1015_164227.md。
+- Commit: 本实现提交（可由git log定位）。

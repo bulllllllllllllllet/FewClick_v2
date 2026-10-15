@@ -15,6 +15,7 @@ _MODULE_GROUPS = {
     'dense': [
         'dense_prompt_decoder', 'train_dense_boundary', 'continue_dense_boundary',
         'multiscale_dense_decoder', 'prepare_multiscale_cache', 'train_multiscale_dense',
+        'pixel_prompt_decoder', 'train_pixel_prompt',
     ],
     'point': [
         'point_boundary_detail', 'point_objective',

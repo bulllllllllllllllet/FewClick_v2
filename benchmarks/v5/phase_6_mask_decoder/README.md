@@ -17,6 +17,8 @@
 
 新增多尺度对照阅读入口：[multiscale_dense_decoder.py](dense/multiscale_dense_decoder.py)（原生浅层/中层/stem逐级融合）→ [prepare_multiscale_cache.py](dense/prepare_multiscale_cache.py)（冻结encoder缓存）→ [train_multiscale_dense.py](dense/train_multiscale_dense.py)（control/native/middle/full256四臂暖启动对照）。这条路线保留完整原生特征，经可学习投影融合；当前处于实验验证阶段。
 
+逐点视觉交互入口：[pixel_prompt_decoder.py](dense/pixel_prompt_decoder.py) → [train_pixel_prompt.py](dense/train_pixel_prompt.py)。保留原稠密预测，读取每个点击附近的缓存图像特征，通过正负分开的attention修正像素；control/pooled/per_click三臂检验继续训练、汇总提示和逐点提示。该路线与多尺度加层实验独立，固定提示，不包含动态纠错或编码器解冻。
+
 点细化建议按：`point_boundary_detail.py`（模型与采样）→ `train_point_boundary.py`（原采样点损失对照）→ `point_objective.py`（恢复边界监督/整图Dice）→ `train_point_objective.py`（三臂训练）。点细化是实验路线，不能视为已经替换稠密分支。
 
 交互分支另有7项pytest风格的函数测试；完整验证方式见本次[整理运行记录](../../../docs/运行记录/模型实验/运行记录_Phase6代码目录整理_1015_132345.md)。安装pytest的环境也可使用 `python -m pytest benchmarks/v5/phase_6_mask_decoder/tests` 统一运行。
