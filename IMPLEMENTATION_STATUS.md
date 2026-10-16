@@ -1669,3 +1669,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/tissue_gt_search_1016_121232`，包含真实元数据获取成功/超时/SSL状态和有限本地扫描。
 - Docs record: `docs/建议/数据与评估/建议_泛癌种组织分割真值数据集筛选_1016_121232.md`（建议）；优先OCELOT、乳腺TIGER/BCSS、IGNITE，区分ROI-only与整片GT及来源重叠。
 - Commit: 本次检索归档提交（由Git历史追溯）。
+
+
+## 10-16 12:34:47
+
+- Purpose: 按用户授权把公开组织分割数据下载到`/nfs-medical3/zyh/`，不放FewClick_v2下。
+- Changed: `docs/运行记录/数据审计/运行记录_泛癌种组织真值下载_1016_122128.md`（运行记录）、`docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md`、`docs/建议/数据与评估/建议_泛癌种组织分割真值数据集筛选_1016_121232.md`及本条状态；下载控制脚本和实际数据均位于用户指定NFS根。
+- Validation: OCELOT发布MD5/ZIP CRC/663组配对及8组真实解码通过，EXIT_CODE=0；TIGER两来源真实image/mask smoke与同源连接复用smoke均EXIT_CODE=0；IGNITE元数据MD5通过。TIGER首轮TLS失败保留并停止，修订传输方式后新目录运行，无自动失败重试或切镜像。其余数据真实worker/文件字节增长已核实，未宣称全部完成。
+- Artifacts: `/nfs-medical3/zyh/tissue_datasets_download_1016_122128`（控制/日志/索引）；直属`OCELOT_1016_122128`、`IGNITE_1016_122128`、`TIGER_1016_122128`、`PUMA_1016_122128`数据目录。用户路径指令优先于技能默认artifact根。
+- Docs record: `docs/运行记录/数据审计/运行记录_泛癌种组织真值下载_1016_122128.md`。当前仅下载、解压和数据核验，不启动新训练。
+- Commit: 本次下载实施记录提交（由Git历史追溯）。
