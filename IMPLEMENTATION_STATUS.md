@@ -1649,3 +1649,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/dense_transfer_1016_115814/`，最终smoke `smoke_12class_1016_115814`，正式1024query脚本已准备，提交后启动；本阶段仅评估。
 - Docs record: `docs/运行记录/模型实验/运行记录_Dense提示查询迁移诊断_1016_115814.md`（运行记录）；`docs/建议/模型与训练/建议_整体流程审计与同片跨癌种泛化_1016_114959.md`（建议）补充旧拒识训练最终结果与后续泛化主线。
 - Commit: 本次实现提交（由Git历史追溯）。
+
+
+## 10-16 12:09:03
+
+- Purpose: 记录已授权的dense支持—查询正式诊断启动，保持后续泛片泛癌种研究优先级。
+- Changed: `docs/运行记录/模型实验/运行记录_Dense提示查询迁移诊断_1016_115814.md`、`docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md`及本条状态。
+- Validation: 正式run/status已生成，源码`509bb9d`，真实worker2581766存活；固定3841任务/1024原query，skip保持严格约束。真实12类smoke与50检查已通过，正式报告尚未完成。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/dense_transfer_1016_115814/formal_1016_115814`，tmux `dense_transfer_1016_115814`，GPU2/CPU4。
+- Docs record: `docs/运行记录/模型实验/运行记录_Dense提示查询迁移诊断_1016_115814.md`（运行记录）。
+- Commit: 本次启动归档提交（由Git历史追溯）。
