@@ -1639,3 +1639,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/pipeline_audit/same_slide_generalization_1016_114959/audit_1016_114959.json`，含源码SHA256及审计源revision `4989b5b`。
 - Docs record: `docs/建议/模型与训练/建议_整体流程审计与同片跨癌种泛化_1016_114959.md`；建议依次建立当前dense远处/空目标协议、匹配与拒识训练、连续纠错、外部域评估及有依据的表示适配。
 - Commit: 本次审计归档提交（由Git历史追溯）。
+
+
+## 10-16 12:08:23
+
+- Purpose: 实现当前dense支持—查询独立推理及同片远处/空目标/同癌种跨WSI诊断，落实用户泛片泛癌种优先级。
+- Changed: v5 `support_query_dense.py`、`evaluate_dense_transfer.py`、行为测试、包注册/README、运行记录及两份路线文档；不修改v4和既有权重。
+- Validation: 完整50项检查通过；真实12类46任务smoke及mask重算EXIT_CODE=0；12个local的J5/dense旧缓存重放误差0，query GT独立、原J5 forward一致、checkpoint重载误差0、真实损失有限。曾因点击热图FP32/FP16不匹配而停止的smoke保留，定位修正后新目录复验，没有放宽门槛。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/dense_transfer_1016_115814/`，最终smoke `smoke_12class_1016_115814`，正式1024query脚本已准备，提交后启动；本阶段仅评估。
+- Docs record: `docs/运行记录/模型实验/运行记录_Dense提示查询迁移诊断_1016_115814.md`（运行记录）；`docs/建议/模型与训练/建议_整体流程审计与同片跨癌种泛化_1016_114959.md`（建议）补充旧拒识训练最终结果与后续泛化主线。
+- Commit: 本次实现提交（由Git历史追溯）。

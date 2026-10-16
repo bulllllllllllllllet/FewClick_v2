@@ -15,7 +15,7 @@ _MODULE_GROUPS = {
     'dense': [
         'dense_prompt_decoder', 'train_dense_boundary', 'continue_dense_boundary',
         'multiscale_dense_decoder', 'prepare_multiscale_cache', 'train_multiscale_dense',
-        'pixel_prompt_decoder', 'train_pixel_prompt',
+        'pixel_prompt_decoder', 'train_pixel_prompt', 'support_query_dense',
     ],
     'point': [
         'point_boundary_detail', 'point_objective',
@@ -23,7 +23,7 @@ _MODULE_GROUPS = {
     ],
     'diagnostics': [
         'audit_boundary_capacity', 'report_dense_boundary', 'visualize_boundary_refinement',
-        'visualize_test_boundary',
+        'visualize_test_boundary', 'evaluate_dense_transfer',
     ],
     'external': ['segnext_adapter', 'run_segnext'],
 }

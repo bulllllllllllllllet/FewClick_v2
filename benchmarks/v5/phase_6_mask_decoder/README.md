@@ -66,3 +66,5 @@ python -m benchmarks.v5.phase_6_mask_decoder.report_dense_boundary --help
 ## 2026-10-16路线状态补充
 
 用户已停止SegNext路线：冻结encoder适配总32轮仍低于dense基准，保存代码和历史产物，不继续延长或解冻。当前dense的固定图块提示成绩尚未代表整片远处提示成绩；旧v4整片入口和v5迭代接口均未集成此dense头。后续工作以[整体流程与同片泛化审计](../../../docs/建议/模型与训练/建议_整体流程审计与同片跨癌种泛化_1016_114959.md)为准。
+
+提示—查询迁移诊断入口：[support_query_dense.py](dense/support_query_dense.py)（冻结J5+dense，支持与查询独立编码）→ [evaluate_dense_transfer.py](diagnostics/evaluate_dense_transfer.py)（本地、同片远处、空目标、同癌种跨WSI对照）。远端query的点击热图为空，全局task与base按源支持重算；接口不接收query类别/GT。记录见[本轮运行说明](../../../docs/运行记录/模型实验/运行记录_Dense提示查询迁移诊断_1016_115814.md)。此接口尚不包含完整WSI拼接或跨癌种训练。
