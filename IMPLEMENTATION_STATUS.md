@@ -1629,3 +1629,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/boundary_refinement/segnext_continue_1016_004100/pilot_1016_004100/`。
 - Docs record: `docs/运行记录/模型实验/运行记录_SegNext冻结编码器续训32轮_1016_004100.md`（运行记录）；最终BF1/Dice=0.373530/0.626737，最佳BF1第23轮0.378278，默认dense保持不变。
 - Commit: 本次归档提交（由Git历史追溯）。
+
+
+## 10-16 11:53:35
+
+- Purpose: 按用户要求停止SegNext，审计同片检索全流程与跨癌种适用范围，记录下一阶段优先级。
+- Changed: `docs/建议/模型与训练/建议_整体流程审计与同片跨癌种泛化_1016_114959.md`（建议）、`docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md`、`benchmarks/v5/phase_6_mask_decoder/README.md`及本条状态。
+- Validation: 只读核查实际J5配置、dense与WSI代码、旧跨patch/缺失目标/TLS记录；核对3k/1024清单、166/83 WSI与81张共享、MPP字段缺失；新文档本地链接校验通过。未改模型或进行新训练，不新增质量成绩。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/pipeline_audit/same_slide_generalization_1016_114959/audit_1016_114959.json`，含源码SHA256及审计源revision `4989b5b`。
+- Docs record: `docs/建议/模型与训练/建议_整体流程审计与同片跨癌种泛化_1016_114959.md`；建议依次建立当前dense远处/空目标协议、匹配与拒识训练、连续纠错、外部域评估及有依据的表示适配。
+- Commit: 本次审计归档提交（由Git历史追溯）。
