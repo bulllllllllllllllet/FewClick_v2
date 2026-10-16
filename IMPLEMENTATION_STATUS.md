@@ -1779,3 +1779,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_external_1016_201057/`；18存在J5/dense Dice0.641180/0.617791，全前景0.785750；5缺失dense平均误报20.96%，未宣称跨域通过。
 - Docs record: `docs/运行记录/模型实验/运行记录_OCELOT六器官本片示例初筛_1016_201057.md`（运行记录）。
 - Commit: 随结果归档提交，哈希见git历史。
+
+
+## 10-16 20:46:00
+
+- Purpose: 交付OCELOT固定抽样可视化，明确ROI内分离Patch而非WSI推理。
+- Changed: 新增固定抽样可视化运行记录，项目images增加输出入口（不纳入版本库）。
+- Validation: seed20261016固定6器官各1含癌+2空目标，8例GT/valid和J5/dense像素计数/FPA与原结果精确一致，PNG逐张解码通过；绘图EXIT_CODE=0，实际查看505/445，无新推理。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_visual_1016_204305/`；`images/ocelot_visual_1016_204305/index.html`。
+- Docs record: `docs/运行记录/模型实验/运行记录_OCELOT固定抽样可视化_1016_204305.md`（运行记录）。
+- Commit: 随可视化记录提交，哈希见git历史。
