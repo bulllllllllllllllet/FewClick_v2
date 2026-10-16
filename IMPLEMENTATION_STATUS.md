@@ -1829,3 +1829,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_prompt_debug_1016_211237/`；只负点分散Dice+0.0022、分散+像素+0.0239均区间跨0；本地点击未超相同query远处提示。无默认替换、无训练。
 - Docs record: `docs/运行记录/模型实验/运行记录_OCELOT点击与提示映射调试_1016_211237.md`（运行记录）。
 - Commit: 随调试归档提交，哈希见git历史。
+
+
+## 10-16 22:03:30
+
+- Purpose: 核验CRC与OCELOT模型输入实际物理尺度及原生分辨率差异。
+- Changed: 新增物理尺度数据审计记录，更新续跑清单。
+- Validation: 168/168实际train/val来源TIFF单位/MPP与vips交叉核对通过，覆盖4024patch；23外部例换算完成，EXIT_CODE=0；无新推理训练。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/scale_match_1016_220050/scale_audit_1016_220050.json`；CRC中位0.504与OCELOT0.499892MPP接近，后者原生0.778插值导致细节不等价。
+- Docs record: `docs/运行记录/数据审计/运行记录_CRC与OCELOT物理尺度核验_1016_220050.md`（运行记录）。
+- Commit: 随审计归档提交，哈希见git历史。
