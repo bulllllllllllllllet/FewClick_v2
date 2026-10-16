@@ -1719,3 +1719,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/prompt_dependence_1016_152335/formal_1016_152335/summary.json`。同片/跨WSI wrong Dice0.075032/0.069816，匹配correct0.746304/0.756413；替代目标GT评分仍待做。
 - Docs record: `docs/运行记录/模型实验/运行记录_跨区域提示依赖消融_1016_152335.md`（运行记录）。
 - Commit: 随结果归档提交，哈希见git历史。
+
+
+## 10-16 15:53:30
+
+- Purpose: 检验换类支持后的预测是否匹配替代组织GT。
+- Changed: 新score_alternative_target.py、test_alternative_target.py及注册；更新运行记录/续跑清单。
+- Validation: 8项行为测试通过；真实两协议12替代类24pair smoke、原truth/valid逐像素匹配、存在/缺失评分与汇总通过，23.75秒，EXIT_CODE=0；初稿编号错误被检查拦截，修正并回归，失败记录保留。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/alternative_target_1016_154926/`，CPU4/零GPU，仅重评分，无推理训练；正式1653pair提交后启动。
+- Docs record: `docs/运行记录/模型实验/运行记录_替代提示目标真值核验_1016_154926.md`（运行记录）。
+- Commit: 随实现提交，哈希见git历史。
