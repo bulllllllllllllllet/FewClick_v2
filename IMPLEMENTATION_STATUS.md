@@ -1679,3 +1679,13 @@
 - Artifacts: `/nfs-medical3/zyh/tissue_datasets_download_1016_122128`（控制/日志/索引）；直属`OCELOT_1016_122128`、`IGNITE_1016_122128`、`TIGER_1016_122128`、`PUMA_1016_122128`数据目录。用户路径指令优先于技能默认artifact根。
 - Docs record: `docs/运行记录/数据审计/运行记录_泛癌种组织真值下载_1016_122128.md`。当前仅下载、解压和数据核验，不启动新训练。
 - Commit: 本次下载实施记录提交（由Git历史追溯）。
+
+
+## 10-16 12:46:30
+
+- Purpose: 修复提示—查询报告空指标处理，核验完整结果与数据下载进度。
+- Changed: evaluate_dense_transfer.py、test_support_query_dense.py；更新模型运行记录1016_115814、数据下载记录1016_122128和边界续跑清单。
+- Validation: aligner `python -m unittest benchmarks.v5.phase_6_mask_decoder.tests.test_support_query_dense` — 3项通过；独立报告脚本核验3841任务/7682指标行及全部保存mask，EXIT_CODE=0；PUMA逐张解码205图像并解析205配对组织GeoJSON通过，孤立103标注单列。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/dense_transfer_report_1016_124600/summary.json`；PUMA `validation_pair_repair_1016_124500.json`。IGNITE/TIGER尚在下载。
+- Docs record: `docs/运行记录/模型实验/运行记录_Dense提示查询迁移诊断_1016_115814.md`、`docs/运行记录/数据审计/运行记录_泛癌种组织真值下载_1016_122128.md`（运行记录）。
+- Commit: 本条随修复提交，哈希见git历史。

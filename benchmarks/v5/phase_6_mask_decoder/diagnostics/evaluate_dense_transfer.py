@@ -165,7 +165,11 @@ def paired_intervals(rows):
             draws = rng.integers(0, len(groups), (2000, len(groups)))
             stats = {'paired_episodes': len(rr), 'query_spatial_blocks': len(groups)}
             for metric in ('dice', 'bf1_2', 'unprompted_dice'):
-                delta = np.array([r[metric] - local[(r['position'], model)][metric] for r in rr], dtype=float)
+                # Boundary/unclicked scores can be undefined; compare only pairs
+                # with an evaluable score on both sides, never impute zero.
+                delta = np.array([r[metric] - local[(r['position'], model)][metric]
+                                  if r[metric] is not None and local[(r['position'], model)][metric] is not None
+                                  else np.nan for r in rr], dtype=float)
                 finite = np.isfinite(delta)
                 if not finite.any():
                     stats[metric] = {'status': 'no evaluable paired tasks'}; continue

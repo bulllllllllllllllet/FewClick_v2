@@ -8,10 +8,25 @@ import torch
 from benchmarks.v4.phase_5_prompt_encoder.src.model import PromptRegionModel
 from benchmarks.v4.phase_6_mask_decoder.src.model import ContextAwareMaskDecoder
 from benchmarks.v5.phase_6_mask_decoder.support_query_dense import encode_support, query_features
-from benchmarks.v5.phase_6_mask_decoder.evaluate_dense_transfer import build_pairs
+from benchmarks.v5.phase_6_mask_decoder.evaluate_dense_transfer import build_pairs, paired_intervals
 
 
 class SupportQueryTests(unittest.TestCase):
+    def test_paired_report_excludes_undefined_scores_without_zero_imputation(self):
+        rows = []
+        for i, (local_score, remote_score) in enumerate([(None,None),(None,.8),(.6,None),(.5,.7)]):
+            for protocol, score in [('local',local_score),('same_slide_present',remote_score)]:
+                rows.append(dict(position=i, model='dense', protocol=protocol,
+                    query_spatial_group=str(i), dice=.5 if protocol == 'local' else .6,
+                    bf1_2=score, unprompted_dice=None))
+        report = paired_intervals(rows)['same_slide_present']['dense']
+        self.assertEqual(report['paired_episodes'],4)
+        self.assertEqual(report['dice']['evaluable_pairs'],4)
+        self.assertEqual(report['bf1_2']['evaluable_pairs'],1)
+        self.assertAlmostEqual(report['bf1_2']['remote_minus_local'],.2)
+        np.testing.assert_allclose(report['bf1_2']['spatial_block_bootstrap_95'],[.2,.2])
+        self.assertEqual(report['unprompted_dice']['status'],'no evaluable paired tasks')
+
     def test_remote_coordinates_do_not_create_query_clicks_but_task_changes(self):
         torch.manual_seed(7)
         model = SimpleNamespace(decoder=ContextAwareMaskDecoder(PromptRegionModel(dropout=0), dropout=0).eval())
