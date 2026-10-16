@@ -1739,3 +1739,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/alternative_target_1016_154926/formal_1016_154926/`，源码362d1bf，CPU4/零GPU。
 - Docs record: `docs/运行记录/模型实验/运行记录_替代提示目标真值核验_1016_154926.md`（运行记录）。
 - Commit: 随启动归档提交，哈希见git历史。
+
+
+## 10-16 18:26:06
+
+- Purpose: 归档替代目标GT核验正式结果。
+- Changed: 替代提示目标核验运行记录及边界续跑清单。
+- Validation: 1653pair/920唯一query GT逐像素匹配原truth/valid；CPU评分1693秒，status complete、EXIT_CODE=0，无新推理训练。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/alternative_target_1016_154926/formal_1016_154926/summary.json`；dense新目标存在Dice同片0.618375/跨片0.598766，空目标≥1%误报16.51%/16.67%。
+- Docs record: `docs/运行记录/模型实验/运行记录_替代提示目标真值核验_1016_154926.md`（运行记录）。
+- Commit: 随结果归档提交，哈希见git历史。
