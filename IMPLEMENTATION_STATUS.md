@@ -1619,3 +1619,13 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/boundary_refinement/segnext_continue_1016_004100/pilot_1016_004100; GPU2/CPU4，tmux segnext_continue_1016_004100。
 - Docs record: docs/运行记录/模型实验/运行记录_SegNext冻结编码器续训32轮_1016_004100.md，新增质量待完成。
 - Commit: 本启动归档提交（可由git log定位）。
+
+
+## 10-16 11:44:21
+
+- Purpose: 归档SegNext冻结encoder总32轮续训结果，保留dense基准。
+- Changed: `docs/运行记录/模型实验/运行记录_SegNext冻结编码器续训32轮_1016_004100.md`、`docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md`及本条状态记录。
+- Validation: 核对正式status complete、32轮history/8轮继承、两个EXIT_CODE=0、107空间块报告、reload_max_error=0、backbone_unchanged=true；全部epoch未过门槛。仅文档归档，不重复模型训练检查。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/boundary_refinement/segnext_continue_1016_004100/pilot_1016_004100/`。
+- Docs record: `docs/运行记录/模型实验/运行记录_SegNext冻结编码器续训32轮_1016_004100.md`（运行记录）；最终BF1/Dice=0.373530/0.626737，最佳BF1第23轮0.378278，默认dense保持不变。
+- Commit: 本次归档提交（由Git历史追溯）。
