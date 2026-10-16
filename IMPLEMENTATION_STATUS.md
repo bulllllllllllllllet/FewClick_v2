@@ -1819,3 +1819,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_prompt_debug_1016_211237/`；GPU2正式23例提交后启动，无训练。
 - Docs record: `docs/运行记录/模型实验/运行记录_OCELOT点击与提示映射调试_1016_211237.md`（运行记录）。
 - Commit: 随实现提交，哈希见git历史。
+
+
+## 10-16 21:22:30
+
+- Purpose: 归档OCELOT点击覆盖/映射及本地点击定位结果。
+- Changed: 点击调试运行记录及边界续跑清单；images追加固定505对比入口。
+- Validation: 冻结23例6臂9.92秒/14例本地探针5.88秒，EXIT_CODE=0；原预测重放及mask计数通过；配对区间、GT点击核验与固定505可视化完成。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_prompt_debug_1016_211237/`；只负点分散Dice+0.0022、分散+像素+0.0239均区间跨0；本地点击未超相同query远处提示。无默认替换、无训练。
+- Docs record: `docs/运行记录/模型实验/运行记录_OCELOT点击与提示映射调试_1016_211237.md`（运行记录）。
+- Commit: 随调试归档提交，哈希见git历史。
