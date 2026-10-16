@@ -1659,3 +1659,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/dense_transfer_1016_115814/formal_1016_115814`，tmux `dense_transfer_1016_115814`，GPU2/CPU4。
 - Docs record: `docs/运行记录/模型实验/运行记录_Dense提示查询迁移诊断_1016_115814.md`（运行记录）。
 - Commit: 本次启动归档提交（由Git历史追溯）。
+
+
+## 10-16 12:18:00
+
+- Purpose: 为用户泛片泛癌种本片提示—查询目标检索组织区域真值数据集。
+- Changed: `docs/建议/数据与评估/建议_泛癌种组织分割真值数据集筛选_1016_121232.md`（建议）与`docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md`及本条状态。
+- Validation: 核查作者/组织者页面、官方仓库和发布版本；实读BCSS 0..21标签表、TIGER 195 WSI/7类官方说明、PUMA官方API文件清单及v5页面；只读两层本地审计确认PUMA为空、IGNITE权限不足。没有宣称新图像/GT已配对就绪；无模型变动，不运行模型测试。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/tissue_gt_search_1016_121232`，包含真实元数据获取成功/超时/SSL状态和有限本地扫描。
+- Docs record: `docs/建议/数据与评估/建议_泛癌种组织分割真值数据集筛选_1016_121232.md`（建议）；优先OCELOT、乳腺TIGER/BCSS、IGNITE，区分ROI-only与整片GT及来源重叠。
+- Commit: 本次检索归档提交（由Git历史追溯）。
