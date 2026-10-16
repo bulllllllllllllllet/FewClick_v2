@@ -1699,3 +1699,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/prompt_dependence_1016_152335/`，smoke耗时8.89秒，正式1946pair待提交后启动；全量wrong缺少293项，严格skip。
 - Docs record: `docs/运行记录/模型实验/运行记录_跨区域提示依赖消融_1016_152335.md`（运行记录）。
 - Commit: 随实现提交，哈希见git历史。
+
+
+## 10-16 15:27:30
+
+- Purpose: 记录提示依赖正式评估已启动。
+- Changed: 跨区域提示依赖消融运行记录。
+- Validation: tmux、worker 3506353存活，status完成185/1946，前序真实smoke/7项测试均通过；正式效果待完成。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/prompt_dependence_1016_152335/formal_1016_152335/`，源码96e3422，GPU2/CPU4，无训练。
+- Docs record: `docs/运行记录/模型实验/运行记录_跨区域提示依赖消融_1016_152335.md`（运行记录）。
+- Commit: 随启动记录提交，哈希见git历史。
