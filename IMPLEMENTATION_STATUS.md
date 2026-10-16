@@ -1709,3 +1709,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/prompt_dependence_1016_152335/formal_1016_152335/`，源码96e3422，GPU2/CPU4，无训练。
 - Docs record: `docs/运行记录/模型实验/运行记录_跨区域提示依赖消融_1016_152335.md`（运行记录）。
 - Commit: 随启动记录提交，哈希见git历史。
+
+
+## 10-16 15:46:40
+
+- Purpose: 归档提示依赖正式对照结果。
+- Changed: 提示依赖运行记录及边界续跑清单。
+- Validation: 全1946pair/11090预测，411秒，status complete、EXIT_CODE=0；correct二值精确重放，全部mask像素计数复算通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/prompt_dependence_1016_152335/formal_1016_152335/summary.json`。同片/跨WSI wrong Dice0.075032/0.069816，匹配correct0.746304/0.756413；替代目标GT评分仍待做。
+- Docs record: `docs/运行记录/模型实验/运行记录_跨区域提示依赖消融_1016_152335.md`（运行记录）。
+- Commit: 随结果归档提交，哈希见git历史。
