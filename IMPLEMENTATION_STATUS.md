@@ -1749,3 +1749,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/alternative_target_1016_154926/formal_1016_154926/summary.json`；dense新目标存在Dice同片0.618375/跨片0.598766，空目标≥1%误报16.51%/16.67%。
 - Docs record: `docs/运行记录/模型实验/运行记录_替代提示目标真值核验_1016_154926.md`（运行记录）。
 - Commit: 随结果归档提交，哈希见git历史。
+
+
+## 10-16 20:22:00
+
+- Purpose: 开始冻结dense在OCELOT六器官上的本片示例接入初筛。
+- Changed: external_cell_inputs.py、evaluate_ocelot_external.py、test_ocelot_external.py及注册；设计/运行记录和续跑清单。
+- Validation: 6项相关测试通过；真实完整核检测→74维CTP/XCell→GT独立编码→提示→dense→loss/评分/可视化smoke通过，19.29秒，EXIT_CODE=0；保存mask像素计数核验、输入hash与权重兼容审计完成。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_external_1016_201057/`。固定val23ROI，18存在/5标注范围缺失；类0 unknown核输入及低分辨率检测局限显式保留；正式提交后启动，无训练。
+- Docs record: `docs/运行记录/模型实验/运行记录_OCELOT六器官本片示例初筛_1016_201057.md`（运行记录）。
+- Commit: 随实现提交，哈希见git历史。

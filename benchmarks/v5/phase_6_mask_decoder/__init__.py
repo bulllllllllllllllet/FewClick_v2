@@ -25,6 +25,7 @@ _MODULE_GROUPS = {
         'audit_boundary_capacity', 'report_dense_boundary', 'visualize_boundary_refinement',
         'visualize_test_boundary', 'evaluate_dense_transfer', 'evaluate_prompt_dependence',
         'score_alternative_target',
+        'external_cell_inputs', 'evaluate_ocelot_external',
     ],
     'external': ['segnext_adapter', 'run_segnext'],
 }
