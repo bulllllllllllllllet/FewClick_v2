@@ -1689,3 +1689,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/dense_transfer_report_1016_124600/summary.json`；PUMA `validation_pair_repair_1016_124500.json`。IGNITE/TIGER尚在下载。
 - Docs record: `docs/运行记录/模型实验/运行记录_Dense提示查询迁移诊断_1016_115814.md`、`docs/运行记录/数据审计/运行记录_泛癌种组织真值下载_1016_122128.md`（运行记录）。
 - Commit: 本条随修复提交，哈希见git历史。
+
+
+## 10-16 15:27:00
+
+- Purpose: 增加跨Patch/跨WSI提示依赖评估，固定模型区分正确/错误支持与zero_task消融。
+- Changed: 新diagnostics/evaluate_prompt_dependence.py、tests/test_prompt_dependence.py与公共模块注册；运行记录及续跑清单。
+- Validation: aligner unittest prompt_dependence + support_query_dense — 7项通过；真实12类24pair/144预测smoke通过，原正确预测二值逐像素重放一致、所有保存mask像素计数一致，EXIT_CODE=0；git diff --check通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/prompt_dependence_1016_152335/`，smoke耗时8.89秒，正式1946pair待提交后启动；全量wrong缺少293项，严格skip。
+- Docs record: `docs/运行记录/模型实验/运行记录_跨区域提示依赖消融_1016_152335.md`（运行记录）。
+- Commit: 随实现提交，哈希见git历史。

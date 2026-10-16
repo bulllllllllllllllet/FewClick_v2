@@ -23,7 +23,7 @@ _MODULE_GROUPS = {
     ],
     'diagnostics': [
         'audit_boundary_capacity', 'report_dense_boundary', 'visualize_boundary_refinement',
-        'visualize_test_boundary', 'evaluate_dense_transfer',
+        'visualize_test_boundary', 'evaluate_dense_transfer', 'evaluate_prompt_dependence',
     ],
     'external': ['segnext_adapter', 'run_segnext'],
 }
