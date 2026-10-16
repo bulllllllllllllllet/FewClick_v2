@@ -1789,3 +1789,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_visual_1016_204305/`；`images/ocelot_visual_1016_204305/index.html`。
 - Docs record: `docs/运行记录/模型实验/运行记录_OCELOT固定抽样可视化_1016_204305.md`（运行记录）。
 - Commit: 随可视化记录提交，哈希见git历史。
+
+
+## 10-16 20:56:00
+
+- Purpose: 改善OCELOT支持点击可见性，保持原实验坐标。
+- Changed: 抽样可视化运行记录，新增images输出入口（不入git）。
+- Validation: 8图40原始点击与GT标签核验通过，PNG逐张解码通过、EXIT_CODE=0，实际查看505；无新推理。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_clicks_1016_205456/`，编号、引线及放大；原图不覆盖。
+- Docs record: `docs/运行记录/模型实验/运行记录_OCELOT固定抽样可视化_1016_204305.md`（运行记录）。
+- Commit: 随可视化记录提交，哈希见git历史。
