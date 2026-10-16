@@ -1799,3 +1799,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_clicks_1016_205456/`，编号、引线及放大；原图不覆盖。
 - Docs record: `docs/运行记录/模型实验/运行记录_OCELOT固定抽样可视化_1016_204305.md`（运行记录）。
 - Commit: 随可视化记录提交，哈希见git历史。
+
+
+## 10-16 21:00:00
+
+- Purpose: 在OCELOT overview中明确增加支持和查询GT组织区域填充。
+- Changed: 更新可视化运行记录，images追加新输出入口（不入git）。
+- Validation: 原8例GT/valid精确匹配，原点击不变，无新推理；完整标题版绘图EXIT_CODE=0、PNG可读，实际查看row_gt_505。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_overview_gt_1016_205759/overview_with_gt_complete_1016_205759.png`、`index_complete.html`；旧图保留。
+- Docs record: `docs/运行记录/模型实验/运行记录_OCELOT固定抽样可视化_1016_204305.md`（运行记录）。
+- Commit: 随可视化记录提交，哈希见git历史。
