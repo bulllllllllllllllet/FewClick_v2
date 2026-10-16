@@ -1809,3 +1809,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_overview_gt_1016_205759/overview_with_gt_complete_1016_205759.png`、`index_complete.html`；旧图保留。
 - Docs record: `docs/运行记录/模型实验/运行记录_OCELOT固定抽样可视化_1016_204305.md`（运行记录）。
 - Commit: 随可视化记录提交，哈希见git历史。
+
+
+## 10-16 21:17:30
+
+- Purpose: 调试OCELOT点击位置覆盖与像素/质心提示映射。
+- Changed: debug_ocelot_prompts.py、test_ocelot_prompt_debug.py及注册；运行记录/续跑清单。
+- Validation: 6项测试与真实6臂smoke通过，原二值mask精确重放/全部mask计数一致，2.27秒、EXIT_CODE=0；初次坐标double错误停止并修复/回归，旧日志保留。CPU审计115点标签全对，重复token及映射差异已记录。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_prompt_debug_1016_211237/`；GPU2正式23例提交后启动，无训练。
+- Docs record: `docs/运行记录/模型实验/运行记录_OCELOT点击与提示映射调试_1016_211237.md`（运行记录）。
+- Commit: 随实现提交，哈希见git历史。

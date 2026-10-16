@@ -26,6 +26,7 @@ _MODULE_GROUPS = {
         'visualize_test_boundary', 'evaluate_dense_transfer', 'evaluate_prompt_dependence',
         'score_alternative_target',
         'external_cell_inputs', 'evaluate_ocelot_external',
+        'debug_ocelot_prompts',
     ],
     'external': ['segnext_adapter', 'run_segnext'],
 }
