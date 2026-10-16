@@ -1769,3 +1769,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_external_1016_201057/formal_1016_201057/`；源码e531861，GPU2/CPU4；无训练，不外推WSI级或核输入不变的癌种效应。
 - Docs record: `docs/运行记录/模型实验/运行记录_OCELOT六器官本片示例初筛_1016_201057.md`（运行记录）。
 - Commit: 随启动归档提交，哈希见git历史。
+
+
+## 10-16 20:42:00
+
+- Purpose: 归档OCELOT外部器官初筛结果及前景面积简单基线。
+- Changed: OCELOT运行记录及续跑清单。
+- Validation: 23例/138预测全部完成，330秒，status complete/EXIT_CODE=0，保存mask复算通过；CPU全前景基线按保存GT复算并独立归档成功。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_external_1016_201057/`；18存在J5/dense Dice0.641180/0.617791，全前景0.785750；5缺失dense平均误报20.96%，未宣称跨域通过。
+- Docs record: `docs/运行记录/模型实验/运行记录_OCELOT六器官本片示例初筛_1016_201057.md`（运行记录）。
+- Commit: 随结果归档提交，哈希见git历史。
