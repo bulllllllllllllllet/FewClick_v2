@@ -1759,3 +1759,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_external_1016_201057/`。固定val23ROI，18存在/5标注范围缺失；类0 unknown核输入及低分辨率检测局限显式保留；正式提交后启动，无训练。
 - Docs record: `docs/运行记录/模型实验/运行记录_OCELOT六器官本片示例初筛_1016_201057.md`（运行记录）。
 - Commit: 随实现提交，哈希见git历史。
+
+
+## 10-16 20:23:00
+
+- Purpose: 记录OCELOT六器官正式接入初筛启动。
+- Changed: OCELOT本片示例运行记录。
+- Validation: worker617343存活、已完成2/23，status evaluating；首例完整通过，正式结果待完成。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/ocelot_external_1016_201057/formal_1016_201057/`；源码e531861，GPU2/CPU4；无训练，不外推WSI级或核输入不变的癌种效应。
+- Docs record: `docs/运行记录/模型实验/运行记录_OCELOT六器官本片示例初筛_1016_201057.md`（运行记录）。
+- Commit: 随启动归档提交，哈希见git历史。
