@@ -1729,3 +1729,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/alternative_target_1016_154926/`，CPU4/零GPU，仅重评分，无推理训练；正式1653pair提交后启动。
 - Docs record: `docs/运行记录/模型实验/运行记录_替代提示目标真值核验_1016_154926.md`（运行记录）。
 - Commit: 随实现提交，哈希见git历史。
+
+
+## 10-16 15:54:00
+
+- Purpose: 记录替代目标GT正式评分已启动。
+- Changed: 替代提示目标真值核验运行记录。
+- Validation: worker3632308存活，已完成20/1653，status scoring；前置smoke与8项测试通过。正式结果待完成。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/alternative_target_1016_154926/formal_1016_154926/`，源码362d1bf，CPU4/零GPU。
+- Docs record: `docs/运行记录/模型实验/运行记录_替代提示目标真值核验_1016_154926.md`（运行记录）。
+- Commit: 随启动归档提交，哈希见git历史。
