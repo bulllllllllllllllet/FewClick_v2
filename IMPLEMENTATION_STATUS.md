@@ -1879,3 +1879,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_data/prepare_1020_174937/`；训练几何候选43294、验证10059，PUMA全部holdout；候选不等于完整训练就绪。
 - Docs record: `docs/运行记录/特征缓存/运行记录_多器官标准输入前处理_1020_174937.md`（运行记录）；包括1张TIGER坐标隔离、两次padding修正与保留的失败记录。
 - Commit: 随前处理实现提交，哈希见git历史。
+
+
+## 10-20 18:20:15
+
+- Purpose: 归档最终多器官前处理烟测与正式批量任务启动。
+- Changed: 前处理运行记录及续跑清单更新。
+- Validation: 最终104tiles/312份QA通过；10份质量配对细胞97.25秒、10份真实J5+dense兼容性2.72秒、EXIT_CODE=0；10项测试通过，PUMA未读GT评分。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_data/prepare_1020_174937/`；full_render_1020_181805 worker3348905（CPU4）与cell_benchmark_1020_181805 worker3348909（GPU2/CPU4）运行中，恢复入口为根*_selection.json。
+- Docs record: `docs/运行记录/特征缓存/运行记录_多器官标准输入前处理_1020_174937.md`（运行记录）。训练候选43294、最终合格数待全量导出；完整细胞及动态任务/训练仍待，不宣称已就绪。
+- Commit: 随启动状态归档，哈希见git历史。
