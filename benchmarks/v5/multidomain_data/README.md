@@ -54,3 +54,27 @@ log1p area in 0.25MPP-equivalent pixels. XCell reg64 is a model prediction.
 
 Design/run record:
 `docs/运行记录/特征缓存/运行记录_多器官标准输入前处理_1020_174937.md`.
+
+
+Optional detector experiments keep the default preparation recipe unchanged:
+
+```bash
+python -m benchmarks.v5.multidomain_data.profile_cells --inputs FIXED_INPUTS --output NEW_PROFILE_OUTPUT
+python -m benchmarks.v5.multidomain_data.compare_nuclei_speed --inputs FIXED_INPUTS --checkpoint OFFICIAL_BRIGHTFIELD_TORCHSCRIPT --output NEW_COMPARISON_OUTPUT
+python -m benchmarks.v5.multidomain_data.evaluate_nuclei_points --checkpoint OFFICIAL_BRIGHTFIELD_TORCHSCRIPT --output NEW_POINT_QA_OUTPUT
+python -m benchmarks.v5.multidomain_data.smoke_model --inputs NEW_COMPARISON_OUTPUT/instanseg_inputs_with_cells.parquet --output NEW_MODEL_SMOKE_OUTPUT
+```
+
+Set `CUDA_VISIBLE_DEVICES` explicitly for these CUDA probes. The adapter requires
+and verifies the official brightfield_nuclei0.1.1 TorchScript SHA, runs at its
+0.5MPP, and maps instances back to the approximately 0.25MPP detector grid.
+`CachedCenterCropper` caches centers for one immutable instance-map object and
+preserves attended crop pixels. The speed comparison enforces exact Cellpose
+mask and feature equality before accepting this optimization. Its measured
+compute excludes model loading, RGB I/O and cache compression/writing.
+The point probe fixes one OCELOT train cell field per organ and reports
+class-agnostic center detection, not nucleus-boundary or tissue segmentation
+accuracy. No detector is selected automatically from those six fields.
+
+Experiment record:
+`docs/运行记录/模型实验/运行记录_快速核分割替代与细胞缓存剖析_1020_182710.md`.

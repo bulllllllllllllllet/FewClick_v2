@@ -1889,3 +1889,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_data/prepare_1020_174937/`；full_render_1020_181805 worker3348905（CPU4）与cell_benchmark_1020_181805 worker3348909（GPU2/CPU4）运行中，恢复入口为根*_selection.json。
 - Docs record: `docs/运行记录/特征缓存/运行记录_多器官标准输入前处理_1020_174937.md`（运行记录）。训练候选43294、最终合格数待全量导出；完整细胞及动态任务/训练仍待，不宣称已就绪。
 - Commit: 随启动状态归档，哈希见git历史。
+
+
+## 10-20 18:46:46
+
+- Purpose: 检索并实测Cellpose以外的快速核分割，剖析并验证细胞缓存裁核加速。
+- Changed: v5/multidomain_data新增InstanSeg适配器、保持像素一致的中心缓存裁核、分段剖析、三臂速度与六器官点检测质量评估、行为测试；README及组织边界续跑清单更新。
+- Validation: 13项测试通过；10份三臂均值9.067/3.542/0.956秒，裁核优化前后实例与完整74维特征完全一致；新InstanSeg10份真实J5+dense有限loss/重载通过，PUMA仅张量前向；六器官821个GT核点original 5µm-F1为Cellpose0.814、InstanSeg0.763，各作业EXIT_CODE=0。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_data/detector_speed_1020_182710/`，含官方校验权重、selection恢复入口、QA图、源码SHA及完成状态；原100份基准完成，全量RGB/GT继续渲染。
+- Docs record: `docs/运行记录/模型实验/运行记录_快速核分割替代与细胞缓存剖析_1020_182710.md`（运行记录）。未替换默认检测器、未启动全量细胞或训练；中心F1不是组织Dice，InstanSeg尚待下游质量验收。
+- Commit: 随本次实现与实测记录提交，哈希见git历史。
