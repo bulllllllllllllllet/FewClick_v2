@@ -1839,3 +1839,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/scale_match_1016_220050/scale_audit_1016_220050.json`；CRC中位0.504与OCELOT0.499892MPP接近，后者原生0.778插值导致细节不等价。
 - Docs record: `docs/运行记录/数据审计/运行记录_CRC与OCELOT物理尺度核验_1016_220050.md`（运行记录）。
 - Commit: 随审计归档提交，哈希见git历史。
+
+
+## 10-20 15:48:30
+
+- Purpose: 隔离CRC组织图像分辨率降采样的影响。
+- Changed: evaluate_crc_resolution.py、test_crc_resolution.py及注册；运行记录/续跑清单。
+- Validation: 6测试通过；真实12类三臂smoke16.26秒、EXIT_CODE=0，原J5/dense重放误差0、GT/valid一致、细胞不变、有限loss及保存mask复算通过，git diff --check通过。
+- Artifacts: 初始smoke沿用`support_query/crc_resolution_1016_220639/`；当前正式新根`/nfs-medical3/zyh/fewclick_v2/support_query/crc_resolution_1020_154712/`，96例待提交后启动，GPU2/CPU4，零训练。
+- Docs record: `docs/运行记录/模型实验/运行记录_CRC分辨率降采样对照_1016_220639.md`（运行记录）。
+- Commit: 随实现提交，哈希见git历史。

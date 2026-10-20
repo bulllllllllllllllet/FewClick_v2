@@ -27,6 +27,7 @@ _MODULE_GROUPS = {
         'score_alternative_target',
         'external_cell_inputs', 'evaluate_ocelot_external',
         'debug_ocelot_prompts',
+        'evaluate_crc_resolution',
     ],
     'external': ['segnext_adapter', 'run_segnext'],
 }
