@@ -1899,3 +1899,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_data/detector_speed_1020_182710/`，含官方校验权重、selection恢复入口、QA图、源码SHA及完成状态；原100份基准完成，全量RGB/GT继续渲染。
 - Docs record: `docs/运行记录/模型实验/运行记录_快速核分割替代与细胞缓存剖析_1020_182710.md`（运行记录）。未替换默认检测器、未启动全量细胞或训练；中心F1不是组织Dice，InstanSeg尚待下游质量验收。
 - Commit: 随本次实现与实测记录提交，哈希见git历史。
+
+
+## 10-20 20:55:07
+
+- Purpose: 按用户明确选择，将新多器官细胞缓存默认切换为InstanSeg并安排完整六卡准备。
+- Changed: prepare_cells默认InstanSeg/中心缓存裁核/实际MPP/recipe身份与全量分片；新增queue_cells完成门控/六GPU/一致性合并；分离v5特征模型加载避免加载Cellpose；修复IGNITE源255 ignore合法性；README、测试及恢复记录更新。
+- Validation: 15项行为测试通过；原失败源IGNITE patient69_he_roi3真实读取通过；正式CLI五源10份12.62秒、真实J5+dense有限loss/检查点重载10份2.60秒，PUMA不读GT评分；六卡100份25.20秒、无重无漏/单一recipe/全部落盘回读一致，所有短作业EXIT_CODE=0。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_data/instanseg_adoption_1020_185343/`；新完整导出full_render_1020_205325（worker4052965、CPU4）running；full_cells_1020_205325（父4052969）waiting_for_render，成功后GPU0–5/CPU4每worker，失败不重试。旧失败和Cellpose缓存保留，完整细胞及重训练未完成。
+- Docs record: `docs/运行记录/特征缓存/运行记录_InstanSeg正式细胞缓存切换_1020_185343.md`（运行记录）；追加原前处理记录与组织边界续跑清单。
+- Commit: 随本次采用实现与正式批量安排提交，哈希见git历史。

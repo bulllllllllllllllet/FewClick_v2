@@ -210,6 +210,15 @@ def tile_catalog(sources):
     return rows,dict(notes),duplicates
 
 
+def normalize_source_labels(labels,dataset):
+    allowed=set(LABELS[dataset])|{IGNORE}|({0} if dataset in ('ignite','tiger') else set())
+    unexpected=set(np.unique(labels))-allowed
+    if unexpected:raise ValueError(f'unknown {dataset} source labels: {sorted(unexpected)}')
+    if dataset in ('ignite','tiger'):
+        labels=labels.copy();labels[labels==0]=IGNORE
+    return labels
+
+
 def native_inputs(source):
     e = json.loads(source['extra_json'])
     if source['dataset'] == 'crc':
@@ -231,11 +240,7 @@ def native_inputs(source):
                 labels = np.asarray(im).copy()
             if labels.ndim != 2:
                 raise ValueError('GT must be single channel')
-            allowed = set(LABELS[source['dataset']]) | ({255} if source['dataset']=='ocelot' else {0})
-            if set(np.unique(labels))-allowed:
-                raise ValueError('unknown source labels')
-            if source['dataset'] in ('ignite','tiger'):
-                labels[labels==0] = IGNORE
+            labels=normalize_source_labels(labels,source['dataset'])
             audit = {}
     if set(np.unique(labels)) - set(LABELS[source['dataset']]) - {IGNORE}:
         raise ValueError('decoded label schema mismatch')

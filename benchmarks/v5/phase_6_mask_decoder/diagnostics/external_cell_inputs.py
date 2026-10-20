@@ -7,7 +7,6 @@ from PIL import Image
 from scipy import ndimage
 import torch
 import torch.nn.functional as F
-from cellpose import models
 from module.TransPath.ctran import ConvStem, ctranspath
 from XCellFormer import XCellFormer
 from benchmarks.v4.phase_3_cell_region.src.cells import encode_xcell_features
@@ -24,7 +23,14 @@ class GlobalPool(torch.nn.Module):
 
 
 def load_cell_models(device):
+    from cellpose import models
     detector=models.CellposeModel(gpu=True,pretrained_model=str(WEIGHTS['cpsam']),device=device)
+    ctp,xcell,audit=load_feature_models(device)
+    return detector,ctp,xcell,audit
+
+
+def load_feature_models(device):
+    """Load the audited feature branch independently of nuclear segmentation."""
     ctp=ctranspath();ctp.patch_embed=ConvStem(img_size=224,patch_size=4,in_chans=3,embed_dim=ctp.embed_dim)
     state=torch.load(WEIGHTS['ctranspath'],map_location='cpu',weights_only=False)['model'];adapted={}
     for key,value in state.items():
@@ -44,7 +50,7 @@ def load_cell_models(device):
     xcell=xcell.to(device).eval().requires_grad_(False)
     audit={'ctp_missing':mismatch.missing_keys,'ctp_unexpected':mismatch.unexpected_keys,'xcell_strict':True,
            'cell_class_policy':'0 unknown; no tissue-GT-to-nuclear-class mapping'}
-    return detector,ctp,xcell,audit
+    return ctp,xcell,audit
 
 
 def cells_from_instances(inst, max_cells=255):

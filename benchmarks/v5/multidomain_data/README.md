@@ -56,7 +56,7 @@ Design/run record:
 `docs/运行记录/特征缓存/运行记录_多器官标准输入前处理_1020_174937.md`.
 
 
-Optional detector experiments keep the default preparation recipe unchanged:
+Separate detector diagnostics reproduce the legacy recipe explicitly:
 
 ```bash
 python -m benchmarks.v5.multidomain_data.profile_cells --inputs FIXED_INPUTS --output NEW_PROFILE_OUTPUT
@@ -78,3 +78,28 @@ accuracy. No detector is selected automatically from those six fields.
 
 Experiment record:
 `docs/运行记录/模型实验/运行记录_快速核分割替代与细胞缓存剖析_1020_182710.md`.
+
+
+New multi-organ cell caches default to **InstanSeg brightfield_nuclei0.1.1**
+plus cached-center attended crops. This path loads only InstanSeg, CTransPath and
+XCell weights; Cellpose is available explicitly through `--detector cellpose`.
+Actual axis-wise detector MPP is passed to InstanSeg before physical resampling.
+Every row records `cell_recipe_id`, bound to model hashes, feature/crop contract
+and source hashes. Existing cache files are never overwritten or reused as a
+new detector's output. `--all` selects the full manifest; `--shard-index I
+--num-shards N` gives disjoint deterministic tile/quality shards.
+
+```bash
+python -m benchmarks.v5.multidomain_data.queue_cells --render-root FULL_RENDER --render-log FULL_RENDER_LOG --gate MODEL_SMOKE/summary.json --output NEW_FULL_CELL_OUTPUT --gpus 0 1 2 3 4 5
+```
+
+The queue waits for render `EXIT_CODE=0`, a complete manifest and a passed real
+model smoke before launching workers. `--limit 100` instead exercises a balanced
+mini-batch through the same six-worker and merge path. Each worker has its own
+log, PID, progress, status and feature manifest. A worker failure stops this run;
+it does not retry, switch detectors or change thresholds. Merge requires exact
+input coverage, unchanged splits/RGB identities and one consistent recipe.
+Queued source changes cause an explicit failure before GPU extraction starts.
+
+Adoption record:
+`docs/运行记录/特征缓存/运行记录_InstanSeg正式细胞缓存切换_1020_185343.md`.

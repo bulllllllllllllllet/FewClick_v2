@@ -8,6 +8,8 @@ from scipy import ndimage
 import torch
 import torch.nn.functional as F
 
+DEFAULT_INSTANSEG_CHECKPOINT=Path('/nfs-medical3/zyh/fewclick_v2/multidomain_data/detector_speed_1020_182710/instanseg_model/instanseg.pt')
+
 
 class CachedCenterCropper:
     """Reuse one centroid scan per instance map; retain original crop pixels."""
@@ -49,10 +51,12 @@ class InstanSegDetector:
         if self.weight_sha256!=expected:raise ValueError('official RDF TorchScript SHA256 mismatch')
 
     @torch.inference_mode()
-    def eval(self,image,diameter=None,batch_size=None):
+    def eval(self,image,diameter=None,batch_size=None,input_mpp=None):
         if image.ndim!=3 or image.shape[2]!=3:raise ValueError('InstanSeg expects RGB')
         x=torch.from_numpy(image.copy()).permute(2,0,1).float()[None].to(self.device)
-        shape=tuple(max(32,round(n*self.input_mpp/self.pixel_size)) for n in image.shape[:2])
+        mpp=(self.input_mpp,self.input_mpp) if input_mpp is None else tuple(map(float,input_mpp))
+        if len(mpp)!=2 or not all(np.isfinite(v) and v>0 for v in mpp):raise ValueError('invalid detector input MPP')
+        shape=tuple(max(32,round(n*mpp[1-i]/self.pixel_size)) for i,n in enumerate(image.shape[:2]))
         x=F.interpolate(x,size=shape,mode='bilinear',align_corners=False,antialias=True)
         # Match the official Python API's per-channel 0.1/99.9 percentiles.
         flat=x[0].flatten(1)
