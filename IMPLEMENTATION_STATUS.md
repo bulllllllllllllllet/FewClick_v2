@@ -1869,3 +1869,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/retrain_design_1020_172541/`，含input_readiness、坐标取整差异解释和validate_plan结果。
 - Docs record: `docs/建议/模型与训练/建议_FewClick第二版分辨率鲁棒与多器官重训练_1020_172541.md`（建议）；覆盖数据接入、清晰度增强、统一细胞输入、动态local/remote/absent、分阶段解冻、独立消融及域外/整片验收。
 - Commit: 随建议归档提交，哈希见git历史。
+
+
+## 10-20 18:16:17
+
+- Purpose: 开始第二版多器官标准输入前处理，建立物理尺度、标签和质量配对细胞合同。
+- Changed: 新增benchmarks/v5/multidomain_data九个源码/测试/说明文件；新增前处理记录并追加续跑清单。
+- Validation: 10项行为测试通过；全来源清单及空间分组检查完成；五源104tiles/312variants真实QA通过；10份真实Cellpose/CTP/XCell及J5+dense有限loss/重载烟测通过，PUMA不读GT评分；最终白画布版本细胞烟测进行中。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_data/prepare_1020_174937/`；训练几何候选43294、验证10059，PUMA全部holdout；候选不等于完整训练就绪。
+- Docs record: `docs/运行记录/特征缓存/运行记录_多器官标准输入前处理_1020_174937.md`（运行记录）；包括1张TIGER坐标隔离、两次padding修正与保留的失败记录。
+- Commit: 随前处理实现提交，哈希见git历史。

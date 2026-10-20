@@ -1,0 +1,56 @@
+# Multi-organ standard inputs
+
+This v5 preparation package keeps source-local tissue labels, physical coordinates,
+official/spatial splits, image quality and cell inputs explicit. It does not train
+or replace the retained J5+dense128 model.
+
+Use the `aligner` Python, with `pyvips` imported before torch. Raw datasets are
+read-only. All derived output directories must be new timestamped NFS paths.
+
+```bash
+python -m benchmarks.v5.multidomain_data.prepare --mode catalog --output CATALOG_OUTPUT
+python -m benchmarks.v5.multidomain_data.prepare --mode render --catalog CATALOG_OUTPUT --output RENDER_OUTPUT --per-group 16
+python -m benchmarks.v5.multidomain_data.validate_inputs --inputs RENDER_OUTPUT/inputs.parquet --output QA_OUTPUT
+CUDA_VISIBLE_DEVICES=2 python -m benchmarks.v5.multidomain_data.prepare_cells --inputs RENDER_OUTPUT/inputs.parquet --output CELL_OUTPUT --smoke
+CUDA_VISIBLE_DEVICES=2 python -m benchmarks.v5.multidomain_data.smoke_model --inputs CELL_OUTPUT/inputs_with_cells.parquet --output MODEL_SMOKE_OUTPUT
+python -m unittest benchmarks.v5.multidomain_data.test_preparation benchmarks.v5.multidomain_data.test_cell_preparation -v
+```
+
+`--per-group` caps exported tiles per dataset/organ/split; it does not modify the
+complete candidate manifest. Initial export reads train/val pixels only. PUMA is
+marked `training_allowed=false` even when its reserved within-domain split is
+named train. A subsequent explicit model coverage experiment must version that
+policy before using it for training. `prepare_cells --limit 100` selects a
+deterministic balanced benchmark; `--smoke` instead selects original/0.8 quality
+of one fixed tile per dataset. The model smoke checks finite forward/loss and
+reload behavior; PUMA receives tensor-only checks without reading its GT.
+
+`sources.parquet` records original files, physical sampling, label format and
+source provenance. `tiles.parquet` freezes geometric selection/splits before
+label-dependent checks. `inputs.parquet` references 512-square RGB/labels and
+records array hashes, actual MPP, categorical counts and invertible transforms.
+Each rendered tile has a durable `details.json`; per-tile progress and failure
+states survive process termination. `inputs_with_cells.parquet` binds each RGB
+quality variant to its newly predicted nuclei/XCell features and weight hashes.
+It may cover only a benchmark subset; never substitute it for complete preparation.
+
+Target sampling is 0.5 microns/pixel over approximately 256 microns. Integer
+source windows cause small, recorded axis-wise rounding. GT uses nearest pixel
+centers, keeps source categories, and maps unannotated/padding/conflicts to 255.
+Image downsampling uses Lanczos, quality restoration uses bilinear, and geometric
+padding is restored to white after quality augmentation. No target task/base or
+click heatmap is cached here: those must be rebuilt dynamically by the trainer.
+
+TIGER uses its released 0.5MPP coordinate grid, globally aligned 512px tiles and
+buffered 8192px blocks. Incomplete grid crops and block-border crops are reported
+as excluded. Source images whose dimensions disagree with published coordinate
+extents are quarantined, never silently stretched. IGNITE original ROIs
+are used without duplicate context representations; absent slide identity is
+explicit and must not be treated as same-WSI evidence. PUMA rasterization respects
+holes/MultiPolygons, leaves uncovered space unknown, and ignores contradictory
+specific tissue labels. Cell preparation uses image evidence and geometric
+padding only, encodes nuclear identity as unknown in every domain, and stores
+log1p area in 0.25MPP-equivalent pixels. XCell reg64 is a model prediction.
+
+Design/run record:
+`docs/运行记录/特征缓存/运行记录_多器官标准输入前处理_1020_174937.md`.
