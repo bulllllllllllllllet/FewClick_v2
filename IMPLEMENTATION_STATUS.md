@@ -1859,3 +1859,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/crc_resolution_1020_154712/`；dense Dice0.816508→0.761785、BF1 0.573206→0.506292；肿瘤上皮8例Dice0.866371→0.771166。仅图像链控制，不外推全部跨器官差距或细胞退化贡献。
 - Docs record: `docs/运行记录/模型实验/运行记录_CRC分辨率降采样对照_1016_220639.md`（运行记录）。
 - Commit: 随正式结果提交，哈希见git历史。
+
+
+## 10-20 17:37:41
+
+- Purpose: 制定FewClick第二版分辨率鲁棒与多器官提示分割重训练方案。
+- Changed: 新增重训练建议记录；追加组织边界续跑清单，保留现有最佳权重。
+- Validation: 四个外部数据源metadata及17个有界样本复核成功；数据数量/split/MPP/链接检查通过，git diff --check通过；无新训练或模型性能测试。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/dataset_audit/retrain_design_1020_172541/`，含input_readiness、坐标取整差异解释和validate_plan结果。
+- Docs record: `docs/建议/模型与训练/建议_FewClick第二版分辨率鲁棒与多器官重训练_1020_172541.md`（建议）；覆盖数据接入、清晰度增强、统一细胞输入、动态local/remote/absent、分阶段解冻、独立消融及域外/整片验收。
+- Commit: 随建议归档提交，哈希见git历史。
