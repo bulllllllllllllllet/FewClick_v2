@@ -1849,3 +1849,13 @@
 - Artifacts: 初始smoke沿用`support_query/crc_resolution_1016_220639/`；当前正式新根`/nfs-medical3/zyh/fewclick_v2/support_query/crc_resolution_1020_154712/`，96例待提交后启动，GPU2/CPU4，零训练。
 - Docs record: `docs/运行记录/模型实验/运行记录_CRC分辨率降采样对照_1016_220639.md`（运行记录）。
 - Commit: 随实现提交，哈希见git历史。
+
+
+## 10-20 15:52:30
+
+- Purpose: 归档CRC图像分辨率单因素对照结果。
+- Changed: 分辨率运行记录及边界续跑清单；images新图库入口（不入git）。
+- Validation: 96例/576预测126秒，status complete、EXIT_CODE=0；原J5/dense重放0、GT/细胞/点击一致、mask计数复算通过；图库及固定首个肿瘤样例图生成/查看通过。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/support_query/crc_resolution_1020_154712/`；dense Dice0.816508→0.761785、BF1 0.573206→0.506292；肿瘤上皮8例Dice0.866371→0.771166。仅图像链控制，不外推全部跨器官差距或细胞退化贡献。
+- Docs record: `docs/运行记录/模型实验/运行记录_CRC分辨率降采样对照_1016_220639.md`（运行记录）。
+- Commit: 随正式结果提交，哈希见git历史。
