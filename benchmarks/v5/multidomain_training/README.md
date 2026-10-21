@@ -129,3 +129,20 @@ python -m benchmarks.v5.multidomain_training.diagnose_regression --plan PLAN --o
 python -m benchmarks.v5.multidomain_training.diagnose_regression --plan PLAN --output NEW_96_SHARD --shard 0 --shards 4
 python -m benchmarks.v5.multidomain_training.diagnose_regression --plan PLAN --output NEW_1024_SHARD --full --cells legacy --size-one --shard 0 --shards 4
 ```
+
+`check_region_mapping.py` compares exactly the same locked interior clicks with
+nearest-centroid selection, the single region with maximal membership at the
+click, and the current soft mixture of whole region tokens. It does not change
+the training/deployment reader. It requires exact mask and score replay of both
+existing readers against the saved full CRC diagnosis, audits region agreement
+and membership concentration, and reports paired spatial-block intervals over
+the same 931 tissue-target cases. Ground-truth region purity is audit-only and
+never selects a region for the model. This is an inference ablation on fixed
+weights, not a comparison of independently trained hard/soft systems.
+
+```bash
+python -m unittest benchmarks.v5.multidomain_training.test_region_mapping -v
+python -m benchmarks.v5.multidomain_training.check_region_mapping --plan PLAN --prior-root PRIOR_DIAGNOSIS_ROOT --output NEW_SMOKE --smoke
+python -m benchmarks.v5.multidomain_training.check_region_mapping --plan PLAN --prior-root PRIOR_DIAGNOSIS_ROOT --output NEW_SHARD --shard 0 --shards 4
+python -m benchmarks.v5.multidomain_training.check_region_mapping --plan PLAN --prior-root PRIOR_DIAGNOSIS_ROOT --output NEW_MERGE --merge SHARD0 SHARD1 SHARD2 SHARD3
+```

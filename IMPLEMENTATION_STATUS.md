@@ -1989,3 +1989,14 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/foreground_scoring_1021_184142/rescore_1021_184639`，selection.json恢复入口在父根；新主Dice旧/C0/C3=.644261/.753407/.727132，BF1=.462063/.530134/.489272。排除93背景目标身份，全部模型同规则；没有改提示/阈值/像素有效性或重新选权重。
 - Docs record: `docs/运行记录/模型实验/运行记录_组织目标主评分与背景正任务排除_1021_184142.md`（运行记录）；用户决定覆盖旧补背景正任务/完整12类主门槛建议，背景负例及absent误报仍保留。无新训练、部署或PUMA/test读取。
 - Commit: 随新评分口径和重算归档提交，哈希见git历史。
+
+
+## 10-21 19:50:00
+
+- Purpose: 检查同一点击的区域示例读取，并归档第二版训练整体结果；保留用户点击指定组织示例与背景正任务排除定义。
+- Changed: 新增check_region_mapping.py及3项行为测试；README、总续跑清单；三读取运行记录和完整训练总结。训练/部署默认soft和权重未修改。
+- Validation: `python -m unittest benchmarks.v5.multidomain_training.test_region_mapping benchmarks.v5.multidomain_training.test_diagnosis benchmarks.v5.multidomain_training.test_scoring benchmarks.v5.multidomain_training.test_training benchmarks.v5.multidomain_training.test_longrun -v` — 28项通过；11例真实门控与931×3×3完整对照/合并全部EXIT_CODE=0；centroid/soft mask和指标逐例精确重放，hard保存计数一致；四臂20k完成/日志/重载复核通过。
+- Result: C3 centroid/hard/soft Dice=.480609/.711186/.727132；直接改hard未提升，保持soft。C3多域960有目标Dice=.584458、空目标误报面积=.103921；CRC同准确点组织Dice=.727132，C0=.753407。PUMA/test未评分，无新训练。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/multidomain_training/click_region_check_1021_193916/，merge_selection.json指向merged_1021_194538；training_audit_1021_194909.json保存四臂完成与选模证据。
+- Docs record: docs/运行记录/模型实验/运行记录_同点击三种区域示例读取检查_1021_193916.md（运行记录）；docs/运行记录/模型实验/总结_FewClick第二版训练与区域提示检查_1021_193916.md（整体总结）；docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md（追加恢复入口）。
+- Commit: 本次独立提交；结果hash记录于本实验根commit_1021_194948.json。
