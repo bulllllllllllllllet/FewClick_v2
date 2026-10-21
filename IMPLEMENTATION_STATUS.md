@@ -2023,3 +2023,14 @@
 - Scope: 只完成采样器修正及冻结旧权重诊断/小门控，未完整重训C3；无PUMA/test、无背景正任务恢复。GT符号正确不等于点有代表性，多组额外预算及oracle限制显式报告。
 - Docs record: docs/运行记录/模型实验/运行记录_代表性点击修正与多组提示对照_1021_214456.md（运行记录），训练整体总结/旧随机图库记录/总续跑清单均追加最新说明。
 - Commit: 本次独立提交；结果hash保存于本实验根commit_1021_220840.json。
+
+
+## 10-21 23:06:45
+
+- Purpose: 按用户重新训练授权准备代表性点击C3的同预算20k，新增旧点兼容报告但不参与主选模。
+- Changed: train.py可选legacy-validation-plans/身份预算校验/单列基线及逐checkpoint报告/源码revision；3项test_retrain和README；新20k运行记录。
+- Validation: 38项行为测试通过；新旧全960任务身份/质量/类别/点预算一致；GPU2门控worker2899383，新旧各40任务基线及末次、4更新含暖身联合、六模块非零有限梯度/保存重载完全一致、选模仅新点，29.09秒EXIT_CODE=0。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/multidomain_training/representative20k_1021_230134/gate_selection.json → gate_1021_230441。
+- Docs record: docs/运行记录/模型实验/运行记录_代表性点击C3重新训练20k_1021_230134.md（运行记录）。
+- Scope: 代码门控已完成，接下来正式20k将从原始J5+dense初始化、固定新960、保持旧C3预算；本门控权重不作初始化。
+- Commit: 本次独立代码提交；hash保存于本实验根code_commit_1021_230645.json。

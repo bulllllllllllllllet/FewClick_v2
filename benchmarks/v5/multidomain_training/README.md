@@ -198,3 +198,13 @@ python -m benchmarks.v5.multidomain_training.probe_click_policy --training-run C
 python -m benchmarks.v5.multidomain_training.probe_click_policy --training-run C3_RUN --checkpoint-plan PLAN --output NEW_MERGE --merge SHARD0 SHARD1 SHARD2 SHARD3
 python -m benchmarks.v5.multidomain_training.render_click_policy --experiment PROBE_ROOT --previous-gallery PRIOR_RANDOM_GALLERY --output NEW_GALLERY
 ```
+
+For a matched retraining run, `train --legacy-validation-plans OLD960` can add
+report-only historical clicks alongside the primary representative plans.
+Every support/query identity, target, quality, protocol and click budget must
+match between the two manifests. Legacy baselines and per-checkpoint reports
+are saved separately; checkpoint selection uses only the primary fixed group.
+This flag does not mix old clicks into training or primary validation. Runs
+record both manifest hashes and the source revision. A fresh C3 retrain should
+be compared to the old C3 evaluated on the same new fixed clicks (Dice0.612145),
+not to its old-click score0.584458 or a GT-selected five-group oracle.
