@@ -1929,3 +1929,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836/`；screen2k_selection.json恢复四臂GPU2–5、worker188126/188131/188135/188139；C0 CRC原质、C1 CRC多质量、C2多域原质、C3多域多质量，每臂2000更新/batch4/200暖身后联合，初查training。支持图点击与query GT的任务QA图已查看，不是预测效果图。
 - Docs record: `docs/运行记录/模型实验/运行记录_多域动态点击提示与可微重训练_1021_122836.md`（运行记录）。200步Dice0.4100→0.5063但空目标误报面积0.1649→0.3228，尚未质量验收；四臂从同样初始最佳权重重启，PUMA/test不参与。训练是patch级、WSI是配对来源协议。
 - Commit: 随本次实现、真实门控和四臂启动提交，哈希见git历史。
+
+
+## 10-21 13:20:33
+
+- Purpose: 核实并归档四臂动态多域重训练2k短筛完成结果。
+- Changed: 追加动态训练运行记录、组织边界续跑清单及本状态；无模型/训练代码修改或新训练启动。
+- Validation: 四臂2000/2000、complete/EXIT_CODE=0、checkpoint_reload_exact，完整history/best_checkpoint一致性复核；相同初始权重/固定160任务。选中1500步Dice C0/C1/C2/C3=.4816/.4969/.5244/.4949，误报面积17.48/15.12/21.48/20.73%，分列最后2000步指标，禁止跨步混合。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836`；screen2k_completion_1021_132033.json。小规模配对开发验证、PUMA/test不参与，尚未满足拒识/收敛/完整回归与域外/整片验收，旧部署最佳权重保留。
+- Docs record: `docs/运行记录/模型实验/运行记录_多域动态点击提示与可微重训练_1021_122836.md`（运行记录）及续跑清单。
+- Commit: 随短筛完成记录提交，哈希见git历史。
