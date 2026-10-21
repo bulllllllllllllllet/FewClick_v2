@@ -2067,3 +2067,14 @@
 - Docs record: docs/运行记录/模型实验/运行记录_单卡至四卡同步迁移与训练加速_1021_234146.md（运行记录）；原20k及主续跑清单指向当前入口。
 - Status: 正式四卡持续训练，GPU2/3/4/5、每卡CPU4/1任务、全局batch4；总20k/2k暖身、原数据/点击/LR/两套960验证保持，下一验证6000，估计剩余约2小时，无PUMA/test/权重部署，失败停止不自动重试。
 - Commit: 本次独立交接记录提交；hash保存于本实验根launch_record_commit_1022_001310.json。
+
+
+## 10-22 03:20:28
+
+- Purpose: 核验并归档代表性点击C3四卡20k训练完成与匹配口径结果。
+- Changed: 四卡迁移记录、原20k记录、主续跑清单追加完成状态/权重/指标；无训练代码或部署权重变化。
+- Validation: complete/20000/EXIT0，四rank退出；累计80000任务number连续，接续16000更新loss/梯度有限，10轮各新旧960完整，rank模型精确、checkpoint重载预测精确。既定选模14000，Dice .630201/BF1 .325506/无目标面积.095364，匹配旧C3 .612145/.309558/.094650；末轮.624940/.333576/.078176，不能声称误报全面解决。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/completion_verified_1022_031921.json，C3_distributed4_1022_001031/best_checkpoint.json及checkpoint_step_14000.pth；四卡总4809.84秒。
+- Docs record: docs/运行记录/模型实验/运行记录_单卡至四卡同步迁移与训练加速_1021_234146.md（运行记录），原20k与主续跑清单同步更新。
+- Status: 本次训练完成；已有四源patch空间开发验证，未跑PUMA/test/全WSI或新图库，未更换默认模型，未新增后台任务。
+- Commit: 本次独立完成记录提交；hash保存于本实验根completion_record_commit_1022_032028.json。
