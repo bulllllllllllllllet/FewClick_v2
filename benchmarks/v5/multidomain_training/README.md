@@ -98,8 +98,23 @@ class summaries and spatial-block paired intervals. This checks compatibility
 with the original deployment input contract; it is separate from the new
 0.5 MPP/InstanSeg contract and the multi-domain development score.
 
+Historical prompts are region centroids, which can lie outside the prompted
+tissue. Reusing their coordinates with the pixel reader changes their meaning;
+the compatibility score must not be described as the loss in real-click accuracy.
+`diagnose_regression.py` separates the two contracts. It locks GT-interior points
+with the same click counts and size condition, audits signed-point accuracy,
+compares retained/C0/C3 with both readers, and optionally compares old cells,
+unknown-only identity and InstanSeg cells recomputed on the exact original RGB.
+Every condition retains the full query/target set; nonbackground results are
+explicit diagnostic strata. `--size-one` adds a same-coordinate control for the
+size condition used by dynamic training. It is not chosen by the resulting score.
+
 ```bash
 python -m benchmarks.v5.multidomain_training.regression --plan PLAN --output NEW_SMOKE --smoke
 python -m benchmarks.v5.multidomain_training.regression --plan PLAN --output NEW_SHARD --shard 0 --shards 4
 python -m benchmarks.v5.multidomain_training.regression --plan PLAN --output NEW_MERGE --merge SHARD0 SHARD1 SHARD2 SHARD3
+python -m unittest benchmarks.v5.multidomain_training.test_diagnosis -v
+python -m benchmarks.v5.multidomain_training.diagnose_regression --plan PLAN --output NEW_SMOKE --smoke
+python -m benchmarks.v5.multidomain_training.diagnose_regression --plan PLAN --output NEW_96_SHARD --shard 0 --shards 4
+python -m benchmarks.v5.multidomain_training.diagnose_regression --plan PLAN --output NEW_1024_SHARD --full --cells legacy --size-one --shard 0 --shards 4
 ```

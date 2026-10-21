@@ -1969,3 +1969,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/repair_plan_1021_173325/scale_contract_check_1021_173325.json`；只读metadata审核，无新性能实验、训练或缓存重建。
 - Docs record: `docs/建议/模型与训练/建议_多域重训练CRC退化修正与兼容验收_1021_173325.md`（建议记录）；先同协议拆因、旧train回放/可选教师约束及保守2k短试，同时设CRC和多域门槛，通过后扩大训练。
 - Commit: 随修正建议和事实审核归档提交，哈希见git历史。
+
+
+## 10-21 17:59:13
+
+- Purpose: 完成CRC退化同协议拆因，纠正把历史区域质心兼容分数当成真实点击遗忘的解释。
+- Changed: 新增diagnose_regression.py、5项诊断行为测试；regression.py显式标记跨提示语义兼容比较，README及拆因/旧回归/长训/修正建议/续跑记录更新。模型结构和训练权重未改。
+- Validation: 5项行为测试通过；96×3权重×3细胞×4提示3456预测、1024×3权重×6提示18432预测全部EXIT_CODE=0；GT/原点不变、原回放误差0、所有内部点符号正确、细胞和mask回读计数通过；同语义配对区间及全部12类/背景子集均保留。修改兼容报告后12例×6模型真实复验9.19秒、退出0、语义字段正确。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/crc_diagnosis_1021_173823`；full_merge_selection.json恢复full_merged_1021_175042，96例merge_selection.json、权重漂移/点质量/匹配InstanSeg缓存/源码快照及图表均保留。全12类同内部点Dice旧/C0/C3=.657607/.691100/.670286；非背景旧→C3=.644261→.727132，背景正目标.791218→.101210。整体Dice差区间跨0，未宣称显著整体提升。
+- Docs record: `docs/运行记录/模型实验/运行记录_CRC退化同协议拆因_1021_173823.md`（运行记录）；更正旧回归/长训解释及修正方案。下一步重点背景正目标覆盖和C3相对C0的CRC取舍；无新训练、部署替换或PUMA/test使用。
+- Commit: 随拆因实现、真实复核和结果归档提交，哈希见git历史。
