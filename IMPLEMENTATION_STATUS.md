@@ -2056,3 +2056,14 @@
 - Docs record: docs/运行记录/模型实验/运行记录_单卡至四卡同步迁移与训练加速_1021_234146.md（运行记录）。
 - Status: 实现验收通过；原单卡已到4000正在完整验证，等待检查点交接后正式四卡接续。状态恢复精确，CUDA低精度训练后续轨迹不承诺逐bit一致。
 - Commit: 本次独立实现提交；hash保存于本实验根code_commit_1022_000954.json。
+
+
+## 10-22 00:13:10
+
+- Purpose: 完成代表性点击C3从单卡完整step4000至四卡的正式交接并记录当前活动入口。
+- Changed: 四卡迁移运行记录、原20k记录和主续跑清单追加真实启动与速度；无新训练代码变化。
+- Validation: 792292e实现及真实门控通过；00:10:31四卡正式启动，模型/230个AdamW状态SHA与4000检查点相同，首步4001/LR和task16000–16003正确。worker3181327–3181330存活，核验到4266/20000，全部loss/模块梯度有限；最近100步中位.394秒，原.904秒，约2.29倍。原worker2910537仅在新任务真实更新核验后TERM，旧EXIT143为计划迁移、零已完成更新丢失。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/formal_selection.json、formal_startup_verified.json、formal_profile_1022_001200.json；活动C3_distributed4_1022_001031及同名.log/source快照；原根continuation_1022_001031.json。
+- Docs record: docs/运行记录/模型实验/运行记录_单卡至四卡同步迁移与训练加速_1021_234146.md（运行记录）；原20k及主续跑清单指向当前入口。
+- Status: 正式四卡持续训练，GPU2/3/4/5、每卡CPU4/1任务、全局batch4；总20k/2k暖身、原数据/点击/LR/两套960验证保持，下一验证6000，估计剩余约2小时，无PUMA/test/权重部署，失败停止不自动重试。
+- Commit: 本次独立交接记录提交；hash保存于本实验根launch_record_commit_1022_001310.json。
