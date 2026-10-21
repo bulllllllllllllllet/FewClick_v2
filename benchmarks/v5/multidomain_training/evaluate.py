@@ -36,7 +36,8 @@ def summarize(rows):
         absent_over_1percent=None if not absent else float(np.mean([r['false_positive_fraction']>=.01 for r in absent])))
 
 
-def evaluate(model,corpus,plans,device,output,amp=True,save_examples=0):
+def evaluate(model,corpus,plans,device,output,amp=True,save_examples=0,anchor_count=0):
+    if not 0<=anchor_count<=len(plans):raise ValueError('invalid validation anchor length')
     output=Path(output);output.mkdir(parents=True,exist_ok=False);model.eval();rows=[]
     with torch.inference_mode():
         for i,plan in enumerate(plans):
@@ -66,5 +67,6 @@ def evaluate(model,corpus,plans,device,output,amp=True,save_examples=0):
         groups[f'class|{r["dataset"]}|{r["target"]}'].append(r)
     report=dict(overall=summarize(rows),strata={k:summarize(v) for k,v in sorted(groups.items())},threshold=.5,
         scope='fixed GT-simulated clicks; spatial/development validation with historical CRC initialization exposure; no heldout PUMA or test')
+    if anchor_count:report.update(anchor=summarize(rows[:anchor_count]),expanded_only=summarize(rows[anchor_count:]),anchor_episodes=anchor_count)
     dump(output/'rows.json',rows);dump(output/'summary.json',report)
     return report

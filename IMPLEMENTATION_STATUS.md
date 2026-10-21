@@ -1939,3 +1939,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836`；screen2k_completion_1021_132033.json。小规模配对开发验证、PUMA/test不参与，尚未满足拒识/收敛/完整回归与域外/整片验收，旧部署最佳权重保留。
 - Docs record: `docs/运行记录/模型实验/运行记录_多域动态点击提示与可微重训练_1021_122836.md`（运行记录）及续跑清单。
 - Commit: 随短筛完成记录提交，哈希见git历史。
+
+
+## 10-21 13:39:03
+
+- Purpose: 基于完整允许训练池启动匹配20k长训，改善固定LR/小验证带来的稳定性与判读局限。
+- Changed: 新增longrun学习率/覆盖统计、prepare_longrun扩展验证、6项新测试；train/evaluate可选cosine分阶段升温/anchor/覆盖报告；README及长训运行记录/续跑清单更新。旧constant入口保留，不加自动恢复或新损失。
+- Validation: 30项行为测试通过；960验证输入/GT模拟点检查通过、原160任务完整保留；真实16步×4/冻结与联合梯度/学习率下限/覆盖/两轮960验证/保存重载通过，142.11秒、EXIT_CODE=0。anchor精确复现旧初始Dice .410004/FP .164876；全960初始Dice .435084/FP .133707，分母变化分开报告。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/long20k_1021_132915/`；long20k_selection.json恢复四臂20k、GPU2–5/CPU4各worker422105/422110/422114/422117，13:37:08启动、初查建立基线。每臂2000暖身、18000联合、batch4、每2k验证；20k是80k平衡有放回任务，不保证每张训练视野遍历。PUMA/test仍留出，无新结果或部署替换。
+- Docs record: `docs/运行记录/模型实验/运行记录_完整训练池20k长训与稳定性优化_1021_132915.md`（运行记录）及续跑清单。
+- Commit: 随长训实现、真实门控与正式启动提交，哈希见git历史。

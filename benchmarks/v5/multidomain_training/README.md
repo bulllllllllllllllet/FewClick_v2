@@ -68,3 +68,22 @@ failure stops explicitly without retrying or replacing a protocol/model.
 
 Design and run record:
 `docs/运行记录/模型实验/运行记录_多域动态点击提示与可微重训练_1021_122836.md`.
+
+Long runs can use an expanded validation manifest and explicit learning-rate
+scheduling while the default constant schedule reproduces the short screen:
+
+```bash
+python -m benchmarks.v5.multidomain_training.prepare_longrun --catalog CATALOG --anchor-plans ORIGINAL_SMOKE/validation_plans.json --output NEW_VALIDATION
+CUDA_VISIBLE_DEVICES=2 python -m benchmarks.v5.multidomain_training.train --catalog CATALOG --output NEW_LONG_RUN --arm C2 --steps 20000 --warmup 2000 --eval-every 2000 --validation-plans NEW_VALIDATION/validation_plans.json --validation-anchor-count 160 --lr-schedule warmup_cosine --lr-ramp-steps 200 --min-lr-ratio 0.1
+```
+
+Expansion preserves the original 160 episodes byte-for-byte as task objects and
+adds 800 locked cases, with independent GT-simulated points on val only. Reports
+keep the anchor and newly added cases separate. Heads ramp up at run start;
+backbone LR starts at zero and ramps separately after unfreezing. Both decay
+through the joint stage to 0.1 times their maximum rates. This is a fresh run
+from the retained initial checkpoints, not an implicit resume of a short-screen
+checkpoint. Coverage reports count unique support/query fields and quality
+variants within each arm's configured training pool. Balanced sampling is with
+replacement; an 80,000-episode run does not guarantee a complete pass through
+every source field or represent 80,000 independent images.
