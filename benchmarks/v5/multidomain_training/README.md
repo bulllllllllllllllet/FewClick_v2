@@ -87,3 +87,19 @@ checkpoint. Coverage reports count unique support/query fields and quality
 variants within each arm's configured training pool. Balanced sampling is with
 replacement; an 80,000-episode run does not guarantee a complete pass through
 every source field or represent 80,000 independent images.
+
+
+`regression.py` evaluates new checkpoints on the retained 1024 CRC local tasks
+with the original images, GT, prompts and cell inputs. A locked JSON plan binds
+the legacy run hash and each preselected candidate checkpoint path/step/hash.
+It reports the retained centroid reader, retained pixel reader and all planned
+candidates, requires exact old-cache replay, verifies saved masks, and provides
+class summaries and spatial-block paired intervals. This checks compatibility
+with the original deployment input contract; it is separate from the new
+0.5 MPP/InstanSeg contract and the multi-domain development score.
+
+```bash
+python -m benchmarks.v5.multidomain_training.regression --plan PLAN --output NEW_SMOKE --smoke
+python -m benchmarks.v5.multidomain_training.regression --plan PLAN --output NEW_SHARD --shard 0 --shards 4
+python -m benchmarks.v5.multidomain_training.regression --plan PLAN --output NEW_MERGE --merge SHARD0 SHARD1 SHARD2 SHARD3
+```

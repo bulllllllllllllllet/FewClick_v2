@@ -1949,3 +1949,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/long20k_1021_132915/`；long20k_selection.json恢复四臂20k、GPU2–5/CPU4各worker422105/422110/422114/422117，13:37:08启动、初查建立基线。每臂2000暖身、18000联合、batch4、每2k验证；20k是80k平衡有放回任务，不保证每张训练视野遍历。PUMA/test仍留出，无新结果或部署替换。
 - Docs record: `docs/运行记录/模型实验/运行记录_完整训练池20k长训与稳定性优化_1021_132915.md`（运行记录）及续跑清单。
 - Commit: 随长训实现、真实门控与正式启动提交，哈希见git历史。
+
+
+## 10-21 17:26:53
+
+- Purpose: 完成四臂20k归档，按用户问题补测旧0.8 Dice CRC验证集并揭示输入兼容退化。
+- Changed: 新增v5/multidomain_training/regression.py与README；追加20k完成记录、原CRC1024回归记录和组织边界续跑清单；无训练/推理模型改动或部署替换。
+- Validation: 真实12类×6模型smoke及四片1024×6=6144预测、全部EXIT_CODE=0；原GT/提示严格相同、保存mask计数回读一致、旧预测回放误差0、6144身份无重无漏、107空间块配对区间和原96子集统计。旧Dice/BF1精确复现.803416/.557040；新C3 .668300/.464011，回归性能验收失败，明确保留原权重。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/crc_regression_1021_171747/`，plan/正式selection/merge_selection及merged_1021_172447可恢复；四臂20k全部完成核验同根long20k_completion_1021_171747.json。新960多域开发提升与旧1024下降分开报告，PUMA/test未使用。
+- Docs record: `docs/运行记录/模型实验/运行记录_20k新权重原CRC1024回归_1021_171747.md`（运行记录），并补完整训练池20k记录1021_132915。旧/新输入合同、背景任务和提示读取差异均显式声明，未将全部下降归因于多器官或纯遗忘。
+- Commit: 随此次回归实现与结果归档提交，哈希见git历史。
