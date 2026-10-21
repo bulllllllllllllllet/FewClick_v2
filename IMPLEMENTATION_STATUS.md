@@ -1959,3 +1959,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/crc_regression_1021_171747/`，plan/正式selection/merge_selection及merged_1021_172447可恢复；四臂20k全部完成核验同根long20k_completion_1021_171747.json。新960多域开发提升与旧1024下降分开报告，PUMA/test未使用。
 - Docs record: `docs/运行记录/模型实验/运行记录_20k新权重原CRC1024回归_1021_171747.md`（运行记录），并补完整训练池20k记录1021_132915。旧/新输入合同、背景任务和提示读取差异均显式声明，未将全部下降归因于多器官或纯遗忘。
 - Commit: 随此次回归实现与结果归档提交，哈希见git历史。
+
+
+## 10-21 17:34:59
+
+- Purpose: 核实四臂20k完成并提出原CRC退化的修正顺序，澄清原文件MPP与模型输入MPP。
+- Changed: 新增修正建议记录并追加组织边界续跑清单；无模型/训练代码或部署修改。
+- Validation: 四臂complete/20000、EXIT_CODE=0、reload一致；只读实际source/patches/input manifests核验1024→512，旧模型输入约.5027–.5277MPP，新约.5MPP。未将原文件.25MPP误作模型输入或宣称下降已解决。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/repair_plan_1021_173325/scale_contract_check_1021_173325.json`；只读metadata审核，无新性能实验、训练或缓存重建。
+- Docs record: `docs/建议/模型与训练/建议_多域重训练CRC退化修正与兼容验收_1021_173325.md`（建议记录）；先同协议拆因、旧train回放/可选教师约束及保守2k短试，同时设CRC和多域门槛，通过后扩大训练。
+- Commit: 随修正建议和事实审核归档提交，哈希见git历史。
