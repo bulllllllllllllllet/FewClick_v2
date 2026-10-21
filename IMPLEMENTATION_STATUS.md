@@ -2034,3 +2034,14 @@
 - Docs record: docs/运行记录/模型实验/运行记录_代表性点击C3重新训练20k_1021_230134.md（运行记录）。
 - Scope: 代码门控已完成，接下来正式20k将从原始J5+dense初始化、固定新960、保持旧C3预算；本门控权重不作初始化。
 - Commit: 本次独立代码提交；hash保存于本实验根code_commit_1021_230645.json。
+
+
+## 10-21 23:11:08
+
+- Purpose: 记录用户授权的新代表性点击C3正式20k已启动，保存恢复入口和启动核验。
+- Changed: 新20k运行记录、总续跑清单、训练整体总结追加启动状态；无新增模型/训练代码变化。
+- Validation: 源码ccfd76d，GPU2/CPU4真实worker2910537存活，23:07:18启动；23:10到73更新，最近50均值.770秒且loss有限。初始化权重/cat SHA/预算/LR与旧C3一致，旧点960初始基线精确重放，新点基线Dice.474033/误报.132398；前292训练任务身份/质量/预算与旧日志一致，仅点击改变。38测试和29.09秒真实兼容路径门控已通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/multidomain_training/representative20k_1021_230134/selection.json → C3_representative20k_1021_230718；initial_worker/startup_verified.json及源码快照source_1021_230718；tmux fewclick_C3_representative20k_1021_230718。
+- Docs record: docs/运行记录/模型实验/运行记录_代表性点击C3重新训练20k_1021_230134.md（运行记录）；组织边界探索续跑清单_1014_200033.md与训练整体总结追加最新入口。
+- Status: 正式训练持续运行，20k×有效batch4，2k暖身/18k联合，每2k主新960与report-only旧960验证，主选模只看新固定组；无PUMA/test/新权重部署，不自动重试。估计5–6小时，非完成结论。
+- Commit: 本次独立运行记录提交；hash保存于本实验根launch_record_commit_1021_231108.json。
