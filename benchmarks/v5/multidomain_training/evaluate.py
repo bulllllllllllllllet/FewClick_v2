@@ -10,6 +10,7 @@ import torch
 from benchmarks.v4.phase_6_mask_decoder.src.evaluation import binary_counts,boundary_f1
 from benchmarks.v5.multidomain_data.prepare import dump
 from .episodes import DATASETS,KINDS
+from .scoring import scoring_policy,split_target_tasks
 
 
 def validation_plans(corpus):
@@ -25,7 +26,8 @@ def validation_plans(corpus):
     return plans
 
 
-def summarize(rows):
+def summarize(rows,include_background_targets=False):
+    if not include_background_targets:rows,_=split_target_tasks(rows)
     present=[r for r in rows if r['positive']>0];absent=[r for r in rows if r['positive']==0]
     boundary=[r['bf1_um2'] for r in present if r['bf1_um2'] is not None]
     return dict(episodes=len(rows),present=len(present),absent=len(absent),
@@ -65,7 +67,10 @@ def evaluate(model,corpus,plans,device,output,amp=True,save_examples=0,anchor_co
     for r in rows:
         for label in ['dataset','protocol','quality_condition','query_organ']:groups[label+'|'+r[label]].append(r)
         groups[f'class|{r["dataset"]}|{r["target"]}'].append(r)
-    report=dict(overall=summarize(rows),strata={k:summarize(v) for k,v in sorted(groups.items())},threshold=.5,
+    _,excluded=split_target_tasks(rows)
+    report=dict(overall=summarize(rows),legacy_all_targets=summarize(rows,include_background_targets=True),
+        excluded_background_target_tasks=summarize(excluded,include_background_targets=True),
+        strata={k:summarize(v) for k,v in sorted(groups.items())},threshold=.5,scoring_policy=scoring_policy(),
         scope='fixed GT-simulated clicks; spatial/development validation with historical CRC initialization exposure; no heldout PUMA or test')
     if anchor_count:report.update(anchor=summarize(rows[:anchor_count]),expanded_only=summarize(rows[anchor_count:]),anchor_episodes=anchor_count)
     dump(output/'rows.json',rows);dump(output/'summary.json',report)

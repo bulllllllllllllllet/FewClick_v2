@@ -31,6 +31,7 @@ from .catalog import interior_labels
 from .episodes import spread_clicks
 from .model import load_model
 from .regression import dump
+from .scoring import scoring_policy,split_target_tasks
 
 PROMPTS=('historical_centroid','historical_pixel','interior_centroid','interior_pixel')
 
@@ -91,18 +92,23 @@ def paired_delta(candidate,reference,key):
 def build_summary(rows):
     buckets=defaultdict(list)
     for r in rows:buckets[(r['weight'],r['cells'],r['prompt'])].append(r)
-    conditions={'|'.join(k):dict(overall=summarize(v),nonbackground_diagnostic=summarize([r for r in v if r['target_class']!=2]),per_class={str(c):summarize([r for r in v if r['target_class']==c]) for c in sorted({r['target_class'] for r in v})}) for k,v in buckets.items()}
+    conditions={};primary_buckets={}
+    for key,values in buckets.items():
+        primary,excluded=split_target_tasks(values,dataset='crc');primary_buckets[key]=primary
+        conditions['|'.join(key)]=dict(overall=summarize(primary),legacy_all_targets=summarize(values),
+            excluded_background_target_tasks=summarize(excluded),
+            per_class={str(c):summarize([r for r in primary if r['target_class']==c]) for c in sorted({r['target_class'] for r in primary})})
     contrasts={}
     def compare(label,candidate,reference):
         if candidate in buckets and reference in buckets:
-            contrasts[label]={key:paired_delta(buckets[candidate],buckets[reference],key) for key in ['dice','bf1_2']}
+            contrasts[label]={key:paired_delta(primary_buckets[candidate],primary_buckets[reference],key) for key in ['dice','bf1_2']}
     for w,c,p in buckets:
         if w!='retained':compare(f'weights:{w}-retained|{c}|{p}',(w,c,p),('retained',c,p))
         if c!='legacy':compare(f'cells:{c}-legacy|{w}|{p}',(w,c,p),(w,'legacy',p))
         if p=='historical_pixel':compare(f'reader:pixel-centroid|{w}|{c}|historical',(w,c,p),(w,c,'historical_centroid'))
         if p=='interior_pixel':compare(f'reader:pixel-centroid|{w}|{c}|interior',(w,c,p),(w,c,'interior_centroid'))
         if p.endswith('_id1'):compare(f'size_id:1-native|{w}|{c}|{p}',(w,c,p),(w,c,p.removesuffix('_id1')))
-    return dict(conditions=conditions,paired_contrasts=contrasts)
+    return dict(conditions=conditions,paired_contrasts=contrasts,scoring_policy=scoring_policy())
 
 
 @lru_cache(maxsize=128)

@@ -105,8 +105,19 @@ the compatibility score must not be described as the loss in real-click accuracy
 with the same click counts and size condition, audits signed-point accuracy,
 compares retained/C0/C3 with both readers, and optionally compares old cells,
 unknown-only identity and InstanSeg cells recomputed on the exact original RGB.
-Every condition retains the full query/target set; nonbackground results are
-explicit diagnostic strata. `--size-one` adds a same-coordinate control for the
+Following the user's task definition on 2026-10-21, `overall` scores tissue
+positive-target tasks and excludes background-positive episodes in every model.
+CRC background2, IGNITE background1 and PUMA white-background6 are dataset-local;
+OCELOT cancer2 stays scored. Background pixels in tissue tasks remain valid
+negatives, and absent-tissue query false positives remain scored. Original
+all-target scores are retained as `legacy_all_targets`; training already
+excludes these background-positive tasks and needs no background restoration.
+Historical 12-class inputs can remain available for traceability while the
+same 931 tissue-target queries define the primary CRC comparison for all models.
+`scoring.py` versions this scope. `rescore.py` reaggregates saved predictions,
+checks archive replay and real background-negative pixels, and verifies that
+the existing background-free dynamic validation scores are unchanged.
+`--size-one` adds a same-coordinate control for the
 size condition used by dynamic training. It is not chosen by the resulting score.
 
 ```bash

@@ -1979,3 +1979,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/crc_diagnosis_1021_173823`；full_merge_selection.json恢复full_merged_1021_175042，96例merge_selection.json、权重漂移/点质量/匹配InstanSeg缓存/源码快照及图表均保留。全12类同内部点Dice旧/C0/C3=.657607/.691100/.670286；非背景旧→C3=.644261→.727132，背景正目标.791218→.101210。整体Dice差区间跨0，未宣称显著整体提升。
 - Docs record: `docs/运行记录/模型实验/运行记录_CRC退化同协议拆因_1021_173823.md`（运行记录）；更正旧回归/长训解释及修正方案。下一步重点背景正目标覆盖和C3相对C0的CRC取舍；无新训练、部署替换或PUMA/test使用。
 - Commit: 随拆因实现、真实复核和结果归档提交，哈希见git历史。
+
+
+## 10-21 18:49:11
+
+- Purpose: 按用户明确任务定义，将背景正目标排除主Dice/BF1，不再建议补该能力。
+- Changed: 新scoring.py/rescore.py及5项评分测试；diagnose/regression/evaluate统一组织任务主范围，README、运行记录/修正建议/原重训练建议/续跑清单更新，历史全目标留档。无模型/训练权重修改。
+- Validation: 25项行为测试通过；真实完整保存预测按同931组织任务重算，旧1024归档及旧组织统计完全一致；含背景肿瘤mask计数回算通过，62269背景像素保持有效、337背景FP保留；四臂原960任务评分完全不变。CPU4 worker1817724，0.74秒、complete/退出0。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/foreground_scoring_1021_184142/rescore_1021_184639`，selection.json恢复入口在父根；新主Dice旧/C0/C3=.644261/.753407/.727132，BF1=.462063/.530134/.489272。排除93背景目标身份，全部模型同规则；没有改提示/阈值/像素有效性或重新选权重。
+- Docs record: `docs/运行记录/模型实验/运行记录_组织目标主评分与背景正任务排除_1021_184142.md`（运行记录）；用户决定覆盖旧补背景正任务/完整12类主门槛建议，背景负例及absent误报仍保留。无新训练、部署或PUMA/test读取。
+- Commit: 随新评分口径和重算归档提交，哈希见git历史。

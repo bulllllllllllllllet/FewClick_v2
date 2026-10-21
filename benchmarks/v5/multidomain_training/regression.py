@@ -24,6 +24,7 @@ from benchmarks.v5.phase_6_mask_decoder.evaluate_dense_transfer import DENSE_RUN
 from benchmarks.v5.phase_6_mask_decoder.evaluate_crc_resolution import select_positions
 from benchmarks.v5.phase_6_mask_decoder.probe_boundary_refinement import metrics, summarize, prompt_violations
 from .model import load_model
+from .scoring import split_target_tasks,scoring_policy
 
 
 def dump(path, value):
@@ -37,6 +38,9 @@ def paired(rows, name):
     for key in ('dice','bf1_2'):
         valid=[r for r in candidate if r[key] is not None and old[r['position']][key] is not None]
         groups=sorted({r['spatial_group'] for r in valid})
+        if not groups:
+            result[key]={'evaluable_pairs':0,'status':'no evaluable tissue-target pairs'}
+            continue
         values=[[r[key]-old[r['position']][key] for r in valid if r['spatial_group']==g] for g in groups]
         sums=np.array([sum(v) for v in values]);counts=np.array([len(v) for v in values])
         if not groups:
@@ -49,11 +53,14 @@ def paired(rows, name):
 
 
 def report(rows, refs):
-    subset=set(select_positions(refs,8));result={}
+    subset=set(select_positions(refs,8));result={};primary_rows,_=split_target_tasks(rows,dataset='crc')
     for name in sorted({r['model'] for r in rows}):
         rr=[r for r in rows if r['model']==name]
-        result[name]={'overall':summarize(rr),'per_class':{str(c):summarize([r for r in rr if r['target_class']==c]) for c in sorted({r['target_class'] for r in rr})},
-                      'paired_to_retained':paired(rows,name),'original_96_subset':summarize([r for r in rr if r['position'] in subset]),
+        primary,excluded=split_target_tasks(rr,dataset='crc')
+        result[name]={'overall':summarize(primary),'legacy_all_targets':summarize(rr),'excluded_background_target_tasks':summarize(excluded),
+                      'per_class':{str(c):summarize([r for r in primary if r['target_class']==c]) for c in sorted({r['target_class'] for r in primary})},
+                      'paired_to_retained':paired(primary_rows,name),'original_96_subset':summarize([r for r in primary if r['position'] in subset]),
+                      'legacy_all_targets_original_96_subset':summarize([r for r in rr if r['position'] in subset]),
                       'prompt_semantics':'historical_region_centroid' if name=='retained_centroid' else 'historical_centroid_coordinates_interpreted_as_pixel_clicks'}
     return result
 
@@ -81,10 +88,11 @@ def main():
             if len(rows)!=len(expected) or {(r['position'],r['model']) for r in rows}!=expected:raise ValueError('missing/duplicate query-model')
             if len(replays)!=1024 or {r['position'] for r in replays}!=set(range(1024)):raise ValueError('replay coverage')
             result=report(rows,refs)
-            if abs(result['retained_centroid']['overall']['dice']-.803416)>1e-6 or abs(result['retained_centroid']['overall']['bf1_2']-.557040)>1e-6:raise ValueError('historical aggregate not reproduced')
+            if abs(result['retained_centroid']['legacy_all_targets']['dice']-.803416)>1e-6 or abs(result['retained_centroid']['legacy_all_targets']['bf1_2']-.557040)>1e-6:raise ValueError('historical aggregate not reproduced')
             dump(a.output/'rows.json',rows);dump(a.output/'summary.json',{'models':result,'plan_sha256':plan_sha,'source_revision':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),
                  'maximum_replay_error':max(r['max_error'] for r in replays),'test_used':False,'puma_used':False,'legacy_cells_unchanged':True,'same_GT_and_points':True,
                  'same_prompt_semantics':False,'comparison_kind':'historical_coordinate_compatibility',
+                 'scoring_policy':scoring_policy(),
                  'scope':'CRC spatial development with historical initialization exposure; original input compatibility across different prompt readers; not a matched real-click comparison; FP32 threshold0.5',
                  'shards':[str(f) for f in a.merge]})
         else:
