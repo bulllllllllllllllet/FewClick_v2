@@ -2000,3 +2000,14 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/multidomain_training/click_region_check_1021_193916/，merge_selection.json指向merged_1021_194538；training_audit_1021_194909.json保存四臂完成与选模证据。
 - Docs record: docs/运行记录/模型实验/运行记录_同点击三种区域示例读取检查_1021_193916.md（运行记录）；docs/运行记录/模型实验/总结_FewClick第二版训练与区域提示检查_1021_193916.md（整体总结）；docs/建议/模型与训练/组织边界探索续跑清单_1014_200033.md（追加恢复入口）。
 - Commit: 本次独立提交；结果hash记录于本实验根commit_1021_194948.json。
+
+
+## 10-21 21:27:25
+
+- Purpose: 按用户要求分层随机可视化当前C3，显示真实支持点击、查询GT、训练前对照、误分/漏分，检查具体失败模式。
+- Changed: 新增visualize_random.py与README用法；随机可视化运行记录；训练整体总结和总续跑清单追加图库入口与观察。模型、阈值和训练配置不改。
+- Validation: 四源真实smoke worker2465482/23.59秒、正式worker2470803/67.93秒均complete/EXIT_CODE=0；20任务×2模型与原验证全部像素计数精确重放；保存概率/mask回读、正负点/预算/抽样身份、25张PNG解码及HTML20例链接/筛选属性核对通过；实际打开概览和case03/11/18/19。
+- Result: 原质四源×五任务各随机1例（seed20261021），12有目标/8无目标，不按分数挑选。可见无目标大片误报、小目标扩张和跨器官漏分，亦保留明显改善例；仅开发val图示，不替代总体/未见癌种/整片成绩。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/multidomain_training/random_gallery_1021_211724/selection.json → gallery_1021_212224；images/random_multidomain_1021_211724为NFS图库链接，含index.html、20单例、5概览、CSV/坐标/概率/核验。
+- Docs record: docs/运行记录/模型实验/运行记录_当前多域模型分层随机可视化_1021_211724.md（运行记录）；总结_FewClick第二版训练与区域提示检查_1021_193916.md与组织边界探索续跑清单_1014_200033.md追加入口。
+- Commit: 本次独立提交；结果hash保存于本实验根commit_1021_212725.json。

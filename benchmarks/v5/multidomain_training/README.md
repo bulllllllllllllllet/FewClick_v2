@@ -146,3 +146,17 @@ python -m benchmarks.v5.multidomain_training.check_region_mapping --plan PLAN --
 python -m benchmarks.v5.multidomain_training.check_region_mapping --plan PLAN --prior-root PRIOR_DIAGNOSIS_ROOT --output NEW_SHARD --shard 0 --shards 4
 python -m benchmarks.v5.multidomain_training.check_region_mapping --plan PLAN --prior-root PRIOR_DIAGNOSIS_ROOT --output NEW_MERGE --merge SHARD0 SHARD1 SHARD2 SHARD3
 ```
+
+`visualize_random.py` locks a random original-quality development task from each
+dataset × episode-kind stratum before loading scores (20 tasks, seed20261021).
+It compares the retained initial model with the preselected C3 checkpoint,
+requires exact replay of stored validation pixel counts, and saves support
+clicks/GT, query GT, paired predictions, C3 errors and probabilities at the same
+extent. Remote query panels never display support-coordinate clicks. The HTML
+gallery filters by source/task; protocol overview images also include query GT.
+These are random development examples, not an unseen-domain or WSI test.
+
+```bash
+python -m benchmarks.v5.multidomain_training.visualize_random --training-run C3_RUN --checkpoint-plan LOCKED_PLAN --output NEW_SMOKE --smoke
+python -m benchmarks.v5.multidomain_training.visualize_random --training-run C3_RUN --checkpoint-plan LOCKED_PLAN --output NEW_GALLERY
+```
