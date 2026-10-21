@@ -1919,3 +1919,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_data/instanseg_adoption_1020_185343`；`completion_check_1021_120518.json`记录复核。图像10-21 02:25完成、缓存07:48完成；完整缓存清单full_cells_1020_205325/inputs_with_cells.parquet。
 - Docs record: `docs/运行记录/特征缓存/运行记录_InstanSeg正式细胞缓存切换_1020_185343.md`（运行记录）及相关恢复记录。数据缓存结束，不代表动态提示任务或重训练已开始。
 - Commit: 随完成归档提交，哈希见git历史。
+
+
+## 10-21 12:49:43
+
+- Purpose: 实现多域动态正负点击/支持查询任务和可微J5+dense重训练，启动同预算四臂短筛。
+- Changed: 新增v5/multidomain_training（catalog、episodes、可微model、空/满目标loss、固定分层evaluate、train、smoke、9项行为测试、README），新增运行记录并追加组织边界续跑清单；v4只读，旧部署最佳权重保留。
+- Validation: 24项新旧行为测试通过；53128非PUMA视野已知跨split footprint检查通过；四域×五协议20个真实forward/loss/backward/六模块参数更新、旧桥接重放误差0、GT独立/remote无点图/空细胞/BN固定/fresh checkpoint重载通过。200更新×4episode（含4个真实全目标query）172.10秒完成，均值0.6674秒/更新、显存峰值约2.1GB、EXIT_CODE=0。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836/`；screen2k_selection.json恢复四臂GPU2–5、worker188126/188131/188135/188139；C0 CRC原质、C1 CRC多质量、C2多域原质、C3多域多质量，每臂2000更新/batch4/200暖身后联合，初查training。支持图点击与query GT的任务QA图已查看，不是预测效果图。
+- Docs record: `docs/运行记录/模型实验/运行记录_多域动态点击提示与可微重训练_1021_122836.md`（运行记录）。200步Dice0.4100→0.5063但空目标误报面积0.1649→0.3228，尚未质量验收；四臂从同样初始最佳权重重启，PUMA/test不参与。训练是patch级、WSI是配对来源协议。
+- Commit: 随本次实现、真实门控和四臂启动提交，哈希见git历史。
