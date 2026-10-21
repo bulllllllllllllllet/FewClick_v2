@@ -30,6 +30,7 @@ def main():
     p.add_argument('--accumulate',type=int,default=4);p.add_argument('--eval-every',type=int,default=500);p.add_argument('--seed',type=int,default=20261021)
     p.add_argument('--validation-plans',type=Path);p.add_argument('--no-amp',action='store_true');p.add_argument('--benchmark',action='store_true')
     p.add_argument('--validation-anchor-count',type=int,default=0)
+    p.add_argument('--prompt-policy',choices=['legacy','representative'],default='representative')
     p.add_argument('--lr-schedule',choices=['constant','warmup_cosine'],default='constant');p.add_argument('--lr-ramp-steps',type=int,default=200);p.add_argument('--min-lr-ratio',type=float,default=.1)
     a=p.parse_args()
     if min(a.steps,a.accumulate,a.eval_every)<1 or a.warmup<0:raise ValueError('invalid training budget')
@@ -37,8 +38,10 @@ def main():
     a.output.mkdir(parents=True,exist_ok=False);torch.set_num_threads(4);device=torch.device('cuda:0');started=time.time()
     torch.manual_seed(a.seed);np.random.seed(a.seed);random.seed(a.seed)
     try:
-        corpus=EpisodeCorpus(a.catalog,a.seed);dump(a.output/'coverage.json',corpus.coverage)
+        corpus=EpisodeCorpus(a.catalog,a.seed,prompt_policy=a.prompt_policy);dump(a.output/'coverage.json',corpus.coverage)
         plans=json.loads(a.validation_plans.read_text()) if a.validation_plans else validation_plans(corpus)
+        expected_policy='representative_1021_214456' if a.prompt_policy=='representative' else None
+        if any(plan.get('prompt_policy')!=expected_policy for plan in plans):raise ValueError('training/validation click policy mismatch; explicitly regenerate plans or use --prompt-policy legacy')
         dump(a.output/'validation_plans.json',plans);model,weights=load_model(device);amp=not a.no_amp
         run=dict(args={k:str(v) if isinstance(v,Path) else v for k,v in vars(a).items()},weights=weights,worker_pid=os.getpid(),
             visible_devices=os.environ.get('CUDA_VISIBLE_DEVICES'),catalog_sha256=sha((a.catalog/'tiles.parquet').read_bytes()),

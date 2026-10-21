@@ -16,9 +16,13 @@ from .longrun import extend_validation
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--catalog',type=Path,required=True);p.add_argument('--anchor-plans',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--prompt-policy',choices=['legacy','representative'],default='representative')
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False);started=time.time();torch.set_num_threads(4)
     try:
-        anchors=json.loads(a.anchor_plans.read_text());corpus=EpisodeCorpus(a.catalog);plans=extend_validation(corpus,anchors)
+        anchors=json.loads(a.anchor_plans.read_text());corpus=EpisodeCorpus(a.catalog,prompt_policy=a.prompt_policy)
+        expected='representative_1021_214456' if a.prompt_policy=='representative' else None
+        if any(p.get('prompt_policy')!=expected for p in anchors):raise ValueError('anchor click policy mismatch; do not mix old and new click protocols')
+        plans=extend_validation(corpus,anchors)
         if plans[:len(anchors)]!=anchors:raise ValueError('original validation anchor changed')
         if len({(p['number'],p['quality_condition']) for p in plans})!=len(plans):raise ValueError('duplicate validation task identity')
         for i,plan in enumerate(plans):

@@ -42,6 +42,7 @@ class GeometryTests(unittest.TestCase):
     def test_quality_arm_keeps_underlying_task_and_clicks_matched(self):
         corpus=EpisodeCorpus.__new__(EpisodeCorpus);corpus.seed=123
         corpus.rows=[dict(tile_id='a',organ='colon',input_mpp_xy_json='[0.5,0.5]',slide_verified=True)]
+        corpus.index={'a':0};corpus.prompt_policy='representative'
         corpus.pools={'train':{'crc':{'local':{'colon':{1:[0]}}}}}
         labels=np.zeros((64,64),np.uint8);labels[:,:32]=1;corpus.labels=lambda index:labels
         original=corpus.plan(10,dataset='crc',kind='local',quality_aug=False)

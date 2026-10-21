@@ -160,3 +160,41 @@ These are random development examples, not an unseen-domain or WSI test.
 python -m benchmarks.v5.multidomain_training.visualize_random --training-run C3_RUN --checkpoint-plan LOCKED_PLAN --output NEW_SMOKE --smoke
 python -m benchmarks.v5.multidomain_training.visualize_random --training-run C3_RUN --checkpoint-plan LOCKED_PLAN --output NEW_GALLERY
 ```
+
+### Representative click policy (2026-10-21)
+
+The original `spread_clicks` shuffled connected components with equal priority,
+then chose random interior pixels. GT sign correctness alone did not ensure a
+representative example. It was shared by training and validation.
+
+New `EpisodeCorpus` and training defaults use `representative_1021_214456` from
+`click_policy.py`: the first positive comes from the largest eligible tissue
+component, small relative fragments are avoided, deeper/frame-distant pixels
+are preferred, and additional points cover different positions. Negatives
+prefer actual non-target tissue and different available tissue labels; background
+is used only when tissue interiors cannot supply the fixed point budget. Limited
+space is explicit in audit metadata. It never changes a task, query or point
+count. Quality variants of the same task retain identical clicks.
+
+`--prompt-policy legacy` on `train`/`prepare_longrun` reproduces the old rule.
+Stored old plans, predictions, caches and checkpoints are unchanged. Training
+rejects a validation manifest with a different click-policy version; do not
+reuse historical legacy validation anchors with the new default. The probe's
+merged `validation_plans.json` supplies the same960 task identities repointed
+under the new policy. This sampler fix does not retroactively retrain old weights.
+
+`probe_click_policy.py` audits actual old training logs and compares the same C3
+checkpoint on old clicks, five locked representative groups and their probability
+ensemble. Query-GT-selected best/worst groups are explicitly oracle diagnostics,
+not deployment scores. Five groups use additional annotation effort. The fixed
+first group and ensemble never select by query GT. `render_click_policy.py`
+uses the previous random20 identities to display old/new clicks and predictions.
+
+```bash
+python -m unittest benchmarks.v5.multidomain_training.test_click_policy -v
+python -m benchmarks.v5.multidomain_training.probe_click_policy --training-run C3_RUN --checkpoint-plan PLAN --output NEW_AUDIT --audit
+python -m benchmarks.v5.multidomain_training.probe_click_policy --training-run C3_RUN --checkpoint-plan PLAN --output NEW_SMOKE --smoke
+python -m benchmarks.v5.multidomain_training.probe_click_policy --training-run C3_RUN --checkpoint-plan PLAN --output NEW_SHARD --shard 0 --shards 4
+python -m benchmarks.v5.multidomain_training.probe_click_policy --training-run C3_RUN --checkpoint-plan PLAN --output NEW_MERGE --merge SHARD0 SHARD1 SHARD2 SHARD3
+python -m benchmarks.v5.multidomain_training.render_click_policy --experiment PROBE_ROOT --previous-gallery PRIOR_RANDOM_GALLERY --output NEW_GALLERY
+```

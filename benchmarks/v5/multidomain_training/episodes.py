@@ -37,7 +37,9 @@ def spread_clicks(mask,count,rng):
 
 
 class EpisodeCorpus:
-    def __init__(self,catalog,seed=20261021):
+    def __init__(self,catalog,seed=20261021,prompt_policy='representative'):
+        if prompt_policy not in ('legacy','representative'):raise ValueError('unknown prompt policy')
+        self.prompt_policy=prompt_policy
         self.catalog=Path(catalog);self.seed=seed;self.rows=read_rows(self.catalog/'tiles.parquet')
         if any(r['dataset']=='puma' or r['split']=='test' for r in self.rows):raise ValueError('heldout data entered episode corpus')
         self.index={r['tile_id']:i for i,r in enumerate(self.rows)}
@@ -111,9 +113,13 @@ class EpisodeCorpus:
         p=spread_clicks(inside==target,positive,click_rng);n=spread_clicks((inside!=target)&(inside!=255),negative,click_rng)
         same=kind=='local';verified=self.rows[s]['slide_verified'] and self.rows[q]['slide_verified']
         protocol='local' if same else ('same_wsi' if kind.startswith('same') and verified else 'same_roi' if kind.startswith('same') else 'cross_wsi' if verified else 'cross_image')
-        return dict(number=int(number),support_id=self.rows[s]['tile_id'],query_id=self.rows[q]['tile_id'],dataset=dataset,target=target,
+        plan=dict(number=int(number),support_id=self.rows[s]['tile_id'],query_id=self.rows[q]['tile_id'],dataset=dataset,target=target,
             support_quality=sq,query_quality=qq,kind=kind,protocol=protocol,split=split,positive_xy=p,negative_xy=n,
             support_organ=self.rows[s]['organ'],query_organ=self.rows[q]['organ'],gt_simulated_clicks=True)
+        if getattr(self,'prompt_policy','representative')=='representative':
+            from .click_policy import repoint
+            return repoint(self,plan)
+        return plan
 
     @lru_cache(maxsize=128)
     def labels(self,index):

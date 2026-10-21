@@ -2011,3 +2011,15 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/multidomain_training/random_gallery_1021_211724/selection.json → gallery_1021_212224；images/random_multidomain_1021_211724为NFS图库链接，含index.html、20单例、5概览、CSV/坐标/概率/核验。
 - Docs record: docs/运行记录/模型实验/运行记录_当前多域模型分层随机可视化_1021_211724.md（运行记录）；总结_FewClick第二版训练与区域提示检查_1021_193916.md与组织边界探索续跑清单_1014_200033.md追加入口。
 - Commit: 本次独立提交；结果hash保存于本实验根commit_1021_212725.json。
+
+
+## 10-21 22:08:40
+
+- Purpose: 修正用户指出的正负点代表性偏差，确认旧训练也使用随机连通块规则；增加同任务五组提示敏感性/融合/显式oracle诊断。
+- Changed: click_policy.py代表性主块/深部/分散/负组织点击；episodes/train/prepare_longrun默认新策略、显式legacy及训练验证版本校验；7新测试和训练fixture；probe_click_policy/render_click_policy、README及三份相关档案/续跑入口。
+- Validation: 35项行为测试通过；真实四域×五任务梯度/参数/BN/GT隔离/保存重载门控30.85秒；实际train CLI4更新/160基线末次验证46.09秒、重载一致。400真实旧训练任务逐项重放与480基础val点审计；全960任务×旧点/5新组/平均及oracle/worst完整覆盖，旧计数重放与新mask回读通过；所有作业EXIT_CODE=0。25图解码、实际看#18/#19、HTML及HTTP200通过。
+- Result: 训练抽查正点小碎片15.95%→0%、近边框点21.59%→4.52%、可选组织时负点偏背景16.27%→0%。同C3/960任务旧/新固定组/5组平均Dice=.584458/.612145/.618177，空目标面积=.103921/.094650/.090758；GT最佳.636526仅oracle、不用于主分数。#19误报73.36%→2.80%，#18 Dice.439→.691，退步/不改善仍保留。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/multidomain_training/prompt_policy_1021_214456/；merged_1021_215833，新960验证点、完整rows/cases；audit_1021_215412；gallery_1021_215920；source_snapshot_1021_220746与final_checks_1021_220746.json。images/representative_clicks_1021_214456和原8766下prompt_comparison_1021_214456为新图库链接，旧图库/权重不覆盖。
+- Scope: 只完成采样器修正及冻结旧权重诊断/小门控，未完整重训C3；无PUMA/test、无背景正任务恢复。GT符号正确不等于点有代表性，多组额外预算及oracle限制显式报告。
+- Docs record: docs/运行记录/模型实验/运行记录_代表性点击修正与多组提示对照_1021_214456.md（运行记录），训练整体总结/旧随机图库记录/总续跑清单均追加最新说明。
+- Commit: 本次独立提交；结果hash保存于本实验根commit_1021_220840.json。
