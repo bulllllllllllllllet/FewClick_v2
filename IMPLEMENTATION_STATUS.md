@@ -2078,3 +2078,14 @@
 - Docs record: docs/运行记录/模型实验/运行记录_单卡至四卡同步迁移与训练加速_1021_234146.md（运行记录），原20k与主续跑清单同步更新。
 - Status: 本次训练完成；已有四源patch空间开发验证，未跑PUMA/test/全WSI或新图库，未更换默认模型，未新增后台任务。
 - Commit: 本次独立完成记录提交；hash保存于本实验根completion_record_commit_1022_032028.json。
+
+
+## 10-22 03:55:33
+
+- Purpose: 按用户要求生成重训后的同图同点击三模型可视化，保留原随机20例用于直观比较。
+- Changed: 新增multidomain_training/visualize_retrained.py，重训三模型可视化运行记录和主续跑清单；旧C3新点击概率对照、14000/20000真推理、支持/查询GT/正负点/错误图、5概览、HTML改善退步筛选及CSV。
+- Validation: 四源真实smoke worker4131594/26.77秒、全20例worker4135971/68.73秒均EXIT0；plan/RGB/GT与真实loader、预测计数与正式验证精确一致，保存概率mask回读一致；25 PNG解码及26 HTTP200通过。实际查看#11/#15/跨片概览，20例未换身份或例序，来源SHA与实际执行相同。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/multidomain_training/retrained_gallery_1022_034933/gallery_selection.json→gallery_1022_035221；gallery_verified_1022_035400.json；images/retrained_comparison_1022_034933链接NFS；网页http://localhost:8766/retrained_comparison_1022_034933/index.html。旧服务/图库保留，未替换。
+- Docs record: docs/运行记录/模型实验/运行记录_代表性点击重训三模型同例可视化_1022_034933.md（运行记录）；主续跑清单同步当前图库入口。
+- Status: 完成；样本14000有11改善9退步，整体Dice基本不变，#15误报减少/#18跨片漏分加重/#11tiny target仍过分割；20例与完整960分开，不改默认权重，不作PUMA/test/全WSI结论，无新训练。
+- Commit: 本次独立实现提交；hash保存于本实验根code_commit_1022_035533.json。
