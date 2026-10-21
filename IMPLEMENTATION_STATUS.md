@@ -2045,3 +2045,14 @@
 - Docs record: docs/运行记录/模型实验/运行记录_代表性点击C3重新训练20k_1021_230134.md（运行记录）；组织边界探索续跑清单_1014_200033.md与训练整体总结追加最新入口。
 - Status: 正式训练持续运行，20k×有效batch4，2k暖身/18k联合，每2k主新960与report-only旧960验证，主选模只看新固定组；无PUMA/test/新权重部署，不自动重试。估计5–6小时，非完成结论。
 - Commit: 本次独立运行记录提交；hash保存于本实验根launch_record_commit_1021_231108.json。
+
+
+## 10-22 00:09:54
+
+- Purpose: 用户授权将代表性点击C3的全局batch4串行训练改为四卡同步，并从原完整检查点继续20k预算。
+- Changed: multidomain_training新增distributed_utils/train_distributed/test_distributed；四rank任务分发、loss先除global batch再NCCL求和、动态未用梯度None合同、逐任务验证合并、模型/AdamW/RNG恢复、独立rank日志与故障停止。
+- Validation: distributed三项最终复测通过；真实40例暖身/联合及串行重放门控通过，loss一致、BF16梯度误差最大.002143；保存重载预测精确。单卡2000→2040恢复门控完成/EXIT0、94.47秒，真实四rank worker3163651–3163654；新旧各960完整、160任务与原序列完全相同、模型跨rank精确，AdamW恢复SHA一致。短测中位.274秒/步，原单卡.904秒，约3.30倍，非正式训练效果。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146；old_resume_gate_verified.json及各时间戳门控。失败数值阈值/脚本产物全部保留，未自动重试。
+- Docs record: docs/运行记录/模型实验/运行记录_单卡至四卡同步迁移与训练加速_1021_234146.md（运行记录）。
+- Status: 实现验收通过；原单卡已到4000正在完整验证，等待检查点交接后正式四卡接续。状态恢复精确，CUDA低精度训练后续轨迹不承诺逐bit一致。
+- Commit: 本次独立实现提交；hash保存于本实验根code_commit_1022_000954.json。
