@@ -1909,3 +1909,13 @@
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_data/instanseg_adoption_1020_185343/`；新完整导出full_render_1020_205325（worker4052965、CPU4）running；full_cells_1020_205325（父4052969）waiting_for_render，成功后GPU0–5/CPU4每worker，失败不重试。旧失败和Cellpose缓存保留，完整细胞及重训练未完成。
 - Docs record: `docs/运行记录/特征缓存/运行记录_InstanSeg正式细胞缓存切换_1020_185343.md`（运行记录）；追加原前处理记录与组织边界续跑清单。
 - Commit: 随本次采用实现与正式批量安排提交，哈希见git历史。
+
+
+## 10-21 12:05:18
+
+- Purpose: 核实并归档完整多器官图像与InstanSeg缓存的完成状态。
+- Changed: 追加InstanSeg切换记录、原前处理记录及组织边界续跑清单；没有修改模型或运行源码。
+- Validation: 六分片与父作业complete/EXIT_CODE=0；实读合并manifest 159894唯一tile/quality、53298视野、单一recipe、129366允许训练/30018普通验证/510 PUMA heldout、0 test，来源split检查通过。所有NPZ的落盘回读验证来自各worker原作业，未重新全量遍历。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/multidomain_data/instanseg_adoption_1020_185343`；`completion_check_1021_120518.json`记录复核。图像10-21 02:25完成、缓存07:48完成；完整缓存清单full_cells_1020_205325/inputs_with_cells.parquet。
+- Docs record: `docs/运行记录/特征缓存/运行记录_InstanSeg正式细胞缓存切换_1020_185343.md`（运行记录）及相关恢复记录。数据缓存结束，不代表动态提示任务或重训练已开始。
+- Commit: 随完成归档提交，哈希见git历史。
