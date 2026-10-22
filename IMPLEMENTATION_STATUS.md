@@ -1151,53 +1151,7 @@
 - Docs record: `docs/运行记录/模型实验/运行记录_Panel1多尺度细胞上下文与淋巴标签审计_0923_144220.md`。
 - Result: val macro-F1为128=0.3890、256=0.3476、直接拼接=0.3333、低权重0.25融合=0.3848；扩大上下文无整体增益。已通过基本匹配/空间筛选的独立淋巴内皮候选train/val/test=159/99/54，固定清单仅107/18/2；该类既稀少，评估清单又明显漏抽。未选候选尚未逐个复核核mask。
 - Commit: 本次实现提交；完整hash见Git历史。
-## 09-23 16:13:29
 
-- Purpose: 逐个复核Panel1未选淋巴内皮匹配，构建五类均衡补充评估清单并复测冻结多尺度模型。
-- Changed: `benchmarks/v5/tools/audit_crc_panel1_eval_candidates.py`、`benchmarks/v5/tools/evaluate_crc_panel1_supplement.py`、两份Panel1补充评估运行记录、本文件。
-- Validation: 两工具编译通过；真实源数据扫描与500细胞双视野提取/冻结分类器复测均`EXIT_CODE=0`；133个未选淋巴候选逐一核mask复核通过，500个补充细胞通过源hash与空间分组检查。
-- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_eval_supplement_0923_155834/`和`panel1_eval_supplement_scores_0923_155610/`。
-- Docs record: `docs/运行记录/数据审计/运行记录_Panel1未选淋巴细胞复核与补充评估_0923_155448.md`、`docs/运行记录/模型实验/运行记录_Panel1补充评估清单多尺度复测_0923_155610.md`。
-- Result: 补充test五类各50个；128准确率0.408、macro-F1 0.393，256为0.344/0.332，直接融合为0.368/0.347；淋巴内皮128识别11/50。
-- Commit: 本次实现提交；完整hash见Git历史。
-## 09-23 16:51:00
-
-- Purpose: 试验Panel1轻量非线性分类头与局部主导门控多尺度融合。
-- Changed: `benchmarks/v5/tools/train_crc_panel1_mlp.py`、`docs/运行记录/模型实验/运行记录_Panel1轻量MLP与门控多尺度Probe_0923_162500.md`。
-- Validation: 工具编译通过；3个随机种子、原train训练、原val选择、均衡补充test复测完成，最终`EXIT_CODE=0`；两次早期运行分别因线程限制和补充特征路径问题停止，未用于结果。
-- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_mlp_probe_0923_165000/`。
-- Docs record: `docs/运行记录/模型实验/运行记录_Panel1轻量MLP与门控多尺度Probe_0923_162500.md`。
-- Result: 128-MLP原val macro-F1 0.454、补充test 0.318；门控128+256原val 0.457、补充test 0.292；均低于线性128补充test macro-F1 0.393，暂不替换基线。
-- Commit: 本次实现提交；完整hash见Git历史。
-
-## 09-23 15:31:58
-
-- Purpose: 设计面向连续正负点纠错的 Phase 5/6 Decoder 改造方案，补全正点漏检扩张与原负区域保持。
-- Changed: `docs/建议/模型与训练/建议_迭代式正负点纠错Decoder_0923_153007.md`、本文件。
-- Validation: 对照当前 Phase 5/6 模型、在线 prompt 映射及损失接口审阅；文档结构和 `git diff --check` 检查。
-- Artifacts: 无；仅设计文档。
-- Docs record: `docs/建议/模型与训练/建议_迭代式正负点纠错Decoder_0923_153007.md`（建议）。
-- Commit: 无；未改模型代码。
-
-## 09-23 16:20:14
-
-- Purpose: 实现并验证 v5 正负点迭代式纠错 Decoder，接入上一轮 logits、逐点 prompt、符号单调更新、soft assignment 后像素点击锚点和交互状态。
-- Changed: `benchmarks/v5/phase_6_mask_decoder/`（decoder、逐轮 episode、训练/评估入口、单 patch/WSI 状态接口、测试）、`docs/建议/模型与训练/建议_迭代式正负点纠错Decoder_0923_153007.md`、相关 `docs/运行记录/模型实验/运行记录_迭代Decoder*.md`、本文件。
-- Validation: 7 项定向模型/状态测试通过；Python compileall 和 `git diff --check` 通过；真实 v5 空间图块 smoke 4/2 通过；64/24 配对 probe 通过；256/64/3 epoch 开发训练 `EXIT_CODE=0`，epoch 2 质量门禁通过并生成 checkpoint。
-- Artifacts: `/nfs-medical3/zyh/fewclick_v2/iterative_decoder/spatial_routing_0923_154545/`、`smoke_0923_154545/`、`smoke_0923_154843/`、`probe_0923_161201/`、`eval64_0923_161353/`、`eval_historical_val_0923_161638/`、`final_dev_0923_161452/`。
-- Docs record: `docs/运行记录/模型实验/运行记录_迭代Decoder最终结构扩大训练_0923_161452.md` 及同目录配对/诊断记录（运行记录）；`docs/建议/模型与训练/建议_迭代式正负点纠错Decoder_0923_153007.md`（建议）。
-- Result: 开发性最终 checkpoint 为 `/nfs-medical3/zyh/fewclick_v2/iterative_decoder/final_dev_0923_161452/checkpoint_epoch_002.pth`；正点后 Dice +0.002575，负点后 Dice −0.000709，负点远端 FP −0.018911，正确正区变化 −0.006800，像素/region 冲突均为0。旧 v4 初始化对部分空间 val 有历史暴露，不能当独立测试或部署结论。
-- Commit: 未提交；工作树含用户已有的无关未跟踪文件，未安全分界，需用户确认后再提交。
-
-## 09-23 16:13:29
-
-- Purpose: 逐个复核Panel1未选淋巴内皮匹配，构建五类均衡补充评估清单并复测冻结多尺度模型。
-- Changed: `benchmarks/v5/tools/audit_crc_panel1_eval_candidates.py`、`benchmarks/v5/tools/evaluate_crc_panel1_supplement.py`、两份Panel1补充评估运行记录、本文件。
-- Validation: 两工具编译通过；真实源数据扫描与500细胞双视野提取/冻结分类器复测均`EXIT_CODE=0`；133个未选淋巴候选逐一核mask复核通过，500个补充细胞通过源hash与空间分组检查。
-- Artifacts: `/nfs-medical3/zyh/fewclick_v2/semantic_phase3/panel1_eval_supplement_0923_155834/`和`panel1_eval_supplement_scores_0923_155610/`。
-- Docs record: `docs/运行记录/数据审计/运行记录_Panel1未选淋巴细胞复核与补充评估_0923_155448.md`、`docs/运行记录/模型实验/运行记录_Panel1补充评估清单多尺度复测_0923_155610.md`。
-- Result: 补充test五类各50个；128准确率0.408、macro-F1 0.393，256为0.344/0.332，直接融合为0.368/0.347；淋巴内皮128识别11/50。
-- Commit: 本次实现提交；完整hash见Git历史。
 ## 09-23 19:15:00
 
 - Purpose: 将训练空间内全部通过几何/核mask复核的候选加入训练并重训Panel1分类头。
@@ -2089,3 +2043,16 @@
 - Docs record: docs/运行记录/模型实验/运行记录_代表性点击重训三模型同例可视化_1022_034933.md（运行记录）；主续跑清单同步当前图库入口。
 - Status: 完成；样本14000有11改善9退步，整体Dice基本不变，#15误报减少/#18跨片漏分加重/#11tiny target仍过分割；20例与完整960分开，不改默认权重，不作PUMA/test/全WSI结论，无新训练。
 - Commit: 本次独立实现提交；hash保存于本实验根code_commit_1022_035533.json。
+
+
+## 10-22 12:38:33
+
+- Purpose: 按用户明确授权统一提交全部未提交的工作树内容，并准备推送其指定GitHub空仓库。
+- Changed: 既有补充测试/用户文档/图片及NFS软链接、第三方目录现存16文件快照、本运行记录；整合暂存区临时删除，保留当前文件和已有状态日志删除，不改算法或训练。
+- Validation: 4文件AST解析、现有解码器7个独立测试函数全部通过；没有pytest所以未以pytest命令声称通过。检查Git对象大小/当前文件和历史常见凭据模式；仅提交NFS链接，不递归权重/缓存/数据。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/repository_archive/commit_push_1022_123645（原index/status、验证与扫描记录、归档清单和提交结果）。
+- Docs record: docs/运行记录/项目维护/运行记录_全部未提交内容归档与GitHub推送_1022_123645.md（项目维护运行记录）。
+- Status: 本地归档准备完成；origin目标git@github.com:bulllllllllllllllet/FewClick_v2.git，普通master push；SSH拒绝公钥且gh未登录，远端推送等待用户完成认证，不能声称已上传。
+- Commit: 本次全量归档提交；完整hash保存于上述目录commit_result.json。
+
+- Validation note: 既有第三方文件和用户组会文档有行尾空格/EOF空行，diff --check提示已保存，不改写用户/第三方文本；1272历史blob常见凭据模式零命中。

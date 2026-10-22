@@ -1,0 +1,28 @@
+Use case: scientific-educational / infographic-diagram.
+Create a precise publication-quality standalone architecture diagram for a Chinese pathology research group meeting, wide landscape approximately 16:9, high resolution, white background, crisp readable typography, flat vector-like rounded blocks and thin unambiguous arrow connectors. Chinese main labels with concise English tensor/math notation. Title: "提示条件稠密解码分支（当前保留版本 dense128）". Subtitle: "DensePromptDecoder · width=48 · high_resolution=True".
+
+Draw ONLY this branch and its six supplied input interfaces. Do not draw a backbone, WSI pipeline or cell network. Tensor notation is channels × height × width, omit batch dimension.
+
+Layout: clear left-to-right main computation across middle, with separate auxiliary inputs above, shallow detail input below, and original-probability bypass running along bottom to final addition. Distinguish frozen supplied inputs pale blue, trainable operators teal, prompt conditioning soft purple, residual correction orange.
+
+EXACT directed topology:
+1. Left deep input "深层特征 Fdeep / 256×64×64" -> block "1×1 Conv · 256→48 / GroupNorm + GELU" -> "提示调制 / 48×64×64".
+2. Above the modulation, separate input "提示任务向量 t / 256" -> "LayerNorm + Linear / 256→96，拆分为 γ、β" -> downward arrow into modulation. Small formula underneath modulation: "F′ = F ⊙ [1 + 0.1 tanh(γ)] + β".
+3. Immediately to right of modulation, a CONCAT junction with TWO incoming arrows: modulated 48 channels and a clearly grouped auxiliary 16-channel input.
+The auxiliary input group placed above concatenation has FOUR named components:
+"语义概率 S：12通道"
+"原 J5 概率 p₀：1通道"
+"不确定性 4p₀(1−p₀)：1通道"
+"正 / 负提示热图：2通道"
+Small group label "对齐至64×64 · 共16通道". Semantic S derived by softmax on supplied semantic logits. p0 and uncertainty are separate channels. These are all connected to concat, NOT to task modulation. Keep no arrow suggesting task directly changes auxiliary values.
+4. CONCAT "48+16=64通道" -> block "上下文融合 / 3×3 Conv 64→48 + GELU / 3×3 Conv 48→48 + GELU" output48×64×64 -> "双线性上采样 / 64×64→128×128" -> next CONCAT.
+5. Bottom-left separate input "浅层特征 Fshallow / 32×128×128" with small annotation "layer1：固定分组均值 256→32（已在分支外完成）" -> "1×1 Conv · 32→24 / GroupNorm + GELU" -> next CONCAT joining upsampled main48 with shallow24. This concat label "48+24=72通道".
+6. next concat -> "细节融合 / 3×3 Conv 72→48 + GELU" -> "残差头 / 1×1 Conv 48→1" -> "双线性上采样 / 128×128→512×512" -> output "像素残差 Δ / 512×512" -> addition circle "+".
+7. Separate bypass input "原 J5 概率 p₀ / 512×512" -> block "clamp + logit" -> plus circle as second input. Also thin branching arrow from this p0 input to auxiliary p0 channel group, which computes uncertainty. Use continuous routed bypass below pipeline to avoid crossings. The addition is in LOGIT space, absolutely not addition of residual to probability.
+8. plus circle -> "Sigmoid" -> final "精细分割概率 p / 512×512".
+Under output area large exact equation "p = sigmoid[logit(clamp(p₀)) + Δ]".
+Do not draw a thresholded mask as trainable output; probability is final.
+Footer two concise notes: "128 指浅层融合网格；最终输出仍为 512×512。" and "保留 J5 区域预测，由像素残差修正边界与区域内部；仅训练稠密分支，上游编码器冻结。"
+One small note by prompt heatmaps: "远处查询无本地点击时，两通道为0。"
+
+No performance metrics, no segmentation example images, no invented ViT/SAM/FPN/attention, no middle/stem256 branches, no new cell-type models, no extra dense head, no extra skip connections. Avoid overlapping connectors and tiny text; prioritize exact topology and readable hierarchy.
