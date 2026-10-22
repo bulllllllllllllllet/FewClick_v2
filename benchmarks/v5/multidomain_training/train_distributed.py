@@ -133,6 +133,7 @@ def main():
                 if old_args.get(key)!=getattr(a,key):raise ValueError('resume configuration mismatch: '+key)
             if old['validation_plans_sha256']!=plan_hash or old.get('legacy_validation_plans_sha256')!=legacy_hash:raise ValueError('resume validation changed')
             if old['catalog_sha256']!=sha((a.catalog/'tiles.parquet').read_bytes()) or old['weights']!=weights:raise ValueError('resume data/initialization changed')
+            if old.get('training_policy_sha256')!=corpus.training_policy_sha256:raise ValueError('resume training quality policy changed')
             if saved['mapper']!='pixel':raise ValueError('unsupported checkpoint mapper')
             model.load_state_dict(saved['model'],strict=True);optimizer.load_state_dict(saved['optimizer']);start=int(saved['step'])
             if optimizer_digest(optimizer.state_dict())!=optimizer_digest(saved['optimizer']):raise ValueError('optimizer restore changed state')
@@ -156,6 +157,7 @@ def main():
                 selection_validation='primary fixed single-group only; legacy report-only',query_GT_in_model=False,gt_simulated_clicks=True,puma_used=False,test_used=False,
                 gradient_sync='loss/global_batch before backward; NCCL sum; global-unused gradients remain None',
                 resume_step=start,parent_checkpoint=None if a.resume is None else str(a.resume),rng_migration='independent rank streams when migrating world1; exact per-rank RNG on subsequent world4 resume')
+            run.update(training_policy_sha256=corpus.training_policy_sha256,training_policy=corpus.training_policy)
             dump(a.output/'run.json',run);dump(a.output/'validation_plans.json',plans)
             if legacy is not None:dump(a.output/'legacy_validation_plans.json',legacy)
             if saved is not None:

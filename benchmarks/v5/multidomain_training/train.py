@@ -64,6 +64,7 @@ def main():
             validation_plans_sha256=sha((a.output/'validation_plans.json').read_bytes()),
             source_sha256={str(f):sha(f.read_bytes()) for f in sorted(Path(__file__).parent.glob('*.py'))},
             effective_batch=a.accumulate,query_GT_in_model=False,gt_simulated_clicks=True,puma_used=False,test_used=False)
+        run.update(training_policy_sha256=corpus.training_policy_sha256,training_policy=corpus.training_policy)
         run.update(source_revision=subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),
             legacy_validation_plans_sha256=None if legacy_plans is None else sha((a.output/'legacy_validation_plans.json').read_bytes()),
             selection_validation='primary fixed single-group plans only; legacy is report-only')

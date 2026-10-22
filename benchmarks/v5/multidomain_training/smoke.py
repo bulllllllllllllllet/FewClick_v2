@@ -37,7 +37,8 @@ def main():
         modules=dict(prompt=model.j5.decoder.prompt_model,cell=model.j5.cell,dense=model.dense,assignment=model.j5.phase2.assignment,layer3=model.j5.phase2.backbone.layer3,layer4=model.j5.phase2.backbone.layer4)
         probes={name:next(m.parameters()) for name,m in modules.items()};before={name:p.detach().clone() for name,p in probes.items()}
         bn_before={n:b.clone() for n,b in model.named_buffers() if 'running_' in n};rows=[];max_grad={name:0. for name in modules}
-        for d,dataset in enumerate(DATASETS):
+        train_datasets=corpus.training_policy['datasets'] if corpus.training_policy else DATASETS
+        for d,dataset in enumerate(train_datasets):
             for k,kind in enumerate(KINDS):
                 plan=corpus.plan(1000+d*10+k,dataset=dataset,kind=kind)
                 inputs,supervision=corpus.materialize(plan,device);model.train();optimizer.zero_grad(set_to_none=True)
@@ -54,7 +55,7 @@ def main():
         changes={name:float((p-before[name]).abs().max()) for name,p in probes.items()}
         if any(v<=0 for v in changes.values()):raise ValueError('required module parameters did not change')
         if any(not torch.equal(dict(model.named_buffers())[name],value) for name,value in bn_before.items()):raise ValueError('frozen BN statistics changed')
-        model.eval();plan=corpus.plan(5000,dataset='ocelot',kind='cross_present');inputs,supervision=corpus.materialize(plan,device)
+        model.eval();plan=corpus.plan(5000,dataset=train_datasets[-1],kind='cross_present');inputs,supervision=corpus.materialize(plan,device)
         with torch.inference_mode():
             clean=model(**inputs,with_support=False)['query']['pixel_probability']
             contaminated={**inputs,'query':inputs['query']|{'pixel_gt':torch.zeros_like(supervision['truth']),'target_class':torch.tensor([999],device=device)},'prompts':inputs['prompts']|{'target_class':torch.tensor([999],device=device)}}
@@ -79,7 +80,9 @@ def main():
         report=dict(status='passed',worker_pid=os.getpid(),seconds=time.time()-started,real_episodes=rows,max_gradient_norms=max_grad,max_parameter_changes=changes,
             weights=weights,frozen_bridge_feature_error=feature_error,frozen_bridge_prediction_error=replay_error,prompt_max_prediction_change=prompt_difference,
             query_GT_independent=True,remote_query_heatmaps_zero=True,BN_statistics_frozen=True,empty_cells_finite=True,full_target_loss_finite=True,
-            fresh_checkpoint_reload_exact=True,puma_used=False,test_used=False,source_sha256={str(f):sha(f.read_bytes()) for f in sorted(Path(__file__).parent.glob('*.py'))})
+            fresh_checkpoint_reload_exact=True,puma_used=False,test_used=False,
+            training_policy=corpus.training_policy,training_policy_sha256=corpus.training_policy_sha256,
+            source_sha256={str(f):sha(f.read_bytes()) for f in sorted(Path(__file__).parent.glob('*.py'))})
         dump(a.output/'summary.json',report);dump(a.output/'status.json',dict(status='complete',worker_pid=os.getpid(),seconds=time.time()-started));print('DYNAMIC_SMOKE_PASSED',flush=True)
     except Exception as exc:dump(a.output/'status.json',dict(status='failed',worker_pid=os.getpid(),error=repr(exc)));raise
 

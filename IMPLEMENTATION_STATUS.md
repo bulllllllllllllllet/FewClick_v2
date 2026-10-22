@@ -2086,3 +2086,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_四权重匹配CRC历史及内部点击回归_1023_022355.md（运行记录）；组会总结同步结果。
 - Status: 完成；最新14k历史组织Dice.664674，内部点.687630；旧多域内部点.727132，下降3.95点，肿瘤间质下降明显；保留权重，无新训练或部署。
 - Commit: 本次CRC对照文档独立提交，可按运行记录路径查询hash。
+
+## 10-23 03:06:00
+
+- Purpose: 按用户要求移除分辨率过低的训练输入，保留固定验证并准备清晰原图对照重训。
+- Changed: 新增resolution_filter.py/test_resolution_filter.py；EpisodeCorpus执行训练域/original策略并拒绝强制低清输入；单卡/四卡trainer记录策略SHA且resume拒绝策略变化；smoke使用声明训练域；README和模型实验记录。模型结构、损失、旧数据、v4未改。
+- Validation: 19项质量/原训练/兼容/分布式单测通过；实际过滤43122→39548训练视野，验证10006完整行不变/空间检查通过；300真实计划无低清输入。完整smoke三源15任务worker2403591/29.56秒通过；四卡4更新/2暖身+2联合worker2396055–58/25.64秒通过，4次串行梯度一致、有限非零梯度、跨rank一致/重载一致；gate40例初始化预测计数/指标与原运行精确回放。初次smoke硬编码已排除域失败保留，修正后新目录完整通过。实际查看新预览图，diff --check通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/multidomain_training/highres_1023_025438，catalog_1023_025438、逐例排除CSV、training_policy.json、40门控/360高清计划、smoke/gate记录及清晰度预览；一次性训练成功后CRC/高清分层脚本已准备，尚未执行。
+- Docs record: docs/运行记录/模型实验/运行记录_清晰原图训练与低分辨率排除_1023_025438.md（运行记录）。
+- Status: 数据和实现验收完成；正式20k即将四卡启动，训练效果尚未知，不自动部署。
+- Commit: 本次训练质量筛选独立实现提交，hash保存于实验根implementation_commit.json。

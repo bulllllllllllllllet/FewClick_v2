@@ -41,6 +41,19 @@ class EpisodeCorpus:
         if prompt_policy not in ('legacy','representative'):raise ValueError('unknown prompt policy')
         self.prompt_policy=prompt_policy
         self.catalog=Path(catalog);self.seed=seed;self.rows=read_rows(self.catalog/'tiles.parquet')
+        policy_path=self.catalog/'training_policy.json'
+        self.training_policy_sha256=sha(policy_path.read_bytes()) if policy_path.exists() else None
+        self.training_policy=json.loads(policy_path.read_text()) if policy_path.exists() else None
+        if self.training_policy is not None:
+            policy=self.training_policy;datasets=policy['datasets'];probs=policy['probabilities']
+            if (policy['catalog_sha256']!=sha((self.catalog/'tiles.parquet').read_bytes())
+                    or not datasets or len(set(datasets))!=len(datasets) or not set(datasets)<=set(DATASETS)
+                    or len(probs)!=len(datasets) or not np.isfinite(probs).all()
+                    or any(p<=0 for p in probs) or not np.isclose(sum(probs),1.)
+                    or policy['qualities']!=['original']):raise ValueError('invalid original-only training policy')
+            for row in self.rows:
+                if row['split']=='train' and (row['dataset'] not in datasets or not row['training_allowed']
+                        or set(json.loads(row['variants_json']))!={'original'}):raise ValueError('training catalog violates quality policy')
         if any(r['dataset']=='puma' or r['split']=='test' for r in self.rows):raise ValueError('heldout data entered episode corpus')
         self.index={r['tile_id']:i for i,r in enumerate(self.rows)}
         if len(self.index)!=len(self.rows):raise ValueError('duplicate episode tile')
@@ -96,7 +109,10 @@ class EpisodeCorpus:
 
     def plan(self,number,*,split='train',crc_only=False,quality_aug=True,kind=None,dataset=None,fixed_clicks=False):
         rng=np.random.default_rng(self.seed+int(number));quality_rng=np.random.default_rng(self.seed+100000000+int(number))
-        dataset=dataset or ('crc' if crc_only else str(rng.choice(DATASETS,p=DATA_PROBS)))
+        policy=getattr(self,'training_policy',None) if split=='train' else None
+        datasets=policy['datasets'] if policy else DATASETS;probs=policy['probabilities'] if policy else DATA_PROBS
+        dataset=dataset or ('crc' if crc_only else str(rng.choice(datasets,p=probs)))
+        if policy and dataset not in datasets:raise ValueError('excluded training dataset requested')
         kind=kind or str(rng.choice(KINDS,p=KIND_PROBS))
         pool=self.pools[split][dataset][kind]
         if not pool:raise ValueError(f'no feasible {split}/{dataset}/{kind}; never substitute a different protocol')
@@ -105,8 +121,9 @@ class EpisodeCorpus:
         if kind!='local':
             candidates=self.candidates(s,self.queries[split,dataset,target,kind.endswith('absent')],kind.split('_')[0])
             q=int(rng.choice(candidates))
-        qualities=['original','0.8','1.0'];sq=str(quality_rng.choice(qualities,p=[.5,.25,.25])) if quality_aug else 'original'
-        qq=str(quality_rng.choice(qualities,p=[.5,.25,.25])) if quality_aug else 'original'
+        qualities=['original','0.8','1.0'];augment=quality_aug and policy is None
+        sq=str(quality_rng.choice(qualities,p=[.5,.25,.25])) if augment else 'original'
+        qq=str(quality_rng.choice(qualities,p=[.5,.25,.25])) if augment else 'original'
         click_rng=np.random.default_rng(self.seed+200000000+int(number))
         positive,negative=(3,2) if fixed_clicks else tuple(map(int,click_rng.integers(1,6,size=2)))
         gt=self.labels(s);inside=interior_labels(gt,json.loads(self.rows[s]['input_mpp_xy_json']))
@@ -138,6 +155,10 @@ class EpisodeCorpus:
         return dict(image=he_to_tensor(image)[None],cells=torch.from_numpy(cells)[None],cell_valid=torch.ones((1,len(cells)),dtype=torch.bool),total_cell_count=torch.tensor([total],dtype=torch.float32))
 
     def materialize(self,plan,device):
+        policy=getattr(self,'training_policy',None)
+        if policy and plan['split']=='train' and (plan['dataset'] not in policy['datasets']
+                or plan['support_quality']!='original' or plan['query_quality']!='original'):
+            raise ValueError('excluded low-resolution training input requested')
         s=self.index[plan['support_id']];q=self.index[plan['query_id']]
         if self.rows[s]['split']!=plan['split'] or self.rows[q]['split']!=plan['split']:raise ValueError('episode split changed')
         source=self.labels(s);query=self.labels(q);target=plan['target']

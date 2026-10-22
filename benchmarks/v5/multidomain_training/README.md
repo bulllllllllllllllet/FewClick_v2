@@ -218,3 +218,23 @@ python -m benchmarks.v5.multidomain_training.reproduce_checkpoint --help
 ```
 
 This wrapper preserves the original model/evaluator and checks fixed prompt-task prediction replay; it does not make the historical absolute-path artifacts portable by itself.
+
+### Training with original detail only
+
+`resolution_filter` creates a new catalog that removes coarse native training
+fields and all synthetic degraded training variants. Validation rows remain
+unchanged, including excluded-source and degraded challenge inputs.
+
+```bash
+python -m benchmarks.v5.multidomain_training.resolution_filter \
+  --catalog OLD_CATALOG --output NEW_TIMESTAMPED_CATALOG --max-detail-mpp 0.6
+```
+
+`EpisodeCorpus` enforces the resulting `training_policy.json` during sampling
+and materialization; trainers record its SHA and distributed resume rejects a
+changed policy. Missing domains are explicitly excluded and remaining source
+weights are renormalized. Use the original-quality arm `C2` and the existing
+locked validation plans. This filter addresses file sampling and artificial
+resolution loss; it does not claim to detect all scanner blur or guarantee Dice
+improvement. The rationale and live run are recorded in
+[`清晰原图训练记录`](../../../docs/运行记录/模型实验/运行记录_清晰原图训练与低分辨率排除_1023_025438.md).
