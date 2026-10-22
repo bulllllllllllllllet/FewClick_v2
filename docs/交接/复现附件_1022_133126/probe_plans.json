@@ -1,0 +1,1902 @@
+[
+  {
+    "number": 20000014,
+    "support_id": "b1fbc5e5119ef79b8cf600f0",
+    "query_id": "b1fbc5e5119ef79b8cf600f0",
+    "dataset": "crc",
+    "target": 9,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "local",
+    "protocol": "local",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.6728515625,
+        0.0849609375
+      ],
+      [
+        0.7373046875,
+        0.1728515625
+      ],
+      [
+        0.7548828125,
+        0.0517578125
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.3662109375,
+        0.2587890625
+      ],
+      [
+        0.3427734375,
+        0.8603515625
+      ]
+    ],
+    "support_organ": "colorectum",
+    "query_organ": "colorectum",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-crc-local-14",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 4,
+        "retained_components": 4,
+        "selected_labels": [
+          9,
+          9,
+          9
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          21.032369891049466,
+          18.770670712962577,
+          13.501687710963868
+        ],
+        "frame_clearance_um": [
+          21.75271908988623,
+          44.25553194149268,
+          13.25165645705713
+        ],
+        "minimum_pair_distance_um": 22.657853750137146
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 9,
+        "retained_components": 2,
+        "selected_labels": [
+          1,
+          7
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.2548377530868871
+        ],
+        "clearance_um": [
+          56.18753607762028,
+          29.706406781405963
+        ],
+        "frame_clearance_um": [
+          66.25828228528565,
+          35.75446930866358
+        ],
+        "minimum_pair_distance_um": 154.13610580769384
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20000101,
+    "support_id": "734688afc268ffb5f8cf2f44",
+    "query_id": "ef7772c36f11fa016c6407a4",
+    "dataset": "crc",
+    "target": 9,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "same_present",
+    "protocol": "same_wsi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.0478515625,
+        0.1064453125
+      ],
+      [
+        0.1455078125,
+        0.0283203125
+      ],
+      [
+        0.0302734375,
+        0.0810546875
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.2333984375,
+        0.8466796875
+      ],
+      [
+        0.3896484375,
+        0.6337890625
+      ]
+    ],
+    "support_organ": "colorectum",
+    "query_organ": "colorectum",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-crc-same_present-1",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 4,
+        "retained_components": 4,
+        "selected_labels": [
+          9,
+          9,
+          9
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.23455882352941176,
+          1.0
+        ],
+        "clearance_um": [
+          6.042278271581233,
+          2.915840427476084,
+          4.610348522211719
+        ],
+        "frame_clearance_um": [
+          12.251531441430178,
+          7.250906363295411,
+          7.7509688711088875
+        ],
+        "minimum_pair_distance_um": 7.906682485731663
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 34,
+        "retained_components": 14,
+        "selected_labels": [
+          5,
+          3
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.5527890830739766
+        ],
+        "clearance_um": [
+          10.97862152774104,
+          12.778529655387558
+        ],
+        "frame_clearance_um": [
+          39.25490686335792,
+          93.76172021502687
+        ],
+        "minimum_pair_distance_um": 67.612075672665
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20000214,
+    "support_id": "db6a2d7f39c51ba188952616",
+    "query_id": "d231cbb16266ff9b993649f1",
+    "dataset": "crc",
+    "target": 10,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "cross_present",
+    "protocol": "cross_wsi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.1259765625,
+        0.3271484375
+      ],
+      [
+        0.1591796875,
+        0.1142578125
+      ],
+      [
+        0.1337890625,
+        0.2294921875
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.2880859375,
+        0.8447265625
+      ],
+      [
+        0.3095703125,
+        0.5244140625
+      ]
+    ],
+    "support_organ": "colorectum",
+    "query_organ": "colorectum",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-crc-cross_present-14",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 8,
+        "retained_components": 3,
+        "selected_labels": [
+          10,
+          10,
+          10
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          26.873416862196574,
+          21.711007221995157,
+          18.17505372710213
+        ],
+        "frame_clearance_um": [
+          32.254031753969244,
+          29.253656707088382,
+          34.25428178522315
+        ],
+        "minimum_pair_distance_um": 25.083007783941895
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 9,
+        "retained_components": 1,
+        "selected_labels": [
+          6,
+          6
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          35.69759879499887,
+          33.716230190849
+        ],
+        "frame_clearance_um": [
+          39.75496937117139,
+          79.25990748843604
+        ],
+        "minimum_pair_distance_um": 82.19451854690945
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 10000012,
+    "support_id": "5fe23e58f66812324649013b",
+    "query_id": "fc0d247b9217d4d1de7ac2e2",
+    "dataset": "crc",
+    "target": 11,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "same_absent",
+    "protocol": "same_wsi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.6376953125,
+        0.1708984375
+      ],
+      [
+        0.9833984375,
+        0.2294921875
+      ],
+      [
+        0.6416015625,
+        0.1611328125
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.6689453125,
+        0.6533203125
+      ],
+      [
+        0.8017578125,
+        0.7236328125
+      ]
+    ],
+    "support_organ": "colorectum",
+    "query_organ": "colorectum",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": 10000013,
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 2,
+        "retained_components": 2,
+        "selected_labels": [
+          11,
+          11,
+          11
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.918918918918919,
+          1.0
+        ],
+        "clearance_um": [
+          4.030387615231175,
+          3.8071863446392906,
+          3.9044067491244165
+        ],
+        "frame_clearance_um": [
+          43.741955087847764,
+          4.249218494248068,
+          41.242414797113604
+        ],
+        "minimum_pair_distance_um": 2.692087281535267
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 19,
+        "retained_components": 2,
+        "selected_labels": [
+          0,
+          0
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          22.31740972277184,
+          19.5986912411112
+        ],
+        "frame_clearance_um": [
+          84.73441585588796,
+          50.74066790190341
+        ],
+        "minimum_pair_distance_um": 38.463693975914545
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20000405,
+    "support_id": "6cedf083028cf862b3ed9b01",
+    "query_id": "c0cc7f4e64eb96563619ff31",
+    "dataset": "crc",
+    "target": 10,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "cross_absent",
+    "protocol": "cross_wsi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.6259765625,
+        0.3876953125
+      ],
+      [
+        0.5498046875,
+        0.4794921875
+      ],
+      [
+        0.6474609375,
+        0.4951171875
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.6630859375,
+        0.9033203125
+      ],
+      [
+        0.1865234375,
+        0.2822265625
+      ]
+    ],
+    "support_organ": "colorectum",
+    "query_organ": "colorectum",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-crc-cross_absent-5",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          10,
+          10,
+          10
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          96.01200150018751,
+          98.05561470747631,
+          89.62426011684802
+        ],
+        "frame_clearance_um": [
+          95.76197024628077,
+          115.26440805100636,
+          90.26128266033253
+        ],
+        "minimum_pair_distance_um": 25.321142945212472
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 3,
+        "retained_components": 3,
+        "selected_labels": [
+          9,
+          6
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.21090617481956697
+        ],
+        "clearance_um": [
+          4.301700346064571,
+          2.692919018444557
+        ],
+        "frame_clearance_um": [
+          24.753094136767093,
+          47.755969496187014
+        ],
+        "minimum_pair_distance_um": 200.4371301257534
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 10000023,
+    "support_id": "212bc801d2af0bf951db6611",
+    "query_id": "212bc801d2af0bf951db6611",
+    "dataset": "tiger",
+    "target": 6,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "local",
+    "protocol": "local",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.1435546875,
+        0.5712890625
+      ],
+      [
+        0.8466796875,
+        0.1923828125
+      ],
+      [
+        0.4814453125,
+        0.8974609375
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.1669921875,
+        0.3310546875
+      ],
+      [
+        0.6884765625,
+        0.7333984375
+      ]
+    ],
+    "support_organ": "breast",
+    "query_organ": "breast",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": 10000024,
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 5,
+        "retained_components": 4,
+        "selected_labels": [
+          6,
+          6,
+          6
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.7894043956653086,
+          1.0
+        ],
+        "clearance_um": [
+          31.945265689926575,
+          39.5,
+          24.62214450449026
+        ],
+        "frame_clearance_um": [
+          36.75,
+          39.25,
+          26.25
+        ],
+        "minimum_pair_distance_um": 120.22686887713579
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 10,
+        "retained_components": 4,
+        "selected_labels": [
+          2,
+          1
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.8306761145556539
+        ],
+        "clearance_um": [
+          23.194827009486403,
+          23.430749027719962
+        ],
+        "frame_clearance_um": [
+          42.75,
+          68.25
+        ],
+        "minimum_pair_distance_um": 168.61568728917248
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20010115,
+    "support_id": "230d571a6cb06394fc66b7bf",
+    "query_id": "7c0d69616af8be621b26e078",
+    "dataset": "tiger",
+    "target": 6,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "same_present",
+    "protocol": "same_wsi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.6435546875,
+        0.6376953125
+      ],
+      [
+        0.5537109375,
+        0.6376953125
+      ],
+      [
+        0.5966796875,
+        0.6259765625
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.2177734375,
+        0.6962890625
+      ],
+      [
+        0.5498046875,
+        0.8564453125
+      ]
+    ],
+    "support_organ": "breast",
+    "query_organ": "breast",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-tiger-same_present-15",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          6,
+          6,
+          6
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          9.486832980505138,
+          8.06225774829855,
+          6.519202405202649
+        ],
+        "frame_clearance_um": [
+          91.25,
+          92.75,
+          95.75
+        ],
+        "minimum_pair_distance_um": 11.40175425099138
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 11,
+        "retained_components": 3,
+        "selected_labels": [
+          1,
+          2
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.6653762419348455
+        ],
+        "clearance_um": [
+          43.289721643826724,
+          34.6878941419049
+        ],
+        "frame_clearance_um": [
+          55.75,
+          36.75
+        ],
+        "minimum_pair_distance_um": 94.37160589923221
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 10000031,
+    "support_id": "bb0a6bbda1895458c3952f49",
+    "query_id": "8bdde3be9dc2410a9826c3a5",
+    "dataset": "tiger",
+    "target": 3,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "cross_present",
+    "protocol": "cross_wsi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.2333984375,
+        0.8349609375
+      ],
+      [
+        0.3408203125,
+        0.7373046875
+      ],
+      [
+        0.1689453125,
+        0.4013671875
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.8564453125,
+        0.6201171875
+      ],
+      [
+        0.6103515625,
+        0.1630859375
+      ]
+    ],
+    "support_organ": "breast",
+    "query_organ": "breast",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": 10000032,
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          3,
+          3,
+          3
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          39.37321424522006,
+          38.01315561749642,
+          34.5
+        ],
+        "frame_clearance_um": [
+          42.25,
+          67.25,
+          43.25
+        ],
+        "minimum_pair_distance_um": 37.16517186829626
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 5,
+        "retained_components": 3,
+        "selected_labels": [
+          2,
+          7
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.1855426400821663
+        ],
+        "clearance_um": [
+          37.0,
+          14.534441853748634
+        ],
+        "frame_clearance_um": [
+          36.75,
+          41.75
+        ],
+        "minimum_pair_distance_um": 132.8834075421006
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20010311,
+    "support_id": "71711203a07e7da8f49fb530",
+    "query_id": "e0676ebddb2007bab9debe0d",
+    "dataset": "tiger",
+    "target": 2,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "same_absent",
+    "protocol": "same_wsi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.2177734375,
+        0.3076171875
+      ],
+      [
+        0.2763671875,
+        0.2333984375
+      ],
+      [
+        0.1884765625,
+        0.2216796875
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.5849609375,
+        0.3662109375
+      ],
+      [
+        0.4267578125,
+        0.5673828125
+      ]
+    ],
+    "support_organ": "breast",
+    "query_organ": "breast",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-tiger-same_absent-11",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          2,
+          2,
+          2
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          56.0,
+          60.0,
+          48.5
+        ],
+        "frame_clearance_um": [
+          55.75,
+          59.75,
+          48.25
+        ],
+        "minimum_pair_distance_um": 22.699118925632334
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 4,
+        "retained_components": 4,
+        "selected_labels": [
+          7,
+          6
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.4916092298471681
+        ],
+        "clearance_um": [
+          14.080127840328723,
+          9.055385138137417
+        ],
+        "frame_clearance_um": [
+          93.75,
+          109.25
+        ],
+        "minimum_pair_distance_um": 65.51717332119877
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 10000037,
+    "support_id": "98da5472fa9ef0a7251df71d",
+    "query_id": "d8440a975abdbab1f0d786cb",
+    "dataset": "tiger",
+    "target": 2,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "cross_absent",
+    "protocol": "cross_wsi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.3662109375,
+        0.4228515625
+      ],
+      [
+        0.2724609375,
+        0.4208984375
+      ],
+      [
+        0.5302734375,
+        0.6767578125
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.3037109375,
+        0.1591796875
+      ],
+      [
+        0.6435546875,
+        0.3447265625
+      ]
+    ],
+    "support_organ": "breast",
+    "query_organ": "breast",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": 10000038,
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 9,
+        "retained_components": 3,
+        "selected_labels": [
+          2,
+          2,
+          2
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          13.5,
+          13.5,
+          11.423659658795863
+        ],
+        "frame_clearance_um": [
+          93.75,
+          69.75,
+          82.75
+        ],
+        "minimum_pair_distance_um": 24.005207768315607
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 6,
+        "retained_components": 4,
+        "selected_labels": [
+          1,
+          6
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.43952275419357306
+        ],
+        "clearance_um": [
+          41.0,
+          35.387144558440994
+        ],
+        "frame_clearance_um": [
+          40.75,
+          88.25
+        ],
+        "minimum_pair_distance_um": 99.12239908315375
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 10000041,
+    "support_id": "759ca6914a30626e01fc9100",
+    "query_id": "759ca6914a30626e01fc9100",
+    "dataset": "ignite",
+    "target": 13,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "local",
+    "protocol": "local",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.0849609375,
+        0.6044921875
+      ],
+      [
+        0.1103515625,
+        0.6259765625
+      ],
+      [
+        0.1083984375,
+        0.5869140625
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.8486328125,
+        0.3955078125
+      ],
+      [
+        0.1455078125,
+        0.1064453125
+      ]
+    ],
+    "support_organ": "liver",
+    "query_organ": "liver",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": 10000042,
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          13,
+          13,
+          13
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          9.5,
+          5.385164807134504,
+          5.852349955359813
+        ],
+        "frame_clearance_um": [
+          21.75,
+          28.25,
+          27.75
+        ],
+        "minimum_pair_distance_um": 7.5
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 18,
+        "retained_components": 3,
+        "selected_labels": [
+          2,
+          4
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.1661877906665954
+        ],
+        "clearance_um": [
+          35.00357124637428,
+          26.879360111431225
+        ],
+        "frame_clearance_um": [
+          38.75,
+          27.25
+        ],
+        "minimum_pair_distance_um": 194.6175737183053
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20020102,
+    "support_id": "d87ade5138bebe864d42d6be",
+    "query_id": "46e01e14aaeb76c73208a906",
+    "dataset": "ignite",
+    "target": 15,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "same_present",
+    "protocol": "same_roi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.0634765625,
+        0.9541015625
+      ],
+      [
+        0.1220703125,
+        0.9658203125
+      ],
+      [
+        0.0322265625,
+        0.9169921875
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.5654296875,
+        0.7060546875
+      ],
+      [
+        0.0732421875,
+        0.5029296875
+      ]
+    ],
+    "support_organ": "liver",
+    "query_organ": "liver",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-ignite-same_present-2",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          15,
+          15,
+          15
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          12.0,
+          6.800735254367722,
+          7.3824115301167
+        ],
+        "frame_clearance_um": [
+          11.75,
+          8.75,
+          8.25
+        ],
+        "minimum_pair_distance_um": 12.419742348374221
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 5,
+        "retained_components": 2,
+        "selected_labels": [
+          4,
+          10
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.21368222879977838
+        ],
+        "clearance_um": [
+          74.24284477308234,
+          17.613914953808536
+        ],
+        "frame_clearance_um": [
+          75.25,
+          18.75
+        ],
+        "minimum_pair_distance_um": 136.3084736911099
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20020209,
+    "support_id": "4bbeb1d8e648d98ccfbfd5c7",
+    "query_id": "4e364282ed4af0c0ed2d2c67",
+    "dataset": "ignite",
+    "target": 4,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "cross_present",
+    "protocol": "cross_image",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.4482421875,
+        0.5556640625
+      ],
+      [
+        0.5068359375,
+        0.4560546875
+      ],
+      [
+        0.3759765625,
+        0.6337890625
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.9267578125,
+        0.9169921875
+      ],
+      [
+        0.9287109375,
+        0.7900390625
+      ]
+    ],
+    "support_organ": "bone",
+    "query_organ": "lung",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-ignite-cross_present-9",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          4,
+          4,
+          4
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          114.0,
+          104.33839178365747,
+          94.0
+        ],
+        "frame_clearance_um": [
+          113.75,
+          116.75,
+          93.75
+        ],
+        "minimum_pair_distance_um": 27.244265451650556
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          14,
+          14
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          19.0,
+          17.11724276862369
+        ],
+        "frame_clearance_um": [
+          18.75,
+          18.25
+        ],
+        "minimum_pair_distance_um": 32.50384592629001
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20020315,
+    "support_id": "f536e9a0a9866fb965ebed16",
+    "query_id": "b2b301984fa1664bc52184da",
+    "dataset": "ignite",
+    "target": 10,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "same_absent",
+    "protocol": "same_roi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.3759765625,
+        0.1298828125
+      ],
+      [
+        0.2626953125,
+        0.1572265625
+      ],
+      [
+        0.4501953125,
+        0.0771484375
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.3017578125,
+        0.7744140625
+      ],
+      [
+        0.7529296875,
+        0.2451171875
+      ]
+    ],
+    "support_organ": "liver",
+    "query_organ": "liver",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-ignite-same_absent-15",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          10,
+          10,
+          10
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          33.5,
+          29.449108645254444,
+          19.313207915827967
+        ],
+        "frame_clearance_um": [
+          33.25,
+          40.25,
+          19.75
+        ],
+        "minimum_pair_distance_um": 23.30772404161333
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 8,
+        "retained_components": 1,
+        "selected_labels": [
+          4,
+          4
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          55.54277630799526,
+          60.518592184551025
+        ],
+        "frame_clearance_um": [
+          57.75,
+          62.75
+        ],
+        "minimum_pair_distance_um": 178.0463422820025
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20020413,
+    "support_id": "b98e958eca2c814af23ef5f9",
+    "query_id": "477c2f0ecfec06c553cbec4e",
+    "dataset": "ignite",
+    "target": 10,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "cross_absent",
+    "protocol": "cross_image",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.3037109375,
+        0.9814453125
+      ],
+      [
+        0.3935546875,
+        0.9755859375
+      ],
+      [
+        0.3505859375,
+        0.9736328125
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.2783203125,
+        0.4638671875
+      ],
+      [
+        0.6865234375,
+        0.3310546875
+      ]
+    ],
+    "support_organ": "liver",
+    "query_organ": "lung",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-ignite-cross_absent-13",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          10,
+          10,
+          10
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          4.527692569068709,
+          2.5,
+          2.5
+        ],
+        "frame_clearance_um": [
+          4.75,
+          6.25,
+          6.75
+        ],
+        "minimum_pair_distance_um": 11.01135777277262
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 3,
+        "retained_components": 1,
+        "selected_labels": [
+          4,
+          4
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          65.73431371817918,
+          65.14982732133677
+        ],
+        "frame_clearance_um": [
+          71.25,
+          80.25
+        ],
+        "minimum_pair_distance_um": 109.89199242892997
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20030017,
+    "support_id": "47d5f2e41b0b7b55703e4562",
+    "query_id": "47d5f2e41b0b7b55703e4562",
+    "dataset": "ocelot",
+    "target": 2,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "local",
+    "protocol": "local",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.7080078125,
+        0.4912109375
+      ],
+      [
+        0.7470703125,
+        0.3740234375
+      ],
+      [
+        0.1064453125,
+        0.2666015625
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.3974609375,
+        0.1337890625
+      ],
+      [
+        0.4990234375,
+        0.1005859375
+      ]
+    ],
+    "support_organ": "prostate",
+    "query_organ": "prostate",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-ocelot-local-17",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 4,
+        "retained_components": 1,
+        "selected_labels": [
+          2,
+          2,
+          2
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          34.94343989675361,
+          35.83269218173397,
+          27.486429367899206
+        ],
+        "frame_clearance_um": [
+          74.71311255456239,
+          64.71804732987177,
+          27.23655273728194
+        ],
+        "minimum_pair_distance_um": 31.607171471964993
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 9,
+        "retained_components": 2,
+        "selected_labels": [
+          1,
+          1
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          34.15914988577987,
+          25.987169584195613
+        ],
+        "frame_clearance_um": [
+          34.233098394565374,
+          25.737292953578347
+        ],
+        "minimum_pair_distance_um": 27.340660070467322
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20030116,
+    "support_id": "4f05464bd477896e78817193",
+    "query_id": "2c97371f1a757ad9465c42a7",
+    "dataset": "ocelot",
+    "target": 2,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "same_present",
+    "protocol": "same_wsi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.5751953125,
+        0.3408203125
+      ],
+      [
+        0.6416015625,
+        0.5478515625
+      ],
+      [
+        0.6376953125,
+        0.4345703125
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.1787109375,
+        0.8388671875
+      ],
+      [
+        0.1455078125,
+        0.6572265625
+      ]
+    ],
+    "support_organ": "bladder",
+    "query_organ": "bladder",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-ocelot-same_present-16",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          2,
+          2,
+          2
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          86.27633004560013,
+          84.23781109726797,
+          92.94604270093407
+        ],
+        "frame_clearance_um": [
+          87.19937877049998,
+          91.6967679334484,
+          92.69618774743694
+        ],
+        "minimum_pair_distance_um": 28.827675080402862
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          1,
+          1
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          41.475922280524344,
+          37.47824302457019
+        ],
+        "frame_clearance_um": [
+          41.22606732702721,
+          37.228388071073056
+        ],
+        "minimum_pair_distance_um": 47.24307251738397
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20030201,
+    "support_id": "d154e3c98e5a369e89825aaa",
+    "query_id": "06da2dd9ddebc93ddad1c9f2",
+    "dataset": "ocelot",
+    "target": 2,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "cross_present",
+    "protocol": "cross_wsi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.0556640625,
+        0.5810546875
+      ],
+      [
+        0.1650390625,
+        0.8271484375
+      ],
+      [
+        0.0400390625,
+        0.8310546875
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.4833984375,
+        0.3076171875
+      ],
+      [
+        0.2958984375,
+        0.3349609375
+      ]
+    ],
+    "support_organ": "prostate",
+    "query_organ": "endometrium",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-ocelot-cross_present-1",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 2,
+        "retained_components": 2,
+        "selected_labels": [
+          2,
+          2,
+          2
+        ],
+        "component_area_fraction": [
+          1.0,
+          0.9297308403534005,
+          0.9297308403534005
+        ],
+        "clearance_um": [
+          14.4928445758014,
+          10.506710635333535,
+          8.073761023952677
+        ],
+        "frame_clearance_um": [
+          14.242967945184134,
+          42.22915057431787,
+          10.244941855307886
+        ],
+        "minimum_pair_distance_um": 31.999822197469356
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          1,
+          1
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          61.306914328661605,
+          62.678702578003815
+        ],
+        "frame_clearance_um": [
+          78.71113864443863,
+          75.71261907703145
+        ],
+        "minimum_pair_distance_um": 48.4837938670453
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20030310,
+    "support_id": "26cab5885ca3b0ee4c202333",
+    "query_id": "9ca6ff400719816bf95ea2f2",
+    "dataset": "ocelot",
+    "target": 2,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "same_absent",
+    "protocol": "same_wsi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.4853515625,
+        0.2958984375
+      ],
+      [
+        0.5283203125,
+        0.2001953125
+      ],
+      [
+        0.0537109375,
+        0.1279296875
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.5439453125,
+        0.7373046875
+      ],
+      [
+        0.4189453125,
+        0.7568359375
+      ]
+    ],
+    "support_organ": "stomach",
+    "query_organ": "stomach",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-ocelot-same_absent-10",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 11,
+        "retained_components": 11,
+        "selected_labels": [
+          2,
+          2,
+          2
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          0.38675524185177496
+        ],
+        "clearance_um": [
+          10.694151929143816,
+          6.496163739736858,
+          6.960083913786107
+        ],
+        "frame_clearance_um": [
+          75.70529281308723,
+          51.21975256330984,
+          13.741884834058737
+        ],
+        "minimum_pair_distance_um": 26.840247699130682
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 1,
+        "retained_components": 1,
+        "selected_labels": [
+          1,
+          1
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          66.88209919962162,
+          62.46311288208517
+        ],
+        "frame_clearance_um": [
+          67.21030946112364,
+          62.21326043055683
+        ],
+        "minimum_pair_distance_um": 32.369154122756605
+      },
+      "background_negative_required": false
+    }
+  },
+  {
+    "number": 20030412,
+    "support_id": "62c8d858ba895ce1edcd4911",
+    "query_id": "0be6aee98f6d2e15fae1f096",
+    "dataset": "ocelot",
+    "target": 2,
+    "support_quality": "original",
+    "query_quality": "original",
+    "kind": "cross_absent",
+    "protocol": "cross_wsi",
+    "split": "val",
+    "positive_xy": [
+      [
+        0.2900390625,
+        0.8974609375
+      ],
+      [
+        0.9130859375,
+        0.5283203125
+      ],
+      [
+        0.5751953125,
+        0.7998046875
+      ]
+    ],
+    "negative_xy": [
+      [
+        0.3291015625,
+        0.2138671875
+      ],
+      [
+        0.2197265625,
+        0.2412109375
+      ]
+    ],
+    "support_organ": "kidney",
+    "query_organ": "bladder",
+    "gt_simulated_clicks": true,
+    "quality_condition": "original",
+    "pair_id": "extended-ocelot-cross_absent-12",
+    "prompt_policy": "representative_1021_214456",
+    "prompt_group": 0,
+    "click_audit": {
+      "policy": "representative_1021_214456",
+      "positive": {
+        "limited_interior_space": false,
+        "source_components": 6,
+        "retained_components": 1,
+        "selected_labels": [
+          2,
+          2,
+          2
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          25.705749494633373,
+          22.492096936662165,
+          19.55073765967188
+        ],
+        "frame_clearance_um": [
+          26.240779759439192,
+          22.24218474847703,
+          51.23199857795271
+        ],
+        "minimum_pair_distance_um": 77.13506389578573
+      },
+      "negative": {
+        "limited_interior_space": false,
+        "source_components": 5,
+        "retained_components": 1,
+        "selected_labels": [
+          1,
+          1
+        ],
+        "component_area_fraction": [
+          1.0,
+          1.0
+        ],
+        "clearance_um": [
+          54.980681400729736,
+          56.48015452984055
+        ],
+        "frame_clearance_um": [
+          54.7307692125446,
+          56.23024234165541
+        ],
+        "minimum_pair_distance_um": 28.851601772463404
+      },
+      "background_negative_required": false
+    }
+  }
+]

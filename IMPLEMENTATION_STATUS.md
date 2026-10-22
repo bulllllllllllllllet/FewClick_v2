@@ -2056,3 +2056,14 @@
 - Commit: 本次全量归档提交；完整hash保存于上述目录commit_result.json。
 
 - Validation note: 既有第三方文件和用户组会文档有行尾空格/EOF空行，diff --check提示已保存，不改写用户/第三方文本；1272历史blob常见凭据模式零命中。
+
+
+## 10-22 13:51:22
+
+- Purpose: 给另一台服务器Agent提供当前C3算法可执行复现交接，明确实际架构、初始化依赖、数据迁移和训练/推理验收。
+- Changed: docs/交接/FewClick_v2_跨服务器复现交接_1022_133126.md、复现附件目录（资产SHA/环境/固定20计划参考/文件清单与生成器/原代码SHA/源机验收）、项目维护运行记录；新增multidomain_training/reproduce_checkpoint.py和README入口。算法/数据/默认权重未改。
+- Validation: 新入口真实GPU2/CPU4 20例worker2480974/16.96秒和完整960例worker2488844/87.98秒均REPLAY_PASSED/EXIT0，计数与指标逐例一致，960 Dice .6302008618210188/BF1 .32550574990541614/无目标面积 .09536366820788551。wrapper SHA与两次运行相同，旧算法各源文件SHA不变；34资产校验，validation3249实际路径存在、清单集合关系正确；文档链接/10个bash命令块及Python AST通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126，replay_selection/replay960_selection、各scope迁移文件列表、handoff_checked.json；大文件不入Git，probe复制清单含132文件约2.18GB。
+- Docs record: docs/运行记录/项目维护/运行记录_跨服务器Agent复现交接核验_1022_133126.md（项目维护运行记录）；交付主文档与同目录复现附件。
+- Status: 本机交接验收完成；另一台服务器尚未实际建环境/迁移/运行，不宣称异机已部署。文档区分当前patch支持查询与未验收WSI/PUMA，区分权重重放与重新训练，不改GT/点击协议、不自动恢复或降低标准。
+- Commit: 本次独立交接实现提交；hash保存于上述根handoff_commit.json。

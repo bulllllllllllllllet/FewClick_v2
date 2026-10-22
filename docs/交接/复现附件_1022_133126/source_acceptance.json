@@ -1,0 +1,126 @@
+{
+  "replay_selection.json": {
+    "selection": {
+      "output": "/nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/replay20_1022_133523",
+      "log": "/nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/replay20_1022_133523.log",
+      "tmux": "fewclick_handoff_replay_1022_133523",
+      "args": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.multidomain_training.reproduce_checkpoint",
+        "--catalog",
+        "/nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836/catalog_1021_123115",
+        "--checkpoint",
+        "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/checkpoint_step_14000.pth",
+        "--plans",
+        "docs/交接/复现附件_1022_133126/probe_plans.json",
+        "--reference-rows",
+        "docs/交接/复现附件_1022_133126/probe_reference_14000.json",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/replay20_1022_133523"
+      ],
+      "command": "export CUDA_VISIBLE_DEVICES=2 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4; /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.multidomain_training.reproduce_checkpoint --catalog /nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836/catalog_1021_123115 --checkpoint /nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/checkpoint_step_14000.pth --plans 'docs/交接/复现附件_1022_133126/probe_plans.json' --reference-rows 'docs/交接/复现附件_1022_133126/probe_reference_14000.json' --output /nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/replay20_1022_133523 > /nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/replay20_1022_133523.log 2>&1; result=$?; echo EXIT_CODE=$result >> /nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/replay20_1022_133523.log"
+    },
+    "run": {
+      "worker_pid": 2480974,
+      "source_revision": "0a4ed108adf753d87a26ce020c23ec20333be35f",
+      "wrapper_sha256": "7972be0802ae45af62da9f4b0fa8527c89dd636b612b1e5cf7690d6ce744e664",
+      "checkpoint": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/checkpoint_step_14000.pth",
+      "checkpoint_sha256": "ef013cbb873ddeb2edeaa34ef698b034503c64220885fdabc0bb38dbc0e4fccb",
+      "step": 14000,
+      "catalog": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836/catalog_1021_123115",
+      "plans": "docs/交接/复现附件_1022_133126/probe_plans.json",
+      "plans_sha256": "d23dd3c2b3c454888e495a5e5f8944dd09aaef8925f2a5e6a5a7d482d1be4410",
+      "reference_rows": "docs/交接/复现附件_1022_133126/probe_reference_14000.json",
+      "reference_sha256": "a7c157936e5047f1e7d2ee6a219e21bce98a462625d6a5060023db5f75d178f0",
+      "device": "NVIDIA RTX 5880 Ada Generation",
+      "amp": true,
+      "threshold": 0.5,
+      "query_GT_in_model": false
+    },
+    "verification": {
+      "status": "passed",
+      "step": 14000,
+      "tasks": 20,
+      "exact_count_replay": true,
+      "mismatches": [],
+      "metrics": {
+        "episodes": 20,
+        "present": 12,
+        "absent": 8,
+        "dice": 0.6051754385117651,
+        "all_foreground_dice": 0.49918110612958727,
+        "bf1_um2": 0.30619635636156256,
+        "bf1_evaluable": 11,
+        "absent_false_positive_fraction": 0.058039076272664344,
+        "absent_over_1percent": 0.625
+      },
+      "seconds": 16.96462607383728,
+      "puma_used": false,
+      "test_used": false
+    }
+  },
+  "replay960_selection.json": {
+    "selection": {
+      "output": "/nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/replay960_1022_133648",
+      "log": "/nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/replay960_1022_133648.log",
+      "tmux": "fewclick_handoff_full_1022_133648",
+      "args": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.multidomain_training.reproduce_checkpoint",
+        "--catalog",
+        "/nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836/catalog_1021_123115",
+        "--checkpoint",
+        "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/checkpoint_step_14000.pth",
+        "--plans",
+        "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/validation_plans.json",
+        "--reference-rows",
+        "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/validation_step_14000/rows.json",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/replay960_1022_133648"
+      ],
+      "command": "export CUDA_VISIBLE_DEVICES=2 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4; /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.multidomain_training.reproduce_checkpoint --catalog /nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836/catalog_1021_123115 --checkpoint /nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/checkpoint_step_14000.pth --plans /nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/validation_plans.json --reference-rows /nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/validation_step_14000/rows.json --output /nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/replay960_1022_133648 > /nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/replay960_1022_133648.log 2>&1; result=$?; echo EXIT_CODE=$result >> /nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/replay960_1022_133648.log"
+    },
+    "run": {
+      "worker_pid": 2488844,
+      "source_revision": "0a4ed108adf753d87a26ce020c23ec20333be35f",
+      "wrapper_sha256": "7972be0802ae45af62da9f4b0fa8527c89dd636b612b1e5cf7690d6ce744e664",
+      "checkpoint": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/checkpoint_step_14000.pth",
+      "checkpoint_sha256": "ef013cbb873ddeb2edeaa34ef698b034503c64220885fdabc0bb38dbc0e4fccb",
+      "step": 14000,
+      "catalog": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836/catalog_1021_123115",
+      "plans": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/validation_plans.json",
+      "plans_sha256": "3debb616ce4884b2511d18bc2c6fa438c0d8a5c4961ae18cb5cd2c86efbf15bd",
+      "reference_rows": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/validation_step_14000/rows.json",
+      "reference_sha256": "b0baddc5485db93326e3ff0e4805a2ab437f2e2aeda74c7ad7b23d7e77ca7ef4",
+      "device": "NVIDIA RTX 5880 Ada Generation",
+      "amp": true,
+      "threshold": 0.5,
+      "query_GT_in_model": false
+    },
+    "verification": {
+      "status": "passed",
+      "step": 14000,
+      "tasks": 960,
+      "exact_count_replay": true,
+      "mismatches": [],
+      "metrics": {
+        "episodes": 960,
+        "present": 576,
+        "absent": 384,
+        "dice": 0.6302008618210188,
+        "all_foreground_dice": 0.4401012429052659,
+        "bf1_um2": 0.32550574990541614,
+        "bf1_evaluable": 538,
+        "absent_false_positive_fraction": 0.09536366820788551,
+        "absent_over_1percent": 0.5026041666666666
+      },
+      "seconds": 87.98380970954895,
+      "puma_used": false,
+      "test_used": false
+    }
+  }
+}

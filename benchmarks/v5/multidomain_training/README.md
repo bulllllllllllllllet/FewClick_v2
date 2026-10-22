@@ -208,3 +208,13 @@ This flag does not mix old clicks into training or primary validation. Runs
 record both manifest hashes and the source revision. A fresh C3 retrain should
 be compared to the old C3 evaluated on the same new fixed clicks (Dice0.612145),
 not to its old-click score0.584458 or a GT-selected five-group oracle.
+
+
+Cross-server reproduction of the completed representative-click C3 run:
+[`FewClick_v2_跨服务器复现交接_1022_133126.md`](../../../docs/交接/FewClick_v2_跨服务器复现交接_1022_133126.md) includes the actual loader dependency closure, SHA-bound assets, environment, transfer lists, GT-free input contract, checkpoint replay and training commands.
+
+```bash
+python -m benchmarks.v5.multidomain_training.reproduce_checkpoint --help
+```
+
+This wrapper preserves the original model/evaluator and checks fixed prompt-task prediction replay; it does not make the historical absolute-path artifacts portable by itself.

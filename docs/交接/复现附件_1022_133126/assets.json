@@ -1,0 +1,246 @@
+{
+  "generated_at": "2026-10-22T13:34:41.261308",
+  "base_revision": "0a4ed108adf753d87a26ce020c23ec20333be35f",
+  "training_run": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031",
+  "catalog": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836/catalog_1021_123115",
+  "entries": [
+    {
+      "path": "/nfs-medical3/zyh/v4/phase6/formal_full_runs/phase6_joint_pixel_20260722_142455/checkpoint_epoch_004.pth",
+      "category": "bootstrap",
+      "size_bytes": 299282414,
+      "sha256": "7c53b6599eb16aabde1594296e0746f3939a2bf7e022a7a5e83768decc23077b",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/v4/phase6/formal_full_runs/phase6_joint_pixel_20260722_142455/run_metadata.json",
+      "category": "bootstrap",
+      "size_bytes": 9114,
+      "sha256": "0072f38e47f12f971647d57c9191a81e8a0ac0e68e1b49564aa1a83313304834",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/boundary_refinement/next_stage_1014_200033/matched96k_1014_221710/dense128_epoch_031.pth",
+      "category": "bootstrap",
+      "size_bytes": 1280645,
+      "sha256": "2b5db3ce96259087251892ae3db773d2c2da8e6e30807b71608e22c507a2d11f",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/boundary_refinement/next_stage_1014_200033/matched96k_1014_221710/run.json",
+      "category": "bootstrap",
+      "size_bytes": 1255745,
+      "sha256": "ecf9a4fbb1edacc270bbd4ef3e1d9c62a2c31f9c63dd08302a5a13136e4c9c98",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/v4/phase2/runs/phase_2_region_encoder_train_20260717_161240/checkpoint_epoch_028.pth",
+      "category": "bootstrap",
+      "size_bytes": 482664537,
+      "sha256": "33c2ea1cbffaccaa9c34c12811ed3c894a7006ae2bfc8c4a44118c55d848ef9e",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/v4/phase3/runs/phase_3_cell_region_train_20260719_025025/checkpoint_epoch_026.pth",
+      "category": "bootstrap",
+      "size_bytes": 4518857,
+      "sha256": "0f92b3a608e3446f4869c0bdebb97972db8cf8af95af5bbba61d2cb2da10b6d4",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/v4/phase5/runs/phase5_prompt_encoder_20260721_130650_formal/checkpoint_epoch_027.pth",
+      "category": "bootstrap",
+      "size_bytes": 35738041,
+      "sha256": "ebc2b081db2c1cde33f9d6c338621999382606be76681d5f4f481894fbf2e036",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/v4/phase1/runs/phase_1_multiscale_train_ablation_10x_20260717_015624/best_checkpoint.pth",
+      "category": "bootstrap",
+      "size_bytes": 476152631,
+      "sha256": "c5c346d6428bf2ead3b4196f15291732441c781992d7c7fdb56c855b8a9b3579",
+      "external": true
+    },
+    {
+      "path": "benchmarks/v4/phase_2_region_encoder/configs/phase2_region_10x.yaml",
+      "category": "repository_config",
+      "size_bytes": 1537,
+      "sha256": "949c8c9ae0199c7138d118cb31e068c9db4a1539d27c973105518e7172dda978",
+      "external": false
+    },
+    {
+      "path": "benchmarks/v4/phase_5_prompt_encoder/configs/phase5_prompt_encoder.yaml",
+      "category": "repository_config",
+      "size_bytes": 712,
+      "sha256": "c60bc09b40f062f78fc25e3b7aeb28bc1a74206f80624e060b824d882948ac36",
+      "external": false
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/checkpoint_step_14000.pth",
+      "category": "trained",
+      "size_bytes": 400930358,
+      "sha256": "ef013cbb873ddeb2edeaa34ef698b034503c64220885fdabc0bb38dbc0e4fccb",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/checkpoint_step_20000.pth",
+      "category": "trained",
+      "size_bytes": 401488310,
+      "sha256": "afda1eed14d8b07cb551d32f3dfd83924d65faf9a0c8730c85deb4722c509c7e",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/run.json",
+      "category": "training_metadata",
+      "size_bytes": 7301,
+      "sha256": "e1732916bc322d7f8baa9302db3dc99e4c7e38fbc6c6fa0486b9ffffb3dfebea",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/summary.json",
+      "category": "training_metadata",
+      "size_bytes": 536147,
+      "sha256": "d310d2e686501e0bea910706704d37e1634d559b2db20a8bb3b0c5e1827d49f6",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/best_checkpoint.json",
+      "category": "training_metadata",
+      "size_bytes": 237,
+      "sha256": "1d9510ba535cca1be4f3c92e935df2bdf29a829ca6352ce0595fb42ec771d1ab",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/validation_plans.json",
+      "category": "training_metadata",
+      "size_bytes": 2047471,
+      "sha256": "3debb616ce4884b2511d18bc2c6fa438c0d8a5c4961ae18cb5cd2c86efbf15bd",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/legacy_validation_plans.json",
+      "category": "training_metadata",
+      "size_bytes": 798701,
+      "sha256": "4a3843af18fef3dc68c7409f76f9fa45a7cd7b4531cf9aa7a4289f423561e07b",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/validation_step_14000/rows.json",
+      "category": "training_metadata",
+      "size_bytes": 2317636,
+      "sha256": "b0baddc5485db93326e3ff0e4805a2ab437f2e2aeda74c7ad7b23d7e77ca7ef4",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/validation_step_14000/summary.json",
+      "category": "training_metadata",
+      "size_bytes": 20817,
+      "sha256": "9a730a046547a9f1ce0c8d02eb0767b3c18809d45e67730410a5515826b9e041",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/validation_step_20000/rows.json",
+      "category": "training_metadata",
+      "size_bytes": 2316731,
+      "sha256": "538e9a8278a48ab896456eea753ce54be1d805f761e2191472639bbe07e9adc0",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/distributed4_1021_234146/C3_distributed4_1022_001031/validation_step_20000/summary.json",
+      "category": "training_metadata",
+      "size_bytes": 20819,
+      "sha256": "fa2aa3d21c6bef131af3b02b2a38e698854edff71b6c67cb14b772cf0106a6a9",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/prompt_policy_1021_214456/merged_1021_215833/validation_plans.json",
+      "category": "training_metadata",
+      "size_bytes": 2047471,
+      "sha256": "3debb616ce4884b2511d18bc2c6fa438c0d8a5c4961ae18cb5cd2c86efbf15bd",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/long20k_1021_132915/C3_long20k_1021_133708/validation_plans.json",
+      "category": "training_metadata",
+      "size_bytes": 798701,
+      "sha256": "4a3843af18fef3dc68c7409f76f9fa45a7cd7b4531cf9aa7a4289f423561e07b",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/representative20k_1021_230134/C3_representative20k_1021_230718/checkpoint_step_04000.pth",
+      "category": "resume4k",
+      "size_bytes": 398723688,
+      "sha256": "5454a91b87d7abcd2108a690a8e5ca70ac76254eb18e722c4634365431699868",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/representative20k_1021_230134/C3_representative20k_1021_230718/run.json",
+      "category": "resume4k",
+      "size_bytes": 5939,
+      "sha256": "28c9655ce0a6f9da7e146aa1c56f783e4796e709aa518c02a55e4776dd8c4f76",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/representative20k_1021_230134/C3_representative20k_1021_230718/summary.json",
+      "category": "resume4k",
+      "size_bytes": 143947,
+      "sha256": "9083961f0fc14b5fbf81e840b8bed49248719f9a1587613a09c559b22d0cb7d2",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/representative20k_1021_230134/C3_representative20k_1021_230718/training_episodes.jsonl",
+      "category": "resume4k",
+      "size_bytes": 22722553,
+      "sha256": "29743a3ee88f5307028748d141517fc47f154d1bcfe4b8f836f8454563ecab18",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/representative20k_1021_230134/C3_representative20k_1021_230718/progress.jsonl",
+      "category": "resume4k",
+      "size_bytes": 1346425,
+      "sha256": "772e579bcadbefb7fbdc667d0ca8b8ef987a5caad22a361ac2754f1419d8422f",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_data/detector_speed_1020_182710/instanseg_model/instanseg.pt",
+      "category": "new_preprocessing",
+      "size_bytes": 15792317,
+      "sha256": "0c724da169d507d8dd2e206ad3675a0b1566824eee6e20ad9a0ba916311d9dd0",
+      "external": true
+    },
+    {
+      "path": "/home/zhaoyh/FewClick/module/checkpoint/ctranspath.pth",
+      "category": "new_preprocessing",
+      "size_bytes": 111292151,
+      "sha256": "7c998680060c8743551a412583fac689db43cec07053b72dfec6dcd810113539",
+      "external": true
+    },
+    {
+      "path": "/home/zhaoyh/FewClick/module/checkpoint/he_model_best.pth",
+      "category": "new_preprocessing",
+      "size_bytes": 92240284,
+      "sha256": "155c2e7ca9584b1a84848d4fd210030efee7162c4868db702b7fae7f3bb7bece",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836/catalog_1021_123115/tiles.parquet",
+      "category": "catalog",
+      "size_bytes": 38361860,
+      "sha256": "43bb35e3d0a23ba955480b7a72f51fa7dc90ebc89576f7c34bb1d76513e8cc0c",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836/catalog_1021_123115/run.json",
+      "category": "catalog",
+      "size_bytes": 516,
+      "sha256": "23b7b00a5cf8bbb83d2d29f350f5aad3d86e98ad4e1f1e47fca110e00499c677",
+      "external": true
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/multidomain_training/dynamic_1021_122836/catalog_1021_123115/summary.json",
+      "category": "catalog",
+      "size_bytes": 755,
+      "sha256": "f333ea4f8808c5a2166310d1737a1d848f87a11c24e1a2641bf7e538d516d604",
+      "external": true
+    }
+  ]
+}

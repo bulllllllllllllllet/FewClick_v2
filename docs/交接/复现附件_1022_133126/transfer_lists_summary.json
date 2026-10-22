@@ -1,0 +1,56 @@
+[
+  {
+    "scope": "bootstrap",
+    "files": 24,
+    "list_sha256": "9dab80e890a7374a5ec7a0538559f62af9abe23b353c48a9696d94d83d754c7d",
+    "output": "/nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/transfer_bootstrap.txt",
+    "rsync_source": "SOURCE_HOST:/",
+    "relative_to": "filesystem root",
+    "note": "List includes actual referenced files, not whole cache directories; bootstrap does not include RGB/cell/GT inputs."
+  },
+  {
+    "scope": "probe",
+    "files": 132,
+    "list_sha256": "aa204bc814a31331c7ce1c552e36515ded6cebbfce65e73aff946028f37fb33c",
+    "output": "/nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/transfer_probe.txt",
+    "rsync_source": "SOURCE_HOST:/",
+    "relative_to": "filesystem root",
+    "note": "List includes actual referenced files, not whole cache directories; bootstrap does not include RGB/cell/GT inputs."
+  },
+  {
+    "scope": "validation",
+    "files": 3249,
+    "list_sha256": "47feec20ee3e30c6e8856202f20b9715f3348a5636b6bdc86684967c5182bba3",
+    "output": "/nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/transfer_validation.txt",
+    "rsync_source": "SOURCE_HOST:/",
+    "relative_to": "filesystem root",
+    "note": "List includes actual referenced files, not whole cache directories; bootstrap does not include RGB/cell/GT inputs."
+  },
+  {
+    "scope": "training",
+    "files": 371920,
+    "list_sha256": "2c24d48c75b78a7f59f38c74fd24cf07b9e36375932f3bffb0e0f44391233df0",
+    "output": "/nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/transfer_training.txt",
+    "rsync_source": "SOURCE_HOST:/",
+    "relative_to": "filesystem root",
+    "note": "List includes actual referenced files, not whole cache directories; bootstrap does not include RGB/cell/GT inputs."
+  },
+  {
+    "scope": "resume",
+    "files": 371925,
+    "list_sha256": "a7d26e05f1c9fb46260c7e775e999ebd1f13604d6ec0195833a34feb85f48866",
+    "output": "/nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/transfer_resume.txt",
+    "rsync_source": "SOURCE_HOST:/",
+    "relative_to": "filesystem root",
+    "note": "List includes actual referenced files, not whole cache directories; bootstrap does not include RGB/cell/GT inputs."
+  },
+  {
+    "scope": "preprocess",
+    "files": 27,
+    "list_sha256": "578d32a5aaaa27505d7238e1d710365bac56763ccdeeff4db52ba47f0482654c",
+    "output": "/nfs-medical3/zyh/fewclick_v2/handoff/cross_server_1022_133126/transfer_preprocess.txt",
+    "rsync_source": "SOURCE_HOST:/",
+    "relative_to": "filesystem root",
+    "note": "List includes actual referenced files, not whole cache directories; bootstrap does not include RGB/cell/GT inputs."
+  }
+]
