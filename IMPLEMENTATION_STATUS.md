@@ -2076,3 +2076,13 @@
 - Artifacts: 复用distributed4_1021_234146/C3_distributed4_1022_001031和既有三模型图库，无新训练或评估产物。
 - Docs record: docs/运行记录/模型实验/总结_组会汇报_边界优化与多域点击重训练_1023_021549.md（汇总记录）。
 - Commit: 本次文档独立提交，可通过git log按文档路径查询。
+
+## 10-23 02:30:00
+
+- Purpose: 按用户要求补齐历史权重/旧多域/新14k/新20k的匹配CRC对照，确认旧能力是否下降。
+- Changed: 新增四权重CRC回归运行记录并更新组会总结；复用diagnose_regression评估，无算法代码/训练/默认权重变更。
+- Validation: 真实smoke12例/192预测，四卡完整1024例/16384预测全部EXIT0；merge条件覆盖通过，931组织/93背景分开；历史缓存概率误差0，RGB/全部提示一致；旧两权重8192预测的计数/Dice/BF1精确回放；空间块配对bootstrap和按类结果归档；git diff --check通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/multidomain_training/crc_matched_1023_022355（plan、smoke/full/merged_selection、分片日志/PID、merged_1023_022932、paired_comparisons、acceptance、分析脚本和汇总Markdown）。
+- Docs record: docs/运行记录/模型实验/运行记录_四权重匹配CRC历史及内部点击回归_1023_022355.md（运行记录）；组会总结同步结果。
+- Status: 完成；最新14k历史组织Dice.664674，内部点.687630；旧多域内部点.727132，下降3.95点，肿瘤间质下降明显；保留权重，无新训练或部署。
+- Commit: 本次CRC对照文档独立提交，可按运行记录路径查询hash。
