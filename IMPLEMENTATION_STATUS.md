@@ -2096,3 +2096,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_清晰原图训练与低分辨率排除_1023_025438.md（运行记录）。
 - Status: 数据和实现验收完成；正式20k即将四卡启动，训练效果尚未知，不自动部署。
 - Commit: 本次训练质量筛选独立实现提交，hash保存于实验根implementation_commit.json。
+
+## 10-23 03:08:00
+
+- Purpose: 记录清晰原图四卡正式20k真实启动及旧基线一致性核验。
+- Changed: 更新清晰原图模型实验记录，保存启动输出/实际worker/待完成事项；无新算法变化。
+- Validation: 两套各960初始化整体指标与此前原始初始化逐项相同；实际466个训练任务全部允许来源original，110/20000且loss有限；四worker2424007–2424010，globalbatch4；shell语法和diff --check通过。
+- Artifacts: highres_1023_025438/formal_selection.json、formal_startup_verified.json；C2_original_detail20k_1023_030649；脚本一次性连接训练成功后的高清分层/CRC评估，尚未到执行阶段。
+- Docs record: docs/运行记录/模型实验/运行记录_清晰原图训练与低分辨率排除_1023_025438.md（运行记录）。
+- Status: 正式训练中，未声称训练效果提升；默认权重未替换，无自动重试。
+- Commit: 本次启动记录独立文档提交。
