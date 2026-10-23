@@ -2106,3 +2106,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_清晰原图训练与低分辨率排除_1023_025438.md（运行记录）。
 - Status: 正式训练中，未声称训练效果提升；默认权重未替换，无自动重试。
 - Commit: 本次启动记录独立文档提交。
+
+## 10-23 12:08:31
+
+- Purpose: 核对清晰原图20k训练和训练后CRC/多域对照，记录真实效果与未通过项。
+- Changed: 清晰原图实验记录追加完成状态、四权重同任务比较、高清/来源/组织分层及替代门槛结果；算法未改。
+- Validation: 训练20000/20000、6672.41秒/EXIT0，跨rank一致/重载一致；后评估POST_TRAINING_COMPLETE/EXIT0，实际80000任务original且无OCELOT，CRC1024任务16384预测与回放检查通过；从实际rows重算上轮14k/20k高清360及各源分数，与原全960一致；diff --check通过。
+- Artifacts: highres_1023_025438/C2_original_detail20k_1023_030649；post_training_1023_045813内quality_strata、crc_merged/summary、crc_paired_comparisons、acceptance、results。
+- Docs record: docs/运行记录/模型实验/运行记录_清晰原图训练与低分辨率排除_1023_025438.md（运行记录）。
+- Status: 训练及后评估完成；本轮全960 Dice.596981/高清360 .588873/CRC内部点.689969；高清稍好、旧CRC保留未恢复、OCELOT掉分，联合门槛false。未替换默认权重，无后续自动训练。
+- Commit: 本次结果记录独立文档提交。
