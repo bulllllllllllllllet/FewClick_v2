@@ -2186,3 +2186,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_原始J5无稠密解码统一口径补测_1023_155440.md（运行记录）。
 - Status: 原始J5门控通过；未加载重训权重冒充基线，不训练/部署，主360与CRC全量待执行。
 - Commit: 本次原始J5补测入口独立实现提交。
+
+## 10-23 16:03:00
+
+- Purpose: 完成最原始J5的匹配补测，并将无dense行加入统一组会指标表。
+- Changed: 原始J5补测记录、统一表、组会汇报追加结果和协议说明；算法无进一步改动。
+- Validation: 原始J5主360 worker1817954/41.14秒EXIT0，模型仅J5参数/原SHA及主计划GT字段一致；CRC四分片worker1817958/62/66/70、120–123秒全部EXIT0，1024任务6144预测完整、coarse缓存误差0、主931；历史质心Dice0.7274056886774192精确回放。acceptance passed；diff --check通过。
+- Artifacts: multidomain_training/original_j5_1023_155440（formal_selection、两类正式输出、crc merge和acceptance）；reports/unified_metrics_with_j5_1023_160249的五行CSV/JSON/Markdown，旧表产物不覆盖。
+- Docs record: docs/运行记录/模型实验/运行记录_原始J5无稠密解码统一口径补测_1023_155440.md（运行记录）；统一指标表与主组会汇报同步。
+- Status: 完成；原始J5三源Dice.432318/BF1.201186/误报11.898%/CRC代表性.751189；当前清晰模型相对主Dice+15.66点/CRC+7.37点，点击口径统一、旧0.7274仅回放控制。无训练/部署。
+- Commit: 本次原始基线全量结果独立文档提交。
