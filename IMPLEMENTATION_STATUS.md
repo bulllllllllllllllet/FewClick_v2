@@ -2156,3 +2156,13 @@
 - Docs record: docs/运行记录/模型实验/总结_组会汇报_清晰原图训练与CRC能力复核_1023_140657.md（汇总记录）。
 - Status: 完成；明确CRC .8249为同图legacy输入下代表性点击结果，三源主分.5889、无显著提升证据，跨图仍弱。
 - Commit: 本次组会汇报文档独立提交。
+
+## 10-23 15:38:38
+
+- Purpose: 核实当前实际训练癌种/取材部位及全主网络参数量，补齐组会规模信息。
+- Changed: 新增实际覆盖与参数规模记录，组会汇报追加最新覆盖/参数补充；未修改算法。
+- Validation: CPU真实构建load_model并strict加载当前20k权重成功；去重参数分模块求和44888091，暖身/联合requires_grad分阶段统计4710287/27314639；过滤train元数据逐器官合计39548，四rank80000日志确认7部位均实际参与支持查询任务；文档链接与diff --check通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/model_audit/coverage_params_1023_153838，审计脚本及summary.json，worker1734526 complete。
+- Docs record: docs/运行记录/模型实验/运行记录_实际癌种器官覆盖与参数规模_1023_153838.md（运行记录）。
+- Status: 完成；3队列/7部位，NSCLC转移不算新增原发癌种，离线细胞准备网络不计入主网络44.89M；无新训练。
+- Commit: 本次覆盖/参数文档独立提交。
