@@ -18,16 +18,22 @@ def learning_rates(step,total,joint_start,ramp=200,minimum=.1,schedule='constant
 
 def extend_validation(corpus,anchors,extra_per_stratum=20):
     if not 1<=extra_per_stratum<100:raise ValueError('extra repetitions must be in [1,99]')
+    policy=getattr(corpus,'training_policy',None)
+    datasets=policy['datasets'] if policy else DATASETS
+    if policy and any(p['dataset'] not in datasets or p['support_quality']!='original' or p['query_quality']!='original' for p in anchors):
+        raise ValueError('validation anchors outside original-detail primary scope')
     plans=[dict(p) for p in anchors];variants=[('original','0.8'),('0.8','original'),('1.0','0.8'),('0.8','1.0')]
-    for d,dataset in enumerate(DATASETS):
+    for dataset in datasets:
+        d=DATASETS.index(dataset)
         for k,kind in enumerate(KINDS):
             for repeat in range(extra_per_stratum):
                 number=20000000+d*10000+k*100+repeat
                 p=corpus.plan(number,split='val',dataset=dataset,kind=kind,quality_aug=False,fixed_clicks=True)
                 pair=f'extended-{dataset}-{kind}-{repeat}'
                 plans.append(p|dict(quality_condition='original',pair_id=pair))
-                sq,qq=variants[repeat%len(variants)]
-                plans.append(p|dict(support_quality=sq,query_quality=qq,quality_condition='degraded',pair_id=pair))
+                if policy is None:
+                    sq,qq=variants[repeat%len(variants)]
+                    plans.append(p|dict(support_quality=sq,query_quality=qq,quality_condition='degraded',pair_id=pair))
     return plans
 
 

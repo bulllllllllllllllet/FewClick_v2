@@ -15,14 +15,17 @@ from .scoring import scoring_policy,split_target_tasks
 
 def validation_plans(corpus):
     plans=[];number=10000000
+    policy=getattr(corpus,'training_policy',None)
+    datasets=policy['datasets'] if policy else DATASETS
     variants=[('original','0.8'),('0.8','original'),('1.0','0.8'),('0.8','1.0')]
-    for dataset in DATASETS:
+    for dataset in datasets:
         for kind in KINDS:
             for repetition in range(4):
                 original=corpus.plan(number,split='val',dataset=dataset,kind=kind,quality_aug=False,fixed_clicks=True);number+=1
                 plans.append(original|dict(quality_condition='original',pair_id=number))
-                sq,qq=variants[repetition]
-                plans.append(original|dict(support_quality=sq,query_quality=qq,quality_condition='degraded',pair_id=number))
+                if policy is None:
+                    sq,qq=variants[repetition]
+                    plans.append(original|dict(support_quality=sq,query_quality=qq,quality_condition='degraded',pair_id=number))
     return plans
 
 

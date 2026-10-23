@@ -51,9 +51,20 @@ def point_audit(prompts, truth, valid):
     return report
 
 
-def make_interior_prompts(labels,target,mpp,historical,position,device):
+def make_interior_prompts(labels,target,mpp,historical,position,device,policy='legacy'):
+    if policy not in ('legacy','representative'):raise ValueError('unknown diagnostic click policy')
     inside=interior_labels(labels,mpp);result={'prompt_size_id':historical['prompt_size_id'].clone()}
     rng=np.random.default_rng(20261021+300000000+position)
+    if policy=='representative':
+        from .click_policy import representative_clicks
+        counts=[int(historical[s+'_mask'].sum()) for s in ('positive','negative')]
+        for sign,count,mask in [('positive',counts[0],inside==target),('negative',counts[1],(inside!=target)&(inside!=255))]:
+            if int(mask.sum())<count:return None,dict(status='infeasible',sign=sign,available=int(mask.sum()),requested=count,margin_um=2.)
+        clicks,audit=representative_clicks(labels,target,mpp,*counts,rng,dataset='crc')
+        for sign in ('positive','negative'):
+            xy=clicks[sign+'_xy'];result[sign+'_xy']=torch.tensor(xy,device=device,dtype=torch.float32)[None]
+            result[sign+'_mask']=torch.ones(1,len(xy),device=device,dtype=torch.bool)
+        return result,dict(status='available',margin_um=2.,policy='representative_1021_214456',audit=audit)
     for sign,mask in [('positive',inside==target),('negative',(inside!=target)&(inside!=255))]:
         count=int(historical[sign+'_mask'].sum())
         if int(mask.sum())<count:return None,dict(status='infeasible',sign=sign,available=int(mask.sum()),requested=count,margin_um=2.)
@@ -120,6 +131,7 @@ def main():
     p.add_argument('--plan',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
     p.add_argument('--smoke',action='store_true');p.add_argument('--full',action='store_true')
     p.add_argument('--size-one',action='store_true',help='Add a same-coordinate control using the size condition1 used by dynamic training')
+    p.add_argument('--interior-policy',choices=['legacy','representative'],default='legacy',help='Explicit CRC diagnostic click policy; legacy preserves existing coordinates')
     p.add_argument('--shard',type=int,default=0);p.add_argument('--shards',type=int,default=4)
     p.add_argument('--cells',nargs='+',choices=['legacy','unknown','instanseg'],default=['legacy','unknown','instanseg'])
     p.add_argument('--weights',nargs='+',choices=['C0','C1','C2','C3'],default=['C0','C3'])
@@ -137,14 +149,14 @@ def main():
                 status=json.loads((folder/'status.json').read_text());run=json.loads((folder/'run.json').read_text())
                 if status['status']!='complete' or run['source_sha256']!=source_hash or run['plan_sha256']!=plan_hash or run['smoke']:raise ValueError('incomplete/mismatched shard')
                 rows.extend(json.loads((folder/'rows.json').read_text()));cases.extend(json.loads((folder/'cases.json').read_text()));runs.append(run)
-            signature=lambda r:(r['full'],r['cells'],r['weights'],r.get('size_one',False),r['dependency_sha256'])
+            signature=lambda r:(r['full'],r['cells'],r['weights'],r.get('size_one',False),r.get('interior_policy','legacy'),r['dependency_sha256'])
             if any(signature(r)!=signature(runs[0]) for r in runs):raise ValueError('different contracts across shards')
             positions=list(range(1024)) if runs[0]['full'] else select_positions(refs,8)
             if len(cases)!=len(positions) or {r['position'] for r in cases}!=set(positions):raise ValueError('missing/duplicate case')
             expected={(c['position'],w,cell,prompt) for c in cases for w in ['retained',*runs[0]['weights']] for cell in runs[0]['cells'] for prompt in prompt_kinds(runs[0].get('size_one',False)) if prompt.startswith('historical') or c['interior']['status']=='available'}
             if len(rows)!=len(expected) or {(r['position'],r['weight'],r['cells'],r['prompt']) for r in rows}!=expected:raise ValueError('condition coverage mismatch')
             summary=build_summary(rows);summary.update(cases=len(cases),predictions=len(rows),maximum_replay_error=max(c['replay_error'] for c in cases),
-                interior_infeasible=[c['position'] for c in cases if c['interior']['status']!='available'],plan_sha256=plan_hash,puma_used=False,test_used=False,
+                interior_infeasible=[c['position'] for c in cases if c['interior']['status']!='available'],interior_policy=runs[0].get('interior_policy','legacy'),plan_sha256=plan_hash,puma_used=False,test_used=False,
                 scope='CRC spatial development; historical region prompts and GT-interior pixel prompts reported separately; same original RGB/GT/FOV across cell conditions')
             dump(a.output/'rows.json',rows);dump(a.output/'cases.json',cases);dump(a.output/'summary.json',summary)
         else:
@@ -173,7 +185,7 @@ def main():
                 dump(a.output/'cell_recipe.json',dict(detector_sha256=detector.weight_sha256,feature_weights={k:sha256(v) for k,v in WEIGHTS.items() if k!='cpsam'},feature_audit=feature_audit,RGB='exact original loader tensor reconstructed to uint8',MPP='native source MPP times actual1024to512 ratio',tissue_GT_used=False))
             dependencies={str(f):sha256(f) for f in [Path(inspect.getfile(load_model)),Path(inspect.getfile(prepare_variant)),Path(inspect.getfile(InstanSegDetector)),Path(inspect.getfile(load_feature_models))]}
             dump(a.output/'run.json',dict(worker_pid=os.getpid(),source_revision=subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),source_sha256=source_hash,dependency_sha256=dependencies,
-                plan_sha256=plan_hash,positions=positions,smoke=a.smoke,full=a.full,cells=a.cells,weights=a.weights,size_one=a.size_one,initial_weights=weights,threshold=.5,precision='FP32',puma_used=False,test_used=False))
+                plan_sha256=plan_hash,positions=positions,smoke=a.smoke,full=a.full,cells=a.cells,weights=a.weights,size_one=a.size_one,interior_policy=a.interior_policy,initial_weights=weights,threshold=.5,precision='FP32',puma_used=False,test_used=False))
             dump(a.output/'weight_drift.json',drift);dump(a.output/'status.json',dict(status='evaluating',worker_pid=os.getpid(),completed=0,total=len(positions)))
             (a.output/'cases').mkdir();rows=[];cases=[]
             for number,position in enumerate(positions):
@@ -186,7 +198,7 @@ def main():
                 for k in ['positive_xy','negative_xy','positive_mask','negative_mask']:
                     if not torch.equal(cache[k],historical[k]):raise ValueError('legacy points changed')
                 row=dataset.rows[pid];native=native_mpp(str(row['wsi_path']));mpp=[native[0]*row['width_level0']/512,native[1]*row['height_level0']/512]
-                interior,feasibility=make_interior_prompts(labels,target,mpp,historical,position,device)
+                interior,feasibility=make_interior_prompts(labels,target,mpp,historical,position,device,policy=a.interior_policy)
                 audits={'historical':point_audit(historical,labels==target,labels!=255)}
                 if interior is not None:
                     audits['interior']=point_audit(interior,labels==target,labels!=255)

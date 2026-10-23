@@ -9,6 +9,21 @@ from .diagnose_regression import make_interior_prompts, paired_delta, point_audi
 
 
 class DiagnosisTests(unittest.TestCase):
+    def test_explicit_representative_diagnosis_uses_current_sampler_with_same_budget(self):
+        from .click_policy import representative_clicks
+        labels=np.ones((96,96),np.uint8);labels[12:84,12:48]=0
+        historical=dict(prompt_size_id=torch.tensor([2]),positive_mask=torch.ones(1,3,dtype=torch.bool),negative_mask=torch.ones(1,2,dtype=torch.bool))
+        prompts,scope=make_interior_prompts(labels,0,[.5,.5],historical,19,'cpu',policy='representative')
+        reference,_=representative_clicks(labels,0,[.5,.5],3,2,np.random.default_rng(20261021+300000000+19),dataset='crc')
+        self.assertEqual(scope['policy'],'representative_1021_214456')
+        self.assertEqual(int(prompts['prompt_size_id'][0]),2)
+        for sign in ('positive','negative'):
+            np.testing.assert_array_equal(prompts[sign+'_xy'][0],np.asarray(reference[sign+'_xy'],dtype=np.float32))
+            self.assertEqual(point_audit(prompts,labels==0,labels!=255)[sign]['incorrect'],0)
+        implicit,_=make_interior_prompts(labels,0,[.5,.5],historical,19,'cpu')
+        explicit,_=make_interior_prompts(labels,0,[.5,.5],historical,19,'cpu',policy='legacy')
+        for k in implicit:self.assertTrue(torch.equal(implicit[k],explicit[k]))
+
     def test_geometric_center_of_ring_is_not_a_positive_pixel_click(self):
         target=np.ones((20,20),bool);target[7:13,7:13]=False
         prompts=dict(positive_xy=torch.tensor([[[.5,.5]]]),positive_mask=torch.tensor([[True]]),

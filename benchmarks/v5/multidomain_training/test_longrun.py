@@ -27,6 +27,22 @@ class ScheduleTests(unittest.TestCase):
 
 
 class ValidationAndCoverageTests(unittest.TestCase):
+    def test_original_policy_default_and_expansion_cannot_reintroduce_excluded_inputs(self):
+        from .evaluate import validation_plans
+        class Corpus:
+            training_policy=dict(datasets=['crc','tiger','ignite'],qualities=['original'])
+            def plan(self,number,**kwargs):
+                return dict(number=number,dataset=kwargs['dataset'],kind=kwargs['kind'],split=kwargs['split'],support_id=f's{number}',query_id=f'q{number}',positive_xy=[[.1,.2]],negative_xy=[[.7,.8]],target=1,support_quality='original',query_quality='original')
+        corpus=Corpus();anchors=validation_plans(corpus)
+        self.assertEqual(len(anchors),60)
+        expanded=extend_validation(corpus,anchors,extra_per_stratum=2)
+        self.assertEqual(len(expanded),90);self.assertEqual(expanded[:60],anchors)
+        for plan in expanded:
+            self.assertIn(plan['dataset'],corpus.training_policy['datasets'])
+            self.assertEqual((plan['support_quality'],plan['query_quality']),('original','original'))
+        for invalid in [anchors[0]|dict(dataset='ocelot'),anchors[0]|dict(query_quality='0.8')]:
+            with self.assertRaises(ValueError):extend_validation(corpus,[invalid])
+
     def test_extended_tasks_preserve_the_anchor_and_matched_quality_pairs(self):
         class Corpus:
             def plan(self,number,**kwargs):return dict(number=number,dataset=kwargs['dataset'],kind=kwargs['kind'],split=kwargs['split'],support_id=f's{number}',query_id=f'q{number}',positive_xy=[[.1,.2]],negative_xy=[[.7,.8]],target=2,support_quality='original',query_quality='original')

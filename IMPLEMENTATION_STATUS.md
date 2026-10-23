@@ -2126,3 +2126,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_清晰训练验证范围同步排除OCELOT_1023_121132.md（运行记录）。
 - Status: 完成；新主原质Dice.588873较上轮匹配20k .585948小幅上升，三源720 .582621较.580408小升；边界/误报略差，独立CRC退步未消除。旧全960不再作该清晰方案主判定，无默认权重更换。
 - Commit: 本次验证范围文档独立提交。
+
+## 10-23 12:26:00
+
+- Purpose: 复查主360与CRC提示分布差异，修正未来验证默认入口可能引入已排除数据的问题。
+- Changed: diagnose_regression增加显式interior-policy representative、合并合同记录策略，默认legacy不变；evaluate/longrun默认生成和扩展遵守清晰训练域/original范围，域外anchor拒绝；诊断/范围测试及运行记录。
+- Validation: 33项诊断/采样/范围/损失测试通过；上轮和本轮各360真GPU推理37.28/37.35秒、计数/分数与存档精确一致；代表性CRC实际smoke worker871613/14.89秒/288预测、缓存回放误差0/点符号/落盘计数通过；diff --check通过。CPU源分辨率审计和CRC全量待完成。
+- Artifacts: multidomain_training/recheck_1023_122025，replay_selection及两次verification、crc_plan/crc_smoke_selection与真实输出。
+- Docs record: docs/运行记录/模型实验/运行记录_主验证回放与CRC代表性点击复核_1023_122025.md（运行记录）。
+- Status: 主360结果确认；默认入口修复、代表性CRC门控完成，全量CRC待运行，不启动训练或部署。
+- Commit: 本次验证范围与诊断独立实现提交，hash保存于实验根implementation_commit.json。
