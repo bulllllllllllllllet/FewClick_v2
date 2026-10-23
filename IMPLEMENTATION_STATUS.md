@@ -2166,3 +2166,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_实际癌种器官覆盖与参数规模_1023_153838.md（运行记录）。
 - Status: 完成；3队列/7部位，NSCLC转移不算新增原发癌种，离线细胞准备网络不计入主网络44.89M；无新训练。
 - Commit: 本次覆盖/参数文档独立提交。
+
+## 10-23 15:48:43
+
+- Purpose: 给组会提供统一协议的四模型指标表，区分三源主验证与CRC同图回归。
+- Changed: 新增统一指标表汇总记录，组会主文档追加链接；生成NFS CSV/JSON/Markdown，不改模型/训练。
+- Validation: 从原baseline360行重算初始指标，读取固定comparison和CRC代表性size1汇总，逐行断言360/216/144及CRC931数量；均使用同列固定输入/点击合同；模块汇总数值与已验收重放相同，diff --check通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/reports/unified_metrics_1023_154843，含metrics.json、UTF8-BOM CSV和表格Markdown。
+- Docs record: docs/运行记录/模型实验/总结_统一口径指标表_1023_154843.md（汇总记录）。
+- Status: 完成；主表含Dice/BF1@2µm/平均无目标误报/独立CRC代表性Dice，历史0.803质心与旧随机点分数不混入。
+- Commit: 本次指标表独立文档提交。
