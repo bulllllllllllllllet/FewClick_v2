@@ -238,3 +238,12 @@ locked validation plans. This filter addresses file sampling and artificial
 resolution loss; it does not claim to detect all scanner blur or guarantee Dice
 improvement. The rationale and live run are recorded in
 [`清晰原图训练记录`](../../../docs/运行记录/模型实验/运行记录_清晰原图训练与低分辨率排除_1023_025438.md).
+
+For the original-detail experiment, the user subsequently excluded OCELOT from
+primary validation as well. Its primary protocol now uses the fixed 360
+original-quality CRC/IGNITE/TIGER tasks; the 720-task three-source mixed-quality
+protocol and former 960-task protocol are separate challenge reports. Use the
+explicit plans and CLI arguments referenced by
+`highres_1023_025438/active_validation_scope.json` and the
+[scope-change record](../../../docs/运行记录/模型实验/运行记录_清晰训练验证范围同步排除OCELOT_1023_121132.md).
+This scope update does not alter archived training manifests or predictions.

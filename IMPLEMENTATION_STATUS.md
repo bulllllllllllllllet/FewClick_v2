@@ -2116,3 +2116,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_清晰原图训练与低分辨率排除_1023_025438.md（运行记录）。
 - Status: 训练及后评估完成；本轮全960 Dice.596981/高清360 .588873/CRC内部点.689969；高清稍好、旧CRC保留未恢复、OCELOT掉分，联合门槛false。未替换默认权重，无后续自动训练。
 - Commit: 本次结果记录独立文档提交。
+
+## 10-23 12:14:00
+
+- Purpose: 按用户明确指示将未训练OCELOT从本轮主验证排除，三源原质作主评价并匹配重新选模。
+- Changed: 新增验证范围运行记录，原清晰训练记录/README追加新主范围；原训练/预测不改。生成NFS360主计划/旧点360/三源720计划与未来CLI参数。
+- Validation: 固定任务身份/实际点击/预测计数校验，360=216present+144absent、720=432+288；两轮完整10检查点重汇总，均选20k；旧group0归档元数据问题经真实cases.new_plans[0]逐960例一致性核对处理，只修正内存视图、不改源文件；acceptance passed、文档链接与diff --check通过，无训练/新推理。
+- Artifacts: multidomain_training/validation_scope_1023_121352（scope/plans、history_rescored、checkpoint_selection、comparison、metadata_audit、report、future_validation_args）；highres_1023_025438/active_validation_scope.json已指新主范围；首次121132校验中止保留。
+- Docs record: docs/运行记录/模型实验/运行记录_清晰训练验证范围同步排除OCELOT_1023_121132.md（运行记录）。
+- Status: 完成；新主原质Dice.588873较上轮匹配20k .585948小幅上升，三源720 .582621较.580408小升；边界/误报略差，独立CRC退步未消除。旧全960不再作该清晰方案主判定，无默认权重更换。
+- Commit: 本次验证范围文档独立提交。
