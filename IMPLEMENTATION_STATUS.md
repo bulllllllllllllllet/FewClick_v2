@@ -2136,3 +2136,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_主验证回放与CRC代表性点击复核_1023_122025.md（运行记录）。
 - Status: 主360结果确认；默认入口修复、代表性CRC门控完成，全量CRC待运行，不启动训练或部署。
 - Commit: 本次验证范围与诊断独立实现提交，hash保存于实验根implementation_commit.json。
+
+## 10-23 12:30:00
+
+- Purpose: 完成主验证真实重放与CRC代表性点击/size对照，纠正用旧随机点CRC分数概括当前能力的结论。
+- Changed: 复核运行记录追加全部结果，清晰训练记录和组会总结同步提示协议解释；无新算法/训练/默认权重变化。
+- Validation: 主360两权重各37秒真实推理精确回放；CPU scope worker875780核对360任务/720元数据MPP/GT及60默认+75扩展任务实际物化通过；CRC四卡worker880008/12/16/20、192.85–205.98秒均EXIT0，1024任务24576预测完整，931组织/93背景分开、点数/符号保持、缓存回放误差0。主Dice query空间块配对区间跨0；CRC当前representative下与历史权重的105空间块区间亦跨0。33测试此前通过，文档链接/diff --check通过。
+- Artifacts: recheck_1023_122025/acceptance、scope_audit、两次verification、primary_strata_replayed、primary_pair_query_blocks、crc_merged_1023_122922/summary、crc_representative_pairs、crc_vs_historical_same_representative和report_1023_122025.md。
+- Docs record: docs/运行记录/模型实验/运行记录_主验证回放与CRC代表性点击复核_1023_122025.md（运行记录）；清晰训练和组会总结追加最新结论。
+- Status: 复核完成；三源主360 .585948→.588873小幅差异未证实稳定。CRC代表性同输入size1：历史.823738、本轮.824880，基本持平；旧spread本轮.689969只说明该协议兼容性，不能概括整体CRC丢失。主跨图匹配仍弱。未启动新训练/部署。
+- Commit: 本次复核结果独立文档提交。
