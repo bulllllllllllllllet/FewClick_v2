@@ -132,12 +132,14 @@ def main():
     p.add_argument('--smoke',action='store_true');p.add_argument('--full',action='store_true')
     p.add_argument('--size-one',action='store_true',help='Add a same-coordinate control using the size condition1 used by dynamic training')
     p.add_argument('--interior-policy',choices=['legacy','representative'],default='legacy',help='Explicit CRC diagnostic click policy; legacy preserves existing coordinates')
+    p.add_argument('--output-head',choices=['dense','region'],default='dense',help='Region evaluates only the retained original J5 projection, without dense')
     p.add_argument('--shard',type=int,default=0);p.add_argument('--shards',type=int,default=4)
     p.add_argument('--cells',nargs='+',choices=['legacy','unknown','instanseg'],default=['legacy','unknown','instanseg'])
-    p.add_argument('--weights',nargs='+',choices=['C0','C1','C2','C3'],default=['C0','C3'])
+    p.add_argument('--weights',nargs='*',choices=['C0','C1','C2','C3'],default=['C0','C3'])
     p.add_argument('--merge',nargs='+',type=Path);a=p.parse_args()
     if ROOT not in a.output.resolve().parents or not 0<=a.shard<a.shards or (a.smoke and a.full):raise ValueError('invalid scope/output/shard')
     if 'legacy' not in a.cells or len(set(a.cells))!=len(a.cells) or len(set(a.weights))!=len(a.weights):raise ValueError('unique conditions and legacy replay control required')
+    if a.output_head=='region' and a.weights:raise ValueError('original J5 region output requires explicit --weights with no candidates')
     a.output.mkdir(parents=True,exist_ok=False);started=time.time();torch.set_num_threads(4)
     plan=json.loads(a.plan.read_text());source=json.loads((DENSE_RUN/'run.json').read_text());refs=source['refs']['val']
     if sha256(DENSE_RUN/'run.json')!=plan['legacy_run_sha256'] or len(refs)!=1024:raise ValueError('legacy source changed')
@@ -149,14 +151,14 @@ def main():
                 status=json.loads((folder/'status.json').read_text());run=json.loads((folder/'run.json').read_text())
                 if status['status']!='complete' or run['source_sha256']!=source_hash or run['plan_sha256']!=plan_hash or run['smoke']:raise ValueError('incomplete/mismatched shard')
                 rows.extend(json.loads((folder/'rows.json').read_text()));cases.extend(json.loads((folder/'cases.json').read_text()));runs.append(run)
-            signature=lambda r:(r['full'],r['cells'],r['weights'],r.get('size_one',False),r.get('interior_policy','legacy'),r['dependency_sha256'])
+            signature=lambda r:(r['full'],r['cells'],r['weights'],r.get('size_one',False),r.get('interior_policy','legacy'),r.get('output_head','dense'),r['dependency_sha256'])
             if any(signature(r)!=signature(runs[0]) for r in runs):raise ValueError('different contracts across shards')
             positions=list(range(1024)) if runs[0]['full'] else select_positions(refs,8)
             if len(cases)!=len(positions) or {r['position'] for r in cases}!=set(positions):raise ValueError('missing/duplicate case')
             expected={(c['position'],w,cell,prompt) for c in cases for w in ['retained',*runs[0]['weights']] for cell in runs[0]['cells'] for prompt in prompt_kinds(runs[0].get('size_one',False)) if prompt.startswith('historical') or c['interior']['status']=='available'}
             if len(rows)!=len(expected) or {(r['position'],r['weight'],r['cells'],r['prompt']) for r in rows}!=expected:raise ValueError('condition coverage mismatch')
             summary=build_summary(rows);summary.update(cases=len(cases),predictions=len(rows),maximum_replay_error=max(c['replay_error'] for c in cases),
-                interior_infeasible=[c['position'] for c in cases if c['interior']['status']!='available'],interior_policy=runs[0].get('interior_policy','legacy'),plan_sha256=plan_hash,puma_used=False,test_used=False,
+                interior_infeasible=[c['position'] for c in cases if c['interior']['status']!='available'],interior_policy=runs[0].get('interior_policy','legacy'),output_head=runs[0].get('output_head','dense'),plan_sha256=plan_hash,puma_used=False,test_used=False,
                 scope='CRC spatial development; historical region prompts and GT-interior pixel prompts reported separately; same original RGB/GT/FOV across cell conditions')
             dump(a.output/'rows.json',rows);dump(a.output/'cases.json',cases);dump(a.output/'summary.json',summary)
         else:
@@ -185,7 +187,7 @@ def main():
                 dump(a.output/'cell_recipe.json',dict(detector_sha256=detector.weight_sha256,feature_weights={k:sha256(v) for k,v in WEIGHTS.items() if k!='cpsam'},feature_audit=feature_audit,RGB='exact original loader tensor reconstructed to uint8',MPP='native source MPP times actual1024to512 ratio',tissue_GT_used=False))
             dependencies={str(f):sha256(f) for f in [Path(inspect.getfile(load_model)),Path(inspect.getfile(prepare_variant)),Path(inspect.getfile(InstanSegDetector)),Path(inspect.getfile(load_feature_models))]}
             dump(a.output/'run.json',dict(worker_pid=os.getpid(),source_revision=subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),source_sha256=source_hash,dependency_sha256=dependencies,
-                plan_sha256=plan_hash,positions=positions,smoke=a.smoke,full=a.full,cells=a.cells,weights=a.weights,size_one=a.size_one,interior_policy=a.interior_policy,initial_weights=weights,threshold=.5,precision='FP32',puma_used=False,test_used=False))
+                plan_sha256=plan_hash,positions=positions,smoke=a.smoke,full=a.full,cells=a.cells,weights=a.weights,size_one=a.size_one,interior_policy=a.interior_policy,output_head=a.output_head,initial_weights=weights,threshold=.5,precision='FP32',puma_used=False,test_used=False))
             dump(a.output/'weight_drift.json',drift);dump(a.output/'status.json',dict(status='evaluating',worker_pid=os.getpid(),completed=0,total=len(positions)))
             (a.output/'cases').mkdir();rows=[];cases=[]
             for number,position in enumerate(positions):
@@ -227,10 +229,11 @@ def main():
                                 if kind.endswith('_id1'):prompts=prompts|{'prompt_size_id':torch.ones_like(prompts['prompt_size_id'])}
                                 model.mapper='centroid' if '_centroid' in kind else 'pixel';task=model.encode_support(encoded,prompts)
                                 features=query_features(model.j5,encoded,task,prompts,query_id='same',support_id='same')
-                                probability=model.dense(features)['pixel_probability']
+                                probability=features['base'] if a.output_head=='region' else model.dense(features)['pixel_probability']
                                 if not torch.isfinite(probability).all():raise FloatingPointError('nonfinite prediction')
                                 if name=='retained' and cell=='legacy' and kind=='historical_centroid':
-                                    replay=float((probability-retained.dense(cache)['pixel_probability']).abs().max())
+                                    reference=cache['base'] if a.output_head=='region' else retained.dense(cache)['pixel_probability']
+                                    replay=float((probability-reference).abs().max())
                                     if replay>2e-6:raise ValueError('legacy replay failed')
                                 result=dict(position=position,**identity,weight=name,cells=cell,prompt=kind,prompt_size_id=int(prompts['prompt_size_id'][0]),spatial_group=str(spatial.loc[pid,'spatial_group_id']),
                                             **metrics(probability,truth,valid),prompt_violations=prompt_violations(probability,prompts))

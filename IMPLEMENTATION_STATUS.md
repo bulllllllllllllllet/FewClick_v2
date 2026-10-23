@@ -2176,3 +2176,13 @@
 - Docs record: docs/运行记录/模型实验/总结_统一口径指标表_1023_154843.md（汇总记录）。
 - Status: 完成；主表含Dice/BF1@2µm/平均无目标误报/独立CRC代表性Dice，历史0.803质心与旧随机点分数不混入。
 - Commit: 本次指标表独立文档提交。
+
+## 10-23 15:58:00
+
+- Purpose: 按用户指明的原始J5版本补充无dense基线，保持统一表评估协议。
+- Changed: 新增evaluate_original_j5.py，以原始J5权重/区域输出评估；CRC诊断新增output-head region和显式空weights，默认dense不变、merge输出头合同固定；新增补测记录。
+- Validation: 15项既有诊断/训练测试通过；主GPU smoke worker1810971/15例/15.08秒EXIT0，活动参数44769954均为J5；CRC smoke worker1810975/12例72预测/9.88秒EXIT0，原coarse缓存回放/点符号/落盘计数通过；diff --check通过。
+- Artifacts: multidomain_training/original_j5_1023_155440，smoke_selection与两真实输出，正式全量待补。
+- Docs record: docs/运行记录/模型实验/运行记录_原始J5无稠密解码统一口径补测_1023_155440.md（运行记录）。
+- Status: 原始J5门控通过；未加载重训权重冒充基线，不训练/部署，主360与CRC全量待执行。
+- Commit: 本次原始J5补测入口独立实现提交。
