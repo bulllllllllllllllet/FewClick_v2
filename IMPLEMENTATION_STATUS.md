@@ -2196,3 +2196,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_原始J5无稠密解码统一口径补测_1023_155440.md（运行记录）；统一指标表与主组会汇报同步。
 - Status: 完成；原始J5三源Dice.432318/BF1.201186/误报11.898%/CRC代表性.751189；当前清晰模型相对主Dice+15.66点/CRC+7.37点，点击口径统一、旧0.7274仅回放控制。无训练/部署。
 - Commit: 本次原始基线全量结果独立文档提交。
+
+## 10-25 04:06:06
+
+- Purpose: 按用户最新要求，用当前数据重新设计并实现论文式三物理视野模型及配对对照，不追求原文旧分数回放。
+- Changed: 新增benchmarks/v5/paper_multiscale：真实上下文审计/细胞缓存、独立三尺度encoder、每尺度细胞注入、双向attention和全尺度图解码、单/多尺度×有/无Dense四臂、真实门控与resume、固定验证及嵌套点击预算；v4未修改。
+- Validation: 4项拓扑/门控测试、真实标签嵌套点前缀、compile/diff检查通过；GPU1四代表视野native特征准备154.45秒EXIT0；四臂真实训练→验证→checkpoint→新进程resume共204.38秒全部通过；GPU3真实forward证明context依赖、零Dense初始等价（误差5.96e-8）、远端热图为零及query监督独立。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600，含1737视野新清单、context_gate、gate_acceptance和forward_audit。
+- Docs record: docs/运行记录/模型实验/运行记录_论文三视野模型重新对比_1025_033600.md（运行记录）。
+- Status: 实现和代表门控完成；正式四分片上下文准备及四臂10k配对训练待启动。CRC/TIGER可用，IGNITE无完整大视野验证而排除；结果仅开发评价、无完整WSI验收。
+- Commit: 本次三视野实现独立提交；不包含既有组会修改和审稿方案。
