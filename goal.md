@@ -1,101 +1,75 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-25 15:10 CST. Native thread goal: active.
+Updated: 2026-10-25T16:02:04.456733+08:00. Native thread goal: **active**. G3 is complete; the overall objective is incomplete.
 
 ## Objective
 
-Complete the versioned supplementary experiment route for the current physical-multiscale FewClick system. First establish auditable comparison conditions and complete local interaction baselines (SAM/WSI-SAM public and fine-tuned, closed-set supervised reference, controlled FewClick). Then proceed through transfer, statistical replication, cell ablations, held-out concepts/domains, TLS, WSI and efficiency. Success means reproducible evidence and accurately bounded conclusions; it does not require FewClick to win.
+以当前三物理视野FewClick完成版本化补充实验：公平性审计与固定本图/支持查询协议，SAM/WSI-SAM公共及同域适配、闭集参考和受控FewClick；随后完成统计重复、细胞/机制消融、严格概念与外部泛化、TLS、整片与效率，以及逐审稿challenge证据闭环。不要求FewClick获胜，不将历史J5比较称等总监督架构实验。
 
 ## Resume here
 
-1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json).
-2. Read [current run record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
-3. Inspect the registry's active workers and actual status/log files before launching or repeating a job.
-4. Continue the first incomplete phase whose prerequisites pass. Update the records when evidence changes.
+1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
+2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
+3. Next independent work: **G4 clean G3 weights/SAM-FT feature transfer**. Retained diagnostics and ongoing MultiverSeg do not replace it.
+4. New source may live outside locked snapshots. Do not edit running/queued trainer, model, sampler or inference files listed in contracts.
 
-Current phase: **G3: full adapted training (running)**. G2 public scores complete: SAM3+2 Dice .4505; WSI-SAM3+2 Dice .4967, on the same302 pairs ×5 point groups. Paired source-cluster report is `public_report_1025_130820`. All five G3 real gradient/reload/fresh-resume gates and independent generic-initialization/parameter-change checks passed. Full40k actual coordinates are frozen at `realized_train_1025_125928` (SHA `fe8311f9acf29c500e93ceb89f1f466d0241d680598bcc6f9ae8ee49adf91afe`). Full10k-update queues launched at adaptation_1025_131451 (coordinator825263, tmux fewclick_adaptation_1025_131451); gate accuracy is not a performance result. Check registry and actual worker state before acting.
+Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/continuity_1025_160204/goal_before_G3_closeout_1025_160204.md` (SHA256 b166a50ea75b0c9c81aed0525b9c48b847b3391e525af7a61daf9afa17bd28dd). Detailed immutable results and run records remain unchanged.
 
-Evidence root: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208`. Local validation: 302 image-target pairs × 5 point groups = 1510 tasks, four nested budgets. Training: 40000 realized actual-click plans; each full trainer must reproduce the complete file SHA in its consumed log. Read the [fairness contract](benchmarks/v5/fair_comparison/README.md) before reporting a comparison.
+## Route
 
-## Frozen decisions
-
-- User2026-10-25: use the newly implemented multiscale model and redesigned data; old 140/30/30 and old paper scores are not requirements for the new experiment.
-- Primary model candidates: M3 (`multi_region`) and M3D (`multi_dense`); M1/M1D remain internal controls.
-- Existing run: `/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600/` (implementation `e41c060`). Four arms each completed10k updates/40k identical tasks; current results are single-seed development evidence.
-- New data: CRC train1200/val300, TIGER train156/val81; full context train/val footprints disjoint. The original fixed grid had no eligible IGNITE full-context val; the current development pool excludes IGNITE/PUMA/test. A separate native-centre external contract is recorded below.
-- Current models have historical J5 target-data supervision. They are retained-system comparisons, not clean-initialization architecture evidence.
-- Keep local interaction and remote support-query transfer separate. Do not copy support point coordinates into a different query image.
-- New metrics use model-independent eligibility; a GT boundary missed entirely by prediction scores BF1=0. Legacy reports remain available. Do not silently replace old metrics or claim different BF1 definitions are interchangeable.
-- For strict target-supervision controls, initialize the backbone from audited generic public weights and new heads; add an image-only FewClick control. User confirmed XCell trained on the internal dataset, not current CRC/TIGER; keep the upstream CTransPath image prior separately recorded.
-- Same cases may appear across spatial splits; maintain full-footprint isolation and report residual dependence. No patient-disjoint split requirement.
-
-## Route and completion evidence
-
-| Phase | Status | Acceptance evidence |
+| Phase | Current status | Required closure |
 |---|---|---|
-| G0 four-arm screen | complete | Original run complete, matched task/val SHA, checkpoint reload, report |
-| G1 fairness and manifests | complete (qualified) | Machine audit, input/exposure ledger, versioned metrics, frozen tasks and selection rules |
-| G2 local public baselines | complete | SAM/WSI-SAM loaders, exact image/point geometry, full local report |
-| G3 local adapted controls | running; all five real gates passed | Real gradient/checkpoint/resume gates; SAM-FT/WSI-SAM-FT/supervised reference and controlled FewClick |
-| G4 transfer comparisons | running initial sparse diagnostics; full gates passed | Matching source-query inputs, prototype/control systems; no query GT |
-| G5 replication/statistics | preparing; public cluster reports complete | Source/space cluster intervals, independent training seeds and cost |
-| G6 cells and mechanisms | running; first native GPU gate passed | Retrained no-cell/morphology/XCell and appropriate hierarchy/capacity controls |
-| G7 unseen concepts/domains and TLS | preparing external native inputs | Exposure audit, valid context/GT, matched baselines, strict held-out initialization |
-| G8 WSI and efficiency | preparing; real input gate passed | New-model real WSI path, complete coverage/coordinates, runtime/cache decomposition |
-| G9 paper evidence closure | pending | Challenge-to-evidence map, corrections and limitations; submission actions require separate user instruction |
+| G0 | complete | Historical four arms, matched incremental tasks; retained J5, mixed120 tasks |
+| G1 | complete, qualified | Frozen inputs/points/selection/metrics and prior ledger; no equal-total-pretraining claim |
+| G2 | complete | Local public SAM/WSI-SAM6040 each |
+| G3 | complete, single seed | Five10k/40k trains and6040 scores each; independent full parity audit |
+| G4 | running, incomplete | Clean adapted transfer still needed; native recent context and full statistics pending |
+| G5 | queued, CPU gates passed | Two additional seeds/four methods; native gates, full trains, scores and mean/std pending |
+| G6 | running | Seven mechanism trains/full scores; four slots currently active |
+| G7 | partial preparation/queued | Strict heldout concepts/TLS and external adapted full scores pending |
+| G8 | input gate only | Real WSI cells/model/coverage/stitch/cache/efficiency pending |
+| G9 | pending | Original reviewer challenge-to-evidence closure and factual corrections |
 
-## Fairness verdict so far
+## G3 result and acceptance
 
-The four internal arms share incremental training tasks, validation tasks, update counts, seed and shared pretrained components. Extra views and parameter counts differ by design. They do not establish superiority over equally trained external methods, independent generalization or an isolated hierarchy benefit. Legacy BF1 excludes some missed-boundary cases and needs a separate corrected report; Dice and FPA are unaffected by that denominator issue.
+Fixed302 image-target pairs, five click groups, primary3+2; each adaptation10k updates/40k identical actual tasks. Actual-coordinate SHA `fe8311f9acf29c500e93ceb89f1f466d0241d680598bcc6f9ae8ee49adf91afe`. Independently read all five training/selected-weight/6040-row outputs; point/GT/count parity and Dice replay passed in `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/G3_complete_audit_1025_155140.json`.
 
-## Latest audit evidence
+| Interactive adapted method | Primary Dice | BF1@2µm |
+|---|---:|---:|
+| SAM-FT | .7019 | .3905 |
+| WSI-SAM-FT | .7000 | .3693 |
+| FewClick M3D XCell | .5729 | .2388 |
+| FewClick M3D no cells | .5640 | .2269 |
 
-All four arms have identical incremental training/validation SHA and budget; largest-context cross-split overlap count is 0. Legacy square-tolerance BF1 corrected to common n=72: M1 .3043, M3 .2899, M1D .3274, M3D .3583. Dice is unchanged. Checkpoint selection used Dice−.25×FPA, so BF1 correction does not alter selected checkpoints. Old reports are preserved.
+Known-class/full-CE reference Dice.5153 is privileged and ignores clicks, separate from the interactive rows. Public0-adaptation SAM/WSI-SAM Dice.4505/.4967. Current evidence does **not** support FewClick superiority on local segmentation. Do not substitute old J5/mixed120-task results or only compare public baselines.
 
-G3 details: native SAM/WSI-SAM bridges match public inference to max1.2e-7/0 probability error; five methods consumed the same gate-coordinate SHA. Both FewClick controls start from generic COCO, fresh task heads, no J5. Dense semantic channels are newly trained latent features. TIGER closed reference maps IDs1–7 to0–6 (failed initial gate retained); CPU image normalization reuses original he_to_tensor exactly. Current TIGER data do not contain class4. Full adaptation remains one seed/fixed hyperparameters and different public priors/views.
+Primary corrected report: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/first_local_complete_1025_155355/report_user_provenance_1025_155355.md`. Corrected summary links raw-summary SHA; original reports/runtime snapshots preserved. All75-source-space bootstrap intervals are development-task uncertainty, not independent-patient or training-seed uncertainty. Dense cell delta.008849, CI[-.003059,.022545] includes0; no stable cell/molecular-supervision contribution claim yet.
 
-## Active formal workers
+## Active queues and frozen sources
 
-Implementation `d142fcb`; coordinator PID825263. GPU1 SAM-FT PID825669; GPU3 WSI-SAM-FT PID825670, followed by queued closed reference; GPU4 image-only FewClick PID825671; GPU5 XCell FewClick PID825672. Actual finite head updates observed in all four; first1000 updates are head warmup, so backbone gradient0 is expected now. Do not restart these jobs without inspecting actual process/status/log state. After each training, pipeline scores the selected checkpoint on6040 budget tasks; G3 is incomplete until all five full runs and reports are audited.
+- G6 coordinator1107196, `mechanisms_1025_134753/mechanism_formal_1025_141300`; currently GPU1 m1_xcell1483487, GPU3 Dense morphology1524245, GPU4 m3_none1337519, GPU5 m3_xcell1363539. Then remaining variants/gate/train/evaluate. Verify real state, not just this snapshot.
+- G4 native MultiverSeg CPU4 worker1444317, `transfer_1025_131856/context_full_1025_152401`; predicted sparse18700 rows, full-GT837 single-pair rows.98 pairs excluded from dense reference due incomplete source GT; compare other methods on same837 subset. Native20-row gate passed, input object forbids all GT APIs; query human clicks0. Full score incomplete.
+- External cells coordinator1295759, waits G6 GPU4 none+morphology complete and GPU idle, then native one-field gate→ten fields. Output `external_1025_143257/cell_formal_1025_145136`.
+- External adapted coordinator1338557, waits real cells/full G3 trains/GPU4 idle, then same-final-checkpoint native8→full680 per method. Output `external_1025_143257/adapted_formal_1025_150010`.
+- Repetition coordinator1557332, `replication_1025_153837/formal_1025_154653`, waiting per-GPU G6 completion; GPU4 also waits external adapted completion. Two extra seeds20261026/20261027 preserve exact40k multiset but change order; within seed all four methods share sequence. Dense internal initializer remains fixed. Preparation, real loader/model/loss/update/checkpoint CPU gates passed; **no extra seed GPU train yet**.
 
-## G4 preparation evidence
+Use no GPU0/2. Future GPU jobs must chain dependencies to avoid racing these coordinators. Source contracts are authoritative: fair_comparison/model/mechanism files, active external inference/cell files, context transfer files, replication prepare/gate/queue all frozen. New independent modules/reports are allowed; native gates precede scaling.
 
-Transfer root `/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856`; read `docs/运行记录/模型实验/运行记录_迁移任务隔离与近期参考接口审计_1025_131856.md` and `benchmarks/v5/transfer_comparison/README.md`. Fixed935 source-query pairs ×5 point groups=4675; same/cross verified WSI ×present/absent, identical L-table support points, full4x separation. Query repeats605 pairs, unique query330; do not claim935 independent WSIs. Actual GT/sign/geometry audit passed. Separate input/scorer APIs; unavailable BOTH source/query GT tests passed on real FewClick graph/prototype and SAM feature outputs; query prompt maps zero. Streaming/scoring16-row gates passed, with independent direct prediction-count replay.
+## G4/G7/G8 facts
 
-Official MultiverSeg v1 native context gate passed8 cases (predicted vs full-GT support; CRC/TIGER; present/absent), native forward byte-identical and incomplete GT rejected. V1 checkpoint SHA and three official Git commits fixed; tabulate0.9.0 installed only into isolated NFS target. Full-GT reference requires complete source annotation, prediction-context does not relabel unknown pixels as human background. These gates are not full accuracy or matched-prior evidence.
+Retained-M3 graph/prototype18700 each and SAM-public feature prototype18700 complete. First two independently audited: presentDice.469993/.343504, absentFPA.045580/.369965; fixed-feature historicalJ5 diagnostic only. SAM-feature independent audit and all transfer cluster statistics still required. Clean local-adapted transfer is not yet implemented.
 
-G3 all four actual workers have passed1000 warmup into nonzero backbone-gradient joint training, finite losses; no run is complete. Next G4 CPU full retained-M3 graph/same-feature diagnostic and SAM-public feature retrieval; current retained diagnostics must stay separate from clean/adapted transfer. G5 replication, G6 retrained mechanisms, G7 heldouts/TLS, G8 WSI/efficiency and G9 paper closure are still required.
+External IGNITE true256/512/1024µm centre fields10,34 pairs×5 point groups,9 classes. Original splits7train/1val/2test retained as provenance; all external-only to current CRC/TIGER adaptation, never externally fit/select weights. Public SAM/WSI-SAM680 each complete: Dice.457234/.510330, paired ROI CI includes0. PUMA205/OCELOT663 ROI cannot provide1024µm context; no fake padding/repeated-image context. Native cell extraction and adapted/FewClick scores still pending.
 
-G4 full sparse scoring launched at13:38:33, implementation674bfeb. CPU4 threads each, GPUhidden. Retained M3 graph+same-feature prototype workerPID940942; SAM-public feature prototype workerPID940947. Each method18700 budget rows, actual rows/status confirmed. Logs and tmux names in registry. New adapted-weight transfer and full MultiverSeg tracks still required. Current record: `docs/运行记录/模型实验/运行记录_迁移任务隔离与近期参考接口审计_1025_131856.md`. Do not confuse these scoring workers with G3 training workers.
+WSI strict reader gate passed actual first TLS case54039×65660, vendor CapRes.247925µm (SDK mpp-x/mpp-t aliases of one isotropic value); native1033/2066/4132 boxes and PNG replay/error propagation passed. High-level KFB exception-to-white behaviour is bypassed. No model/full-slide coverage/stitch or efficiency result yet. TLS annotation completeness/hard negatives **unconfirmed**; unannotated pixels are not certified negatives. CRC lymphocyte aggregate is not TLS. Legacy ~.70 TLS result was recall, not Dice; paper correction remains required.
 
-## User provenance clarification (2026-10-25)
+## Frozen fairness decisions
 
-XCell was trained on the internal dataset, not the current CRC/TIGER datasets (explicit user statement). This supersedes earlier unresolved-source wording. Preserve old machine-audit/runtime snapshots; add the source clarification in final reporting. A missing archived file manifest is a reproducibility-documentation gap, not contrary evidence or an allegation of overlap. CTransPath public image pretraining is a distinct upstream prior. Cell ablations remain contribution tests.
-
-## G6 mechanism controls prepared
-
-Root `/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753`; source and rules in `benchmarks/v5/mechanism_comparison/README.md`. Seven real CPU gates passed4 updates/fresh optimizer+model resume and actual backbone/head changes: M3 none/morphology/xcell, M3 shared encoder, M1 xcell, M3 no pre-graph hierarchy (cross-scale graph retained), Dense morphology. Four-task SHA identical. Morphology/xcell have equal125.91M registered parameters and73.19M joint trainable; shared45.56M registered/27.98M trainable vs single44.77M/27.20M. Noncell initial state matches across the three cell controls. Registered unused semantic parameters are separately disclosed. CPU tests are not formal GPU performance evidence.
-
-User-confirmed XCell internal-data provenance is recorded in the updated source audit; historical runtime snapshots remain immutable. Formal queue must wait for each G3 GPU slot to finish train+evaluation and become actually idle, then run native GPU gates and new generic-init10k training, followed by6040 score rows. No GPU0/2 use. No goal phase is complete from CPU gates alone.
-
-G6 coordinatorPID1107196 is alive in tmux `fewclick_mechanism_formal_1025_141300`, output `mechanisms_1025_134753/mechanism_formal_1025_141300`. Contract/code1ebe4c8 locked, all four slots currentlywaiting_dependency. This is a queued coordinator, not a GPU training worker. It will require G3 train+evaluation completion and actual idle GPU, then native GPU gate→new generic-init formal training→full scoring. Source code remains immutable. When presenting final results, overlay user-confirmed internal XCell training provenance on older runtime strings that still say not-audited; preserve raw snapshots and cite the clarification rather than propagating stale uncertainty.
-
-G7 external contract prepared: `benchmarks/v5/external_evaluation/README.md`; artifacts `/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257`. Exactly10 IGNITE ROI centres provide256/512/1024um native fields,34 target pairs x5 point groups,9 classes; all1190 signs and native crop/disk replay passed. Current CRC/TIGER training catalog contains none of these external domains. Original source splits7train/1val/2test are provenance only; no external adaptation/selection permitted. PUMA205 and OCELOT663 ROI dimensions cannot provide1024um context. Cell preparation/model gates/full matched scoring remain pending; small ROI subset is not independent-patient or unseen-upstream proof. Source record `docs/运行记录/数据审计/运行记录_外部域原生视野与中心任务合同_1025_143257.md`. Fairness README now applies user-confirmed XCell internal-data provenance; frozen running Python sources are unchanged.
-
-G7 public external gates passed8 rows each with unavailable-GT forward, saved prediction count replay and native/cached SAM max error0. SAM full680 rows completed (EXIT_CODE0),3+2 Dice.457234/BF1.094702,5+1 Dice.480807; WSI-SAM CPU4threads PID1240032 running680 rows in tmux `fewclick_external_wsi_sam_1025_144022`. This is not a complete paired comparison. Read `docs/运行记录/模型实验/运行记录_外部域公共权重真实门控与评分_1025_143741.md`. Native cell CUDA preparation and adapted/FewClick external scoring remain pending.
-
-G8 strict KFB source input gate passed real first TLS WSI, source54039x65660, vendor CapRes.247925um (SDK mpp-x/mpp-t aliases from same header). Native1033/2066/4132 boxes, true~256/512/1024um fields and PNGreload passed; injected low-level read failure propagates instead of high-level white-image substitution. Output `wsi_gate_1025_144200`; record `docs/运行记录/数据审计/运行记录_TLS整片读取与物理视野门控_1025_144200.md`. No WSI cells/model/complete coverage/stitch/efficiency yet. TLS annotation completeness/hard negatives not confirmed; do not treat unannotated pixels as certified negatives.
-
-External native cells queued: CPU data/model/loss replay on real CRC/TIGER cell caches passed exact15-input and probability equality, with unavailable tissue-GT path. CoordinatorPID1295759, tmux `fewclick_external_cells_1025_145136`, waiting G6 GPU4 none/morphology full completion and actual GPU idle. Native one-field gate then10-field full extraction are not yet run. Source/recipe contract in `external_1025_143257/cell_formal_1025_145136`; do not edit its locked files. Record `docs/运行记录/特征缓存/运行记录_外部域同配方细胞缓存与等待队列_1025_144733.md`.
-
-G3 first formal train completed: image-only FewClick10k/40k actualconsumed SHA independently equals fe8311f9...; selected checkpoint10000 SHA51d5c4ef38363e75493c452556f08a2ef5dc658650518f70af41c5e04438f3a1. Group0 development Dice.561997 is selection-only; full6040 scoring PID1298559 nowrunning. Acceptance `protocol_1025_124208/image_train_acceptance_1025_145249.json`. Other train/evaluate queues remain incomplete.
-
-External adapted scoring prepared and queued: real SAM-FT/WSI-SAM-FT four-step-checkpoint CPU gates passed8 rows each, strict tensor reload, unavailable-GT forward and direct saved counts. These do not qualify final weights; coordinatorPID1338557 (`fewclick_external_adapted_1025_150010`) waits native10-field cells and completed G3 trains, then GPU4 idle, same-final-checkpoint native gate8→full680 for each of4 methods. Record `docs/运行记录/模型实验/运行记录_外部域适配权重固定与真实推理门控_1025_145533.md`; do not edit locked source files in itscontract. No target-ID mapping from CRC/TIGER closed head toIGNITE.
-
-G3 image-only full6040 complete: Dice.564044/BF1.226900, complete point/GT identities checked against public rows; WSI-SAM-FT10k/40k complete, selected6000 but full point-group scoring pending; XCell10k/40k complete, fullscoring ongoing. Closed-referencePID1340089 nowtraining. G6m3_none GPU native4-update reload/resume gate passed, formaltrainPID1337519 running; G6 is no longer onlyqueued. Independent evidence `completion_acceptance_1025_150345.json` and `xcell_train_acceptance_1025_150202.json`.
-
-External public pair complete: SAM/WSI-SAM680 rows each with exact click/GT/metric parity, complete-task Dice recount and10-ROI paired bootstrap2000. Primary Dice.457234/.510330; WSI-minus-SAM .053096, ROI95%CI[-.011932,.112748] includes0. Report `external_1025_143257/public_report_1025_150920`; bothpublic CPU workers endednormally. This only closes public external references, not full G7 or independent seeds. FT/FewClick stillqueued. Source `benchmarks/v5/external_evaluation/report.py` is new and does not alter active queue snapshots.
-
-G4 native recent-method full run launched after20-row gate: MultiverSeg predicted sparse track18700 rows (all935 pairs), full-GT reference837 single-pair rows (98 pairs excluded due incomplete source annotation; source coverage187/212). Explicit GT-forbidden input object, native model/SAM equality and saved direct counts passed. Final gate `transfer_1025_131856/gate_context_locked_1025_152208`; full workerPID1444317, tmux `fewclick_multiverseg_context_1025_152401`, CPU4/GPUhidden, outputcontext_full_1025_152401. Do not edit its frozen source hashes. Record `docs/运行记录/模型实验/运行记录_MultiverSeg双标注轨道全量迁移_1025_151429.md`. Full recent results not yet ready.
-
-Retained-M3 graph/prototype18700 rows each complete and independently replayed; primarypresentDice.469993/.343504, absentFPA.045580/.369965, fixed-feature/J5 diagnostic only. SAMfeature retrieval stillrunning. Four G3 interactive trains complete; SAMfullscore/closedreference stillpending; G6none+xcell native gates/formaltrain active. Controlled Dense cell paired report (75source spaces) Dice.564044/.572893, delta.008849 CI[-.003059,.022545] includes0; morphology/independent seeds stillrequired. Reportcontrolled_cells_pair_1025_152300, acceptance retained_and_SAM_acceptance_1025_152840.json.
+- User2026-10-25: use redesigned current multiscale/data; old140/30/30 and old scores not constraints. Current primary M3/M3D; M1/M1D and shared/hierarchy controls remain.
+- Current trainCRC1200/val300, TIGER156/81. Same cases may cross spatial splits; largest4x footprints train/val disjoint. Preserve case/slide metadata and residual dependence; do not impose patient-disjoint splitting.
+- G3 generic COCO/new heads, no J5; Dense12 channels are binary-supervised latent features. Historical four-arm J5 exposure is separate. Closed reference gets class ID/full-class labels, not equal information. TIGER ID4 absent, do not claim seven-target coverage.
+- XCell trained on **internal data, not current CRC/TIGER**, explicitly confirmed by user. Supersedes prior unknown-source language; upstream public CTransPath pretraining separate. Apply provenance overlay to frozen older snapshots, do not allege overlap from missing archived files.
+- Different priors, field counts (SAM fine; WSI-SAM fine+2x; M3 fine+2x+4x), parameters/trainable layers and fixed hyperparameters remain disclosed; same incremental task pool is not equal total training or equal compute.
+- Local positive-click segmentation and remote support→query/presence-absence are separate tables. Never copy source coordinates to a different query. No query GT/class ID in interactive inference or oracle candidate/threshold selection.
+- Metric fixed>=.5; BF1 Euclidean2µm/anisotropic MPP, GT-boundary eligibility, no predicted boundary scores0. Legacy BF1 denominator correction separate; old Dice unchanged. All five point groups are development robustness, not blind test.
+- Native goal remains active until statistics/seeds, all mechanism/generic/heldout/TLS/WSI/efficiency and reviewer evidence requirements are actually verified. Preserve output/version/SHA/PID/log/EXIT_CODE evidence at each milestone.

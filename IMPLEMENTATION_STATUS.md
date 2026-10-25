@@ -2340,3 +2340,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/context_full_1025_152401; gate_context_locked_1025_152208; retained_and_SAM_acceptance_1025_152840.json; protocol_1025_124208/controlled_cells_pair_1025_152300.
 - Docs record: docs/运行记录/模型实验/运行记录_MultiverSeg双标注轨道全量迁移_1025_151429.md
 - Commit: This isolated change; hash available in git log.
+
+## 10-25 16:08:53
+
+- Purpose: Close the first complete local adapted comparison and queue meaningful independent training repetitions.
+- Changed: New replication prepare/gate_cpu/queue/README; matched-order and G3 closeout records; goal/registry/current record. Prior full goal archived with exact-byte SHA; completed jobs moved to registry history without deleting evidence.
+- Validation: Two40k paired recipe/actual permutations preserve every original task/click and identical validation; new-seed actual CRC/TIGER loader/model/loss/nonzero head update/checkpoint replay passed. Repetition coordinatorPID1557332 verified live, waiting existing per-GPU queues; no new GPU seeds claimed complete. G3 independent all5 full10k/40k coordinate/selected-checkpoint/6040-row/task/prompt/GT/count audit passed; combined7-method source bootstrap complete. SAM-FT.7019/WSI-SAM-FT.7000 exceed FewClick-XCell.5729/no-cell.5640 locally. Closed known-class reference.5153 separately qualified. Raw snapshots preserved; new derived summaries apply user-confirmed internal XCell provenance.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837; protocol_1025_124208/G3_complete_audit_1025_155140.json; first_local_complete_1025_155355; continuity_1025_160204.
+- Docs record: docs/运行记录/模型实验/运行记录_匹配任务顺序的三seed重复合同_1025_153837.md; docs/运行记录/模型实验/运行记录_首轮本图适配完整验收与结果边界_1025_155551.md
+- Commit: This isolated preparation/closeout change; hash available in git log. Overall goal remains active/incomplete.
