@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T13:38:20.264829+08:00",
+  "updated": "2026-10-25T13:40:47.507623+08:00",
   "current_phase": "G3",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -70,7 +70,7 @@
       ]
     },
     "G4": {
-      "status": "preparing",
+      "status": "running",
       "depends_on": [
         "G1"
       ],
@@ -90,7 +90,11 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/gate_multiverseg_1025_133044/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/sparse_stream_independent_1025_133600.json"
       ],
-      "qualification": "935远端对/4675点组任务及真实稀疏和官方v1上下文门控通过；首批Retained-M3固定特征诊断/SAM公共特征全量准备，干净适配迁移和上下文全量仍待执行。"
+      "qualification": "首批Retained-M3 graph/同特征prototype与SAM公共特征CPU全量评分running，各方法18700行；新适配权重迁移及近期context全量仍待执行，不用门控或固定特征诊断替代。",
+      "active_outputs": [
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/sparse_retained_m3_1025_133833",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/sparse_sam_public_features_1025_133833"
+      ]
     },
     "G5": {
       "status": "pending",
@@ -161,10 +165,10 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_sam_ft_1025_131451"
       ],
-      "last_observed_step": 2187,
-      "last_observed_loss": 0.9056945443153381,
+      "last_observed_step": 2391,
+      "last_observed_loss": 0.8881660997867584,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 3.953019618988037
+      "last_observed_backbone_gradient": 6.675937652587891
     },
     {
       "status": "running",
@@ -188,10 +192,10 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_wsi_sam_ft_1025_131451"
       ],
-      "last_observed_step": 2526,
-      "last_observed_loss": 0.8892182260751724,
+      "last_observed_step": 2776,
+      "last_observed_loss": 0.7750064432621002,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 6.048919200897217
+      "last_observed_backbone_gradient": 3.691822052001953
     },
     {
       "status": "running",
@@ -215,10 +219,10 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_image_1025_131451"
       ],
-      "last_observed_step": 2594,
-      "last_observed_loss": 0.8916001468896866,
+      "last_observed_step": 2882,
+      "last_observed_loss": 1.2748912647366524,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 10.742912292480469
+      "last_observed_backbone_gradient": 11.606825828552246
     },
     {
       "status": "running",
@@ -242,10 +246,36 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_xcell_1025_131451"
       ],
-      "last_observed_step": 2518,
-      "last_observed_loss": 0.6891082599759102,
+      "last_observed_step": 2784,
+      "last_observed_loss": 1.3970428705215454,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 5.719339370727539
+      "last_observed_backbone_gradient": 19.52404022216797
+    },
+    {
+      "method": "retained_m3",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/sparse_retained_m3_1025_133833",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/sparse_retained_m3_1025_133833.log",
+      "session": "fewclick_sparse_retained_m3_1025_133833",
+      "device": "cpu",
+      "threads": 4,
+      "total_rows_per_method": 18700,
+      "status": "running",
+      "kind": "transfer_scoring",
+      "worker_pid": 940942,
+      "last_observed_rows": 400
+    },
+    {
+      "method": "sam_public_features",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/sparse_sam_public_features_1025_133833",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/sparse_sam_public_features_1025_133833.log",
+      "session": "fewclick_sparse_sam_public_features_1025_133833",
+      "device": "cpu",
+      "threads": 4,
+      "total_rows_per_method": 18700,
+      "status": "running",
+      "kind": "transfer_scoring",
+      "worker_pid": 940947,
+      "last_observed_rows": 200
     }
   ],
   "known_gaps": [

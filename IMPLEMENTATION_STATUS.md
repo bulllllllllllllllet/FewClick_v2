@@ -2256,3 +2256,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_迁移任务隔离与近期参考接口审计_1025_131856.md（运行记录）。
 - Status: G3 running；G4全任务/真实门控完成、完整稀疏CPU评分准备启动；适配后迁移与近期context全量仍pending。保留935任务的查询重复相关性和额外context标注/先验差异。
 - Commit: 本条随实现独立提交，哈希见Git历史。
+
+## 10-25 13:40:47
+
+- Purpose: 持久记录通过门控后的CPU全量迁移评分实际启动。
+- Changed: 更新goal、进度JSON及迁移运行记录；无执行源码改动。
+- Validation: 两个真实/proc命令、run.json PID/674bfeb代码及非零逐行输出/运行状态匹配；不以启动代替完成。G3四组继续联合更新，未重启或改其冻结源码。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/sparse_retained_m3_1025_133833 及 sparse_sam_public_features_1025_133833；每方法18700评分行，状态/缓存命中/日志持久记录。
+- Docs record: docs/运行记录/模型实验/运行记录_迁移任务隔离与近期参考接口审计_1025_131856.md（运行记录追加）。
+- Status: G4首批CPU稀疏评分running，Retained-M3 graph+prototype PID940942、SAM公共特征prototype PID940947；G3训练亦running。完整近期context和干净适配迁移仍pending。
+- Commit: 算法674bfeb；本条为运行状态记录。

@@ -37,7 +37,7 @@ Evidence root: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_1242
 | G1 fairness and manifests | complete (qualified) | Machine audit, input/exposure ledger, versioned metrics, frozen tasks and selection rules |
 | G2 local public baselines | complete | SAM/WSI-SAM loaders, exact image/point geometry, full local report |
 | G3 local adapted controls | running; all five real gates passed | Real gradient/checkpoint/resume gates; SAM-FT/WSI-SAM-FT/supervised reference and controlled FewClick |
-| G4 transfer comparisons | preparing; full task/real model gates passed | Matching source-query inputs, prototype/control systems; no query GT |
+| G4 transfer comparisons | running initial sparse diagnostics; full gates passed | Matching source-query inputs, prototype/control systems; no query GT |
 | G5 replication/statistics | pending | Source/space cluster intervals, independent training seeds and cost |
 | G6 cells and mechanisms | pending | Retrained no-cell/morphology/XCell and appropriate hierarchy/capacity controls |
 | G7 unseen concepts/domains and TLS | pending | Exposure audit, valid context/GT, matched baselines, strict held-out initialization |
@@ -65,3 +65,5 @@ Transfer root `/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_13185
 Official MultiverSeg v1 native context gate passed8 cases (predicted vs full-GT support; CRC/TIGER; present/absent), native forward byte-identical and incomplete GT rejected. V1 checkpoint SHA and three official Git commits fixed; tabulate0.9.0 installed only into isolated NFS target. Full-GT reference requires complete source annotation, prediction-context does not relabel unknown pixels as human background. These gates are not full accuracy or matched-prior evidence.
 
 G3 all four actual workers have passed1000 warmup into nonzero backbone-gradient joint training, finite losses; no run is complete. Next G4 CPU full retained-M3 graph/same-feature diagnostic and SAM-public feature retrieval; current retained diagnostics must stay separate from clean/adapted transfer. G5 replication, G6 retrained mechanisms, G7 heldouts/TLS, G8 WSI/efficiency and G9 paper closure are still required.
+
+G4 full sparse scoring launched at13:38:33, implementation674bfeb. CPU4 threads each, GPUhidden. Retained M3 graph+same-feature prototype workerPID940942; SAM-public feature prototype workerPID940947. Each method18700 budget rows, actual rows/status confirmed. Logs and tmux names in registry. New adapted-weight transfer and full MultiverSeg tracks still required. Current record: `docs/运行记录/模型实验/运行记录_迁移任务隔离与近期参考接口审计_1025_131856.md`. Do not confuse these scoring workers with G3 training workers.
