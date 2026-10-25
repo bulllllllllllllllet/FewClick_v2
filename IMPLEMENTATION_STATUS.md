@@ -2206,3 +2206,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_论文三视野模型重新对比_1025_033600.md（运行记录）。
 - Status: 实现和代表门控完成；正式四分片上下文准备及四臂10k配对训练待启动。CRC/TIGER可用，IGNITE无完整大视野验证而排除；结果仅开发评价、无完整WSI验收。
 - Commit: 本次三视野实现独立提交；不包含既有组会修改和审稿方案。
+
+## 10-25 12:55:00
+
+- Purpose: 固定补充实验长期goal和公平性合同，修正BF1统计分母并建立首批本图基线入口。
+- Changed: AGENTS.md、goal.md、benchmarks/v5/fair_comparison/；新增公平对比进度JSON及运行记录。历史v4/原始数据和报告未改。
+- Validation: 指标3项unittest通过；四臂真实产物/任务SHA/10k步/40k任务/重载及最大视野隔离审计通过；1510验证点组与40k训练recipe合同核验通过；SAM/WSI-SAM各4真实CRC/TIGER任务×4预算GPU门控均EXIT0。实际FT梯度/重载/恢复尚未执行，不声称通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208，含audit_1025_125020、tasks_1025_125400、protocol_verified_1025_125420.json及两种public门控。
+- Docs record: docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md（运行记录）；根goal.md及JSON registry用于续接。
+- Status: G1完成（历史J5/XCell先验差异已记账，严格等总监督仍待G3）；G2真实推理门控通过、完整评分待启动。新BF1采用GT可评性与欧氏2µm，旧矩形容差修正另表保留。
+- Commit: 本条随实现独立提交，哈希见Git历史。

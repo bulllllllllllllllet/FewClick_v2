@@ -1,0 +1,118 @@
+{
+  "version": "fair_comparison_1025_124208",
+  "native_goal_status": "active",
+  "updated": "2026-10-25T12:55:11.514698+08:00",
+  "current_phase": "G2",
+  "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
+  "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
+  "prior_run": "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600",
+  "phases": {
+    "G0": {
+      "status": "complete",
+      "evidence": "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600/report_1025_122419/summary.json"
+    },
+    "G1": {
+      "status": "complete",
+      "acceptance": [
+        "fairness audit",
+        "versioned metric tests",
+        "locked local training/validation manifests",
+        "pretraining ledger"
+      ],
+      "evidence": [
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/audit_1025_125020/audit.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400/contract.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/protocol_verified_1025_125420.json",
+        "benchmarks/v5/fair_comparison/README.md"
+      ],
+      "qualification": "审计与任务合同完成；历史先验缺口已记账，不代表严格等总监督条件已达成。G3须单独验收。"
+    },
+    "G2": {
+      "status": "preparing",
+      "depends_on": [
+        "G1"
+      ],
+      "methods": [
+        "SAM-public",
+        "WSI-SAM-public"
+      ],
+      "gates": [
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/gate_sam_1025_125300/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/gate_wsi_sam_1025_125300/summary.json"
+      ]
+    },
+    "G3": {
+      "status": "pending",
+      "depends_on": [
+        "G1"
+      ],
+      "methods": [
+        "SAM-FT",
+        "WSI-SAM-FT",
+        "supervised-reference",
+        "controlled-FewClick"
+      ]
+    },
+    "G4": {
+      "status": "pending",
+      "depends_on": [
+        "G1"
+      ],
+      "methods": [
+        "same-feature-prototype",
+        "SAM-feature-transfer",
+        "verified-context-method"
+      ]
+    },
+    "G5": {
+      "status": "pending",
+      "depends_on": [
+        "G2",
+        "G3"
+      ]
+    },
+    "G6": {
+      "status": "pending",
+      "depends_on": [
+        "G3"
+      ]
+    },
+    "G7": {
+      "status": "pending",
+      "depends_on": [
+        "G3"
+      ]
+    },
+    "G8": {
+      "status": "pending",
+      "depends_on": [
+        "G3"
+      ]
+    },
+    "G9": {
+      "status": "pending",
+      "depends_on": [
+        "G2",
+        "G3",
+        "G4",
+        "G5",
+        "G6",
+        "G7",
+        "G8"
+      ]
+    }
+  },
+  "active_jobs": [],
+  "known_gaps": [
+    "Retained J5 has prior target-cohort supervision; strict equal-target-supervision claim is not permitted.",
+    "Legacy BF1 prediction-dependent denominators require versioned correction.",
+    "Three independent encoders have more parameters and views than single-scale; compute/capacity are not matched.",
+    "Current validation is development data, not a blind test.",
+    "XCell pretraining provenance/overlap needs further audit."
+  ],
+  "next_actions": [
+    "Launch full public local evaluation after passed real gates",
+    "Implement native gradient FT and clean FewClick initialization gates",
+    "Replay retained FewClick on identical local tasks before cross-method comparison"
+  ]
+}
