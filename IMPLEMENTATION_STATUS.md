@@ -2358,3 +2358,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/clean_*_1025_162450; gate_clean_*_1025_161448; query_coverage_audit_1025_162400.json.
 - Docs record: docs/运行记录/模型实验/运行记录_清洁适配权重支持查询迁移_1025_161448.md
 - Commit: This isolated change; hash available in git log. G4 full scores/statistics and total goal still incomplete.
+
+## 10-25 16:47:00
+
+- Purpose: Preserve original reviewer challenges and bind each to evidence without claiming unresolved work is complete.
+- Changed: New evidence_closure extractor and reviewer matrix; goal/registry/current record.
+- Validation: Supplied HTML four distinct reviews (three human, one AI), rating/identity checks and saved verbatim text SHA replay passed. Matrix binds11 human challenge groups,14 AI self-checks,2 factual audits and8 existing evidence files; board/matrix SHA verified. XCell internal-data provenance accepted. No submitted-paper edits applied; G9 preparing and overall goal active.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_evidence_1025_163705.
+- Docs record: docs/运行记录/模型实验/运行记录_审稿challenge逐条证据与修改边界_1025_163705.md
+- Commit: This isolated tracking change; hash available in git log.

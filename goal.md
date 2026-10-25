@@ -10,7 +10,7 @@ Updated: 2026-10-25T16:02:04.456733+08:00. Native thread goal: **active**. G3 is
 
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
-3. G4 clean G3 transfer is now gated/running. Next independent work: strict concept-heldout data/ontology audit and original reviewer evidence mapping while full scores execute.
+3. G4 clean G3 transfer is now gated/running. Next independent work: strict concept-heldout data/ontology audit and WSI model pipeline while full scores execute; reviewer mapping is now saved, closure remains incomplete.
 4. New source may live outside locked snapshots. Do not edit running/queued trainer, model, sampler or inference files listed in contracts.
 
 Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/continuity_1025_160204/goal_before_G3_closeout_1025_160204.md` (SHA256 b166a50ea75b0c9c81aed0525b9c48b847b3391e525af7a61daf9afa17bd28dd). Detailed immutable results and run records remain unchanged.
@@ -28,7 +28,7 @@ Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_
 | G6 | running | Seven mechanism trains/full scores; four slots currently active |
 | G7 | partial preparation/queued | Strict heldout concepts/TLS and external adapted full scores pending |
 | G8 | input gate only | Real WSI cells/model/coverage/stitch/cache/efficiency pending |
-| G9 | pending | Original reviewer challenge-to-evidence closure and factual corrections |
+| G9 | preparing | 11 human challenges + 14 AI checks mapped; experiments/factual corrections and submitted-version binding remain |
 
 ## G3 result and acceptance
 
@@ -79,3 +79,7 @@ WSI strict reader gate passed actual first TLS case54039×65660, vendor CapRes.2
 Real eight-case32-row gates passed for SAM-FT feature prototype and both G3 FewClick Dense conditions (each learned graph+Dense and same-feature prototype), native/cache errors0 in both domains, query maps0, input GT API forbidden, saved direct counts passed. CPU4/GPUhidden workers1736643(SAM),1736647(no cells),1736650(XCell), output `transfer_1025_131856/clean_<method>_1025_162450`,18700 rows/method; five outputs total. No remote supervised training added; this is local-adapted transfer generalization, not optimized R training. Record `docs/运行记录/模型实验/运行记录_清洁适配权重支持查询迁移_1025_161448.md`. Freeze its source hashes.
 
 Query coverage audit:43/470 present pairs and32/465 absent pairs contain some ignore pixels in query. All metrics remain on annotated valid pixels; absent means no target annotated there, never certified whole-image or whole-slide negative. Keep full fixed task set and qualify absence/FPA. Auditquery_coverage_audit_1025_162400.json.
+
+## Reviewer evidence tracking
+
+docs/运行记录/模型实验/运行记录_审稿challenge逐条证据与修改边界_1025_163705.md maps all 11 human challenge groups and 14 AI self-checks to current evidence and missing work. Raw four reviews and SHA replay are in /nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_evidence_1025_163705. XCell internal-data provenance is accepted. Unprompted-component recall/distance, complete WSI timing, original 5/30 selection and submitted-version binding remain separate gaps. Local TeX explanations are not evidence of actual upload changes. No paper edits applied or reviewer concerns declared all resolved.

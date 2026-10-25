@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T16:34:16.062669+08:00",
+  "updated": "2026-10-25T16:58:00.308735+08:00",
   "current_phase": "G4",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -196,7 +196,7 @@
       "qualification": "仅新模型物理视野输入门控：真实首片KFB读取与坏读传播通过；未完成细胞、模型、覆盖、边缘或stitch。"
     },
     "G9": {
-      "status": "pending",
+      "status": "preparing",
       "depends_on": [
         "G2",
         "G3",
@@ -205,7 +205,13 @@
         "G6",
         "G7",
         "G8"
-      ]
+      ],
+      "evidence": [
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_evidence_1025_163705/reviews.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_evidence_1025_163705/challenge_board.json",
+        "docs/运行记录/模型实验/运行记录_审稿challenge逐条证据与修改边界_1025_163705.md"
+      ],
+      "qualification": "11 human challenges and 14 AI self-checks mapped; evidence gaps remain. No submitted-paper edits or complete reviewer resolution claimed."
     }
   },
   "active_jobs": [
