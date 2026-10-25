@@ -2448,3 +2448,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/audit_1026_003000; supervision_gate_1026_004200; independent_mask_gate_1026_004500.json.
 - Docs record: docs/运行记录/数据审计/运行记录_三概念留出本体与监督排除覆盖_1026_003000.md
 - Commit: This isolated ontology/supervision preparation; hash available in git log. Whole goal active/incomplete.
+
+## 10-26 00:54:00
+
+- Purpose: 构建三概念留出版本化训练/seen选择/独立终评合同，持久化真实点击门控与全量队列。
+- Changed: heldout_comparison/prepare.py、audit_prepared.py、point_pipeline.py、README及goal/registry/run records。
+- Validation: 原生necrosis64实际任务CRC39/TIGER25及直接回放通过；audit_prepared真实执行通过1737精确GT屏蔽、40k recipe、1300 seen点组、64训练点及原测试点序列。三fold全量和模型训练尚未完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/native_point_gate_1026_005300；protocol_continuity_1026_005400.json；live builder88191/coordinator98745。
+- Docs record: docs/运行记录/数据审计/运行记录_三fold完整任务生成与真实点击_1026_004500.md。
+- Commit: 本条随本次独立提交，哈希由Git记录。

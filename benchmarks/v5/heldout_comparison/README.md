@@ -9,3 +9,7 @@
 full4x形态完全排除尚未认证。fine-clean数量只是上界；TIGER复合标签和原未知255不能证明组织不存在。主要FewClick用不含XCell语义先验的fresh image-only控制；公共SAM/WSI-SAM先验另记，不宣称所有预训练都未见过该类。闭集已知class-ID参考不作为新类失败对手。
 
 记录：`docs/运行记录/数据审计/运行记录_三概念留出本体与监督排除覆盖_1026_003000.md`。全量训练和未见类精度未完成。
+
+`prepare.py`生成独立masked catalog/seen选模/40k recipes，以及原GT和固定旧点击的heldout local/remote终评合同。不能把终评合同直接交给原evaluate_checkpoint绕过训练协议SHA；需要单独绑定训练合同的评估适配器。
+
+`point_pipeline.py`验证原builder真实PID、summary和EXIT0后，依次运行三fold各64任务pilot与`audit_prepared.py`，全部通过才生成各40000实际训练点并再次审计。点审计逐像素核对1737标签的精确屏蔽、原GT保留、RGB/cells/空间字段不变、recipe成员、seen/训练点符号和原测试点序列。源码在队列contract中冻结，失败保留且不重试。当前坏死fold实际64点与完整协议审计通过；全fold/完整实际点仍待队列验收，不代表模型训练完成。

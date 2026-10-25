@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-26T00:41:00.897853+08:00",
+  "updated": "2026-10-26T00:52:59.973785+08:00",
   "current_phase": "G6",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -307,7 +307,8 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/cell_formal_1025_145136/native_full_1025_145136/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/audit_1026_003000/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/supervision_gate_1026_004200/summary.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/independent_mask_gate_1026_004500.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/independent_mask_gate_1026_004500.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/native_point_gate_1026_005300/audit/summary.json"
       ],
       "qualification": "IGNITE10中心三尺度真实cells及六方法680行/实际GT/开发权重/32门控保存mask回放验收通过，10 ROI配对2000次bootstrap完成；严格概念留出/TLS仍未完成。",
       "record_public": "docs/运行记录/模型实验/运行记录_外部域公共权重真实门控与评分_1025_143741.md",
@@ -316,9 +317,10 @@
       "adapted_record": "docs/运行记录/模型实验/运行记录_外部域适配权重固定与真实推理门控_1025_145533.md",
       "adapted_formal_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/adapted_formal_1025_150010",
       "complete_record": "docs/运行记录/模型实验/运行记录_外部适配完整验收与六方法统计_1025_221700.md",
-      "heldout_status": "three_fold_feasibility_and_supervision_gate_passed",
+      "heldout_status": "versioned_protocols_building_native_necrosis_point_gate_passed",
       "heldout_record": "docs/运行记录/数据审计/运行记录_三概念留出本体与监督排除覆盖_1026_003000.md",
-      "heldout_qualification": "三预定概念本体/1737实际标签覆盖、每fold原40k正负/loss暴露统计及12实际点probe通过；fresh NoCell实际model/loss ignored truth不变、ignored输出梯度0。无完整fold训练协议或精度；full4x无形态暴露未认证。"
+      "heldout_qualification": "坏死fold1737实际GT逐像素屏蔽、全部40k recipe成员、1300 seen点组、64实际训练点和原测试点序列审计通过；其余fold生成中，三fold完整40k点击队列等待builder，未开始正式模型训练。RGB/public先验形态暴露仍须披露。",
+      "heldout_protocol_record": "docs/运行记录/数据审计/运行记录_三fold完整任务生成与真实点击_1026_004500.md"
     },
     "G8": {
       "status": "preparing",
@@ -380,14 +382,14 @@
       "status": "running",
       "worker_pid": 3914369,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T00:41:00.897853+08:00",
+      "process_observed_at": "2026-10-26T00:52:59.973785+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914369,
-        "scale_rows": 263,
+        "scale_rows": 332,
         "total_scale_rows": 1302,
-        "fields_completed": 87,
-        "seconds": 3164.2014605998993
+        "fields_completed": 110,
+        "seconds": 3883.758146762848
       }
     },
     {
@@ -418,14 +420,14 @@
       "status": "running",
       "worker_pid": 3914376,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T00:41:00.897853+08:00",
+      "process_observed_at": "2026-10-26T00:52:59.973785+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914376,
-        "scale_rows": 263,
+        "scale_rows": 335,
         "total_scale_rows": 1299,
-        "fields_completed": 87,
-        "seconds": 3169.2346618175507
+        "fields_completed": 111,
+        "seconds": 3886.4418466091156
       }
     },
     {
@@ -456,14 +458,14 @@
       "status": "running",
       "worker_pid": 3914383,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T00:41:00.897853+08:00",
+      "process_observed_at": "2026-10-26T00:52:59.973785+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914383,
-        "scale_rows": 256,
+        "scale_rows": 332,
         "total_scale_rows": 1299,
-        "fields_completed": 85,
-        "seconds": 3187.7249476909637
+        "fields_completed": 110,
+        "seconds": 3902.4174511432648
       }
     },
     {
@@ -494,14 +496,14 @@
       "status": "running",
       "worker_pid": 3914488,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T00:41:00.897853+08:00",
+      "process_observed_at": "2026-10-26T00:52:59.973785+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914488,
-        "scale_rows": 361,
+        "scale_rows": 458,
         "total_scale_rows": 1299,
-        "fields_completed": 120,
-        "seconds": 3187.9506545066833
+        "fields_completed": 152,
+        "seconds": 3887.1202194690704
       }
     },
     {
@@ -539,7 +541,7 @@
       "kind": "generic_HE_train_PCA",
       "worker_pid": 3924161,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T00:41:00.897853+08:00",
+      "process_observed_at": "2026-10-26T00:52:59.973785+08:00",
       "last_observed_status": {
         "status": "waiting_live_raw_shards",
         "worker_pid": 3924161,
@@ -550,7 +552,7 @@
           "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history02_1025_234700",
           "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history03_1025_234700"
         ],
-        "observed_at": 1792946460.884054
+        "observed_at": 1792947177.4963562
       }
     },
     {
@@ -579,12 +581,71 @@
       "kind": "generic_HE_formal_control_coordinator",
       "worker_pid": 4089939,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T00:41:00.897853+08:00",
+      "process_observed_at": "2026-10-26T00:52:59.973785+08:00",
       "last_observed_status": {
         "status": "waiting_live_PCA",
         "coordinator_pid": 4089939,
         "PCA_pid": 3924161,
-        "observed_at": 1792946458.352067
+        "observed_at": 1792947179.5533922
+      }
+    },
+    {
+      "kind": "heldout_protocol_builder",
+      "worker_pid": 88191,
+      "gpu": null,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_1026_004500",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_1026_004500.log",
+      "session": "fewclick_heldout_protocols_1026_004829",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.heldout_comparison.prepare",
+        "--base-tasks",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400",
+        "--audit",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/audit_1026_003000",
+        "--remote",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/tasks_1025_132300",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_1026_004500"
+      ],
+      "process_observed_at": "2026-10-26T00:52:59.973785+08:00",
+      "process_alive_last_observed": true,
+      "status": "running"
+    },
+    {
+      "kind": "heldout_actual_points_coordinator",
+      "worker_pid": 98745,
+      "gpu": null,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_1026_005200",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_1026_005200.log",
+      "session": "fewclick_heldout_points_1026_005200",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.heldout_comparison.point_pipeline",
+        "--root",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_1026_004500",
+        "--base-tasks",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400",
+        "--remote",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/tasks_1025_132300",
+        "--builder-log",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_1026_004500.log",
+        "--protocol-worker",
+        "88191",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_1026_005200"
+      ],
+      "process_observed_at": "2026-10-26T00:52:59.973785+08:00",
+      "process_alive_last_observed": true,
+      "status": "waiting_live_protocol_builder",
+      "last_observed_status": {
+        "status": "waiting_live_protocol_builder",
+        "worker_pid": 98745,
+        "protocol_builder_pid": 88191
       }
     }
   ],
@@ -596,7 +657,7 @@
     "Fixed adaptation hyperparameters; not per-method optimum; independent training seeds remain pending."
   ],
   "next_actions": [
-    "Prepare3 versioned fold training/seen-selection/heldout-scoring protocols; remove excluded positives and regenerate negatives on masked valid maps; do not reuse old40k negatives",
+    "Observe builder88191 and point coordinator98745; require all3 protocols, 3x64 pilot/audit then 3x40000 full actual-coordinate audits before heldout model training gates",
     "Audit full4x annotation coverage for strict morphology-excluded tier; fine-clean alone cannot certify absence",
     "Continue observing six genericHE raw/PCA/formal pipeline handles; keep captured sources frozen and GPU1/3 reserved",
     "Build independent native WSI model/cache/coverage/stitch/efficiency gates; GPU4/5 only after raw completion and actual idle",

@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-26T00:41:00.897853+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
+Updated: 2026-10-26T00:52:59.973785+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
 
 ## Objective
 
@@ -127,3 +127,9 @@ Predeclared N excludesCRC3/TIGER3,5 (testCRC3/TIGER5); A excludesCRC10/TIGER7 (t
 All1737 GT SHAs audited. Remaining train candidate pairs CRC/TIGER: N3869/326, A4194/401, L4393/66 (only33 TIGER fields). Old40k seen-target tasks with excluded negative points N4791/A2983/L9315. Must regenerate newfold tasks/negatives and mask seen-validation selection. Fine-clean is only full4x clean-pool upper bound.
 
 12 real two-domain/two-split/fold point probes and freshCOCO/noJ5 image-only forward/loss passed: ignored-truth perturbation invariant and ignored output gradient0. RGB morphology still visible; context/assignment self-supervision remain image-based. Not input-gradient or all-pretraining novelty proof. OriginalGT unchanged and mask/points independently replayed. Artifacts heldout_1026_003000/audit_1026_003000, supervision_gate_1026_004200, independent_mask_gate_1026_004500.json. No formal heldout train/accuracy. Next independent task: fullfold manifests/actual points and context annotation audit while six genericHE jobs run.
+
+## Heldout versioned protocol and actual-point queue
+
+Builder88191/tmux fewclick_heldout_protocols_1026_004829 is live generating threefold catalogs/seen tasks and separate originalGT local/remote terminal tests. Point coordinator98745/tmux fewclick_heldout_points_1026_005200 waits same owned builder/summary/EXIT0, then all3x64 pilots+independent audits before 3x40000 full coordinates and final audits; no GPU and no retry. Source files captured in points_1026_005200/contract.json are frozen while waiting/running.
+
+Actual necrosis native gate107528 passed64 tasks (CRC39/TIGER25) and direct resolver replay. Independent audit passed all1737 exact mask/originalGT, unchanged RGB/cells/spatial fields, all40000 recipe membership,1300 seen point groups and64 training point signs; original heldout tests40 local/115 remote pairs retain exact frozen points. This is NOT full coordinates or heldout model accuracy. Artifacts heldout_1026_003000/native_point_gate_1026_005300, protocol_continuity_1026_005400.json; record docs/运行记录/数据审计/运行记录_三fold完整任务生成与真实点击_1026_004500.md. Next observe same processes, accept full points, then actual checkpoint/train/eval adapter gates while G6 six workers continue. Overall goal active.
