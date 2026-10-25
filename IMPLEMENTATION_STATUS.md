@@ -2376,3 +2376,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/complete_report_1025_221700; audit_1025_221700.json; execution_1025_221700.json.
 - Docs record: docs/运行记录/模型实验/运行记录_外部适配完整验收与六方法统计_1025_221700.md
 - Commit: This isolated acceptance change; hash available in git log. Overall goal remains active.
+
+## 10-25 22:48:00
+
+- Purpose: Accept the complete fixed remote-transfer comparison with explicit annotation/training/dependence boundaries.
+- Changed: New transfer_reporting report/acceptance/README; G4 closeout record; goal/registry/current record.
+- Validation: Actual CPU worker3583484 ended EXIT0; all9x18700 sparse rows and837 full-source reference pairs audited against actualGT, frozen source points and physical separation.6040 SAM source-mask caches/candidates verified; actual G3 selected weights/40k consumption plus160 clean and20 native context saved mask metric replays passed. Shared2000 queryWSI bootstrap conditional/exploratory; dependency graph only2 components. Accepted derived report preserves raw SHA and user XCell internal provenance; historical mixed-R training disclosed.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/complete_report_1025_224400; acceptance_1025_224800.
+- Docs record: docs/运行记录/模型实验/运行记录_迁移全量验收与分标注轨道统计_1025_224400.md
+- Commit: This isolated transfer closeout change; hash available in git log. Remaining phases and total goal active.
