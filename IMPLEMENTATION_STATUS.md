@@ -2403,3 +2403,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/gate_report_locked_1025_230400; complete_report_1025_230100; report_execution_1025_230100.json.
 - Docs record: docs/运行记录/模型实验/运行记录_三seed全量验收与均值标准差_1025_230100.md
 - Commit: This isolated report preparation change; hash available in git log. Overall goal remains active.
+
+## 10-25 23:13:00
+
+- Purpose: Accept all three-seed results and validate native generic H&E cell inputs for the missing control.
+- Changed: New generic_cell_control gate/README; seed/generic run records; goal/registry/current record.
+- Validation: All12 formal seed runs and complete reporter EXIT0; independent reread72480 rows with math.fsum/statistics reproduced all48 Dice/BF1 mean/std aggregates. Native GPU3 genericHE worker3713373 passed CRC/TIGER×three views: original74 reference error0, identical geometry/order/count, raw255x768 finite and disk/nuclear-count replay. Generic full cache/transform/retraining not yet done; G6 remains partial.
+- Artifacts: replication_1025_153837/complete_report_1025_230100 and independent_aggregate_recount_1025_231100.json; generic_cells_1025_231000/gate_1025_231000 and gate_independent_1025_231300.json under /nfs-medical3/zyh/fewclick_v2/fair_comparison/.
+- Docs record: docs/运行记录/模型实验/运行记录_三seed全量验收与均值标准差_1025_230100.md; docs/运行记录/特征缓存/运行记录_通用HE细胞特征原生输入门控_1025_231000.md
+- Commit: This isolated acceptance/input-gate change; hash available in git log. Total goal remains active.

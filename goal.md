@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-25T23:06:58.541242+08:00. Native thread goal: **active**. G3/G4 fixed comparisons accepted; the overall objective is incomplete.
+Updated: 2026-10-25T23:15:48.461891+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-25T23:06:58.541242+08:00. Native thread goal: **active**. G3/G4
 
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
-3. G4 fixed transfer comparison is independently accepted, qualified. Next: G5 full three-seed aggregation when last worker ends, then generic HE cell-feature control, then strict heldout ontology and WSI pipeline. Reviewer mapping closure remains incomplete.
+3. G4 fixed transfer comparison is independently accepted, qualified. Next: G5 three-seed aggregation is complete; next generic HE full-cell cache/controlled training, then strict heldout ontology and WSI pipeline. Reviewer mapping closure remains incomplete.
 4. New source may live outside locked snapshots. Do not edit running/queued trainer, model, sampler or inference files listed in contracts.
 
 Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/continuity_1025_160204/goal_before_G3_closeout_1025_160204.md` (SHA256 b166a50ea75b0c9c81aed0525b9c48b847b3391e525af7a61daf9afa17bd28dd). Detailed immutable results and run records remain unchanged.
@@ -24,8 +24,8 @@ Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_
 | G2 | complete | Local public SAM/WSI-SAM6040 each |
 | G3 | complete, single seed | Five10k/40k trains and6040 scores each; independent full parity audit |
 | G4 | complete, qualified | Nine18700 sparse +837 dense-reference rows audited;180 gates replayed; exploratory cluster statistics |
-| G5 | final scoring; report waiting | All12 trains/11 scores ended; final image seed27 scoring live. Full-report real gate passed, worker waits original coordinator |
-| G6 | seven controls accepted, partial | Nine40k/6040 controls and contrasts accepted; generic HE cell-feature/objective control pending |
+| G5 | complete, qualified | All12 trains/scores/selection/weights accepted; three-seed Dice/BF1 and ddof1 std independently recounted |
+| G6 | partial; genericHE input gate passed | Seven controls accepted; raw768 two-domain/three-scale gate passed, full extraction/transform/retraining pending |
 | G7 | external subset complete, remainder pending | Six680-row external comparison audited; strict heldout concepts/TLS pending |
 | G8 | input gate only | Real WSI cells/model/coverage/stitch/cache/efficiency pending |
 | G9 | preparing | 11 human challenges + 14 AI checks mapped; experiments/factual corrections and submitted-version binding remain |
@@ -47,7 +47,7 @@ Primary corrected report: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protoco
 
 ## Active queues and frozen sources
 
-Replication coordinator1557332 live with final imageFewClick evaluation3669635; all12 full trains and11 scores ended. Full report worker3678955 verified live waiting same coordinator plus EXIT0; root replication_1025_153837/complete_report_1025_230100. Actual base-four complete-path gate and two40k permutation/multiset checks passed in gate_report_locked_1025_230400. Do not restart from observation timeout; freeze report.py as well as trainer/model until report ends. No GPU0/2.
+All former G3/G4/G5/G6/external compute jobs have ended with terminal summaries and EXIT0; no active task-owned job at this milestone. Never restart completed work. Keep historical trainers/inference/models unchanged and develop new genericHE/heldout/WSI modules. GPU0/2 remain prohibited; inspect actual GPU occupancy before new allocation.
 
 G6, external cell/adapted and all G4 scoring jobs ended with summary + EXIT_CODE0; moved to registry.completed_jobs. Completion of execution does not replace independent acceptance.
 
@@ -92,6 +92,10 @@ Primary region none.544515 / morphology.533127 / XCell.537667; Dense none.564044
 
 Morphology keeps position/area/unknown identity/count/detection prior; generic HE appearance control and same-network pretraining-objective control remain missing. G6 is partial, not complete; no winning-module requirement.
 
-## G5 report continuation
+## G5 three-seed accepted
 
-New replication/report.py gated on actual original four complete methods, full training/checkpoint/10x302 selection/6040 counts and both exact40k seeded permutations. Formal CPU reporter3678955 tmux fewclick_seed_report_1025_230100 waits live1557332; final score3669635 still running. Require complete_report_1025_230100/summary.json status complete + outer EXIT0, then independent result review and registry closeout. Never call gate or waiting a completed three-seed result. Record: docs/运行记录/模型实验/运行记录_三seed全量验收与均值标准差_1025_230100.md.
+All12 formal10k/40k/6040 runs accepted, actual seed permutations/click multisets and8 extra native GPU gates checked; all10x302 development selections/selected weights verified. Independent math.fsum/statistics reread all72480 rows and recounted mean/sample std. report replication_1025_153837/complete_report_1025_230100/report.md; independent_aggregate_recount_1025_231100.json. Primary Dice SAM-FT 0.702063±0.001325; WSI-SAM-FT 0.701155±0.001211; FewClick noCell 0.568464±0.004273; XCell 0.572902±0.002516. XCell−none by seed+.008849/+.001616/+.002850, mean+.004438±.003869. Three seeds are not a population significance test; Dense internal initialization remains fixed.
+
+## GenericHE input gate
+
+Current input gate six CRC/TIGER train×three-view fields passed on GPU3, worker3713373 ended EXIT0. Raw public CTransPath768 captured before XCell, original74 reference max error0, geometry/order/total identical, native context re-detection and saved NPZ/nucleus count replay passed. Fine original masks reused; labels unavailable. Source/artifacts generic_cells_1025_231000/gate_1025_231000 and gate_independent_1025_231300.json. No full1737 cache, train-only64 transform or controlled model training completed. Next extend actual extraction path with native gate/shards; fit no transforms on validation cells.
