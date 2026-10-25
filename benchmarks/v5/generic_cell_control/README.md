@@ -25,3 +25,15 @@ CUDA_VISIBLE_DEVICES=3 /home/zhaoyh/miniconda3/envs/aligner/bin/python \
 固定报告不whiten PCA64及同主成分whiten PCA64两种尺度条件，不按验证结果挑选。新增敏感性的依据是训练输入中原始与对齐特征数值尺度相差明显，非观察控制模型成绩后的调参。二者都维持10+64维接口；完整受控训练和精度仍待。
 
 当前记录：`docs/运行记录/特征缓存/运行记录_通用HE完整分片提取与训练区变换合同_1025_232200.md`。完整提取的`history_extract.py`、公共输入辅助代码及等待中的`fit.py`须保持冻结。
+
+## 装配与训练通路
+
+`assemble.py`生成真正的fine/context缓存、catalog及LocalData任务。两投影保留同一RGB、标签、first10几何/核类、total和任务坐标；正式40k与1510最大点击文件逐字保留。小门控目录只含四个视野，明确不能用于正式精度。
+
+`models.py`/`train.py`/`evaluate.py`复用原fresh三视野Dense架构和损失，保持74维接口及126031668个注册参数。`gate_model.py`的两条件已通过真实CPU数据加载、四更新头预热/骨干联合、三个encoder实际更新、fresh model/optimizer/RNG checkpoint恢复、两域预测逐值一致及继续联合更新。CPU门控不替代正式PCA条件下的原生GPU门控。
+
+`pipeline.py`先等完整raw/PCA，再全量装配，在实际空闲GPU1/3分别执行native GPU gate→新初始化10k/40k训练→开发最佳checkpoint6040评分；任何失败均保留，不重试。两个归一化条件全部报告，pipeline结束仍需独立验收/统计。所有已捕获的generic、fair_comparison、paper_multiscale/model.py和losses.py源码在队列等待期间也不能改；新增独立文件可用于heldout/WSI工作。GPU1/3已预约，后续GPU4/5也须等各raw提取结束再用。
+
+来源解释：prior中的`target_cohort_initialization=False`指主模型无J5/历史目标监督权重初始化；此HE控制另有训练图像上的无监督PCA拟合，不得把该flag解释成所有特征均未做目标图像拟合。它不使用验证细胞拟合、组织标签或mIF作为generic特征，仍不代表等总预训练/计算条件。
+
+运行记录：`docs/运行记录/模型实验/运行记录_通用HE双投影装配与真实模型门控_1025_235500.md`。

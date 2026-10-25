@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-25T23:52:36.369603+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
+Updated: 2026-10-26T00:21:54.233048+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
 
 ## Objective
 
@@ -25,7 +25,7 @@ Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_
 | G3 | complete, single seed | Five10k/40k trains and6040 scores each; independent full parity audit |
 | G4 | complete, qualified | Nine18700 sparse +837 dense-reference rows audited;180 gates replayed; exploratory cluster statistics |
 | G5 | complete, qualified | All12 trains/scores/selection/weights accepted; three-seed Dice/BF1 and ddof1 std independently recounted |
-| G6 | partial; genericHE extraction running | Corrected original-history gates24 scales passed; four full raw groups run, train-only PCA waits; controlled training pending |
+| G6 | partial; formal controls queued | Four raw groups/PCA dependency active; two-arm actual CPU model gate passed; full pipeline4089939 waits PCA, formal native gates/trains/scores pending |
 | G7 | external subset complete, remainder pending | Six680-row external comparison audited; strict heldout concepts/TLS pending |
 | G8 | input gate only | Real WSI cells/model/coverage/stitch/cache/efficiency pending |
 | G9 | preparing | 11 human challenges + 14 AI checks mapped; experiments/factual corrections and submitted-version binding remain |
@@ -47,7 +47,7 @@ Primary corrected report: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protoco
 
 ## Active queues and frozen sources
 
-GenericHE corrected full history extraction now live: GPU1 PID3914369 (oldgroup00,434 fields), GPU3 PID3914376 (01,433), GPU4 PID3914383 (02,433), GPU5 PID3914488 (03,433). CPU PCA PID3924161 waits same four workers plus reused complete original-gate4 fields. Root generic_cells_1025_231000; outputs raw_history00..03_1025_234700 and pca_full_train_1025_234700. Inspect actual ps/status/logs. Freeze history_extract.py, fit.py and their recorded helpers while jobs/wait run. No GPU0/2.
+GenericHE corrected full history extraction now live: GPU1 PID3914369 (oldgroup00,434 fields), GPU3 PID3914376 (01,433), GPU4 PID3914383 (02,433), GPU5 PID3914488 (03,433). CPU PCA PID3924161 waits same four workers plus reused complete original-gate4 fields. Root generic_cells_1025_231000; outputs raw_history00..03_1025_234700 and pca_full_train_1025_234700. Inspect actual ps/status/logs. Freeze history_extract.py, fit.py and helpers, plus all generic/fair_comparison Python files captured by formal_controls_1026_001500/contract.json, paper_multiscale/model.py and losses.py while queues wait/run. No GPU0/2.
 
 G6, external cell/adapted and all G4 scoring jobs ended with summary + EXIT_CODE0; moved to registry.completed_jobs. Completion of execution does not replace independent acceptance.
 
@@ -111,3 +111,11 @@ Old mod3 prototype has terminal EXIT1 in groups1/2 and owned group0 stopped EXIT
 New history_extract restores original completed.jsonl process groups/order, constructor order and per-call inference context. Same-source native gates: original4-field group (12 scales) + old02 first2 (6) + old03 first2 (6), all geometry and74 reference errors0. Full four groups plus reused verified original4 cover1737 fields/5211 scales. Full raw/transform/training still incomplete. PCA1530-train-cell native gate + independent direct covariance passed, val raw opened0. Both plain PCA64 and whitened PCA64 sensitivity are fixed before model results, both must be reported; source scales motivated sensitivity, no validation model selection.
 
 Next independent work while extraction runs: actual genericHE projected inputs/model/loss/checkpoint gate and strict-heldout/WSI preparation; no conflicting GPU allocation. Record docs/运行记录/特征缓存/运行记录_通用HE完整分片提取与训练区变换合同_1025_232200.md; source/PID/evidence snapshot generic_cells_1025_231000/continuity_1025_235100.json.
+
+## GenericHE actual model gate and formal queue
+
+Two projected-cache/catalog variants accepted through real LocalData, four updates each (two head warmup/two joint), all3 backbones changed, fresh model+optimizer+RNG disk restore and exact two-domain predictions, resumed joint update. Both126031668 registered parameters and identical initial heads; same gate actual coordinates. Independent4 fields×2 arms compare original/new RGB, points, GT, geometry/count tensors exactly. Actual gate CPU4031341 ended EXIT0; evidence model_gate_1026_000800/summary.json and assembly_model_independent_1026_001500.json. Gate-fitted1530-cell PCA is NEVER formal training input.
+
+Formal coordinator4089939 tmux fewclick_generic_controls_1026_001500 is verified live waiting full train PCA3924161. Then full1737-field assembly, GPU1 plain/GPU3 whitened actual native gates, NEW10k/40k train and selected-checkpoint6040 per arm. No retry; no accuracy or fullG6 closure claimed. GPU1/3 reserved; future GPU4/5 work must wait respective raw completion and actual idle. All source files in its contract frozen; add separate heldout/WSI modules.
+
+Flag interpretation: model target_cohort_initialization=False means noJ5/target-supervised model weight init. GenericHE adds training-image unsupervised PCA; do not claim equal total pretraining or no target-image fit. Full comparison protocol SHAs legitimately change for new cell catalogs; independently check actualsame RGB/GT/points/40k, never falsify the original SHA. Next independent work while dependencies run is strict-heldout ontology/WSI pipeline, not repeated waiting-only turns. Record docs/运行记录/模型实验/运行记录_通用HE双投影装配与真实模型门控_1025_235500.md.

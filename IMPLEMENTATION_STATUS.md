@@ -2430,3 +2430,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000; history_jobs_1025_234700.json, pca_job_1025_234700.json, continuity_1025_235100.json; old failures preserved.
 - Docs record: docs/运行记录/特征缓存/运行记录_通用HE完整分片提取与训练区变换合同_1025_232200.md
 - Commit: This isolated extraction/history correction change; hash available in git log. Overall goal active/incomplete.
+
+## 10-26 00:21:54
+
+- Purpose: Validate real genericHE cache/model/checkpoint paths and chain formal controls after existing raw/PCA dependencies.
+- Changed: generic_cell_control assemble/models/train/evaluate/gate_model/pipeline and README; actual model gate record; goal/registry/current record.
+- Validation: Actual two-arm4-field LocalData assembly,8 original gate tasks,4 staged updates/all3 backbone changes, fresh model+optimizer+RNG checkpoint exact predictions and resumed joint update passed CPU worker4031341 EXIT0. Independent8 old/new field conditions RGB/GT/points/geometry/count tensors equal; both126031668 parameters/same initial heads. Coordinator4089939 verified live waiting formalPCA; no formal controlled training or new accuracy claimed.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/assembly_gate_1026_000100; model_gate_1026_000800; formal_controls_1026_001500; model_pipeline_continuity_1026_002000.json.
+- Docs record: docs/运行记录/模型实验/运行记录_通用HE双投影装配与真实模型门控_1025_235500.md
+- Commit: This isolated real-path/queue change; hash available in git log. Overall goal active/incomplete.

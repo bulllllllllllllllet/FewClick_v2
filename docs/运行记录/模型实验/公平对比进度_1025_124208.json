@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T23:52:36.369603+08:00",
+  "updated": "2026-10-26T00:21:54.233048+08:00",
   "current_phase": "G6",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -238,7 +238,7 @@
       }
     },
     "G6": {
-      "status": "generic_HE_history_extraction_running",
+      "status": "generic_HE_raw_running_model_gate_passed_formal_waiting",
       "depends_on": [
         "G3"
       ],
@@ -263,16 +263,23 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/pca_gate_fixed_input_1025_233300/independent_projection_1025_234100.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/diagnosis_prefix_shard1_1025_233900/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/diagnosis_prefix_shard2_1025_233900/summary.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/continuity_1025_235100.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/continuity_1025_235100.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/assembly_gate_1026_000100/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/model_gate_1026_000800/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/assembly_model_independent_1026_001500.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500/contract.json"
       ],
-      "qualification": "旧mod3原型因调用历史改变核几何触发两分片严格失败；诊断证明旧首项冷/热调用不同，未放宽容差。新按原完成清单恢复历史的三门控24尺度误差全0，四GPU完整历史组正在提取，CPU全train-only PCA等待真实shards。全缓存/正式PCA/两归一化控制重训均未完成，G6保持partial。",
+      "qualification": "四历史raw组仍运行，全train PCA等待；两投影实际4视野catalog/8条gate坐标、真实CPU模型loss/三主干梯度/四更新/fresh optimizer RNG checkpoint和继续更新通过。独立8次old/new字段RGB/GT/点/几何/数量相等，注册参数126031668同初始化。正式coordinator4089939等全PCA后全装配/nativeGPU gate/10k40k/6040，未开始正式控制训练，非全G6完成。",
       "record": "docs/运行记录/数据审计/运行记录_特征预训练来源与细胞机制合同_1025_134753.md",
       "formal_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300",
       "acceptance_record": "docs/运行记录/模型实验/运行记录_七机制完整验收与受控配对解释_1025_225200.md",
       "generic_HE_gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_1025_231000",
       "generic_HE_record": "docs/运行记录/特征缓存/运行记录_通用HE完整分片提取与训练区变换合同_1025_232200.md",
       "generic_HE_raw_jobs": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/history_jobs_1025_234700.json",
-      "generic_HE_PCA_job": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/pca_job_1025_234700.json"
+      "generic_HE_PCA_job": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/pca_job_1025_234700.json",
+      "model_gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/model_gate_1026_000800",
+      "control_pipeline": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500",
+      "model_gate_record": "docs/运行记录/模型实验/运行记录_通用HE双投影装配与真实模型门控_1025_235500.md"
     },
     "G7": {
       "status": "external_complete_heldout_TLS_pending",
@@ -367,14 +374,14 @@
       "status": "running",
       "worker_pid": 3914369,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T23:52:36.369603+08:00",
+      "process_observed_at": "2026-10-26T00:21:54.233048+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914369,
-        "scale_rows": 23,
+        "scale_rows": 167,
         "total_scale_rows": 1302,
-        "fields_completed": 7,
-        "seconds": 265.3520019054413
+        "fields_completed": 55,
+        "seconds": 2016.62682056427
       }
     },
     {
@@ -405,14 +412,14 @@
       "status": "running",
       "worker_pid": 3914376,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T23:52:36.369603+08:00",
+      "process_observed_at": "2026-10-26T00:21:54.233048+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914376,
-        "scale_rows": 26,
+        "scale_rows": 167,
         "total_scale_rows": 1299,
-        "fields_completed": 8,
-        "seconds": 265.717396736145
+        "fields_completed": 55,
+        "seconds": 2022.1370494365692
       }
     },
     {
@@ -443,14 +450,14 @@
       "status": "running",
       "worker_pid": 3914383,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T23:52:36.369603+08:00",
+      "process_observed_at": "2026-10-26T00:21:54.233048+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914383,
-        "scale_rows": 27,
+        "scale_rows": 161,
         "total_scale_rows": 1299,
-        "fields_completed": 9,
-        "seconds": 284.63379549980164
+        "fields_completed": 53,
+        "seconds": 2028.9530601501465
       }
     },
     {
@@ -481,14 +488,14 @@
       "status": "running",
       "worker_pid": 3914488,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T23:52:36.369603+08:00",
+      "process_observed_at": "2026-10-26T00:21:54.233048+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914488,
-        "scale_rows": 32,
+        "scale_rows": 227,
         "total_scale_rows": 1299,
-        "fields_completed": 10,
-        "seconds": 271.34490942955017
+        "fields_completed": 75,
+        "seconds": 2023.1643238067627
       }
     },
     {
@@ -526,7 +533,7 @@
       "kind": "generic_HE_train_PCA",
       "worker_pid": 3924161,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T23:52:36.369603+08:00",
+      "process_observed_at": "2026-10-26T00:21:54.233048+08:00",
       "last_observed_status": {
         "status": "waiting_live_raw_shards",
         "worker_pid": 3924161,
@@ -537,7 +544,41 @@
           "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history02_1025_234700",
           "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history03_1025_234700"
         ],
-        "observed_at": 1792943551.9808319
+        "observed_at": 1792945313.3821304
+      }
+    },
+    {
+      "status": "waiting_live_PCA",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500.log",
+      "session": "fewclick_generic_controls_1026_001500",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.generic_cell_control.pipeline",
+        "--root",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000",
+        "--cpu-gate",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/model_gate_1026_000800",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500"
+      ],
+      "cpu_gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/model_gate_1026_000800",
+      "GPU_reservations": {
+        "1": "generic_he_pca64",
+        "3": "generic_he_white64"
+      },
+      "full_training_started": false,
+      "kind": "generic_HE_formal_control_coordinator",
+      "worker_pid": 4089939,
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-26T00:21:54.233048+08:00",
+      "last_observed_status": {
+        "status": "waiting_live_PCA",
+        "coordinator_pid": 4089939,
+        "PCA_pid": 3924161,
+        "observed_at": 1792945311.397374
       }
     }
   ],
@@ -549,11 +590,10 @@
     "Fixed adaptation hyperparameters; not per-method optimum; independent training seeds remain pending."
   ],
   "next_actions": [
-    "Observe four history extraction workers and PCA wait process; preserve same handles, never restart from observation timeout; inspect any explicit failure before further action",
-    "While raw features run, prepare genericHE two fixed projection arms actual data/model/loss/checkpoint gate using only accepted small training subset; do not use gate-fitted PCA for formal full train",
-    "Verify all1737 fields/5211 scale rows and train-only formal PCA; assemble new feature catalog preserving RGB/GT/points, then matched40k training/full6040 for both plain/whitened conditions",
-    "Prepare strict heldout ontology/data contract and native WSI model/cache/stitch/efficiency without conflicting GPU jobs",
-    "Update reviewer matrix with G4/G5/G6/G7 accepted evidence; unresolved component/WSI/original-version gaps stay explicit"
+    "Observe raw/PCA/formal-control coordinator live handles; do not restart on timeout; keep all captured sources frozen even while waiting",
+    "While dependencies compute, prepare strict heldout ontology/data protocol and WSI model/cache/coverage/stitch/efficiency in independent modules; GPU1/3 reserved and GPU4/5 only after raw groups finish",
+    "Once generic controls finish, independently verify actual same RGB/GT/points/40k across changed feature catalog protocol SHAs, full selection/weights/6040 rows; report both normalization variants and prior/unsupervised-PCA differences",
+    "Update reviewer challenge matrix with qualified completed evidence; keep original-paper version/WSI selection/component recall and efficiency gaps explicit"
   ],
   "provenance_clarifications": {
     "XCell": {
