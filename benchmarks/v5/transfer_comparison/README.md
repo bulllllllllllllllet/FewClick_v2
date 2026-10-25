@@ -42,3 +42,7 @@ ICCV2025 v1来自官方download.sh链接，75,643,477B，SHA `fd7ee1b7cbe913794c
 `evaluate_sparse.py --gate`先经过同一缓存/推理/评分/逐行输出路径，每方法16条。完整每方法18700评分行，特征缓存64项，CPU4线程可与GPU训练并行。每次运行输出真实worker PID、源码/模型/协议SHA、逐任务结果及状态。CPU/缓存命中影响时间，当前联合graph+prototype计时不能当作两个方法各自独立在线时延；正式效率留G8。
 
 G4完成仍需全量稀疏行、受控新权重迁移、近期方法全量及分轨迹统计。门控成功不等于已完成全量比较；G5独立训练seed、G6细胞/容量机制、G7泛化/TLS、G8 WSI/效率和G9证据闭环仍保留。
+
+`evaluate_context.py` 是两个不同标注预算的全量入口。输入专用类禁止labels/supervision API，移除GT计数且将source/query标签路径设为不可读；另一个scorer对象只在预测后读query GT。SAM生成context只看source RGB/点，缓存键含图像、点和权重SHA；实际门控与原SAM重新编码比较。完整GT context只能由独立benchmark端提供完整source mask，不能按稀疏负点补成全负背景。
+
+实际覆盖：212个支持视野中187个完整、25个含ignore。稀疏预测context全935对×5点组×4预算=18700行；完整GT参考仅837对、每对1行，98对按标注覆盖排除。参考预算记full_mask，不复制成5点组或点击曲线；与点方法比较时必须限制在同837对。CPU4线程、CUDA隐藏，模型/依赖/源码/官方权重manifest均与真实gate核对。正式入口须`--verified-gate`通过16条稀疏+4条完整GT门控。保存的row latency只含MultiverSeg预测，不含SAM生成/IO；总wall time单列，不作G8独立效率证据。

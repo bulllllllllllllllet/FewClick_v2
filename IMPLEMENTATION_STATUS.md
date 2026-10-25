@@ -2331,3 +2331,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/public_report_1025_150920.
 - Docs record: docs/运行记录/模型实验/运行记录_外部域公共权重真实门控与评分_1025_143741.md
 - Commit: This isolated report change; hash available in git log.
+
+## 10-25 15:33:00
+
+- Purpose: Run the pinned recent native context baseline under separate sparse and full-support annotation budgets.
+- Changed: transfer_comparison/evaluate_context.py and README; context run record; goal/registry/current record.
+- Validation: Real final CPU native gate20 rows (16 sparse+4 dense reference), native MultiverSeg byte equality, SAM cached/native max error0, GT-forbidden input API and saved direct TP/FP/FN replay passed. Formal CPU4/GPUhidden workerPID1444317 verified live,500/18700 sparse rows;837 dense-reference pairs follow,98 excluded for incomplete source annotations. Full reference uses one row per pair, not repeated point budgets. Independent Retained-M3 two18700-row/GT/point/count audits and SAM10k/40k SHA audit passed. Controlled Dense cell pair75-space interval delta.008849 CI[-.003059,.022545] includes0; independent training seeds still pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/context_full_1025_152401; gate_context_locked_1025_152208; retained_and_SAM_acceptance_1025_152840.json; protocol_1025_124208/controlled_cells_pair_1025_152300.
+- Docs record: docs/运行记录/模型实验/运行记录_MultiverSeg双标注轨道全量迁移_1025_151429.md
+- Commit: This isolated change; hash available in git log.
