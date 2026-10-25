@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-26T01:04:33.804651+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
+Updated: 2026-10-26T01:22:51.227281+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
 
 ## Objective
 
@@ -27,7 +27,7 @@ Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_
 | G5 | complete, qualified | All12 trains/scores/selection/weights accepted; three-seed Dice/BF1 and ddof1 std independently recounted |
 | G6 | partial; formal controls queued | Four raw groups/PCA dependency active; two-arm actual CPU model gate passed; full pipeline4089939 waits PCA, formal native gates/trains/scores pending |
 | G7 | external accepted; heldout supervision prepared | Threefold coverage/12 model-loss gates passed; fullfold recipes/training/accuracy and TLS pending |
-| G8 | input gate only | Real WSI cells/model/coverage/stitch/cache/efficiency pending |
+| G8 | partial; all30 grid and tissue CPU cache gate accepted | Full WSI execution, cells, GPU/whole-slide efficiency and main30 coverage pending |
 | G9 | preparing | 11 human challenges + 14 AI checks mapped; experiments/factual corrections and submitted-version binding remain |
 
 ## G3 result and acceptance
@@ -141,3 +141,11 @@ First builder88191 ended complete_protocols/EXIT0; point coordinator98745 ended 
 Full geometry audit149722 EXIT0 applied unchanged2um interiors/representative picker at max5+5 to all candidate pools. N5420→5418, A5929→5926, L5684→5683; removed only2/3/1 train pairs, no validation candidate removal. All6 rejections plus123 accepted direct original-resolver replays passed. New geometry protocol builder179911 and point coordinator181064 are verified live, root protocols_geometry_1026_010300 / points_geometry_1026_010300; same3x64+audit then3x40000+audit queue. Freeze captured source contract while running.
 
 Checkpoint CPU gate first134778 failed CUDA-only shared RNG call; corrected explicitCPU harness149733 EXIT0 passed real2 updates, all3backbones changed, fresh model/optimizer/RNG and originalGT heldout CRC/TIGER predictions exactly replayed. Reject test selection, gate-as-formal, wrongfold/trainSHA/masked-testGT. training.py/evaluate.py implement distinct seen-training/checkpoint/terminal-test bindings; full native GPU trainer/evaluator remains ungated/unrun. Sources/probability/selected-weight SHAs independently verified. Record docs/运行记录/模型实验/运行记录_概念留出训练与独立终评衔接门控_1026_005500.md. Evidence checkpoint_gate_cpu_1026_005800/gate_acceptance.json, geometry_independent_1026_010300.json. No heldout accuracy yet; G6 six jobs remain live. Overall goal active.
+
+## Latest WSI coverage/cache milestone
+
+TLS30 actual headers/139934 full-context-valid tiles complete and independently audited everybox/Cartesian grid/union coverage. Prediction domain covers88.916%-93.622% rectangular slide area; excluded outer margin lacks true4x, not full tissue coverage. No annotation content/model score used to select query grid; inherited annotation-count/index metadata only passes through private provenance. This is TLS30, not main-test30.
+
+First corner cache gate nearlyallwhite, retained as background-only with exact original source snapshot. Fixed central grid probe has1.4%-4.4% white512 fine images and completed CPU worker274860 EXIT0: four disk caches, two task budgets,8 cached/native errors0, online encode0/query maps0, probability-then-threshold stitching. Independent fresh-model replay all2399401 pixels/budget exactly matches; wrongweight/input caches rejected. CRC support task30000000 is mechanical input, NOT TLS prompts or TLS accuracy. Image-only NoCell placeholders do not perform cell detection. Per-window192-node graph, not global cross-slide graph. Source/weights/cache/probability SHA independently bound.
+
+Root wsi_global_1026_010800; evidence plan_audit_1026_011300, cache_central_gate_1026_011900, cache_central_independent_1026_012100. Record docs/运行记录/模型实验/运行记录_整片全网格与真实缓存拼接门控_1026_010800.md. Full streaming slide cache/inference/output, native GPU timing, complete cell preparation, main30 coverage and TLS annotation/negative confirmation remain. No full-slide performance or efficiency accepted. Corrected heldout builder179911 nowcomplete; parent181064 and actual full workers229034/229035/229036 remain live, no final40000 acceptance yet. G6 six workers live. Overall goal active.

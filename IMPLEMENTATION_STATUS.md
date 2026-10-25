@@ -2466,3 +2466,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/checkpoint_gate_cpu_1026_005800、geometry_1026_005800、geometry_independent_1026_010300.json、checkpoint_continuity_1026_010400.json。
 - Docs record: docs/运行记录/模型实验/运行记录_概念留出训练与独立终评衔接门控_1026_005500.md；数据审计1026_004500。
 - Commit: 本条随本次独立提交，哈希由Git记录。
+
+## 10-26 01:22:00
+
+- Purpose: 完成TLS30真实三视野全有效网格审计与组织区域WSI缓存/点击更新/概率拼接机械门控。
+- Changed: benchmarks/v5/wsi_global/{plan,audit_plan,cache_gate,audit_cache}.py、README/__init__及goal/registry/run records。
+- Validation: 全30实际header与139934 tiles全部足迹/Cartesian/矩形union通过；有效域矩形覆盖88.916%-93.622%。首corner近全白仅背景gate；fixed central组织gate274860 EXIT0，8 native/cache errors0、online encode0/query maps0；fresh独立两预算各2399401像素融合/阈值exact，错input/weight cache拒绝。source/weight/cache/prob SHA复核通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/plan_1026_010800、plan_audit_1026_011300、cache_central_gate_1026_011900、cache_central_independent_1026_012100、continuity_1026_012200.json。完整WSI/细胞/GPU效率/TLS准确率仍待。
+- Docs record: docs/运行记录/模型实验/运行记录_整片全网格与真实缓存拼接门控_1026_010800.md。
+- Commit: 本条随本次独立提交，哈希由Git记录。

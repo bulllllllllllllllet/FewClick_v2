@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-26T01:04:33.804651+08:00",
+  "updated": "2026-10-26T01:22:51.227281+08:00",
   "current_phase": "G6",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -322,23 +322,29 @@
       "adapted_record": "docs/运行记录/模型实验/运行记录_外部域适配权重固定与真实推理门控_1025_145533.md",
       "adapted_formal_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/adapted_formal_1025_150010",
       "complete_record": "docs/运行记录/模型实验/运行记录_外部适配完整验收与六方法统计_1025_221700.md",
-      "heldout_status": "geometry_corrected_protocols_preparing_checkpoint_CPU_gate_passed",
+      "heldout_status": "corrected_three_protocols_complete_full_actual_coordinates_running",
       "heldout_record": "docs/运行记录/数据审计/运行记录_三概念留出本体与监督排除覆盖_1026_003000.md",
-      "heldout_qualification": "首版三fold64点/audit通过，完整40k均内部采样失败并保留；全候选5+5几何审计N/A/L去2/3/1训练pair、val不减少，129原resolver独立回放通过。新协议builder179911/points181064运行/等待。真实CPU两更新+三骨干变化+fresh model/optimizer/RNG及原GT heldout两域预测exact通过；正式GPU训练/新协议完整点/精度仍未完成。",
+      "heldout_qualification": "首版三fold64点/audit通过，完整40k均内部采样失败并保留；全候选5+5几何审计N/A/L去2/3/1训练pair、val不减少，129原resolver独立回放通过。新协议builder179911/points181064运行/等待。真实CPU两更新+三骨干变化+fresh model/optimizer/RNG及原GT heldout两域预测exact通过；正式GPU训练/新协议完整点/精度仍未完成。 当前corrected builder179911已EXIT0/complete_protocols，point181064三完整40k worker持续运行，尚未终审。",
       "heldout_protocol_record": "docs/运行记录/数据审计/运行记录_三fold完整任务生成与真实点击_1026_004500.md",
       "heldout_checkpoint_record": "docs/运行记录/模型实验/运行记录_概念留出训练与独立终评衔接门控_1026_005500.md"
     },
     "G8": {
-      "status": "preparing",
+      "status": "all30_spatial_plan_and_CPU_tissue_cache_gate_accepted_full_execution_pending",
       "depends_on": [
         "G3"
       ],
-      "record": "docs/运行记录/数据审计/运行记录_TLS整片读取与物理视野门控_1025_144200.md",
+      "record": "docs/运行记录/模型实验/运行记录_整片全网格与真实缓存拼接门控_1026_010800.md",
       "evidence": [
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_gate_1025_144200/gate.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/acceptance_1025_144420.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/acceptance_1025_144420.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/plan_1026_010800/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/plan_audit_1026_011300/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/cache_central_gate_1026_011900/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/cache_central_independent_1026_012100/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/background_source_1026_011800/manifest.json"
       ],
-      "qualification": "仅新模型物理视野输入门控：真实首片KFB读取与坏读传播通过；未完成细胞、模型、覆盖、边缘或stitch。"
+      "qualification": "全部TLS30真实header/139934 tiles及每tile足迹/Cartesian完整/并集覆盖独立审计通过；矩形面积覆盖88.916%-93.622%，边缘未覆盖。背景门控不作代表组织，固定中央组织image-only CPU4query gate/8 native-cache errors0、两预算全2399401像素融合阈值fresh复算通过。无整片模型执行/完整细胞成本/GPU效率/TLS准确率；TLS与主30分开，标注穷尽/阴性仍未确认。",
+      "input_record": "docs/运行记录/数据审计/运行记录_TLS整片读取与物理视野门控_1025_144200.md"
     },
     "G9": {
       "status": "preparing",
@@ -388,14 +394,14 @@
       "status": "running",
       "worker_pid": 3914369,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:04:33.804651+08:00",
+      "process_observed_at": "2026-10-26T01:22:51.227281+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914369,
-        "scale_rows": 400,
+        "scale_rows": 506,
         "total_scale_rows": 1302,
-        "fields_completed": 133,
-        "seconds": 4599.335117340088
+        "fields_completed": 168,
+        "seconds": 5692.341616153717
       }
     },
     {
@@ -426,14 +432,14 @@
       "status": "running",
       "worker_pid": 3914376,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:04:33.804651+08:00",
+      "process_observed_at": "2026-10-26T01:22:51.227281+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914376,
-        "scale_rows": 401,
+        "scale_rows": 512,
         "total_scale_rows": 1299,
-        "fields_completed": 133,
-        "seconds": 4583.369848489761
+        "fields_completed": 170,
+        "seconds": 5685.457901954651
       }
     },
     {
@@ -464,14 +470,14 @@
       "status": "running",
       "worker_pid": 3914383,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:04:33.804651+08:00",
+      "process_observed_at": "2026-10-26T01:22:51.227281+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914383,
-        "scale_rows": 407,
+        "scale_rows": 536,
         "total_scale_rows": 1299,
-        "fields_completed": 135,
-        "seconds": 4600.218865871429
+        "fields_completed": 178,
+        "seconds": 5688.055396556854
       }
     },
     {
@@ -502,14 +508,14 @@
       "status": "running",
       "worker_pid": 3914488,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:04:33.804651+08:00",
+      "process_observed_at": "2026-10-26T01:22:51.227281+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914488,
-        "scale_rows": 565,
+        "scale_rows": 709,
         "total_scale_rows": 1299,
-        "fields_completed": 188,
-        "seconds": 4599.195605039597
+        "fields_completed": 236,
+        "seconds": 5699.0764927864075
       }
     },
     {
@@ -547,7 +553,7 @@
       "kind": "generic_HE_train_PCA",
       "worker_pid": 3924161,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:04:33.804651+08:00",
+      "process_observed_at": "2026-10-26T01:22:51.227281+08:00",
       "last_observed_status": {
         "status": "waiting_live_raw_shards",
         "worker_pid": 3924161,
@@ -558,7 +564,7 @@
           "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history02_1025_234700",
           "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history03_1025_234700"
         ],
-        "observed_at": 1792947870.0784352
+        "observed_at": 1792948967.3731616
       }
     },
     {
@@ -587,38 +593,13 @@
       "kind": "generic_HE_formal_control_coordinator",
       "worker_pid": 4089939,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:04:33.804651+08:00",
+      "process_observed_at": "2026-10-26T01:22:51.227281+08:00",
       "last_observed_status": {
         "status": "waiting_live_PCA",
         "coordinator_pid": 4089939,
         "PCA_pid": 3924161,
-        "observed_at": 1792947871.1583357
+        "observed_at": 1792948967.9793746
       }
-    },
-    {
-      "kind": "heldout_geometry_protocol_builder",
-      "worker_pid": 179911,
-      "gpu": null,
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300.log",
-      "session": "fewclick_heldout_protocols_geometry_1026_010300",
-      "command": [
-        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-        "-u",
-        "-m",
-        "benchmarks.v5.heldout_comparison.prepare",
-        "--base-tasks",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400",
-        "--audit",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/geometry_1026_005800",
-        "--remote",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/tasks_1025_132300",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300"
-      ],
-      "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:04:33.804651+08:00",
-      "status": "running"
     },
     {
       "kind": "heldout_geometry_actual_points_coordinator",
@@ -646,13 +627,92 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300"
       ],
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:04:33.804651+08:00",
+      "process_observed_at": "2026-10-26T01:22:51.227281+08:00",
       "status": "waiting_live_protocol_builder",
       "last_observed_status": {
-        "status": "waiting_live_protocol_builder",
+        "status": "running_children",
         "worker_pid": 181064,
-        "protocol_builder_pid": 179911
-      }
+        "active_children": {
+          "full_necrosis": 229034,
+          "full_adipose": 229035,
+          "full_lymphoid_related": 229036
+        },
+        "failed_children": []
+      },
+      "active_children_last_observed": [
+        {
+          "name": "full_necrosis",
+          "worker_pid": 229034,
+          "alive": true,
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.fair_comparison.realize_training",
+            "--tasks",
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/necrosis/tasks",
+            "--output",
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300/full/necrosis",
+            "--workers",
+            "4"
+          ],
+          "status": {
+            "status": "running",
+            "worker_pid": 229034,
+            "completed": 32800,
+            "total": 40000,
+            "seconds": 691.9239580631256
+          }
+        },
+        {
+          "name": "full_adipose",
+          "worker_pid": 229035,
+          "alive": true,
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.fair_comparison.realize_training",
+            "--tasks",
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/adipose/tasks",
+            "--output",
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300/full/adipose",
+            "--workers",
+            "4"
+          ],
+          "status": {
+            "status": "running",
+            "worker_pid": 229035,
+            "completed": 31400,
+            "total": 40000,
+            "seconds": 691.6330854892731
+          }
+        },
+        {
+          "name": "full_lymphoid_related",
+          "worker_pid": 229036,
+          "alive": true,
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.fair_comparison.realize_training",
+            "--tasks",
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/lymphoid_related/tasks",
+            "--output",
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300/full/lymphoid_related",
+            "--workers",
+            "4"
+          ],
+          "status": {
+            "status": "running",
+            "worker_pid": 229036,
+            "completed": 33700,
+            "total": 40000,
+            "seconds": 693.0425477027893
+          }
+        }
+      ]
     }
   ],
   "known_gaps": [
@@ -665,7 +725,7 @@
   "next_actions": [
     "Observe corrected builder179911 and point coordinator181064; accept 3x40000 full points/audits; old failed points forbidden; then native GPU trainer/checkpoint/terminal-scorer gates for3methods x3folds",
     "Audit full4x annotation coverage for strict morphology-excluded tier; fine-clean alone cannot certify absence",
-    "Continue observing six genericHE raw/PCA/formal pipeline handles; keep captured sources frozen and GPU1/3 reserved",
+    "Continue6 genericHE handles and frozen sources; all30 TLS grid/tissue CPU cache gate accepted, next build full streaming inference/cache/stitch and actual GPU/cell efficiency; keep main30 cohort distinct",
     "Build independent native WSI model/cache/coverage/stitch/efficiency gates; GPU4/5 only after raw completion and actual idle",
     "Update reviewer matrix with qualified evidence; no heldout accuracy or whole-goal completion claimed"
   ],
@@ -1609,6 +1669,63 @@
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/geometry_1026_005800",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/geometry_1026_005800.log",
       "terminal_log_tail": "{\"no source interior for requested sign\": 2}, \"accepted_counts\": {\"crc|val\": 1044, \"crc|train\": 3869, \"tiger|val\": 181, \"tiger|train\": 324}, \"masked_catalog_sha256\": \"4b4a1bc58b5e4a70c130c7db1b20c20b186bbffe142973e817a3183d17253d55\"}\n{\"fold\": \"adipose\", \"candidates_sha256\": \"9de9afde0b062a036203cf23987e83e4df2e42fd638c5b7da9586ab324f33b8c\", \"original_candidates\": 5929, \"accepted_candidates\": 5926, \"rejected_candidates\": 3, \"rejection_reasons\": {\"insufficient representative source interiors\": 1, \"no source interior for requested sign\": 2}, \"accepted_counts\": {\"crc|val\": 1126, \"crc|train\": 4192, \"tiger|val\": 208, \"tiger|train\": 400}, \"masked_catalog_sha256\": \"59a9b209634f38911fde808aa0f6511404f21b6276e681df15efdd6d2b0d485f\"}\n{\"fold\": \"lymphoid_related\", \"candidates_sha256\": \"6b8b0207cfcabd982a0033638d9544386db3a281e993f1c92ec9484959e0769f\", \"original_candidates\": 5684, \"accepted_candidates\": 5683, \"rejected_candidates\": 1, \"rejection_reasons\": {\"no source interior for requested sign\": 1}, \"accepted_counts\": {\"crc|val\": 1175, \"crc|train\": 4393, \"tiger|val\": 50, \"tiger|train\": 65}, \"masked_catalog_sha256\": \"5bc9e935edb74f21d3ce15146c8568f755ea57a3b6bad7e7babd0007d7ba60df\"}\nEXIT_CODE=0\n"
+    },
+    {
+      "kind": "heldout_geometry_protocol_builder",
+      "worker_pid": 179911,
+      "gpu": null,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300.log",
+      "session": "fewclick_heldout_protocols_geometry_1026_010300",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.heldout_comparison.prepare",
+        "--base-tasks",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400",
+        "--audit",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/geometry_1026_005800",
+        "--remote",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/tasks_1025_132300",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300"
+      ],
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-26T01:22:51.227281+08:00",
+      "status": "complete_protocols",
+      "last_observed_status": {
+        "status": "complete_protocols",
+        "worker_pid": 179911
+      },
+      "terminal_log_tail": "/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/lymphoid_related/tasks\", \"catalog\": \"/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/lymphoid_related/catalog\", \"heldout_local\": \"/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/lymphoid_related/heldout_local\", \"heldout_remote\": \"/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/lymphoid_related/heldout_remote\", \"protocol_sha256\": \"a51de957e986ba31801bb74f5a58c51cc2a6fbd3b7d054954f6abb13458702c9\", \"seen_pairs\": 240, \"seen_point_groups\": 1200, \"heldout_local_pairs\": 20, \"heldout_remote_pairs\": 62, \"training_tasks\": 40000, \"actual_coordinates_pending\": true}\nEXIT_CODE=0\n"
+    },
+    {
+      "kind": "WSI_all30_spatial_plan",
+      "worker_pid": 211883,
+      "status": "complete_spatial_plan",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/plan_1026_010800",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/plan_1026_010800.log",
+      "session": "fewclick_wsi_plan_1026_010800",
+      "terminal_log_tail": ".9166100865881539}\n{\"slide\": \"tls-087c8bbaa4e56b29\", \"tiles\": 4012, \"covered_area_fraction\": 0.9111091775649021}\n{\"slide\": \"tls-7c68735f5f8d66da\", \"tiles\": 2537, \"covered_area_fraction\": 0.889163039035002}\n{\"slide\": \"tls-624b4c415b72eb6e\", \"tiles\": 5304, \"covered_area_fraction\": 0.9175964639451966}\n{\"slide\": \"tls-6fe07bc9f2d5a323\", \"tiles\": 3713, \"covered_area_fraction\": 0.9049748172602479}\n{\"slide\": \"tls-ef5887da77bb7578\", \"tiles\": 5250, \"covered_area_fraction\": 0.9214874939754283}\nEXIT_CODE=0\n"
+    },
+    {
+      "kind": "WSI_background_cache_gate",
+      "worker_pid": 236031,
+      "status": "passed_background_only_gate",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/cache_gate_1026_011300",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/cache_gate_1026_011300.log",
+      "session": "fewclick_wsi_cache_gate_1026_011300",
+      "terminal_log_tail": "ning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)\n  tensor = torch.from_numpy(image.transpose(2, 0, 1)).float().div_(255.0)\nEXIT_CODE=0\n"
+    },
+    {
+      "kind": "WSI_central_tissue_cache_gate",
+      "worker_pid": 274860,
+      "status": "passed_real_WSI_cache_stitch_gate",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/cache_central_gate_1026_011900",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/cache_central_gate_1026_011900.log",
+      "session": "fewclick_wsi_central_cache_gate_1026_011900",
+      "terminal_log_tail": "/home/zhaoyh/miniconda3/envs/aligner/lib/python3.10/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n  warnings.warn(\nEXIT_CODE=0\n"
     }
   ]
 }
