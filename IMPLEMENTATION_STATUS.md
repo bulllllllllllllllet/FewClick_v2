@@ -2457,3 +2457,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/native_point_gate_1026_005300；protocol_continuity_1026_005400.json；live builder88191/coordinator98745。
 - Docs record: docs/运行记录/数据审计/运行记录_三fold完整任务生成与真实点击_1026_004500.md。
 - Commit: 本条随本次独立提交，哈希由Git记录。
+
+## 10-26 01:04:00
+
+- Purpose: 验证留出训练/seen选模/原GT终评checkpoint衔接，定位全量点击失败并审计全候选几何可行性。
+- Changed: heldout_comparison training/evaluate/gate_checkpoint/geometric_candidates、prepare审计来源字段、README、goal/registry/run records。
+- Validation: CPU gate149733两次真实head/joint更新、三骨干变化、fresh model/optimizer/RNG及两域终评预测exact；五类错误绑定拒绝。几何全池N/A/L去2/3/1训练pair、val不减，129原resolver回放通过。原全点三失败与CPU CUDA RNG失败完整保留。新geometry协议179911/点击181064仍运行/等待，正式GPU/精度未完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/checkpoint_gate_cpu_1026_005800、geometry_1026_005800、geometry_independent_1026_010300.json、checkpoint_continuity_1026_010400.json。
+- Docs record: docs/运行记录/模型实验/运行记录_概念留出训练与独立终评衔接门控_1026_005500.md；数据审计1026_004500。
+- Commit: 本条随本次独立提交，哈希由Git记录。

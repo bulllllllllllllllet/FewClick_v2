@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-26T00:52:59.973785+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
+Updated: 2026-10-26T01:04:33.804651+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
 
 ## Objective
 
@@ -133,3 +133,11 @@ All1737 GT SHAs audited. Remaining train candidate pairs CRC/TIGER: N3869/326, A
 Builder88191/tmux fewclick_heldout_protocols_1026_004829 is live generating threefold catalogs/seen tasks and separate originalGT local/remote terminal tests. Point coordinator98745/tmux fewclick_heldout_points_1026_005200 waits same owned builder/summary/EXIT0, then all3x64 pilots+independent audits before 3x40000 full coordinates and final audits; no GPU and no retry. Source files captured in points_1026_005200/contract.json are frozen while waiting/running.
 
 Actual necrosis native gate107528 passed64 tasks (CRC39/TIGER25) and direct resolver replay. Independent audit passed all1737 exact mask/originalGT, unchanged RGB/cells/spatial fields, all40000 recipe membership,1300 seen point groups and64 training point signs; original heldout tests40 local/115 remote pairs retain exact frozen points. This is NOT full coordinates or heldout model accuracy. Artifacts heldout_1026_003000/native_point_gate_1026_005300, protocol_continuity_1026_005400.json; record docs/运行记录/数据审计/运行记录_三fold完整任务生成与真实点击_1026_004500.md. Next observe same processes, accept full points, then actual checkpoint/train/eval adapter gates while G6 six workers continue. Overall goal active.
+
+## Latest heldout correction and checkpoint gate
+
+First builder88191 ended complete_protocols/EXIT0; point coordinator98745 ended FAILED after all3 pilots/audits passed but all3 full resolutions failed no source interior. Preserve full prefixes1208/680/176, actual first errors recipes1208/684/179 independently reproduced. No training on old partial manifests.
+
+Full geometry audit149722 EXIT0 applied unchanged2um interiors/representative picker at max5+5 to all candidate pools. N5420→5418, A5929→5926, L5684→5683; removed only2/3/1 train pairs, no validation candidate removal. All6 rejections plus123 accepted direct original-resolver replays passed. New geometry protocol builder179911 and point coordinator181064 are verified live, root protocols_geometry_1026_010300 / points_geometry_1026_010300; same3x64+audit then3x40000+audit queue. Freeze captured source contract while running.
+
+Checkpoint CPU gate first134778 failed CUDA-only shared RNG call; corrected explicitCPU harness149733 EXIT0 passed real2 updates, all3backbones changed, fresh model/optimizer/RNG and originalGT heldout CRC/TIGER predictions exactly replayed. Reject test selection, gate-as-formal, wrongfold/trainSHA/masked-testGT. training.py/evaluate.py implement distinct seen-training/checkpoint/terminal-test bindings; full native GPU trainer/evaluator remains ungated/unrun. Sources/probability/selected-weight SHAs independently verified. Record docs/运行记录/模型实验/运行记录_概念留出训练与独立终评衔接门控_1026_005500.md. Evidence checkpoint_gate_cpu_1026_005800/gate_acceptance.json, geometry_independent_1026_010300.json. No heldout accuracy yet; G6 six jobs remain live. Overall goal active.

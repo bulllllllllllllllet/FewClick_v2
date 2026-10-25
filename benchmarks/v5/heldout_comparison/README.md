@@ -13,3 +13,7 @@ full4x形态完全排除尚未认证。fine-clean数量只是上界；TIGER复�
 `prepare.py`生成独立masked catalog/seen选模/40k recipes，以及原GT和固定旧点击的heldout local/remote终评合同。不能把终评合同直接交给原evaluate_checkpoint绕过训练协议SHA；需要单独绑定训练合同的评估适配器。
 
 `point_pipeline.py`验证原builder真实PID、summary和EXIT0后，依次运行三fold各64任务pilot与`audit_prepared.py`，全部通过才生成各40000实际训练点并再次审计。点审计逐像素核对1737标签的精确屏蔽、原GT保留、RGB/cells/空间字段不变、recipe成员、seen/训练点符号和原测试点序列。源码在队列contract中冻结，失败保留且不重试。当前坏死fold实际64点与完整协议审计通过；全fold/完整实际点仍待队列验收，不代表模型训练完成。
+
+最新状态：首版三fold64点全部通过，但完整采样均失败；屏蔽后像素数足够不保证原2µm内部可采样。`geometric_candidates.py`按原picker最大5+5预算审计全候选池，N/A/L分别剔除2/3/1个训练pair，验证池不减少，129例独立原resolver回放一致。新geometry版协议/点击队列运行中，旧部分点击禁止作为完整训练输入。
+
+`training.py`仅为fresh image-only FewClick及SAM/WSI-SAM包装原共享trainer和FoldData，把fold/exclusion/source身份写checkpoint合同。`evaluate.py`独立绑定seen训练合同、完成训练run及原GT终评合同，只读取seen-best权重并检查history/path/SHA。`gate_checkpoint.py`实际CPU head/joint两更新、三视野主干变化、fresh权重/optimizer/RNG及两域heldout预测精确重放通过；另拒绝错误fold、训练SHA、masked测试GT、测试选模和gate冒充正式结果。CPU harness显式保存CPU RNG，第一次误调用CUDA-only save失败原样保留。完整GPU训练/终评CLI和最终精度仍待原生门控与运行；CPU门控不替代它们。

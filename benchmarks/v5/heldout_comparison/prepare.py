@@ -84,6 +84,8 @@ def build(base_tasks,audit,remote,output):
         contract=base|dict(version='heldout_supervision_v1_1026',catalog=str(catalog),catalog_sha256=digest(catalog/'tiles.parquet'),
             validation_sha256=digest(tasks/'validation_maximum.json'),training_recipe_sha256=digest(tasks/'training_recipe.jsonl'),
             parent_protocol_sha256=digest(base_tasks/'contract.json'),heldout_fold=fold,heldout_excluded_labels=spec['exclude'],
+            candidate_audit=str(audit),candidate_audit_sha256=digest(audit/'summary.json'),
+            candidate_list_sha256=digest(audit/f'{fold}_candidates.json'),
             heldout_test_targets=spec['test'],coverage=coverage,validation_tasks=len(validation),validation_pairs=pair-(60000000+fold_index*1000000),
             validation_unique_fields=len({p['query_id'] for p in validation}),seed=20261026+fold_index,
             validation_scope='seen-target masked-label spatial development selection; no heldout-target scores used',
