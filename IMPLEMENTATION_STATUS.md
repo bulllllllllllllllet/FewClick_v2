@@ -2367,3 +2367,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_evidence_1025_163705.
 - Docs record: docs/运行记录/模型实验/运行记录_审稿challenge逐条证据与修改边界_1025_163705.md
 - Commit: This isolated tracking change; hash available in git log.
+
+## 10-25 22:19:07
+
+- Purpose: Accept completed external adapted scores and update stale queues from real process/output evidence.
+- Changed: evidence_closure/audit_external.py; external closeout record; goal/registry/current record.
+- Validation: Real six680-row external report and independent actualGT/point/boundary/count/RGB/cell identity audit passed; four original development40k consumption/selected checkpoint hashes and32 saved native-gate mask metric replays passed. Shared10 ROI2000 bootstrap completed; FewClick XCell.531922 trails SAM-FT.651444/WSI-SAM-FT.688043; XCell−noCell CI includes0. G4/G6 scores ended EXIT0 but independent acceptance pending; three third-seed train PIDs verified live.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/complete_report_1025_221700; audit_1025_221700.json; execution_1025_221700.json.
+- Docs record: docs/运行记录/模型实验/运行记录_外部适配完整验收与六方法统计_1025_221700.md
+- Commit: This isolated acceptance change; hash available in git log. Overall goal remains active.

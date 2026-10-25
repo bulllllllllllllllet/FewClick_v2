@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-25T16:02:04.456733+08:00. Native thread goal: **active**. G3 is complete; the overall objective is incomplete.
+Updated: 2026-10-25T22:19:07.227747+08:00. Native thread goal: **active**. G3 is complete; the overall objective is incomplete.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-25T16:02:04.456733+08:00. Native thread goal: **active**. G3 is
 
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
-3. G4 clean G3 transfer is now gated/running. Next independent work: strict concept-heldout data/ontology audit and WSI model pipeline while full scores execute; reviewer mapping is now saved, closure remains incomplete.
+3. G4 clean G3 transfer scoring has ended; audit and report remain. Next independent work: strict concept-heldout data/ontology audit and WSI model pipeline while full scores execute; reviewer mapping is now saved, closure remains incomplete.
 4. New source may live outside locked snapshots. Do not edit running/queued trainer, model, sampler or inference files listed in contracts.
 
 Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/continuity_1025_160204/goal_before_G3_closeout_1025_160204.md` (SHA256 b166a50ea75b0c9c81aed0525b9c48b847b3391e525af7a61daf9afa17bd28dd). Detailed immutable results and run records remain unchanged.
@@ -23,10 +23,10 @@ Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_
 | G1 | complete, qualified | Frozen inputs/points/selection/metrics and prior ledger; no equal-total-pretraining claim |
 | G2 | complete | Local public SAM/WSI-SAM6040 each |
 | G3 | complete, single seed | Five10k/40k trains and6040 scores each; independent full parity audit |
-| G4 | running, incomplete | Clean adapted transfer still needed; native recent context and full statistics pending |
-| G5 | queued, CPU gates passed | Two additional seeds/four methods; native gates, full trains, scores and mean/std pending |
-| G6 | running | Seven mechanism trains/full scores; four slots currently active |
-| G7 | partial preparation/queued | Strict heldout concepts/TLS and external adapted full scores pending |
+| G4 | scoring complete, acceptance pending | All clean/context full scores ended EXIT0; independent audits/full statistics pending |
+| G5 | running | Extra seed26 complete execution; seed27 WSI complete, three trains live; final audit/mean/std pending |
+| G6 | scoring complete, acceptance pending | Seven10k trains/6040 scores and comparison ended; independent acceptance/contrasts pending |
+| G7 | external subset complete, remainder pending | Six680-row external comparison audited; strict heldout concepts/TLS pending |
 | G8 | input gate only | Real WSI cells/model/coverage/stitch/cache/efficiency pending |
 | G9 | preparing | 11 human challenges + 14 AI checks mapped; experiments/factual corrections and submitted-version binding remain |
 
@@ -47,19 +47,15 @@ Primary corrected report: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protoco
 
 ## Active queues and frozen sources
 
-- G6 coordinator1107196, `mechanisms_1025_134753/mechanism_formal_1025_141300`; currently GPU1 m1_xcell1483487, GPU3 Dense morphology1524245, GPU4 m3_none1337519, GPU5 m3_xcell1363539. Then remaining variants/gate/train/evaluate. Verify real state, not just this snapshot.
-- G4 native MultiverSeg CPU4 worker1444317, `transfer_1025_131856/context_full_1025_152401`; predicted sparse18700 rows, full-GT837 single-pair rows.98 pairs excluded from dense reference due incomplete source GT; compare other methods on same837 subset. Native20-row gate passed, input object forbids all GT APIs; query human clicks0. Full score incomplete.
-- External cells coordinator1295759, waits G6 GPU4 none+morphology complete and GPU idle, then native one-field gate→ten fields. Output `external_1025_143257/cell_formal_1025_145136`.
-- External adapted coordinator1338557, waits real cells/full G3 trains/GPU4 idle, then same-final-checkpoint native8→full680 per method. Output `external_1025_143257/adapted_formal_1025_150010`.
-- Repetition coordinator1557332, `replication_1025_153837/formal_1025_154653`, waiting per-GPU G6 completion; GPU4 also waits external adapted completion. Two extra seeds20261026/20261027 preserve exact40k multiset but change order; within seed all four methods share sequence. Dense internal initializer remains fixed. Preparation, real loader/model/loss/update/checkpoint CPU gates passed; **no extra seed GPU train yet**.
+Replication coordinator1557332 remains live. At latest observation seed20261026 four trains/scores complete execution; seed20261027 WSI-SAM complete, SAM2964632 / imageFewClick3190652 / XCellFewClick2970308 training. Verify actual status before any action. Its train/eval/model sources remain frozen. No GPU0/2. No training reruns from observation timeouts.
 
-Use no GPU0/2. Future GPU jobs must chain dependencies to avoid racing these coordinators. Source contracts are authoritative: fair_comparison/model/mechanism files, active external inference/cell files, context transfer files, replication prepare/gate/queue all frozen. New independent modules/reports are allowed; native gates precede scaling.
+G6, external cell/adapted and all G4 scoring jobs ended with summary + EXIT_CODE0; moved to registry.completed_jobs. Completion of execution does not replace independent acceptance.
 
 ## G4/G7/G8 facts
 
-Retained-M3 graph/prototype18700 each and SAM-public feature prototype18700 complete. First two independently audited: presentDice.469993/.343504, absentFPA.045580/.369965; fixed-feature historicalJ5 diagnostic only. SAM-feature independent audit and all transfer cluster statistics still required. Clean local-adapted transfer is now gated/running; full scores and statistics are incomplete.
+Retained-M3 graph/prototype18700 each and SAM-public feature prototype18700 complete. First two independently audited: presentDice.469993/.343504, absentFPA.045580/.369965; fixed-feature historicalJ5 diagnostic only. SAM-feature independent audit and all transfer cluster statistics still required. Clean local-adapted transfer all five18700 outputs are complete execution; independent full row audits/statistics are pending.
 
-External IGNITE true256/512/1024µm centre fields10,34 pairs×5 point groups,9 classes. Original splits7train/1val/2test retained as provenance; all external-only to current CRC/TIGER adaptation, never externally fit/select weights. Public SAM/WSI-SAM680 each complete: Dice.457234/.510330, paired ROI CI includes0. PUMA205/OCELOT663 ROI cannot provide1024µm context; no fake padding/repeated-image context. Native cell extraction and adapted/FewClick scores still pending.
+External IGNITE true256/512/1024µm centre fields10,34 pairs×5 point groups,9 classes. Original splits7train/1val/2test retained as provenance; all external-only to current CRC/TIGER adaptation, never externally fit/select weights. Public SAM/WSI-SAM680 each complete: Dice.457234/.510330, paired ROI CI includes0. PUMA205/OCELOT663 ROI cannot provide1024µm context; no fake padding/repeated-image context. Native cells and all four adapted680 scores are complete and independently audited; full six-method ROI statistics saved in complete_report_1025_221700. Primary SAM-FT.651444 / WSI-SAM-FT.688043 / FewClick noCell.527190 / XCell.531922. FewClick remains lower than adapted SAMs; XCell minus noCell.004732 CI[-.025674,.027609] includes0. Only10 centres, not broad external/heldout proof.
 
 WSI strict reader gate passed actual first TLS case54039×65660, vendor CapRes.247925µm (SDK mpp-x/mpp-t aliases of one isotropic value); native1033/2066/4132 boxes and PNG replay/error propagation passed. High-level KFB exception-to-white behaviour is bypassed. No model/full-slide coverage/stitch or efficiency result yet. TLS annotation completeness/hard negatives **unconfirmed**; unannotated pixels are not certified negatives. CRC lymphocyte aggregate is not TLS. Legacy ~.70 TLS result was recall, not Dice; paper correction remains required.
 
@@ -74,12 +70,16 @@ WSI strict reader gate passed actual first TLS case54039×65660, vendor CapRes.2
 - Metric fixed>=.5; BF1 Euclidean2µm/anisotropic MPP, GT-boundary eligibility, no predicted boundary scores0. Legacy BF1 denominator correction separate; old Dice unchanged. All five point groups are development robustness, not blind test.
 - Native goal remains active until statistics/seeds, all mechanism/generic/heldout/TLS/WSI/efficiency and reviewer evidence requirements are actually verified. Preserve output/version/SHA/PID/log/EXIT_CODE evidence at each milestone.
 
-## Clean adapted G4 now running
+## Clean adapted G4 completed execution
 
-Real eight-case32-row gates passed for SAM-FT feature prototype and both G3 FewClick Dense conditions (each learned graph+Dense and same-feature prototype), native/cache errors0 in both domains, query maps0, input GT API forbidden, saved direct counts passed. CPU4/GPUhidden workers1736643(SAM),1736647(no cells),1736650(XCell), output `transfer_1025_131856/clean_<method>_1025_162450`,18700 rows/method; five outputs total. No remote supervised training added; this is local-adapted transfer generalization, not optimized R training. Record `docs/运行记录/模型实验/运行记录_清洁适配权重支持查询迁移_1025_161448.md`. Freeze its source hashes.
+Real eight-case32-row gates passed for SAM-FT feature prototype and both G3 FewClick Dense conditions (each learned graph+Dense and same-feature prototype), native/cache errors0 in both domains, query maps0, input GT API forbidden, saved direct counts passed. CPU4/GPUhidden workers1736643(SAM),1736647(no cells),1736650(XCell), output `transfer_1025_131856/clean_<method>_1025_162450`,18700 rows/method; five outputs total, now all ended EXIT0. Independent full audits and statistics remain pending. No remote supervised training added; this is local-adapted transfer generalization, not optimized R training. Record `docs/运行记录/模型实验/运行记录_清洁适配权重支持查询迁移_1025_161448.md`. Freeze its source hashes.
 
 Query coverage audit:43/470 present pairs and32/465 absent pairs contain some ignore pixels in query. All metrics remain on annotated valid pixels; absent means no target annotated there, never certified whole-image or whole-slide negative. Keep full fixed task set and qualify absence/FPA. Auditquery_coverage_audit_1025_162400.json.
 
 ## Reviewer evidence tracking
 
 docs/运行记录/模型实验/运行记录_审稿challenge逐条证据与修改边界_1025_163705.md maps all 11 human challenge groups and 14 AI self-checks to current evidence and missing work. Raw four reviews and SHA replay are in /nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_evidence_1025_163705. XCell internal-data provenance is accepted. Unprompted-component recall/distance, complete WSI timing, original 5/30 selection and submitted-version binding remain separate gaps. Local TeX explanations are not evidence of actual upload changes. No paper edits applied or reviewer concerns declared all resolved.
+
+## Latest accepted milestone
+
+External six-method comparison actual10-field GT/point/680 rows, RGB/cell hashes, original development weights/40k consumption and32 saved same-checkpoint gate mask replays passed. Evidence external_1025_143257/audit_1025_221700.json and complete_report_1025_221700/summary.json; record docs/运行记录/模型实验/运行记录_外部适配完整验收与六方法统计_1025_221700.md. G4/G6 independent acceptance and G5 full repeats still required.
