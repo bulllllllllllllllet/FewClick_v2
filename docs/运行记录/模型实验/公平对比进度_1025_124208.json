@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T23:15:48.461891+08:00",
+  "updated": "2026-10-25T23:21:15.145333+08:00",
   "current_phase": "G6",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -23,7 +23,9 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/audit_1025_125020/audit.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400/contract.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/protocol_verified_1025_125420.json",
-        "benchmarks/v5/fair_comparison/README.md"
+        "benchmarks/v5/fair_comparison/README.md",
+        "docs/运行记录/模型实验/运行记录_SAM高Dice的指标与任务条件核对_1025_231900.md",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/scoring_explanation_1025_231900/audit.json"
       ],
       "qualification": "审计与任务合同完成；历史先验缺口已记账，不代表严格等总监督条件已达成。G3须单独验收。"
     },

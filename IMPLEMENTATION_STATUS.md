@@ -2412,3 +2412,12 @@
 - Artifacts: replication_1025_153837/complete_report_1025_230100 and independent_aggregate_recount_1025_231100.json; generic_cells_1025_231000/gate_1025_231000 and gate_independent_1025_231300.json under /nfs-medical3/zyh/fewclick_v2/fair_comparison/.
 - Docs record: docs/运行记录/模型实验/运行记录_三seed全量验收与均值标准差_1025_230100.md; docs/运行记录/特征缓存/运行记录_通用HE细胞特征原生输入门控_1025_231000.md
 - Commit: This isolated acceptance/input-gate change; hash available in git log. Total goal remains active.
+
+## 10-25 23:21:15
+
+- Purpose: Explain the user-questioned high SAM Dice from actual counts, prompt budgets, adaptation and selection conditions.
+- Changed: SAM scoring-condition audit record; goal/registry/current record. No model/protocol change.
+- Validation: Re-read all3 SAM6040-row files; every Dice recounted fromTP/FP/FN. Primary1510 rows/302 pairs/212 fields, all present and3+2; seed25 CRC.663117/TIGER.805801, macro.701859 versus pooledmicro.847757. Source confirms predicted-IoU selection and GT-simulated local prompts.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/scoring_explanation_1025_231900/audit.json.
+- Docs record: docs/运行记录/模型实验/运行记录_SAM高Dice的指标与任务条件核对_1025_231900.md
+- Commit: This isolated explanation audit; hash available in git log. Total goal remains active.

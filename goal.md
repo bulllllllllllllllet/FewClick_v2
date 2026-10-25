@@ -99,3 +99,7 @@ All12 formal10k/40k/6040 runs accepted, actual seed permutations/click multisets
 ## GenericHE input gate
 
 Current input gate six CRC/TIGER train×three-view fields passed on GPU3, worker3713373 ended EXIT0. Raw public CTransPath768 captured before XCell, original74 reference max error0, geometry/order/total identical, native context re-detection and saved NPZ/nucleus count replay passed. Fine original masks reused; labels unavailable. Source/artifacts generic_cells_1025_231000/gate_1025_231000 and gate_independent_1025_231300.json. No full1737 cache, train-only64 transform or controlled model training completed. Next extend actual extraction path with native gate/shards; fit no transforms on validation cells.
+
+## SAM score interpretation audit
+
+User asked why SAM Dice is high: explain local GT-simulated3+2 present-target development tasks,10k/40k SAM adaptation and validation checkpoint selection. Three-seed mean.702063; seed25 CRC.663117/TIGER.805801,1+1.654306 vs3+2.701859. Report uses pair macro (micro would.847757), no background-TN reward and predicted-IoU candidate selection. Counts rechecked; no inference bug or causal explanation proven by score alone. Record docs/运行记录/模型实验/运行记录_SAM高Dice的指标与任务条件核对_1025_231900.md. Do not weaken SAM or alter protocol based on ranking; next action remains genericHE full extraction and heldout/WSI.
