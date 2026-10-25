@@ -2502,3 +2502,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/stream_gate_bounded_1026_015200、stream_execution_gate_1026_015200、stream_execution_independent_1026_021700.json、full_cpu_slide0_1026_021756、stream_continuity_1026_022000.json。
 - Docs record: docs/运行记录/模型实验/运行记录_整片逐行流式拼接与首片完整执行_1026_015000.md。
 - Commit: 本条随本次独立提交，哈希由Git记录。
+
+## 10-26 03:20:00
+
+- Purpose: 接受全标签同任务参考并记录首两条件原生门控/全新留出训练开始。
+- Changed: 新heldout_reference extract/wsi_remote/queue_wsi/audit_wsi、README及goal/registry/run records；冻结源未改。
+- Validation: 原18表19320行逐字节/GT/独立fsum聚合通过；新WSI三fold4840全行/点/GT/count/权重/source/统计和60gate mask通过，合计21表24160行，参考scope含target训练与开发选模差异。首版coverage元数据schema已拒绝保留并修正重跑。raw02/03完整EXIT0，SAM/native bridge1.192e-7 binaryexact及NoCell三骨干warm/jointprobe改变、各8终评gate通过；正式GPU5 796373/GPU4 969093真实运行，非最终精度。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/all_label_reference_report_1026_030900、all_label_wsi_acceptance_1026_030600、native_first_live_1026_024600.json、native_second_live_1026_031500.json、reference_continuity_1026_032000.json。
+- Docs record: docs/运行记录/模型实验/运行记录_全标签同任务参考提取与WSI迁移补齐_1026_023000.md。
+- Commit: 本条随本次独立提交，哈希由Git记录。

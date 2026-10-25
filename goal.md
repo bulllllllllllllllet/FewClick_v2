@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-26T02:24:20.347965+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
+Updated: 2026-10-26T03:20:55.078362+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
 
 ## Objective
 
@@ -175,3 +175,11 @@ New StripeWriter holds only fine-native-height x canvas-width float sum/uint16 c
 Actual first complete3050tile CPU NoCell stream worker646382 tmux fewclick_wsi_full_cpu_1026_021756 is verifiedlive CACHE PREPARING, output wsi_global_1026_010800/full_cpu_slide0_1026_021756. Alloffline caches then1+1/3+2 complete online passes; no queryencode/maps, native0.247925um output is resized512 probability, no extra spatial detail. Validbbox excludes missing4x edges as audited. Estimate69GB vs actual6.787TB decimal free checked beforestart. Modelselected G3 NoCell after all-label adaptation, fixedCRC support, NOT TLS semantic prompts, full-cell runtime or GPU efficiency. OS/NFS cache state uncontrolled. Full cache/passes/coverage/independent sample acceptance still pending.
 
 Freeze source files in full CPU contract (stream/stripe/cachehelper/reader/model) while running; new work outside snapshots. Source/SDKCPP/real PID/job-command record full_cpu_live_audit_1026_022000.json and stream_continuity_1026_022000.json. Record docs/运行记录/模型实验/运行记录_整片逐行流式拼接与首片完整执行_1026_015000.md. SixG6 + local349631 + R433592 remainlive. Next independent main30/GT audit, fullcell preparation/nativeGPU efficiency and same-subset all-label references; overall goal active.
+
+## Latest all-label references and native heldout training
+
+All-label SAME test-image/click/metric references accepted qualified:18 exact oldG3/G4 tables19320 rows with independent fsum stats, plus WSISAM custom two-view remote3fold4840 new rows/fullGT/point/weight/source/count/metrics and60 gate mask replays. Total21tables24160rows, not independent cases. Report heldout_1026_003000/all_label_reference_report_1026_030900/report.md. All-label means current available targets (TIGER4 absent); training AND original302pair development checkpoint selection expose test target. Newexcluded model sees different training-task distribution and seen-only selector; future difference is descriptive, not isolated supervision-deletion causality. WSISAM beststep6000 vs fulltrajectory10k/40k. Reference wrapper first gate758499 metadata polluted coverage map, explicitly rejected/preserved/source archived; fixed777292 reran, full coordinator849996 EXIT0 and independent audit accepted. No newheldout performance yet.
+
+Raw02 PID3914383 and03 PID3914488 bothended full433fields/1299scales EXIT0; preserve as complete_execution, all4raw/PCA jointG6 acceptance stillpending. Allowed GPU4/5 then started9condition queue. Necrosis SAM native4 updates/fresh optimizerRNG restore/publicbridge maxerror1.192e-7 binaryexact and8-row terminal gate passed; fresh fulltrain GPU5 worker796373 running. Necrosis NoCell native4 updates/freshrestore/8terminalrows passed, independent warm/joint probe shows all3encoder backbones changed; fresh fulltrain GPU4 worker969093 running, resumeNone/newNactual SHA. Parent349631 and R433592 remainlive; R awaits completed fulltraining. No gateweights initialize formal models.
+
+Evidence native_first_live_1026_024600.json/native_second_live_1026_031500.json, all_label_independent_1026_024500.json and all_label_wsi_acceptance_1026_030600/summary.json. Record docs/运行记录/模型实验/运行记录_全标签同任务参考提取与WSI迁移补齐_1026_023000.md; snapshot reference_continuity_1026_032000.json. FullCPU WSI646382 stillcachepreparing; fullcell/main30/GT/nativeGPU efficiency and allnew9train/local/R audits/statistics/reviewer closure remain. Overall goal active.
