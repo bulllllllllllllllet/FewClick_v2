@@ -2322,3 +2322,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/adapted_formal_1025_150010; protocol_1025_124208/completion_acceptance_1025_150345.json; xcell_train_acceptance_1025_150202.json.
 - Docs record: docs/运行记录/模型实验/运行记录_外部域适配权重固定与真实推理门控_1025_145533.md
 - Commit: This isolated preparation change; hash available in git log.
+
+## 10-25 15:10:00
+
+- Purpose: Close external public reference scoring with complete-task parity and paired ROI-cluster statistics.
+- Changed: external_evaluation/report.py and README; public external run record; goal/registry/current record.
+- Validation: Real two680-row public outputs: exact task/prompt/GT/source/metric parity and all Dice recounted;10 ROI shared2000 bootstrap complete. SAM/WSI-SAM primary Dice.457234/.510330; paired difference95%CI[-.011932,.112748] includes0, no stable advantage claim. Both processes completed EXIT_CODE0. Formal FT/FewClick and training-seed replication remain pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/public_report_1025_150920.
+- Docs record: docs/运行记录/模型实验/运行记录_外部域公共权重真实门控与评分_1025_143741.md
+- Commit: This isolated report change; hash available in git log.

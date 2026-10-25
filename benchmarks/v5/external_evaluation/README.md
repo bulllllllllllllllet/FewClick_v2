@@ -25,3 +25,5 @@ CUDA_VISIBLE_DEVICES= OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4
 `evaluate_adapted.py` 评分SAM-FT/WSI-SAM-FT/image-only与XCell FewClick；不将CRC/TIGER闭集head按数字映射到IGNITE。权重完整strict load后逐张量回放校验；输入不接GT或target ID。SAM仅显式改变构造device，继承同一原生可微forward。完整评分要求10k训练summary、实际40k坐标SHA、开发best_checkpoint身份，以及相同最终权重/设备的真实外部门控。4步checkpoint的CPU门控只验证流程，不能用于正式精度比较。CPUfloat32和GPUbfloat16分开记录。
 
 `adapted_queue.py` 在外部细胞准备完成、所需四组G3训练完成并且GPU4实际空闲后，逐组进行同正式权重的8行GPU门控→680行评分。队列使用已选权重，不按外部Dice选择模型或改阈值；结果齐全后还需独立完整行配对审计与来源聚类报告。源码/协议已锁定，不能修改活跃队列contract中的文件。
+
+`report.py` 验证所给每个完整run的680行身份、实际点击、GT计数、指标版本和Dice重算；先平均同一图像目标对的5组点，再对图像目标对平均。用同一组2000次来源ROI bootstrap计算方法区间与配对差值区间，类别宏平均另列。不把34个目标对/170点组当独立病例；指定方法的完整报告不代表全部G7完成。

@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T15:06:17.625249+08:00",
+  "updated": "2026-10-25T15:11:08.138766+08:00",
   "current_phase": "G3",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -100,11 +100,16 @@
       ]
     },
     "G5": {
-      "status": "pending",
+      "status": "preparing",
       "depends_on": [
         "G2",
         "G3"
-      ]
+      ],
+      "evidence": [
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/public_report_1025_150920/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/public_report_1025_130820/summary.json"
+      ],
+      "qualification": "公共本图及外部ROI的配对来源聚类区间完成；完整适配统计与独立训练seed未完成，bootstrap不能代替训练seed。"
     },
     "G6": {
       "status": "running",
@@ -142,9 +147,11 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/cell_formal_1025_145136/contract.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/gate_adapted_sam_ft_1025_145800/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/gate_adapted_wsi_sam_ft_1025_145800/summary.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/adapted_formal_1025_150010/contract.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/adapted_formal_1025_150010/contract.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/public_wsi_sam_1025_144022/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/public_report_1025_150920/summary.json"
       ],
-      "qualification": "原生外部10中心/34对170组点击完成；SAM680行完成，主3+2 Dice .457234；WSI-SAM680行评分running。细胞/FT/FewClick完整比较与统计未完成；严格类留出/TLS仍待。",
+      "qualification": "原生外部公共SAM/WSI-SAM各680行完整评分和10 ROI配对聚类报告完成，主Dice.457234/.510330，差值95%区间含0。正式FT/FewClick队列等待真实cells；严格类留出/TLS仍待。",
       "record_public": "docs/运行记录/模型实验/运行记录_外部域公共权重真实门控与评分_1025_143741.md",
       "cell_record": "docs/运行记录/特征缓存/运行记录_外部域同配方细胞缓存与等待队列_1025_144733.md",
       "cell_formal_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/cell_formal_1025_145136",
@@ -360,13 +367,13 @@
       "rows": 680,
       "primary_dice": 0.45723408223721884,
       "process_alive_last_observed": false,
-      "process_observed_at": "2026-10-25T15:06:17.625249+08:00",
+      "process_observed_at": "2026-10-25T15:11:08.138766+08:00",
       "last_observed_rows": 680
     },
     {
       "method": "wsi_sam",
       "kind": "external_public_scoring",
-      "status": "running",
+      "status": "complete",
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/public_wsi_sam_1025_144022",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/public_wsi_sam_1025_144022.log",
       "session": "fewclick_external_wsi_sam_1025_144022",
@@ -376,8 +383,10 @@
       "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/gate_wsi_sam_1025_144100",
       "worker_pid": 1240032,
       "last_observed_rows": 620,
-      "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T15:06:17.625249+08:00"
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-25T15:11:08.138766+08:00",
+      "rows": 680,
+      "primary_dice": 0.5103302287878819
     },
     {
       "kind": "external_cell_coordinator",

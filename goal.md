@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-25 14:45 CST. Native thread goal: active.
+Updated: 2026-10-25 15:10 CST. Native thread goal: active.
 
 ## Objective
 
@@ -38,7 +38,7 @@ Evidence root: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_1242
 | G2 local public baselines | complete | SAM/WSI-SAM loaders, exact image/point geometry, full local report |
 | G3 local adapted controls | running; all five real gates passed | Real gradient/checkpoint/resume gates; SAM-FT/WSI-SAM-FT/supervised reference and controlled FewClick |
 | G4 transfer comparisons | running initial sparse diagnostics; full gates passed | Matching source-query inputs, prototype/control systems; no query GT |
-| G5 replication/statistics | pending | Source/space cluster intervals, independent training seeds and cost |
+| G5 replication/statistics | preparing; public cluster reports complete | Source/space cluster intervals, independent training seeds and cost |
 | G6 cells and mechanisms | running; first native GPU gate passed | Retrained no-cell/morphology/XCell and appropriate hierarchy/capacity controls |
 | G7 unseen concepts/domains and TLS | preparing external native inputs | Exposure audit, valid context/GT, matched baselines, strict held-out initialization |
 | G8 WSI and efficiency | preparing; real input gate passed | New-model real WSI path, complete coverage/coordinates, runtime/cache decomposition |
@@ -93,3 +93,5 @@ G3 first formal train completed: image-only FewClick10k/40k actualconsumed SHA i
 External adapted scoring prepared and queued: real SAM-FT/WSI-SAM-FT four-step-checkpoint CPU gates passed8 rows each, strict tensor reload, unavailable-GT forward and direct saved counts. These do not qualify final weights; coordinatorPID1338557 (`fewclick_external_adapted_1025_150010`) waits native10-field cells and completed G3 trains, then GPU4 idle, same-final-checkpoint native gate8→full680 for each of4 methods. Record `docs/运行记录/模型实验/运行记录_外部域适配权重固定与真实推理门控_1025_145533.md`; do not edit locked source files in itscontract. No target-ID mapping from CRC/TIGER closed head toIGNITE.
 
 G3 image-only full6040 complete: Dice.564044/BF1.226900, complete point/GT identities checked against public rows; WSI-SAM-FT10k/40k complete, selected6000 but full point-group scoring pending; XCell10k/40k complete, fullscoring ongoing. Closed-referencePID1340089 nowtraining. G6m3_none GPU native4-update reload/resume gate passed, formaltrainPID1337519 running; G6 is no longer onlyqueued. Independent evidence `completion_acceptance_1025_150345.json` and `xcell_train_acceptance_1025_150202.json`.
+
+External public pair complete: SAM/WSI-SAM680 rows each with exact click/GT/metric parity, complete-task Dice recount and10-ROI paired bootstrap2000. Primary Dice.457234/.510330; WSI-minus-SAM .053096, ROI95%CI[-.011932,.112748] includes0. Report `external_1025_143257/public_report_1025_150920`; bothpublic CPU workers endednormally. This only closes public external references, not full G7 or independent seeds. FT/FewClick stillqueued. Source `benchmarks/v5/external_evaluation/report.py` is new and does not alter active queue snapshots.
