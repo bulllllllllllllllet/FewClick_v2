@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-25 12:55 CST. Native thread goal: active.
+Updated: 2026-10-25 13:13 CST. Native thread goal: active.
 
 ## Objective
 
@@ -13,9 +13,9 @@ Complete the versioned supplementary experiment route for the current physical-m
 3. Inspect the registry's active workers and actual status/log files before launching or repeating a job.
 4. Continue the first incomplete phase whose prerequisites pass. Update the records when evidence changes.
 
-Current phase: **G2: public local baselines (running)**. G1 audit, metric tests, immutable local manifests and prior/input ledger passed. Strict equal-total-supervision eligibility remains a separate G3 gate. SAM and WSI-SAM passed real CRC/TIGER inference gates (4 tasks × 4 budgets each); full scoring is running on GPU1/3 (worker PIDs729815/729820), 6040 scored budget-tasks per method. Inspect registry/logs before taking the next step. Native goal is thread-persistent; project files preserve the route for a new session.
+Current phase: **G3: full adapted training (preparing)**. G2 public scores complete: SAM3+2 Dice .4505; WSI-SAM3+2 Dice .4967, on the same302 pairs ×5 point groups. Paired source-cluster report is `public_report_1025_130820`. All five G3 real gradient/reload/fresh-resume gates and independent generic-initialization/parameter-change checks passed. Full40k actual coordinates are frozen at `realized_train_1025_125928` (SHA `fe8311f9acf29c500e93ceb89f1f466d0241d680598bcc6f9ae8ee49adf91afe`). Next launch full10k-update queues; gate accuracy is not a performance result. Check registry and actual worker state before acting.
 
-Evidence root: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208`. Local validation: 302 image-target pairs × 5 point groups = 1510 tasks, four nested budgets. Training: 40000 fixed identity/seed recipes; full realized-coordinate parity must be checked by trainers. Read the [fairness contract](benchmarks/v5/fair_comparison/README.md) before reporting a comparison.
+Evidence root: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208`. Local validation: 302 image-target pairs × 5 point groups = 1510 tasks, four nested budgets. Training: 40000 realized actual-click plans; each full trainer must reproduce the complete file SHA in its consumed log. Read the [fairness contract](benchmarks/v5/fair_comparison/README.md) before reporting a comparison.
 
 ## Frozen decisions
 
@@ -35,8 +35,8 @@ Evidence root: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_1242
 |---|---|---|
 | G0 four-arm screen | complete | Original run complete, matched task/val SHA, checkpoint reload, report |
 | G1 fairness and manifests | complete (qualified) | Machine audit, input/exposure ledger, versioned metrics, frozen tasks and selection rules |
-| G2 local public baselines | running; real gates passed | SAM/WSI-SAM loaders, exact image/point geometry, full local report |
-| G3 local adapted controls | pending | Real gradient/checkpoint/resume gates; SAM-FT/WSI-SAM-FT/supervised reference and controlled FewClick |
+| G2 local public baselines | complete | SAM/WSI-SAM loaders, exact image/point geometry, full local report |
+| G3 local adapted controls | preparing; all five real gates passed | Real gradient/checkpoint/resume gates; SAM-FT/WSI-SAM-FT/supervised reference and controlled FewClick |
 | G4 transfer comparisons | pending | Matching source-query inputs, prototype/control systems; no query GT |
 | G5 replication/statistics | pending | Source/space cluster intervals, independent training seeds and cost |
 | G6 cells and mechanisms | pending | Retrained no-cell/morphology/XCell and appropriate hierarchy/capacity controls |
@@ -51,3 +51,5 @@ The four internal arms share incremental training tasks, validation tasks, updat
 ## Latest audit evidence
 
 All four arms have identical incremental training/validation SHA and budget; largest-context cross-split overlap count is 0. Legacy square-tolerance BF1 corrected to common n=72: M1 .3043, M3 .2899, M1D .3274, M3D .3583. Dice is unchanged. Checkpoint selection used Dice−.25×FPA, so BF1 correction does not alter selected checkpoints. Old reports are preserved.
+
+G3 details: native SAM/WSI-SAM bridges match public inference to max1.2e-7/0 probability error; five methods consumed the same gate-coordinate SHA. Both FewClick controls start from generic COCO, fresh task heads, no J5. Dense semantic channels are newly trained latent features. TIGER closed reference maps IDs1–7 to0–6 (failed initial gate retained); CPU image normalization reuses original he_to_tensor exactly. Current TIGER data do not contain class4. Full adaptation remains one seed/fixed hyperparameters and different public priors/views.

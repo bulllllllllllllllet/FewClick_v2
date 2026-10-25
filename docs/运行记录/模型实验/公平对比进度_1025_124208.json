@@ -1,8 +1,8 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T12:55:56.025439+08:00",
-  "current_phase": "G2",
+  "updated": "2026-10-25T13:14:18.294974+08:00",
+  "current_phase": "G3",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
   "prior_run": "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600",
@@ -28,7 +28,7 @@
       "qualification": "审计与任务合同完成；历史先验缺口已记账，不代表严格等总监督条件已达成。G3须单独验收。"
     },
     "G2": {
-      "status": "running",
+      "status": "complete",
       "depends_on": [
         "G1"
       ],
@@ -39,10 +39,15 @@
       "gates": [
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/gate_sam_1025_125300/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/gate_wsi_sam_1025_125300/summary.json"
+      ],
+      "evidence": [
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/public_sam_1025_125524/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/public_wsi_sam_1025_125524/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/public_report_1025_130820/summary.json"
       ]
     },
     "G3": {
-      "status": "pending",
+      "status": "preparing",
       "depends_on": [
         "G1"
       ],
@@ -51,7 +56,14 @@
         "WSI-SAM-FT",
         "supervised-reference",
         "controlled-FewClick"
-      ]
+      ],
+      "evidence": [
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/realized_train_1025_125928/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_verified_1025_130940.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_gates_1025_131130.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/class_contract_audit_1025_130820.json"
+      ],
+      "qualification": "全部五组训练门控、初始化及参数审计通过；完整10k更新待启动，不以4步门控精度作结论。"
     },
     "G4": {
       "status": "pending",
@@ -102,40 +114,18 @@
       ]
     }
   },
-  "active_jobs": [
-    {
-      "method": "sam",
-      "gpu": 1,
-      "session": "fewclick_public_sam_1025_125524",
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/public_sam_1025_125524",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/public_sam_1025_125524.log",
-      "status": "running",
-      "worker_pid": 729815,
-      "last_observed_rows": 234,
-      "total_rows": 6040
-    },
-    {
-      "method": "wsi_sam",
-      "gpu": 3,
-      "session": "fewclick_public_wsi_sam_1025_125524",
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/public_wsi_sam_1025_125524",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/public_wsi_sam_1025_125524.log",
-      "status": "running",
-      "worker_pid": 729820,
-      "last_observed_rows": 345,
-      "total_rows": 6040
-    }
-  ],
+  "active_jobs": [],
   "known_gaps": [
     "Retained J5 has prior target-cohort supervision; strict equal-target-supervision claim is not permitted.",
-    "Legacy BF1 prediction-dependent denominators require versioned correction.",
     "Three independent encoders have more parameters and views than single-scale; compute/capacity are not matched.",
     "Current validation is development data, not a blind test.",
-    "XCell pretraining provenance/overlap needs further audit."
+    "XCell pretraining provenance/overlap needs further audit.",
+    "TIGER healthy_glands ID4 absent from current catalog; seven-class head is not seven-target evaluation coverage.",
+    "Fixed adaptation hyperparameters; not per-method optimum; independent training seeds remain pending."
   ],
   "next_actions": [
-    "Inspect persisted G2 summary/status and EXIT_CODE; do not restart completed workers",
-    "Implement native gradient FT and clean FewClick initialization gates",
-    "Replay retained FewClick on identical local tasks before cross-method comparison"
+    "Launch gated full G3 adaptation queues on GPU1/3/4/5",
+    "Rescore retained FewClick on identical local tasks before cross-method comparison",
+    "Continue transfer/statistics/cell/heldout/WSI route after phase prerequisites"
   ]
 }

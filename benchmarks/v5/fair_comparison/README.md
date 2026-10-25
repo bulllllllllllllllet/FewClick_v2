@@ -36,3 +36,17 @@ XCell 训练来源重叠尚未核定，不能把有 XCell 的行称为无目标�
 `public_baselines.py --gate` 在真实 CRC/TIGER 输入、全部四个点击预算上门控。完整评分必须经过门控，失败原样保留，禁止空 mask 静默回退。输出逐任务 rows、SHA、权重/配置/源码、PID、进度、分组分数。
 
 后续 FT 还需真实梯度、多步 loss、参数变化、checkpoint 重载及 resume 门控；正式等监督结论需审计目标域全部历史训练暴露。所有新结论以进度表中的实际证据为准。
+
+## G3已实现的训练合同
+
+`realize_training.py`已把40k recipe一次性转成实际坐标，所有方法只读同一个JSONL；训练完成必须使消费记录SHA与该文件完全一致。每步4任务、10k步，前1k步只训练头，随后联合更新；每1k步在固定302对、第0点组、3+2上选最佳Dice。头LR1e-4、backbone LR1e-5，AdamW/weight_decay1e-4、相同余弦衰减、梯度裁剪1。此为固定预算协议，未做方法专属超参搜索，不能称每种方法的最佳可能效果。
+
+`adapted_models.py`通过原生SAM/WSI-SAM模块构造可微路径，禁止调用其带no_grad的顶层训练。SAM的mask候选始终按预测IoU选择，GT只进入损失及IoU校准；WSI-SAM使用两视野单融合mask。两者都允许联合更新各自image encoder，BN统计固定。FewClick联合更新各encoder layer3/4和新头，BN固定；额外图结构assignment正则独立记账，模型容量和可训练参数量不匹配。
+
+通用FewClick只加载COCO DeepLab公开权重，不调用旧J5加载函数；组织区域/细胞融合/prompt/graph新建，Dense零残差初始化。12个semantic输入通道是generic ASPP＋新投影，作为latent特征受二值mask损失训练，不赋予历史组织语义。image-only通过NoCell忽略全部细胞证据，另有扰动全部细胞输入时预测完全一致的实测门控。此为受控训练变体，不冒充旧论文checkpoint。
+
+闭集参考使用共享generic backbone和CRC12/TIGER7分类头，全类别CE；CRC ID0–11映射0–11，TIGER ID1–7映射0–6，255保持ignore。其预测为类别argmax后抽取指定目标，额外提供dataset和target ID，单独标为闭集参考。当前catalog没有TIGER healthy_glands（ID4）实例，不能声称测了完整七类目标覆盖。
+
+`verify_adapted_gates.py`对真实checkpoint逐张量审计：两种FewClick预热后的三个backbone共954张量必须等于generic COCO，联合更新后每个backbone确实改变；所有方法必须有头部与backbone实际参数变化、磁盘/optimizer/RNG恢复和重新构建模型后的继续训练。门控仅4次更新，不能用门控精度宣称收敛。
+
+`adaptation_pipeline.py`在四张GPU上排队五组训练和最佳checkpoint的全点组/全预算评分。源码/门控/坐标SHA不符则停止；异常写入状态，不重试、不替代算法。`evaluate_checkpoint.py`还支持保留J5系统的同任务重评分，仍标retained-J5。`report_comparison.py`核对完整逐任务身份、点击与GT计数一致，按图像目标对平均点组，并作来源空间聚类配对bootstrap；它不替代独立训练seed重复或盲测。

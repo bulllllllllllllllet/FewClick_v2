@@ -2226,3 +2226,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md（运行记录追加）。
 - Status: G2 running；SAM GPU1 PID729815，WSI-SAM GPU3 PID729820，各6040评分预算任务。G3同域FT、闭集参考与干净FewClick仍pending。
 - Commit: 算法a406d62；本条为运行状态记录。
+
+## 10-25 13:13:00
+
+- Purpose: 完成公共基线全任务评分，实现共享实际点击的原生可微适配与干净初始化控制。
+- Changed: 新增fair_comparison的actual-click实例化、local加载器、SAM/WSI/闭集/干净FewClick模型、训练恢复门控、初始化审计、checkpoint全预算评价、完整匹配统计报告及四GPU队列；更新goal/registry/运行记录/公平合同。
+- Validation: 公共各6040行完整评分与逐任务点/GT匹配通过；40k坐标实例化与独立回放通过；五种方法真实4步梯度/磁盘重载/fresh模型恢复/继续训练/消费SHA通过，独立参数与COCO起点审计通过；两域checkpoint评分实际通过。TIGER1起始映射错误修正并重验；GPU归一化改回原CPU路径并重验，失败记录保留。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/{public_report_1025_130820,realized_train_1025_125928,adaptation_verified_1025_130940.json,adaptation_gates_1025_131130.json,class_contract_audit_1025_130820.json}及各gate目录。
+- Docs record: docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md（运行记录追加）。
+- Status: G2 complete；G3全部门控通过、正式10k训练准备启动。只证明真实可训练/可恢复，不用4步门控精度冒充正式结果；历史监督、不同先验/视野/容量及固定超参限制保留。
+- Commit: 本条随实现独立提交，哈希见Git历史。
