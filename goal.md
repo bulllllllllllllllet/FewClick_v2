@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-26T01:47:52.600627+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
+Updated: 2026-10-26T02:24:20.347965+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
 
 ## Objective
 
@@ -167,3 +167,11 @@ Real NoCell small CPUcheckpoint gate396749 EXIT0:7 cached/native errors0,28rows 
 Remote queue realprepare9jobs and independent plan audit passed. Formal CPU coordinator433592 tmux fewclick_heldout_remote_queue_1026_014400 is verifiedlive waiting localproducer349631;2CPUworker cap/CUDAhidden. Each completed full training must get its OWN remote native gate before fullR, same source/weight/testSHA; gates-only checkpoints never fullresults. No remote formal scores started. Freeze existing heldout_transfer Python and all captured imported sources; new work outside snapshots. Evidence remote_independent_1026_014300.json, remote_queue_live_1026_014700.json; record docs/运行记录/模型实验/运行记录_留出类支持查询迁移适配与真实门控_1026_013700.md.
 
 Next full WSI streaming/cells/GPU efficiency and matched all-label reference subset extraction; final heldout fulltrain/local/R acceptance/statistics still pending. G6 sixworkers and local349631 remain live. Overall goal active.
+
+## Latest full-WSI streaming execution
+
+New StripeWriter holds only fine-native-height x canvas-width float sum/uint16 count, range-msync then MADV_DONTNEED releases mapped output pages. Fresh real central tissue decode two2399401-pixel budgets equals prior independent in-memory probabilities/masks exactly, edge-overlap/hole/order checks passed, including bounded-page version. Complete stream.py4tile actual read/encode/write-cache/two online/mmap gate614733 EXIT0 and independent every RGBhash/geometry/probability/mask/weighted count/source-output SHA passed. These small gates do not prove full WSI memory/latency.
+
+Actual first complete3050tile CPU NoCell stream worker646382 tmux fewclick_wsi_full_cpu_1026_021756 is verifiedlive CACHE PREPARING, output wsi_global_1026_010800/full_cpu_slide0_1026_021756. Alloffline caches then1+1/3+2 complete online passes; no queryencode/maps, native0.247925um output is resized512 probability, no extra spatial detail. Validbbox excludes missing4x edges as audited. Estimate69GB vs actual6.787TB decimal free checked beforestart. Modelselected G3 NoCell after all-label adaptation, fixedCRC support, NOT TLS semantic prompts, full-cell runtime or GPU efficiency. OS/NFS cache state uncontrolled. Full cache/passes/coverage/independent sample acceptance still pending.
+
+Freeze source files in full CPU contract (stream/stripe/cachehelper/reader/model) while running; new work outside snapshots. Source/SDKCPP/real PID/job-command record full_cpu_live_audit_1026_022000.json and stream_continuity_1026_022000.json. Record docs/运行记录/模型实验/运行记录_整片逐行流式拼接与首片完整执行_1026_015000.md. SixG6 + local349631 + R433592 remainlive. Next independent main30/GT audit, fullcell preparation/nativeGPU efficiency and same-subset all-label references; overall goal active.

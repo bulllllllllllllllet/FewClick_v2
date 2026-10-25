@@ -2493,3 +2493,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_checkpoint_gate_1026_013700、remote_feature_gate_1026_013700、remote_independent_1026_014300.json、remote_queue_1026_014400、remote_queue_live_1026_014700.json、remote_continuity_1026_014700.json。
 - Docs record: docs/运行记录/模型实验/运行记录_留出类支持查询迁移适配与真实门控_1026_013700.md。
 - Commit: 本条随本次独立提交，哈希由Git记录。
+
+## 10-26 02:20:00
+
+- Purpose: 接通native level0逐row流式writer与真实全WSI offline-cache/online两阶段执行，启动首片完整CPU控制。
+- Changed: wsi_global stripe/gate_stream/stream.py、README与goal/registry/run records；既有冻结模型/训练/迁移源未改。
+- Validation: 真实组织两预算各2399401像素与旧独立prob/mask完全一致，含逐范围msync/MADV_DONTNEED后磁盘重载；edge overlap/hole/order检查通过。完整stream4tile执行器614733 EXIT0，RGB/geometry/source/output hash、全概率/mask/overlap守恒独立复算通过。全首片646382真实3050tile cache preparing，69GB预计保留量/磁盘余量核验；完整case/细胞/GPU/TLS精度仍未完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/stream_gate_bounded_1026_015200、stream_execution_gate_1026_015200、stream_execution_independent_1026_021700.json、full_cpu_slide0_1026_021756、stream_continuity_1026_022000.json。
+- Docs record: docs/运行记录/模型实验/运行记录_整片逐行流式拼接与首片完整执行_1026_015000.md。
+- Commit: 本条随本次独立提交，哈希由Git记录。
