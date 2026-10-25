@@ -26,7 +26,7 @@ Evidence root: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_1242
 - Current models have historical J5 target-data supervision. They are retained-system comparisons, not clean-initialization architecture evidence.
 - Keep local interaction and remote support-query transfer separate. Do not copy support point coordinates into a different query image.
 - New metrics use model-independent eligibility; a GT boundary missed entirely by prediction scores BF1=0. Legacy reports remain available. Do not silently replace old metrics or claim different BF1 definitions are interchangeable.
-- For strict target-supervision controls, initialize the backbone from audited generic public weights and new heads; add an image-only FewClick control. XCell's historical training overlap remains explicit until audited.
+- For strict target-supervision controls, initialize the backbone from audited generic public weights and new heads; add an image-only FewClick control. User confirmed XCell trained on the internal dataset, not current CRC/TIGER; keep the upstream CTransPath image prior separately recorded.
 - Same cases may appear across spatial splits; maintain full-footprint isolation and report residual dependence. No patient-disjoint split requirement.
 
 ## Route and completion evidence
@@ -39,7 +39,7 @@ Evidence root: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_1242
 | G3 local adapted controls | running; all five real gates passed | Real gradient/checkpoint/resume gates; SAM-FT/WSI-SAM-FT/supervised reference and controlled FewClick |
 | G4 transfer comparisons | running initial sparse diagnostics; full gates passed | Matching source-query inputs, prototype/control systems; no query GT |
 | G5 replication/statistics | pending | Source/space cluster intervals, independent training seeds and cost |
-| G6 cells and mechanisms | pending | Retrained no-cell/morphology/XCell and appropriate hierarchy/capacity controls |
+| G6 cells and mechanisms | CPU gates passed; formal queue preparing | Retrained no-cell/morphology/XCell and appropriate hierarchy/capacity controls |
 | G7 unseen concepts/domains and TLS | pending | Exposure audit, valid context/GT, matched baselines, strict held-out initialization |
 | G8 WSI and efficiency | pending | New-model real WSI path, complete coverage/coordinates, runtime/cache decomposition |
 | G9 paper evidence closure | pending | Challenge-to-evidence map, corrections and limitations; submission actions require separate user instruction |
@@ -67,3 +67,13 @@ Official MultiverSeg v1 native context gate passed8 cases (predicted vs full-GT 
 G3 all four actual workers have passed1000 warmup into nonzero backbone-gradient joint training, finite losses; no run is complete. Next G4 CPU full retained-M3 graph/same-feature diagnostic and SAM-public feature retrieval; current retained diagnostics must stay separate from clean/adapted transfer. G5 replication, G6 retrained mechanisms, G7 heldouts/TLS, G8 WSI/efficiency and G9 paper closure are still required.
 
 G4 full sparse scoring launched at13:38:33, implementation674bfeb. CPU4 threads each, GPUhidden. Retained M3 graph+same-feature prototype workerPID940942; SAM-public feature prototype workerPID940947. Each method18700 budget rows, actual rows/status confirmed. Logs and tmux names in registry. New adapted-weight transfer and full MultiverSeg tracks still required. Current record: `docs/运行记录/模型实验/运行记录_迁移任务隔离与近期参考接口审计_1025_131856.md`. Do not confuse these scoring workers with G3 training workers.
+
+## User provenance clarification (2026-10-25)
+
+XCell was trained on the internal dataset, not the current CRC/TIGER datasets (explicit user statement). This supersedes earlier unresolved-source wording. Preserve old machine-audit/runtime snapshots; add the source clarification in final reporting. A missing archived file manifest is a reproducibility-documentation gap, not contrary evidence or an allegation of overlap. CTransPath public image pretraining is a distinct upstream prior. Cell ablations remain contribution tests.
+
+## G6 mechanism controls prepared
+
+Root `/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753`; source and rules in `benchmarks/v5/mechanism_comparison/README.md`. Seven real CPU gates passed4 updates/fresh optimizer+model resume and actual backbone/head changes: M3 none/morphology/xcell, M3 shared encoder, M1 xcell, M3 no pre-graph hierarchy (cross-scale graph retained), Dense morphology. Four-task SHA identical. Morphology/xcell have equal125.91M registered parameters and73.19M joint trainable; shared45.56M registered/27.98M trainable vs single44.77M/27.20M. Noncell initial state matches across the three cell controls. Registered unused semantic parameters are separately disclosed. CPU tests are not formal GPU performance evidence.
+
+User-confirmed XCell internal-data provenance is recorded in the updated source audit; historical runtime snapshots remain immutable. Formal queue must wait for each G3 GPU slot to finish train+evaluation and become actually idle, then run native GPU gates and new generic-init10k training, followed by6040 score rows. No GPU0/2 use. No goal phase is complete from CPU gates alone.

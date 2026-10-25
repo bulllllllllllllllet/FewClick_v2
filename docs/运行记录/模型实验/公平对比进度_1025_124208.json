@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T13:40:47.507623+08:00",
+  "updated": "2026-10-25T14:12:01.903186+08:00",
   "current_phase": "G3",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -104,10 +104,20 @@
       ]
     },
     "G6": {
-      "status": "pending",
+      "status": "preparing",
       "depends_on": [
         "G3"
-      ]
+      ],
+      "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753",
+      "evidence": [
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/cpu_gates_1025_135418.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/cpu_gate_acceptance_1025_140550.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/parameter_capacity_1025_140730.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/pretraining_user_confirmed_1025_140410/audit.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/XCell用户来源确认_1025_140237.json"
+      ],
+      "qualification": "七组CPU真实训练/恢复/输入排除/共享容量门控通过；来源按用户内部数据确认更新，正式GPU门控/10k重训/全评分尚未执行。",
+      "record": "docs/运行记录/数据审计/运行记录_特征预训练来源与细胞机制合同_1025_134753.md"
     },
     "G7": {
       "status": "pending",
@@ -282,7 +292,6 @@
     "Retained J5 has prior target-cohort supervision; strict equal-target-supervision claim is not permitted.",
     "Three independent encoders have more parameters and views than single-scale; compute/capacity are not matched.",
     "Current validation is development data, not a blind test.",
-    "XCell pretraining provenance/overlap needs further audit.",
     "TIGER healthy_glands ID4 absent from current catalog; seven-class head is not seven-target evaluation coverage.",
     "Fixed adaptation hyperparameters; not per-method optimum; independent training seeds remain pending."
   ],
@@ -291,5 +300,21 @@
     "Launch gated CPU full sparse transfer without occupying G3 GPUs",
     "Run adapted-weight transfer and full context references when dependent models/compute are ready",
     "Continue G5–G9 route; neither gates nor public/retained diagnostics complete the objective"
-  ]
+  ],
+  "provenance_clarifications": {
+    "XCell": {
+      "status": "recorded",
+      "time": "2026-10-25T14:02:37.293637+08:00",
+      "source": "user clarification in current conversation",
+      "statement": "XCell不是用CRC/TIGER训练，是用内部数据集训练",
+      "interpretation": "XCell alignment pretraining used the internal dataset; current CRC/TIGER were not used for that training",
+      "scope": "XCell training, distinct from upstream CTransPath public image pretraining",
+      "checkpoint": "/home/zhaoyh/FewClick/module/checkpoint/he_model_best.pth",
+      "checkpoint_sha256": "155c2e7ca9584b1a84848d4fd210030efee7162c4868db702b7fae7f3bb7bece",
+      "reproducibility_artifact": "checkpoint-linked file manifest is not currently archived in discovered files; this does not override the user-provided dataset provenance",
+      "supersedes": "earlier unresolved XCell training-source statement; previous audit is preserved as pre-clarification evidence",
+      "controls": "retain image-only/morphology/XCell retraining to measure feature contribution, not as an allegation of target-data overlap",
+      "evidence": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/XCell用户来源确认_1025_140237.json"
+    }
+  }
 }

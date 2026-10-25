@@ -2266,3 +2266,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_迁移任务隔离与近期参考接口审计_1025_131856.md（运行记录追加）。
 - Status: G4首批CPU稀疏评分running，Retained-M3 graph+prototype PID940942、SAM公共特征prototype PID940947；G3训练亦running。完整近期context和干净适配迁移仍pending。
 - Commit: 算法674bfeb；本条为运行状态记录。
+
+## 10-25 14:12:01
+
+- Purpose: 明确XCell内部训练来源，准备重训细胞/层级/容量控制并自动衔接G3空闲资源。
+- Changed: 新增mechanism_comparison的来源审计/7变体/真实CPU训练恢复门控/冻结trainer与scorer入口，以及experiment_orchestration的依赖GPU队列；更新goal/registry与数据审计记录。未改G3/G4运行源码。
+- Validation: 7组真实CRC/TIGER CPU梯度/更新/磁盘fresh恢复/共享optimizer唯一性通过；none/morphology排除输入扰动不变；4任务消费SHA相同，三组非cell初始state相同；实际总/可训练/未用semantic参数量核对通过；native CLI枚举和代码检查通过，原生GPU门控仍是正式训练前置条件。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753，含7 CPU gate、cpu_gate_acceptance_1025_140550.json、parameter_capacity_1025_140730.json、pretraining_user_confirmed_1025_140410与用户来源附录。
+- Docs record: docs/运行记录/数据审计/运行记录_特征预训练来源与细胞机制合同_1025_134753.md（运行记录）。
+- Status: 用户确认XCell用内部数据训练、当前CRC/TIGER未参与；CTransPath公开图像先验另列。G3/G4 running，G6 CPU门控通过、正式GPU队列准备等待；不把CPU门控或缺档案称无/有泄漏证据。
+- Commit: 本条随实现独立提交，哈希见Git历史。
