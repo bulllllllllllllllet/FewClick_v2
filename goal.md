@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-25T22:59:17.542028+08:00. Native thread goal: **active**. G3/G4 fixed comparisons accepted; the overall objective is incomplete.
+Updated: 2026-10-25T23:06:58.541242+08:00. Native thread goal: **active**. G3/G4 fixed comparisons accepted; the overall objective is incomplete.
 
 ## Objective
 
@@ -24,7 +24,7 @@ Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_
 | G2 | complete | Local public SAM/WSI-SAM6040 each |
 | G3 | complete, single seed | Five10k/40k trains and6040 scores each; independent full parity audit |
 | G4 | complete, qualified | Nine18700 sparse +837 dense-reference rows audited;180 gates replayed; exploratory cluster statistics |
-| G5 | running | Extra seed26 complete execution; seed27 WSI/XCell complete, SAM scores/image train live; final audit/mean/std pending |
+| G5 | final scoring; report waiting | All12 trains/11 scores ended; final image seed27 scoring live. Full-report real gate passed, worker waits original coordinator |
 | G6 | seven controls accepted, partial | Nine40k/6040 controls and contrasts accepted; generic HE cell-feature/objective control pending |
 | G7 | external subset complete, remainder pending | Six680-row external comparison audited; strict heldout concepts/TLS pending |
 | G8 | input gate only | Real WSI cells/model/coverage/stitch/cache/efficiency pending |
@@ -47,7 +47,7 @@ Primary corrected report: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protoco
 
 ## Active queues and frozen sources
 
-Replication coordinator1557332 last state running; live children: fewclick_m3d_image train PID3190652. Completed extra stages 22/24. Verify actual status first. Training/eval/model sources remain frozen. No GPU0/2, no reruns from observation timeouts.
+Replication coordinator1557332 live with final imageFewClick evaluation3669635; all12 full trains and11 scores ended. Full report worker3678955 verified live waiting same coordinator plus EXIT0; root replication_1025_153837/complete_report_1025_230100. Actual base-four complete-path gate and two40k permutation/multiset checks passed in gate_report_locked_1025_230400. Do not restart from observation timeout; freeze report.py as well as trainer/model until report ends. No GPU0/2.
 
 G6, external cell/adapted and all G4 scoring jobs ended with summary + EXIT_CODE0; moved to registry.completed_jobs. Completion of execution does not replace independent acceptance.
 
@@ -91,3 +91,7 @@ Seven mechanism variants plus two G3 Dense conditions independently accepted:9x4
 Primary region none.544515 / morphology.533127 / XCell.537667; Dense none.564044 / morphology.557673 / XCell.572893. Dense−region XCell.035226 CI[.020060,.052833], none.019529 CI[.006328,.034669], morphology.024545 CI[.009671,.041209]. Dense also adds fine semantic latent training, not isolated projection change. M3−M1−.002279, independent−shared−.001389, hierarchy−noHierarchy+.001613: all source-space intervals include0. Dense XCell−none.008849 includes0, XCell−morphology.015220 CI[.002724,.028735] descriptive single-seed result; does not prove mIF-objective effect.
 
 Morphology keeps position/area/unknown identity/count/detection prior; generic HE appearance control and same-network pretraining-objective control remain missing. G6 is partial, not complete; no winning-module requirement.
+
+## G5 report continuation
+
+New replication/report.py gated on actual original four complete methods, full training/checkpoint/10x302 selection/6040 counts and both exact40k seeded permutations. Formal CPU reporter3678955 tmux fewclick_seed_report_1025_230100 waits live1557332; final score3669635 still running. Require complete_report_1025_230100/summary.json status complete + outer EXIT0, then independent result review and registry closeout. Never call gate or waiting a completed three-seed result. Record: docs/运行记录/模型实验/运行记录_三seed全量验收与均值标准差_1025_230100.md.

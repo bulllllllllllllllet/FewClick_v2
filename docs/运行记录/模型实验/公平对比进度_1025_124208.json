@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T22:59:17.542028+08:00",
+  "updated": "2026-10-25T23:06:58.541242+08:00",
   "current_phase": "G5",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -121,7 +121,7 @@
       "acceptance_record": "docs/运行记录/模型实验/运行记录_迁移全量验收与分标注轨道统计_1025_224400.md"
     },
     "G5": {
-      "status": "running",
+      "status": "final_scoring_and_report_waiting",
       "depends_on": [
         "G2",
         "G3"
@@ -133,49 +133,77 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/manifest.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/cpu_gate_1025_154400/summary.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/contract.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/contract.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/gate_report_locked_1025_230400/summary.json"
       ],
-      "qualification": "seed26四方法训练评分执行完成，seed27两组WSI/XCell完成；SAM全6040评分和imageFewClick训练仍活跃。尚无三seed整体独立验收/mean/std。",
+      "qualification": "四个主方法三seed共12正式训练全部结束，11个6040评分已结束，最后image seed27评分运行。汇总真实原四方法门控和两个seed40k双射/多重集核验通过；全量报告worker3678955真实存活，等待coordinator1557332及EXIT0，未宣称全12独立验收或三seed统计完成。",
       "formal_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653",
       "record": "docs/运行记录/模型实验/运行记录_匹配任务顺序的三seed重复合同_1025_153837.md",
       "last_observed_workers": [
+        {
+          "kind": "replication_coordinator",
+          "status": "running",
+          "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653",
+          "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653.log",
+          "session": "fewclick_replicate_1025_154653",
+          "additional_seeds": [
+            20261026,
+            20261027
+          ],
+          "gpu_workers_started": true,
+          "worker_pid": 1557332,
+          "process_observed_at": "2026-10-25T23:06:58.541242+08:00",
+          "process_alive_last_observed": true
+        },
         {
           "status": "running",
           "gpu": 4,
           "method": "fewclick_m3d_image",
           "seed": 20261027,
-          "stage": "train",
-          "worker_pid": 3190652,
-          "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_fewclick_m3d_image_seed20261027_1025_154653",
-          "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_fewclick_m3d_image_seed20261027_1025_154653.log",
+          "stage": "evaluate",
+          "worker_pid": 3669635,
+          "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_fewclick_m3d_image_seed20261027_1025_154653",
+          "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_fewclick_m3d_image_seed20261027_1025_154653.log",
           "command": [
             "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
             "-u",
             "-m",
-            "benchmarks.v5.fair_comparison.train_adapted",
+            "benchmarks.v5.fair_comparison.evaluate_checkpoint",
             "--tasks",
             "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/seed_20261027/tasks",
-            "--realized",
-            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/seed_20261027/realized",
             "--method",
             "fewclick_m3d_image",
-            "--seed",
-            "20261027",
+            "--checkpoint",
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_fewclick_m3d_image_seed20261027_1025_154653/checkpoint_step_09000.pth",
             "--output",
-            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_fewclick_m3d_image_seed20261027_1025_154653"
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_fewclick_m3d_image_seed20261027_1025_154653"
           ],
-          "kind": "replication_train",
+          "kind": "replication_evaluate",
           "process_alive_last_observed": true,
-          "process_observed_at": "2026-10-25T22:59:17.542028+08:00",
+          "process_observed_at": "2026-10-25T23:06:58.541242+08:00",
           "last_observed_status": {
             "status": "running",
-            "worker_pid": 3190652,
-            "step": 9783,
-            "total": 10000,
-            "seconds": 5700.17270731926
+            "worker_pid": 3669635,
+            "completed": 4080,
+            "total": 6040,
+            "seconds": 285.1661858558655
           }
+        },
+        {
+          "kind": "replication_report",
+          "status": "waiting_live_coordinator",
+          "worker_pid": 3678955,
+          "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/complete_report_1025_230100",
+          "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/complete_report_1025_230100.log",
+          "session": "fewclick_seed_report_1025_230100",
+          "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/gate_report_locked_1025_230400",
+          "process_alive_last_observed": true,
+          "process_observed_at": "2026-10-25T23:06:58.541242+08:00",
+          "waits_for_coordinator": 1557332
         }
-      ]
+      ],
+      "report_record": "docs/运行记录/模型实验/运行记录_三seed全量验收与均值标准差_1025_230100.md",
+      "report_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/complete_report_1025_230100"
     },
     "G6": {
       "status": "seven_controls_accepted_generic_HE_pending",
@@ -277,7 +305,7 @@
       ],
       "gpu_workers_started": true,
       "worker_pid": 1557332,
-      "process_observed_at": "2026-10-25T22:59:17.542028+08:00",
+      "process_observed_at": "2026-10-25T23:06:58.541242+08:00",
       "process_alive_last_observed": true
     },
     {
@@ -285,36 +313,46 @@
       "gpu": 4,
       "method": "fewclick_m3d_image",
       "seed": 20261027,
-      "stage": "train",
-      "worker_pid": 3190652,
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_fewclick_m3d_image_seed20261027_1025_154653",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_fewclick_m3d_image_seed20261027_1025_154653.log",
+      "stage": "evaluate",
+      "worker_pid": 3669635,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_fewclick_m3d_image_seed20261027_1025_154653",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_fewclick_m3d_image_seed20261027_1025_154653.log",
       "command": [
         "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
         "-u",
         "-m",
-        "benchmarks.v5.fair_comparison.train_adapted",
+        "benchmarks.v5.fair_comparison.evaluate_checkpoint",
         "--tasks",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/seed_20261027/tasks",
-        "--realized",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/seed_20261027/realized",
         "--method",
         "fewclick_m3d_image",
-        "--seed",
-        "20261027",
+        "--checkpoint",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_fewclick_m3d_image_seed20261027_1025_154653/checkpoint_step_09000.pth",
         "--output",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_fewclick_m3d_image_seed20261027_1025_154653"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_fewclick_m3d_image_seed20261027_1025_154653"
       ],
-      "kind": "replication_train",
+      "kind": "replication_evaluate",
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T22:59:17.542028+08:00",
+      "process_observed_at": "2026-10-25T23:06:58.541242+08:00",
       "last_observed_status": {
         "status": "running",
-        "worker_pid": 3190652,
-        "step": 9783,
-        "total": 10000,
-        "seconds": 5700.17270731926
+        "worker_pid": 3669635,
+        "completed": 4080,
+        "total": 6040,
+        "seconds": 285.1661858558655
       }
+    },
+    {
+      "kind": "replication_report",
+      "status": "waiting_live_coordinator",
+      "worker_pid": 3678955,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/complete_report_1025_230100",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/complete_report_1025_230100.log",
+      "session": "fewclick_seed_report_1025_230100",
+      "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/gate_report_locked_1025_230400",
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-25T23:06:58.541242+08:00",
+      "waits_for_coordinator": 1557332
     }
   ],
   "known_gaps": [
@@ -982,6 +1020,42 @@
         "completed": 2720,
         "total": 6040,
         "seconds": 248.83085227012634
+      }
+    },
+    {
+      "status": "complete_execution",
+      "gpu": 4,
+      "method": "fewclick_m3d_image",
+      "seed": 20261027,
+      "stage": "train",
+      "worker_pid": 3190652,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_fewclick_m3d_image_seed20261027_1025_154653",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_fewclick_m3d_image_seed20261027_1025_154653.log",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.fair_comparison.train_adapted",
+        "--tasks",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/seed_20261027/tasks",
+        "--realized",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/seed_20261027/realized",
+        "--method",
+        "fewclick_m3d_image",
+        "--seed",
+        "20261027",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_fewclick_m3d_image_seed20261027_1025_154653"
+      ],
+      "kind": "replication_train",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-25T23:06:58.541242+08:00",
+      "last_observed_status": {
+        "status": "running",
+        "worker_pid": 3190652,
+        "step": 9783,
+        "total": 10000,
+        "seconds": 5700.17270731926
       }
     }
   ]

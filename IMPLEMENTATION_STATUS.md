@@ -2394,3 +2394,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/acceptance_1025_225200.
 - Docs record: docs/运行记录/模型实验/运行记录_七机制完整验收与受控配对解释_1025_225200.md
 - Commit: This isolated mechanism acceptance change; hash available in git log.
+
+## 10-25 23:05:00
+
+- Purpose: Prepare full three-seed acceptance and aggregate all runs without best-seed selection.
+- Changed: replication/report.py and README; three-seed report record; goal/registry/current record.
+- Validation: Actual final-source gate rechecked four original complete10k/40k/6040 paths,10x302 development selections and selected weights plus both seeded40k bijections/click multisets. Gate EXIT0. Formal CPU reporterPID3678955 verified live waiting original1557332+EXIT0; final image seed27 scorer3669635 live. All12 trains/11 full scores ended, final score and complete three-seed acceptance/mean/std pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/gate_report_locked_1025_230400; complete_report_1025_230100; report_execution_1025_230100.json.
+- Docs record: docs/运行记录/模型实验/运行记录_三seed全量验收与均值标准差_1025_230100.md
+- Commit: This isolated report preparation change; hash available in git log. Overall goal remains active.
