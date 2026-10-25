@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T14:15:52.610400+08:00",
+  "updated": "2026-10-25T14:36:59.183937+08:00",
   "current_phase": "G3",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -121,10 +121,17 @@
       "formal_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300"
     },
     "G7": {
-      "status": "pending",
+      "status": "preparing",
       "depends_on": [
         "G3"
-      ]
+      ],
+      "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257",
+      "record": "docs/运行记录/数据审计/运行记录_外部域原生视野与中心任务合同_1025_143257.md",
+      "evidence": [
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/contract.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/independent_replay_1025_143634.json"
+      ],
+      "qualification": "10张IGNITE真实中心三视野输入、34对/170点击组/9类与独立1190点回放通过；cell/model gates/匹配对手评分未完成。PUMA/OCELOT当前原生ROI不支持1024um上下文。"
     },
     "G8": {
       "status": "pending",
@@ -152,7 +159,9 @@
       "worker_pid": 825263,
       "session": "fewclick_adaptation_1025_131451",
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451.log"
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451.log",
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
     },
     {
       "status": "running",
@@ -176,10 +185,12 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_sam_ft_1025_131451"
       ],
-      "last_observed_step": 5000,
-      "last_observed_loss": 1.0812358111143112,
+      "last_observed_step": 6580,
+      "last_observed_loss": 0.7478528320789337,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 4.699766159057617
+      "last_observed_backbone_gradient": 7.205638408660889,
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
     },
     {
       "status": "running",
@@ -203,10 +214,12 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_wsi_sam_ft_1025_131451"
       ],
-      "last_observed_step": 5973,
-      "last_observed_loss": 0.5708018876612186,
+      "last_observed_step": 7880,
+      "last_observed_loss": 0.9139824956655502,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 4.313365936279297
+      "last_observed_backbone_gradient": 7.630768775939941,
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
     },
     {
       "status": "running",
@@ -230,10 +243,12 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_image_1025_131451"
       ],
-      "last_observed_step": 6390,
-      "last_observed_loss": 0.827298641204834,
+      "last_observed_step": 8500,
+      "last_observed_loss": 0.5628056172281504,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 6.530601501464844
+      "last_observed_backbone_gradient": 5.120728969573975,
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
     },
     {
       "status": "running",
@@ -257,10 +272,12 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_xcell_1025_131451"
       ],
-      "last_observed_step": 6034,
-      "last_observed_loss": 1.433454230427742,
+      "last_observed_step": 8020,
+      "last_observed_loss": 0.6389891318976879,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 24.548044204711914
+      "last_observed_backbone_gradient": 15.27313232421875,
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
     },
     {
       "method": "retained_m3",
@@ -273,7 +290,9 @@
       "status": "running",
       "kind": "transfer_scoring",
       "worker_pid": 940942,
-      "last_observed_rows": 7600
+      "last_observed_rows": 11400,
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
     },
     {
       "method": "sam_public_features",
@@ -286,7 +305,9 @@
       "status": "running",
       "kind": "transfer_scoring",
       "worker_pid": 940947,
-      "last_observed_rows": 5300
+      "last_observed_rows": 8300,
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
     },
     {
       "kind": "mechanism_coordinator",
@@ -295,7 +316,9 @@
       "session": "fewclick_mechanism_formal_1025_141300",
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300.log",
-      "gpu_workers_started": false
+      "gpu_workers_started": false,
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
     }
   ],
   "known_gaps": [

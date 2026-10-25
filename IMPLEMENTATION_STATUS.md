@@ -2286,3 +2286,12 @@
 - Docs record: docs/运行记录/数据审计/运行记录_特征预训练来源与细胞机制合同_1025_134753.md（运行记录追加）。
 - Status: G6 queued，coordinator1107196，尚无GPU worker；G3/G4 running。用户确认XCell内部数据训练，CRC/TIGER未用于该训练；原始旧metadata不改，最终报告使用来源确认附录。
 - Commit: 实现1ebe4c8；本条为真实队列状态记录。
+
+## 10-25 14:36:34
+
+- Purpose: Prepare externally evaluated native physical fields and correct stale XCell source text.
+- Changed: New benchmarks/v5/external_evaluation source and README; fairness README; goal/registry/current record; external physical-contract audit record.
+- Validation: GPU-hidden aligner `python -m benchmarks.v5.external_evaluation.prepare` — exit0, actual10 IGNITE native crops/reloads and170 point groups; independent replay all1190 signs, exact256/512/1024um and no duplicate source hashes passed. Existing8 workers/coordinators verified live with ps. No frozen running Python changed.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257; model/cell gates and matched external scoring still pending.
+- Docs record: docs/运行记录/数据审计/运行记录_外部域原生视野与中心任务合同_1025_143257.md
+- Commit: This isolated change; hash available in git log.
