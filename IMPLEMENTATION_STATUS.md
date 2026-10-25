@@ -2421,3 +2421,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/scoring_explanation_1025_231900/audit.json.
 - Docs record: docs/运行记录/模型实验/运行记录_SAM高Dice的指标与任务条件核对_1025_231900.md
 - Commit: This isolated explanation audit; hash available in git log. Total goal remains active.
+
+## 10-25 23:52:36
+
+- Purpose: Extend genericHE extraction, diagnose strict identity failures, and restore original preparation histories before scaling.
+- Changed: generic_cell_control extract/history_extract/diagnose/fit and README; full-cache/transform record; goal/registry/current record.
+- Validation: Native original full-path12 gates passed; mod3 bulk groups1/2 failed strict geometry and group0 stopped with outputs preserved. Fresh vs prefix diagnostics reproduced history-dependent changes, not last-bit noise. Corrected original-history three gates24 scales all reference error0; four formal GPU workers3914369/3914376/3914383/3914488 confirmed live. Train-only1530-cell PCA gate/direct covariance passed, no val raw used; CPU3924161 waits complete raw groups. No full cache/PCA/model accuracy claimed.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000; history_jobs_1025_234700.json, pca_job_1025_234700.json, continuity_1025_235100.json; old failures preserved.
+- Docs record: docs/运行记录/特征缓存/运行记录_通用HE完整分片提取与训练区变换合同_1025_232200.md
+- Commit: This isolated extraction/history correction change; hash available in git log. Overall goal active/incomplete.

@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-25T23:15:48.461891+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
+Updated: 2026-10-25T23:52:36.369603+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
 
 ## Objective
 
@@ -25,7 +25,7 @@ Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_
 | G3 | complete, single seed | Five10k/40k trains and6040 scores each; independent full parity audit |
 | G4 | complete, qualified | Nine18700 sparse +837 dense-reference rows audited;180 gates replayed; exploratory cluster statistics |
 | G5 | complete, qualified | All12 trains/scores/selection/weights accepted; three-seed Dice/BF1 and ddof1 std independently recounted |
-| G6 | partial; genericHE input gate passed | Seven controls accepted; raw768 two-domain/three-scale gate passed, full extraction/transform/retraining pending |
+| G6 | partial; genericHE extraction running | Corrected original-history gates24 scales passed; four full raw groups run, train-only PCA waits; controlled training pending |
 | G7 | external subset complete, remainder pending | Six680-row external comparison audited; strict heldout concepts/TLS pending |
 | G8 | input gate only | Real WSI cells/model/coverage/stitch/cache/efficiency pending |
 | G9 | preparing | 11 human challenges + 14 AI checks mapped; experiments/factual corrections and submitted-version binding remain |
@@ -47,7 +47,7 @@ Primary corrected report: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protoco
 
 ## Active queues and frozen sources
 
-All former G3/G4/G5/G6/external compute jobs have ended with terminal summaries and EXIT0; no active task-owned job at this milestone. Never restart completed work. Keep historical trainers/inference/models unchanged and develop new genericHE/heldout/WSI modules. GPU0/2 remain prohibited; inspect actual GPU occupancy before new allocation.
+GenericHE corrected full history extraction now live: GPU1 PID3914369 (oldgroup00,434 fields), GPU3 PID3914376 (01,433), GPU4 PID3914383 (02,433), GPU5 PID3914488 (03,433). CPU PCA PID3924161 waits same four workers plus reused complete original-gate4 fields. Root generic_cells_1025_231000; outputs raw_history00..03_1025_234700 and pca_full_train_1025_234700. Inspect actual ps/status/logs. Freeze history_extract.py, fit.py and their recorded helpers while jobs/wait run. No GPU0/2.
 
 G6, external cell/adapted and all G4 scoring jobs ended with summary + EXIT_CODE0; moved to registry.completed_jobs. Completion of execution does not replace independent acceptance.
 
@@ -103,3 +103,11 @@ Current input gate six CRC/TIGER train×three-view fields passed on GPU3, worker
 ## SAM score interpretation audit
 
 User asked why SAM Dice is high: explain local GT-simulated3+2 present-target development tasks,10k/40k SAM adaptation and validation checkpoint selection. Three-seed mean.702063; seed25 CRC.663117/TIGER.805801,1+1.654306 vs3+2.701859. Report uses pair macro (micro would.847757), no background-TN reward and predicted-IoU candidate selection. Counts rechecked; no inference bug or causal explanation proven by score alone. Record docs/运行记录/模型实验/运行记录_SAM高Dice的指标与任务条件核对_1025_231900.md. Do not weaken SAM or alter protocol based on ranking; next action remains genericHE full extraction and heldout/WSI.
+
+## GenericHE full extraction history correction
+
+Old mod3 prototype has terminal EXIT1 in groups1/2 and owned group0 stopped EXIT143; preserve them, never treat as formal cache. Failure cases were originally the first item of old context groups02/03. Fresh direct replay error0; replay after new prefix changed several nucleus areas/XCell output. Specific underlying operator not isolated; this is measured call-history dependence, not benign last-bit noise. No tolerance relaxed.
+
+New history_extract restores original completed.jsonl process groups/order, constructor order and per-call inference context. Same-source native gates: original4-field group (12 scales) + old02 first2 (6) + old03 first2 (6), all geometry and74 reference errors0. Full four groups plus reused verified original4 cover1737 fields/5211 scales. Full raw/transform/training still incomplete. PCA1530-train-cell native gate + independent direct covariance passed, val raw opened0. Both plain PCA64 and whitened PCA64 sensitivity are fixed before model results, both must be reported; source scales motivated sensitivity, no validation model selection.
+
+Next independent work while extraction runs: actual genericHE projected inputs/model/loss/checkpoint gate and strict-heldout/WSI preparation; no conflicting GPU allocation. Record docs/运行记录/特征缓存/运行记录_通用HE完整分片提取与训练区变换合同_1025_232200.md; source/PID/evidence snapshot generic_cells_1025_231000/continuity_1025_235100.json.
