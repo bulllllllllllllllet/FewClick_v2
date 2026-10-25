@@ -2216,3 +2216,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md（运行记录）；根goal.md及JSON registry用于续接。
 - Status: G1完成（历史J5/XCell先验差异已记账，严格等总监督仍待G3）；G2真实推理门控通过、完整评分待启动。新BF1采用GT可评性与欧氏2µm，旧矩形容差修正另表保留。
 - Commit: 本条随实现独立提交，哈希见Git历史。
+
+## 10-25 12:56:00
+
+- Purpose: 记录固定公平协议后的首批完整公共权重基线真实启动状态。
+- Changed: 更新goal.md、公平对比进度JSON及当前运行记录；无算法改动。
+- Validation: 完整协议1510点组/40k训练recipe核验passed；两个真实run.json均确认代码a406d62、worker PID和输出命令；已写入实际评分行，未声称完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/public_sam_1025_125524 及 public_wsi_sam_1025_125524，包含配置/权重/协议SHA、逐任务输出及独立日志。
+- Docs record: docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md（运行记录追加）。
+- Status: G2 running；SAM GPU1 PID729815，WSI-SAM GPU3 PID729820，各6040评分预算任务。G3同域FT、闭集参考与干净FewClick仍pending。
+- Commit: 算法a406d62；本条为运行状态记录。

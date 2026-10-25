@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T12:55:11.514698+08:00",
+  "updated": "2026-10-25T12:55:56.025439+08:00",
   "current_phase": "G2",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -28,7 +28,7 @@
       "qualification": "审计与任务合同完成；历史先验缺口已记账，不代表严格等总监督条件已达成。G3须单独验收。"
     },
     "G2": {
-      "status": "preparing",
+      "status": "running",
       "depends_on": [
         "G1"
       ],
@@ -102,7 +102,30 @@
       ]
     }
   },
-  "active_jobs": [],
+  "active_jobs": [
+    {
+      "method": "sam",
+      "gpu": 1,
+      "session": "fewclick_public_sam_1025_125524",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/public_sam_1025_125524",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/public_sam_1025_125524.log",
+      "status": "running",
+      "worker_pid": 729815,
+      "last_observed_rows": 234,
+      "total_rows": 6040
+    },
+    {
+      "method": "wsi_sam",
+      "gpu": 3,
+      "session": "fewclick_public_wsi_sam_1025_125524",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/public_wsi_sam_1025_125524",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/public_wsi_sam_1025_125524.log",
+      "status": "running",
+      "worker_pid": 729820,
+      "last_observed_rows": 345,
+      "total_rows": 6040
+    }
+  ],
   "known_gaps": [
     "Retained J5 has prior target-cohort supervision; strict equal-target-supervision claim is not permitted.",
     "Legacy BF1 prediction-dependent denominators require versioned correction.",
@@ -111,7 +134,7 @@
     "XCell pretraining provenance/overlap needs further audit."
   ],
   "next_actions": [
-    "Launch full public local evaluation after passed real gates",
+    "Inspect persisted G2 summary/status and EXIT_CODE; do not restart completed workers",
     "Implement native gradient FT and clean FewClick initialization gates",
     "Replay retained FewClick on identical local tasks before cross-method comparison"
   ]

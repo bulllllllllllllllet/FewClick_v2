@@ -13,7 +13,7 @@ Complete the versioned supplementary experiment route for the current physical-m
 3. Inspect the registry's active workers and actual status/log files before launching or repeating a job.
 4. Continue the first incomplete phase whose prerequisites pass. Update the records when evidence changes.
 
-Current phase: **G2: public local baselines**. G1 audit, metric tests, immutable local manifests and prior/input ledger passed. Strict equal-total-supervision eligibility remains a separate G3 gate. SAM and WSI-SAM passed real CRC/TIGER inference gates (4 tasks × 4 budgets each); next launch full scoring. Native goal is thread-persistent; project files preserve the route for a new session.
+Current phase: **G2: public local baselines (running)**. G1 audit, metric tests, immutable local manifests and prior/input ledger passed. Strict equal-total-supervision eligibility remains a separate G3 gate. SAM and WSI-SAM passed real CRC/TIGER inference gates (4 tasks × 4 budgets each); full scoring is running on GPU1/3 (worker PIDs729815/729820), 6040 scored budget-tasks per method. Inspect registry/logs before taking the next step. Native goal is thread-persistent; project files preserve the route for a new session.
 
 Evidence root: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208`. Local validation: 302 image-target pairs × 5 point groups = 1510 tasks, four nested budgets. Training: 40000 fixed identity/seed recipes; full realized-coordinate parity must be checked by trainers. Read the [fairness contract](benchmarks/v5/fair_comparison/README.md) before reporting a comparison.
 
@@ -35,7 +35,7 @@ Evidence root: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_1242
 |---|---|---|
 | G0 four-arm screen | complete | Original run complete, matched task/val SHA, checkpoint reload, report |
 | G1 fairness and manifests | complete (qualified) | Machine audit, input/exposure ledger, versioned metrics, frozen tasks and selection rules |
-| G2 local public baselines | preparing; real gates passed | SAM/WSI-SAM loaders, exact image/point geometry, full local report |
+| G2 local public baselines | running; real gates passed | SAM/WSI-SAM loaders, exact image/point geometry, full local report |
 | G3 local adapted controls | pending | Real gradient/checkpoint/resume gates; SAM-FT/WSI-SAM-FT/supervised reference and controlled FewClick |
 | G4 transfer comparisons | pending | Matching source-query inputs, prototype/control systems; no query GT |
 | G5 replication/statistics | pending | Source/space cluster intervals, independent training seeds and cost |
