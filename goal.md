@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-26T00:21:54.233048+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
+Updated: 2026-10-26T00:41:00.897853+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
 
 ## Objective
 
@@ -26,7 +26,7 @@ Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_
 | G4 | complete, qualified | Nine18700 sparse +837 dense-reference rows audited;180 gates replayed; exploratory cluster statistics |
 | G5 | complete, qualified | All12 trains/scores/selection/weights accepted; three-seed Dice/BF1 and ddof1 std independently recounted |
 | G6 | partial; formal controls queued | Four raw groups/PCA dependency active; two-arm actual CPU model gate passed; full pipeline4089939 waits PCA, formal native gates/trains/scores pending |
-| G7 | external subset complete, remainder pending | Six680-row external comparison audited; strict heldout concepts/TLS pending |
+| G7 | external accepted; heldout supervision prepared | Threefold coverage/12 model-loss gates passed; fullfold recipes/training/accuracy and TLS pending |
 | G8 | input gate only | Real WSI cells/model/coverage/stitch/cache/efficiency pending |
 | G9 | preparing | 11 human challenges + 14 AI checks mapped; experiments/factual corrections and submitted-version binding remain |
 
@@ -119,3 +119,11 @@ Two projected-cache/catalog variants accepted through real LocalData, four updat
 Formal coordinator4089939 tmux fewclick_generic_controls_1026_001500 is verified live waiting full train PCA3924161. Then full1737-field assembly, GPU1 plain/GPU3 whitened actual native gates, NEW10k/40k train and selected-checkpoint6040 per arm. No retry; no accuracy or fullG6 closure claimed. GPU1/3 reserved; future GPU4/5 work must wait respective raw completion and actual idle. All source files in its contract frozen; add separate heldout/WSI modules.
 
 Flag interpretation: model target_cohort_initialization=False means noJ5/target-supervised model weight init. GenericHE adds training-image unsupervised PCA; do not claim equal total pretraining or no target-image fit. Full comparison protocol SHAs legitimately change for new cell catalogs; independently check actualsame RGB/GT/points/40k, never falsify the original SHA. Next independent work while dependencies run is strict-heldout ontology/WSI pipeline, not repeated waiting-only turns. Record docs/运行记录/模型实验/运行记录_通用HE双投影装配与真实模型门控_1025_235500.md.
+
+## Heldout ontology and supervision preparation
+
+Predeclared N excludesCRC3/TIGER3,5 (testCRC3/TIGER5); A excludesCRC10/TIGER7 (testCRC10); L excludesCRC8/TIGER2,6,7 (testCRC8). Auxiliary broad labels are conservative exclusions, not synonymous test targets. Official TIGER primary search-index definitions + local mapping recorded; direct page403, no fabricated full-page retrieval. No accuracy-driven fold choice.
+
+All1737 GT SHAs audited. Remaining train candidate pairs CRC/TIGER: N3869/326, A4194/401, L4393/66 (only33 TIGER fields). Old40k seen-target tasks with excluded negative points N4791/A2983/L9315. Must regenerate newfold tasks/negatives and mask seen-validation selection. Fine-clean is only full4x clean-pool upper bound.
+
+12 real two-domain/two-split/fold point probes and freshCOCO/noJ5 image-only forward/loss passed: ignored-truth perturbation invariant and ignored output gradient0. RGB morphology still visible; context/assignment self-supervision remain image-based. Not input-gradient or all-pretraining novelty proof. OriginalGT unchanged and mask/points independently replayed. Artifacts heldout_1026_003000/audit_1026_003000, supervision_gate_1026_004200, independent_mask_gate_1026_004500.json. No formal heldout train/accuracy. Next independent task: fullfold manifests/actual points and context annotation audit while six genericHE jobs run.

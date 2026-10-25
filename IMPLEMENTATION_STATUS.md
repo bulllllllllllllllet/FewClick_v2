@@ -2439,3 +2439,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/assembly_gate_1026_000100; model_gate_1026_000800; formal_controls_1026_001500; model_pipeline_continuity_1026_002000.json.
 - Docs record: docs/运行记录/模型实验/运行记录_通用HE双投影装配与真实模型门控_1025_235500.md
 - Commit: This isolated real-path/queue change; hash available in git log. Overall goal active/incomplete.
+
+## 10-26 00:41:00
+
+- Purpose: Prepare concept-heldout supervision without leaking excluded classes through negative points or seen-val selection.
+- Changed: New heldout_comparison audit/supervision/gate/README; data record; goal/registry/current record.
+- Validation: Real1737 GT SHAs and each40k task exposures audited;12 masked-GT/point probes plus fresh noJ5 image-only model/loss gates EXIT0. Ignored truth invariant, ignored output gradient0, originalGT/mask/points independently replayed. TIGER official primary index/local mapping recorded (direct page403). Full4x morphology exclusion, fullfold recipes/training/accuracy incomplete.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/audit_1026_003000; supervision_gate_1026_004200; independent_mask_gate_1026_004500.json.
+- Docs record: docs/运行记录/数据审计/运行记录_三概念留出本体与监督排除覆盖_1026_003000.md
+- Commit: This isolated ontology/supervision preparation; hash available in git log. Whole goal active/incomplete.
