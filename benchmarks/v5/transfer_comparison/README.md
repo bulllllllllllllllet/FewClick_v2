@@ -46,3 +46,7 @@ G4完成仍需全量稀疏行、受控新权重迁移、近期方法全量及分
 `evaluate_context.py` 是两个不同标注预算的全量入口。输入专用类禁止labels/supervision API，移除GT计数且将source/query标签路径设为不可读；另一个scorer对象只在预测后读query GT。SAM生成context只看source RGB/点，缓存键含图像、点和权重SHA；实际门控与原SAM重新编码比较。完整GT context只能由独立benchmark端提供完整source mask，不能按稀疏负点补成全负背景。
 
 实际覆盖：212个支持视野中187个完整、25个含ignore。稀疏预测context全935对×5点组×4预算=18700行；完整GT参考仅837对、每对1行，98对按标注覆盖排除。参考预算记full_mask，不复制成5点组或点击曲线；与点方法比较时必须限制在同837对。CPU4线程、CUDA隐藏，模型/依赖/源码/官方权重manifest均与真实gate核对。正式入口须`--verified-gate`通过16条稀疏+4条完整GT门控。保存的row latency只含MultiverSeg预测，不含SAM生成/IO；总wall time单列，不作G8独立效率证据。
+
+`evaluate_adapted_sparse.py` 用G3清洁本图适配最佳权重测试跨图泛化：M3D无细胞/XCell的原生graph+Dense和各自同特征原型，及SAM-FT特征原型。明确remote_training_steps=0，不冒充远端监督训练已充分调优；SAM特征迁移不是官方SAM原生接口。严格权重与40k训练SHA/开发协议检查，原型温度.1/阈值.5不按R结果调整。输入专用对象禁止GT API并删除GT统计；模型不接query class ID，query图中不画source点。
+
+真实gate覆盖CRC/TIGER×same/cross×present/absent共8例、4预算，每方法32行；各域首例与完整未缓存原生远端forward/encoder对照，保存预测直接计数。正式每方法18700行，两个FewClick worker各输出两个方法；同特征原型仍是固定feature诊断。32个absent pair的query含ignore，故“无目标”严格指有效标注区域内无目标；所有方法FPA分母都是valid像素，不保证未知区域生物学上无目标，也不称全片误报。

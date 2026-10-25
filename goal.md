@@ -10,7 +10,7 @@ Updated: 2026-10-25T16:02:04.456733+08:00. Native thread goal: **active**. G3 is
 
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
-3. Next independent work: **G4 clean G3 weights/SAM-FT feature transfer**. Retained diagnostics and ongoing MultiverSeg do not replace it.
+3. G4 clean G3 transfer is now gated/running. Next independent work: strict concept-heldout data/ontology audit and original reviewer evidence mapping while full scores execute.
 4. New source may live outside locked snapshots. Do not edit running/queued trainer, model, sampler or inference files listed in contracts.
 
 Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/continuity_1025_160204/goal_before_G3_closeout_1025_160204.md` (SHA256 b166a50ea75b0c9c81aed0525b9c48b847b3391e525af7a61daf9afa17bd28dd). Detailed immutable results and run records remain unchanged.
@@ -57,7 +57,7 @@ Use no GPU0/2. Future GPU jobs must chain dependencies to avoid racing these coo
 
 ## G4/G7/G8 facts
 
-Retained-M3 graph/prototype18700 each and SAM-public feature prototype18700 complete. First two independently audited: presentDice.469993/.343504, absentFPA.045580/.369965; fixed-feature historicalJ5 diagnostic only. SAM-feature independent audit and all transfer cluster statistics still required. Clean local-adapted transfer is not yet implemented.
+Retained-M3 graph/prototype18700 each and SAM-public feature prototype18700 complete. First two independently audited: presentDice.469993/.343504, absentFPA.045580/.369965; fixed-feature historicalJ5 diagnostic only. SAM-feature independent audit and all transfer cluster statistics still required. Clean local-adapted transfer is now gated/running; full scores and statistics are incomplete.
 
 External IGNITE true256/512/1024µm centre fields10,34 pairs×5 point groups,9 classes. Original splits7train/1val/2test retained as provenance; all external-only to current CRC/TIGER adaptation, never externally fit/select weights. Public SAM/WSI-SAM680 each complete: Dice.457234/.510330, paired ROI CI includes0. PUMA205/OCELOT663 ROI cannot provide1024µm context; no fake padding/repeated-image context. Native cell extraction and adapted/FewClick scores still pending.
 
@@ -73,3 +73,9 @@ WSI strict reader gate passed actual first TLS case54039×65660, vendor CapRes.2
 - Local positive-click segmentation and remote support→query/presence-absence are separate tables. Never copy source coordinates to a different query. No query GT/class ID in interactive inference or oracle candidate/threshold selection.
 - Metric fixed>=.5; BF1 Euclidean2µm/anisotropic MPP, GT-boundary eligibility, no predicted boundary scores0. Legacy BF1 denominator correction separate; old Dice unchanged. All five point groups are development robustness, not blind test.
 - Native goal remains active until statistics/seeds, all mechanism/generic/heldout/TLS/WSI/efficiency and reviewer evidence requirements are actually verified. Preserve output/version/SHA/PID/log/EXIT_CODE evidence at each milestone.
+
+## Clean adapted G4 now running
+
+Real eight-case32-row gates passed for SAM-FT feature prototype and both G3 FewClick Dense conditions (each learned graph+Dense and same-feature prototype), native/cache errors0 in both domains, query maps0, input GT API forbidden, saved direct counts passed. CPU4/GPUhidden workers1736643(SAM),1736647(no cells),1736650(XCell), output `transfer_1025_131856/clean_<method>_1025_162450`,18700 rows/method; five outputs total. No remote supervised training added; this is local-adapted transfer generalization, not optimized R training. Record `docs/运行记录/模型实验/运行记录_清洁适配权重支持查询迁移_1025_161448.md`. Freeze its source hashes.
+
+Query coverage audit:43/470 present pairs and32/465 absent pairs contain some ignore pixels in query. All metrics remain on annotated valid pixels; absent means no target annotated there, never certified whole-image or whole-slide negative. Keep full fixed task set and qualify absence/FPA. Auditquery_coverage_audit_1025_162400.json.

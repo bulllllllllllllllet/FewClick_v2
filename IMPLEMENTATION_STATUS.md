@@ -2349,3 +2349,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837; protocol_1025_124208/G3_complete_audit_1025_155140.json; first_local_complete_1025_155355; continuity_1025_160204.
 - Docs record: docs/运行记录/模型实验/运行记录_匹配任务顺序的三seed重复合同_1025_153837.md; docs/运行记录/模型实验/运行记录_首轮本图适配完整验收与结果边界_1025_155551.md
 - Commit: This isolated preparation/closeout change; hash available in git log. Overall goal remains active/incomplete.
+
+## 10-25 16:36:46
+
+- Purpose: Execute controlled local-adapted support-query transfer, separate from retained J5 diagnostics.
+- Changed: transfer_comparison/evaluate_adapted_sparse.py and README; clean-transfer record; goal/registry/current record.
+- Validation: Real eight-case CRC/TIGER same/cross present/absent gates32 rows per output passed for SAM-FT feature retrieval and both clean Dense FewClick conditions. Actual cached/native errors0 in both domains, query maps0, source/query GT API forbidden, saved direct TP/FP/FN passed. CPU4/GPUhidden full workers1736643/1736647/1736650 verified live,18700 per output (five outputs). No additional R-supervised training or R threshold selection. Query coverage audit:43 present/32 absent pairs have partial annotations; absence/FPA qualified to valid annotated pixels.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/clean_*_1025_162450; gate_clean_*_1025_161448; query_coverage_audit_1025_162400.json.
+- Docs record: docs/运行记录/模型实验/运行记录_清洁适配权重支持查询迁移_1025_161448.md
+- Commit: This isolated change; hash available in git log. G4 full scores/statistics and total goal still incomplete.

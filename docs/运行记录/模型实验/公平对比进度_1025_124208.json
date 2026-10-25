@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T16:02:04.456733+08:00",
+  "updated": "2026-10-25T16:34:16.062669+08:00",
   "current_phase": "G4",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -98,15 +98,23 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/sparse_stream_independent_1025_133600.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/gate_context_locked_1025_152208/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/context_full_1025_152401/support_coverage.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/retained_and_SAM_acceptance_1025_152840.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/retained_and_SAM_acceptance_1025_152840.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/gate_clean_sam_ft_1025_161448/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/gate_clean_fewclick_m3d_image_1025_161448/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/gate_clean_fewclick_m3d_xcell_1025_161448/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/query_coverage_audit_1025_162400.json"
       ],
-      "qualification": "Retained-M3 graph/prototype各18700完整且独立行计数回放通过；SAM特征评分仍运行；MultiverSeg native20门控通过并全量CPU运行：稀疏18700+完整GT参考837（98不完整支持pair排除）。新适配权重迁移/完整分轨统计仍待。",
+      "qualification": "三历史诊断完整；清洁G3权重三worker/5方法已真实32行gate、GT禁用及原生/缓存逐值对照通过，CPU各18700全量运行；MultiverSeg双轨仍运行。全部行审计/配对统计尚未完成。",
       "active_outputs": [
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/sparse_retained_m3_1025_133833",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/sparse_sam_public_features_1025_133833",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/context_full_1025_152401"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/context_full_1025_152401",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/clean_sam_ft_1025_162450",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/clean_fewclick_m3d_image_1025_162450",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/clean_fewclick_m3d_xcell_1025_162450"
       ],
-      "context_record": "docs/运行记录/模型实验/运行记录_MultiverSeg双标注轨道全量迁移_1025_151429.md"
+      "context_record": "docs/运行记录/模型实验/运行记录_MultiverSeg双标注轨道全量迁移_1025_151429.md",
+      "clean_record": "docs/运行记录/模型实验/运行记录_清洁适配权重支持查询迁移_1025_161448.md"
     },
     "G5": {
       "status": "queued",
@@ -377,6 +385,57 @@
       "process_alive_last_observed": true,
       "process_observed_at": "2026-10-25T16:02:04.456733+08:00",
       "last_observed_step": 2294
+    },
+    {
+      "kind": "clean_transfer_scoring",
+      "method": "sam_ft",
+      "status": "running",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/clean_sam_ft_1025_162450",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/clean_sam_ft_1025_162450.log",
+      "session": "fewclick_clean_transfer_sam_ft_1025_162450",
+      "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/gate_clean_sam_ft_1025_161448",
+      "expected_rows_per_method": 18700,
+      "outputs_per_worker": 1,
+      "device": "cpu",
+      "threads": 4,
+      "worker_pid": 1736643,
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-25T16:34:16.062669+08:00",
+      "last_observed_rows": 1200
+    },
+    {
+      "kind": "clean_transfer_scoring",
+      "method": "fewclick_m3d_image",
+      "status": "running",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/clean_fewclick_m3d_image_1025_162450",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/clean_fewclick_m3d_image_1025_162450.log",
+      "session": "fewclick_clean_transfer_fewclick_m3d_image_1025_162450",
+      "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/gate_clean_fewclick_m3d_image_1025_161448",
+      "expected_rows_per_method": 18700,
+      "outputs_per_worker": 2,
+      "device": "cpu",
+      "threads": 4,
+      "worker_pid": 1736647,
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-25T16:34:16.062669+08:00",
+      "last_observed_rows": 1600
+    },
+    {
+      "kind": "clean_transfer_scoring",
+      "method": "fewclick_m3d_xcell",
+      "status": "running",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/clean_fewclick_m3d_xcell_1025_162450",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/clean_fewclick_m3d_xcell_1025_162450.log",
+      "session": "fewclick_clean_transfer_fewclick_m3d_xcell_1025_162450",
+      "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/gate_clean_fewclick_m3d_xcell_1025_161448",
+      "expected_rows_per_method": 18700,
+      "outputs_per_worker": 2,
+      "device": "cpu",
+      "threads": 4,
+      "worker_pid": 1736650,
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-25T16:34:16.062669+08:00",
+      "last_observed_rows": 1700
     }
   ],
   "known_gaps": [
@@ -387,7 +446,7 @@
     "Fixed adaptation hyperparameters; not per-method optimum; independent training seeds remain pending."
   ],
   "next_actions": [
-    "Implement and gate clean G3 FewClick and SAM-FT feature support-query transfer on the fixed R tasks; retained-J5 diagnostics do not close this requirement",
+    "Observe clean G3 transfer workers1736643/1736647/1736650 and MultiverSeg1444317; do not restart; then full row/GT parity and source-cluster statistics",
     "Observe live G6/MVS/external/repetition coordinators; never restart from an observation timeout",
     "Complete same-pair sparse/full-GT transfer statistics; compare dense reference only on837 eligible pairs",
     "Finish additional seeds20261026/20261027 after native gates; preserve matched order within seed",
