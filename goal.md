@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-26T01:32:51.520743+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
+Updated: 2026-10-26T01:47:52.600627+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
 
 ## Objective
 
@@ -157,3 +157,13 @@ Corrected point parent181064 and all3 full workers ended EXIT0. All3x40000 exact
 New pipeline.py real CPU preparation + independent original-byte/4two-domain-updates/9job/GPU4,5-only audit passed. Formal coordinator349631 tmux fewclick_heldout_formal_1026_012700 is verified live waiting owned raw02 PID3914383/GPU4 and raw03 PID3914488/GPU5, then actual GPUidle. First assigned Nimage/Nsam;9conditions x4stages nativegate/gate terminal scorer/NEW full10k40k/seen-selected originalGT local test. No GPU model has started. Nativegate never initializes formal model. Captured allheldout/shared Python sources frozen whilewaiting/running; add remote/WSI modules separately without editing snapshots. GPU1/3 remain G6, never0/2. Failure preserved/no retry, independent condition continues; separate remote evaluation and full independent final training/GT/selection/statistics still pending.
 
 Record docs/运行记录/模型实验/运行记录_三fold三方法原生门控与正式训练队列_1026_012700.md; evidence queue_gate_independent_1026_013000.json and formal_queue_live_audit_1026_013200.json, root heldout_1026_003000. Next independent progress is heldout remote adapter/queue and full WSI streaming/nativecell/GPU efficiency. Overall goal active.
+
+## Latest heldout remote interface and queue
+
+New independent heldout_transfer implements selected seen-training/actual-coordinate/local-test/remote-test checkpoint binding and GT-forbidden inference objects. No targetID/querypoints; graph query maps0. FewClick graphDense+samefeature prototype; SAM feature proto and custom WSI fine+aligned2x normalized feature concat proto, not official native remote SAM decoders. Fixedtemp.1/threshold.5/noRupdates. ActualN/A/L115/65/62pairs ->2300/1300/1240 rows/output; parent935 count fields are ancestry only, actual coverage recomputed. N has7 strata/no TIGER same_present.
+
+Real NoCell small CPUcheckpoint gate396749 EXIT0:7 cached/native errors0,28rows x2 outputs all saved counts/Dice independently recounted, GT API forbidden/maps0; NOT formal accuracy. Feature helper gate400579 used G3 seen-all-label SAM/WSI real weights, CPUcache output exact and 2x coordinate-ramp alignment passed; explicitly not unseen-label result.
+
+Remote queue realprepare9jobs and independent plan audit passed. Formal CPU coordinator433592 tmux fewclick_heldout_remote_queue_1026_014400 is verifiedlive waiting localproducer349631;2CPUworker cap/CUDAhidden. Each completed full training must get its OWN remote native gate before fullR, same source/weight/testSHA; gates-only checkpoints never fullresults. No remote formal scores started. Freeze existing heldout_transfer Python and all captured imported sources; new work outside snapshots. Evidence remote_independent_1026_014300.json, remote_queue_live_1026_014700.json; record docs/运行记录/模型实验/运行记录_留出类支持查询迁移适配与真实门控_1026_013700.md.
+
+Next full WSI streaming/cells/GPU efficiency and matched all-label reference subset extraction; final heldout fulltrain/local/R acceptance/statistics still pending. G6 sixworkers and local349631 remain live. Overall goal active.

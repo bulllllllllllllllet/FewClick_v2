@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-26T01:32:51.520743+08:00",
+  "updated": "2026-10-26T01:47:52.600627+08:00",
   "current_phase": "G6",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -319,7 +319,12 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/queue_gate_1026_012700/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/queue_gate_independent_1026_013000.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_live_audit_1026_013200.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/contract.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/contract.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_checkpoint_gate_1026_013700/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_feature_gate_1026_013700/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_independent_1026_014300.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_queue_1026_014400/contract.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_queue_live_1026_014700.json"
       ],
       "qualification": "IGNITE10中心三尺度真实cells及六方法680行/实际GT/开发权重/32门控保存mask回放验收通过，10 ROI配对2000次bootstrap完成；严格概念留出/TLS仍未完成。",
       "record_public": "docs/运行记录/模型实验/运行记录_外部域公共权重真实门控与评分_1025_143741.md",
@@ -333,7 +338,10 @@
       "heldout_qualification": "新三fold各40000真实点击/全部masked GT和seen点/原终评点序列全量审计通过EXIT0；within-fold三方法共用真实点SHA，跨fold SHA独立。9条件执行计划和三组8任务native清单独立重算通过；当前coordinator349631真实等raw02/03与GPU4/5空闲，原生GPU门控/正式训练/精度尚未开始。remote另需适配与验收，未声明所有预训练形态未见。",
       "heldout_protocol_record": "docs/运行记录/数据审计/运行记录_三fold完整任务生成与真实点击_1026_004500.md",
       "heldout_checkpoint_record": "docs/运行记录/模型实验/运行记录_概念留出训练与独立终评衔接门控_1026_005500.md",
-      "heldout_queue_record": "docs/运行记录/模型实验/运行记录_三fold三方法原生门控与正式训练队列_1026_012700.md"
+      "heldout_queue_record": "docs/运行记录/模型实验/运行记录_三fold三方法原生门控与正式训练队列_1026_012700.md",
+      "heldout_remote_status": "real_CPU_interface_gates_passed_9condition_remote_queue_waiting",
+      "heldout_remote_record": "docs/运行记录/模型实验/运行记录_留出类支持查询迁移适配与真实门控_1026_013700.md",
+      "heldout_remote_qualification": "NoCell小checkpoint真实7strata/28行×2输出、缓存/原生0误差、GT API禁用/maps0和保存概率独立计数通过，仅接口不是正式精度。SAM/WSI helper旧G3真实权重门控通过，明确其训练见过留出类。正式433592同源9job实际准备和等待producer349631；必须每个正式新权重重新gate后全量，不新增R训练。N/A/L实际115/65/62对分母重算，不沿用父935统计。"
     },
     "G8": {
       "status": "all30_spatial_plan_and_CPU_tissue_cache_gate_accepted_full_execution_pending",
@@ -401,14 +409,14 @@
       "status": "running",
       "worker_pid": 3914369,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:32:51.520743+08:00",
+      "process_observed_at": "2026-10-26T01:47:52.600627+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914369,
-        "scale_rows": 566,
+        "scale_rows": 656,
         "total_scale_rows": 1302,
-        "fields_completed": 188,
-        "seconds": 6288.812021970749
+        "fields_completed": 218,
+        "seconds": 7184.2813329696655
       }
     },
     {
@@ -439,14 +447,14 @@
       "status": "running",
       "worker_pid": 3914376,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:32:51.520743+08:00",
+      "process_observed_at": "2026-10-26T01:47:52.600627+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914376,
-        "scale_rows": 569,
+        "scale_rows": 656,
         "total_scale_rows": 1299,
-        "fields_completed": 189,
-        "seconds": 6284.457414388657
+        "fields_completed": 218,
+        "seconds": 7188.538293838501
       }
     },
     {
@@ -477,14 +485,14 @@
       "status": "running",
       "worker_pid": 3914383,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:32:51.520743+08:00",
+      "process_observed_at": "2026-10-26T01:47:52.600627+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914383,
-        "scale_rows": 599,
+        "scale_rows": 698,
         "total_scale_rows": 1299,
-        "fields_completed": 199,
-        "seconds": 6282.171551942825
+        "fields_completed": 232,
+        "seconds": 7184.158086061478
       }
     },
     {
@@ -515,14 +523,14 @@
       "status": "running",
       "worker_pid": 3914488,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:32:51.520743+08:00",
+      "process_observed_at": "2026-10-26T01:47:52.600627+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3914488,
-        "scale_rows": 785,
+        "scale_rows": 902,
         "total_scale_rows": 1299,
-        "fields_completed": 261,
-        "seconds": 6285.163351774216
+        "fields_completed": 300,
+        "seconds": 7185.16153049469
       }
     },
     {
@@ -560,7 +568,7 @@
       "kind": "generic_HE_train_PCA",
       "worker_pid": 3924161,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:32:51.520743+08:00",
+      "process_observed_at": "2026-10-26T01:47:52.600627+08:00",
       "last_observed_status": {
         "status": "waiting_live_raw_shards",
         "worker_pid": 3924161,
@@ -571,7 +579,7 @@
           "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history02_1025_234700",
           "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history03_1025_234700"
         ],
-        "observed_at": 1792949568.5501792
+        "observed_at": 1792950470.3244727
       }
     },
     {
@@ -600,12 +608,12 @@
       "kind": "generic_HE_formal_control_coordinator",
       "worker_pid": 4089939,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:32:51.520743+08:00",
+      "process_observed_at": "2026-10-26T01:47:52.600627+08:00",
       "last_observed_status": {
         "status": "waiting_live_PCA",
         "coordinator_pid": 4089939,
         "PCA_pid": 3924161,
-        "observed_at": 1792949568.9435232
+        "observed_at": 1792950470.4419448
       }
     },
     {
@@ -639,7 +647,7 @@
       ],
       "GPU_training_started": false,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T01:32:51.520743+08:00",
+      "process_observed_at": "2026-10-26T01:47:52.600627+08:00",
       "last_observed_status": {
         "status": "running_or_waiting",
         "coordinator_pid": 349631,
@@ -660,7 +668,46 @@
         "complete": {},
         "failed": [],
         "pending_jobs": 7,
-        "seconds": 123.45940113067627
+        "seconds": 1020.8288669586182
+      }
+    },
+    {
+      "kind": "heldout_remote_CPU_coordinator",
+      "worker_pid": 433592,
+      "status": "waiting_live_local_training",
+      "gpu": null,
+      "max_CPU_workers": 2,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_queue_1026_014400",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_queue_1026_014400.log",
+      "session": "fewclick_heldout_remote_queue_1026_014400",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.heldout_transfer.queue",
+        "--producer",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700",
+        "--producer-pid",
+        "349631",
+        "--integration-gate",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_checkpoint_gate_1026_013700",
+        "--feature-gate",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_feature_gate_1026_013700",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_queue_1026_014400"
+      ],
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-26T01:47:52.600627+08:00",
+      "last_observed_status": {
+        "status": "running_or_waiting_local_training",
+        "coordinator_pid": 433592,
+        "workers": [],
+        "complete": {},
+        "failed": [],
+        "seconds": 215.57693362236023,
+        "pending_conditions": 9,
+        "ready_conditions": 0,
+        "producer_pid": 349631
       }
     }
   ],
@@ -673,7 +720,7 @@
   ],
   "next_actions": [
     "Observe9condition coordinator349631, raw GPU4/5 dependencies; native4-update+gate-scorer -> NEW full10000/40000 -> seen-selected local test. Full points accepted; never restart old point pipelines.",
-    "Implement heldout remote selected-weight adapter/native CPU inference gates and queue; frozen remote protocols remain separate from local tables",
+    "Observe remote CPU coordinator433592 and local349631; keep source snapshots frozen; each formal trained weight requires its own remote gate then full scores. New independent work: full WSI streaming/cells/GPU efficiency and matched all-label reference subset extraction.",
     "Audit full4x annotation coverage for strict morphology-excluded tier; fine-clean alone cannot certify absence",
     "Continue6 genericHE handles and frozen sources; all30 TLS grid/tissue CPU cache gate accepted, next build full streaming inference/cache/stitch and actual GPU/cell efficiency; keep main30 cohort distinct",
     "Build independent native WSI model/cache/coverage/stitch/efficiency gates; GPU4/5 only after raw completion and actual idle",
@@ -1733,6 +1780,24 @@
           "status": "complete"
         }
       ]
+    },
+    {
+      "kind": "heldout_remote_small_checkpoint_gate",
+      "worker_pid": 396749,
+      "status": "complete_interface_gate_not_accuracy",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_checkpoint_gate_1026_013700",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_checkpoint_gate_1026_013700.log",
+      "session": "fewclick_heldout_remote_cpu_gate_1026_013700",
+      "terminal_log_tail": "/home/zhaoyh/miniconda3/envs/aligner/lib/python3.10/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n  warnings.warn(\nEXIT_CODE=0\n"
+    },
+    {
+      "kind": "heldout_SAM_WSI_feature_wrapper_gate",
+      "worker_pid": 400579,
+      "status": "complete_interface_gate_not_accuracy",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_feature_gate_1026_013700",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_feature_gate_1026_013700.log",
+      "session": "fewclick_heldout_remote_features_1026_013700",
+      "terminal_log_tail": "8477b25e26f803cd\", \"cache_max_error\": 0.0, \"query_GT_access\": false, \"scope\": \"Mechanical helper gate with G3 weights trained on all classes; NOT heldout accuracy or heldout checkpoint gate\"}\n{\"method\": \"wsi_sam_ft\", \"checkpoint_sha256\": \"5fc68c12e822bf294d280f9c2bf78e5304dd1edd9b1e5267c4da3c381ecec8f3\", \"feature_shape\": [1, 512, 64, 64], \"cache_sha256\": \"a375a06c4a5a85ae9447233337105a6542ce05a7984a58ec224ce291d152dcb3\", \"probability_sha256\": \"91cd12512cbcef701545548d34c9e07e5278b4a2221a09e4b53ff49ac2507e9e\", \"cache_max_error\": 0.0, \"query_GT_access\": false, \"scope\": \"Mechanical helper gate with G3 weights trained on all classes; NOT heldout accuracy or heldout checkpoint gate\"}\nEXIT_CODE=0\n"
     }
   ]
 }

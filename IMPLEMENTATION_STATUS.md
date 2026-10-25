@@ -2484,3 +2484,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300/full_audit、queue_gate_independent_1026_013000.json、formal_queue_1026_012700、formal_queue_live_audit_1026_013200.json、formal_continuity_1026_013200.json。
 - Docs record: docs/运行记录/模型实验/运行记录_三fold三方法原生门控与正式训练队列_1026_012700.md。
 - Commit: 本条随本次独立提交，哈希由Git记录。
+
+## 10-26 01:47:00
+
+- Purpose: 补齐概念留出支持查询迁移适配、真实CPU接口/特征门控及逐训练条件自动评分队列。
+- Changed: 新heldout_transfer evaluate/features/gate_features/queue包、README及goal/registry/run records；冻结旧source未改。
+- Validation: 小checkpoint NoCell7 native/cache errors0、28行×2输出56保存概率计数/Dice独立重算、GT API禁止/maps0；真实G3 SAM/WSI helper cacheexact与2x中央ramp通过，明确见过留出类别，仅机械门控。真实9job prepare及独立行数/分母重算通过，正式433592/producer349631真实等待且source锁一致。当前无正式heldout精度。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_checkpoint_gate_1026_013700、remote_feature_gate_1026_013700、remote_independent_1026_014300.json、remote_queue_1026_014400、remote_queue_live_1026_014700.json、remote_continuity_1026_014700.json。
+- Docs record: docs/运行记录/模型实验/运行记录_留出类支持查询迁移适配与真实门控_1026_013700.md。
+- Commit: 本条随本次独立提交，哈希由Git记录。
