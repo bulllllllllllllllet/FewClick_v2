@@ -2236,3 +2236,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md（运行记录追加）。
 - Status: G2 complete；G3全部门控通过、正式10k训练准备启动。只证明真实可训练/可恢复，不用4步门控精度冒充正式结果；历史监督、不同先验/视野/容量及固定超参限制保留。
 - Commit: 本条随实现独立提交，哈希见Git历史。
+
+## 10-25 13:17:07
+
+- Purpose: 持久记录五组同域适配的正式启动与实际计算进程。
+- Changed: 更新goal.md、进度JSON及当前运行记录；无运行源码改动。
+- Validation: coordinator825263及四个计算worker的/proc命令、run.json PID/代码d142fcb/共享实际坐标SHA匹配；四组已发生有限loss的真实更新，前1000步head预热符合合同。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451；contract.json记录门控/源码/40k坐标/公共权重先验/预算/环境，独立worker日志、progress和状态持久记录。
+- Docs record: docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md（运行记录追加）。
+- Status: G3 running；GPU1 SAM-FT PID825669、GPU3 WSI-SAM-FT PID825670、GPU4 image-FC PID825671、GPU5 xcell-FC PID825672；closed参考在GPU3排队。完整10k更新及各6040评分未完成。
+- Commit: 训练实现d142fcb；本条为启动状态记录。

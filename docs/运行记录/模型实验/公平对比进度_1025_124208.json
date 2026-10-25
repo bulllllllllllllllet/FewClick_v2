@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T13:14:18.294974+08:00",
+  "updated": "2026-10-25T13:17:07.034101+08:00",
   "current_phase": "G3",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -47,7 +47,7 @@
       ]
     },
     "G3": {
-      "status": "preparing",
+      "status": "running",
       "depends_on": [
         "G1"
       ],
@@ -63,7 +63,11 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_gates_1025_131130.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/class_contract_audit_1025_130820.json"
       ],
-      "qualification": "全部五组训练门控、初始化及参数审计通过；完整10k更新待启动，不以4步门控精度作结论。"
+      "qualification": "五组全部真实门控通过；四组正式训练已发生实际更新，闭集参考队列待启动。完整10k训练/评分未完成。",
+      "formal_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451",
+      "queued_methods": [
+        "closed_reference (GPU3 after WSI-SAM-FT)"
+      ]
     },
     "G4": {
       "status": "pending",
@@ -114,7 +118,120 @@
       ]
     }
   },
-  "active_jobs": [],
+  "active_jobs": [
+    {
+      "kind": "coordinator",
+      "status": "running",
+      "worker_pid": 825263,
+      "session": "fewclick_adaptation_1025_131451",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451.log"
+    },
+    {
+      "status": "running",
+      "kind": "train",
+      "method": "sam_ft",
+      "worker_pid": 825669,
+      "gpu": 1,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_sam_ft_1025_131451",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_sam_ft_1025_131451.log",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.fair_comparison.train_adapted",
+        "--tasks",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400",
+        "--realized",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/realized_train_1025_125928",
+        "--method",
+        "sam_ft",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_sam_ft_1025_131451"
+      ],
+      "last_observed_step": 285,
+      "last_observed_loss": 1.4012342393398285,
+      "total_steps": 10000
+    },
+    {
+      "status": "running",
+      "kind": "train",
+      "method": "wsi_sam_ft",
+      "worker_pid": 825670,
+      "gpu": 3,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_wsi_sam_ft_1025_131451",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_wsi_sam_ft_1025_131451.log",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.fair_comparison.train_adapted",
+        "--tasks",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400",
+        "--realized",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/realized_train_1025_125928",
+        "--method",
+        "wsi_sam_ft",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_wsi_sam_ft_1025_131451"
+      ],
+      "last_observed_step": 299,
+      "last_observed_loss": 1.6743489503860474,
+      "total_steps": 10000
+    },
+    {
+      "status": "running",
+      "kind": "train",
+      "method": "fewclick_m3d_image",
+      "worker_pid": 825671,
+      "gpu": 4,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_image_1025_131451",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_image_1025_131451.log",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.fair_comparison.train_adapted",
+        "--tasks",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400",
+        "--realized",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/realized_train_1025_125928",
+        "--method",
+        "fewclick_m3d_image",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_image_1025_131451"
+      ],
+      "last_observed_step": 277,
+      "last_observed_loss": 1.5773406326770782,
+      "total_steps": 10000
+    },
+    {
+      "status": "running",
+      "kind": "train",
+      "method": "fewclick_m3d_xcell",
+      "worker_pid": 825672,
+      "gpu": 5,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_xcell_1025_131451",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_xcell_1025_131451.log",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.fair_comparison.train_adapted",
+        "--tasks",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400",
+        "--realized",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/realized_train_1025_125928",
+        "--method",
+        "fewclick_m3d_xcell",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_xcell_1025_131451"
+      ],
+      "last_observed_step": 279,
+      "last_observed_loss": 1.8726960718631744,
+      "total_steps": 10000
+    }
+  ],
   "known_gaps": [
     "Retained J5 has prior target-cohort supervision; strict equal-target-supervision claim is not permitted.",
     "Three independent encoders have more parameters and views than single-scale; compute/capacity are not matched.",
@@ -124,8 +241,8 @@
     "Fixed adaptation hyperparameters; not per-method optimum; independent training seeds remain pending."
   ],
   "next_actions": [
-    "Launch gated full G3 adaptation queues on GPU1/3/4/5",
-    "Rescore retained FewClick on identical local tasks before cross-method comparison",
-    "Continue transfer/statistics/cell/heldout/WSI route after phase prerequisites"
+    "Inspect G3 coordinator and real worker status; verify warmup-to-joint transition and finite loss",
+    "Retain no-retry policy; inspect terminal logs and artifacts before deciding next action",
+    "After G3 full completion audit task SHA/checkpoints and full budget scores; continue G4–G9 without shrinking objective"
   ]
 }
