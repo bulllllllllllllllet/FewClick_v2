@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-26T01:22:51.227281+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
+Updated: 2026-10-26T01:32:51.520743+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
 
 ## Objective
 
@@ -149,3 +149,11 @@ TLS30 actual headers/139934 full-context-valid tiles complete and independently 
 First corner cache gate nearlyallwhite, retained as background-only with exact original source snapshot. Fixed central grid probe has1.4%-4.4% white512 fine images and completed CPU worker274860 EXIT0: four disk caches, two task budgets,8 cached/native errors0, online encode0/query maps0, probability-then-threshold stitching. Independent fresh-model replay all2399401 pixels/budget exactly matches; wrongweight/input caches rejected. CRC support task30000000 is mechanical input, NOT TLS prompts or TLS accuracy. Image-only NoCell placeholders do not perform cell detection. Per-window192-node graph, not global cross-slide graph. Source/weights/cache/probability SHA independently bound.
 
 Root wsi_global_1026_010800; evidence plan_audit_1026_011300, cache_central_gate_1026_011900, cache_central_independent_1026_012100. Record docs/运行记录/模型实验/运行记录_整片全网格与真实缓存拼接门控_1026_010800.md. Full streaming slide cache/inference/output, native GPU timing, complete cell preparation, main30 coverage and TLS annotation/negative confirmation remain. No full-slide performance or efficiency accepted. Corrected heldout builder179911 nowcomplete; parent181064 and actual full workers229034/229035/229036 remain live, no final40000 acceptance yet. G6 six workers live. Overall goal active.
+
+## Latest full-point acceptance and heldout formal queue
+
+Corrected point parent181064 and all3 full workers ended EXIT0. All3x40000 exact real points, full1737 masked GT/seen points/recipe memberships/original heldout point sequences accepted in points_geometry_1026_010300/full_audit. Actual SHAs: N0aa097bc325652480dded3e67dabe450070d1dcde028556a0679e3be4b2e2992, A895cfe4a7fe48691e76b395986a8d665978552d5794b037e87f97fe564994096, Lc1506898624ac24e36d1d121f2f693a311e92421c71563422c1ec2d2d06aa09c. Withinfold allmethods same file; crossfold different excluded concepts/tasks. Do not restart old/failed point jobs.
+
+New pipeline.py real CPU preparation + independent original-byte/4two-domain-updates/9job/GPU4,5-only audit passed. Formal coordinator349631 tmux fewclick_heldout_formal_1026_012700 is verified live waiting owned raw02 PID3914383/GPU4 and raw03 PID3914488/GPU5, then actual GPUidle. First assigned Nimage/Nsam;9conditions x4stages nativegate/gate terminal scorer/NEW full10k40k/seen-selected originalGT local test. No GPU model has started. Nativegate never initializes formal model. Captured allheldout/shared Python sources frozen whilewaiting/running; add remote/WSI modules separately without editing snapshots. GPU1/3 remain G6, never0/2. Failure preserved/no retry, independent condition continues; separate remote evaluation and full independent final training/GT/selection/statistics still pending.
+
+Record docs/运行记录/模型实验/运行记录_三fold三方法原生门控与正式训练队列_1026_012700.md; evidence queue_gate_independent_1026_013000.json and formal_queue_live_audit_1026_013200.json, root heldout_1026_003000. Next independent progress is heldout remote adapter/queue and full WSI streaming/nativecell/GPU efficiency. Overall goal active.

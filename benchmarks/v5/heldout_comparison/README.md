@@ -17,3 +17,5 @@ full4x形态完全排除尚未认证。fine-clean数量只是上界；TIGER复�
 最新状态：首版三fold64点全部通过，但完整采样均失败；屏蔽后像素数足够不保证原2µm内部可采样。`geometric_candidates.py`按原picker最大5+5预算审计全候选池，N/A/L分别剔除2/3/1个训练pair，验证池不减少，129例独立原resolver回放一致。新geometry版协议/点击队列运行中，旧部分点击禁止作为完整训练输入。
 
 `training.py`仅为fresh image-only FewClick及SAM/WSI-SAM包装原共享trainer和FoldData，把fold/exclusion/source身份写checkpoint合同。`evaluate.py`独立绑定seen训练合同、完成训练run及原GT终评合同，只读取seen-best权重并检查history/path/SHA。`gate_checkpoint.py`实际CPU head/joint两更新、三视野主干变化、fresh权重/optimizer/RNG及两域heldout预测精确重放通过；另拒绝错误fold、训练SHA、masked测试GT、测试选模和gate冒充正式结果。CPU harness显式保存CPU RNG，第一次误调用CUDA-only save失败原样保留。完整GPU训练/终评CLI和最终精度仍待原生门控与运行；CPU门控不替代它们。
+
+最新geometry版本全部三fold40000实际点与完整GT/seen/测试点审计已通过EXIT0；旧失败版本保持禁止训练。`pipeline.py`真实生成每fold原实际点字节不变的8任务门控集（4更新，每次两域），列出3fold×3method的9条件计划；独立清单核对通过。正式coordinator349631等待raw02/03完整结束+EXIT0和GPU4/5真实空闲，按条件固定GPU执行gate→gate-checkpoint终评门控→全新初始化10k/40k→seen-best完整heldout local终评；阶段间再查空闲，源码锁定，失败不重试。GPU1/3留G6，0/2禁用。当前只是队列等待，原生GPU/训练未开始；remote另需适配/执行与独立统计。记录1026_012700与formal_queue_live_audit_1026_013200.json。

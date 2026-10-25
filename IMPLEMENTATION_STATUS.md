@@ -2475,3 +2475,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/plan_1026_010800、plan_audit_1026_011300、cache_central_gate_1026_011900、cache_central_independent_1026_012100、continuity_1026_012200.json。完整WSI/细胞/GPU效率/TLS准确率仍待。
 - Docs record: docs/运行记录/模型实验/运行记录_整片全网格与真实缓存拼接门控_1026_010800.md。
 - Commit: 本条随本次独立提交，哈希由Git记录。
+
+## 10-26 01:32:00
+
+- Purpose: 接受三fold全量真实点击并接通9条件原生GPU门控/新初始化训练/独立终评持久队列。
+- Changed: heldout_comparison/pipeline.py、README、goal/registry/run records。
+- Validation: 各40000完整GT/点/recipe/原测试点审计EXIT0；真实prepare-only和正式prepare均执行通过，独立原8任务字节/每步两域/within-fold SHA/9条件/GPU4,5审计一致；formal coordinator349631及原raw3914383/3914488真实存活等待，源码锁定。尚未原生GPU门控/正式训练，不报告精度。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300/full_audit、queue_gate_independent_1026_013000.json、formal_queue_1026_012700、formal_queue_live_audit_1026_013200.json、formal_continuity_1026_013200.json。
+- Docs record: docs/运行记录/模型实验/运行记录_三fold三方法原生门控与正式训练队列_1026_012700.md。
+- Commit: 本条随本次独立提交，哈希由Git记录。
