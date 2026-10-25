@@ -2304,3 +2304,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257; /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_gate_1025_144200. Cell caches, adapted external comparisons and complete WSI inference remain pending.
 - Docs record: docs/运行记录/模型实验/运行记录_外部域公共权重真实门控与评分_1025_143741.md; docs/运行记录/数据审计/运行记录_TLS整片读取与物理视野门控_1025_144200.md
 - Commit: This isolated change; hash available in git log.
+
+## 10-25 14:54:00
+
+- Purpose: Prepare same-recipe external cell extraction and persist first completed controlled train.
+- Changed: external_evaluation cell_data/cells/gate_cell_data/cell_queue; README; goal/registry/current record; native-cell feature-cache record.
+- Validation: CPU/GPUhidden actual CRC/TIGER cells and real four-step generic-init XCell Dense checkpoint: all15 input tensors and model probabilities exactly equal old LocalData, real losses finite, tissue GT unavailable to new assembly. Cell coordinatorPID1295759 verified live/waiting G6 GPU4 completion; native GPU one-field/full extraction is still pending, not claimed verified. Independent image-only formal train audit passed10k/40k actual coordinate SHA and selected checkpoint SHA; full6040 scoringPID1298559 running.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/cell_assembly_gate_1025_145100; cell_formal_1025_145136; protocol_1025_124208/image_train_acceptance_1025_145249.json.
+- Docs record: docs/运行记录/特征缓存/运行记录_外部域同配方细胞缓存与等待队列_1025_144733.md
+- Commit: This isolated preparation change; hash available in git log.
