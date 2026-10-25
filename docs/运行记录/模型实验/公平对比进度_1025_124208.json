@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T14:12:01.903186+08:00",
+  "updated": "2026-10-25T14:15:52.610400+08:00",
   "current_phase": "G3",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -104,7 +104,7 @@
       ]
     },
     "G6": {
-      "status": "preparing",
+      "status": "queued",
       "depends_on": [
         "G3"
       ],
@@ -116,8 +116,9 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/pretraining_user_confirmed_1025_140410/audit.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/XCell用户来源确认_1025_140237.json"
       ],
-      "qualification": "七组CPU真实训练/恢复/输入排除/共享容量门控通过；来源按用户内部数据确认更新，正式GPU门控/10k重训/全评分尚未执行。",
-      "record": "docs/运行记录/数据审计/运行记录_特征预训练来源与细胞机制合同_1025_134753.md"
+      "qualification": "CPU全部7门控通过；coordinator真实存活并等待G3各槽完成train+evaluation及GPU空闲，尚无G6 GPU训练worker。native GPU门控/10k重训/全量评分仍待执行。",
+      "record": "docs/运行记录/数据审计/运行记录_特征预训练来源与细胞机制合同_1025_134753.md",
+      "formal_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300"
     },
     "G7": {
       "status": "pending",
@@ -175,10 +176,10 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_sam_ft_1025_131451"
       ],
-      "last_observed_step": 2391,
-      "last_observed_loss": 0.8881660997867584,
+      "last_observed_step": 5000,
+      "last_observed_loss": 1.0812358111143112,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 6.675937652587891
+      "last_observed_backbone_gradient": 4.699766159057617
     },
     {
       "status": "running",
@@ -202,10 +203,10 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_wsi_sam_ft_1025_131451"
       ],
-      "last_observed_step": 2776,
-      "last_observed_loss": 0.7750064432621002,
+      "last_observed_step": 5973,
+      "last_observed_loss": 0.5708018876612186,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 3.691822052001953
+      "last_observed_backbone_gradient": 4.313365936279297
     },
     {
       "status": "running",
@@ -229,10 +230,10 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_image_1025_131451"
       ],
-      "last_observed_step": 2882,
-      "last_observed_loss": 1.2748912647366524,
+      "last_observed_step": 6390,
+      "last_observed_loss": 0.827298641204834,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 11.606825828552246
+      "last_observed_backbone_gradient": 6.530601501464844
     },
     {
       "status": "running",
@@ -256,10 +257,10 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_xcell_1025_131451"
       ],
-      "last_observed_step": 2784,
-      "last_observed_loss": 1.3970428705215454,
+      "last_observed_step": 6034,
+      "last_observed_loss": 1.433454230427742,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 19.52404022216797
+      "last_observed_backbone_gradient": 24.548044204711914
     },
     {
       "method": "retained_m3",
@@ -272,7 +273,7 @@
       "status": "running",
       "kind": "transfer_scoring",
       "worker_pid": 940942,
-      "last_observed_rows": 400
+      "last_observed_rows": 7600
     },
     {
       "method": "sam_public_features",
@@ -285,7 +286,16 @@
       "status": "running",
       "kind": "transfer_scoring",
       "worker_pid": 940947,
-      "last_observed_rows": 200
+      "last_observed_rows": 5300
+    },
+    {
+      "kind": "mechanism_coordinator",
+      "status": "waiting_dependency",
+      "worker_pid": 1107196,
+      "session": "fewclick_mechanism_formal_1025_141300",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300.log",
+      "gpu_workers_started": false
     }
   ],
   "known_gaps": [
@@ -296,10 +306,10 @@
     "Fixed adaptation hyperparameters; not per-method optimum; independent training seeds remain pending."
   ],
   "next_actions": [
-    "Monitor actual G3 joint updates/checkpoint replay, retain fixed budget",
-    "Launch gated CPU full sparse transfer without occupying G3 GPUs",
-    "Run adapted-weight transfer and full context references when dependent models/compute are ready",
-    "Continue G5–G9 route; neither gates nor public/retained diagnostics complete the objective"
+    "Observe current G3 training and G4 scoring live handles; do not restart on observation timeout",
+    "Observe mechanism coordinator1107196 waiting dependencies; distinguish queued vs GPU training",
+    "Apply user-confirmed internal XCell source as a final-report provenance overlay to immutable older runtime metadata",
+    "Continue independent-seed statistics, heldouts/TLS, WSI/efficiency and reviewer evidence closure"
   ],
   "provenance_clarifications": {
     "XCell": {

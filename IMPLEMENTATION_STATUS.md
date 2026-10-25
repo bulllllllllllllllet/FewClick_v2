@@ -2276,3 +2276,13 @@
 - Docs record: docs/运行记录/数据审计/运行记录_特征预训练来源与细胞机制合同_1025_134753.md（运行记录）。
 - Status: 用户确认XCell用内部数据训练、当前CRC/TIGER未参与；CTransPath公开图像先验另列。G3/G4 running，G6 CPU门控通过、正式GPU队列准备等待；不把CPU门控或缺档案称无/有泄漏证据。
 - Commit: 本条随实现独立提交，哈希见Git历史。
+
+## 10-25 14:15:52
+
+- Purpose: 记录七组机制重训队列实际等待状态，保持用户XCell来源确认在最终汇总中生效。
+- Changed: 更新goal/registry和当前机制数据审计记录；未改运行源码。
+- Validation: coordinator PID1107196的/proc命令、contract与status真实存在；四槽均waiting_dependency；G3/G4计算进程继续，未将排队状态当作训练完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300，含锁定contract/source hashes、上游各槽依赖与持久status；命令与EXIT_CODE日志位于同名.sh/.log。
+- Docs record: docs/运行记录/数据审计/运行记录_特征预训练来源与细胞机制合同_1025_134753.md（运行记录追加）。
+- Status: G6 queued，coordinator1107196，尚无GPU worker；G3/G4 running。用户确认XCell内部数据训练，CRC/TIGER未用于该训练；原始旧metadata不改，最终报告使用来源确认附录。
+- Commit: 实现1ebe4c8；本条为真实队列状态记录。
