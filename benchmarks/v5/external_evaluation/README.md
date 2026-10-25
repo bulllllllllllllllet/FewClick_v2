@@ -21,3 +21,7 @@ CUDA_VISIBLE_DEVICES= OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4
 `cell_data.py` 只读图像和真实cell cache；缓存不完整直接拒绝，没有自动零特征替代。CPU门控 `gate_cell_data.py` 用真实CRC/TIGER已有细胞与实际训练gate checkpoint，验证新装配与LocalData的15个张量、模型输出逐值一致，真实loss有限；GT路径不可读不影响新装配。它不能替代新的外部核检测门控。
 
 `cells.py` 沿用InstanSeg/CTransPath/XCell与训练同一prepare_variant：fine从准备好的512图提取，middle/coarse从原生context提取，unknown核类和74维/255上限不变。原生GPU门控先提取1个field的全部3尺度并回放缓存；通过后`--reuse`做其余9个。`cell_queue.py` 等G6的GPU4无细胞/形态两组完整评分完成且GPU4实际空闲，再依次启动原生gate/full。队列锁定源码/协议，失败保留，不自动重跑或换算法。队列正在等待时不要改其contract列出的源文件。新模型外部评分为后续独立验收，排队成功不代表缓存完成。
+
+`evaluate_adapted.py` 评分SAM-FT/WSI-SAM-FT/image-only与XCell FewClick；不将CRC/TIGER闭集head按数字映射到IGNITE。权重完整strict load后逐张量回放校验；输入不接GT或target ID。SAM仅显式改变构造device，继承同一原生可微forward。完整评分要求10k训练summary、实际40k坐标SHA、开发best_checkpoint身份，以及相同最终权重/设备的真实外部门控。4步checkpoint的CPU门控只验证流程，不能用于正式精度比较。CPUfloat32和GPUbfloat16分开记录。
+
+`adapted_queue.py` 在外部细胞准备完成、所需四组G3训练完成并且GPU4实际空闲后，逐组进行同正式权重的8行GPU门控→680行评分。队列使用已选权重，不按外部Dice选择模型或改阈值；结果齐全后还需独立完整行配对审计与来源聚类报告。源码/协议已锁定，不能修改活跃队列contract中的文件。

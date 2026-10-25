@@ -2313,3 +2313,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/cell_assembly_gate_1025_145100; cell_formal_1025_145136; protocol_1025_124208/image_train_acceptance_1025_145249.json.
 - Docs record: docs/运行记录/特征缓存/运行记录_外部域同配方细胞缓存与等待队列_1025_144733.md
 - Commit: This isolated preparation change; hash available in git log.
+
+## 10-25 15:06:17
+
+- Purpose: Gate external adapted inference and queue only development-selected weights; audit completed training/scoring.
+- Changed: external_evaluation evaluate_adapted/adapted_queue/README; goal/registry/current record; external adapted-weight run record.
+- Validation: Real four-step SAM-FT/WSI-SAM-FT checkpoints on external ROI CPU gates8 rows each exit0: strict all-tensor reload, inaccessible-GT forward, saved direct TP/FP/FN replay. Formal external coordinatorPID1338557 verified live/waiting native cells/development train; final checkpoint native gates and full680 scores pending. Independent XCell and WSI-SAM formal10k/40k coordinate/checkpoint SHA audits passed. Image-only complete6040 points/GT identities and Dice recount passed. G6m3_none actual native GPU resume/reload gate passed and trainPID1337519 running.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/adapted_formal_1025_150010; protocol_1025_124208/completion_acceptance_1025_150345.json; xcell_train_acceptance_1025_150202.json.
+- Docs record: docs/运行记录/模型实验/运行记录_外部域适配权重固定与真实推理门控_1025_145533.md
+- Commit: This isolated preparation change; hash available in git log.
