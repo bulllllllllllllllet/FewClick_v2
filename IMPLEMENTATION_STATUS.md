@@ -2385,3 +2385,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/complete_report_1025_224400; acceptance_1025_224800.
 - Docs record: docs/运行记录/模型实验/运行记录_迁移全量验收与分标注轨道统计_1025_224400.md
 - Commit: This isolated transfer closeout change; hash available in git log. Remaining phases and total goal active.
+
+## 10-25 22:58:00
+
+- Purpose: Accept all seven mechanism runs and distinguish observed decoder gains from unproven module effects.
+- Changed: evidence_closure/audit_mechanisms.py; mechanism closeout record; goal/registry/current record.
+- Validation: Real CPU worker3620818 ended EXIT0;9x40k consumed-task SHA /6040 rows /10x302 selection rows checked against actualGT/points/count algebra, chosen checkpoint and native gate evidence; source snapshots and capacity audit bound.75-space paired bootstrap2000 complete; Dense−region positive in all three cell modes; M3/M1, independent/shared and hierarchy/no intervals include0. Generic HE appearance/objective control remains pending; G6 partial, total goal active.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/acceptance_1025_225200.
+- Docs record: docs/运行记录/模型实验/运行记录_七机制完整验收与受控配对解释_1025_225200.md
+- Commit: This isolated mechanism acceptance change; hash available in git log.

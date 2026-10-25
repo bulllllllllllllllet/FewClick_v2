@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-25T22:49:24.046733+08:00. Native thread goal: **active**. G3 is complete; the overall objective is incomplete.
+Updated: 2026-10-25T22:59:17.542028+08:00. Native thread goal: **active**. G3/G4 fixed comparisons accepted; the overall objective is incomplete.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-25T22:49:24.046733+08:00. Native thread goal: **active**. G3 is
 
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
-3. G4 fixed transfer comparison is independently accepted, qualified. Next: G6 complete mechanism acceptance/contrasts, G5 three-seed aggregation when last workers end, then strict heldout ontology and WSI pipeline. Reviewer mapping closure remains incomplete.
+3. G4 fixed transfer comparison is independently accepted, qualified. Next: G5 full three-seed aggregation when last worker ends, then generic HE cell-feature control, then strict heldout ontology and WSI pipeline. Reviewer mapping closure remains incomplete.
 4. New source may live outside locked snapshots. Do not edit running/queued trainer, model, sampler or inference files listed in contracts.
 
 Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/continuity_1025_160204/goal_before_G3_closeout_1025_160204.md` (SHA256 b166a50ea75b0c9c81aed0525b9c48b847b3391e525af7a61daf9afa17bd28dd). Detailed immutable results and run records remain unchanged.
@@ -25,7 +25,7 @@ Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_
 | G3 | complete, single seed | Five10k/40k trains and6040 scores each; independent full parity audit |
 | G4 | complete, qualified | Nine18700 sparse +837 dense-reference rows audited;180 gates replayed; exploratory cluster statistics |
 | G5 | running | Extra seed26 complete execution; seed27 WSI/XCell complete, SAM scores/image train live; final audit/mean/std pending |
-| G6 | scoring complete, acceptance pending | Seven10k trains/6040 scores and comparison ended; independent acceptance/contrasts pending |
+| G6 | seven controls accepted, partial | Nine40k/6040 controls and contrasts accepted; generic HE cell-feature/objective control pending |
 | G7 | external subset complete, remainder pending | Six680-row external comparison audited; strict heldout concepts/TLS pending |
 | G8 | input gate only | Real WSI cells/model/coverage/stitch/cache/efficiency pending |
 | G9 | preparing | 11 human challenges + 14 AI checks mapped; experiments/factual corrections and submitted-version binding remain |
@@ -47,7 +47,7 @@ Primary corrected report: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protoco
 
 ## Active queues and frozen sources
 
-Replication coordinator1557332 remains live. At latest observation seed20261026 four runs complete execution; seed20261027 WSI/XCell complete, SAM evaluation3583783 and imageFewClick training3190652 live. Verify actual status first. Its train/eval/model sources remain frozen. No GPU0/2. No training reruns from observation timeouts.
+Replication coordinator1557332 last state running; live children: fewclick_m3d_image train PID3190652. Completed extra stages 22/24. Verify actual status first. Training/eval/model sources remain frozen. No GPU0/2, no reruns from observation timeouts.
 
 G6, external cell/adapted and all G4 scoring jobs ended with summary + EXIT_CODE0; moved to registry.completed_jobs. Completion of execution does not replace independent acceptance.
 
@@ -82,4 +82,12 @@ docs/运行记录/模型实验/运行记录_审稿challenge逐条证据与修改
 
 ## Latest accepted milestone
 
-External six-method comparison actual10-field GT/point/680 rows, RGB/cell hashes, original development weights/40k consumption and32 saved same-checkpoint gate mask replays passed. Evidence external_1025_143257/audit_1025_221700.json and complete_report_1025_221700/summary.json; record docs/运行记录/模型实验/运行记录_外部适配完整验收与六方法统计_1025_221700.md. G6 independent acceptance and G5 full repeats still required. G4 accepted next in acceptance_1025_224800.
+External six-method comparison actual10-field GT/point/680 rows, RGB/cell hashes, original development weights/40k consumption and32 saved same-checkpoint gate mask replays passed. Evidence external_1025_143257/audit_1025_221700.json and complete_report_1025_221700/summary.json; record docs/运行记录/模型实验/运行记录_外部适配完整验收与六方法统计_1025_221700.md. G6 generic HE control and G5 full repeats still required; seven mechanism runs already accepted. G4 accepted next in acceptance_1025_224800.
+
+## G6 accepted controls
+
+Seven mechanism variants plus two G3 Dense conditions independently accepted:9x40k actual tasks /6040 score rows and each10x302 development selection rows, actualGT/points/count algebra and selected-weight SHA verified. Native gates and all current source hashes bound. Acceptance: mechanisms_1025_134753/acceptance_1025_225200/acceptance.json and report.md.
+
+Primary region none.544515 / morphology.533127 / XCell.537667; Dense none.564044 / morphology.557673 / XCell.572893. Dense−region XCell.035226 CI[.020060,.052833], none.019529 CI[.006328,.034669], morphology.024545 CI[.009671,.041209]. Dense also adds fine semantic latent training, not isolated projection change. M3−M1−.002279, independent−shared−.001389, hierarchy−noHierarchy+.001613: all source-space intervals include0. Dense XCell−none.008849 includes0, XCell−morphology.015220 CI[.002724,.028735] descriptive single-seed result; does not prove mIF-objective effect.
+
+Morphology keeps position/area/unknown identity/count/detection prior; generic HE appearance control and same-network pretraining-objective control remain missing. G6 is partial, not complete; no winning-module requirement.

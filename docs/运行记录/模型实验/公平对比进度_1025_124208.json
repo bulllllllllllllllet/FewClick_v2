@@ -1,8 +1,8 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T22:49:24.046733+08:00",
-  "current_phase": "G6",
+  "updated": "2026-10-25T22:59:17.542028+08:00",
+  "current_phase": "G5",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
   "prior_run": "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600",
@@ -140,55 +140,6 @@
       "record": "docs/运行记录/模型实验/运行记录_匹配任务顺序的三seed重复合同_1025_153837.md",
       "last_observed_workers": [
         {
-          "kind": "replication_coordinator",
-          "status": "running",
-          "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653",
-          "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653.log",
-          "session": "fewclick_replicate_1025_154653",
-          "additional_seeds": [
-            20261026,
-            20261027
-          ],
-          "gpu_workers_started": true,
-          "worker_pid": 1557332,
-          "process_observed_at": "2026-10-25T22:49:24.046733+08:00",
-          "process_alive_last_observed": true
-        },
-        {
-          "status": "running",
-          "gpu": 1,
-          "method": "sam_ft",
-          "seed": 20261027,
-          "stage": "evaluate",
-          "worker_pid": 3583783,
-          "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_sam_ft_seed20261027_1025_154653",
-          "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_sam_ft_seed20261027_1025_154653.log",
-          "command": [
-            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-            "-u",
-            "-m",
-            "benchmarks.v5.fair_comparison.evaluate_checkpoint",
-            "--tasks",
-            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/seed_20261027/tasks",
-            "--method",
-            "sam_ft",
-            "--checkpoint",
-            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_sam_ft_seed20261027_1025_154653/checkpoint_step_10000.pth",
-            "--output",
-            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_sam_ft_seed20261027_1025_154653"
-          ],
-          "kind": "replication_evaluate",
-          "process_alive_last_observed": true,
-          "process_observed_at": "2026-10-25T22:49:24.046733+08:00",
-          "last_observed_status": {
-            "status": "running",
-            "worker_pid": 3583783,
-            "completed": 2720,
-            "total": 6040,
-            "seconds": 248.83085227012634
-          }
-        },
-        {
           "status": "running",
           "gpu": 4,
           "method": "fewclick_m3d_image",
@@ -215,19 +166,19 @@
           ],
           "kind": "replication_train",
           "process_alive_last_observed": true,
-          "process_observed_at": "2026-10-25T22:49:24.046733+08:00",
+          "process_observed_at": "2026-10-25T22:59:17.542028+08:00",
           "last_observed_status": {
             "status": "running",
             "worker_pid": 3190652,
-            "step": 8841,
+            "step": 9783,
             "total": 10000,
-            "seconds": 5107.195499420166
+            "seconds": 5700.17270731926
           }
         }
       ]
     },
     "G6": {
-      "status": "scoring_complete_acceptance_pending",
+      "status": "seven_controls_accepted_generic_HE_pending",
       "depends_on": [
         "G3"
       ],
@@ -239,11 +190,15 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/pretraining_user_confirmed_1025_140410/audit.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/XCell用户来源确认_1025_140237.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300/gate_m3_none_1025_141300/summary.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300/gate_m3_xcell_1025_141300/summary.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300/gate_m3_xcell_1025_141300/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/acceptance_1025_225200/acceptance.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/acceptance_1025_225200/summary_user_provenance.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/acceptance_1025_225200/source_identity_1025_225800.json"
       ],
-      "qualification": "七机制训练和完整6040评分已EXIT0，comparison_1025_141300已生成；独立训练消费/权重验收、指定机制配对解释和generic HE控制仍待。",
+      "qualification": "七机制+G3两Dense控制全部九组10k/40k/6040独立实际GT/点/分母与十次开发选模/最优权重/原生gate通过，75来源配对统计完成。Dense三细胞条件收益均为正；M3/M1、独立/共享、hierarchy/no均区间含0。generic HE细胞特征/预训练目标控制仍未完成，不能宣布全部G6关闭。",
       "record": "docs/运行记录/数据审计/运行记录_特征预训练来源与细胞机制合同_1025_134753.md",
-      "formal_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300"
+      "formal_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300",
+      "acceptance_record": "docs/运行记录/模型实验/运行记录_七机制完整验收与受控配对解释_1025_225200.md"
     },
     "G7": {
       "status": "external_complete_heldout_TLS_pending",
@@ -322,42 +277,8 @@
       ],
       "gpu_workers_started": true,
       "worker_pid": 1557332,
-      "process_observed_at": "2026-10-25T22:49:24.046733+08:00",
+      "process_observed_at": "2026-10-25T22:59:17.542028+08:00",
       "process_alive_last_observed": true
-    },
-    {
-      "status": "running",
-      "gpu": 1,
-      "method": "sam_ft",
-      "seed": 20261027,
-      "stage": "evaluate",
-      "worker_pid": 3583783,
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_sam_ft_seed20261027_1025_154653",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_sam_ft_seed20261027_1025_154653.log",
-      "command": [
-        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-        "-u",
-        "-m",
-        "benchmarks.v5.fair_comparison.evaluate_checkpoint",
-        "--tasks",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/seed_20261027/tasks",
-        "--method",
-        "sam_ft",
-        "--checkpoint",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_sam_ft_seed20261027_1025_154653/checkpoint_step_10000.pth",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_sam_ft_seed20261027_1025_154653"
-      ],
-      "kind": "replication_evaluate",
-      "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T22:49:24.046733+08:00",
-      "last_observed_status": {
-        "status": "running",
-        "worker_pid": 3583783,
-        "completed": 2720,
-        "total": 6040,
-        "seconds": 248.83085227012634
-      }
     },
     {
       "status": "running",
@@ -386,13 +307,13 @@
       ],
       "kind": "replication_train",
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T22:49:24.046733+08:00",
+      "process_observed_at": "2026-10-25T22:59:17.542028+08:00",
       "last_observed_status": {
         "status": "running",
         "worker_pid": 3190652,
-        "step": 8841,
+        "step": 9783,
         "total": 10000,
-        "seconds": 5107.195499420166
+        "seconds": 5700.17270731926
       }
     }
   ],
@@ -404,10 +325,10 @@
     "Fixed adaptation hyperparameters; not per-method optimum; independent training seeds remain pending."
   ],
   "next_actions": [
-    "Independently audit all7 mechanism training consumption/selected weights and6040 scores; report predefined paired contrasts",
-    "Observe remaining seed20261027 SAM evaluation and imageFewClick training/evaluation; then full12 runs acceptance and three-seed mean/std",
+    "Complete full12 runs three-seed parity, paired task order and mean/std after last repeated seed score finishes; include all seeds",
+    "Prepare generic H&E cell-feature control with fixed dimensions, training-only transforms and native input gates; keep mIF causal attribution unproven",
     "Implement strict heldout ontology/data contract and native WSI model/cache/stitch/efficiency; clarify TLS annotation coverage before full-image specificity claims",
-    "Update reviewer matrix from accepted G4/G7 evidence; keep unresolved challenges explicit"
+    "Update reviewer matrix from G4/G6/G7 accepted evidence; unresolved challenges remain explicit"
   ],
   "provenance_clarifications": {
     "XCell": {
@@ -1027,6 +948,40 @@
         "step": 9793,
         "total": 10000,
         "seconds": 6036.712791442871
+      }
+    },
+    {
+      "status": "complete_execution",
+      "gpu": 1,
+      "method": "sam_ft",
+      "seed": 20261027,
+      "stage": "evaluate",
+      "worker_pid": 3583783,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_sam_ft_seed20261027_1025_154653",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_sam_ft_seed20261027_1025_154653.log",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.fair_comparison.evaluate_checkpoint",
+        "--tasks",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/seed_20261027/tasks",
+        "--method",
+        "sam_ft",
+        "--checkpoint",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/train_sam_ft_seed20261027_1025_154653/checkpoint_step_10000.pth",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/replication_1025_153837/formal_1025_154653/evaluate_sam_ft_seed20261027_1025_154653"
+      ],
+      "kind": "replication_evaluate",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-25T22:59:17.542028+08:00",
+      "last_observed_status": {
+        "status": "running",
+        "worker_pid": 3583783,
+        "completed": 2720,
+        "total": 6040,
+        "seconds": 248.83085227012634
       }
     }
   ]
