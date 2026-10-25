@@ -2295,3 +2295,12 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257; model/cell gates and matched external scoring still pending.
 - Docs record: docs/运行记录/数据审计/运行记录_外部域原生视野与中心任务合同_1025_143257.md
 - Commit: This isolated change; hash available in git log.
+
+## 10-25 14:46:14
+
+- Purpose: Execute public external-domain reference scores and verify fail-fast physical WSI input.
+- Changed: external_evaluation/evaluate_public.py, wsi_reader.py, README; goal/registry/current record; external scoring and TLS input audit records.
+- Validation: Two real CPU public gates8 rows each passed inaccessible-GT forward and saved direct-count replay; native/cached SAM max probability error0. Full SAM680 rows completed EXIT_CODE0 and independent coverage/Dice recount passed. WSI-SAM actualPID1240032 running,140/680. Real TLS first-WSI native1033/2066/4132 crops, trusted vendorCapRes, PNGreload and out-of-bounds rejection passed; injected low-level read error propagated. No fake white fallback, no frozen running Python changed.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257; /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_gate_1025_144200. Cell caches, adapted external comparisons and complete WSI inference remain pending.
+- Docs record: docs/运行记录/模型实验/运行记录_外部域公共权重真实门控与评分_1025_143741.md; docs/运行记录/数据审计/运行记录_TLS整片读取与物理视野门控_1025_144200.md
+- Commit: This isolated change; hash available in git log.

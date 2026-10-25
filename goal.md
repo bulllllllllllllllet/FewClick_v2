@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-25 13:38 CST. Native thread goal: active.
+Updated: 2026-10-25 14:45 CST. Native thread goal: active.
 
 ## Objective
 
@@ -22,7 +22,7 @@ Evidence root: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_1242
 - User2026-10-25: use the newly implemented multiscale model and redesigned data; old 140/30/30 and old paper scores are not requirements for the new experiment.
 - Primary model candidates: M3 (`multi_region`) and M3D (`multi_dense`); M1/M1D remain internal controls.
 - Existing run: `/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600/` (implementation `e41c060`). Four arms each completed10k updates/40k identical tasks; current results are single-seed development evidence.
-- New data: CRC train1200/val300, TIGER train156/val81; full context train/val footprints disjoint. IGNITE has no eligible full-context val; PUMA/test excluded from current development.
+- New data: CRC train1200/val300, TIGER train156/val81; full context train/val footprints disjoint. The original fixed grid had no eligible IGNITE full-context val; the current development pool excludes IGNITE/PUMA/test. A separate native-centre external contract is recorded below.
 - Current models have historical J5 target-data supervision. They are retained-system comparisons, not clean-initialization architecture evidence.
 - Keep local interaction and remote support-query transfer separate. Do not copy support point coordinates into a different query image.
 - New metrics use model-independent eligibility; a GT boundary missed entirely by prediction scores BF1=0. Legacy reports remain available. Do not silently replace old metrics or claim different BF1 definitions are interchangeable.
@@ -41,7 +41,7 @@ Evidence root: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_1242
 | G5 replication/statistics | pending | Source/space cluster intervals, independent training seeds and cost |
 | G6 cells and mechanisms | queued; CPU gates passed | Retrained no-cell/morphology/XCell and appropriate hierarchy/capacity controls |
 | G7 unseen concepts/domains and TLS | preparing external native inputs | Exposure audit, valid context/GT, matched baselines, strict held-out initialization |
-| G8 WSI and efficiency | pending | New-model real WSI path, complete coverage/coordinates, runtime/cache decomposition |
+| G8 WSI and efficiency | preparing; real input gate passed | New-model real WSI path, complete coverage/coordinates, runtime/cache decomposition |
 | G9 paper evidence closure | pending | Challenge-to-evidence map, corrections and limitations; submission actions require separate user instruction |
 
 ## Fairness verdict so far
@@ -81,3 +81,7 @@ User-confirmed XCell internal-data provenance is recorded in the updated source 
 G6 coordinatorPID1107196 is alive in tmux `fewclick_mechanism_formal_1025_141300`, output `mechanisms_1025_134753/mechanism_formal_1025_141300`. Contract/code1ebe4c8 locked, all four slots currentlywaiting_dependency. This is a queued coordinator, not a GPU training worker. It will require G3 train+evaluation completion and actual idle GPU, then native GPU gate→new generic-init formal training→full scoring. Source code remains immutable. When presenting final results, overlay user-confirmed internal XCell training provenance on older runtime strings that still say not-audited; preserve raw snapshots and cite the clarification rather than propagating stale uncertainty.
 
 G7 external contract prepared: `benchmarks/v5/external_evaluation/README.md`; artifacts `/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257`. Exactly10 IGNITE ROI centres provide256/512/1024um native fields,34 target pairs x5 point groups,9 classes; all1190 signs and native crop/disk replay passed. Current CRC/TIGER training catalog contains none of these external domains. Original source splits7train/1val/2test are provenance only; no external adaptation/selection permitted. PUMA205 and OCELOT663 ROI dimensions cannot provide1024um context. Cell preparation/model gates/full matched scoring remain pending; small ROI subset is not independent-patient or unseen-upstream proof. Source record `docs/运行记录/数据审计/运行记录_外部域原生视野与中心任务合同_1025_143257.md`. Fairness README now applies user-confirmed XCell internal-data provenance; frozen running Python sources are unchanged.
+
+G7 public external gates passed8 rows each with unavailable-GT forward, saved prediction count replay and native/cached SAM max error0. SAM full680 rows completed (EXIT_CODE0),3+2 Dice.457234/BF1.094702,5+1 Dice.480807; WSI-SAM CPU4threads PID1240032 running680 rows in tmux `fewclick_external_wsi_sam_1025_144022`. This is not a complete paired comparison. Read `docs/运行记录/模型实验/运行记录_外部域公共权重真实门控与评分_1025_143741.md`. Native cell CUDA preparation and adapted/FewClick external scoring remain pending.
+
+G8 strict KFB source input gate passed real first TLS WSI, source54039x65660, vendor CapRes.247925um (SDK mpp-x/mpp-t aliases from same header). Native1033/2066/4132 boxes, true~256/512/1024um fields and PNGreload passed; injected low-level read failure propagates instead of high-level white-image substitution. Output `wsi_gate_1025_144200`; record `docs/运行记录/数据审计/运行记录_TLS整片读取与物理视野门控_1025_144200.md`. No WSI cells/model/complete coverage/stitch/efficiency yet. TLS annotation completeness/hard negatives not confirmed; do not treat unannotated pixels as certified negatives.

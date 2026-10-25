@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T14:36:59.183937+08:00",
+  "updated": "2026-10-25T14:46:14.732919+08:00",
   "current_phase": "G3",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -129,15 +129,26 @@
       "record": "docs/运行记录/数据审计/运行记录_外部域原生视野与中心任务合同_1025_143257.md",
       "evidence": [
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/contract.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/independent_replay_1025_143634.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/independent_replay_1025_143634.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/gate_sam_1025_144100/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/gate_wsi_sam_1025_144100/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/public_sam_1025_144022/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/acceptance_1025_144420.json"
       ],
-      "qualification": "10张IGNITE真实中心三视野输入、34对/170点击组/9类与独立1190点回放通过；cell/model gates/匹配对手评分未完成。PUMA/OCELOT当前原生ROI不支持1024um上下文。"
+      "qualification": "原生外部10中心/34对170组点击完成；SAM680行完成，主3+2 Dice .457234；WSI-SAM680行评分running。细胞/FT/FewClick完整比较与统计未完成；严格类留出/TLS仍待。",
+      "record_public": "docs/运行记录/模型实验/运行记录_外部域公共权重真实门控与评分_1025_143741.md"
     },
     "G8": {
-      "status": "pending",
+      "status": "preparing",
       "depends_on": [
         "G3"
-      ]
+      ],
+      "record": "docs/运行记录/数据审计/运行记录_TLS整片读取与物理视野门控_1025_144200.md",
+      "evidence": [
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_gate_1025_144200/gate.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/acceptance_1025_144420.json"
+      ],
+      "qualification": "仅新模型物理视野输入门控：真实首片KFB读取与坏读传播通过；未完成细胞、模型、覆盖、边缘或stitch。"
     },
     "G9": {
       "status": "pending",
@@ -185,12 +196,12 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_sam_ft_1025_131451"
       ],
-      "last_observed_step": 6580,
-      "last_observed_loss": 0.7478528320789337,
+      "last_observed_step": 7260,
+      "last_observed_loss": 1.0734140202403069,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 7.205638408660889,
+      "last_observed_backbone_gradient": 11.538740158081055,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
+      "process_observed_at": "2026-10-25T14:46:14.732919+08:00"
     },
     {
       "status": "running",
@@ -214,12 +225,12 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_wsi_sam_ft_1025_131451"
       ],
-      "last_observed_step": 7880,
-      "last_observed_loss": 0.9139824956655502,
+      "last_observed_step": 8720,
+      "last_observed_loss": 0.7398468814790249,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 7.630768775939941,
+      "last_observed_backbone_gradient": 5.1196184158325195,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
+      "process_observed_at": "2026-10-25T14:46:14.732919+08:00"
     },
     {
       "status": "running",
@@ -243,12 +254,12 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_image_1025_131451"
       ],
-      "last_observed_step": 8500,
-      "last_observed_loss": 0.5628056172281504,
+      "last_observed_step": 9420,
+      "last_observed_loss": 0.9025851897895336,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 5.120728969573975,
+      "last_observed_backbone_gradient": 8.540922164916992,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
+      "process_observed_at": "2026-10-25T14:46:14.732919+08:00"
     },
     {
       "status": "running",
@@ -272,12 +283,12 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_xcell_1025_131451"
       ],
-      "last_observed_step": 8020,
-      "last_observed_loss": 0.6389891318976879,
+      "last_observed_step": 8980,
+      "last_observed_loss": 0.8191907927393913,
       "total_steps": 10000,
-      "last_observed_backbone_gradient": 15.27313232421875,
+      "last_observed_backbone_gradient": 9.457226753234863,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
+      "process_observed_at": "2026-10-25T14:46:14.732919+08:00"
     },
     {
       "method": "retained_m3",
@@ -290,9 +301,9 @@
       "status": "running",
       "kind": "transfer_scoring",
       "worker_pid": 940942,
-      "last_observed_rows": 11400,
+      "last_observed_rows": 13300,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
+      "process_observed_at": "2026-10-25T14:46:14.732919+08:00"
     },
     {
       "method": "sam_public_features",
@@ -305,9 +316,9 @@
       "status": "running",
       "kind": "transfer_scoring",
       "worker_pid": 940947,
-      "last_observed_rows": 8300,
+      "last_observed_rows": 9500,
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
+      "process_observed_at": "2026-10-25T14:46:14.732919+08:00"
     },
     {
       "kind": "mechanism_coordinator",
@@ -319,6 +330,39 @@
       "gpu_workers_started": false,
       "process_alive_last_observed": true,
       "process_observed_at": "2026-10-25T14:36:59.183937+08:00"
+    },
+    {
+      "method": "sam",
+      "kind": "external_public_scoring",
+      "status": "complete",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/public_sam_1025_144022",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/public_sam_1025_144022.log",
+      "session": "fewclick_external_sam_1025_144022",
+      "device": "cpu",
+      "threads": 4,
+      "expected_rows": 680,
+      "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/gate_sam_1025_144100",
+      "worker_pid": 1240029,
+      "rows": 680,
+      "primary_dice": 0.45723408223721884,
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-25T14:46:14.732919+08:00"
+    },
+    {
+      "method": "wsi_sam",
+      "kind": "external_public_scoring",
+      "status": "running",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/public_wsi_sam_1025_144022",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/public_wsi_sam_1025_144022.log",
+      "session": "fewclick_external_wsi_sam_1025_144022",
+      "device": "cpu",
+      "threads": 4,
+      "expected_rows": 680,
+      "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/gate_wsi_sam_1025_144100",
+      "worker_pid": 1240032,
+      "last_observed_rows": 140,
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-25T14:46:14.732919+08:00"
     }
   ],
   "known_gaps": [
@@ -332,7 +376,10 @@
     "Observe current G3 training and G4 scoring live handles; do not restart on observation timeout",
     "Observe mechanism coordinator1107196 waiting dependencies; distinguish queued vs GPU training",
     "Apply user-confirmed internal XCell source as a final-report provenance overlay to immutable older runtime metadata",
-    "Continue independent-seed statistics, heldouts/TLS, WSI/efficiency and reviewer evidence closure"
+    "Continue independent-seed statistics, heldouts/TLS, WSI/efficiency and reviewer evidence closure",
+    "Observe external WSI-SAM PID1240032 and preserve completed SAM680 rows",
+    "Prepare native CUDA cells after an audited GPU slot is free; do not change detector or inject zero cells",
+    "Continue real WSI model/cache/coverage path from strict reader; TLS label completeness remains unconfirmed"
   ],
   "provenance_clarifications": {
     "XCell": {
