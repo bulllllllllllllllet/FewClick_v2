@@ -2246,3 +2246,13 @@
 - Docs record: docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md（运行记录追加）。
 - Status: G3 running；GPU1 SAM-FT PID825669、GPU3 WSI-SAM-FT PID825670、GPU4 image-FC PID825671、GPU5 xcell-FC PID825672；closed参考在GPU3排队。完整10k更新及各6040评分未完成。
 - Commit: 训练实现d142fcb；本条为启动状态记录。
+
+## 10-25 13:38:20
+
+- Purpose: 固定独立的支持查询迁移协议，验证无query GT/点坐标泄漏，并接入近期官方上下文参考。
+- Changed: 新增benchmarks/v5/transfer_comparison的任务生成/全体验证、GT隔离加载器、稠密/区域原型、真实CPU模型及流式评分门控、官方MultiverSeg v1 context接口；新增迁移运行记录并更新goal/registry。G3运行源码未改。
+- Validation: 935对/4675点组的真实GT存在性/支持点一致/最大4x隔离/verified WSI审计passed；四类真实GT路径不可用加载与模型预测passed，query点图0；两个streaming门控共3方法各16行及独立预测数组TP/FP/FN回放passed；官方v1 8上下文门控原生forward字节一致并拒绝未知源GT。G3四组真实已进入联合训练且backbone梯度非零。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856；包含完整任务SHA、官方三库Git commit、v1权重SHA、隔离tabulate依赖、各实际门控/独立验证产物；模型代码/数据/全局环境未覆盖。
+- Docs record: docs/运行记录/模型实验/运行记录_迁移任务隔离与近期参考接口审计_1025_131856.md（运行记录）。
+- Status: G3 running；G4全任务/真实门控完成、完整稀疏CPU评分准备启动；适配后迁移与近期context全量仍pending。保留935任务的查询重复相关性和额外context标注/先验差异。
+- Commit: 本条随实现独立提交，哈希见Git历史。

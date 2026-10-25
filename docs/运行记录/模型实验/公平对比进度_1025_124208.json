@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-25T13:17:07.034101+08:00",
+  "updated": "2026-10-25T13:38:20.264829+08:00",
   "current_phase": "G3",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -70,7 +70,7 @@
       ]
     },
     "G4": {
-      "status": "pending",
+      "status": "preparing",
       "depends_on": [
         "G1"
       ],
@@ -78,7 +78,19 @@
         "same-feature-prototype",
         "SAM-feature-transfer",
         "verified-context-method"
-      ]
+      ],
+      "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856",
+      "record": "docs/运行记录/模型实验/运行记录_迁移任务隔离与近期参考接口审计_1025_131856.md",
+      "evidence": [
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/tasks_1025_132300/contract.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/protocol_verified_1025_132600.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/loader_prototype_verified_1025_132600.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/gate_remote_fewclick_1025_132647/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/gate_remote_sam_1025_132647/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/gate_multiverseg_1025_133044/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/sparse_stream_independent_1025_133600.json"
+      ],
+      "qualification": "935远端对/4675点组任务及真实稀疏和官方v1上下文门控通过；首批Retained-M3固定特征诊断/SAM公共特征全量准备，干净适配迁移和上下文全量仍待执行。"
     },
     "G5": {
       "status": "pending",
@@ -149,9 +161,10 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_sam_ft_1025_131451"
       ],
-      "last_observed_step": 285,
-      "last_observed_loss": 1.4012342393398285,
-      "total_steps": 10000
+      "last_observed_step": 2187,
+      "last_observed_loss": 0.9056945443153381,
+      "total_steps": 10000,
+      "last_observed_backbone_gradient": 3.953019618988037
     },
     {
       "status": "running",
@@ -175,9 +188,10 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_wsi_sam_ft_1025_131451"
       ],
-      "last_observed_step": 299,
-      "last_observed_loss": 1.6743489503860474,
-      "total_steps": 10000
+      "last_observed_step": 2526,
+      "last_observed_loss": 0.8892182260751724,
+      "total_steps": 10000,
+      "last_observed_backbone_gradient": 6.048919200897217
     },
     {
       "status": "running",
@@ -201,9 +215,10 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_image_1025_131451"
       ],
-      "last_observed_step": 277,
-      "last_observed_loss": 1.5773406326770782,
-      "total_steps": 10000
+      "last_observed_step": 2594,
+      "last_observed_loss": 0.8916001468896866,
+      "total_steps": 10000,
+      "last_observed_backbone_gradient": 10.742912292480469
     },
     {
       "status": "running",
@@ -227,9 +242,10 @@
         "--output",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_xcell_1025_131451"
       ],
-      "last_observed_step": 279,
-      "last_observed_loss": 1.8726960718631744,
-      "total_steps": 10000
+      "last_observed_step": 2518,
+      "last_observed_loss": 0.6891082599759102,
+      "total_steps": 10000,
+      "last_observed_backbone_gradient": 5.719339370727539
     }
   ],
   "known_gaps": [
@@ -241,8 +257,9 @@
     "Fixed adaptation hyperparameters; not per-method optimum; independent training seeds remain pending."
   ],
   "next_actions": [
-    "Inspect G3 coordinator and real worker status; verify warmup-to-joint transition and finite loss",
-    "Retain no-retry policy; inspect terminal logs and artifacts before deciding next action",
-    "After G3 full completion audit task SHA/checkpoints and full budget scores; continue G4–G9 without shrinking objective"
+    "Monitor actual G3 joint updates/checkpoint replay, retain fixed budget",
+    "Launch gated CPU full sparse transfer without occupying G3 GPUs",
+    "Run adapted-weight transfer and full context references when dependent models/compute are ready",
+    "Continue G5–G9 route; neither gates nor public/retained diagnostics complete the objective"
   ]
 }
