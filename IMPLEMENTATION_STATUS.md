@@ -2511,3 +2511,14 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/all_label_reference_report_1026_030900、all_label_wsi_acceptance_1026_030600、native_first_live_1026_024600.json、native_second_live_1026_031500.json、reference_continuity_1026_032000.json。
 - Docs record: docs/运行记录/模型实验/运行记录_全标签同任务参考提取与WSI迁移补齐_1026_023000.md。
 - Commit: 本条随本次独立提交，哈希由Git记录。
+
+## 10-26 18:32:25
+
+- Purpose: 接受三fold九条件标签留出本图/迁移，恢复实验连续性并启动GenericHE独立验收。
+- Changed: audit_heldout_local.py、audit_heldout_remote.py、audit_generic_local.py及两运行记录、goal/registry/current record；保留其他未提交修改。
+- Validation: aligner真实完整本图验收worker3773203 EXIT0：9x10k/40k、90选模表、4800行；迁移worker3780561 EXIT0：19360行及240保存概率像素复核；GenericHE verifier1165842运行，尚不认证原缓存/PCA或整片执行。
+- Artifacts: heldout_1026_003000/local_acceptance_1026_130200、remote_acceptance_1026_131000；generic_cells_1025_231000/local_acceptance_1026_183200。
+- Docs record: docs/运行记录/模型实验/运行记录_留出概念九条件训练与本图独立验收_1026_130200.md；docs/运行记录/模型实验/运行记录_普通HE两投影完整训练与本图验收_1026_183200.md。
+- Commit: 本条与验收代码同次提交，哈希见git历史。
+
+GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份302行开发选模及实际40k消费/选中权重/GT/源码绑定通过；主3+2 PCA64 Dice.562162、白化64 Dice.568247。单seed，两者均报告；完整raw/PCA/projection独立复核、配对统计仍待，G6不关闭。

@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-26T03:20:55.078362+08:00. Native thread goal: **active**. G3/G4/G5 fixed comparisons accepted; the overall objective is incomplete.
+Updated: 2026-10-26T18:32:25.074145+08:00. Native thread goal: **active**. Heldout local/R accepted qualified; overall objective incomplete.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-26T03:20:55.078362+08:00. Native thread goal: **active**. G3/G4
 
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
-3. G4 fixed transfer comparison is independently accepted, qualified. Next: G5 three-seed aggregation is complete; next generic HE full-cell cache/controlled training, then strict heldout ontology and WSI pipeline. Reviewer mapping closure remains incomplete.
+3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; next raw/PCA/projection acceptance, paired statistics, full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
 4. New source may live outside locked snapshots. Do not edit running/queued trainer, model, sampler or inference files listed in contracts.
 
 Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/continuity_1025_160204/goal_before_G3_closeout_1025_160204.md` (SHA256 b166a50ea75b0c9c81aed0525b9c48b847b3391e525af7a61daf9afa17bd28dd). Detailed immutable results and run records remain unchanged.
@@ -25,9 +25,9 @@ Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_
 | G3 | complete, single seed | Five10k/40k trains and6040 scores each; independent full parity audit |
 | G4 | complete, qualified | Nine18700 sparse +837 dense-reference rows audited;180 gates replayed; exploratory cluster statistics |
 | G5 | complete, qualified | All12 trains/scores/selection/weights accepted; three-seed Dice/BF1 and ddof1 std independently recounted |
-| G6 | partial; formal controls queued | Four raw groups/PCA dependency active; two-arm actual CPU model gate passed; full pipeline4089939 waits PCA, formal native gates/trains/scores pending |
-| G7 | external accepted; heldout supervision prepared | Threefold coverage/12 model-loss gates passed; fullfold recipes/training/accuracy and TLS pending |
-| G8 | partial; all30 grid and tissue CPU cache gate accepted | Full WSI execution, cells, GPU/whole-slide efficiency and main30 coverage pending |
+| G6 | partial; both generic local controls accepted qualified | Full raw/PCA/projection independent audit and paired statistics pending |
+| G7 | external and heldout local/R accepted qualified | 9train/4800local/19360R/240gate masks accepted; paired statistics, all-label descriptive comparisons and TLS pending |
+| G8 | partial; first full3050tile CPU execution complete | Independent full cache/stitch acceptance, cells/GPU efficiency and main30 final cohort audit pending |
 | G9 | preparing | 11 human challenges + 14 AI checks mapped; experiments/factual corrections and submitted-version binding remain |
 
 ## G3 result and acceptance
@@ -183,3 +183,11 @@ All-label SAME test-image/click/metric references accepted qualified:18 exact ol
 Raw02 PID3914383 and03 PID3914488 bothended full433fields/1299scales EXIT0; preserve as complete_execution, all4raw/PCA jointG6 acceptance stillpending. Allowed GPU4/5 then started9condition queue. Necrosis SAM native4 updates/fresh optimizerRNG restore/publicbridge maxerror1.192e-7 binaryexact and8-row terminal gate passed; fresh fulltrain GPU5 worker796373 running. Necrosis NoCell native4 updates/freshrestore/8terminalrows passed, independent warm/joint probe shows all3encoder backbones changed; fresh fulltrain GPU4 worker969093 running, resumeNone/newNactual SHA. Parent349631 and R433592 remainlive; R awaits completed fulltraining. No gateweights initialize formal models.
 
 Evidence native_first_live_1026_024600.json/native_second_live_1026_031500.json, all_label_independent_1026_024500.json and all_label_wsi_acceptance_1026_030600/summary.json. Record docs/运行记录/模型实验/运行记录_全标签同任务参考提取与WSI迁移补齐_1026_023000.md; snapshot reference_continuity_1026_032000.json. FullCPU WSI646382 stillcachepreparing; fullcell/main30/GT/nativeGPU efficiency and allnew9train/local/R audits/statistics/reviewer closure remain. Overall goal active.
+
+## Latest heldout acceptance and resumed work
+
+Updated 2026-10-26T18:32:25.074145+08:00. User requested continuation; overall goal active. All previously active experiment workers ended EXIT0 and moved to completed_jobs; do not restart completed runs. New audits3773203/3780561 ended EXIT0: nine formal10k/40k trains,90seen-only selection tables,4800local rows and19360remote rows accepted qualified;240native saved gate masks pixel-recounted. Record docs/运行记录/模型实验/运行记录_留出概念九条件训练与本图独立验收_1026_130200.md. Single seed; paired statistics and same-task all-label descriptive comparisons pending. FewClick is lower on all three local folds; no favorable-result requirement.
+
+GenericHE two full projections and first3050tile CPU WSI have complete execution only, independent preparation/full-WSI acceptance pending. GenericHE local verifier1165842 launched in tmux fewclick_generic_accept_1026_183200; inspect actual status. MainGDPH30 source/header/exact-declared-path exploration found0 overlap with current catalog/master; clinical patient identity/content/rescan/upstream prior and full GT census not established. Continue full-cell/nativeGPU WSI/efficiency and reviewer closure. New IHC/MIHIC records remain separate; no model/data integration inferred.
+
+GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份302行开发选模及实际40k消费/选中权重/GT/源码绑定通过；主3+2 PCA64 Dice.562162、白化64 Dice.568247。单seed，两者均报告；完整raw/PCA/projection独立复核、配对统计仍待，G6不关闭。

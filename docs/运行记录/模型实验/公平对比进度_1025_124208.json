@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-26T03:20:55.078362+08:00",
+  "updated": "2026-10-26T18:32:25.074145+08:00",
   "current_phase": "G6",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -238,7 +238,7 @@
       }
     },
     "G6": {
-      "status": "generic_HE_raw_running_model_gate_passed_formal_waiting",
+      "status": "partial_formal_two_projection_execution_complete_independent_acceptance",
       "depends_on": [
         "G3"
       ],
@@ -283,7 +283,9 @@
       "generic_HE_raw_completed_groups": [
         "contexts_shard02_1025_040737",
         "contexts_shard03_1025_040737"
-      ]
+      ],
+      "generic_local_acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/local_acceptance_1026_183200/summary.json",
+      "generic_local_qualification": "Two prespecified projections12080full local rows/20seen selection tables/actual40k consumption and weights/sources/GT independently accepted. PCA64 .562162 / whitened64 .568247 single seed. Full raw/PCA/projection independent audit and paired statistics pending."
     },
     "G7": {
       "status": "external_complete_heldout_TLS_pending",
@@ -333,7 +335,9 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/all_label_wsi_acceptance_1026_030600/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/all_label_reference_report_1026_030900/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/native_first_live_1026_024600.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/native_second_live_1026_031500.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/native_second_live_1026_031500.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/local_acceptance_1026_130200/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_acceptance_1026_131000/summary.json"
       ],
       "qualification": "IGNITE10中心三尺度真实cells及六方法680行/实际GT/开发权重/32门控保存mask回放验收通过，10 ROI配对2000次bootstrap完成；严格概念留出/TLS仍未完成。",
       "record_public": "docs/运行记录/模型实验/运行记录_外部域公共权重真实门控与评分_1025_143741.md",
@@ -342,21 +346,22 @@
       "adapted_record": "docs/运行记录/模型实验/运行记录_外部域适配权重固定与真实推理门控_1025_145533.md",
       "adapted_formal_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/adapted_formal_1025_150010",
       "complete_record": "docs/运行记录/模型实验/运行记录_外部适配完整验收与六方法统计_1025_221700.md",
-      "heldout_status": "SAM_and_NoCell_necrosis_native_gates_accepted_formal_training_running",
+      "heldout_status": "accepted_local_counts_and_binding_qualified",
       "heldout_record": "docs/运行记录/数据审计/运行记录_三概念留出本体与监督排除覆盖_1026_003000.md",
-      "heldout_qualification": "新三fold各40000真实点击/全部masked GT和seen点/原终评点序列全量审计通过EXIT0；within-fold三方法共用真实点SHA，跨fold SHA独立。9条件执行计划和三组8任务native清单独立重算通过；当前coordinator349631真实等raw02/03与GPU4/5空闲，原生GPU门控/正式训练/精度尚未开始。remote另需适配与验收，未声明所有预训练形态未见。",
+      "heldout_qualification": "Nine fresh10k/40k conditions,10seen-only selections each and4800original-GT local rows independently accepted; local3+2 N FewClick/SAM/WSI .344947/.638311/.636891, A .084588/.630686/.563858, L .379260/.517752/.606297. Single seed; paired statistics and matched all-label descriptive analysis pending; no morphology/public-pretraining exclusion claim.",
       "heldout_protocol_record": "docs/运行记录/数据审计/运行记录_三fold完整任务生成与真实点击_1026_004500.md",
       "heldout_checkpoint_record": "docs/运行记录/模型实验/运行记录_概念留出训练与独立终评衔接门控_1026_005500.md",
       "heldout_queue_record": "docs/运行记录/模型实验/运行记录_三fold三方法原生门控与正式训练队列_1026_012700.md",
-      "heldout_remote_status": "real_CPU_interface_gates_passed_9condition_remote_queue_waiting",
+      "heldout_remote_status": "accepted_remote_counts_binding_and_native_saved_gates_qualified",
       "heldout_remote_record": "docs/运行记录/模型实验/运行记录_留出类支持查询迁移适配与真实门控_1026_013700.md",
-      "heldout_remote_qualification": "NoCell小checkpoint真实7strata/28行×2输出、缓存/原生0误差、GT API禁用/maps0和保存概率独立计数通过，仅接口不是正式精度。SAM/WSI helper旧G3真实权重门控通过，明确其训练见过留出类。正式433592同源9job实际准备和等待producer349631；必须每个正式新权重重新gate后全量，不新增R训练。N/A/L实际115/65/62对分母重算，不沿用父935统计。",
+      "heldout_remote_qualification": "19360full rows plus240native selected-weight saved masks independently recounted; GT/points/weights/sources bound, no Rupdates/queryclicks/classID. SAM/WSI custom feature-prototype tracks, not native remote mask decoders; valid-area absence only. Paired/dependency statistics pending.",
       "all_label_reference_status": "accepted_qualified_21tables_24160rows",
       "all_label_reference_record": "docs/运行记录/模型实验/运行记录_全标签同任务参考提取与WSI迁移补齐_1026_023000.md",
-      "all_label_reference_qualification": "原G3/G4 18表19320行同点逐字节提取、全部预算独立宏统计通过；WSI两视野custom feature-proto三fold4840行全任务/GT/分母/统计/权重及60保存gate mask独立验收。全标签训练+原开发选模接触target，不能把未来差值仅归因监督删除，不是新留出精度。"
+      "all_label_reference_qualification": "原G3/G4 18表19320行同点逐字节提取、全部预算独立宏统计通过；WSI两视野custom feature-proto三fold4840行全任务/GT/分母/统计/权重及60保存gate mask独立验收。全标签训练+原开发选模接触target，不能把未来差值仅归因监督删除，不是新留出精度。",
+      "heldout_acceptance_record": "docs/运行记录/模型实验/运行记录_留出概念九条件训练与本图独立验收_1026_130200.md"
     },
     "G8": {
-      "status": "full_CPU_image_only_first_slide_running_streaming_gate_accepted",
+      "status": "partial_first_full_CPU_execution_complete_acceptance_pending",
       "depends_on": [
         "G3"
       ],
@@ -399,425 +404,7 @@
       "qualification": "11 human challenges and 14 AI self-checks mapped; evidence gaps remain. No submitted-paper edits or complete reviewer resolution claimed."
     }
   },
-  "active_jobs": [
-    {
-      "gpu": 1,
-      "history": "contexts_shard00_1025_040737",
-      "fields": 434,
-      "scale_rows": 1302,
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history00_1025_234700",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history00_1025_234700.log",
-      "session": "fewclick_generic_raw_history00_1025_234700",
-      "command": [
-        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-        "-u",
-        "-m",
-        "benchmarks.v5.generic_cell_control.history_extract",
-        "--catalog",
-        "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600/training_catalog_1025_040737",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history00_1025_234700",
-        "--history-name",
-        "contexts_shard00_1025_040737",
-        "--verified-gates",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_gate_1025_234000",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_02_1025_234000",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_03_1025_234000"
-      ],
-      "kind": "generic_HE_raw_history",
-      "status": "running",
-      "worker_pid": 3914369,
-      "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T03:20:55.078362+08:00",
-      "last_observed_status": {
-        "status": "running",
-        "worker_pid": 3914369,
-        "scale_rows": 1271,
-        "total_scale_rows": 1302,
-        "fields_completed": 423,
-        "seconds": 12769.835536003113
-      }
-    },
-    {
-      "gpu": 3,
-      "history": "contexts_shard01_1025_040737",
-      "fields": 433,
-      "scale_rows": 1299,
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history01_1025_234700",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history01_1025_234700.log",
-      "session": "fewclick_generic_raw_history01_1025_234700",
-      "command": [
-        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-        "-u",
-        "-m",
-        "benchmarks.v5.generic_cell_control.history_extract",
-        "--catalog",
-        "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600/training_catalog_1025_040737",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history01_1025_234700",
-        "--history-name",
-        "contexts_shard01_1025_040737",
-        "--verified-gates",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_gate_1025_234000",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_02_1025_234000",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_03_1025_234000"
-      ],
-      "kind": "generic_HE_raw_history",
-      "status": "running",
-      "worker_pid": 3914376,
-      "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T03:20:55.078362+08:00",
-      "last_observed_status": {
-        "status": "running",
-        "worker_pid": 3914376,
-        "scale_rows": 1211,
-        "total_scale_rows": 1299,
-        "fields_completed": 403,
-        "seconds": 12758.487066745758
-      }
-    },
-    {
-      "status": "waiting_live_raw_shards",
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/pca_full_train_1025_234700",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/pca_full_train_1025_234700.log",
-      "session": "fewclick_generic_train_pca_1025_234700",
-      "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/pca_gate_history_input_1025_234700",
-      "source_sha256": "e165312ff1daa33ffd5dd008844f56dc5636eeff739e647822ff5d7a7cadc5f4",
-      "command": [
-        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-        "-u",
-        "-m",
-        "benchmarks.v5.generic_cell_control.fit",
-        "--catalog",
-        "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600/training_catalog_1025_040737",
-        "--shards",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_gate_1025_234000",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history00_1025_234700",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history01_1025_234700",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history02_1025_234700",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history03_1025_234700",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/pca_full_train_1025_234700",
-        "--wait-for-shards"
-      ],
-      "raw_inputs": [
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_gate_1025_234000",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history00_1025_234700",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history01_1025_234700",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history02_1025_234700",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history03_1025_234700"
-      ],
-      "validation_raw_files_allowed_in_fit": false,
-      "kind": "generic_HE_train_PCA",
-      "worker_pid": 3924161,
-      "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T03:20:55.078362+08:00",
-      "last_observed_status": {
-        "status": "waiting_live_raw_shards",
-        "worker_pid": 3924161,
-        "shards": [
-          "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_gate_1025_234000",
-          "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history00_1025_234700",
-          "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history01_1025_234700",
-          "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history02_1025_234700",
-          "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history03_1025_234700"
-        ],
-        "observed_at": 1792956052.527474
-      }
-    },
-    {
-      "status": "waiting_live_PCA",
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500.log",
-      "session": "fewclick_generic_controls_1026_001500",
-      "command": [
-        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-        "-u",
-        "-m",
-        "benchmarks.v5.generic_cell_control.pipeline",
-        "--root",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000",
-        "--cpu-gate",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/model_gate_1026_000800",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500"
-      ],
-      "cpu_gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/model_gate_1026_000800",
-      "GPU_reservations": {
-        "1": "generic_he_pca64",
-        "3": "generic_he_white64"
-      },
-      "full_training_started": false,
-      "kind": "generic_HE_formal_control_coordinator",
-      "worker_pid": 4089939,
-      "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T03:20:55.078362+08:00",
-      "last_observed_status": {
-        "status": "waiting_live_PCA",
-        "coordinator_pid": 4089939,
-        "PCA_pid": 3924161,
-        "observed_at": 1792956051.4651885
-      }
-    },
-    {
-      "kind": "heldout_9condition_GPU_coordinator",
-      "worker_pid": 349631,
-      "status": "two_necrosis_formal_models_training",
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700.log",
-      "session": "fewclick_heldout_formal_1026_012700",
-      "command": [
-        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-        "-u",
-        "-m",
-        "benchmarks.v5.heldout_comparison.pipeline",
-        "--protocols",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300",
-        "--points",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300",
-        "--cpu-gate",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/checkpoint_gate_cpu_1026_005800",
-        "--generic-root",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000",
-        "--point-worker",
-        "181064",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700"
-      ],
-      "GPU_reservations": [
-        4,
-        5
-      ],
-      "GPU_training_started": true,
-      "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T03:20:55.078362+08:00",
-      "last_observed_status": {
-        "status": "running_or_waiting",
-        "coordinator_pid": 349631,
-        "workers": [
-          {
-            "gpu": 4,
-            "status": "running",
-            "job": "necrosis|fewclick_m3d_image",
-            "stage": "train",
-            "worker_pid": 969093,
-            "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_fewclick_m3d_image_1026_012700",
-            "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_fewclick_m3d_image_1026_012700.log",
-            "command": [
-              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-              "-u",
-              "-m",
-              "benchmarks.v5.heldout_comparison.training",
-              "--tasks",
-              "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/necrosis/tasks",
-              "--realized",
-              "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300/full/necrosis",
-              "--method",
-              "fewclick_m3d_image",
-              "--seed",
-              "20261025",
-              "--output",
-              "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_fewclick_m3d_image_1026_012700"
-            ]
-          },
-          {
-            "gpu": 5,
-            "status": "running",
-            "job": "necrosis|sam_ft",
-            "stage": "train",
-            "worker_pid": 796373,
-            "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_sam_ft_1026_012700",
-            "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_sam_ft_1026_012700.log",
-            "command": [
-              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-              "-u",
-              "-m",
-              "benchmarks.v5.heldout_comparison.training",
-              "--tasks",
-              "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/necrosis/tasks",
-              "--realized",
-              "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300/full/necrosis",
-              "--method",
-              "sam_ft",
-              "--seed",
-              "20261025",
-              "--output",
-              "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_sam_ft_1026_012700"
-            ]
-          }
-        ],
-        "complete": {
-          "necrosis|sam_ft|gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/gate_necrosis_sam_ft_1026_012700",
-          "necrosis|sam_ft|gate_score": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/gate_score_necrosis_sam_ft_1026_012700",
-          "necrosis|fewclick_m3d_image|gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/gate_necrosis_fewclick_m3d_image_1026_012700",
-          "necrosis|fewclick_m3d_image|gate_score": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/gate_score_necrosis_fewclick_m3d_image_1026_012700"
-        },
-        "failed": [],
-        "pending_jobs": 7,
-        "seconds": 6603.000602960587
-      },
-      "native_gate_accepted_conditions": [
-        "necrosis|sam_ft",
-        "necrosis|fewclick_m3d_image"
-      ],
-      "active_children_last_observed": [
-        {
-          "gpu": 4,
-          "status": "running",
-          "job": "necrosis|fewclick_m3d_image",
-          "stage": "train",
-          "worker_pid": 969093,
-          "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_fewclick_m3d_image_1026_012700",
-          "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_fewclick_m3d_image_1026_012700.log",
-          "command": [
-            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-            "-u",
-            "-m",
-            "benchmarks.v5.heldout_comparison.training",
-            "--tasks",
-            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/necrosis/tasks",
-            "--realized",
-            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300/full/necrosis",
-            "--method",
-            "fewclick_m3d_image",
-            "--seed",
-            "20261025",
-            "--output",
-            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_fewclick_m3d_image_1026_012700"
-          ],
-          "process_alive": true,
-          "last_status": {
-            "status": "running",
-            "worker_pid": 969093,
-            "step": 1169,
-            "total": 10000,
-            "seconds": 576.2537624835968
-          }
-        },
-        {
-          "gpu": 5,
-          "status": "running",
-          "job": "necrosis|sam_ft",
-          "stage": "train",
-          "worker_pid": 796373,
-          "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_sam_ft_1026_012700",
-          "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_sam_ft_1026_012700.log",
-          "command": [
-            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-            "-u",
-            "-m",
-            "benchmarks.v5.heldout_comparison.training",
-            "--tasks",
-            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/necrosis/tasks",
-            "--realized",
-            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300/full/necrosis",
-            "--method",
-            "sam_ft",
-            "--seed",
-            "20261025",
-            "--output",
-            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_sam_ft_1026_012700"
-          ],
-          "process_alive": true,
-          "last_status": {
-            "status": "running",
-            "worker_pid": 796373,
-            "step": 3388,
-            "total": 10000,
-            "seconds": 2310.609641313553
-          }
-        }
-      ]
-    },
-    {
-      "kind": "heldout_remote_CPU_coordinator",
-      "worker_pid": 433592,
-      "status": "waiting_live_local_training",
-      "gpu": null,
-      "max_CPU_workers": 2,
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_queue_1026_014400",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_queue_1026_014400.log",
-      "session": "fewclick_heldout_remote_queue_1026_014400",
-      "command": [
-        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-        "-u",
-        "-m",
-        "benchmarks.v5.heldout_transfer.queue",
-        "--producer",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700",
-        "--producer-pid",
-        "349631",
-        "--integration-gate",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_checkpoint_gate_1026_013700",
-        "--feature-gate",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_feature_gate_1026_013700",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_queue_1026_014400"
-      ],
-      "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T03:20:55.078362+08:00",
-      "last_observed_status": {
-        "status": "running_or_waiting_local_training",
-        "coordinator_pid": 433592,
-        "workers": [],
-        "complete": {},
-        "failed": [],
-        "seconds": 5801.232508182526,
-        "pending_conditions": 9,
-        "ready_conditions": 0,
-        "producer_pid": 349631
-      }
-    },
-    {
-      "kind": "WSI_first_full_CPU_image_only_execution",
-      "worker_pid": 646382,
-      "status": "preparing_cache",
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_cpu_slide0_1026_021756",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_cpu_slide0_1026_021756.log",
-      "session": "fewclick_wsi_full_cpu_1026_021756",
-      "gpu": null,
-      "threads": 4,
-      "tiles": 3050,
-      "source_sha256": {
-        "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/stream.py": "51a9819119a5e8e50fc226d7fa959a672c215a153e1889b7c8338bfcb10d9d7b",
-        "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/stripe.py": "1d83c1cc331a3def52b0efa1d9949393b971361b8bdad3232314e19c5c90c2ce",
-        "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/cache_gate.py": "16266933697e1bc1f1f85d08992d9c786d0f7343c5c09eed03585b8d35c49b8c",
-        "benchmarks/v5/external_evaluation/wsi_reader.py": "3bdbc8b2784a2ac1e4373b8feb61fbad488b380286aa45eb911a74683406b1b5",
-        "benchmarks/v5/external_evaluation/evaluate_adapted.py": "4c5719c4e5fd66e8b7f2efc9c34442b9df79a890c50be1f6e08f7395337430e2",
-        "benchmarks/v5/fair_comparison/adapted_models.py": "e8c193d73cc5b5f2793cf14ba7a4092dd20e53f03c540dcced4ff57ce7f20947",
-        "benchmarks/v5/paper_multiscale/model.py": "a780f02e0f3b04fe214323cfc1814755ff81695155a4ca491304bdc6aa204a91",
-        "benchmarks/v4/phase_4_cross_scale/src/export_tokens.py": "351094b088bdf145565e25416875dd954a88ba7be90e105bcee64808b54a3ca6"
-      },
-      "command": [
-        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-        "-u",
-        "-m",
-        "benchmarks.v5.wsi_global.stream",
-        "--plan",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/plan_1026_010800",
-        "--development",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400",
-        "--training",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_image_1025_131451",
-        "--stream-gate",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/stream_gate_bounded_1026_015200",
-        "--slide-index",
-        "0",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_cpu_slide0_1026_021756"
-      ],
-      "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-26T03:20:55.078362+08:00",
-      "last_observed_status": {
-        "status": "preparing_cache",
-        "worker_pid": 646382,
-        "completed": 610,
-        "total": 3050,
-        "seconds": 3774.617323100567
-      },
-      "scope": "Full first3050-tile CPU image-only mechanical WSI execution; not TLS accuracy/fullcell/GPU efficiency"
-    }
-  ],
+  "active_jobs": [],
   "known_gaps": [
     "Retained J5 has prior target-cohort supervision; strict equal-target-supervision claim is not permitted.",
     "Three independent encoders have more parameters and views than single-scale; compute/capacity are not matched.",
@@ -826,13 +413,11 @@
     "Fixed adaptation hyperparameters; not per-method optimum; independent training seeds remain pending."
   ],
   "next_actions": [
-    "Observe native-gated full necrosis SAM GPU5 PID796373 and NoCell GPU4 PID969093 under349631; finish all9conditions/new-weight R gates and full independent audits; no final heldout score yet",
-    "All-label same-task references21tables/24160rows accepted qualified; wait excluded-label counterparts for paired descriptive analysis. Keep all source snapshots frozen; continue fullcell/main30/GT/native GPU WSI efficiency work.",
-    "Observe full-WSI CPU worker646382 same handle; require3050 cache+2complete online/independent audits. Freeze captured stream sources. Continue main30 cohort/GT audit, full-cell preparation/native GPU efficiency and all-label reference extraction outside snapshots.",
-    "Audit full4x annotation coverage for strict morphology-excluded tier; fine-clean alone cannot certify absence",
-    "Continue6 genericHE handles and frozen sources; all30 TLS grid/tissue CPU cache gate accepted, next build full streaming inference/cache/stitch and actual GPU/cell efficiency; keep main30 cohort distinct",
-    "Build independent native WSI model/cache/coverage/stitch/efficiency gates; GPU4/5 only after raw completion and actual idle",
-    "Update reviewer matrix with qualified evidence; no heldout accuracy or whole-goal completion claimed"
+    "Finish GenericHE two-projection training/count acceptance and independent raw/PCA/projection audit; paired statistics; retain both variants.",
+    "Heldout9conditions local4800/R19360 plus240gate saved masks accepted qualified; compute paired/dependency statistics and descriptive same-task all-label comparisons, not causal deletion.",
+    "Independently audit full3050tile CPU WSI cache/stitch/coverage/output; complete full-cell and actual GPU efficiency. No TLS semantic accuracy from fixedCRC support.",
+    "Solidify mainCRC30 reproducible cohort/GT/physical-domain audit; initial file/header and exact current-native-path intersections0, image/rescan/public-prior and clinical patient identity remain unverified.",
+    "Complete TLS annotation/negative definition, strict concept morphology tier if claimed, reviewer evidence mapping and submitted-version binding. Overall goal remains active."
   ],
   "provenance_clarifications": {
     "XCell": {
@@ -2025,6 +1610,446 @@
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/all_label_wsi_reference_1026_023000",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/all_label_wsi_reference_1026_023000.log",
       "terminal_log_tail": "EXIT_CODE=0\n"
+    },
+    {
+      "gpu": 1,
+      "history": "contexts_shard00_1025_040737",
+      "fields": 434,
+      "scale_rows": 1302,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history00_1025_234700",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history00_1025_234700.log",
+      "session": "fewclick_generic_raw_history00_1025_234700",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.generic_cell_control.history_extract",
+        "--catalog",
+        "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600/training_catalog_1025_040737",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history00_1025_234700",
+        "--history-name",
+        "contexts_shard00_1025_040737",
+        "--verified-gates",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_gate_1025_234000",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_02_1025_234000",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_03_1025_234000"
+      ],
+      "kind": "generic_HE_raw_history",
+      "status": "complete_execution",
+      "worker_pid": 3914369,
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-26T18:32:25.074145+08:00",
+      "last_observed_status": {
+        "status": "running",
+        "worker_pid": 3914369,
+        "scale_rows": 1271,
+        "total_scale_rows": 1302,
+        "fields_completed": 423,
+        "seconds": 12769.835536003113
+      },
+      "terminal_status": "complete",
+      "acceptance_scope": "Heldout local/R accepted qualified separately; generic preparation and full WSI final audits pending"
+    },
+    {
+      "gpu": 3,
+      "history": "contexts_shard01_1025_040737",
+      "fields": 433,
+      "scale_rows": 1299,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history01_1025_234700",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history01_1025_234700.log",
+      "session": "fewclick_generic_raw_history01_1025_234700",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.generic_cell_control.history_extract",
+        "--catalog",
+        "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600/training_catalog_1025_040737",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history01_1025_234700",
+        "--history-name",
+        "contexts_shard01_1025_040737",
+        "--verified-gates",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_gate_1025_234000",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_02_1025_234000",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_03_1025_234000"
+      ],
+      "kind": "generic_HE_raw_history",
+      "status": "complete_execution",
+      "worker_pid": 3914376,
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-26T18:32:25.074145+08:00",
+      "last_observed_status": {
+        "status": "running",
+        "worker_pid": 3914376,
+        "scale_rows": 1211,
+        "total_scale_rows": 1299,
+        "fields_completed": 403,
+        "seconds": 12758.487066745758
+      },
+      "terminal_status": "complete",
+      "acceptance_scope": "Heldout local/R accepted qualified separately; generic preparation and full WSI final audits pending"
+    },
+    {
+      "status": "complete_execution",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/pca_full_train_1025_234700",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/pca_full_train_1025_234700.log",
+      "session": "fewclick_generic_train_pca_1025_234700",
+      "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/pca_gate_history_input_1025_234700",
+      "source_sha256": "e165312ff1daa33ffd5dd008844f56dc5636eeff739e647822ff5d7a7cadc5f4",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.generic_cell_control.fit",
+        "--catalog",
+        "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600/training_catalog_1025_040737",
+        "--shards",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_gate_1025_234000",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history00_1025_234700",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history01_1025_234700",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history02_1025_234700",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history03_1025_234700",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/pca_full_train_1025_234700",
+        "--wait-for-shards"
+      ],
+      "raw_inputs": [
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_gate_1025_234000",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history00_1025_234700",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history01_1025_234700",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history02_1025_234700",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history03_1025_234700"
+      ],
+      "validation_raw_files_allowed_in_fit": false,
+      "kind": "generic_HE_train_PCA",
+      "worker_pid": 3924161,
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-26T18:32:25.074145+08:00",
+      "last_observed_status": {
+        "status": "waiting_live_raw_shards",
+        "worker_pid": 3924161,
+        "shards": [
+          "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/gate_history_original_gate_1025_234000",
+          "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history00_1025_234700",
+          "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history01_1025_234700",
+          "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history02_1025_234700",
+          "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/raw_history03_1025_234700"
+        ],
+        "observed_at": 1792956052.527474
+      },
+      "terminal_status": "complete_train_fit",
+      "acceptance_scope": "Heldout local/R accepted qualified separately; generic preparation and full WSI final audits pending"
+    },
+    {
+      "status": "complete_execution",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500.log",
+      "session": "fewclick_generic_controls_1026_001500",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.generic_cell_control.pipeline",
+        "--root",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000",
+        "--cpu-gate",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/model_gate_1026_000800",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500"
+      ],
+      "cpu_gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/model_gate_1026_000800",
+      "GPU_reservations": {
+        "1": "generic_he_pca64",
+        "3": "generic_he_white64"
+      },
+      "full_training_started": false,
+      "kind": "generic_HE_formal_control_coordinator",
+      "worker_pid": 4089939,
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-26T18:32:25.074145+08:00",
+      "last_observed_status": {
+        "status": "waiting_live_PCA",
+        "coordinator_pid": 4089939,
+        "PCA_pid": 3924161,
+        "observed_at": 1792956051.4651885
+      },
+      "terminal_status": "complete_execution",
+      "acceptance_scope": "Heldout local/R accepted qualified separately; generic preparation and full WSI final audits pending"
+    },
+    {
+      "kind": "heldout_9condition_GPU_coordinator",
+      "worker_pid": 349631,
+      "status": "complete_execution",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700.log",
+      "session": "fewclick_heldout_formal_1026_012700",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.heldout_comparison.pipeline",
+        "--protocols",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300",
+        "--points",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300",
+        "--cpu-gate",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/checkpoint_gate_cpu_1026_005800",
+        "--generic-root",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000",
+        "--point-worker",
+        "181064",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700"
+      ],
+      "GPU_reservations": [
+        4,
+        5
+      ],
+      "GPU_training_started": true,
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-26T18:32:25.074145+08:00",
+      "last_observed_status": {
+        "status": "running_or_waiting",
+        "coordinator_pid": 349631,
+        "workers": [
+          {
+            "gpu": 4,
+            "status": "running",
+            "job": "necrosis|fewclick_m3d_image",
+            "stage": "train",
+            "worker_pid": 969093,
+            "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_fewclick_m3d_image_1026_012700",
+            "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_fewclick_m3d_image_1026_012700.log",
+            "command": [
+              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+              "-u",
+              "-m",
+              "benchmarks.v5.heldout_comparison.training",
+              "--tasks",
+              "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/necrosis/tasks",
+              "--realized",
+              "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300/full/necrosis",
+              "--method",
+              "fewclick_m3d_image",
+              "--seed",
+              "20261025",
+              "--output",
+              "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_fewclick_m3d_image_1026_012700"
+            ]
+          },
+          {
+            "gpu": 5,
+            "status": "running",
+            "job": "necrosis|sam_ft",
+            "stage": "train",
+            "worker_pid": 796373,
+            "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_sam_ft_1026_012700",
+            "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_sam_ft_1026_012700.log",
+            "command": [
+              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+              "-u",
+              "-m",
+              "benchmarks.v5.heldout_comparison.training",
+              "--tasks",
+              "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/necrosis/tasks",
+              "--realized",
+              "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300/full/necrosis",
+              "--method",
+              "sam_ft",
+              "--seed",
+              "20261025",
+              "--output",
+              "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_sam_ft_1026_012700"
+            ]
+          }
+        ],
+        "complete": {
+          "necrosis|sam_ft|gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/gate_necrosis_sam_ft_1026_012700",
+          "necrosis|sam_ft|gate_score": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/gate_score_necrosis_sam_ft_1026_012700",
+          "necrosis|fewclick_m3d_image|gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/gate_necrosis_fewclick_m3d_image_1026_012700",
+          "necrosis|fewclick_m3d_image|gate_score": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/gate_score_necrosis_fewclick_m3d_image_1026_012700"
+        },
+        "failed": [],
+        "pending_jobs": 7,
+        "seconds": 6603.000602960587
+      },
+      "native_gate_accepted_conditions": [
+        "necrosis|sam_ft",
+        "necrosis|fewclick_m3d_image"
+      ],
+      "active_children_last_observed": [
+        {
+          "gpu": 4,
+          "status": "running",
+          "job": "necrosis|fewclick_m3d_image",
+          "stage": "train",
+          "worker_pid": 969093,
+          "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_fewclick_m3d_image_1026_012700",
+          "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_fewclick_m3d_image_1026_012700.log",
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.heldout_comparison.training",
+            "--tasks",
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/necrosis/tasks",
+            "--realized",
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300/full/necrosis",
+            "--method",
+            "fewclick_m3d_image",
+            "--seed",
+            "20261025",
+            "--output",
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_fewclick_m3d_image_1026_012700"
+          ],
+          "process_alive": true,
+          "last_status": {
+            "status": "running",
+            "worker_pid": 969093,
+            "step": 1169,
+            "total": 10000,
+            "seconds": 576.2537624835968
+          }
+        },
+        {
+          "gpu": 5,
+          "status": "running",
+          "job": "necrosis|sam_ft",
+          "stage": "train",
+          "worker_pid": 796373,
+          "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_sam_ft_1026_012700",
+          "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_sam_ft_1026_012700.log",
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.heldout_comparison.training",
+            "--tasks",
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/protocols_geometry_1026_010300/necrosis/tasks",
+            "--realized",
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/points_geometry_1026_010300/full/necrosis",
+            "--method",
+            "sam_ft",
+            "--seed",
+            "20261025",
+            "--output",
+            "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700/train_necrosis_sam_ft_1026_012700"
+          ],
+          "process_alive": true,
+          "last_status": {
+            "status": "running",
+            "worker_pid": 796373,
+            "step": 3388,
+            "total": 10000,
+            "seconds": 2310.609641313553
+          }
+        }
+      ],
+      "terminal_status": "complete_local_execution",
+      "acceptance_scope": "Heldout local/R accepted qualified separately; generic preparation and full WSI final audits pending"
+    },
+    {
+      "kind": "heldout_remote_CPU_coordinator",
+      "worker_pid": 433592,
+      "status": "complete_execution",
+      "gpu": null,
+      "max_CPU_workers": 2,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_queue_1026_014400",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_queue_1026_014400.log",
+      "session": "fewclick_heldout_remote_queue_1026_014400",
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.heldout_transfer.queue",
+        "--producer",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/formal_queue_1026_012700",
+        "--producer-pid",
+        "349631",
+        "--integration-gate",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_checkpoint_gate_1026_013700",
+        "--feature-gate",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_feature_gate_1026_013700",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_queue_1026_014400"
+      ],
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-26T18:32:25.074145+08:00",
+      "last_observed_status": {
+        "status": "running_or_waiting_local_training",
+        "coordinator_pid": 433592,
+        "workers": [],
+        "complete": {},
+        "failed": [],
+        "seconds": 5801.232508182526,
+        "pending_conditions": 9,
+        "ready_conditions": 0,
+        "producer_pid": 349631
+      },
+      "terminal_status": "complete_remote_execution",
+      "acceptance_scope": "Heldout local/R accepted qualified separately; generic preparation and full WSI final audits pending"
+    },
+    {
+      "kind": "WSI_first_full_CPU_image_only_execution",
+      "worker_pid": 646382,
+      "status": "complete_execution",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_cpu_slide0_1026_021756",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_cpu_slide0_1026_021756.log",
+      "session": "fewclick_wsi_full_cpu_1026_021756",
+      "gpu": null,
+      "threads": 4,
+      "tiles": 3050,
+      "source_sha256": {
+        "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/stream.py": "51a9819119a5e8e50fc226d7fa959a672c215a153e1889b7c8338bfcb10d9d7b",
+        "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/stripe.py": "1d83c1cc331a3def52b0efa1d9949393b971361b8bdad3232314e19c5c90c2ce",
+        "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/cache_gate.py": "16266933697e1bc1f1f85d08992d9c786d0f7343c5c09eed03585b8d35c49b8c",
+        "benchmarks/v5/external_evaluation/wsi_reader.py": "3bdbc8b2784a2ac1e4373b8feb61fbad488b380286aa45eb911a74683406b1b5",
+        "benchmarks/v5/external_evaluation/evaluate_adapted.py": "4c5719c4e5fd66e8b7f2efc9c34442b9df79a890c50be1f6e08f7395337430e2",
+        "benchmarks/v5/fair_comparison/adapted_models.py": "e8c193d73cc5b5f2793cf14ba7a4092dd20e53f03c540dcced4ff57ce7f20947",
+        "benchmarks/v5/paper_multiscale/model.py": "a780f02e0f3b04fe214323cfc1814755ff81695155a4ca491304bdc6aa204a91",
+        "benchmarks/v4/phase_4_cross_scale/src/export_tokens.py": "351094b088bdf145565e25416875dd954a88ba7be90e105bcee64808b54a3ca6"
+      },
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.wsi_global.stream",
+        "--plan",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/plan_1026_010800",
+        "--development",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400",
+        "--training",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/adaptation_1025_131451/train_fewclick_m3d_image_1025_131451",
+        "--stream-gate",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/stream_gate_bounded_1026_015200",
+        "--slide-index",
+        "0",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_cpu_slide0_1026_021756"
+      ],
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-26T18:32:25.074145+08:00",
+      "last_observed_status": {
+        "status": "preparing_cache",
+        "worker_pid": 646382,
+        "completed": 610,
+        "total": 3050,
+        "seconds": 3774.617323100567
+      },
+      "scope": "Full first3050-tile CPU image-only mechanical WSI execution; not TLS accuracy/fullcell/GPU efficiency",
+      "terminal_status": "complete_stream_execution",
+      "acceptance_scope": "Heldout local/R accepted qualified separately; generic preparation and full WSI final audits pending"
+    },
+    {
+      "kind": "generic_HE_independent_local_acceptance",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/local_acceptance_1026_183200",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/local_acceptance_1026_183200.log",
+      "worker_pid": 1165842,
+      "status": "accepted",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-26T18:32:25.074145+08:00"
     }
   ]
 }
