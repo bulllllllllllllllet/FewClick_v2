@@ -2560,3 +2560,12 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Commit: 本条与门控/审计实现同次提交，哈希见git历史；总体goal active。
 
 - 续验收 2026-10-27T15:26:32.765693+08:00：完整CPU worker1483383已EXIT0，两budget共6373487680像素、3050cache、六输出SHA/覆盖/overlap/阈值接受，概率最大差1.49e-8；整体G8仍partial。
+
+## 10-27 15:47:00
+
+- Purpose: 含细胞整片GPU生产路径门控并启动全3050视野准备/两预算完整计时。
+- Changed: benchmarks/v5/wsi_global/fullcell_gpu_stream.py；goal、registry、当前运行记录。
+- Validation: 真实四视野三尺度门控1682904 EXIT0；native/cache概率与独立拼接一致；正式1708231实际运行38/3050，尚未接受全量结果。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_full_gpu_1027_152800；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_stream_gate_1027_152800。
+- Docs record: docs/运行记录/模型实验/运行记录_含细胞整片GPU生产流程与完整计时_1027_152800.md。
+- Commit: 本条与实现同次提交，哈希见git历史。
