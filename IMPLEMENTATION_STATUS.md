@@ -2578,3 +2578,12 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/crc12_priority_1027_165114。
 - Docs record: docs/运行记录/模型实验/运行记录_CRC十二类优先与逐类覆盖复核_1027_165114.md（运行记录；CRC逐类统计complete，主30与闭集背景评价仍preparing）。
 - Commit: 同次提交，哈希见git历史。
+
+## 10-27 17:06:08
+
+- Purpose: 按用户授权将goal改为完整监督CRC12的WSI应用主线，保留合理公平协议和历史证据。
+- Changed: goal.md objective/resume、registry目标/优先序及当前记录；新增建议方案。
+- Validation: 对照已验收CRC类别/公平合同与实时WSI状态；仅文档/调度目标变更，未改运行源码/权重/数据/指标，新增质量实验未宣称完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_priority_goal_1027_170608（新旧goal及决策SHA快照）。
+- Docs record: docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md（建议）。
+- Commit: 同次提交，哈希见git历史。

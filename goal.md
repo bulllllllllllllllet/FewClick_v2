@@ -1,14 +1,16 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-27T16:54:04.218733+08:00. Native thread goal: **active**. Latest user priority: full-label CRC12 first; replacement heldout deferred.
+Updated: 2026-10-27T17:06:08.474774+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
 
 ## Objective
 
-以当前三物理视野FewClick完成版本化补充实验：公平性审计与固定本图/支持查询协议，SAM/WSI-SAM公共及同域适配、闭集参考和受控FewClick；随后完成统计重复、细胞/机制消融、严格概念与外部泛化、TLS、整片与效率，以及逐审稿challenge证据闭环。不要求FewClick获胜，不将历史J5比较称等总监督架构实验。
+以当前三物理视野 FewClick 评估完整监督下的 CRC 十二标签（11类组织+背景）WSI 用户指定组织分割能力，脂肪正常参与训练。主证据优先建立在真实整片：主测试30张的来源/GT/物理域审计、固定少量支持点击后的远处组织检出与误报、整片分割质量、点击预算曲线，以及首次细胞/特征准备、缓存后整片响应和输出IO成本。局部patch比较、机制消融、外部与类别留出作为补充证据，按真实应用相关性安排，不以极端留出低分代表常规使用能力。
+
+实验在看结果前固定目标类/整片集合、支持选择、预算、权重选择、评价域与指标；保持合理监督和适配的基线，披露额外视野、预训练及监督差异。已有结果与失败案例保留，不按排名删除样本、削弱基线或修改评分。WSI扩展首先验证现有模型的缓存/分窗推理，不把分窗局部图称作跨整片全局图。类别留出后置，新类别先做本体/覆盖审计；只有保留相应泛化主张时才要求该证据闭环。审稿人明确要求的项目逐条回应，无法完成者说明限制。
 
 ## Resume here
 
-0. **Latest user instruction 2026-10-27: prioritize CRC full12 labels (11 tissues + background), including fat supervision. CRC-only perclass report completed; next main30/closed12/background audit. Replacement heldout later, no score-based class selection; preserve original N/A/L. Keep GPU5 worker1708231 running.**
+0. **Latest user instruction: WSI application first. Full-label CRC12/fat supervised; prioritize main30 audit, whole-slide remote quality and offline/online costs. Local/heldout supplementary; preserve all results and fair baselines. See docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md. Keep existing GPU5 worker1708231 running.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -224,3 +226,7 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 ## 1027_165114 用户优先级调整：CRC十二标签主任务
 
 2026-10-27T16:54:04.218733+08:00：最新用户指示优先12类组织，留出可用其他组织。主任务恢复全标签（含fat10）CRC，先逐类/背景与主30整片，留出后置，不能按现有分数挑替代类别。新report_crc12 CPU worker2025779 EXIT0，逐读12份6040评分/40k实际训练历史并绑定G5 SHA，原Dice/GT分母、同任务/五组/四预算检查通过；CRC每方法每seed220对/4400行，132项类覆盖记录。原12标签=11组织+background2；交互不以背景为正目标，不能称12个正目标已评价。全标签脂肪三seedDice无细胞59.43±1.85、含细胞60.21±1.13、SAM79.12±.45、WSI-SAM76.71±1.74（百分数，开发评价）。主30和闭集12类逐类/背景终评尚未完成。新留出本体另行预登记；既有N/A/L含脂肪压力测试保留，不覆盖。现有全细胞WSI1708231保持运行，观测465/3050准备，不中断、不改运行合同。输出/nfs-medical3/zyh/fewclick_v2/fair_comparison/crc12_priority_1027_165114；记录docs/运行记录/模型实验/运行记录_CRC十二类优先与逐类覆盖复核_1027_165114.md；整体goal active。
+
+## 1027_170608 WSI应用主线目标调整
+
+2026-10-27T17:06:08.474774+08:00：用户要求修改goal并尽量向WSI实验。新目标为完整监督CRC12（11组织+背景，fat正常训练）的WSI用户指定组织分割；主30真实GT/域、远距未点击组织与误报、预算曲线、全系统offline/online/IO计时优先。局部/外部/类别留出降为补充，原结果不删除；不依据分数选样本/降低基线/改变评分。新质量协议先冻结支持/目标/域/预算/选模与指标，真实分窗图不冒称整片全局图；已完成TLS机械输出不冒称质量结果。WSI质量协议planned，未完成终评；既有1708231运行状态preparing_fullcell_cache 540/3050保留。建议记录docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md。已接受证据与未完成缺口保留，整体active。

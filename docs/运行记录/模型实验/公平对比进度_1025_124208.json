@@ -1,8 +1,8 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-27T16:54:04.218733+08:00",
-  "current_phase": "CRC12_primary_priority_with_fullcell_WSI_running",
+  "updated": "2026-10-27T17:06:08.474774+08:00",
+  "current_phase": "WSI_primary_supervised_CRC12_protocol_preparing_fullcell_run_continues",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
   "prior_run": "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600",
@@ -417,7 +417,9 @@
       "fullcell_GPU_record": "docs/运行记录/模型实验/运行记录_真实WSI细胞准备与GPU缓存点击门控_1027_150000.md",
       "full_probability_audit_status": "accepted_full_WSI_probability_replay_qualified",
       "fullcell_stream_record": "docs/运行记录/模型实验/运行记录_含细胞整片GPU生产流程与完整计时_1027_152800.md",
-      "fullcell_GPU_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_full_gpu_1027_152800"
+      "fullcell_GPU_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_full_gpu_1027_152800",
+      "primary_WSI_quality_protocol_status": "planned_not_executed",
+      "priority_record": "docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md"
     },
     "G9": {
       "status": "preparing",
@@ -447,15 +449,15 @@
       "session": "fewclick_fullcell_full_gpu_1027_152800",
       "status": "preparing_fullcell_cache",
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-27T16:54:04.218733+08:00",
+      "process_observed_at": "2026-10-27T17:06:08.474774+08:00",
       "last_observed_status": {
         "status": "preparing_fullcell_cache",
         "worker_pid": 1708231,
-        "completed": 465,
+        "completed": 540,
         "total": 3050,
-        "tile": 464,
-        "zero_cell_cases": 17,
-        "seconds": 4388.15924249962
+        "tile": 539,
+        "zero_cell_cases": 20,
+        "seconds": 5117.88682622835
       },
       "source_sha256": {
         "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/fullcell_gpu_stream.py": "247ca4934270eb46fb25e54872fd570fde027ad484fc5870bdce5625fde0e7e7",
@@ -478,13 +480,12 @@
     "Three-seed core local methods accepted; mechanism, GenericHE and heldout contrasts remain single-seed. Fixed hyperparameters are not per-method optima."
   ],
   "next_actions": [
-    "User priority: full-label CRC12 (11tissues+background), fat supervised. CRC-only three-seed class report accepted as arithmetic report; next main30 cohort/GT/native-domain audit and full-label interaction versus separate closed12 reference.",
-    "Keep existing GPU5 worker1708231 running; monitor full3050 cell prep/two passes then independent acceptance; do not edit frozen sources.",
-    "Defer replacement heldout selection: ontology/coverage/cross-dataset exclusions must be preregistered; do not select by observed Dice. Preserve all existing N/A/L results.",
-    "Solidify mainCRC30 reproducible cohort/GT/physical-domain audit; exploratory ID/native-path intersections0, duplicates/rescans/public-prior and clinical patient mapping not certified.",
-    "TLS annotation completeness and confirmed negatives remain unconfirmed; never score unknown as negative. Strict4x morphology exclusion layer pending if claimed.",
-    "G6 same-network pretraining-objective control remains missing; GenericHE and label-heldout numerical statistics accepted qualified, current evidence does not establish broad FewClick or XCell superiority.",
-    "Update reviewer challenge evidence and submitted-version binding without replacing original objective; no whole-goal completion yet."
+    "P0 Keep GPU5 worker1708231 and accept full-cell3050tile/two-budget WSI cache/probability/zero-cell and full-system timings; no architecture or frozen-source edits.",
+    "P1 MainCRC30 full12-label cohort/GT/native-domain and training4x footprint audit; preserve spatial policy, class/slide/provenance and unknown domain.",
+    "P2 Freeze application-matched full-label WSI support/query protocol and adapted baselines; score remote unprompted components, distance strata, Dice/IoU and false positives, fat versus background; separate local/remote/closed12.",
+    "P3 Whole-slide quality-versus-click-budget and offline/online/read/stitch/output timing under recorded hardware/cache conditions, then essential mechanism evidence.",
+    "P4 Local/external/heldout supplement remains preserved; new heldout ontology/coverage declared before scores, no favorable class/sample selection. TLS semantic scoring awaits annotation completeness.",
+    "Review human challenges and bind claims to accepted WSI evidence; incomplete requests remain explicit. No precommitment to a ranking."
   ],
   "provenance_clarifications": {
     "XCell": {
@@ -2272,5 +2273,7 @@
     "all_label_training": true,
     "adipose_included": true,
     "heldout": "deferred; replacement ontology not selected; preserve old results"
-  }
+  },
+  "objective": "以当前三物理视野 FewClick 评估完整监督下的 CRC 十二标签（11类组织+背景）WSI 用户指定组织分割能力，脂肪正常参与训练。主证据优先建立在真实整片：主测试30张的来源/GT/物理域审计、固定少量支持点击后的远处组织检出与误报、整片分割质量、点击预算曲线，以及首次细胞/特征准备、缓存后整片响应和输出IO成本。局部patch比较、机制消融、外部与类别留出作为补充证据，按真实应用相关性安排，不以极端留出低分代表常规使用能力。\n\n实验在看结果前固定目标类/整片集合、支持选择、预算、权重选择、评价域与指标；保持合理监督和适配的基线，披露额外视野、预训练及监督差异。已有结果与失败案例保留，不按排名删除样本、削弱基线或修改评分。WSI扩展首先验证现有模型的缓存/分窗推理，不把分窗局部图称作跨整片全局图。类别留出后置，新类别先做本体/覆盖审计；只有保留相应泛化主张时才要求该证据闭环。审稿人明确要求的项目逐条回应，无法完成者说明限制。",
+  "wsi_priority_record": "docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md"
 }
