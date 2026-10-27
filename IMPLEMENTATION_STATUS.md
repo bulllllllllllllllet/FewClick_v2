@@ -2762,3 +2762,20 @@ GPU driver gate协调4127135/tmux fewclick_prediction_gate_1028_005000真实等�
 - Changed: packed_prediction.py, packed_prediction_gate.py, interactive_prediction.py.
 - Validation: real64case lossless export and three CPU end-to-end driver gates EXIT0; independent scores/full GPU/full30 pending.
 - Commit: this milestone commit.
+
+## 1028_011500 独立64case评分接受与完成凭据调度修正
+
+2026-10-28T00:45:44.381234+08:00：新增accept_interactive_scores.py，不导入producer/kernel/unpack；按173行独立unpackbits，实际原GT/全图组件重算全部标准Dice/FP/recall、只去正提示组件后的分母/误报、全部组件ID/area/hits/0.5及0.1检出、hypot最近正点物理距离分层。独立Cartesian网格重算每GT中心native overlap，核对全部packed/count/Boolean块SHA与零padding；CPU fixture还比对所有256旧native512概率digest、64case原native概率块/二值，方法/视野/选权/缓存/protocol/点前缀/完整输出集合全核对。正式GPU/full评分接受明确qualified，不宣称全部模型forward概率重新执行。
+
+三独立CPU进程4166140/4166141/4166142/session15629/4965/59203均EXIT0：NoCell32 rows 4.518s、SAM16 rows 3.418s、WSISAM16 rows 3.364s；与producer所有统计严格一致，不据此两个固定窗口选模型或报告主30精度。完整源recipe202a5e4fee2677b5a9ab5d24f38576336018ff96f0c5500682ec606a7a36056e锁定。
+
+发现旧闭集评分协调3915847因读取正在写入的status.json空文件JSONDecodeError而EXIT1，下游3934320按上游nonzero EXIT1；实际closed12cache3202252和raster协调3441781未失败，旧closed12_retrieval_full_1027_235600目录不存在、评分child从未启动。旧失败/日志全部保留，未重跑模型或已完成评分。新增completion.py只观察明确EXIT_CODE行、owned PID和成功后稳定receipt，不读取mutable progressJSON；真实child测试4148306 EXIT0，51次空status时活进程观察不失败、nonzero和EXIT0无receipt均明确拒绝，无重试/回退。
+
+新版closed12 score+accept协调4151477/tmux fewclick_retrieval_chain_1028_005800等待owned3441781的terminal成功receipt，后执行尚未启动的full30评分及独立接受，新输出closed12_retrieval_full_1028_005800与closed12_retrieval_acceptance_1028_005800；旧失败目录不覆盖。新interactive正式协调4172727/tmux fewclick_interactive_full_1028_011000等待owned4127135三method GPU gate成功，再各method先独立GPU-gate scores接受、全30预测、全部保存mask/GT统计独立接受；NoCell两variant11040rows、SAM5520、WSISAM5520，总22080，所有276合法类片×5组×4预算保持，54源提示不可用保留。当前queued，GPU/full正式未开始，评分接受不等同全概率重新forward。
+
+当前closed12cache3202252 9114/20208，其他GPU前置等待既定foreign任务；真实CPU完整链与独立评分通过，完整cell主30/28452域扩展/BF1/统计/审稿缺口仍待。记录docs/运行记录/模型实验/运行记录_交互整片独立评分验收与完成凭据队列修正_1028_011500.md，整体goal active。
+
+- Purpose: independently accept saved interactive predictions and all GT statistics; prevent mutable progress reads from killing scheduling.
+- Changed: accept_interactive_scores.py, completion.py.
+- Validation: three actual CPU score audits EXIT0; real child progress-empty/terminal0/nonzero/missing-receipt gate EXIT0.
+- Commit: this milestone commit.

@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-28T00:23:18.160660+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
+Updated: 2026-10-28T00:46:15.696637+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-28T00:23:18.160660+08:00. Native thread goal: **active**. Lates
 
 ## Resume here
 
-0. **Latest user instruction: WSI application first. Full-label CRC12/fat supervised; prioritize main30 audit, whole-slide remote quality and offline/online costs. Local/heldout supplementary; preserve all results and fair baselines. See docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md. Fullcell producer1708231 and all9150 input audit accepted; GPU output3574865 waits foreign GPU5. Full30 GT components/5520 domains independently accepted. Closed12cache3202252 running; native raster3441781 and retrieval3915847/3934320 queued. Three interactive caches3990149 and independent4018919 queued; actual CPU64case native/GT-centre projection accepted. Full mechanical output acceptance and main30 model quality remain pending.**
+0. **Latest user instruction: WSI application first. Full-label CRC12/fat supervised; prioritize main30 audit, whole-slide remote quality and offline/online costs. Local/heldout supplementary; preserve all results and fair baselines. See docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md. Fullcell producer1708231 and all9150 input audit accepted; GPU output3574865 waits foreign GPU5. Full30 GT components/5520 domains independently accepted. Closed12cache3202252 running; native raster3441781 and corrected retrieval4151477 queued (old3915847/3934320 orchestration failed before scoring child). Three interactive caches3990149 and independent4018919 queued; GPU driver gate4127135 and full30 prediction/scoring4172727 queued. Actual CPU64case native predictions and independent GT scores accepted. Full mechanical output acceptance and main30 model quality remain pending.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -350,3 +350,15 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 GPU driver gate协调4127135/tmux fewclick_prediction_gate_1028_005000真实等待owned4018919三method完整cache独立接受；再GPU5无其他worker时运行各方法真实同设备gate。此队列仅GPU gate，完整30交互预测尚未排队，必须先补齐独立score/输出接受并实际GPU验收。GPU新路径与full正式分支当前preparing，禁止用CPU gate冒充。全量细胞main30、BF1/统计及28452扩展仍待。
 
 观察到约00:24-00:27期间多个原PID进入rpc_wait_bit_killable/NFS等待，监测读也等待；没有重启或判作失败，随后3202252同PID恢复计算，现8674/20208。未精确测得停顿长度，后续共享节点cache walltime包含这类IO等待，不能称独占设备benchmark。记录docs/运行记录/模型实验/运行记录_全预算预测压缩与交互整片评分生产流程_1028_005200.md，整体goal active。
+
+## 1028_011500 独立64case评分接受与完成凭据调度修正
+
+2026-10-28T00:45:44.381234+08:00：新增accept_interactive_scores.py，不导入producer/kernel/unpack；按173行独立unpackbits，实际原GT/全图组件重算全部标准Dice/FP/recall、只去正提示组件后的分母/误报、全部组件ID/area/hits/0.5及0.1检出、hypot最近正点物理距离分层。独立Cartesian网格重算每GT中心native overlap，核对全部packed/count/Boolean块SHA与零padding；CPU fixture还比对所有256旧native512概率digest、64case原native概率块/二值，方法/视野/选权/缓存/protocol/点前缀/完整输出集合全核对。正式GPU/full评分接受明确qualified，不宣称全部模型forward概率重新执行。
+
+三独立CPU进程4166140/4166141/4166142/session15629/4965/59203均EXIT0：NoCell32 rows 4.518s、SAM16 rows 3.418s、WSISAM16 rows 3.364s；与producer所有统计严格一致，不据此两个固定窗口选模型或报告主30精度。完整源recipe202a5e4fee2677b5a9ab5d24f38576336018ff96f0c5500682ec606a7a36056e锁定。
+
+发现旧闭集评分协调3915847因读取正在写入的status.json空文件JSONDecodeError而EXIT1，下游3934320按上游nonzero EXIT1；实际closed12cache3202252和raster协调3441781未失败，旧closed12_retrieval_full_1027_235600目录不存在、评分child从未启动。旧失败/日志全部保留，未重跑模型或已完成评分。新增completion.py只观察明确EXIT_CODE行、owned PID和成功后稳定receipt，不读取mutable progressJSON；真实child测试4148306 EXIT0，51次空status时活进程观察不失败、nonzero和EXIT0无receipt均明确拒绝，无重试/回退。
+
+新版closed12 score+accept协调4151477/tmux fewclick_retrieval_chain_1028_005800等待owned3441781的terminal成功receipt，后执行尚未启动的full30评分及独立接受，新输出closed12_retrieval_full_1028_005800与closed12_retrieval_acceptance_1028_005800；旧失败目录不覆盖。新interactive正式协调4172727/tmux fewclick_interactive_full_1028_011000等待owned4127135三method GPU gate成功，再各method先独立GPU-gate scores接受、全30预测、全部保存mask/GT统计独立接受；NoCell两variant11040rows、SAM5520、WSISAM5520，总22080，所有276合法类片×5组×4预算保持，54源提示不可用保留。当前queued，GPU/full正式未开始，评分接受不等同全概率重新forward。
+
+当前closed12cache3202252 9114/20208，其他GPU前置等待既定foreign任务；真实CPU完整链与独立评分通过，完整cell主30/28452域扩展/BF1/统计/审稿缺口仍待。记录docs/运行记录/模型实验/运行记录_交互整片独立评分验收与完成凭据队列修正_1028_011500.md，整体goal active。
