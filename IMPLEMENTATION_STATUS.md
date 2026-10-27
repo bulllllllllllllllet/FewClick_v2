@@ -2867,3 +2867,19 @@ GPU门控协调530230/tmux fewclick_fullcell_CRC_gate_1028_025000已实际运行
 - Changed: benchmarks/v5/wsi_global/interactive_boundary_chain.py.
 - Validation: all three real CPU fixtures,64 original rows and nine children EXIT0; formal22080 chain waiting, no full quality claim.
 - Commit: this milestone commit.
+
+## 1028_033300 含细胞整片预测/独立评分及BF1完整链
+
+2026-10-28T03:32:02.993848+08:00：新增fullcell_prediction.py与accept_fullcell_scores.py，不修改任何原冻结queued模块。固定真实fullcell三视野encoded缓存/内部XCell选中权重/原source-query/全部276类片×5组×4预算×graph_dense和region_prototype两variant，正式11040原行，逐任务预测封存后才读原GT。独立评分不导入producer/评分kernel，全部mask/overlap/GT组件/距离规则保留，新增实际fullcell缓存/协议/设备/权重/20456输入61368视野绑定。源码producer e03c2edf1106364a018234e258612ed7360c5bb2b95aea54016c18a275126653，auditor d3b2e24f22bdf59f5b9b01bab3a9f0a8fc0c971f72941c7a6403d4ca8768cae0。
+
+真实CPU机械gate749024/session19840 EXIT0、10.760s：四个原TLS真实细胞query0/35/93/1525含已有真实零视野，固定CRC source四预算，全部32个新decode512与直接selected-model/regionprototype完全相同；PackedSampledStripe与独立PIL原native resize/几何grid采样全像素和概率块digest一致，online encoder0。该几何grid无TLS标注，不是CRC新检测/GPU新路径或TLS准确率。首fixture033000因测试脚本TLS header字段误用native_wh而首次decode前EXIT1；原脚本/log/failure.json保留，新033200修正width/height，无正式实验重试。新auditor显式NoCell32row参考kernel fixture752634/754094 EXIT0，最终源码033700 3.964s；它不替代actual CRC fullcell gate接受。
+
+正式协调758578/tmux fewclick_fullcell_prediction_1028_034000真实waiting owned574146完整细胞缓存接受terminal receipt。随后同物理GPU1/3/4空闲时：CRC32row实际GPU预测gate→CPU独立评分→完整11040 GPU预测→全部保存mask/原GT统计独立接受→4个CPU1 BF1 producer→4个独立disk审计→原行汇总。新GPU/CRC评分分支preparing/full waiting，child均尚未启动；不占5、不改既有任务，不使用0/2，全部source SHA锁定、atomic状态/真实子PID/完整命令/log/EXIT_CODE留证，无retry/resume/fallback。最终接受仍明确qualified saved-mask/GT统计，非全模型概率独立重跑。
+
+当前closed12cache3202252 16838/20208，GPU1/3/4/5均foreign占用；完整CRC细胞缓存与WSI质量/paired统计/28452有效域扩展/审稿绑定缺口仍待，整体goal active。记录docs/运行记录/模型实验/运行记录_含细胞整片预测生产接口与CPU真实缓存重放_1028_032900.md。
+
+- Purpose: complete fullcell WSI prediction/independent score interfaces and chain actual GPU acceptance before full execution.
+- Changed: fullcell_prediction.py, accept_fullcell_scores.py; original queued sources untouched.
+- Validation: real32 fullcell TLS CPU decode/probability/packed-mask checks EXIT0, original32-row independent score reference EXIT0; CRC actual GPU and full30 branches preparing/queued.
+- Artifacts: fullcell_prediction_mechanical_gate_1028_033200, fullcell_score_reference_gate_1028_033700, fullcell_prediction_chain_1028_034000.
+- Commit: this milestone commit.
