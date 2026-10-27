@@ -2614,3 +2614,12 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/native_remote_gate_exact_1027_175300；native_remote_acceptance_1027_175900；main30_task_coverage_1027_175700。
 - Docs record: docs/运行记录/模型实验/运行记录_WSI真实支持远端模型缓存四方法门控_1027_174300.md（运行记录），原主30数据/同片提示记录补全接受状态。
 - Commit: 同次提交，哈希见git历史。
+
+## 10-27 21:24:12
+
+- Purpose: CPU并行推进主30 strict-remote闭集12类参考，保留GPU5全细胞任务。
+- Changed: wsi_global/closed12_cache.py与accept_closed12_cache.py，continuity。
+- Validation: 真实4tile生产3194657和独立4tensor/fresh原图gate均EXIT0，全12通道误差0；全20208 worker3202252与接受协调3216700实际运行/等待，非完整接受。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_cache_1027_212000；closed12_cache_gate_1027_212000及closed12_cache_gate_acceptance_1027_212000。
+- Docs record: docs/运行记录/模型实验/运行记录_CRC主三十张闭集十二类完整缓存_1027_212000.md（运行记录）。
+- Commit: 同次提交，哈希见git历史。
