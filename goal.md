@@ -362,3 +362,13 @@ GPU driver gate协调4127135/tmux fewclick_prediction_gate_1028_005000真实等�
 新版closed12 score+accept协调4151477/tmux fewclick_retrieval_chain_1028_005800等待owned3441781的terminal成功receipt，后执行尚未启动的full30评分及独立接受，新输出closed12_retrieval_full_1028_005800与closed12_retrieval_acceptance_1028_005800；旧失败目录不覆盖。新interactive正式协调4172727/tmux fewclick_interactive_full_1028_011000等待owned4127135三method GPU gate成功，再各method先独立GPU-gate scores接受、全30预测、全部保存mask/GT统计独立接受；NoCell两variant11040rows、SAM5520、WSISAM5520，总22080，所有276合法类片×5组×4预算保持，54源提示不可用保留。当前queued，GPU/full正式未开始，评分接受不等同全概率重新forward。
 
 当前closed12cache3202252 9114/20208，其他GPU前置等待既定foreign任务；真实CPU完整链与独立评分通过，完整cell主30/28452域扩展/BF1/统计/审稿缺口仍待。记录docs/运行记录/模型实验/运行记录_交互整片独立评分验收与完成凭据队列修正_1028_011500.md，整体goal active。
+
+## 1028_023800 主30含细胞原图输入/读取桥接与完整清单接受
+
+2026-10-28T02:34:58.621688+08:00：新增cell_cache_inputs.py及accept_cell_cache_inputs.py。固定原同片source/query输入，20456组（248support+20208strict query）、61368原生物理视野，原native boxes/MPP/源图顺序/4x source-query隔离全部保持；一个nativeRGB裁剪直接给HE512及未来prepare_variant原native cells，禁止从检测canonical图再二次缩放生成HE。此模块不加载检测器、CTP或XCell，不输出细胞特征或模型质量，不能称cell分割已跑完。
+
+首版7输入/21视野gate16114 EXIT0证实原HE像素相同，随后全cohort静态预查发现9张fine宽为奇数，原冻结2x/4x框存在已接受的整数取整半像素中心误差，不能强加exact-centre条件或重新对齐原输入。修订版沿用原半像素规则、加入仅按几何选择的首个奇数宽support，不改原框或排片。新版8输入/24视野真实gate25608 EXIT0、5.168s，全部HE512与原已接受source/query PNG逐像素一致，native原RGB/detection实际MPP/metadata/PNG/SHA留证；首版gate保留但旧source33db10不再允许full使用。当前source a51e4faceac9978a98a279effe7f8da820601a5be36e05c9334689e43a805164。
+
+完整producer474003/session20540 EXIT0、1.199s，只生成全20456输入manifest，所有30原4x footprint/centres/source-query分离检查通过。独立484854/session84124 EXIT0、1.641s：逐条重建全部原协议输入/boxes/MPP/顺序，核对744支持HE文件完整SHA和RGB尺寸，全部61368视野守恒，9odd slides原样保留。独立审计未重读所有query原图像素，fresh native equality只由24-view gate支持；实际InstanSeg/CTP/XCell GPU预处理及encoded/fullcell预测尚未启动。native meanMPP按真box尺寸回推canonical尺寸/actualMPP，沿用原prepare_variant而非硬写检测精确.25。
+
+当前closed12cache3202252 14015/20208，GPU1/3/4/5均其他任务占用，firstfullcellGPU输出3574865仍等GPU5foreign2837432；其余已配置NoCell/SAM/WSISAM cache/预测/接受链存活等待，新的含细胞main30 GPU cache producer/独立接受/score adapter仍待实现与真实GPUgate。该清单不是已生成的细胞cache，整项目goal active。记录docs/运行记录/特征缓存/运行记录_含细胞主三十张原图输入与单次读取门控_1028_023800.md。
