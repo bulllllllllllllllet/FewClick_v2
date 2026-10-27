@@ -2824,3 +2824,18 @@ GPU门控协调530230/tmux fewclick_fullcell_CRC_gate_1028_025000已实际运行
 - Changed: accept_fullcell_cache.py.
 - Validation: actual accepted TLS12-view/meta/74/tree CPU helper fixture EXIT0; CRC GPU fresh run preparing/queued.
 - Commit: this milestone commit.
+
+## 1028_034500 整片原GT物理BF1分块门控与闭集全量队列
+
+2026-10-28T03:11:12.864370+08:00：新增streaming_boundary.py及wsi_boundary.py，沿用冻结4-neighbour both-side boundary、Euclidean2µm/1e-9规则；只在原GT cell grid按sx*nativeMPP、sy*nativeMPP物理采样评分，标准remote域，不新增frame边界、不跨255连边。分块halo=ceil((2µm+eps)/GT_mpp_y)+1，累计core，空edge块显式0match避免EDT隐式frame。GT边界资格仅由GT决定；无GT boundary NA保留计数，有GT/pred空计0。
+
+实际kernel gate602819/session7905 EXIT0、3.946s，全部64真实三method/variant/window/target/budget与冻结完整EDT及独立4方向/cKDTree精确一致；32可评/32GT-boundary NA。16合成各向异性/未知洞/seam/frame/空GT或预测/全前景/恰好2µm检查均通过，未按结果调整门限。完整driver两实际CPU gate618179/618180、sessions75716/77891均EXIT0：closed12 24row、14可评10NA、1.956s；NoCell32row、16可评16NA、2.091s，逐项对照完整旧EDT一致。小窗口结果只作实现接受，不是主30 BF1排名/模型选择。
+
+正式closed12 BF1协调631034/tmux fewclick_boundary_closed12_1028_034000真实等待owned3441781原native30/GT接受EXIT0+stable receipt，再CPU4个1thread shard按source_row_index%4处理原360唯一预测class rows（330组织+30background单列），不会重复5点组/4budget当额外样本。当前waiting，无child PID；源码冻结、atomic状态与terminal日志，失败保存停止，无retry/fallback。该队列仅producer shard，完整BF1独立重算/聚合与配对统计仍待，交互全30及含细胞BF1也未完成。
+
+当前closed12cache3202252 15552/20208，其余GPU前置链仍存活等foreign任务。记录docs/运行记录/模型实验/运行记录_整片物理BF1分块与原GT边界门控_1028_033500.md，整体goal active，全部28452有效域扩展/细胞主30/统计/审稿缺口保留。
+
+- Purpose: compute whole-domain BF1 at original GT physical spacing with exact bounded row halos.
+- Changed: streaming_boundary.py, wsi_boundary.py.
+- Validation: actual64-mask EDT/KDTree +16edge fixtures and closed24/interactive32 driver whole-EDT gates EXIT0; formal360-row shards queued/unaccepted.
+- Commit: this milestone commit.
