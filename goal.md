@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-28T03:32:02.993848+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
+Updated: 2026-10-28T03:41:33.955489+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-28T03:32:02.993848+08:00. Native thread goal: **active**. Lates
 
 ## Resume here
 
-0. **Latest user instruction: WSI application first. Full-label CRC12/fat supervised; prioritize main30 audit, whole-slide remote quality and offline/online costs. Local/heldout supplementary; preserve all results and fair baselines. See docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md. Fullcell producer1708231 and all9150 input audit accepted; GPU output3574865 waits foreign GPU5. Full30 GT components/5520 domains independently accepted. Closed12cache3202252 running; native raster3441781 and corrected retrieval4151477 queued (old3915847/3934320 orchestration failed before scoring child). Three interactive caches3990149 and independent4018919 queued; GPU driver gate4127135 and full30 prediction/scoring4172727 queued. Actual CPU64case native predictions and independent GT scores accepted. Full mechanical output acceptance and main30 model quality remain pending.**
+0. **WSI primary, full-label CRC12/fat supervised. Closed12cache3202252 running (17274/20208); native/GT/retrieval/BF1 gates accepted and full CPU chains waiting. Fullcell TLS output3574865 and baseline GPU caches3990149 await idleGPU5; main30 fullcell gate530230/cache574146 await idleGPU1/3/4. Full30 predictions/independent scores/BF1 chains4172727/731144 (three methods) and758578 (fullcell) queued. New WSI statistics/independent actual64-row and multiWSI arithmetic gates passed; full seven-arm756table/2268contrast coordinator800859 waits all quality receipts. No full main30 quality/CI yet. Preserve fair baselines, all old results and spatial-block policy; inspect registry actual PIDs before further actions.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -430,3 +430,13 @@ GPU门控协调530230/tmux fewclick_fullcell_CRC_gate_1028_025000已实际运行
 正式协调758578/tmux fewclick_fullcell_prediction_1028_034000真实waiting owned574146完整细胞缓存接受terminal receipt。随后同物理GPU1/3/4空闲时：CRC32row实际GPU预测gate→CPU独立评分→完整11040 GPU预测→全部保存mask/原GT统计独立接受→4个CPU1 BF1 producer→4个独立disk审计→原行汇总。新GPU/CRC评分分支preparing/full waiting，child均尚未启动；不占5、不改既有任务，不使用0/2，全部source SHA锁定、atomic状态/真实子PID/完整命令/log/EXIT_CODE留证，无retry/resume/fallback。最终接受仍明确qualified saved-mask/GT统计，非全模型概率独立重跑。
 
 当前closed12cache3202252 16838/20208，GPU1/3/4/5均foreign占用；完整CRC细胞缓存与WSI质量/paired统计/28452有效域扩展/审稿绑定缺口仍待，整体goal active。记录docs/运行记录/模型实验/运行记录_含细胞整片预测生产接口与CPU真实缓存重放_1028_032900.md。
+
+## 1028_034100 主30逐WSI配对统计和独立验收链
+
+2026-10-28T03:41:33.955489+08:00：新增wsi_statistics.py及accept_wsi_statistics.py，完整质量产出前固定27个标准/去提示组件/距离/BF1/缺失目标误报字段，四budget独立，3+2主预算。先WSI×class内平均点组，再WSI内平均组织，再WSI等权；另报类片等权/每WSI/每类及全部NA分母。固定WSI bootstrap2000、seed20261028，各方法共享同次WSI抽样，不把5点组/4预算/组织数当独立样本；稀疏无定义draw计数保留，只有1可评WSI不报CI。所有跨method GT/实际点前缀/组件数/边界资格/MPP一致才配对。
+
+真实三方法四variant fixture64原预测行，经producer432汇总/648对比及所有WSI/类别分母，最终独立验收795988 EXIT0严格相同；同一片两窗口只作机械验收，不报告其CI为主30证据。独立程序不导入producer，按原计数重算字段，Python fmean逐级平均、WSI频次多重集重算bootstrap，手工排序线性分位数复算区间。三WSI不等组织数合成gate794836 EXIT0、0.658s，验证WSI等权.5/.6区别类片.633333/.733333及固定差值.1、点组/预算计数、稀疏NA/GT不匹配/重复拒绝；合成数不是模型成绩。新源码producer cf403c07c9b86332452f674bd4803108c88d41e6f31ba786109d004ea984d3f3，auditor 94196875ce7535751876679c383151f634f61a7ee16880189485c9b0b708976f。
+
+正式协调800859/tmux fewclick_WSI_statistics_1028_034500真实waiting owned693018/731144/758578/4151477全部terminal接受。随后CPU1完整六交互variant+明确单列信息差异的闭集参考第七臂，5520闭集component/distance实际接受连接唯一360条BF1，核对标准预测不会随提示重复改变；完整330组织/30背景与common276分开。完整756汇总/2268配对预计字段集合固定，当前尚无full child，不将排队或fixture称成绩。源码锁定，真实命令/PID/log/EXIT_CODE留证，无retry/resume/fallback；旧source版本fixture均保留，正式只用033700+034300+034200当前源码门控。
+
+当前closed12cache3202252 17274/20208，GPU1/3/4/5仍foreign占用。主30完整质量和实际full统计、28452有效域扩展、全概率重放限定、效率及审稿版本绑定仍待，整体goal active。记录docs/运行记录/模型实验/运行记录_主三十张WSI配对统计合同与真实行门控_1028_033500.md。

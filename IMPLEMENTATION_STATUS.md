@@ -2883,3 +2883,19 @@ GPU门控协调530230/tmux fewclick_fullcell_CRC_gate_1028_025000已实际运行
 - Validation: real32 fullcell TLS CPU decode/probability/packed-mask checks EXIT0, original32-row independent score reference EXIT0; CRC actual GPU and full30 branches preparing/queued.
 - Artifacts: fullcell_prediction_mechanical_gate_1028_033200, fullcell_score_reference_gate_1028_033700, fullcell_prediction_chain_1028_034000.
 - Commit: this milestone commit.
+
+## 1028_034100 主30逐WSI配对统计和独立验收链
+
+2026-10-28T03:41:33.955489+08:00：新增wsi_statistics.py及accept_wsi_statistics.py，完整质量产出前固定27个标准/去提示组件/距离/BF1/缺失目标误报字段，四budget独立，3+2主预算。先WSI×class内平均点组，再WSI内平均组织，再WSI等权；另报类片等权/每WSI/每类及全部NA分母。固定WSI bootstrap2000、seed20261028，各方法共享同次WSI抽样，不把5点组/4预算/组织数当独立样本；稀疏无定义draw计数保留，只有1可评WSI不报CI。所有跨method GT/实际点前缀/组件数/边界资格/MPP一致才配对。
+
+真实三方法四variant fixture64原预测行，经producer432汇总/648对比及所有WSI/类别分母，最终独立验收795988 EXIT0严格相同；同一片两窗口只作机械验收，不报告其CI为主30证据。独立程序不导入producer，按原计数重算字段，Python fmean逐级平均、WSI频次多重集重算bootstrap，手工排序线性分位数复算区间。三WSI不等组织数合成gate794836 EXIT0、0.658s，验证WSI等权.5/.6区别类片.633333/.733333及固定差值.1、点组/预算计数、稀疏NA/GT不匹配/重复拒绝；合成数不是模型成绩。新源码producer cf403c07c9b86332452f674bd4803108c88d41e6f31ba786109d004ea984d3f3，auditor 94196875ce7535751876679c383151f634f61a7ee16880189485c9b0b708976f。
+
+正式协调800859/tmux fewclick_WSI_statistics_1028_034500真实waiting owned693018/731144/758578/4151477全部terminal接受。随后CPU1完整六交互variant+明确单列信息差异的闭集参考第七臂，5520闭集component/distance实际接受连接唯一360条BF1，核对标准预测不会随提示重复改变；完整330组织/30背景与common276分开。完整756汇总/2268配对预计字段集合固定，当前尚无full child，不将排队或fixture称成绩。源码锁定，真实命令/PID/log/EXIT_CODE留证，无retry/resume/fallback；旧source版本fixture均保留，正式只用033700+034300+034200当前源码门控。
+
+当前closed12cache3202252 17274/20208，GPU1/3/4/5仍foreign占用。主30完整质量和实际full统计、28452有效域扩展、全概率重放限定、效率及审稿版本绑定仍待，整体goal active。记录docs/运行记录/模型实验/运行记录_主三十张WSI配对统计合同与真实行门控_1028_033500.md。
+
+- Purpose: fix whole-WSI macro hierarchy, NA rules and paired bootstrap before full scores; independently recount all reports.
+- Changed: wsi_statistics.py, accept_wsi_statistics.py.
+- Validation: real64 prediction-row fixture432 outcomes/648 contrasts independently accepted EXIT0;3-WSI imbalance/arithmetic bootstrap gate EXIT0. Formal7-arm branch not executed; queue awaiting accepted data.
+- Artifacts: WSI_statistics_fixture_1028_033700, WSI_statistics_accept_fixture_1028_034300, WSI_statistics_weight_gate_1028_034200, WSI_statistics_chain_1028_034500.
+- Commit: this milestone commit.
