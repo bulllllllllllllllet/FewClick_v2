@@ -372,3 +372,13 @@ GPU driver gate协调4127135/tmux fewclick_prediction_gate_1028_005000真实等�
 完整producer474003/session20540 EXIT0、1.199s，只生成全20456输入manifest，所有30原4x footprint/centres/source-query分离检查通过。独立484854/session84124 EXIT0、1.641s：逐条重建全部原协议输入/boxes/MPP/顺序，核对744支持HE文件完整SHA和RGB尺寸，全部61368视野守恒，9odd slides原样保留。独立审计未重读所有query原图像素，fresh native equality只由24-view gate支持；实际InstanSeg/CTP/XCell GPU预处理及encoded/fullcell预测尚未启动。native meanMPP按真box尺寸回推canonical尺寸/actualMPP，沿用原prepare_variant而非硬写检测精确.25。
 
 当前closed12cache3202252 14015/20208，GPU1/3/4/5均其他任务占用，firstfullcellGPU输出3574865仍等GPU5foreign2837432；其余已配置NoCell/SAM/WSISAM cache/预测/接受链存活等待，新的含细胞main30 GPU cache producer/独立接受/score adapter仍待实现与真实GPUgate。该清单不是已生成的细胞cache，整项目goal active。记录docs/运行记录/特征缓存/运行记录_含细胞主三十张原图输入与单次读取门控_1028_023800.md。
+
+## 1028_025500 含细胞CRC缓存driver与真实零细胞CPU重放
+
+2026-10-28T02:43:49.949823+08:00：新增fullcell_cache.py，使用独立接受20456native输入/61368views，在一次native读取上执行原prepare_variant（InstanSeg/CTP/内部XCell），保留所有真实实例总数、最多255保留细胞、74维未知核类别/实际MPP面积，保存全NPZ与三视野encoded/identity/权重/SHA。固定原G3 selected XCell权重、40k真实消费与source/query；FP32主模型/关闭TF32，detector内部原autocast不改。完整CRC缓存尚未生成；GPU执行体preparing，不能据代码或CPU测试称完整GPU接受。full选项显式要求同GPU门控与独立gate receipt，当前无full20456准备任务。
+
+真实fullcell原输入重放CPU gate517669/session7897 EXIT0，41.554s：已独立接受TLS原nativeRGB与保存真实细胞0/35/93/1525共12views，新的append_view与原输入组装全部张量完全相同；真实实例几何/74再次独立核对，selected XCell模型CPU encode→disk→decode在1+1/3+2共8次概率/二值误差0、在线encoder hooks0；fine35及2x93真实空细胞视野覆盖。sourcea615747e57e5e03585b4e7d398f7252fb1c17ebdc0da6a4f720e3d92dd5ab7af。此证据不含CRC新检测、reg64独立重算、GPU新driver接受或TLS语义准确率。
+
+GPU门控协调530230/tmux fewclick_fullcell_CRC_gate_1028_025000已实际运行，现仅等待GPU1/3/4任一无现存计算worker；不使用0/2，不与既有GPU5接受/三基线链抢用5，不干预foreign任务。只运行CRC固定8输入/24view native/NPZ/encoded/24支持查询budget门控，真实child PID待分配；未安排full20456。门控包含原细胞prepare、独立bincount 74构造、实际磁盘回读及native/cached GPU概率<=2e-6+binary精确、remote maps0/encoder hooks0；仍须新进程独立输入/选权/encoder接受才能全量。single serial RNG/source顺序明确，无partition-invariant检测主张，失败保留停止无重试/回退。
+
+当前closed12cache3202252 14578/20208，所有既有前置队列存活；fullcellCRC预测/评分adapter、独立cache/gate/score接受与实际GPUfull生产仍待，其他完整28452/BF1/统计/审稿缺口保留。记录docs/运行记录/特征缓存/运行记录_含细胞CRC缓存生产与GPU原生门控_1028_024500.md，整体goal active。
