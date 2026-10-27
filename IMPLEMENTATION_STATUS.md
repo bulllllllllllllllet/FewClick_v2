@@ -2667,3 +2667,19 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 记录docs/运行记录/模型实验/运行记录_未提示组件与物理距离评分门控_1027_235400.md；artifact /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/retrieval_metric_gate_1027_235400。整体goal active，main30完整多方法与剩余审稿挑战不缩减。
 
 - Changed: benchmarks/v5/wsi_global/retrieval_metrics.py. Validation: real originalGT/native prediction gate EXIT0,12 tasks, independent rowwise counters/distance and physical boundary fixture. Commit: this milestone commit.
+
+## 1027_235800 整片组件距离流式评分门控和细胞输入全量接受
+
+2026-10-27T23:55:44.558380+08:00：新增retrieval_stream.py及closed12_retrieval.py。按原GT行64分块，跨块先合并完整原GT组件面积/hits，再计算组件宏召回与0.5/0.1检出；所有像素/距离分母先求和后算比值，不平均分块指标、不把同组件按块切碎。实际两个已接受native窗口完整driver PID3912076 EXIT0，12个target0/7/10、group0、1+1/3+2任务，3.902s、peakRSS711659520bytes，与先前独立Counter/hypot整窗口结果所有counts/比值/组件ID和hits完全一致。正式全30的5520任务域行将另存每组件NPZ；闭集预测不读点，标准域重复group/budget不能当独立预测。只为闭集参考接通，不冒称FewClick完整整片质量。
+
+全量任务协调3915847/tmux fewclick_retrieval_stream_1027_235600已实际启动，等待原3751598组件全30独立接受与3441781 native12栅格/GT全30独立接受；CPU2/CUDA隐藏，然后运行closed12_retrieval_full_1027_235600。该完整driver源码与kernel/accumulator SHA全部锁定；全量评分执行后仍unaccepted，独立全量评分接受程序/BF1/配对统计与其他方法仍待，不自动改口为完成。
+
+含细胞输入四shards3882638/39/40/41与aggregate3915788均EXIT0，协调3520088 EXIT0。全部3050tile、9150视野接受：58真实zero与producer完全一致，跨重叠/尺度实例计数和8169869、保留数1253866（不是整片去重细胞数）；完整保存实例mask整数质心/MPP面积/未知类型与reg拼74逐元素复核。此证据不包括重跑检测器或独立重算reg64。GPU编码/概率输出仍等GPU5 foreign2837432，完整fullcell机械链未关闭，TLS精度不明。
+
+当前full组件3882209运行13/30，closed12cache3202252 7005/20208；其他依赖队列存活。记录docs/运行记录/模型实验/运行记录_整片组件距离流式评分与细胞输入全量接受_1027_235800.md。整体goal active。
+
+- Purpose: stream whole-original-GT component scoring without fragmenting IDs and accept all saved fullcell inputs.
+- Changed: retrieval_stream.py, closed12_retrieval.py.
+- Validation: actual native driver fixture PID3912076 EXIT0; full input audit and aggregation EXIT0.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/retrieval_stream_fixture_1027_235900 and /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_inputs_acceptance_1027_222500
+- Commit: this milestone commit.
