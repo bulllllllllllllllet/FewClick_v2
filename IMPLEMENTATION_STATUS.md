@@ -2839,3 +2839,18 @@ GPU门控协调530230/tmux fewclick_fullcell_CRC_gate_1028_025000已实际运行
 - Changed: streaming_boundary.py, wsi_boundary.py.
 - Validation: actual64-mask EDT/KDTree +16edge fixtures and closed24/interactive32 driver whole-EDT gates EXIT0; formal360-row shards queued/unaccepted.
 - Commit: this milestone commit.
+
+## 1028_041000 独立BF1物理disk完整接受与原行汇总
+
+2026-10-28T03:20:25.678487+08:00：新增accept_wsi_boundary.py与aggregate_wsi_boundary.py。独立程序不导入BF1 producer/kernel/EDT，用4方向valid-neighbour边界、197行halo和按真实x/y物理MPP构造Euclidean disk dilation匹配，非旧方形容差；从原GT与接受的native类别/packed预测重算全部boundary/match count、资格/precision/recall/BF1，所有原分块sum与输出/原模型receipt SHA核对。
+
+实际closed24row678129/session48786 EXIT0 1.250s、interactive32row678130/session66429 EXIT0 1.214s，全部计数/标量与旧EDT producer严格一致。18个401x61 synthetic seam/各向异性/unknown-hole/空GT或预测/精确2µm检查682133 EXIT0，与完整旧EDT及KDTree精确一致。汇总实际gate687347和687349 EXIT0，24闭集原行（22tissue+2bg）/32交互原行全覆盖，重复/缺失/混rank均受约束；实际fixture是一片两窗口，不把合成样本或多budget当新独立病例。
+
+正式closed12独立接受/聚合协调693018/tmux fewclick_boundary_accept_1028_040500已实际等待owned631034 producer四分片terminal receipt，再4个CPU1独立audit全部360条并聚合原行，输出WSI_boundary_closed12_complete_1028_040500（330tissue+30bg）；当前无接受child，producer也仍待native预测。源码冻结、atomic status、明确EXIT_CODE和stable receipt，失败保留停止，无retry/fallback。完整BF1仍pending，不据小gate作全30成绩或CI。
+
+当前closed12cache3202252 16236/20208，其余GPU链未获空闲，原decoder/细胞cache和主30完整质量/paired统计/28452域/审稿缺口保留，整体goal active。记录docs/运行记录/模型实验/运行记录_整片BF1独立物理圆盘验收与汇总_1028_040000.md。
+
+- Purpose: independently recount all physical BF1 matches with Euclidean disk morphology and aggregate accepted rows/ranks exactly.
+- Changed: accept_wsi_boundary.py, aggregate_wsi_boundary.py.
+- Validation: actual closed24/interactive32 independent and aggregation gates plus18 anisotropic/seam fixtures EXIT0; full360 chain queued.
+- Commit: this milestone commit.
