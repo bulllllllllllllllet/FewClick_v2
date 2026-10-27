@@ -258,3 +258,11 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 2026-10-27T22:13:55.808325+08:00：新增semantic_stripe/semantic_raster_gate/closed12_raster/accept_closed12_raster。预先固定first main30中央2x2及最后2x2，来自full closed12任务已newline提交并核对SHA的8视野，不将全量cache当已接受。真实core、同一生产driver fixture、fresh独立进程三门控均EXIT0：5497696 native像素、1374424原GT cells，max overlap4；全部12通道float64平均块SHA、类别/count/class0及10保存概率全像素一致，独立标量坐标/混淆矩阵及各类Dice/IoU/分母复核通过。先512 FP32 softmax→PIL native概率→均匀float64累积→argmax；已写出并哈希之后才读GT，评分在原GT完整cell域以native cellcenter nearest预测。保留GT255未知、NA/误报分母规则；非完整30精度结果。
 
 正式native categorical/count/两概率图与逐类评分协调3441781真实等待owned cache接受shell3216698，随后全30生成及独立全12概率/GT重放；当前没有raster child PID，源码锁定，等待不是完成。全部logits+每128行完整12通道概率SHA可完整重放，避免全部12native阵列重复存盘；LRU独立审计上限128tile，实际成本计入。现有cell1708231 2537/3050、CPUclosed3202252 2463/20208继续。记录docs/运行记录/模型实验/运行记录_十二类WSI概率拼接与原GT评分门控_1027_220000.md。完整28452域扩展、其他方法/细胞main30、组件/距离/BF1/统计/审稿证据仍待，goal active。
+
+## 1027_223500 全细胞输入/实际空细胞与完整概率接受队列
+
+2026-10-27T22:45:09.154952+08:00：新audit_fullcell_inputs/aggregate gates实际0/35/93/1525四tile12视野通过，独立实例bincount/128行整数质心和、实际MPP面积及未知类型+reg→74逐元素一致；fine35和2x93真实0，各零features/reg正确空shape；4x真实0未观察不冒称已测。检测MPP是实际物理宽/检测宽（fine .250104...），不硬写精确.25。独立概率helper在既有CPU NoCell真实last4两budget各2185615native像素、maxoverlap4，原冻结FP32概率/threshold误差0；float64平均只诊断最大2.98e-8、阈值差0，不改变算法。对应3gate均EXIT0。
+
+原fullcell1708231继续2754/3050，closed12 CPU3202252 3913/20208。输入审计协调3520088、GPU输出协调3574865均真实等待original owned shell1708228完整两budget/EXIT0；等完成后，前者4CPU1审计全部9150保存细胞并聚合true/retained/所有zero清单；后者先等GPU5无其他计算worker，再运行fresh选中GPU模型/原RGB/保存细胞/真实密度与0两budget、central/last/zero代表gate，只有同源gate通过才全3050/六输出/全部native概率/overlap/threshold重放。GPU脚本当前仅compile与已测helper支撑，native GPU新门控尚未执行，明确preparing/queued而非接受；所有签名文件冻结，不改上游不自动重试。概率允许原native gate的2e-6浮点容差，但二值结果必须严格一致；zero位于重叠区必须纳入全部邻接贡献。
+
+记录docs/运行记录/模型实验/运行记录_含细胞整片全缓存几何与空细胞独立接受_1027_222000.md。两个独立完整结果均接受后才关闭该含细胞首片效率/机械执行链，仍非TLS语义分数、非mainCRC30细胞质量或检测分片不变性；多视野核计数非唯一WSI核数。主30闭集native概率/GT评分队列及完整28452扩展、交互/细胞/组件/距离/BF1/统计/审稿缺口保留，整体goal active。

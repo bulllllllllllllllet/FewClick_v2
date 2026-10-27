@@ -2632,3 +2632,12 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/semantic_raster_gate_1027_220000；closed12_raster_fixture_1027_220800；closed12_raster_fixture_acceptance_1027_221100；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_queue_1027_221200。
 - Docs record: docs/运行记录/模型实验/运行记录_十二类WSI概率拼接与原GT评分门控_1027_220000.md（运行记录）。
 - Commit: 同次提交，哈希见git历史。
+
+## 10-27 22:45:09
+
+- Purpose: 实际空细胞/全cell几何与独立原FP32概率接受链，准备GPU后置gate→full。
+- Changed: audit_fullcell_inputs.py、aggregate_fullcell_inputs.py、probability_replay.py、gate_probability_replay.py；audit_fullcell_outputs.py为preparing（native GPU gate待执行）；continuity。
+- Validation: 真实4tile/12view含fine与2x真实0的几何/聚合gate及NoCell实际4重叠两budget概率gate EXIT0；新GPU审计仅py_compile，GPU真实gate尚待原生产任务结束，未称GPU审计完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_inputs_gate_1027_222000；fullcell_inputs_gate_aggregate_1027_222500；float32_replay_gate_1027_223000；两完整审计协调均实际等待。
+- Docs record: docs/运行记录/模型实验/运行记录_含细胞整片全缓存几何与空细胞独立接受_1027_222000.md（运行记录）。
+- Commit: 同次提交，哈希见git历史。
