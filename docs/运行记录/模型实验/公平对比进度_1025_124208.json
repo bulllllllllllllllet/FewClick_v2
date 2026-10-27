@@ -1,8 +1,8 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-27T14:24:08.221754+08:00",
-  "current_phase": "G7",
+  "updated": "2026-10-27T14:39:45.929747+08:00",
+  "current_phase": "G8",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
   "prior_run": "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600",
@@ -300,7 +300,7 @@
       "generic_statistics_status": "passed_independent_generic_statistics"
     },
     "G7": {
-      "status": "external_complete_heldout_TLS_pending",
+      "status": "external_and_label_heldout_statistics_accepted_TLS_pending",
       "depends_on": [
         "G3"
       ],
@@ -352,9 +352,11 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_acceptance_1026_131000/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/adipose_diagnostic_1027_135100/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/adipose_diagnostic_acceptance_1027_135800/summary.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/supervision_probe_1027_140100/summary.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/supervision_probe_1027_140100/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/heldout_statistics_1027_142900/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/heldout_statistics_acceptance_1027_143400/summary.json"
       ],
-      "qualification": "IGNITE10中心三尺度真实cells及六方法680行/实际GT/开发权重/32门控保存mask回放验收通过，10 ROI配对2000次bootstrap完成；严格概念留出/TLS仍未完成。",
+      "qualification": "ExternalIGNITE10 centres/sixmethods accepted qualified; all9label-heldout trains,4800local/19360remote new rows and240native saved masks accepted; matched all-label refs now paired across42tables/48320rows with independent3504stratumCI/792contrast/BFS audit. Single seed and original development images, conditional remote supports; TLS/strict morphology exclusion remain unclosed.",
       "record_public": "docs/运行记录/模型实验/运行记录_外部域公共权重真实门控与评分_1025_143741.md",
       "cell_record": "docs/运行记录/特征缓存/运行记录_外部域同配方细胞缓存与等待队列_1025_144733.md",
       "cell_formal_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/external_1025_143257/cell_formal_1025_145136",
@@ -363,20 +365,22 @@
       "complete_record": "docs/运行记录/模型实验/运行记录_外部适配完整验收与六方法统计_1025_221700.md",
       "heldout_status": "accepted_local_counts_and_binding_qualified",
       "heldout_record": "docs/运行记录/数据审计/运行记录_三概念留出本体与监督排除覆盖_1026_003000.md",
-      "heldout_qualification": "Nine fresh10k/40k conditions,10seen-only selections each and4800original-GT local rows independently accepted; local3+2 N FewClick/SAM/WSI .344947/.638311/.636891, A .084588/.630686/.563858, L .379260/.517752/.606297. Single seed; paired statistics and matched all-label descriptive analysis pending; no morphology/public-pretraining exclusion claim.",
+      "heldout_qualification": "All9fresh10k/40k trains/seen-only selectors bound; 4800original-GT local rows accepted. Same-task all-label/reference statistics accepted qualified, not isolated supervision deletion. Heldout labels excluded but original development RGB may appear during seen selection; public priors/morphology not excluded.",
       "heldout_protocol_record": "docs/运行记录/数据审计/运行记录_三fold完整任务生成与真实点击_1026_004500.md",
       "heldout_checkpoint_record": "docs/运行记录/模型实验/运行记录_概念留出训练与独立终评衔接门控_1026_005500.md",
       "heldout_queue_record": "docs/运行记录/模型实验/运行记录_三fold三方法原生门控与正式训练队列_1026_012700.md",
       "heldout_remote_status": "accepted_remote_counts_binding_and_native_saved_gates_qualified",
       "heldout_remote_record": "docs/运行记录/模型实验/运行记录_留出类支持查询迁移适配与真实门控_1026_013700.md",
-      "heldout_remote_qualification": "19360full rows plus240native selected-weight saved masks independently recounted; GT/points/weights/sources bound, no Rupdates/queryclicks/classID. SAM/WSI custom feature-prototype tracks, not native remote mask decoders; valid-area absence only. Paired/dependency statistics pending.",
+      "heldout_remote_qualification": "19360newR rows/240native saved gates andsame-task references accepted; query clicks/classID0 and no Rupdates. Conditional query-WSI CI; per-fold dependencies3/2/1 components, not independent pairs/patients. N19partial query pairs, absence only validfine. SAM/WSI custom feature prototypes, not native global decoder.",
       "all_label_reference_status": "accepted_qualified_21tables_24160rows",
       "all_label_reference_record": "docs/运行记录/模型实验/运行记录_全标签同任务参考提取与WSI迁移补齐_1026_023000.md",
       "all_label_reference_qualification": "原G3/G4 18表19320行同点逐字节提取、全部预算独立宏统计通过；WSI两视野custom feature-proto三fold4840行全任务/GT/分母/统计/权重及60保存gate mask独立验收。全标签训练+原开发选模接触target，不能把未来差值仅归因监督删除，不是新留出精度。",
       "heldout_acceptance_record": "docs/运行记录/模型实验/运行记录_留出概念九条件训练与本图独立验收_1026_130200.md",
       "adipose_diagnostic_status": "complete_fixed_task_replay_and_actual_supervision_probes_qualified",
       "adipose_diagnostic_record": "docs/运行记录/模型实验/运行记录_脂肪留出异常逐像素与训练轨迹排查_1027_135100.md",
-      "adipose_diagnostic_qualification": "Two selected models100same tasks each: full saved masks/GT/click/RGB/SHA/Dense algebra independently replayed; original counts200/200 exact. Full-label .611023 vs heldout .084588; base .404669 vs .112011, positive point background3/300 vs162/300. Actual2training-task probes excluded pixel valid and output loss gradients0. Ten-checkpoint20case diagnostic shows seen score increases and adipose worsens; no test-based selection, no proven isolated implementation bug or causal training factor."
+      "adipose_diagnostic_qualification": "Two selected models100same tasks each: full saved masks/GT/click/RGB/SHA/Dense algebra independently replayed; original counts200/200 exact. Full-label .611023 vs heldout .084588; base .404669 vs .112011, positive point background3/300 vs162/300. Actual2training-task probes excluded pixel valid and output loss gradients0. Ten-checkpoint20case diagnostic shows seen score increases and adipose worsens; no test-based selection, no proven isolated implementation bug or causal training factor.",
+      "heldout_statistics_status": "passed_independent_heldout_statistics",
+      "heldout_statistics_record": "docs/运行记录/模型实验/运行记录_留出类同任务参考与依赖配对统计_1027_142900.md"
     },
     "G8": {
       "status": "partial_first_full_CPU_execution_complete_acceptance_pending",
@@ -431,12 +435,12 @@
     "Three-seed core local methods accepted; mechanism, GenericHE and heldout contrasts remain single-seed. Fixed hyperparameters are not per-method optima."
   ],
   "next_actions": [
-    "Complete heldout local/R paired and source-query dependency statistics and same-task all-label descriptive comparison; preserve adipose failure evidence, no test-based retuning.",
-    "Independently audit full3050tile CPU WSI outputs/cache/stitch/coverage; full-cell preparation and native GPU/whole-slide efficiency remain.",
-    "Solidify mainCRC30 reproducible cohort/GT/physical-domain audit; initial declared input-ID/path intersections0, duplicate/rescan/public-prior and clinical patient mapping not certified.",
-    "TLS annotation completeness and confirmed negatives remain unconfirmed; do not score unannotated pixels as negatives. Full4x morphology-exclusion tier pending if claimed.",
-    "G6 genericHE preparation/training/statistics accepted qualified; same-network pretraining-objective isolation remains missing. Current evidence does not show stable XCell advantage vs all controls.",
-    "Update reviewer evidence mapping/submitted-version binding; retain all original scope and qualifications. Overall goal active."
+    "Independently audit complete3050tile CPU WSI cache hashes, planned full-domain output probability/mask/overlap coverage and deterministic native central probes; no TLS semantic accuracy from fixedCRC support.",
+    "Complete full-cell preparation and actual native GPU WSI/online-click/end-to-end efficiency; image-only CPU execution does not close full-system efficiency.",
+    "Solidify mainCRC30 reproducible cohort/GT/physical-domain audit; exploratory ID/native-path intersections0, duplicates/rescans/public-prior and clinical patient mapping not certified.",
+    "TLS annotation completeness and confirmed negatives remain unconfirmed; never score unknown as negative. Strict4x morphology exclusion layer pending if claimed.",
+    "G6 same-network pretraining-objective control remains missing; GenericHE and label-heldout numerical statistics accepted qualified, current evidence does not establish broad FewClick or XCell superiority.",
+    "Update reviewer challenge evidence and submitted-version binding without replacing original objective; no whole-goal completion yet."
   ],
   "provenance_clarifications": {
     "XCell": {
@@ -2148,6 +2152,24 @@
         "producer_pid": 1277097,
         "observed_at": 1793081884.9684193
       }
+    },
+    {
+      "kind": "heldout_matched_reference_statistics",
+      "worker_pid": 1380892,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/heldout_statistics_1027_142900",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/heldout_statistics_1027_142900.log",
+      "status": "complete_qualified_heldout_statistics",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T14:39:45.929747+08:00"
+    },
+    {
+      "kind": "heldout_statistics_independent_recount",
+      "worker_pid": 1397438,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/heldout_statistics_acceptance_1027_143400",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/heldout_statistics_acceptance_1027_143400.log",
+      "status": "passed_independent_heldout_statistics",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T14:39:45.929747+08:00"
     }
   ]
 }

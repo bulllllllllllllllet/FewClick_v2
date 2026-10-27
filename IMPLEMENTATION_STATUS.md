@@ -2540,3 +2540,12 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Artifacts: generic_cells_1025_231000/preparation_gate_1027_140600、preparation_acceptance_1027_140600、paired_report_1027_141000、paired_acceptance_1027_141300、source_overlay_1027_141500。
 - Docs record: docs/运行记录/特征缓存/运行记录_普通HE全缓存与PCA独立数值验收_1027_140600.md；docs/运行记录/模型实验/运行记录_普通HE与XCell五条件配对统计_1027_141000.md。
 - Commit: 本条与实现同次提交，哈希见git历史；G6及总体goal仍未全部完成。
+
+## 10-27 14:39:45
+
+- Purpose: 接受标签留出与全标签参考同任务local/R配对、分层统计及支持查询依赖审计。
+- Changed: report_heldout_statistics.py、audit_heldout_statistics.py、新运行记录及goal/registry/current record。
+- Validation: report1380892 EXIT0；audit1397438 EXIT0：48320原行/9664case，432x2000抽样、3504区间/792配对（标量误差4.44e-16），独立BFS组件3/2/1。模型/点/阈值/原结果未改，图像/形态未见与因果删除均不宣称。
+- Artifacts: heldout_1026_003000/heldout_statistics_1027_142900、heldout_statistics_acceptance_1027_143400。
+- Docs record: docs/运行记录/模型实验/运行记录_留出类同任务参考与依赖配对统计_1027_142900.md。
+- Commit: 本条与统计实现同次提交，哈希见git历史；G7仍partial，总体goal active。

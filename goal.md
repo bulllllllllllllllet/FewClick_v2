@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-27T14:24:08.221754+08:00. Native thread goal: **active**. Heldout local/R accepted qualified; overall objective incomplete.
+Updated: 2026-10-27T14:39:45.929747+08:00. Native thread goal: **active**. Heldout local/R accepted qualified; overall objective incomplete.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-27T14:24:08.221754+08:00. Native thread goal: **active**. Heldo
 
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
-3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; next heldout/all-label descriptive statistics, full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
+3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
 4. New source may live outside locked snapshots. Do not edit running/queued trainer, model, sampler or inference files listed in contracts.
 
 Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/continuity_1025_160204/goal_before_G3_closeout_1025_160204.md` (SHA256 b166a50ea75b0c9c81aed0525b9c48b847b3391e525af7a61daf9afa17bd28dd). Detailed immutable results and run records remain unchanged.
@@ -26,7 +26,7 @@ Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_
 | G4 | complete, qualified | Nine18700 sparse +837 dense-reference rows audited;180 gates replayed; exploratory cluster statistics |
 | G5 | complete, qualified | All12 trains/scores/selection/weights accepted; three-seed Dice/BF1 and ddof1 std independently recounted |
 | G6 | partial; GenericHE preparation/training/paired statistics accepted | Same-network pretraining-objective control and remaining mechanism scope pending |
-| G7 | external and heldout local/R accepted qualified | 9train/4800local/19360R/240gate masks accepted; paired statistics, all-label descriptive comparisons and TLS pending |
+| G7 | external and label-heldout matched statistics accepted qualified | 42tables/48320rows/3504stratumCI/792contrasts accepted; TLS/strict morphology layer pending |
 | G8 | partial; first full3050tile CPU execution complete | Independent full cache/stitch acceptance, cells/GPU efficiency and main30 final cohort audit pending |
 | G9 | preparing | 11 human challenges + 14 AI checks mapped; experiments/factual corrections and submitted-version binding remain |
 
@@ -203,3 +203,7 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 ## 1027_142300 普通HE完整准备与五条件统计验收完成
 
 2026-10-27T14:24:08.221754+08:00：1261989/1277097/1288396均结束EXIT0。1737视野/5211尺度/10422投影、fine实例/几何/数量/原RGB与来源/GT/40k点身份接受；train4068尺度901192细胞独立PCA均值最大差2e-15、特征值6.1e-18，val协方差输入0。五条件30200评分行、75来源/2000次共同bootstrap已汇总，另用标量法复核6040case均值/80000抽样/80配对，最大差3.33e-16。NoCell/geometry/HE-PCA/HE-white/XCell Dice .564044/.557673/.562162/.568247/.572893。XCell−PCA +.010731 CI[.001645,.020190]，XCell−white +.004646 CI[-.008647,.019028]，XCell−NoCell +.008849 CI[-.003059,.022545]；两HE投影均保留，不能宣称全面稳定优势或mIF因果贡献。单seed、开发与来源相关/先验差异仍披露。记录 docs/运行记录/特征缓存/运行记录_普通HE全缓存与PCA独立数值验收_1027_140600.md；docs/运行记录/模型实验/运行记录_普通HE与XCell五条件配对统计_1027_141000.md。普通HE准备/评分/统计缺口已关闭，G6仍partial（同网络预训练目标控制等），整体goal active。下一留出类配对及同任务全标签描述、整片完整验收/full-cell/GPU效率及审稿证据闭环。
+
+## 1027_143900 标签留出同任务参考/分层/配对统计接受
+
+2026-10-27T14:39:45.929747+08:00：报告1380892和独立复核1397438均EXIT0，42表48320评分行、9664case、432overall×2000抽样、3504分层区间和792配对独立重算通过，误差4.44e-16。local N/A/L来源空间23/14/18，remote查询WSI42/34/29；独立BFS证实支持查询组件3/2/1（pair分量[2,49,64]/[15,50]/[62]）。区间仅条件于固定支持，非总体/患者/seed不确定性。全标签同任务参考和新标签留出分表，差值含任务分布/选模变化，非纯标签删除因果；同开发RGB可出现在seen选模，不能叫图像/形态全未见或盲测。脂肪FewClick .611023→.084588保留；三fold本图FewClick低于适配SAM系列。所有预算/role/方法及unknownGT范围均报告，N19query pair部分未知。记录 docs/运行记录/模型实验/运行记录_留出类同任务参考与依赖配对统计_1027_142900.md；报告/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/heldout_statistics_1027_142900/report.md。标签留出统计缺口关闭，G7仍partial（TLS/定义/形态层未闭环）。下一完整3050tile CPU WSI缓存/输出/拼接验收、全细胞/native GPU效率、main30真实域/GT及reviewer证据闭环，整体goal active。
