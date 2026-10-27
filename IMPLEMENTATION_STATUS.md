@@ -2641,3 +2641,17 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_inputs_gate_1027_222000；fullcell_inputs_gate_aggregate_1027_222500；float32_replay_gate_1027_223000；两完整审计协调均实际等待。
 - Docs record: docs/运行记录/模型实验/运行记录_含细胞整片全缓存几何与空细胞独立接受_1027_222000.md（运行记录）。
 - Commit: 同次提交，哈希见git历史。
+
+## 1027_234500 原GT组件全图门控与独立逐像素接受
+
+2026-10-27T23:46:45.468594+08:00：gt_components.py实际两张完整原GT构建3663530 EXIT0，672602140像素、116818组件、360条budget域；85.410s、峰值RSS8062500864bytes。独立OpenCV GRANA3695916 EXIT0，逐类全像素组件双射、所有面积/质心/源点组件和排除域一致，62.566s。class0/background2合法、void255忽略；完整GT先连通，再统计远端；只排除正点击命中目标组件，保留非目标/背景误报分母，无大小筛选。
+
+正式30片5520任务域协调3751598/tmux fewclick_gt_components_1027_231500等待原含细胞计时owned shell1708228 EXIT0，然后构建并独立接受，当前尚未开始full child。最新原细胞1708231已全部3050视野/9150尺度准备，1+1在线627.321s；3+2仍运行2330/3050；不是完整接受、不是TLS精度。闭集3202252 6553/20208继续。
+
+固定两窗口H&E/GT边界/闭集参考QC：/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/alignment_QC_1027_232300/fixed_windows_QC.png；仅局部未见明显整图错位，不是全30配准证明或FewClick预测。2片组件尺寸审计81,399个前景组件中16,714单像素（20.5334%），只占前景面积0.0060744%；全部保留，不看模型后过滤，组件宏平均与面积加权结果后续分列。
+
+运行记录docs/运行记录/数据审计/运行记录_WSI原GT连通组件与未提示评价域_1027_225000.md。完整组件/模型预测hits/距离/BF1与main30多方法仍待，整体goal active。
+
+- Changed: benchmarks/v5/wsi_global/{gt_components,accept_gt_components}.py
+- Validation: actual full two-slide producer and fresh GRANA auditor both EXIT0; all672602140 pixels/360 domains accepted.
+- Commit: this milestone commit.
