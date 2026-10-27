@@ -1,8 +1,8 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-27T14:02:19.778340+08:00",
-  "current_phase": "G6",
+  "updated": "2026-10-27T14:24:08.221754+08:00",
+  "current_phase": "G7",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
   "prior_run": "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600",
@@ -238,7 +238,7 @@
       }
     },
     "G6": {
-      "status": "partial_formal_two_projection_execution_complete_independent_acceptance",
+      "status": "partial_generic_HE_preparation_training_statistics_accepted_qualified",
       "depends_on": [
         "G3"
       ],
@@ -267,9 +267,14 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/assembly_gate_1026_000100/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/model_gate_1026_000800/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/assembly_model_independent_1026_001500.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500/contract.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500/contract.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/preparation_gate_1027_140600/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/source_overlay_1027_141500/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/preparation_acceptance_1027_140600/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/paired_report_1027_141000/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/paired_acceptance_1027_141300/summary.json"
       ],
-      "qualification": "四历史raw组仍运行，全train PCA等待；两投影实际4视野catalog/8条gate坐标、真实CPU模型loss/三主干梯度/四更新/fresh optimizer RNG checkpoint和继续更新通过。独立8次old/new字段RGB/GT/点/几何/数量相等，注册参数126031668同初始化。正式coordinator4089939等全PCA后全装配/nativeGPU gate/10k40k/6040，未开始正式控制训练，非全G6完成。",
+      "qualification": "Original7mechanisms/9method comparisons and both GenericHE Dense controls independently accepted qualified. All1737/5211/10422 preparation and train-only901192cell PCA recomputed; same40k/10k/firstseed, 12080new score rows, all5conditions30200rows and75-source2000 paired bootstrap + independent scalar80000draw/80contrast replay passed. Same-network pretraining-objective control and broader mechanisms remain; not overall G6 closure.",
       "record": "docs/运行记录/数据审计/运行记录_特征预训练来源与细胞机制合同_1025_134753.md",
       "formal_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/mechanisms_1025_134753/mechanism_formal_1025_141300",
       "acceptance_record": "docs/运行记录/模型实验/运行记录_七机制完整验收与受控配对解释_1025_225200.md",
@@ -281,11 +286,18 @@
       "control_pipeline": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/formal_controls_1026_001500",
       "model_gate_record": "docs/运行记录/模型实验/运行记录_通用HE双投影装配与真实模型门控_1025_235500.md",
       "generic_HE_raw_completed_groups": [
+        "context_gate_1025_035900",
+        "contexts_shard00_1025_040737",
+        "contexts_shard01_1025_040737",
         "contexts_shard02_1025_040737",
         "contexts_shard03_1025_040737"
       ],
       "generic_local_acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/local_acceptance_1026_183200/summary.json",
-      "generic_local_qualification": "Two prespecified projections12080full local rows/20seen selection tables/actual40k consumption and weights/sources/GT independently accepted. PCA64 .562162 / whitened64 .568247 single seed. Full raw/PCA/projection independent audit and paired statistics pending."
+      "generic_local_qualification": "PCA64 .562162 / white64 .568247; preparation, two10k/40k trains and12080local rows, plus five-condition paired statistics now independently accepted. Both variants retained. Single seed and distinct training-image PCA exposure; no isolated mIF-objective causal proof.",
+      "generic_preparation_record": "docs/运行记录/特征缓存/运行记录_普通HE全缓存与PCA独立数值验收_1027_140600.md",
+      "generic_paired_record": "docs/运行记录/模型实验/运行记录_普通HE与XCell五条件配对统计_1027_141000.md",
+      "generic_preparation_status": "accepted_full_generic_preparation_qualified",
+      "generic_statistics_status": "passed_independent_generic_statistics"
     },
     "G7": {
       "status": "external_complete_heldout_TLS_pending",
@@ -416,15 +428,15 @@
     "Three independent encoders have more parameters and views than single-scale; compute/capacity are not matched.",
     "Current validation is development data, not a blind test.",
     "TIGER healthy_glands ID4 absent from current catalog; seven-class head is not seven-target evaluation coverage.",
-    "Fixed adaptation hyperparameters; not per-method optimum; independent training seeds remain pending."
+    "Three-seed core local methods accepted; mechanism, GenericHE and heldout contrasts remain single-seed. Fixed hyperparameters are not per-method optima."
   ],
   "next_actions": [
-    "Adipose diagnostic completed qualified: no specified mapping/count/loading fault found; actual prediction suppression and positive-click failure verified. Keep original scores, no heldout-based retuning; training-factor causality unresolved. Resume generic preparation audit and paired statistics.",
-    "Finish GenericHE two-projection training/count acceptance and independent raw/PCA/projection audit; paired statistics; retain both variants.",
-    "Heldout9conditions local4800/R19360 plus240gate saved masks accepted qualified; compute paired/dependency statistics and descriptive same-task all-label comparisons, not causal deletion.",
-    "Independently audit full3050tile CPU WSI cache/stitch/coverage/output; complete full-cell and actual GPU efficiency. No TLS semantic accuracy from fixedCRC support.",
-    "Solidify mainCRC30 reproducible cohort/GT/physical-domain audit; initial file/header and exact current-native-path intersections0, image/rescan/public-prior and clinical patient identity remain unverified.",
-    "Complete TLS annotation/negative definition, strict concept morphology tier if claimed, reviewer evidence mapping and submitted-version binding. Overall goal remains active."
+    "Complete heldout local/R paired and source-query dependency statistics and same-task all-label descriptive comparison; preserve adipose failure evidence, no test-based retuning.",
+    "Independently audit full3050tile CPU WSI outputs/cache/stitch/coverage; full-cell preparation and native GPU/whole-slide efficiency remain.",
+    "Solidify mainCRC30 reproducible cohort/GT/physical-domain audit; initial declared input-ID/path intersections0, duplicate/rescan/public-prior and clinical patient mapping not certified.",
+    "TLS annotation completeness and confirmed negatives remain unconfirmed; do not score unannotated pixels as negatives. Full4x morphology-exclusion tier pending if claimed.",
+    "G6 genericHE preparation/training/statistics accepted qualified; same-network pretraining-objective isolation remains missing. Current evidence does not show stable XCell advantage vs all controls.",
+    "Update reviewer evidence mapping/submitted-version binding; retain all original scope and qualifications. Overall goal active."
   ],
   "provenance_clarifications": {
     "XCell": {
@@ -2075,6 +2087,67 @@
       "status": "passed_actual_two_domain_selected_model_loss_probes",
       "process_alive_last_observed": false,
       "process_observed_at": "2026-10-27T14:02:19.778340+08:00"
+    },
+    {
+      "worker_pid": 1261989,
+      "kind": "generic_HE_full_preparation_audit",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/preparation_acceptance_1027_140600",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/preparation_acceptance_1027_140600.log",
+      "session": "fewclick_generic_prep_audit_1027_140600",
+      "status": "accepted_full_generic_preparation_qualified",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T14:24:08.221754+08:00",
+      "command": "/home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.evidence_closure.audit_generic_preparation --root /nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000 --output /nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/preparation_acceptance_1027_140600 --verified-gate /nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/preparation_gate_1027_140600 ",
+      "last_observed_status": {
+        "status": "checking_cache_and_train_covariance",
+        "worker_pid": 1261989,
+        "fields": 1526,
+        "total_fields": 1737,
+        "scale_rows": 4578,
+        "projections": 9156
+      }
+    },
+    {
+      "worker_pid": 1277097,
+      "kind": "generic_HE_five_condition_report",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/paired_report_1027_141000",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/paired_report_1027_141000.log",
+      "session": "fewclick_generic_paired_1027_141000",
+      "status": "complete_qualified_generic_cell_statistics",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T14:24:08.221754+08:00",
+      "command": "/home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.evidence_closure.report_generic_cells --root /nfs-medical3/zyh/fewclick_v2/fair_comparison --preparation /nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/preparation_acceptance_1027_140600 --output /nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/paired_report_1027_141000 ",
+      "last_observed_status": {
+        "status": "waiting_live_preparation",
+        "worker_pid": 1277097,
+        "producer_pid": 1261989,
+        "observed_at": 1793081883.978492,
+        "producer_status": {
+          "status": "checking_cache_and_train_covariance",
+          "worker_pid": 1261989,
+          "fields": 1526,
+          "total_fields": 1737,
+          "scale_rows": 4578,
+          "projections": 9156
+        }
+      }
+    },
+    {
+      "worker_pid": 1288396,
+      "kind": "generic_HE_independent_statistics",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/paired_acceptance_1027_141300",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/paired_acceptance_1027_141300.log",
+      "session": "fewclick_generic_stats_audit_1027_141300",
+      "status": "passed_independent_generic_statistics",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T14:24:08.221754+08:00",
+      "command": "/home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.evidence_closure.audit_generic_statistics --report /nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/paired_report_1027_141000 --output /nfs-medical3/zyh/fewclick_v2/fair_comparison/generic_cells_1025_231000/paired_acceptance_1027_141300 ",
+      "last_observed_status": {
+        "status": "waiting_live_report",
+        "worker_pid": 1288396,
+        "producer_pid": 1277097,
+        "observed_at": 1793081884.9684193
+      }
     }
   ]
 }

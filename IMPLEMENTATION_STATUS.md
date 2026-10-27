@@ -2531,3 +2531,12 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Artifacts: heldout_1026_003000/adipose_diagnostic_gate_1027_135100、adipose_diagnostic_1027_135100、adipose_diagnostic_acceptance_1027_135800、supervision_probe_1027_140100。
 - Docs record: docs/运行记录/模型实验/运行记录_脂肪留出异常逐像素与训练轨迹排查_1027_135100.md。
 - Commit: 本条与诊断实现同次提交，哈希见git历史。
+
+## 10-27 14:24:08
+
+- Purpose: 完成普通HE原始缓存/PCA/两投影独立审计及五条件配对统计。
+- Changed: audit_generic_preparation.py、report_generic_cells.py、audit_generic_statistics.py、audit_generic_source.py，两运行记录及goal/registry/current record。
+- Validation: 4视野真实gate1260202 exit0；完整1261989 EXIT0验收5211尺度/10422投影及train901192细胞PCA；report1277097 EXIT0，scalar audit1288396 EXIT0验收40x2000抽样/80配对（最大差3.33e-16）；unwrap源补充正常exit0。
+- Artifacts: generic_cells_1025_231000/preparation_gate_1027_140600、preparation_acceptance_1027_140600、paired_report_1027_141000、paired_acceptance_1027_141300、source_overlay_1027_141500。
+- Docs record: docs/运行记录/特征缓存/运行记录_普通HE全缓存与PCA独立数值验收_1027_140600.md；docs/运行记录/模型实验/运行记录_普通HE与XCell五条件配对统计_1027_141000.md。
+- Commit: 本条与实现同次提交，哈希见git历史；G6及总体goal仍未全部完成。
