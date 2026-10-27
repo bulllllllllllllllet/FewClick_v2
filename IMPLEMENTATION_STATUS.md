@@ -2854,3 +2854,16 @@ GPU门控协调530230/tmux fewclick_fullcell_CRC_gate_1028_025000已实际运行
 - Changed: accept_wsi_boundary.py, aggregate_wsi_boundary.py.
 - Validation: actual closed24/interactive32 independent and aggregation gates plus18 anisotropic/seam fixtures EXIT0; full360 chain queued.
 - Commit: this milestone commit.
+
+## 1028_033100 交互三方法物理BF1完整验收链
+
+2026-10-28T03:25:58.179535+08:00：新增interactive_boundary_chain.py，保持原模型/阈值/输入/权重/全部提示与评分域。CPU真实三method fixture共64原行（NoCell32、SAM16、WSISAM16），逐方法实际producer→独立Euclidean disk审计→原行汇总全部9个child EXIT0，协调729312/session89976 EXIT0；明确不是新增64独立病例或主30质量。源码SHA a5b18a449e56b227a40811444f199837a99bc4f3ee4cc7a302a7a217d6aca3e3。
+
+正式协调731144/tmux fewclick_interactive_boundary_1028_033000实际waiting_owned_three_methods_full30_prediction_acceptance，等owned4172727 terminal EXIT0及稳定qualified receipt，再逐方法4个CPU1 BF1 producer/4个独立disk审计/一对一汇总，总22080原预测行（NoCell11040、SAM5520、WSISAM5520），输出/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_boundary_chain_full_1028_033000。不占GPU、不改变其余任务；全部源码hash锁定，真实child命令/PID/log/EXIT_CODE持久化，失败保留停止，无retry/resume/fallback。实际full BF1 child尚未启动，不把排队称完成。SAM/WSISAM为custom feature-prototype远距迁移，仍区别原生local decoder。
+
+当前closed12cache3202252 16557/20208，所有既有协调进程存活；GPU1/3/4/5仍foreign任务占用。含细胞主30预测adapter、paired WSI统计和28452有效域扩展等缺口仍待，整体goal active。记录docs/运行记录/模型实验/运行记录_交互整片BF1三方法完整验收链_1028_032700.md。
+
+- Purpose: connect three interactive WSI BF1 producers, independent disk audits and complete row joins after qualified prediction acceptance.
+- Changed: benchmarks/v5/wsi_global/interactive_boundary_chain.py.
+- Validation: all three real CPU fixtures,64 original rows and nine children EXIT0; formal22080 chain waiting, no full quality claim.
+- Commit: this milestone commit.

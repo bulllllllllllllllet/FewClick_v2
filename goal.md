@@ -412,3 +412,11 @@ GPU门控协调530230/tmux fewclick_fullcell_CRC_gate_1028_025000已实际运行
 正式closed12独立接受/聚合协调693018/tmux fewclick_boundary_accept_1028_040500已实际等待owned631034 producer四分片terminal receipt，再4个CPU1独立audit全部360条并聚合原行，输出WSI_boundary_closed12_complete_1028_040500（330tissue+30bg）；当前无接受child，producer也仍待native预测。源码冻结、atomic status、明确EXIT_CODE和stable receipt，失败保留停止，无retry/fallback。完整BF1仍pending，不据小gate作全30成绩或CI。
 
 当前closed12cache3202252 16236/20208，其余GPU链未获空闲，原decoder/细胞cache和主30完整质量/paired统计/28452域/审稿缺口保留，整体goal active。记录docs/运行记录/模型实验/运行记录_整片BF1独立物理圆盘验收与汇总_1028_040000.md。
+
+## 1028_033100 交互三方法物理BF1完整验收链
+
+2026-10-28T03:25:58.179535+08:00：新增interactive_boundary_chain.py，保持原模型/阈值/输入/权重/全部提示与评分域。CPU真实三method fixture共64原行（NoCell32、SAM16、WSISAM16），逐方法实际producer→独立Euclidean disk审计→原行汇总全部9个child EXIT0，协调729312/session89976 EXIT0；明确不是新增64独立病例或主30质量。源码SHA a5b18a449e56b227a40811444f199837a99bc4f3ee4cc7a302a7a217d6aca3e3。
+
+正式协调731144/tmux fewclick_interactive_boundary_1028_033000实际waiting_owned_three_methods_full30_prediction_acceptance，等owned4172727 terminal EXIT0及稳定qualified receipt，再逐方法4个CPU1 BF1 producer/4个独立disk审计/一对一汇总，总22080原预测行（NoCell11040、SAM5520、WSISAM5520），输出/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_boundary_chain_full_1028_033000。不占GPU、不改变其余任务；全部源码hash锁定，真实child命令/PID/log/EXIT_CODE持久化，失败保留停止，无retry/resume/fallback。实际full BF1 child尚未启动，不把排队称完成。SAM/WSISAM为custom feature-prototype远距迁移，仍区别原生local decoder。
+
+当前closed12cache3202252 16557/20208，所有既有协调进程存活；GPU1/3/4/5仍foreign任务占用。含细胞主30预测adapter、paired WSI统计和28452有效域扩展等缺口仍待，整体goal active。记录docs/运行记录/模型实验/运行记录_交互整片BF1三方法完整验收链_1028_032700.md。
