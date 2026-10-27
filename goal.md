@@ -234,3 +234,7 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 ## 1027_171918 CRC主30原GT与WSI有效域完整审计启动
 
 2026-10-27T17:25:08.298925+08:00：代表2片门控2150550 EXIT0，原PNG/tiled TIFF全672602140像素逐像素一致，原12类/unknown计数与历史cohort一致；2285个真实三尺度格点及每输入箱边界/Cartesian/覆盖并集核对通过。独立2164377 EXIT0重算完整label/domain直方图、逐输入箱、2178个tuple-palette像素与全源/输出SHA。extent比例映射沿用历史W/GW,H/GH；最多2native像素尾部差明确记录，不声称解剖配准证明。正式30片2166816真实运行，tmux fewclick_main30_audit_1027_171918，CPU4/CUDA隐藏，保留约33.16GB raw/labels；同shell只有该任务EXIT0才启动独立acceptance（尚未分配worker PID，不当已完成）。源/清单SHA及原数据均冻结不覆盖，GT只用于审计/评价，网格无GT筛选。已有全细胞GPU1708231继续666/3050准备。记录docs/运行记录/数据审计/运行记录_CRC主三十张原始GT全像素与物理域审计_1027_171918.md；全30输出/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_full_1027_171918。完整数据审计、模型质量和主30最终验收仍待，goal active。
+
+## 1027_173000 同WSI支持区与远端查询实际门控接受
+
+2026-10-27T17:38:09.921449+08:00：新增support_query_protocol/accept_support_query，在原2片完整数据接受产物上真实CPU运行，PIL门控2212264/独立2217383均EXIT0。先固定native左1/4支持带，源4x完全在带内；query保留右侧全部4x与带隔离且1um间隔的网格，不按GT选query。仅源带标签生成原5+2/四嵌套预算，18个类×片可用、4个源带不可用显式保留，五组90套/630点，51native三视野RGB、1615query格点和全部source标签/坐标独立核对通过。沿用PIL BILINEAR；原vips原型2203492保留为非正式，不移植旧source SHA。推理query清单无GT/target ID，与scoring_private分离；同片距离可定义，不冒称跨片距离或整片全组织覆盖。正式30协议协调2224461/tmux fewclick_support_query_1027_173800真实等待2166813既有原GT审计/接受EXIT0，然后自动全30生成并独立接受，无重试；正式子worker尚未分配。源代码/清单冻结。当前主30审计24/30片已结束、当前下一片处理中；GPU5细胞准备748/3050继续。记录docs/运行记录/数据审计/运行记录_WSI同片支持区与远端查询协议门控_1027_173000.md；新协议无模型结果，完整质量/组件/距离评分仍待，goal active。

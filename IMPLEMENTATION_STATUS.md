@@ -2596,3 +2596,12 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_full_1027_171918；main30_gate_1027_171918及main30_gate_acceptance_1027_171918。
 - Docs record: docs/运行记录/数据审计/运行记录_CRC主三十张原始GT全像素与物理域审计_1027_171918.md（运行记录）。
 - Commit: 同次提交，哈希见git历史。
+
+## 10-27 17:38:10
+
+- Purpose: 将WSI主线落实为同片源带提示与完整4x隔离的远端查询任务。
+- Changed: wsi_global/support_query_protocol.py、accept_support_query.py；continuity。
+- Validation: 两片真实门控2212264和独立2217383 EXIT0，90套/630source点、51native RGB视图、1615query格点及权限检查接受；正式协调2224461实际等待同源主30审计，未记全量/模型完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/support_query_gate_PIL_1027_173342；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/support_query_acceptance_gate_1027_173342；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/support_query_queue_1027_173800。
+- Docs record: docs/运行记录/数据审计/运行记录_WSI同片支持区与远端查询协议门控_1027_173000.md（运行记录）。
+- Commit: 同次提交，哈希见git历史。
