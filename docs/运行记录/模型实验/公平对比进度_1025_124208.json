@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-27T14:39:45.929747+08:00",
+  "updated": "2026-10-27T15:26:32.765693+08:00",
   "current_phase": "G8",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -383,7 +383,7 @@
       "heldout_statistics_record": "docs/运行记录/模型实验/运行记录_留出类同任务参考与依赖配对统计_1027_142900.md"
     },
     "G8": {
-      "status": "partial_first_full_CPU_execution_complete_acceptance_pending",
+      "status": "partial_first_full_CPU_probability_accepted_fullcell_GPU_gate_accepted",
       "depends_on": [
         "G3"
       ],
@@ -400,12 +400,19 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/stream_execution_gate_1026_015200/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/stream_execution_independent_1026_021700.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_cpu_live_audit_1026_022000.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_cpu_slide0_1026_021756/contract.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_cpu_slide0_1026_021756/contract.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_audit_gate_1027_144500/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_gpu_gate_1027_150000/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_gpu_independent_1027_150800/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_acceptance_1027_144500/summary.json"
       ],
-      "qualification": "TLS30全网格/组织CPU cache gate已接受；新native level0逐row writer两预算2399401像素全等旧独立结果，含mmap范围刷盘+MADV_DONTNEED后磁盘重载、edge overlap/holes/order拒绝。完整两阶段4tile执行器和独立RGB/geometry/prob/mask/count/SHA通过。首片3050 tile CPU NoCell worker646382实际cache preparing，尚未全cache/两online完成；CRC支持只是机械/成本控制，非TLS精度、完整细胞或GPU效率。main30/TLS标注阴性等仍欠。",
+      "qualification": "First3050tile CPU valid-domain full probability/cache/output/overlap/threshold independent replay accepted, two3.186billionpixel budgets,maxerror1.49e-8. FullcellGPU actual2windows/6scales/true counts/fresh cache/timing accepted qualified. No full-slide cell preparation/globalGPU efficiency, actual zero-cell gate or TLS semantics/main30 final evaluation yet.",
       "input_record": "docs/运行记录/数据审计/运行记录_TLS整片读取与物理视野门控_1025_144200.md",
       "stream_record": "docs/运行记录/模型实验/运行记录_整片逐行流式拼接与首片完整执行_1026_015000.md",
-      "full_CPU_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_cpu_slide0_1026_021756"
+      "full_CPU_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_cpu_slide0_1026_021756",
+      "full_probability_audit_record": "docs/运行记录/模型实验/运行记录_首片完整WSI概率缓存与独立全像素验收_1027_144500.md",
+      "fullcell_GPU_record": "docs/运行记录/模型实验/运行记录_真实WSI细胞准备与GPU缓存点击门控_1027_150000.md",
+      "full_probability_audit_status": "accepted_full_WSI_probability_replay_qualified"
     },
     "G9": {
       "status": "preparing",
@@ -435,7 +442,8 @@
     "Three-seed core local methods accepted; mechanism, GenericHE and heldout contrasts remain single-seed. Fixed hyperparameters are not per-method optima."
   ],
   "next_actions": [
-    "Independently audit complete3050tile CPU WSI cache hashes, planned full-domain output probability/mask/overlap coverage and deterministic native central probes; no TLS semantic accuracy from fixedCRC support.",
+    "Full CPU valid-domain output/cache audit accepted; next fullcell GPU streaming gate then complete3050tile cell/cache preparation and whole-slide end-to-end timings; not perwindow8ms extrapolation.",
+    "FullcellGPU two-window actual gate/fresh audit accepted; next actual zero-cell case and full-slide cell preparation/native GPU streaming, end-to-end output/IO timing. Perwindowresident8ms is not WSI latency.",
     "Complete full-cell preparation and actual native GPU WSI/online-click/end-to-end efficiency; image-only CPU execution does not close full-system efficiency.",
     "Solidify mainCRC30 reproducible cohort/GT/physical-domain audit; exploratory ID/native-path intersections0, duplicates/rescans/public-prior and clinical patient mapping not certified.",
     "TLS annotation completeness and confirmed negatives remain unconfirmed; never score unknown as negative. Strict4x morphology exclusion layer pending if claimed.",
@@ -2170,6 +2178,44 @@
       "status": "passed_independent_heldout_statistics",
       "process_alive_last_observed": false,
       "process_observed_at": "2026-10-27T14:39:45.929747+08:00"
+    },
+    {
+      "kind": "native_fullcell_GPU_two_window_gate",
+      "worker_pid": 1525384,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_gpu_gate_1027_150000",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_gpu_gate_1027_150000.log",
+      "status": "passed_real_fullcell_GPU_cache_and_click_gate",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T15:16:21.165088+08:00"
+    },
+    {
+      "kind": "native_fullcell_GPU_independent_audit",
+      "worker_pid": 1553372,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_gpu_independent_1027_150800",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_gpu_independent_1027_150800.log",
+      "status": "passed_independent_fullcell_GPU_gate_audit",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T15:16:21.165088+08:00"
+    },
+    {
+      "kind": "full_CPU_WSI_independent_probability_and_cache_audit",
+      "worker_pid": 1483383,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_acceptance_1027_144500",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_acceptance_1027_144500.log",
+      "session": "fewclick_full_wsi_audit_1027_144500",
+      "status": "accepted_full_WSI_probability_replay_qualified",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T15:26:32.765693+08:00",
+      "last_observed_status": {
+        "status": "independent_full_pixel_replay",
+        "worker_pid": 1483383,
+        "budget": "3+2",
+        "window": "full",
+        "band": 39,
+        "total_bands": 62,
+        "decoded_tiles": 1950,
+        "pixels": 2052179493
+      }
     }
   ]
 }

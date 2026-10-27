@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-27T14:39:45.929747+08:00. Native thread goal: **active**. Heldout local/R accepted qualified; overall objective incomplete.
+Updated: 2026-10-27T15:26:32.765693+08:00. Native thread goal: **active**. Heldout local/R accepted qualified; overall objective incomplete.
 
 ## Objective
 
@@ -27,7 +27,7 @@ Full prior goal/history snapshot preserved: `/nfs-medical3/zyh/fewclick_v2/fair_
 | G5 | complete, qualified | All12 trains/scores/selection/weights accepted; three-seed Dice/BF1 and ddof1 std independently recounted |
 | G6 | partial; GenericHE preparation/training/paired statistics accepted | Same-network pretraining-objective control and remaining mechanism scope pending |
 | G7 | external and label-heldout matched statistics accepted qualified | 42tables/48320rows/3504stratumCI/792contrasts accepted; TLS/strict morphology layer pending |
-| G8 | partial; first full3050tile CPU execution complete | Independent full cache/stitch acceptance, cells/GPU efficiency and main30 final cohort audit pending |
+| G8 | partial; first fullCPU everypixel audit and fullcellGPU two-window gate accepted | Actual zero-cell/fullcell whole-slide prep/GPU/IO efficiency and main30/TLS domain evaluation pending |
 | G9 | preparing | 11 human challenges + 14 AI checks mapped; experiments/factual corrections and submitted-version binding remain |
 
 ## G3 result and acceptance
@@ -207,3 +207,11 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 ## 1027_143900 标签留出同任务参考/分层/配对统计接受
 
 2026-10-27T14:39:45.929747+08:00：报告1380892和独立复核1397438均EXIT0，42表48320评分行、9664case、432overall×2000抽样、3504分层区间和792配对独立重算通过，误差4.44e-16。local N/A/L来源空间23/14/18，remote查询WSI42/34/29；独立BFS证实支持查询组件3/2/1（pair分量[2,49,64]/[15,50]/[62]）。区间仅条件于固定支持，非总体/患者/seed不确定性。全标签同任务参考和新标签留出分表，差值含任务分布/选模变化，非纯标签删除因果；同开发RGB可出现在seen选模，不能叫图像/形态全未见或盲测。脂肪FewClick .611023→.084588保留；三fold本图FewClick低于适配SAM系列。所有预算/role/方法及unknownGT范围均报告，N19query pair部分未知。记录 docs/运行记录/模型实验/运行记录_留出类同任务参考与依赖配对统计_1027_142900.md；报告/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/heldout_statistics_1027_142900/report.md。标签留出统计缺口关闭，G7仍partial（TLS/定义/形态层未闭环）。下一完整3050tile CPU WSI缓存/输出/拼接验收、全细胞/native GPU效率、main30真实域/GT及reviewer证据闭环，整体goal active。
+
+## 1027_151500 完整WSI全像素审计运行与真实细胞GPU门控接受
+
+2026-10-27T15:16:21.165088+08:00：新audit_full_wsi代表门控1470404 exit0，central/最后重叠两budget共12907942像素重算通过，native encoded误差0。完整CPU worker1483383实际存活，状态independent_full_pixel_replay；1+1全3050tile/3186743840像素已重放，两个budget最终接受仍须summary+EXIT0。原cache23.6GB和native输出44.6GB读取开销不等于推理速度，勿因hash阶段状态暂不更新重启。新全细胞GPU门控1525384与fresh独立1553372 EXIT0：真实native两窗口×三尺度，central总数152/491/2150、保留152/255/255；近白最后5/41/98（未覆盖实际零细胞）。实例几何/74维/真计数区域和、fresh RGB/model/cache及四保存概率逐像素0差、80时延样本median/p95复核通过。resident单窗口任务+decode约8ms，central细胞准备约9.275s，不外推全片；GPU5/FP32，peak allocated3.377GB。记录 docs/运行记录/模型实验/运行记录_首片完整WSI概率缓存与独立全像素验收_1027_144500.md；docs/运行记录/模型实验/运行记录_真实WSI细胞准备与GPU缓存点击门控_1027_150000.md。完整全细胞、zero-case、GPU全片/IO和TLS/main30语义仍未关闭，整体goal active。
+
+## 1027_152300 首片完整CPU概率/拼接接受
+
+2026-10-27T15:26:32.765693+08:00：1483383 EXIT0，两budget各3050tile/3186743840像素独立重放，全部cache/六输出SHA、overlap和覆盖守恒正确；最大概率差1.49e-8，threshold mask逐像素一致、舍入分歧0；7 native RGB/encoded probes和6原512probe差0。记录_首片完整WSI概率缓存与独立全像素验收_1027_144500.md已更新。只覆盖原矩形slide89.813%真实4x有效域，不代表组织覆盖率或TLS精度。含细胞GPU两窗口gate/fresh独立已接受，但全片细胞准备、实际zero-cell、全片GPU/IO效率仍待；整体goal active。

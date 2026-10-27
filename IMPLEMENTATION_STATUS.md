@@ -2549,3 +2549,14 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Artifacts: heldout_1026_003000/heldout_statistics_1027_142900、heldout_statistics_acceptance_1027_143400。
 - Docs record: docs/运行记录/模型实验/运行记录_留出类同任务参考与依赖配对统计_1027_142900.md。
 - Commit: 本条与统计实现同次提交，哈希见git历史；G7仍partial，总体goal active。
+
+## 10-27 15:16:21
+
+- Purpose: 实施全WSI独立float64 band重放，并接受原生全细胞GPU真实缓存点击门控。
+- Changed: audit_full_wsi.py、fullcell_gpu_gate.py、audit_fullcell_gpu_gate.py，两运行记录及goal/registry/current record。
+- Validation: 代表CPU gate1470404 exit0（两窗口/两budget12907942像素）；full1483383实际活跃，1+1已全像素重放、3+2待完成；GPU5真实全细胞1525384和fresh独立1553372均EXIT0，六实例几何/74维/真总数和/encoded与四保存概率0差、80时延样本独立复核。实际zero-cell/fullcell wholeWSI未测试。
+- Artifacts: wsi_global_1026_010800/full_audit_gate_1027_144500、full_acceptance_1027_144500、fullcell_gpu_gate_1027_150000、fullcell_gpu_independent_1027_150800。
+- Docs record: docs/运行记录/模型实验/运行记录_首片完整WSI概率缓存与独立全像素验收_1027_144500.md；docs/运行记录/模型实验/运行记录_真实WSI细胞准备与GPU缓存点击门控_1027_150000.md。
+- Commit: 本条与门控/审计实现同次提交，哈希见git历史；总体goal active。
+
+- 续验收 2026-10-27T15:26:32.765693+08:00：完整CPU worker1483383已EXIT0，两budget共6373487680像素、3050cache、六输出SHA/覆盖/overlap/阈值接受，概率最大差1.49e-8；整体G8仍partial。
