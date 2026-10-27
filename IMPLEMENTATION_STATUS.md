@@ -2713,3 +2713,18 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Changed: benchmarks/v5/wsi_global/interactive_cache.py.
 - Validation: three CPU7-cache native equality gates EXIT0; GPU path preparing, formal caches queued.
 - Commit: this milestone commit.
+
+## 1028_002200 三方法独立缓存接受真实CPU门控
+
+2026-10-28T00:12:59.551759+08:00：新增accept_interactive_cache.py，不导入cache producer/device_encode或其raw桥接；独立枚举完整原source/query协议、4x footprint、三方法1/2/3视野、所有文件SHA/bytes、实际payload输入/权重/method、encoded树keys/container/dtype/shape/finite。所有support PNG原图逐个重读并校验RGBarray；query原图只固定probes重读，不能宣称全部native query重算。fresh NoCell自行构造HE/忽略cell输入，SAM独立公开CPUtransform，WSISAM独立CPUresize/round及2x对齐归一化，不改模型。
+
+三个独立CPU4进程实际各7保存缓存/全部7native probes通过、所有encoded tensor严格一致：NoCell4008655 EXIT0 32.742s，SAM4008657 EXIT0 66.319s，WSISAM4008656 EXIT0 25.529s（并发运行，仅功能验收，不作性能比较）。source324a0528631768b240f1636336cc76bbbbe044985e074f99e93dc6e756fa1765，gate/producer summary SHA与schema存档。GPU fresh路径尚未执行，不当作已接受。
+
+新独立协调4018919/tmux fewclick_interactive_accept_1028_002000实际等待owned3990149三方法GPU缓存完整EXIT0；再每method依次执行真实GPU7-cache independent gate，然后full20456文件字节/输入/有限值与首末support+首/中/末query五fresh原生选权probes；同device/torch/CUDA/TF32，全部逐张量严格一致，先gate后full。等GPU5无其他worker，不干预其他任务；源码锁定，无重试/resume/fallback。正式接受仍待，不能据当前21缓存gate推出全61368缓存或WSI质量。
+
+当前closed12cache3202252 7759/20208，fullGT组件GRANA3989304接受16/30仍在运行；fullcellGPU输出3574865仍等foreignGPU5，first完整含细胞执行与9150输入已接受但output链未闭合。原全量5520评分/独立评分与3methodproducer队列继续。记录docs/运行记录/特征缓存/运行记录_三方法缓存独立输入与选中模型复核_1028_002200.md。后续交互online decoder/完整native评分、细胞main30与28452扩展/BF1/统计/审稿缺口保持，整体goal active。
+
+- Purpose: independently validate native source/query feature caches and fresh model encoding.
+- Changed: benchmarks/v5/wsi_global/accept_interactive_cache.py.
+- Validation: independent NoCell/SAM/WSISAM CPU7-cache and7-native-probe gates all EXIT0.
+- Commit: this milestone commit.
