@@ -2605,3 +2605,12 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/support_query_gate_PIL_1027_173342；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/support_query_acceptance_gate_1027_173342；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/support_query_queue_1027_173800。
 - Docs record: docs/运行记录/数据审计/运行记录_WSI同片支持区与远端查询协议门控_1027_173000.md（运行记录）。
 - Commit: 同次提交，哈希见git历史。
+
+## 10-27 21:14:12
+
+- Purpose: 关闭主30数据/提示准备与四方法真实远端缓存门控的接受链，不冒称模型质量已测。
+- Changed: native_remote_gate.py、accept_native_remote.py、report_main30_coverage.py及continuity/原记录。
+- Validation: 主30两worker EXIT0；完整1380任务/9660点/744RGB/20208query独立接受；修订四方法门控2293475和独立2310938 EXIT0，100概率/二值误差0、实际encoder hook0与8错误cache拒绝；原闭集浮点检查失败/诊断保留。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/native_remote_gate_exact_1027_175300；native_remote_acceptance_1027_175900；main30_task_coverage_1027_175700。
+- Docs record: docs/运行记录/模型实验/运行记录_WSI真实支持远端模型缓存四方法门控_1027_174300.md（运行记录），原主30数据/同片提示记录补全接受状态。
+- Commit: 同次提交，哈希见git历史。
