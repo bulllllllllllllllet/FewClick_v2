@@ -2655,3 +2655,15 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Changed: benchmarks/v5/wsi_global/{gt_components,accept_gt_components}.py
 - Validation: actual full two-slide producer and fresh GRANA auditor both EXIT0; all672602140 pixels/360 domains accepted.
 - Commit: this milestone commit.
+
+## 1027_235400 未提示组件/物理距离评分实际门控与整片执行结束
+
+2026-10-27T23:50:47.107372+08:00：新增retrieval_metrics.py评分kernel，固定标准域和只去正提示目标组件域，保留非目标/背景误报。对原GT centre nearest native预测按距正点实际MPP距离<1mm、1–5mm、>=5mm，分层输出TP/FP/FN/有效域、Dice/recall/precision/误报；组件无大小过滤，报告面积召回、宏平均与面积召回>=.5/.1组件数。实际原GT full组件+固定两窗口闭集native预测，tumor0/muscle7/fat10、1+1/3+2共12任务，逐行独立Counter/hypot重算所有分母、hits和距离通过，PID3892163 EXIT0，3.032s、每预算1374424 GT cells；手工边界0/1000/5000um、void、全target被去除NA但FP保留检查通过。不是完整30精度，也不是FewClick输出；流式完整driver/BF1/统计仍待。
+
+含细胞原worker1708231已EXIT0，全部3050tile、9150细胞视野、两预算各3186743840native像素；online 1+1 627.321s、3+2 576.069s（含各499.606/476.549s resize/stitch），在线query encode和detector calls均0，峰值allocated GPU offline5.519GB/online0.681GB；全pipeline29166.491s。来源CRC支持→外TLS片，只验机械执行和成本，不是TLS精度、非main30结果、非模型单次forward延迟。CPU输入4shards已启动3882638/3882639/3882640/3882641；GPU独立验收协调3574865在等GPU5 foreign2837432结束，不干预他人任务。完整细胞链必须两receipt都接受才完成。
+
+全30原GT组件实际worker3882209已运行（完成3/30），独立GRANA待producer结束；closed12 CPU3202252 6800/20208。原CPU缓存/raster自动验收队列继续，未报完成。首次评分fixture失败235100因artifact script缺PYTHONPATH未执行评分；235300因接受status预期字符串拼写错误在真实评分前停止；分别原样failure.json/log保留，235400纠正运行环境/绑定实际receipt后通过，不放松指标。
+
+记录docs/运行记录/模型实验/运行记录_未提示组件与物理距离评分门控_1027_235400.md；artifact /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/retrieval_metric_gate_1027_235400。整体goal active，main30完整多方法与剩余审稿挑战不缩减。
+
+- Changed: benchmarks/v5/wsi_global/retrieval_metrics.py. Validation: real originalGT/native prediction gate EXIT0,12 tasks, independent rowwise counters/distance and physical boundary fixture. Commit: this milestone commit.

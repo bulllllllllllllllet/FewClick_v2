@@ -10,7 +10,7 @@ Updated: 2026-10-27T17:06:08.474774+08:00. Native thread goal: **active**. Lates
 
 ## Resume here
 
-0. **Latest user instruction: WSI application first. Full-label CRC12/fat supervised; prioritize main30 audit, whole-slide remote quality and offline/online costs. Local/heldout supplementary; preserve all results and fair baselines. See docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md. Keep existing GPU5 worker1708231 running.**
+0. **Latest user instruction: WSI application first. Full-label CRC12/fat supervised; prioritize main30 audit, whole-slide remote quality and offline/online costs. Local/heldout supplementary; preserve all results and fair baselines. See docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md. Fullcell producer1708231 EXIT0; inspect live input audit3520088, GPU output acceptance3574865 (waiting foreign GPU5 worker), components3751598/3882209 and closed12 cache3202252. Full mechanical acceptance and main30 quality remain pending.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -276,3 +276,13 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 固定两窗口H&E/GT边界/闭集参考QC：/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/alignment_QC_1027_232300/fixed_windows_QC.png；仅局部未见明显整图错位，不是全30配准证明或FewClick预测。2片组件尺寸审计81,399个前景组件中16,714单像素（20.5334%），只占前景面积0.0060744%；全部保留，不看模型后过滤，组件宏平均与面积加权结果后续分列。
 
 运行记录docs/运行记录/数据审计/运行记录_WSI原GT连通组件与未提示评价域_1027_225000.md。完整组件/模型预测hits/距离/BF1与main30多方法仍待，整体goal active。
+
+## 1027_235400 未提示组件/物理距离评分实际门控与整片执行结束
+
+2026-10-27T23:50:47.107372+08:00：新增retrieval_metrics.py评分kernel，固定标准域和只去正提示目标组件域，保留非目标/背景误报。对原GT centre nearest native预测按距正点实际MPP距离<1mm、1–5mm、>=5mm，分层输出TP/FP/FN/有效域、Dice/recall/precision/误报；组件无大小过滤，报告面积召回、宏平均与面积召回>=.5/.1组件数。实际原GT full组件+固定两窗口闭集native预测，tumor0/muscle7/fat10、1+1/3+2共12任务，逐行独立Counter/hypot重算所有分母、hits和距离通过，PID3892163 EXIT0，3.032s、每预算1374424 GT cells；手工边界0/1000/5000um、void、全target被去除NA但FP保留检查通过。不是完整30精度，也不是FewClick输出；流式完整driver/BF1/统计仍待。
+
+含细胞原worker1708231已EXIT0，全部3050tile、9150细胞视野、两预算各3186743840native像素；online 1+1 627.321s、3+2 576.069s（含各499.606/476.549s resize/stitch），在线query encode和detector calls均0，峰值allocated GPU offline5.519GB/online0.681GB；全pipeline29166.491s。来源CRC支持→外TLS片，只验机械执行和成本，不是TLS精度、非main30结果、非模型单次forward延迟。CPU输入4shards已启动3882638/3882639/3882640/3882641；GPU独立验收协调3574865在等GPU5 foreign2837432结束，不干预他人任务。完整细胞链必须两receipt都接受才完成。
+
+全30原GT组件实际worker3882209已运行（完成3/30），独立GRANA待producer结束；closed12 CPU3202252 6800/20208。原CPU缓存/raster自动验收队列继续，未报完成。首次评分fixture失败235100因artifact script缺PYTHONPATH未执行评分；235300因接受status预期字符串拼写错误在真实评分前停止；分别原样failure.json/log保留，235400纠正运行环境/绑定实际receipt后通过，不放松指标。
+
+记录docs/运行记录/模型实验/运行记录_未提示组件与物理距离评分门控_1027_235400.md；artifact /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/retrieval_metric_gate_1027_235400。整体goal active，main30完整多方法与剩余审稿挑战不缩减。
