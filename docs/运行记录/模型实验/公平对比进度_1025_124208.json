@@ -1,8 +1,8 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-27T17:06:08.474774+08:00",
-  "current_phase": "WSI_primary_supervised_CRC12_protocol_preparing_fullcell_run_continues",
+  "updated": "2026-10-27T17:25:08.298925+08:00",
+  "current_phase": "WSI_mainCRC30_data_audit_running_fullcell_preparation_running",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
   "prior_run": "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600",
@@ -407,7 +407,9 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_gpu_gate_1027_150000/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_gpu_independent_1027_150800/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_acceptance_1027_144500/summary.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_stream_gate_1027_152800/summary.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_stream_gate_1027_152800/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_gate_1027_171918/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_gate_acceptance_1027_171918/summary.json"
       ],
       "qualification": "First3050tile CPU valid-domain full probability/cache/output/overlap/threshold independent replay accepted, two3.186billionpixel budgets,maxerror1.49e-8. FullcellGPU actual2windows/6scales/true counts/fresh cache/timing accepted qualified. No full-slide cell preparation/globalGPU efficiency, actual zero-cell gate or TLS semantics/main30 final evaluation yet.",
       "input_record": "docs/运行记录/数据审计/运行记录_TLS整片读取与物理视野门控_1025_144200.md",
@@ -419,7 +421,10 @@
       "fullcell_stream_record": "docs/运行记录/模型实验/运行记录_含细胞整片GPU生产流程与完整计时_1027_152800.md",
       "fullcell_GPU_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_full_gpu_1027_152800",
       "primary_WSI_quality_protocol_status": "planned_not_executed",
-      "priority_record": "docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md"
+      "priority_record": "docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md",
+      "mainCRC30_data_record": "docs/运行记录/数据审计/运行记录_CRC主三十张原始GT全像素与物理域审计_1027_171918.md",
+      "mainCRC30_data_status": "representative_gate_accepted_full30_running_independent_acceptance_queued",
+      "mainCRC30_data_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_full_1027_171918"
     },
     "G9": {
       "status": "preparing",
@@ -449,15 +454,15 @@
       "session": "fewclick_fullcell_full_gpu_1027_152800",
       "status": "preparing_fullcell_cache",
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-27T17:06:08.474774+08:00",
+      "process_observed_at": "2026-10-27T17:25:08.298925+08:00",
       "last_observed_status": {
         "status": "preparing_fullcell_cache",
         "worker_pid": 1708231,
-        "completed": 540,
+        "completed": 666,
         "total": 3050,
-        "tile": 539,
-        "zero_cell_cases": 20,
-        "seconds": 5117.88682622835
+        "tile": 665,
+        "zero_cell_cases": 23,
+        "seconds": 6256.696648936719
       },
       "source_sha256": {
         "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/fullcell_gpu_stream.py": "247ca4934270eb46fb25e54872fd570fde027ad484fc5870bdce5625fde0e7e7",
@@ -470,6 +475,36 @@
         "benchmarks/v5/fair_comparison/local_data.py": "d7b9e6ae6ccebe9c6d992c7492edb841fc491224a03206efec6bfcc3c8eb3627",
         "benchmarks/v5/external_evaluation/evaluate_adapted.py": "4c5719c4e5fd66e8b7f2efc9c34442b9df79a890c50be1f6e08f7395337430e2"
       }
+    },
+    {
+      "kind": "mainCRC30_original_GT_allpixel_and_physical_domain_audit",
+      "worker_pid": 2166816,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_full_1027_171918",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_full_1027_171918.log",
+      "session": "fewclick_main30_audit_1027_171918",
+      "status": "running_full_GT_audit",
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-27T17:25:08.298925+08:00",
+      "contract_sha256": "610f58d49797007a4d4911806787597a79f26b18ea220528af7ba3d838be7577",
+      "input_sha256": {
+        "/nfs-medical3/zyh/v4/phase1/data/cohort200_20260716_010810/cohort_manifest.parquet": "0b08c17fb0cceb6ba3cfe8ddf2a7516c4390125666c32ed9aed5ec47179253de",
+        "/nfs-medical3/zyh/v4/phase1/data/tiled_gt_cohort200_20260716_011804/tiled_gt_manifest.parquet": "80bc0a8387b992bf69747f0ae8d064f8a26340d8b6cbca024d0eaf5b8f2ec1f7",
+        "/nfs-medical3/zyh/fewclick_v2/extensible_prompt/tissue_spatial_split_0922_001235/patches_index.parquet": "07b5b507ec8466b88b7fec0235c2969577902f24806cc7882b9a1f40794abcf4",
+        "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600/training_catalog_1025_040737/tiles.parquet": "2d757638c60a89e3565b1b544cfafce54cf19e186b54c376bd31e1d72ef56fce",
+        "benchmarks/v4/phase_1_multiscale/configs/phase1_10x_baseline.yaml": "86ae7d5c7ff04596e13bc5b286e3cc4e127c5aa5cb467a96b3180c156ec0b867",
+        "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/main_crc30_audit.py": "a178c671c3b01ff289404a48a612e8c07fe85b6ea7b97102c7ffd517416c87a3",
+        "benchmarks/v5/wsi_global/plan.py": "3cbffa5cf3ec05051321e00b51a440a9a171599b951a5e35884385a8d8a96628"
+      }
+    },
+    {
+      "kind": "mainCRC30_independent_data_acceptance",
+      "status": "queued_after_exact_full_audit_EXIT0",
+      "worker_pid": null,
+      "launcher_pid": 2166813,
+      "session": "fewclick_main30_audit_1027_171918",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_acceptance_1027_171918",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_acceptance_1027_171918.log",
+      "source_sha256": "e6173c413ec2189aa3be86038264cbf25c3305f04eb444e9c860cb104b1654b0"
     }
   ],
   "known_gaps": [
@@ -481,7 +516,7 @@
   ],
   "next_actions": [
     "P0 Keep GPU5 worker1708231 and accept full-cell3050tile/two-budget WSI cache/probability/zero-cell and full-system timings; no architecture or frozen-source edits.",
-    "P1 MainCRC30 full12-label cohort/GT/native-domain and training4x footprint audit; preserve spatial policy, class/slide/provenance and unknown domain.",
+    "P1 Monitor existing mainCRC30 worker2166816, then queued independent acceptance after its EXIT0; freeze captured source/manifest inputs. Only2-slide gate accepted so far, no main30 model-quality claim.",
     "P2 Freeze application-matched full-label WSI support/query protocol and adapted baselines; score remote unprompted components, distance strata, Dice/IoU and false positives, fat versus background; separate local/remote/closed12.",
     "P3 Whole-slide quality-versus-click-budget and offline/online/read/stitch/output timing under recorded hardware/cache conditions, then essential mechanism evidence.",
     "P4 Local/external/heldout supplement remains preserved; new heldout ontology/coverage declared before scores, no favorable class/sample selection. TLS semantic scoring awaits annotation completeness.",
@@ -2263,6 +2298,24 @@
       "status": "passed_fullcell_GPU_stream_gate",
       "process_alive_last_observed": false,
       "process_observed_at": "2026-10-27T15:48:20.244734+08:00"
+    },
+    {
+      "kind": "mainCRC30_full_originalGT_native_geometry_gate",
+      "worker_pid": 2150550,
+      "status": "passed_main30_source_gate",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_gate_1027_171918",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T17:25:08.298925+08:00",
+      "execution": "unified exec observed terminal EXIT0; sessions39692/8257"
+    },
+    {
+      "kind": "mainCRC30_independent_gate_acceptance",
+      "worker_pid": 2164377,
+      "status": "accepted_main30_gate",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_gate_acceptance_1027_171918",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T17:25:08.298925+08:00",
+      "execution": "unified exec observed terminal EXIT0; sessions39692/8257"
     }
   ],
   "user_priority_1027_165114": {

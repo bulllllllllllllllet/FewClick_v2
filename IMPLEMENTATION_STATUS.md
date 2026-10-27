@@ -2587,3 +2587,12 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_priority_goal_1027_170608（新旧goal及决策SHA快照）。
 - Docs record: docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md（建议）。
 - Commit: 同次提交，哈希见git历史。
+
+## 10-27 17:25:08
+
+- Purpose: 将WSI主线推进到原主30张GT全像素/真实物理域审计。
+- Changed: wsi_global/main_crc30_audit.py、accept_main_crc30.py及continuity记录。
+- Validation: 两真实原GT/缓存全672602140像素与历史计数、2285native格点通过；独立2178palette点/完整label与域直方图/全SHA通过，2150550与2164377 EXIT0；全30 worker2166816实际运行，非全量接受。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_full_1027_171918；main30_gate_1027_171918及main30_gate_acceptance_1027_171918。
+- Docs record: docs/运行记录/数据审计/运行记录_CRC主三十张原始GT全像素与物理域审计_1027_171918.md（运行记录）。
+- Commit: 同次提交，哈希见git历史。
