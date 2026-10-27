@@ -1,8 +1,8 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-27T15:48:20.244734+08:00",
-  "current_phase": "G8_fullcell_GPU_preparation_running",
+  "updated": "2026-10-27T16:54:04.218733+08:00",
+  "current_phase": "CRC12_primary_priority_with_fullcell_WSI_running",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
   "prior_run": "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600",
@@ -76,7 +76,8 @@
         "closed_reference (GPU3 after WSI-SAM-FT)"
       ],
       "final_report": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/first_local_complete_1025_155355/report_user_provenance_1025_155355.md",
-      "closure_record": "docs/运行记录/模型实验/运行记录_首轮本图适配完整验收与结果边界_1025_155551.md"
+      "closure_record": "docs/运行记录/模型实验/运行记录_首轮本图适配完整验收与结果边界_1025_155551.md",
+      "CRC_class_report": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/crc12_priority_1027_165114/summary.json"
     },
     "G4": {
       "status": "complete_qualified",
@@ -380,7 +381,8 @@
       "adipose_diagnostic_record": "docs/运行记录/模型实验/运行记录_脂肪留出异常逐像素与训练轨迹排查_1027_135100.md",
       "adipose_diagnostic_qualification": "Two selected models100same tasks each: full saved masks/GT/click/RGB/SHA/Dense algebra independently replayed; original counts200/200 exact. Full-label .611023 vs heldout .084588; base .404669 vs .112011, positive point background3/300 vs162/300. Actual2training-task probes excluded pixel valid and output loss gradients0. Ten-checkpoint20case diagnostic shows seen score increases and adipose worsens; no test-based selection, no proven isolated implementation bug or causal training factor.",
       "heldout_statistics_status": "passed_independent_heldout_statistics",
-      "heldout_statistics_record": "docs/运行记录/模型实验/运行记录_留出类同任务参考与依赖配对统计_1027_142900.md"
+      "heldout_statistics_record": "docs/运行记录/模型实验/运行记录_留出类同任务参考与依赖配对统计_1027_142900.md",
+      "latest_user_priority": "Full-label CRC12 first; heldout replacement deferred; original failures preserved"
     },
     "G8": {
       "status": "partial_fullcell_GPU_stream_gate_passed_full_preparation_running",
@@ -445,15 +447,15 @@
       "session": "fewclick_fullcell_full_gpu_1027_152800",
       "status": "preparing_fullcell_cache",
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-27T15:48:20.244734+08:00",
+      "process_observed_at": "2026-10-27T16:54:04.218733+08:00",
       "last_observed_status": {
         "status": "preparing_fullcell_cache",
         "worker_pid": 1708231,
-        "completed": 38,
+        "completed": 465,
         "total": 3050,
-        "tile": 37,
-        "zero_cell_cases": 1,
-        "seconds": 449.115090996027
+        "tile": 464,
+        "zero_cell_cases": 17,
+        "seconds": 4388.15924249962
       },
       "source_sha256": {
         "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/fullcell_gpu_stream.py": "247ca4934270eb46fb25e54872fd570fde027ad484fc5870bdce5625fde0e7e7",
@@ -476,9 +478,9 @@
     "Three-seed core local methods accepted; mechanism, GenericHE and heldout contrasts remain single-seed. Fixed hyperparameters are not per-method optima."
   ],
   "next_actions": [
-    "Monitor existing GPU5 worker1708231 (do not restart):3050 raw-WSI cell caches then two full GPU passes; independently accept full caches, true-cell geometry and stitched probabilities after EXIT0.",
-    "FullcellGPU two-window actual gate/fresh audit accepted; next actual zero-cell case and full-slide cell preparation/native GPU streaming, end-to-end output/IO timing. Perwindowresident8ms is not WSI latency.",
-    "Complete full-cell preparation and actual native GPU WSI/online-click/end-to-end efficiency; image-only CPU execution does not close full-system efficiency.",
+    "User priority: full-label CRC12 (11tissues+background), fat supervised. CRC-only three-seed class report accepted as arithmetic report; next main30 cohort/GT/native-domain audit and full-label interaction versus separate closed12 reference.",
+    "Keep existing GPU5 worker1708231 running; monitor full3050 cell prep/two passes then independent acceptance; do not edit frozen sources.",
+    "Defer replacement heldout selection: ontology/coverage/cross-dataset exclusions must be preregistered; do not select by observed Dice. Preserve all existing N/A/L results.",
     "Solidify mainCRC30 reproducible cohort/GT/physical-domain audit; exploratory ID/native-path intersections0, duplicates/rescans/public-prior and clinical patient mapping not certified.",
     "TLS annotation completeness and confirmed negatives remain unconfirmed; never score unknown as negative. Strict4x morphology exclusion layer pending if claimed.",
     "G6 same-network pretraining-objective control remains missing; GenericHE and label-heldout numerical statistics accepted qualified, current evidence does not establish broad FewClick or XCell superiority.",
@@ -2261,5 +2263,14 @@
       "process_alive_last_observed": false,
       "process_observed_at": "2026-10-27T15:48:20.244734+08:00"
     }
-  ]
+  ],
+  "user_priority_1027_165114": {
+    "status": "CRC_class_report_complete_main30_preparing",
+    "record": "docs/运行记录/模型实验/运行记录_CRC十二类优先与逐类覆盖复核_1027_165114.md",
+    "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/crc12_priority_1027_165114",
+    "labels": "11 tissues plus background",
+    "all_label_training": true,
+    "adipose_included": true,
+    "heldout": "deferred; replacement ontology not selected; preserve old results"
+  }
 }

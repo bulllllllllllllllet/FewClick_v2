@@ -2569,3 +2569,12 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_full_gpu_1027_152800；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_stream_gate_1027_152800。
 - Docs record: docs/运行记录/模型实验/运行记录_含细胞整片GPU生产流程与完整计时_1027_152800.md。
 - Commit: 本条与实现同次提交，哈希见git历史。
+
+## 10-27 16:55:00
+
+- Purpose: 按用户指示优先全标签CRC十二类，整理已验收三seed逐类结果并保留原留出失败。
+- Changed: evidence_closure/report_crc12.py、goal/registry/current record。
+- Validation: aligner CPU实际12份6040评分/40k训练SHA、Dice计数、同任务/五组/四预算完整性通过；worker2025779 EXIT0；11组织+背景口径核实。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/crc12_priority_1027_165114。
+- Docs record: docs/运行记录/模型实验/运行记录_CRC十二类优先与逐类覆盖复核_1027_165114.md（运行记录；CRC逐类统计complete，主30与闭集背景评价仍preparing）。
+- Commit: 同次提交，哈希见git历史。
