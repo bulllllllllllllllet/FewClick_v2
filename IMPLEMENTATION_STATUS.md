@@ -2809,3 +2809,18 @@ GPU门控协调530230/tmux fewclick_fullcell_CRC_gate_1028_025000已实际运行
 - Changed: fullcell_cache.py.
 - Validation: actual TLS12-view selected XCell CPU assembly/cache/decode gate EXIT0; CRC GPU gate preparing/queued, full production not launched.
 - Commit: this milestone commit.
+
+## 1028_031500 含细胞独立缓存检查与完整生产接受队列
+
+2026-10-28T02:53:14.216129+08:00：新增accept_fullcell_cache.py，不导入新producer/append_view。全部NPZ/实际instance grid、physicalMPP、整数bincount-centroid/log1p物理面积、真实total与保留min255、unknown核类别/meta及reg→74、encoded树/identity/weight/finite/schema完整核对；GPU gate将fresh8输入所有24native视野，独立重建model raw，选中fullcell encoder树max2e-6、region_cell_count和真total一致（含真实0），24个source-query预算native/cached概率max2e-6+binary精确、remote maps0/online hooks0。full只固定5native+首zero probes，不声称全部encoder重算、检测器重跑或reg64独立提取。
+
+真实CPU helper fixture561183/session97183 EXIT0、2.585s：原接受TLS4位置12views，全部meta/74/count/actualMPP与真实encoded树通过；fine35/2x93实际零验证，真实tensor1单位扰动可检、错误树拒绝。当前source b576e1bd447841802123aca9f1ac8dea6cb52d4a7a8fdafd938d127fbc3284ab。首030000 artifact script缺PYTHONPATH，import前EXIT1保留failure.json，无检测/模型计算；新030300明确repo PYTHONPATH后验证原helper路径。GPU新进程CRC run分支仍未执行，状态preparing。
+
+含细胞完整协调574146/tmux fewclick_fullcell_chain_1028_031000已实际等待owned530230的CRC8输入GPU gate明确EXIT0+stable receipt。然后在producer同一GPU（1/3/4之一且无其他worker）依次新进程gate_accept→full20456/61368views准备→全部NPZ/缓存+固定fresh native独立接受。原field/source/query/权重/40k消费/seed/单serial顺序/真实计数/74规则不变，GPU5链不动，0/2禁用。全量尚未开始，必须actual两gate通过；新status atomic replace、terminal receipts观察、child真实PID/log/EXIT_CODE持久化，无重试/resume/fallback。该链结束也只是cache接受，主30含细胞预测/评分adapter仍待。
+
+当前closed12cache3202252 15005/20208，原各GPU依赖链存活等待；完整cell概率/GT质量与完整28452域/BF1/统计/审稿缺口保留，整体goal active。记录docs/运行记录/特征缓存/运行记录_含细胞缓存独立几何与GPU编码验收_1028_030500.md。
+
+- Purpose: independently audit real nuclei/count/74/cache and gate fullcell CRC production.
+- Changed: accept_fullcell_cache.py.
+- Validation: actual accepted TLS12-view/meta/74/tree CPU helper fixture EXIT0; CRC GPU fresh run preparing/queued.
+- Commit: this milestone commit.
