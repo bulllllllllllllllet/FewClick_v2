@@ -1,8 +1,8 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-27T21:24:11.791517+08:00",
-  "current_phase": "mainCRC30_closed12_CPU_cache_running_fullcell_GPU_preparation_running",
+  "updated": "2026-10-27T22:13:55.808325+08:00",
+  "current_phase": "native12_raster_score_fixture_accepted_wait_full_closed_cache",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
   "prior_run": "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600",
@@ -420,7 +420,10 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/native_remote_acceptance_1027_175900/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_task_coverage_1027_175700/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_cache_gate_1027_212000/summary.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_cache_gate_acceptance_1027_212000/summary.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_cache_gate_acceptance_1027_212000/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/semantic_raster_gate_1027_220000/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_fixture_1027_220800/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_fixture_acceptance_1027_221100/summary.json"
       ],
       "qualification": "First3050tile CPU valid-domain full probability/cache/output/overlap/threshold independent replay accepted, two3.186billionpixel budgets,maxerror1.49e-8. FullcellGPU actual2windows/6scales/true counts/fresh cache/timing accepted qualified. No full-slide cell preparation/globalGPU efficiency, actual zero-cell gate or TLS semantics/main30 final evaluation yet.",
       "input_record": "docs/运行记录/数据审计/运行记录_TLS整片读取与物理视野门控_1025_144200.md",
@@ -443,7 +446,10 @@
       "task_coverage_report": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_task_coverage_1027_175700/summary.json",
       "closed12_main30_cache_record": "docs/运行记录/模型实验/运行记录_CRC主三十张闭集十二类完整缓存_1027_212000.md",
       "closed12_main30_cache_status": "four_native_tiles_independently_accepted_full20208_strict_remote_running",
-      "closed12_main30_cache_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_cache_1027_212000"
+      "closed12_main30_cache_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_cache_1027_212000",
+      "native12_raster_scoring_status": "actual8tile_and_fresh_full_probability_GT_fixture_accepted_full30_queued",
+      "native12_raster_record": "docs/运行记录/模型实验/运行记录_十二类WSI概率拼接与原GT评分门控_1027_220000.md",
+      "native12_raster_queue": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_queue_1027_221200"
     },
     "G9": {
       "status": "preparing",
@@ -473,15 +479,15 @@
       "session": "fewclick_fullcell_full_gpu_1027_152800",
       "status": "preparing_fullcell_cache",
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-27T21:24:11.791517+08:00",
+      "process_observed_at": "2026-10-27T22:13:55.808325+08:00",
       "last_observed_status": {
         "status": "preparing_fullcell_cache",
         "worker_pid": 1708231,
-        "completed": 2188,
+        "completed": 2537,
         "total": 3050,
-        "tile": 2187,
-        "zero_cell_cases": 35,
-        "seconds": 20602.85810901597
+        "tile": 2536,
+        "zero_cell_cases": 42,
+        "seconds": 23582.294968359172
       },
       "source_sha256": {
         "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/fullcell_gpu_stream.py": "247ca4934270eb46fb25e54872fd570fde027ad484fc5870bdce5625fde0e7e7",
@@ -502,17 +508,17 @@
       "last_observed_status": {
         "status": "encoding_closed12_full_WSI",
         "worker_pid": 3202252,
-        "completed": 207,
+        "completed": 2463,
         "total": 20208,
-        "wsi_id": "1002188-9-HE-DX1",
-        "tile": 296,
-        "seconds": 277.06180012226105
+        "wsi_id": "1022100-8-HE-DX1",
+        "tile": 744,
+        "seconds": 3261.5735767409205
       },
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_cache_1027_212000",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_cache_1027_212000.log",
       "session": "fewclick_closed12_cache_1027_212000",
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-27T21:24:11.791517+08:00",
+      "process_observed_at": "2026-10-27T22:13:55.808325+08:00",
       "contract_sha256": "6fe791b860926dddf2845ac0bffd240a442e082e231935e41a52664a9ec56697",
       "signature": {
         "source_sha256": {
@@ -547,6 +553,29 @@
         "benchmarks/v5/wsi_global/accept_closed12_cache.py": "541bb0ff18a98fffe7fa917784cbef63f8b5f4dbadc2fdafb87eb41d9d90db13"
       },
       "child_worker_pid": null
+    },
+    {
+      "kind": "mainCRC30_closed12_native_raster_and_scoring_queue",
+      "worker_pid": 3441781,
+      "status": "waiting_owned_full_cache_acceptance",
+      "last_observed_status": {
+        "status": "waiting_owned_full_cache_acceptance",
+        "worker_pid": 3441781,
+        "dependency_acceptance_launcher_pid": 3216698
+      },
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_queue_1027_221200",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_queue_1027_221200.log",
+      "session": "fewclick_closed12_raster_1027_221200",
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-27T22:13:55.808325+08:00",
+      "sources": {
+        "benchmarks/v5/wsi_global/semantic_stripe.py": "6dd89356f6f00995910bfd739d716bdecf15afb7c4519f206659601fca2ced61",
+        "benchmarks/v5/wsi_global/semantic_raster_gate.py": "ab20591de7b71aaa679e8c3c88429d4e0cc02dbf1bfde62a9a7589bd9a62f948",
+        "benchmarks/v5/wsi_global/closed12_raster.py": "17229ed836d9ce801e58ba00d5db9052dc9f156f53b9739badc8d6e3e1a334ba",
+        "benchmarks/v5/wsi_global/accept_closed12_raster.py": "fb9007687065a57e3b5ce5db9e66e7bfd240b0f1eeae951f2ebaaf53510b17c0"
+      },
+      "dependency_cache_acceptance_launcher_pid": 3216698,
+      "child_worker_pid": null
     }
   ],
   "known_gaps": [
@@ -559,7 +588,7 @@
   "next_actions": [
     "P0 Keep GPU5 worker1708231 and accept full-cell3050tile/two-budget WSI cache/probability/zero-cell and full-system timings; no architecture or frozen-source edits.",
     "P1 Full mainCRC30 data/extent-geometry and source/query protocol accepted; preserve276/330 available class-slide pairs and54 unavailable (fat26/30 supports), strict remote area52.556%-62.731% of slide rectangle.",
-    "P2 Monitor CPU closed12 cache3202252/20208 strict-remote inputs, queued independent acceptance; actual4tile/fresh12-channel gate passed. Then WSI quality raster/scoring and full28452 valid-domain extension (8244extra); not all-tissue or quality result yet. Fullcell main30 gate and other method caches remain.",
+    "P2 Keep CPUclosed3202252 full20208 encoding and acceptance3216700. Actual native12 probability/GT scorer8tile + fresh-process fixture accepted; raster coordinator3441781 waits cache acceptance then full30 output/GT scores and full replay. Other methods/full28452 extension/8244extra still pending; no whole30 accuracy claim.",
     "P3 Whole-slide quality-versus-click-budget and offline/online/read/stitch/output timing under recorded hardware/cache conditions, then essential mechanism evidence.",
     "P4 Local/external/heldout supplement remains preserved; new heldout ontology/coverage declared before scores, no favorable class/sample selection. TLS semantic scoring awaits annotation completeness.",
     "Review human challenges and bind claims to accepted WSI evidence; incomplete requests remain explicit. No precommitment to a ranking."
@@ -2487,6 +2516,36 @@
       "process_alive_last_observed": false,
       "process_observed_at": "2026-10-27T21:24:11.791517+08:00",
       "execution": "unified sessions95205/58896 observed terminal EXIT0"
+    },
+    {
+      "kind": "native12_full_probability_and_scalar_GT_core_gate",
+      "worker_pid": 3391262,
+      "status": "passed_native12_probability_stitch_and_GT_scoring_gate",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/semantic_raster_gate_1027_220000",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T22:13:55.808325+08:00",
+      "execution": "unified sessions34999/32808/5672 observed terminal EXIT0",
+      "summary_sha256": "99ff44a6436108aad5dd62916c3974998cd45aae6e734b102295b8f666bff8cc"
+    },
+    {
+      "kind": "native12_actual_production_driver_fixture",
+      "worker_pid": 3414461,
+      "status": "passed_closed12_raster_production_fixture",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_fixture_1027_220800",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T22:13:55.808325+08:00",
+      "execution": "unified sessions34999/32808/5672 observed terminal EXIT0",
+      "summary_sha256": "74a4938d18cdfce07cec56973b17e5ffd86e8858d033291fc672c20212b05a6c"
+    },
+    {
+      "kind": "native12_independent_fresh_process_raster_fixture_acceptance",
+      "worker_pid": 3429876,
+      "status": "accepted_closed12_raster_fixture",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_fixture_acceptance_1027_221100",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T22:13:55.808325+08:00",
+      "execution": "unified sessions34999/32808/5672 observed terminal EXIT0",
+      "summary_sha256": "364b82ae6acb90ca6c124e7e8f918fd3c8e4c900651dbc726df750357d1c8c21"
     }
   ],
   "user_priority_1027_165114": {

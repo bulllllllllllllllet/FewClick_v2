@@ -252,3 +252,9 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 2026-10-27T21:24:11.791517+08:00：新closed12_cache实际CPU4/FP32四tile门控3194657 EXIT0，原native cache全12通道logits误差0；独立gate接受全部磁盘tensor/identity/footprint/SHA及fresh真实原图模型重算，误差0。完整主30 strict-remote20208tile worker3202252/tmux fewclick_closed12_cache_1027_212000已运行207/20208，预计logits约254GB；每窗口read/normalize/encode/write/hash分项，不读queryGT，不选类/重训/改评分。闭集是全类CE特权参考，不与交互混比监督。独立接受协调3216700实际等待owned shell3202250明确EXIT0，然后全cache逐文件/值/坐标及固定5native probes，当前无接受child PID。所有签名源码冻结。原GPU5 cell1708231继续2188/3050。
 
 本次覆盖全部30张的固定strict远端域20208窗口，不能称28452窗口全部valid4x或全组织输出；完整valid4x域剩余8244窗口/概率栅格与质量仍待补齐。后续12类与交互共同276合法类×片分母、闭集额外30×12另表；原54源提示不可用保留。当前仅cache running，不是WSI精度结果。记录docs/运行记录/模型实验/运行记录_CRC主三十张闭集十二类完整缓存_1027_212000.md；全量cache接受、组件/距离/脂肪背景统计仍待，整体goal active。
+
+## 1027_221200 原native12概率拼接与原GT评分接受门控
+
+2026-10-27T22:13:55.808325+08:00：新增semantic_stripe/semantic_raster_gate/closed12_raster/accept_closed12_raster。预先固定first main30中央2x2及最后2x2，来自full closed12任务已newline提交并核对SHA的8视野，不将全量cache当已接受。真实core、同一生产driver fixture、fresh独立进程三门控均EXIT0：5497696 native像素、1374424原GT cells，max overlap4；全部12通道float64平均块SHA、类别/count/class0及10保存概率全像素一致，独立标量坐标/混淆矩阵及各类Dice/IoU/分母复核通过。先512 FP32 softmax→PIL native概率→均匀float64累积→argmax；已写出并哈希之后才读GT，评分在原GT完整cell域以native cellcenter nearest预测。保留GT255未知、NA/误报分母规则；非完整30精度结果。
+
+正式native categorical/count/两概率图与逐类评分协调3441781真实等待owned cache接受shell3216698，随后全30生成及独立全12概率/GT重放；当前没有raster child PID，源码锁定，等待不是完成。全部logits+每128行完整12通道概率SHA可完整重放，避免全部12native阵列重复存盘；LRU独立审计上限128tile，实际成本计入。现有cell1708231 2537/3050、CPUclosed3202252 2463/20208继续。记录docs/运行记录/模型实验/运行记录_十二类WSI概率拼接与原GT评分门控_1027_220000.md。完整28452域扩展、其他方法/细胞main30、组件/距离/BF1/统计/审稿证据仍待，goal active。

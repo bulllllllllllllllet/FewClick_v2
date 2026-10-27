@@ -2623,3 +2623,12 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_cache_1027_212000；closed12_cache_gate_1027_212000及closed12_cache_gate_acceptance_1027_212000。
 - Docs record: docs/运行记录/模型实验/运行记录_CRC主三十张闭集十二类完整缓存_1027_212000.md（运行记录）。
 - Commit: 同次提交，哈希见git历史。
+
+## 10-27 22:13:55
+
+- Purpose: 将真实12类WSI cache接到native概率拼接、原GT评分及全量独立接受队列。
+- Changed: semantic_stripe.py、semantic_raster_gate.py、closed12_raster.py、accept_closed12_raster.py及continuity。
+- Validation: 真实固定8tile三门控EXIT0，5497696native像素/1374424GT cells、所有12通道块SHA/argmax/count/prob与原GT混淆矩阵和指标独立一致；协调3441781实际等待完整cache接受，未称全30质量完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/semantic_raster_gate_1027_220000；closed12_raster_fixture_1027_220800；closed12_raster_fixture_acceptance_1027_221100；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_queue_1027_221200。
+- Docs record: docs/运行记录/模型实验/运行记录_十二类WSI概率拼接与原GT评分门控_1027_220000.md（运行记录）。
+- Commit: 同次提交，哈希见git历史。
