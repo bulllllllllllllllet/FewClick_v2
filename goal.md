@@ -338,3 +338,15 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 独立accept_sampled_projection4065208/unified57181 EXIT0，8.039s，不导入producer/writer，从保存512概率和native盒子按173行重建PIL/FP32均值并独立GT坐标复核全部64case和synthetic；所有GT概率、binary、count误差0。保存native及sampled全图与所有SHA/源256概率，严格是CPU固定窗口真实路径接受，不是main30精度、GPU路径或额外新encoder重算证明。
 
 主closed12cache3202252 8201/20208继续；fullcellGPU3574865与三methodcache3990149/独立4018919仍等GPU5foreign任务及其依赖。完整interactive main30 driver/GT score/组件距离/BF1/统计、完整cell main30及28452域扩展仍待。记录docs/运行记录/模型实验/运行记录_真实三方法远端概率原生与GT中心一致性_1028_003200.md，整体goal active。
+
+## 1028_005200 全预算无损预测保存与交互预测评分driver
+
+2026-10-28T00:35:53.930091+08:00：新增packed_prediction.py，继承已接受SampledStripe的native PIL/FP32 overlap arithmetic，只将最终mask逐行packbits保存（big端、行尾padding0且不计分）；每个原概率/overlap/bool/packed块保存SHA，不量化概率、不改变>=.5、不减少点击/目标/空间覆盖。packed_prediction_gate4099972/unified24917 EXIT0，6.677s：全部64真实三方法case、累计43981568GT cells和130cell各向异性fixture逐位恢复一致，所有概率/count块SHA与原已独立接受光栅完全一致；full预算多TB概率光栅改为可重放摘要及无损mask，所省IO不冒充完整native交互导出速度。
+
+新增interactive_prediction.py：固定支持query/已选权重→每预算只建一次NoCell支持task→读取WSI全部encoded缓存（逐片真实RAM余量检查）→graph_dense/region_prototype或SAM/WSISAM显式feature_proto→原native均值投影和无损mask→预测完成并哈希后才打开本任务GT评分。全部5520预算case/方法保留（NoCell两variant共11040），组件/距离/误报与sourcebudget由已接受fullGT域提供，GT255/background2规则不变；全域仅strict远端20208窗，不把它当28452完整有效域。全量driver源码已写，尚未跑完或接受。
+
+三个真实CPU完整driver各firstCRC两固定窗口、target0及fat10、group0、全部4budget通过：NoCell4116788 EXIT0 32rows/12.633s，SAM4116789 EXIT0 16rows/5.702s，WSISAM4116790 EXIT0 16rows/4.581s；所有256个512概率逐张量严格等于旧已接受native实际输出，完整packed预测+组件/距离评分已生成，实际online encoder hooks0。多个CPU进程并发，仅功能门控，不比较速度；新的64行GT scores尚未独立计数接受，不据这两窗口排名或声称全30质量。
+
+GPU driver gate协调4127135/tmux fewclick_prediction_gate_1028_005000真实等待owned4018919三method完整cache独立接受；再GPU5无其他worker时运行各方法真实同设备gate。此队列仅GPU gate，完整30交互预测尚未排队，必须先补齐独立score/输出接受并实际GPU验收。GPU新路径与full正式分支当前preparing，禁止用CPU gate冒充。全量细胞main30、BF1/统计及28452扩展仍待。
+
+观察到约00:24-00:27期间多个原PID进入rpc_wait_bit_killable/NFS等待，监测读也等待；没有重启或判作失败，随后3202252同PID恢复计算，现8674/20208。未精确测得停顿长度，后续共享节点cache walltime包含这类IO等待，不能称独占设备benchmark。记录docs/运行记录/模型实验/运行记录_全预算预测压缩与交互整片评分生产流程_1028_005200.md，整体goal active。
