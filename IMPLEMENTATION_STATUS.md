@@ -2899,3 +2899,17 @@ GPU门控协调530230/tmux fewclick_fullcell_CRC_gate_1028_025000已实际运行
 - Validation: real64 prediction-row fixture432 outcomes/648 contrasts independently accepted EXIT0;3-WSI imbalance/arithmetic bootstrap gate EXIT0. Formal7-arm branch not executed; queue awaiting accepted data.
 - Artifacts: WSI_statistics_fixture_1028_033700, WSI_statistics_accept_fixture_1028_034300, WSI_statistics_weight_gate_1028_034200, WSI_statistics_chain_1028_034500.
 - Commit: this milestone commit.
+
+## 1028_034800 全28452有效域输入清单及独立原图接受
+
+2026-10-28T03:47:54.521093+08:00：新增full_valid_inputs.py及accept_full_valid_inputs.py，不读GT像素、不改原编号/物理三视野或任一既有队列。完整28452网格/85356view精确分解remote20208、原支持复用候选248、未准备7996；闭集无support cache需补8244，不能套用交互7996数字。复用只是几何candidate，各方法实际encode/identity/原概率接受尚未执行。4x空间分区4292 sourceband、3952跨source/gap、20208 strictremote；完整有效域含支持区域，须与严格远距主表区分，仍排除缺真实4x的外边缘，不称全组织覆盖。
+
+实际native gate825819/session30907 EXIT0、6.307s，8原图输入24view覆盖旧source/query与新追加/奇数宽，HE与旧接受输入精确一致。完整manifest830415/session87175 EXIT0、1.655s。独立831616/session77378 EXIT0、5.420s：全部28452三视野/编号/帧/MPP/原20456身份/9odd slides半像素规则、Cartesian无孔矩形/GT-cell几何边界/来源split/全部domain计数核对；24fresh native crop/PIL与原RGB/HE/保存PNG逐像素一致。新增非remote fine footprint与旧remote fine域零交叠得到全几何验证，尚非模型概率复算。全部原cache/data保留；不推断检测调用历史不变性。
+
+证据full_valid_inputs_gate_1028_034700、full_valid_inputs_full_1028_034700、full_valid_inputs_acceptance_1028_034700，原input/cache reuse与新增细胞/encoder生产/完整输出/评分仍pending。producer SHA 3c391b47ddec69bd6ea3dd132db08683b9446c6d30de162447d3a2b4466f1b38，auditor SHA 8fd6742f30eba0a7daabef3a23043d13819a6475c76277e0946ede486738ef38。当前closed12cache3202252 17563/20208；原GPU待机/预测/BF1/统计协调均存活，整体goal active，不把manifest称实际模型质量或细胞准备完成。记录docs/运行记录/特征缓存/运行记录_主三十张完整有效域输入扩展与缓存复用审计_1028_034500.md。
+
+- Purpose: establish all28452 valid fields and exact extra-versus-reuse input identities without changing remote evaluation.
+- Changed: full_valid_inputs.py, accept_full_valid_inputs.py.
+- Validation: native8x3 bridge, full28452 manifest and independent geometry/fresh RGB audit all EXIT0; models/cells not executed.
+- Artifacts: full_valid_inputs_{gate,full,acceptance}_1028_034700.
+- Commit: this milestone commit.
