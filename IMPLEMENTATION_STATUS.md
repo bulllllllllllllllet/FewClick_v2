@@ -2728,3 +2728,20 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 - Changed: benchmarks/v5/wsi_global/accept_interactive_cache.py.
 - Validation: independent NoCell/SAM/WSISAM CPU7-cache and7-native-probe gates all EXIT0.
 - Commit: this milestone commit.
+
+## 1028_003200 全30组件已接受与真实三方法原生预测投影一致性
+
+2026-10-28T00:22:53.155755+08:00：原fullGT独立GRANA3989304 EXIT0、协调3751598 EXIT0，完整30张8289235600原GT pixels的同类8连通、所有面积/质心/源点组件/censored域已接受：1663667组件（含background组织组件）、5520任务域，独立764.817s。其为评分域准备，不是模型检出率；背景负类保留，无大小过滤，不把组件当细胞/患者。所有输入与producer/auditor SHA及全量接受receipt保留。
+
+新增sampled_stripe.py，只用native/GT尺寸和固定网格，不读GT标签。保留原PIL512→native概率、row-major float32累积/除overlap、>=.5；仅存原GT完整cell centre floor所对应native像素，buffer一tile高、完成行flush/madvise，保留概率/mask/count/块SHA。不能先threshold512再拼或对GT label插值；也不能用sampling阶段的成本冒称完整native输出IO成本。
+
+实际sampled_native_gate4049603/tmux fewclick_sampled_native_1028_002700 EXIT0，163.720s。first main30预定central2x2与last2x2原图、同选中三方法、target0及fat10 group0、全部四budget；NoCell graph_dense/regionproto及SAM/WSISAM显式feature_proto共64cases/256真实512概率，全部实际online encoder hooks0，remote query prompt maps0。64case累计175926272native像素、43981568GT中心，与原StripeWriter完整native概率/mask/count严格一致；两窗口独特区域是5497696native pixels/1374424GT cells，累计量不是额外样本数或全30覆盖。另非整数/各向异性37x29→19x14 synthetic130GTcells、irregular末行/列重叠max4、近.5值均一致。
+
+独立accept_sampled_projection4065208/unified57181 EXIT0，8.039s，不导入producer/writer，从保存512概率和native盒子按173行重建PIL/FP32均值并独立GT坐标复核全部64case和synthetic；所有GT概率、binary、count误差0。保存native及sampled全图与所有SHA/源256概率，严格是CPU固定窗口真实路径接受，不是main30精度、GPU路径或额外新encoder重算证明。
+
+主closed12cache3202252 8201/20208继续；fullcellGPU3574865与三methodcache3990149/独立4018919仍等GPU5foreign任务及其依赖。完整interactive main30 driver/GT score/组件距离/BF1/统计、完整cell main30及28452域扩展仍待。记录docs/运行记录/模型实验/运行记录_真实三方法远端概率原生与GT中心一致性_1028_003200.md，整体goal active。
+
+- Purpose: exact native prediction projection for complete GT scoring without changing interpolation/overlap/threshold.
+- Changed: sampled_stripe.py, sampled_native_gate.py, accept_sampled_projection.py.
+- Validation: actual3method64case gate and fresh173row independent replay EXIT0; full30 GRANA acceptance EXIT0.
+- Commit: this milestone commit.

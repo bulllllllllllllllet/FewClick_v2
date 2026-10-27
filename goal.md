@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-27T17:06:08.474774+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
+Updated: 2026-10-28T00:23:18.160660+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-27T17:06:08.474774+08:00. Native thread goal: **active**. Lates
 
 ## Resume here
 
-0. **Latest user instruction: WSI application first. Full-label CRC12/fat supervised; prioritize main30 audit, whole-slide remote quality and offline/online costs. Local/heldout supplementary; preserve all results and fair baselines. See docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md. Fullcell producer1708231 EXIT0; inspect live input audit3520088, GPU output acceptance3574865 (waiting foreign GPU5 worker), components3751598/3882209 and closed12 cache3202252. Full mechanical acceptance and main30 quality remain pending.**
+0. **Latest user instruction: WSI application first. Full-label CRC12/fat supervised; prioritize main30 audit, whole-slide remote quality and offline/online costs. Local/heldout supplementary; preserve all results and fair baselines. See docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md. Fullcell producer1708231 and all9150 input audit accepted; GPU output3574865 waits foreign GPU5. Full30 GT components/5520 domains independently accepted. Closed12cache3202252 running; native raster3441781 and retrieval3915847/3934320 queued. Three interactive caches3990149 and independent4018919 queued; actual CPU64case native/GT-centre projection accepted. Full mechanical output acceptance and main30 model quality remain pending.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -326,3 +326,15 @@ GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份3
 新独立协调4018919/tmux fewclick_interactive_accept_1028_002000实际等待owned3990149三方法GPU缓存完整EXIT0；再每method依次执行真实GPU7-cache independent gate，然后full20456文件字节/输入/有限值与首末support+首/中/末query五fresh原生选权probes；同device/torch/CUDA/TF32，全部逐张量严格一致，先gate后full。等GPU5无其他worker，不干预其他任务；源码锁定，无重试/resume/fallback。正式接受仍待，不能据当前21缓存gate推出全61368缓存或WSI质量。
 
 当前closed12cache3202252 7759/20208，fullGT组件GRANA3989304接受16/30仍在运行；fullcellGPU输出3574865仍等foreignGPU5，first完整含细胞执行与9150输入已接受但output链未闭合。原全量5520评分/独立评分与3methodproducer队列继续。记录docs/运行记录/特征缓存/运行记录_三方法缓存独立输入与选中模型复核_1028_002200.md。后续交互online decoder/完整native评分、细胞main30与28452扩展/BF1/统计/审稿缺口保持，整体goal active。
+
+## 1028_003200 全30组件已接受与真实三方法原生预测投影一致性
+
+2026-10-28T00:22:53.155755+08:00：原fullGT独立GRANA3989304 EXIT0、协调3751598 EXIT0，完整30张8289235600原GT pixels的同类8连通、所有面积/质心/源点组件/censored域已接受：1663667组件（含background组织组件）、5520任务域，独立764.817s。其为评分域准备，不是模型检出率；背景负类保留，无大小过滤，不把组件当细胞/患者。所有输入与producer/auditor SHA及全量接受receipt保留。
+
+新增sampled_stripe.py，只用native/GT尺寸和固定网格，不读GT标签。保留原PIL512→native概率、row-major float32累积/除overlap、>=.5；仅存原GT完整cell centre floor所对应native像素，buffer一tile高、完成行flush/madvise，保留概率/mask/count/块SHA。不能先threshold512再拼或对GT label插值；也不能用sampling阶段的成本冒称完整native输出IO成本。
+
+实际sampled_native_gate4049603/tmux fewclick_sampled_native_1028_002700 EXIT0，163.720s。first main30预定central2x2与last2x2原图、同选中三方法、target0及fat10 group0、全部四budget；NoCell graph_dense/regionproto及SAM/WSISAM显式feature_proto共64cases/256真实512概率，全部实际online encoder hooks0，remote query prompt maps0。64case累计175926272native像素、43981568GT中心，与原StripeWriter完整native概率/mask/count严格一致；两窗口独特区域是5497696native pixels/1374424GT cells，累计量不是额外样本数或全30覆盖。另非整数/各向异性37x29→19x14 synthetic130GTcells、irregular末行/列重叠max4、近.5值均一致。
+
+独立accept_sampled_projection4065208/unified57181 EXIT0，8.039s，不导入producer/writer，从保存512概率和native盒子按173行重建PIL/FP32均值并独立GT坐标复核全部64case和synthetic；所有GT概率、binary、count误差0。保存native及sampled全图与所有SHA/源256概率，严格是CPU固定窗口真实路径接受，不是main30精度、GPU路径或额外新encoder重算证明。
+
+主closed12cache3202252 8201/20208继续；fullcellGPU3574865与三methodcache3990149/独立4018919仍等GPU5foreign任务及其依赖。完整interactive main30 driver/GT score/组件距离/BF1/统计、完整cell main30及28452域扩展仍待。记录docs/运行记录/模型实验/运行记录_真实三方法远端概率原生与GT中心一致性_1028_003200.md，整体goal active。
