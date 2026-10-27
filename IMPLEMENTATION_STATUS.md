@@ -2522,3 +2522,12 @@
 - Commit: 本条与验收代码同次提交，哈希见git历史。
 
 GenericHE verifier1165842已结束EXIT0，两个预设投影共12080行、20份302行开发选模及实际40k消费/选中权重/GT/源码绑定通过；主3+2 PCA64 Dice.562162、白化64 Dice.568247。单seed，两者均报告；完整raw/PCA/projection独立复核、配对统计仍待，G6不关闭。
+
+## 10-27 14:02:19
+
+- Purpose: 按用户质疑排查脂肪留出低分，独立重放实际预测与监督梯度。
+- Changed: diagnose_adipose.py、audit_adipose_diagnostic.py、audit_adipose_supervision.py、新运行记录及goal/registry/current record。
+- Validation: GPU5单case两模型门控1189447正常exit0；完整1196763 EXIT0、200原计数完全一致、200保存概率原GT/点击/RGB/Dense代数独立CPU复核exit0；实际CRC/TIGER任务probe1227032 exit0，排除像素输出梯度0。具体训练因素未隔离，模型/正式结果不改。
+- Artifacts: heldout_1026_003000/adipose_diagnostic_gate_1027_135100、adipose_diagnostic_1027_135100、adipose_diagnostic_acceptance_1027_135800、supervision_probe_1027_140100。
+- Docs record: docs/运行记录/模型实验/运行记录_脂肪留出异常逐像素与训练轨迹排查_1027_135100.md。
+- Commit: 本条与诊断实现同次提交，哈希见git历史。

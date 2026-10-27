@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-26T18:32:25.074145+08:00",
+  "updated": "2026-10-27T14:02:19.778340+08:00",
   "current_phase": "G6",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -337,7 +337,10 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/native_first_live_1026_024600.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/native_second_live_1026_031500.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/local_acceptance_1026_130200/summary.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_acceptance_1026_131000/summary.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/remote_acceptance_1026_131000/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/adipose_diagnostic_1027_135100/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/adipose_diagnostic_acceptance_1027_135800/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/supervision_probe_1027_140100/summary.json"
       ],
       "qualification": "IGNITE10中心三尺度真实cells及六方法680行/实际GT/开发权重/32门控保存mask回放验收通过，10 ROI配对2000次bootstrap完成；严格概念留出/TLS仍未完成。",
       "record_public": "docs/运行记录/模型实验/运行记录_外部域公共权重真实门控与评分_1025_143741.md",
@@ -358,7 +361,10 @@
       "all_label_reference_status": "accepted_qualified_21tables_24160rows",
       "all_label_reference_record": "docs/运行记录/模型实验/运行记录_全标签同任务参考提取与WSI迁移补齐_1026_023000.md",
       "all_label_reference_qualification": "原G3/G4 18表19320行同点逐字节提取、全部预算独立宏统计通过；WSI两视野custom feature-proto三fold4840行全任务/GT/分母/统计/权重及60保存gate mask独立验收。全标签训练+原开发选模接触target，不能把未来差值仅归因监督删除，不是新留出精度。",
-      "heldout_acceptance_record": "docs/运行记录/模型实验/运行记录_留出概念九条件训练与本图独立验收_1026_130200.md"
+      "heldout_acceptance_record": "docs/运行记录/模型实验/运行记录_留出概念九条件训练与本图独立验收_1026_130200.md",
+      "adipose_diagnostic_status": "complete_fixed_task_replay_and_actual_supervision_probes_qualified",
+      "adipose_diagnostic_record": "docs/运行记录/模型实验/运行记录_脂肪留出异常逐像素与训练轨迹排查_1027_135100.md",
+      "adipose_diagnostic_qualification": "Two selected models100same tasks each: full saved masks/GT/click/RGB/SHA/Dense algebra independently replayed; original counts200/200 exact. Full-label .611023 vs heldout .084588; base .404669 vs .112011, positive point background3/300 vs162/300. Actual2training-task probes excluded pixel valid and output loss gradients0. Ten-checkpoint20case diagnostic shows seen score increases and adipose worsens; no test-based selection, no proven isolated implementation bug or causal training factor."
     },
     "G8": {
       "status": "partial_first_full_CPU_execution_complete_acceptance_pending",
@@ -413,6 +419,7 @@
     "Fixed adaptation hyperparameters; not per-method optimum; independent training seeds remain pending."
   ],
   "next_actions": [
+    "Adipose diagnostic completed qualified: no specified mapping/count/loading fault found; actual prediction suppression and positive-click failure verified. Keep original scores, no heldout-based retuning; training-factor causality unresolved. Resume generic preparation audit and paired statistics.",
     "Finish GenericHE two-projection training/count acceptance and independent raw/PCA/projection audit; paired statistics; retain both variants.",
     "Heldout9conditions local4800/R19360 plus240gate saved masks accepted qualified; compute paired/dependency statistics and descriptive same-task all-label comparisons, not causal deletion.",
     "Independently audit full3050tile CPU WSI cache/stitch/coverage/output; complete full-cell and actual GPU efficiency. No TLS semantic accuracy from fixedCRC support.",
@@ -2050,6 +2057,24 @@
       "status": "accepted",
       "process_alive_last_observed": false,
       "process_observed_at": "2026-10-26T18:32:25.074145+08:00"
+    },
+    {
+      "kind": "adipose_fixed_task_forensic_replay",
+      "worker_pid": 1196763,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/adipose_diagnostic_1027_135100",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/adipose_diagnostic_1027_135100.log",
+      "status": "complete_diagnostic_qualified",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T14:02:19.778340+08:00",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/adipose_diagnostic_acceptance_1027_135800/summary.json"
+    },
+    {
+      "kind": "adipose_actual_supervision_probe",
+      "worker_pid": 1227032,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/supervision_probe_1027_140100",
+      "status": "passed_actual_two_domain_selected_model_loss_probes",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-27T14:02:19.778340+08:00"
     }
   ]
 }
