@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-28T23:14:45.819107+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
+Updated: 2026-10-28T23:23:18.054375+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-28T23:14:45.819107+08:00. Native thread goal: **active**. Lates
 
 ## Resume here
 
-0. **WSI primary, supervisedCRC12/fat included. Closed30 strict-remote native/Dice/BF1 accepted (WSI-equal all330 .713118/.427712, matched276 .719511/.423597); R all5520 execution done, independent723130 running 21/30. Three image caches all20456 generated; NoCell/SAM independently accepted;4018919 waits GPU5 idle for WSISAM, then original GPU prediction/full score chain. CRC actual GPU1 cell gate8/24views independently accepted; full preparation382752 running 2318/20456 under574146. Closed extra8244 and full28452 index accepted; full-valid native1523624 running 13/30 under3749768. Other main/full-valid/BF1/statistics queues remain active. FirstTLS fullcell mechanical accepted, semantic quality unconfirmed. Retired3990149/530230/3681174 and earlier completed workers must not restart. Inspect registry/live PIDs; no complete interactive comparison/CI yet.**
+0. **WSI primary, supervisedCRC12/fat included. Closed30 strict-remote native/Dice/BF1 accepted (WSI-equal all330 .713118/.427712, matched276 .719511/.423597); R all5520 execution done, independent723130 running 22/30. Three image caches all20456 generated; NoCell/SAM independently accepted;4018919 waits GPU5 idle for WSISAM, then original GPU prediction/full score chain. CRC actual GPU1 cell gate8/24views independently accepted; full preparation382752 running 2356/20456 under574146. Closed extra8244 and full28452 index accepted; full-valid native1523624 running 13/30 under3749768. Other main/full-valid/BF1/statistics queues remain active. FirstTLS fullcell mechanical accepted, semantic quality unconfirmed. Retired3990149/530230/3681174 and earlier completed workers must not restart. Inspect registry/live PIDs; no complete interactive comparison/CI yet.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -569,3 +569,10 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 2026-10-28T23:14:45.819107+08:00：原provider README只称10X组织分割结果；原补充称像素级标注但所查两TeX无生成/专家审核流程。已询问用户，来源待确认，不能推断伪标签；确认前结果表述为与提供参考分割的一致性，不改变主分割目标/原始结果。只读审计worker2625081 EXIT0，30路径/stat/manifest及readme/TeX哈希已存，非全PNG重新hash/专家真值验收。
 
 12协调live，去重sources字段88源码绑定一致；Cell2318/20456、R独立21/30、full-valid native13/30，GPU5仍占用，等待合同不改。工件/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/reference_label_provenance_1028_231445；记录docs/运行记录/数据审计/运行记录_主30参考组织分割图来源待确认与运行核对_1028_231445.md。整体goal active，主交互比较与统计仍pending。
+
+
+## 1028_232245 审稿11项内部回复草稿与范围核对
+
+2026-10-28T23:23:18.054375+08:00：新增draft_reviewer_responses.py，实际aligner2668488 EXIT0，原始HTML/note/证据板/已接受数值/closed native+BF1凭据hash绑定；11人类challenge完整回复草稿、14AI附表、每项拟修改位置/AUTHOR_INPUT_NEEDED、registry独立快照。独立覆盖核对2670144 EXIT0，原论文所有文件SHA未变。工件/nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_response_draft_1028_232245；核对/nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_response_draft_audit_1028_232242；记录docs/运行记录/模型实验/运行记录_审稿逐条内部回复草稿与证据绑定_1028_231910.md。
+
+这是内部草稿，不是已编辑/已提交/审稿解决。准确披露旧新协议差异、局部SAM较高、细胞因果未建立、完整pipeline非纯离线、IGNITE10为ROI中心非机构与CPU/GPU精度差异。主30参考审核来源仍待用户确认；完整交互与统计仍pending。12协调live，Cell2356/20456、R独立22/30、full-valid native13/30，goal active。

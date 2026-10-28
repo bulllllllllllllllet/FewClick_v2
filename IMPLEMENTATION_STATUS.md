@@ -3061,3 +3061,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/reference_label_provenance_1028_231445
 - Docs record: docs/运行记录/数据审计/运行记录_主30参考组织分割图来源待确认与运行核对_1028_231445.md
 - Commit: 本条随来源限定记录提交，哈希以git log为准。
+
+
+## 10-28 23:22:45
+
+- Purpose: 将已接受证据转成11项人类审稿内部回复，并保留14项AI自查。
+- Changed: draft_reviewer_responses.py及goal/registry/current record/运行记录。
+- Validation: aligner实际2668488 EXIT0；独立核对2670144 EXIT0，8覆盖/范围检查及原稿SHA通过；原失败/先前版本保留。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_response_draft_1028_232245；/nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_response_draft_audit_1028_232242
+- Docs record: docs/运行记录/模型实验/运行记录_审稿逐条内部回复草稿与证据绑定_1028_231910.md
+- Commit: 随内部草稿构建器提交，哈希以git log为准。
