@@ -3071,3 +3071,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_response_draft_1028_232245；/nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_response_draft_audit_1028_232242
 - Docs record: docs/运行记录/模型实验/运行记录_审稿逐条内部回复草稿与证据绑定_1028_231910.md
 - Commit: 随内部草稿构建器提交，哈希以git log为准。
+
+
+## 10-28 23:26:02
+
+- Purpose: 核验HVPZ-2/AI-2近期候选真实出处、代码及本地环境状态。
+- Changed: goal/registry/current record/近期对手核对记录；未改模型或冻结运行源码。
+- Validation: 实际只读2688777 EXIT0、7HTTP快照SHA与完整tree核对通过；SAM3要求冲突保留，非模型执行验证。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/recent_baseline_primary_audit_1028_232602
+- Docs record: docs/运行记录/模型实验/运行记录_近期对手一手来源与运行兼容性核对_1028_232500.md
+- Commit: 随近期一手来源核对提交，以git log哈希为准。

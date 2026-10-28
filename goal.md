@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-28T23:23:18.054375+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
+Updated: 2026-10-28T23:27:06.975912+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-28T23:23:18.054375+08:00. Native thread goal: **active**. Lates
 
 ## Resume here
 
-0. **WSI primary, supervisedCRC12/fat included. Closed30 strict-remote native/Dice/BF1 accepted (WSI-equal all330 .713118/.427712, matched276 .719511/.423597); R all5520 execution done, independent723130 running 22/30. Three image caches all20456 generated; NoCell/SAM independently accepted;4018919 waits GPU5 idle for WSISAM, then original GPU prediction/full score chain. CRC actual GPU1 cell gate8/24views independently accepted; full preparation382752 running 2356/20456 under574146. Closed extra8244 and full28452 index accepted; full-valid native1523624 running 13/30 under3749768. Other main/full-valid/BF1/statistics queues remain active. FirstTLS fullcell mechanical accepted, semantic quality unconfirmed. Retired3990149/530230/3681174 and earlier completed workers must not restart. Inspect registry/live PIDs; no complete interactive comparison/CI yet.**
+0. **WSI primary, supervisedCRC12/fat included. Closed30 strict-remote native/Dice/BF1 accepted (WSI-equal all330 .713118/.427712, matched276 .719511/.423597); R all5520 execution done, independent723130 running 22/30. Three image caches all20456 generated; NoCell/SAM independently accepted;4018919 waits GPU5 idle for WSISAM, then original GPU prediction/full score chain. CRC actual GPU1 cell gate8/24views independently accepted; full preparation382752 running 2377/20456 under574146. Closed extra8244 and full28452 index accepted; full-valid native1523624 running 13/30 under3749768. Other main/full-valid/BF1/statistics queues remain active. FirstTLS fullcell mechanical accepted, semantic quality unconfirmed. Retired3990149/530230/3681174 and earlier completed workers must not restart. Inspect registry/live PIDs; no complete interactive comparison/CI yet.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -576,3 +576,10 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 2026-10-28T23:23:18.054375+08:00：新增draft_reviewer_responses.py，实际aligner2668488 EXIT0，原始HTML/note/证据板/已接受数值/closed native+BF1凭据hash绑定；11人类challenge完整回复草稿、14AI附表、每项拟修改位置/AUTHOR_INPUT_NEEDED、registry独立快照。独立覆盖核对2670144 EXIT0，原论文所有文件SHA未变。工件/nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_response_draft_1028_232245；核对/nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_response_draft_audit_1028_232242；记录docs/运行记录/模型实验/运行记录_审稿逐条内部回复草稿与证据绑定_1028_231910.md。
 
 这是内部草稿，不是已编辑/已提交/审稿解决。准确披露旧新协议差异、局部SAM较高、细胞因果未建立、完整pipeline非纯离线、IGNITE10为ROI中心非机构与CPU/GPU精度差异。主30参考审核来源仍待用户确认；完整交互与统计仍pending。12协调live，Cell2356/20456、R独立22/30、full-valid native13/30，goal active。
+
+
+## 1028_232602 近期候选一手来源与环境核对
+
+2026-10-28T23:27:06.975912+08:00：SlideCRF2026-08-31及SAM3 2025-11-20两候选实际arXiv/作者仓库核验，worker2688777 EXIT0，7原始HTTP响应/HEAD/tree/README/pyproject SHA保存；独立核对2694317 EXIT0。SlideCRF固定main无Python；SAM3 README>=3.12与元数据>=3.8冲突，本地aligner3.10未装sam3，不推断已能运行或根本不可运行。
+
+工件/nfs-medical3/zyh/fewclick_v2/fair_comparison/recent_baseline_primary_audit_1028_232602/report_zh.md、summary、verification；记录docs/运行记录/模型实验/运行记录_近期对手一手来源与运行兼容性核对_1028_232500.md。只读来源核验不是模型gate/近期基线实验，不声称最近365天穷尽覆盖；多类patch或文本/框额外信息需新合同分表。主12协调live，Cell2377/20456、R22/30、full-valid native13/30，整体goal active。

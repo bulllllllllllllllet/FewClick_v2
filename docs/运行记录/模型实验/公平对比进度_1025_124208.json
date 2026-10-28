@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-28T23:23:18.054375+08:00",
+  "updated": "2026-10-28T23:27:06.975912+08:00",
   "current_phase": "NoCell20456_cache_execution_complete_SAM_GPU_running_closed_native_GT_auditing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -4664,5 +4664,13 @@
     "AI_self_checks": 14,
     "paper_modified": false,
     "submitted": false
+  },
+  "recent_baseline_primary_audit": {
+    "status": "primary_source_and_environment_audit_not_baseline_experiment",
+    "verification_status": "passed_primary_snapshot_tree_and_environment_consistency_audit_not_model_gate",
+    "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/recent_baseline_primary_audit_1028_232602",
+    "record": "docs/运行记录/模型实验/运行记录_近期对手一手来源与运行兼容性核对_1028_232500.md",
+    "method_experiments_complete": false,
+    "scope": "two actual primary-source candidates, not exhaustive coverage"
   }
 }
