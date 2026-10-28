@@ -3111,3 +3111,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_extension_gate_1028_234600；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_extension_gate_acceptance_1028_234900；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_extension_milestone_1028_235008
 - Docs record: docs/运行记录/特征缓存/运行记录_完整域XCell新增位置真实细胞门控与扩展准备_1028_234249.md
 - Commit: 随新增真实细胞扩展门控提交，以git log为准。
+
+
+## 10-28 23:56:25
+
+- Purpose: 保留真实cell payload建立完整域索引，并将7996扩展后置于主30分割接受。
+- Changed: merge_fullcell_valid.py/fullcell_valid_chain.py及goal/registry/current record/特征记录。
+- Validation: 实际16索引2836199 EXIT0；独立2842760 EXIT0验证16 encoded/48 NPZ/原身份/顺序；依赖fixture2848418 EXIT0；正式2851935 ps live等待，不等于全量完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_index_fixture_1028_235400；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_index_fixture_acceptance_1028_235411；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_chain_1028_235700；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_index_and_chain_milestone_1028_235625
+- Docs record: docs/运行记录/特征缓存/运行记录_完整域XCell缓存索引与后置扩展队列_1028_235200.md
+- Commit: 随真实cell索引及后置队列提交，以git log为准。

@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-28T23:50:08.002418+08:00",
+  "updated": "2026-10-28T23:56:25.095408+08:00",
   "current_phase": "NoCell20456_cache_execution_complete_SAM_GPU_running_closed_native_GT_auditing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -798,7 +798,7 @@
         "item": "402638-9-HE-DX1-S02",
         "items_complete": 24,
         "total_items": 30,
-        "GT_rows_complete": 4844,
+        "GT_rows_complete": 12456,
         "GT_rows_total": 17926
       }
     },
@@ -858,11 +858,11 @@
       "child_progress": {
         "status": "preparing_CRC30_actual_cells",
         "worker_pid": 382752,
-        "completed_inputs": 2481,
+        "completed_inputs": 2500,
         "total_inputs": 20456,
-        "key": "1022100-8-HE-DX1:query:738",
-        "scale": 0,
-        "true_cells": 6
+        "key": "1022100-8-HE-DX1:query:765",
+        "scale": 1,
+        "true_cells": 557
       }
     },
     {
@@ -1011,9 +1011,9 @@
         "completed_items": 15,
         "total_items": 30,
         "wsi_id": "1447446-5-HE-DX1",
-        "tile": 661,
+        "tile": 1001,
         "tiles": 1008,
-        "seconds": 13423.997930444777
+        "seconds": 13795.406770709902
       }
     },
     {
@@ -1148,6 +1148,43 @@
       },
       "process_alive_last_observed": true,
       "process_observed_at": "2026-10-28T23:14:45.819107+08:00"
+    },
+    {
+      "kind": "full_valid_fullcell_new7996_after_primary_acceptance_and_merged28452_index_queue",
+      "worker_pid": 2851935,
+      "status": "waiting_owned_primary_fullcell_prediction_scores_and_BF1",
+      "last_observed_status": {
+        "status": "waiting_owned_primary_fullcell_prediction_scores_and_BF1",
+        "worker_pid": 2851935,
+        "dependency_worker_pid": 758578
+      },
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-28T23:56:25.095408+08:00",
+      "dependency_worker_pid": 758578,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_chain_1028_235700",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_chain_1028_235700.log",
+      "session": "fewclick_fullcell_valid_1028_235700",
+      "sources": {
+        "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/fullcell_valid_chain.py": "97e1f5bbba83e35cd130161abb2459fe3f557f247735aead13b6c56b76128038",
+        "benchmarks/v5/wsi_global/merge_fullcell_valid.py": "daeee1b14227c081020f4ab3eb1fbfc52ead3653bd53c7acaef10e92e08d27a7",
+        "benchmarks/v5/wsi_global/accept_fullcell_valid_extension.py": "66ad731c4eccb67ff0d013e38575da25ca4a139a81dcadc7b4404d4a9b6b5854",
+        "benchmarks/v5/wsi_global/completion.py": "9bf687ca2d75fcf171b7e9cfae3ce3d0a05dc25d760b10844e9dd2357ef7149a",
+        "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/fullcell_valid_extension.py": "28afed5a77af595a07f2756887fe7041d151845ba5c8b20e811493369e29a01c",
+        "benchmarks/v5/wsi_global/fullcell_cache.py": "a615747e57e5e03585b4e7d398f7252fb1c17ebdc0da6a4f720e3d92dd5ab7af",
+        "benchmarks/v5/wsi_global/fullcell_alias_gate.py": "4b2c44aa16ffa13f1a88a3aeb92b63091708cfaa6ed7a77b3fe549bb2d8c1ad3",
+        "benchmarks/v5/wsi_global/cell_cache_inputs.py": "a51e4faceac9978a98a279effe7f8da820601a5be36e05c9334689e43a805164",
+        "/home/zhaoyh/FewClick_v2/benchmarks/v5/multidomain_data/prepare_cells.py": "3ff143728cafc31efc2359bce815953dc86fe7eab47a7c4879f529117d600270",
+        "/home/zhaoyh/FewClick_v2/benchmarks/v5/multidomain_data/fast_nuclei.py": "e665bbf81b296f412b2f319a9be4fe4a23cdc9dd99cd22e483a84e8a614b3201",
+        "/home/zhaoyh/FewClick_v2/benchmarks/v5/phase_6_mask_decoder/diagnostics/external_cell_inputs.py": "5b148c79cd65ab014d8d4d1a55967c2feafbcd79e7148eef2497d0c4b45543a2",
+        "benchmarks/v5/paper_multiscale/model.py": "a780f02e0f3b04fe214323cfc1814755ff81695155a4ca491304bdc6aa204a91",
+        "benchmarks/v5/external_evaluation/evaluate_adapted.py": "4c5719c4e5fd66e8b7f2efc9c34442b9df79a890c50be1f6e08f7395337430e2",
+        "benchmarks/v5/wsi_global/accept_fullcell_cache.py": "b576e1bd447841802123aca9f1ac8dea6cb52d4a7a8fdafd938d127fbc3284ab",
+        "benchmarks/v5/wsi_global/audit_fullcell_inputs.py": "b0b39580ef7bc557705192279b7a19457effbdced74a516e95efc6116288c1c4",
+        "benchmarks/v5/wsi_global/accept_fullcell_alias_gate.py": "af6c6273018f74ffd7b67dcc3b34290ad5adc3ac0fd75bb36249f4da458f2d7a"
+      },
+      "child_worker_pid": null,
+      "formal7996_started": false,
+      "full28452_index_complete": false
     }
   ],
   "known_gaps": [
@@ -4677,6 +4714,17 @@
       "views": 24,
       "tensor_checks": 152,
       "formal7996_started": false,
+      "full28452_complete": false
+    },
+    {
+      "kind": "fullcell_valid16_index_and_owned_dependency_fixture",
+      "status": "accepted_fullcell_valid_index_fixture_only",
+      "index_fixture": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_index_fixture_1028_235400",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_index_fixture_acceptance_1028_235411",
+      "chain_fixture": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_chain_fixture_1028_235600",
+      "milestone": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_index_and_chain_milestone_1028_235625",
+      "record": "docs/运行记录/特征缓存/运行记录_完整域XCell缓存索引与后置扩展队列_1028_235200.md",
+      "items": 16,
       "full28452_complete": false
     }
   ],
