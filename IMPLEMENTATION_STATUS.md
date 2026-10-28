@@ -3081,3 +3081,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/recent_baseline_primary_audit_1028_232602
 - Docs record: docs/运行记录/模型实验/运行记录_近期对手一手来源与运行兼容性核对_1028_232500.md
 - Commit: 随近期一手来源核对提交，以git log哈希为准。
+
+
+## 10-28 23:29:11
+
+- Purpose: 以实际缓存完成间隔核准主30剩余准备耗时，防止将小时级猜测当完成承诺。
+- Changed: goal/registry/current record/特征缓存运行记录；无模型源码变化。
+- Validation: observer2705752 EXIT0；129条完整记录/128mtime间隔、12协调ps live；独立重数2710284 EXIT0。最近速率条件外推约63小时，仅缓存准备；后续评分验收另计。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_runtime_projection_1028_232911
+- Docs record: docs/运行记录/特征缓存/运行记录_主30细胞准备吞吐与剩余耗时实测_1028_232911.md
+- Commit: 随耗时实测记录提交，以git log为准。

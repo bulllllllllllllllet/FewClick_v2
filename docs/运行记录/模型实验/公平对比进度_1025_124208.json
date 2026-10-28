@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-28T23:27:06.975912+08:00",
+  "updated": "2026-10-28T23:30:34.964175+08:00",
   "current_phase": "NoCell20456_cache_execution_complete_SAM_GPU_running_closed_native_GT_auditing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -795,11 +795,11 @@
       "child_progress": {
         "status": "independent_full_retrieval_counts",
         "worker_pid": 723130,
-        "item": "1809305-12-HE-DX1",
-        "items_complete": 21,
+        "item": "1858136-9-HE-DX1",
+        "items_complete": 22,
         "total_items": 30,
-        "GT_rows_complete": 17819,
-        "GT_rows_total": 18382
+        "GT_rows_complete": 17127,
+        "GT_rows_total": 20640
       }
     },
     {
@@ -858,11 +858,11 @@
       "child_progress": {
         "status": "preparing_CRC30_actual_cells",
         "worker_pid": 382752,
-        "completed_inputs": 2318,
+        "completed_inputs": 2387,
         "total_inputs": 20456,
-        "key": "1022100-8-HE-DX1:query:503",
+        "key": "1022100-8-HE-DX1:query:596",
         "scale": 0,
-        "true_cells": 270
+        "true_cells": 26
       }
     },
     {
@@ -1008,12 +1008,12 @@
       "child_progress": {
         "status": "native_probability_raster",
         "worker_pid": 1523624,
-        "completed_items": 13,
+        "completed_items": 14,
         "total_items": 30,
-        "wsi_id": "1422566-R2-HE-DX1",
-        "tile": 341,
-        "tiles": 1116,
-        "seconds": 11282.831072155386
+        "wsi_id": "1426313-R2-HE-DX1",
+        "tile": 81,
+        "tiles": 667,
+        "seconds": 12154.90455077216
       }
     },
     {
@@ -4672,5 +4672,16 @@
     "record": "docs/运行记录/模型实验/运行记录_近期对手一手来源与运行兼容性核对_1028_232500.md",
     "method_experiments_complete": false,
     "scope": "two actual primary-source candidates, not exhaustive coverage"
+  },
+  "runtime_projection_last": {
+    "status": "observed_completed_cache_timing_projection_not_completion_promise",
+    "observed_at": "2026-10-28T23:29:13.938635+08:00",
+    "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_runtime_projection_1028_232911",
+    "record": "docs/运行记录/特征缓存/运行记录_主30细胞准备吞吐与剩余耗时实测_1028_232911.md",
+    "completed_inputs": 2387,
+    "total_inputs": 20456,
+    "remaining_initial_cache_hours_recent128": 62.685251915955696,
+    "remaining_initial_cache_hours_lifetime": 47.331982265046776,
+    "scope": "initial cache only, unchanged-rate extrapolation, not completion promise or CI"
   }
 }
