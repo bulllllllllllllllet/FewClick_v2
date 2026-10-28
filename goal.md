@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-28T23:35:49.668685+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
+Updated: 2026-10-28T23:50:08.002418+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-28T23:35:49.668685+08:00. Native thread goal: **active**. Lates
 
 ## Resume here
 
-0. **WSI primary, supervisedCRC12/fat included. Closed30 strict-remote native/Dice/BF1 accepted (WSI-equal all330 .713118/.427712, matched276 .719511/.423597); R all5520 execution done, independent723130 running 23/30. Three image caches all20456 generated; NoCell/SAM independently accepted;4018919 waits GPU5 idle for WSISAM, then original GPU prediction/full score chain. CRC actual GPU1 cell gate8/24views independently accepted; full preparation382752 running 2410/20456 under574146. Closed extra8244 and full28452 index accepted; full-valid native1523624 running 14/30 under3749768. Other main/full-valid/BF1/statistics queues remain active. FirstTLS fullcell mechanical accepted, semantic quality unconfirmed. Retired3990149/530230/3681174 and earlier completed workers must not restart. Inspect registry/live PIDs; no complete interactive comparison/CI yet.**
+0. **WSI primary, supervisedCRC12/fat included. Closed30 strict-remote native/Dice/BF1 accepted (WSI-equal all330 .713118/.427712, matched276 .719511/.423597); R all5520 execution done, independent723130 running 24/30. Three image caches all20456 generated; NoCell/SAM independently accepted;4018919 waits GPU5 idle for WSISAM, then original GPU prediction/full score chain. CRC actual GPU1 cell gate8/24views independently accepted; full preparation382752 running 2481/20456 under574146. Closed extra8244 and full28452 index accepted; full-valid native1523624 running 15/30 under3749768. Other main/full-valid/BF1/statistics queues remain active. FirstTLS fullcell mechanical accepted, semantic quality unconfirmed. Retired3990149/530230/3681174 and earlier completed workers must not restart. New full-valid real-cell8/24 GPU gate independently accepted; formal7996 not launched. Inspect registry/live PIDs; no complete interactive comparison/CI yet.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -599,3 +599,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 工件/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_alias_GPU_gate_1028_233500、/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_alias_acceptance_1028_233700；现场/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_alias_milestone_1028_233549；记录docs/运行记录/特征缓存/运行记录_完整域XCell同GPU缓存别名复用门控_1028_233300.md。共享GPU1，加载前free25664684032 bytes、gate峰值706567680 bytes，非独占性能结果。未重新检测/CTP/XCell特征提取、不读queryGT，不替代主20456/full28452或新7996准备/质量验收。
 
 原12协调ps live、88去重sources绑定一致；主CRC Cell2410/20456、R独立23/30、closed full-valid native14/30，整体goal active。下一步仍是主完整缓存/预测接受，并实现新7996真实细胞扩展和完整域索引/输出，而非将8fixture当全量完成。
+
+
+## 1028_235008 完整域XCell新位置真实检测/特征/编码门控独立接受
+
+2026-10-28T23:50:08.002418+08:00：新增fullcell_valid_extension.py与accept_fullcell_valid_extension.py。实际GPU1 producer2793589/session27488 EXIT0（170.049s），独立同GPU auditor2812823/session63953 EXIT0（40.645s）。固定6个原native新位置探针+按原序补2共8输入/24视野，实际原InstanSeg/CTP/XCell/74+uncapped count/encoder路径，8095个跨重叠视野模型检测实例/1529 retained、8真实zero-view全保留；独立canonical实例/物理几何/count/74组装及全部bytes重数、24原生/PIL和fresh编码152张量精确。计数非独立生物学真值或去重细胞数，未二次提取detector/reg64或证明子集/分片不变性。
+
+共享GPU gate峰值3314267648 bytes，timing_seconds.write仅cell NPZ写入，不代表全部IO；样本gate成本不当整片效率。新源码正式模式仍要求原20456全独立接受+本gate接受；本次不启动7996全量，不合并未接受base，不宣称full28452/质量完成。工件/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_extension_gate_1028_234600、/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_extension_gate_acceptance_1028_234900；现场/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_extension_milestone_1028_235008；记录docs/运行记录/特征缓存/运行记录_完整域XCell新增位置真实细胞门控与扩展准备_1028_234249.md。
+
+原12协调ps live、88去重sources SHA一致。CRC Cell2481/20456、R独立24/30、closed full-valid native15/30。下一步为正式扩展排队条件/主缓存质量接受/真实完整域索引与预测；goal active。

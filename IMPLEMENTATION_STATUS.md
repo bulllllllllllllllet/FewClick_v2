@@ -3101,3 +3101,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_alias_GPU_gate_1028_233500；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_alias_acceptance_1028_233700；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_alias_milestone_1028_233549
 - Docs record: docs/运行记录/特征缓存/运行记录_完整域XCell同GPU缓存别名复用门控_1028_233300.md
 - Commit: 随同GPU缓存别名fixture提交，以git log为准。
+
+
+## 10-28 23:50:08
+
+- Purpose: 为完整有效域新增7996位置实现原真实细胞流程，并通过实际8位置门控。
+- Changed: fullcell_valid_extension.py/accept_fullcell_valid_extension.py及goal/registry/current record/特征记录。
+- Validation: GPU1实际2793589 EXIT0/170.049s，独立2812823 EXIT0/40.645s；24实际新view实例/74/count/bytes、152fresh编码张量精确，8zero-view保留。正式7996模式尚未运行，不能当全量验收。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_extension_gate_1028_234600；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_extension_gate_acceptance_1028_234900；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_extension_milestone_1028_235008
+- Docs record: docs/运行记录/特征缓存/运行记录_完整域XCell新增位置真实细胞门控与扩展准备_1028_234249.md
+- Commit: 随新增真实细胞扩展门控提交，以git log为准。
