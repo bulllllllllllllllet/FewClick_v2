@@ -3014,3 +3014,10 @@ fullcell_efficiency_accepted_1028_143000派生报告已绑定source/contract/所
 闭集12类CE/target-ID/无点击特权参考：all330组织—WSI对的WSI等权Dice 0.713118；原固定支持可用276子集WSI等权 0.719511（pair等权0.717464）。这些是单闭集描述性结果，背景另表；无FewClick交互结果/方法胜负/配对CI结论，不替代历史heldout。报告/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_accepted_report_1028_162700/report.md与独立audit /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_accepted_report_audit_1028_162900；native接受SHA 09dabc106812d65effabc722d57c5f64be37a9465356f8836b17d93c85507cac。
 
 已实际自动触发retrieval69964、BF1四69908..69911、额外cache69453，6子进程ps存活，均running未全接受。WSISAM4145669 7542/20456；其余17协调存活、145在用源码SHA匹配。registry退役3441781/2359268，刷新过期next_actions并保留旧快照，整体goal active。完整记录docs/运行记录/模型实验/运行记录_主30闭集原生输出独立接受与首份整片结果_1028_163000.md，现场证据/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_native_milestone_1028_163000。
+
+
+## 1028_164100 主30闭集BF1四producer360行执行完成
+
+2026-10-28T16:43:27.547237+08:00：协调631034 terminal EXIT0，四69908/69909/69910/69911各90行EXIT0，完整index0..359与30×12身份/SHA匹配。真实四独立auditor [172751, 172779, 172780, 172781] 已由693018启动并ps确认，仍需原GT/预测逐行独立disk BF1/count/block守恒与完整join；状态是execution complete/unaccepted，尚不发布BF1均值/CI。正常完成PID退出不当失败、不重启。
+
+registry退役631034并记录四producer未接受执行；其余16协调live、141源码绑定不变。WSISAM10324/20456、retrieval5/30片、额外closed cache747/8244。记录docs/运行记录/模型实验/运行记录_主30闭集BF1全360执行完成与独立复算启动_1028_164100.md，现场凭据/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_BF1_execution_milestone_1028_164300；整体goal active。
