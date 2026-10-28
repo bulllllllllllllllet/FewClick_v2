@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-28T14:44:52.733161+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
+Updated: 2026-10-28T15:04:07.563352+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-28T14:44:52.733161+08:00. Native thread goal: **active**. Lates
 
 ## Resume here
 
-0. **WSI primary, full-label CRC12/fat supervised. Closed20208 caches accepted; native producer30/360 complete, independent2359268 still running (19/30 complete). First TLS fullcell cache/input/all-native probability accepted; mechanical efficiency report fullcell_efficiency_accepted_1028_143000, no TLS semantic accuracy. GPU5 main30 NoCell worker3189877 running (18414/20456), then SAM/WSISAM; CRC fullcell gate530230 waits idleGPU1/3/4. Actual8 closed-extra native gate/index11 passed, coordinator3681174 queues8244 extra caches/28452 merged index after3441781 native acceptance. Full valid28452 inputs independently accepted; full-valid raster/quality pending. Existing prediction/BF1/statistics queues remain active, no complete main30 comparative quality/CI yet. Inspect registry actual PIDs; preserve all results and fair baselines.**
+0. **WSI primary, full-label CRC12/fat supervised. Closed20208 caches accepted; native producer30/360 complete, independent2359268 still running (21/30 complete). First TLS fullcell cache/input/all-native probability accepted; mechanical efficiency report fullcell_efficiency_accepted_1028_143000, no TLS semantic accuracy. NoCell worker3189877 all20456 execution complete/unaccepted; GPU5 SAM3841375 running (1566/20456), WSISAM next; CRC fullcell gate530230 waits idleGPU1/3/4. Actual8 closed-extra native gate/index11 passed, coordinator3681174 queues8244 extra caches/28452 merged index after3441781 native acceptance. Full valid28452 inputs independently accepted; full-valid raster/quality pending. Existing prediction/BF1/statistics queues remain active, no complete main30 comparative quality/CI yet. Inspect registry actual PIDs; preserve all results and fair baselines.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -468,3 +468,13 @@ fullcell_efficiency_accepted_1028_143000派生报告已绑定source/contract/所
 首leftcache fixture143600因将multiclass argmax与原wrapper target0的Boolean categorical_prediction直接比对而EXIT1；原日志/首缓存/failure.json保留，新143900只将测试断言改为argmax==0，不改模型/logits/阈值，也未重启任何正式实验。新producer SHA e9714261dfcb7c8628827a4b998c15c30ad2d2047b9d3cb802575a275f3be996，auditor SHA 0c00ff1767ceb394c49e2b399f9470573ac5b76406fc34f996e0135c651d7131。
 
 完整协调3749768/tmux fewclick_closed_full_valid_raster_1028_144400实际waiting owned3681174的全28452 cache index接受，再CPU4正式native/GT→完整独立全12/GT/原remote不变性接受；无新child，full域质量仍pending。源码hash锁定、命令/真实PID/log/EXIT_CODE记录，无retry/resume/fallback；原main30迁移/评分/BF1/统计队列不改。当前NoCell GPU5 worker3189877 18414/20456，原closed native独立2359268已完成19/30片（当前1726467-7-HE-DX1），无完整比较成绩，整体goal active。记录docs/运行记录/模型实验/运行记录_闭集完整有效域原生输出与远端不变性门控_1028_143400.md。
+
+## 1028_150300 三方法全有效域encoder扩展和支持别名索引接受链
+
+2026-10-28T15:04:07.563352+08:00：新增interactive_valid_extension.py、accept_interactive_valid_extension.py和merge_interactive_full_valid.py，沿用NoCell/SAM-FT/WSI-SAM-FT各自真实3/1/2视野与选权；只扩展7996新字段，原20208 query与248支持缓存保留。GPU正式前必须同完整base cache/同设备真实8gate及独立8接受；CPU7源门控不冒充GPU接受。完整域含source/gap，不并入严格远距主成绩。XCell实际核/74/true-count全域扩展仍需独立链，不能套用无细胞通过。
+
+真实CPU三个producer3793688/3793689/3793690（session45180/52223/55915）均EXIT0，各8字段含2support-as-query/2旧remote/4新增（含奇数宽），4原缓存别名全树张量逐项精确一致。独立3809421/3809422/3809423（session80344/17096/53189）均EXIT0，各8fresh native model、共24方法输入/48实际view（24+8+16）；NoCell37.064s/SAM71.400s/WSISAM21.824s，全部新/别名encoded结构、值、源RGB、选权精确。三索引3830289/3830290/3830291 EXIT0，各7旧+8gate重合4条后11唯一字段：4new/3sourceAlias/4remote，原顺序与所有来源完整；原payload身份和文件不改、不重新encode。全部744原native支持RGB接受、实际PNGs与方法所需view数/同weight/encoder签名绑定，非全248逐条fresh encode。
+
+新协调3843395/tmux fewclick_interactive_valid_1028_150100真实waiting owned4172727的原主30三方法预测/独立评分接受；之后GPU5空闲各方法GPU8gate→独立GPU8→7996full→所有文件/结构+固定5fresh接受→28452 index，当前尚无新GPUchild，原主线优先不改。实际GPU/full新分支仍preparing，不把CPU gate说成全量完成；源码冻结、PID/命令/log/EXIT_CODE持久化，无retry/resume/fallback。
+
+原主线已推进：NoCell worker3189877全20456已EXIT0（8124.671s），状态complete_interactive_main30_cache_unaccepted，独立全cache仍等三方法准备完；SAM GPU7gate3840310 EXIT0 6.509s，正式GPU5 worker3841375当前1566/20456，之后WSISAM。closed native独立2359268完成21/30片，当前1809305-12-HE-DX1。主30完整quality/paired统计仍pending，不据缓存完成报模型胜负。整体goal active，记录docs/运行记录/特征缓存/运行记录_三方法完整有效域编码扩展与支持缓存复用_1028_145000.md。

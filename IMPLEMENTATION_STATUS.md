@@ -2945,3 +2945,19 @@ fullcell_efficiency_accepted_1028_143000派生报告已绑定source/contract/所
 - Validation: actual left4 native caches,3-window12tile/36class fullnative/GT independent audit and nonzero-offset12channel crop all EXIT0. Formal28452/full30 remote-invariance branches preparing/queued.
 - Artifacts: closed12_full_valid_{left_cache_gate_1028_143900,raster_gate_1028_144000,raster_accept_gate_1028_144000,crop_gate_1028_144200,raster_chain_1028_144400}.
 - Commit: this milestone commit.
+
+## 1028_150300 三方法全有效域encoder扩展和支持别名索引接受链
+
+2026-10-28T15:04:07.563352+08:00：新增interactive_valid_extension.py、accept_interactive_valid_extension.py和merge_interactive_full_valid.py，沿用NoCell/SAM-FT/WSI-SAM-FT各自真实3/1/2视野与选权；只扩展7996新字段，原20208 query与248支持缓存保留。GPU正式前必须同完整base cache/同设备真实8gate及独立8接受；CPU7源门控不冒充GPU接受。完整域含source/gap，不并入严格远距主成绩。XCell实际核/74/true-count全域扩展仍需独立链，不能套用无细胞通过。
+
+真实CPU三个producer3793688/3793689/3793690（session45180/52223/55915）均EXIT0，各8字段含2support-as-query/2旧remote/4新增（含奇数宽），4原缓存别名全树张量逐项精确一致。独立3809421/3809422/3809423（session80344/17096/53189）均EXIT0，各8fresh native model、共24方法输入/48实际view（24+8+16）；NoCell37.064s/SAM71.400s/WSISAM21.824s，全部新/别名encoded结构、值、源RGB、选权精确。三索引3830289/3830290/3830291 EXIT0，各7旧+8gate重合4条后11唯一字段：4new/3sourceAlias/4remote，原顺序与所有来源完整；原payload身份和文件不改、不重新encode。全部744原native支持RGB接受、实际PNGs与方法所需view数/同weight/encoder签名绑定，非全248逐条fresh encode。
+
+新协调3843395/tmux fewclick_interactive_valid_1028_150100真实waiting owned4172727的原主30三方法预测/独立评分接受；之后GPU5空闲各方法GPU8gate→独立GPU8→7996full→所有文件/结构+固定5fresh接受→28452 index，当前尚无新GPUchild，原主线优先不改。实际GPU/full新分支仍preparing，不把CPU gate说成全量完成；源码冻结、PID/命令/log/EXIT_CODE持久化，无retry/resume/fallback。
+
+原主线已推进：NoCell worker3189877全20456已EXIT0（8124.671s），状态complete_interactive_main30_cache_unaccepted，独立全cache仍等三方法准备完；SAM GPU7gate3840310 EXIT0 6.509s，正式GPU5 worker3841375当前1566/20456，之后WSISAM。closed native独立2359268完成21/30片，当前1809305-12-HE-DX1。主30完整quality/paired统计仍pending，不据缓存完成报模型胜负。整体goal active，记录docs/运行记录/特征缓存/运行记录_三方法完整有效域编码扩展与支持缓存复用_1028_145000.md。
+
+- Purpose: append image-based full-valid feature caches while reusing accepted supports by exact source/query encoder equivalence.
+- Changed: interactive_valid_extension.py, accept_interactive_valid_extension.py, merge_interactive_full_valid.py.
+- Validation: all3 actual CPU8 and independent8/four old-alias exact probes plus index11 fixtures EXIT0; GPU actual/full extension branches queued after primary, not accepted.
+- Artifacts: interactive_valid_CPU_{gate,accept} and interactive_valid_index_CPU_gate three methods1028_145300/145500/145800; interactive_valid_chain_1028_150100.
+- Commit: this milestone commit.
