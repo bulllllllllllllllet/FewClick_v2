@@ -2913,3 +2913,19 @@ GPU门控协调530230/tmux fewclick_fullcell_CRC_gate_1028_025000已实际运行
 - Validation: native8x3 bridge, full28452 manifest and independent geometry/fresh RGB audit all EXIT0; models/cells not executed.
 - Artifacts: full_valid_inputs_{gate,full,acceptance}_1028_034700.
 - Commit: this milestone commit.
+
+## 1028_143100 闭集8244扩展门控和首fullcell概率/效率链接受
+
+2026-10-28T14:32:16.991160+08:00：新增closed12_extension.py、accept_closed12_extension.py及merge_closed12_full_valid.py。只用原selected闭集权重、fine512/CPU4 FP32，额外8244物理输入，不改原remote；实际native8gate3654129/session9532 EXIT0 36.255s，逐原12logits桥接相同；独立显式ImageNet归一化/network3664946/session86263 EXIT0 13.761s，全部8native12logits/softmax/argmax严格相同。新合并4旧+8新实际cache gate3673140/session93353 EXIT0，唯一11字段，重合旧remote日志逐tensor等；正式20208+8244必须无重合，以原28452顺序保存原文件引用/hash，不重新编码/复制logits。完整byte接受继承两源独立receipt，合并不重复全hash。
+
+新协调3681174/tmux fewclick_closed12_extension_1028_142900实际等待owned3441781主remote native/GT接受，再CPU4全8244→全部文件/schema/hash+5fresh native独立接受→28452 cache index。完整append尚无child，full域native输出/质量仍待新adapter，不能把index当质量。旧训练/缓存/队列不改，source锁定、真实PID/log/EXIT_CODE、无retry/resume/fallback。
+
+实际旧任务已推进：closed12cache3202252/接受协调3216700均EXIT0，20208原logits独立1096878已qualified接受；native producer1250927 30片360行完成但2359268仍独立复核，进度18/30完成片，当前1716502-13-HE-DX1，不报告未接受成绩。首fullcell GPU gate2976375及全量概率audit2987265均EXIT0，原3050缓存及两budget每次3186743840原生像素FP32概率/二值独立误差0，真实58空视野保留，9150真实cell输入接受已绑定。假设float64理想阈值在3+2有1像素不同，非原FP32实现错误。
+
+fullcell_efficiency_accepted_1028_143000派生报告已绑定source/contract/所有cell与probability独立接受。实测首片pipeline29166.491s，缓存后1+1 627.321s /3+2 576.069s（task仅约7–10ms，不能当整片延迟），offline GPUallocated5.140GiB /online .634GiB；共享节点/NFS/cache状态未控制，不报CPU/GPU或独占速度比，不是TLS语义准确率。GPU5已运行主30NoCell worker3189877，目前16443/20456；GPU1/3/4仍foreign占用，含细胞CRC链等空闲。整体goal active，完整main30质量/七臂统计、28452输出/评分及审稿版本绑定仍待。记录docs/运行记录/特征缓存/运行记录_闭集参考完整有效域新增缓存与原路径门控_1028_035000.md。
+
+- Purpose: append closed-reference full-domain inputs with exact native acceptance, preserve remote caches, and bind completed fullcell whole-native efficiency evidence.
+- Changed: closed12_extension.py, accept_closed12_extension.py, merge_closed12_full_valid.py.
+- Validation:8 actual native logits/cache and independent fresh normalization/model gates EXIT0;4+8 cache index fixture11 unique EXIT0. Original20208 cache and first fullcell3050/all-native two-budget accepts independently completed.
+- Artifacts: closed12_extension_{gate,gate_accept}_1028_035100, closed12_full_valid_index_gate_1028_142800, closed12_extension_chain_1028_142900, fullcell_efficiency_accepted_1028_143000.
+- Commit: this milestone commit.

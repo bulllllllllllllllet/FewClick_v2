@@ -1,8 +1,8 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-28T03:47:54.521093+08:00",
-  "current_phase": "WSI_main30_cache_running_quality_BF1_statistics_queued",
+  "updated": "2026-10-28T14:32:16.991160+08:00",
+  "current_phase": "closed12_cache_accepted_native_GT_auditing_NoCell_main30_GPU_running_TLS_fullcell_probability_accepted",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
   "prior_run": "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600",
@@ -484,9 +484,19 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/WSI_statistics_weight_gate_1028_034200/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_inputs_gate_1028_034700/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_inputs_full_1028_034700/summary.json",
-        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_inputs_acceptance_1028_034700/summary.json"
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_inputs_acceptance_1028_034700/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_cache_1027_212000/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_cache_acceptance_1027_212500/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_output_gpu_gate_1027_223500/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_output_acceptance_1027_223500/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_full_1027_221200/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_GPU_gate_fewclick_m3d_image_1028_001100/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_extension_gate_1028_035100/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_extension_gate_accept_1028_035100/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_valid_index_gate_1028_142800/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_efficiency_accepted_1028_143000/summary.json"
       ],
-      "qualification": "CPU NoCell full native probability accepted. Actual fullcell zero-cell and input assembly gate accepted; fullcell GPU complete receipts pending. Main30 data/source-query accepted, closed12 cache running, native raster gate accepted, originalGT component whole2slide pixelwise gate accepted; full30 component/prediction/distance quality pending.",
+      "qualification": "First fullcell TLS mechanical execution/cache/actual9150cell-input/whole-native probability accepted qualified, not TLS semantic accuracy or controlled hardware ratio. Main30 originalGT/components/input geometry accepted; closed20208 caches accepted; 30slide native/GT producer finished but independent full replay ongoing. NoCell GPU preparation running, other baseline/fullcell main30 and scores/BF1/statistics remain. Full28452 input accepted; extra8244 closed cache queued, full-valid output still pending.",
       "input_record": "docs/运行记录/数据审计/运行记录_TLS整片读取与物理视野门控_1025_144200.md",
       "stream_record": "docs/运行记录/模型实验/运行记录_整片逐行流式拼接与首片完整执行_1026_015000.md",
       "full_CPU_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_cpu_slide0_1026_021756",
@@ -526,7 +536,7 @@
       "retrieval_independent_acceptance_status": "actual173row12task_gate_accepted_full30_queued_not_complete",
       "retrieval_independent_acceptance_queue": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/retrieval_accept_queue_1028_000400",
       "interactive_main30_cache_record": "docs/运行记录/特征缓存/运行记录_CRC主三十张三方法交互缓存生产门控_1028_001300.md",
-      "interactive_main30_cache_status": "actualCPU_three7cache_gates_passed_GPU_gate_and_full3x20456_queued",
+      "interactive_main30_cache_status": "fewclick_NoCell_GPU5_full_running_then_SAM_WSISAM_original_queue",
       "interactive_main30_cache_queue": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_cache_queue_1028_001100",
       "interactive_cache_independent_acceptance_record": "docs/运行记录/特征缓存/运行记录_三方法缓存独立输入与选中模型复核_1028_002200.md",
       "interactive_cache_independent_acceptance_status": "actual_three_CPU7cache_fresh_native_model_gates_accepted_GPU_full_queued",
@@ -575,7 +585,14 @@
       "full_valid_input_acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_inputs_acceptance_1028_034700",
       "full_valid_additional_interactive_candidates": 7996,
       "full_valid_additional_closed12_inputs": 8244,
-      "full_valid_support_reuse_candidates": 248
+      "full_valid_support_reuse_candidates": 248,
+      "closed12_extension_record": "docs/运行记录/特征缓存/运行记录_闭集参考完整有效域新增缓存与原路径门控_1028_035000.md",
+      "closed12_extension_status": "actual8gate_and_independent_all8_native_logits_exact_index11_fixture_passed_full8244_waits_primary_native_acceptance",
+      "closed12_extension_queue": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_extension_chain_1028_142900",
+      "TLS_fullcell_probability_status": "accepted_all3050_encoded_and_two3186743840_native_probability_passes_FP32_exact_qualified",
+      "TLS_fullcell_efficiency_report": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_efficiency_accepted_1028_143000/report.md",
+      "closed12_cache_status": "all20208_full_cache_independently_accepted_qualified",
+      "main30_native_status": "closed12_30slide360row_producer_complete_independent_native_GT_still_running"
     },
     "G9": {
       "status": "preparing",
@@ -598,72 +615,20 @@
   },
   "active_jobs": [
     {
-      "kind": "mainCRC30_closed12_strict_remote_full_cache",
-      "worker_pid": 3202252,
-      "status": "encoding_closed12_full_WSI",
-      "last_observed_status": {
-        "status": "encoding_closed12_full_WSI",
-        "worker_pid": 3202252,
-        "completed": 17563,
-        "total": 20208,
-        "wsi_id": "410204-14-HE-DX1-S01",
-        "tile": 64,
-        "seconds": 23300.821884341538
-      },
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_cache_1027_212000",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_cache_1027_212000.log",
-      "session": "fewclick_closed12_cache_1027_212000",
-      "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
-      "contract_sha256": "6fe791b860926dddf2845ac0bffd240a442e082e231935e41a52664a9ec56697",
-      "signature": {
-        "source_sha256": {
-          "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/closed12_cache.py": "812c6d57e763b05d0bf111df902bd6dff2767339e1a955a3abc0ed35eaf51bd1",
-          "benchmarks/v5/wsi_global/native_remote_gate.py": "44b1d8330839ae7334ea33e8cc5c5159318df9f227555ccb8ac64d86539309b9",
-          "benchmarks/v5/wsi_global/cache_gate.py": "16266933697e1bc1f1f85d08992d9c786d0f7343c5c09eed03585b8d35c49b8c",
-          "benchmarks/v5/external_evaluation/evaluate_adapted.py": "4c5719c4e5fd66e8b7f2efc9c34442b9df79a890c50be1f6e08f7395337430e2",
-          "benchmarks/v5/fair_comparison/adapted_models.py": "e8c193d73cc5b5f2793cf14ba7a4092dd20e53f03c540dcced4ff57ce7f20947"
-        },
-        "protocol_sha256": "dceadb394e1cc3c804b84a0b12fbe45c46916f6df3bddc8539a437a5f2f26e57",
-        "acceptance_sha256": "c84cde97a6546fd5af018ca586749789d40e77d8f77cdadbcc80f0558b29dd5f",
-        "weight_sha256": "0aa11b35866262648d2b56340a0d4501165da0516cf21df7bdfebf8da05d06a4",
-        "native_acceptance_sha256": "1c699e25ec2c995fd544478ab406196e3541ea3d22904c01d8b9331cd7e0a763"
-      }
-    },
-    {
-      "kind": "mainCRC30_closed12_independent_acceptance_queue",
-      "worker_pid": 3216700,
-      "status": "waiting_owned_full_closed12_cache",
-      "last_observed_status": {
-        "status": "waiting_owned_full_closed12_cache",
-        "worker_pid": 3216700,
-        "dependency_pid": 3202252,
-        "dependency_launcher_pid": 3202250
-      },
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_accept_queue_1027_212500",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_accept_queue_1027_212500.log",
-      "session": "fewclick_closed12_accept_1027_212500",
-      "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
-      "sources": {
-        "benchmarks/v5/wsi_global/accept_closed12_cache.py": "541bb0ff18a98fffe7fa917784cbef63f8b5f4dbadc2fdafb87eb41d9d90db13"
-      },
-      "child_worker_pid": null
-    },
-    {
       "kind": "mainCRC30_closed12_native_raster_and_scoring_queue",
       "worker_pid": 3441781,
-      "status": "waiting_owned_full_cache_acceptance",
+      "status": "running_accept",
       "last_observed_status": {
-        "status": "waiting_owned_full_cache_acceptance",
+        "status": "running_accept",
         "worker_pid": 3441781,
-        "dependency_acceptance_launcher_pid": 3216698
+        "child_pid": 2359268,
+        "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_acceptance_1027_221200"
       },
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_queue_1027_221200",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_queue_1027_221200.log",
       "session": "fewclick_closed12_raster_1027_221200",
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
       "sources": {
         "benchmarks/v5/wsi_global/semantic_stripe.py": "6dd89356f6f00995910bfd739d716bdecf15afb7c4519f206659601fca2ced61",
         "benchmarks/v5/wsi_global/semantic_raster_gate.py": "ab20591de7b71aaa679e8c3c88429d4e0cc02dbf1bfde62a9a7589bd9a62f948",
@@ -671,42 +636,31 @@
         "benchmarks/v5/wsi_global/accept_closed12_raster.py": "fb9007687065a57e3b5ce5db9e66e7bfd240b0f1eeae951f2ebaaf53510b17c0"
       },
       "dependency_cache_acceptance_launcher_pid": 3216698,
-      "child_worker_pid": null
-    },
-    {
-      "kind": "all3050_fullcell_GPU_probability_audit_queue",
-      "worker_pid": 3574865,
-      "status": "waiting_GPU5_no_foreign_workers",
-      "last_observed_status": {
-        "status": "waiting_GPU5_no_foreign_workers",
-        "worker_pid": 3574865,
-        "observed_GPU5_processes": "2837432"
+      "child_worker_pid": 2359268,
+      "child_progress": {
+        "status": "independent_full_native_probability",
+        "worker_pid": 2359268,
+        "item": "1716502-13-HE-DX1",
+        "block_y": 6722,
+        "items_complete": 18,
+        "total_items": 30
       },
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_output_queue_1027_223500",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_output_queue_1027_223500.log",
-      "session": "fewclick_fullcell_outputs_1027_223500",
-      "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
-      "sources": {
-        "benchmarks/v5/wsi_global/audit_fullcell_outputs.py": "c33fc5520f2d2acd824d5c8af4131a0266dabd5d8e58c361099c410c306d7cb5",
-        "benchmarks/v5/wsi_global/probability_replay.py": "c9f9e7cbaf0ec10510fdf39102e5a830b87db53a9845a2e908faf023b0fcd541",
-        "benchmarks/v5/wsi_global/audit_fullcell_inputs.py": "b0b39580ef7bc557705192279b7a19457effbdced74a516e95efc6116288c1c4"
-      },
-      "dependency_launcher_pid": 1708228,
-      "child_worker_pid": null,
-      "observed_GPU5_processes": "2837432"
+      "child_process_alive_last_observed": true
     },
     {
       "kind": "main30_three_interactive_method_GPU_caches_queue",
       "worker_pid": 3990149,
-      "status": "waiting_original_fullcell_GPU_acceptance",
+      "status": "running_interactive_GPU_full",
       "last_observed_status": {
-        "status": "waiting_original_fullcell_GPU_acceptance",
+        "status": "running_interactive_GPU_full",
         "worker_pid": 3990149,
-        "dependency_worker_pid": 3574865
+        "method": "fewclick_m3d_image",
+        "child_pid": 3189877,
+        "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_GPU_full_fewclick_m3d_image_1028_001100",
+        "completed_methods": []
       },
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
       "dependency_worker_pid": 3574865,
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_cache_queue_1028_001100",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_cache_queue_1028_001100.log",
@@ -720,7 +674,19 @@
         "benchmarks/v5/paper_multiscale/model.py": "a780f02e0f3b04fe214323cfc1814755ff81695155a4ca491304bdc6aa204a91",
         "benchmarks/v5/external_evaluation/evaluate_adapted.py": "4c5719c4e5fd66e8b7f2efc9c34442b9df79a890c50be1f6e08f7395337430e2"
       },
-      "child_worker_pid": null
+      "child_worker_pid": 3189877,
+      "child_progress": {
+        "status": "encoding_interactive_main30_cache",
+        "worker_pid": 3189877,
+        "method": "fewclick_m3d_image",
+        "completed": 16443,
+        "total": 20456,
+        "kind": "query",
+        "wsi_id": "1902897-15-HE-DX1",
+        "key": "1902897-15-HE-DX1:query:993",
+        "seconds": 6521.9688007086515
+      },
+      "child_process_alive_last_observed": true
     },
     {
       "kind": "main30_three_interactive_method_GPU_cache_independent_acceptance_queue",
@@ -732,7 +698,7 @@
         "dependency_worker_pid": 3990149
       },
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
       "dependency_worker_pid": 3990149,
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_accept_queue_1028_002000",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_accept_queue_1028_002000.log",
@@ -750,7 +716,7 @@
         "dependency_worker_pid": 4018919
       },
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
       "dependency_worker_pid": 4018919,
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_prediction_gate_queue_1028_005000",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_prediction_gate_queue_1028_005000.log",
@@ -775,7 +741,7 @@
         "dependency_worker_pid": 3441781
       },
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
       "dependency_worker_pid": 3441781,
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/retrieval_chain_queue_1028_005800",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/retrieval_chain_queue_1028_005800.log",
@@ -799,7 +765,7 @@
         "dependency_worker_pid": 4127135
       },
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
       "dependency_worker_pid": 4127135,
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_full_queue_1028_011000",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_full_queue_1028_011000.log",
@@ -824,13 +790,13 @@
         "status": "waiting_idle_GPU1_3_4_for_actual_CRC_fullcell_gate",
         "worker_pid": 530230,
         "observed_processes": {
-          "1": "478432\n2837428",
-          "3": "10390\n2837430",
-          "4": "91298\n2837431"
+          "1": "2837428",
+          "3": "2837430",
+          "4": "2837431"
         }
       },
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_CRC_gate_queue_1028_025000",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_CRC_gate_queue_1028_025000.log",
       "session": "fewclick_fullcell_CRC_gate_1028_025000",
@@ -857,7 +823,7 @@
         "dependency_worker_pid": 530230
       },
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
       "dependency_worker_pid": 530230,
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_CRC_chain_queue_1028_031000",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_CRC_chain_queue_1028_031000.log",
@@ -882,7 +848,7 @@
         "dependency_worker_pid": 3441781
       },
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
       "dependency_worker_pid": 3441781,
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/boundary_closed12_queue_1028_034000",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/boundary_closed12_queue_1028_034000.log",
@@ -906,7 +872,7 @@
         "dependency_worker_pid": 631034
       },
       "process_alive_last_observed": true,
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
       "dependency_worker_pid": 631034,
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/boundary_accept_queue_1028_040500",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/boundary_accept_queue_1028_040500.log",
@@ -927,7 +893,7 @@
         "worker_pid": 731144,
         "dependency_worker_pid": 4172727
       },
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
       "process_alive_last_observed": true,
       "dependency_worker_pid": 4172727,
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_boundary_chain_full_1028_033000",
@@ -953,7 +919,7 @@
         "status": "waiting_owned_fullcell_full20456_cache_acceptance",
         "dependency_worker_pid": 574146
       },
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
       "process_alive_last_observed": true,
       "dependency_worker_pid": 574146,
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_prediction_chain_1028_034000",
@@ -1002,7 +968,7 @@
           }
         ]
       },
-      "process_observed_at": "2026-10-28T03:47:54.521093+08:00",
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
       "process_alive_last_observed": true,
       "dependency_worker_pids": [
         693018,
@@ -1016,6 +982,29 @@
       "sources": {
         "benchmarks/v5/wsi_global/wsi_statistics.py": "cf403c07c9b86332452f674bd4803108c88d41e6f31ba786109d004ea984d3f3",
         "benchmarks/v5/wsi_global/accept_wsi_statistics.py": "94196875ce7535751876679c383151f634f61a7ee16880189485c9b0b708976f",
+        "benchmarks/v5/wsi_global/completion.py": "9bf687ca2d75fcf171b7e9cfae3ce3d0a05dc25d760b10844e9dd2357ef7149a"
+      },
+      "child_worker_pid": null
+    },
+    {
+      "kind": "closed12_append8244_independent_cache_and_merge28452_queue",
+      "worker_pid": 3681174,
+      "status": "waiting_owned_primary_remote_native_GT_acceptance",
+      "last_observed_status": {
+        "worker_pid": 3681174,
+        "status": "waiting_owned_primary_remote_native_GT_acceptance",
+        "dependency_worker_pid": 3441781
+      },
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
+      "process_alive_last_observed": true,
+      "dependency_worker_pid": 3441781,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_extension_chain_1028_142900",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_extension_chain_1028_142900.log",
+      "session": "fewclick_closed12_extension_1028_142900",
+      "sources": {
+        "benchmarks/v5/wsi_global/closed12_extension.py": "239c416cec7ca6753e0daff15e9092bbc267d649d345fdacd41c9cb922ff9c43",
+        "benchmarks/v5/wsi_global/accept_closed12_extension.py": "f8218657c723441306bf71741e92b128d878a5c91632037bff980f6dcb903b82",
+        "benchmarks/v5/wsi_global/merge_closed12_full_valid.py": "69e0dc49aaa82cba893f5350497530a9062b429a00c437f7447d5dc568fcbd6b",
         "benchmarks/v5/wsi_global/completion.py": "9bf687ca2d75fcf171b7e9cfae3ce3d0a05dc25d760b10844e9dd2357ef7149a"
       },
       "child_worker_pid": null
@@ -3664,6 +3653,143 @@
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_inputs_acceptance_1028_034700",
       "summary_sha256": "64865e01c5a4ed3955501ee6517753e6adb5690fcf8a29ecdbb73aee16407a7e",
       "qualification": "All28452 geometry/24native bridge only; source/remote reuse candidates, no actual extra cells/model encodings/probability/quality accepted."
+    },
+    {
+      "kind": "mainCRC30_closed12_strict_remote_full_cache",
+      "worker_pid": 3202252,
+      "status": "complete_closed12_full_WSI_cache_execution",
+      "last_observed_status": {
+        "status": "complete_closed12_full_WSI_cache_execution",
+        "worker_pid": 3202252
+      },
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_cache_1027_212000",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_cache_1027_212000.log",
+      "session": "fewclick_closed12_cache_1027_212000",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
+      "contract_sha256": "6fe791b860926dddf2845ac0bffd240a442e082e231935e41a52664a9ec56697",
+      "signature": {
+        "source_sha256": {
+          "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/closed12_cache.py": "812c6d57e763b05d0bf111df902bd6dff2767339e1a955a3abc0ed35eaf51bd1",
+          "benchmarks/v5/wsi_global/native_remote_gate.py": "44b1d8330839ae7334ea33e8cc5c5159318df9f227555ccb8ac64d86539309b9",
+          "benchmarks/v5/wsi_global/cache_gate.py": "16266933697e1bc1f1f85d08992d9c786d0f7343c5c09eed03585b8d35c49b8c",
+          "benchmarks/v5/external_evaluation/evaluate_adapted.py": "4c5719c4e5fd66e8b7f2efc9c34442b9df79a890c50be1f6e08f7395337430e2",
+          "benchmarks/v5/fair_comparison/adapted_models.py": "e8c193d73cc5b5f2793cf14ba7a4092dd20e53f03c540dcced4ff57ce7f20947"
+        },
+        "protocol_sha256": "dceadb394e1cc3c804b84a0b12fbe45c46916f6df3bddc8539a437a5f2f26e57",
+        "acceptance_sha256": "c84cde97a6546fd5af018ca586749789d40e77d8f77cdadbcc80f0558b29dd5f",
+        "weight_sha256": "0aa11b35866262648d2b56340a0d4501165da0516cf21df7bdfebf8da05d06a4",
+        "native_acceptance_sha256": "1c699e25ec2c995fd544478ab406196e3541ea3d22904c01d8b9331cd7e0a763"
+      },
+      "exit_code": 0
+    },
+    {
+      "kind": "mainCRC30_closed12_independent_acceptance_queue",
+      "worker_pid": 3216700,
+      "status": "complete_independent_full_closed12_acceptance",
+      "last_observed_status": {
+        "status": "complete_independent_full_closed12_acceptance",
+        "worker_pid": 3216700,
+        "child_pid": 1096878
+      },
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_accept_queue_1027_212500",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_accept_queue_1027_212500.log",
+      "session": "fewclick_closed12_accept_1027_212500",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
+      "sources": {
+        "benchmarks/v5/wsi_global/accept_closed12_cache.py": "541bb0ff18a98fffe7fa917784cbef63f8b5f4dbadc2fdafb87eb41d9d90db13"
+      },
+      "child_worker_pid": null,
+      "exit_code": 0
+    },
+    {
+      "kind": "all3050_fullcell_GPU_probability_audit_queue",
+      "worker_pid": 3574865,
+      "status": "complete_native_GPU_full_probability_acceptance",
+      "last_observed_status": {
+        "status": "complete_native_GPU_full_probability_acceptance",
+        "worker_pid": 3574865,
+        "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_output_acceptance_1027_223500"
+      },
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_output_queue_1027_223500",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_output_queue_1027_223500.log",
+      "session": "fewclick_fullcell_outputs_1027_223500",
+      "process_alive_last_observed": false,
+      "process_observed_at": "2026-10-28T14:32:16.991160+08:00",
+      "sources": {
+        "benchmarks/v5/wsi_global/audit_fullcell_outputs.py": "c33fc5520f2d2acd824d5c8af4131a0266dabd5d8e58c361099c410c306d7cb5",
+        "benchmarks/v5/wsi_global/probability_replay.py": "c9f9e7cbaf0ec10510fdf39102e5a830b87db53a9845a2e908faf023b0fcd541",
+        "benchmarks/v5/wsi_global/audit_fullcell_inputs.py": "b0b39580ef7bc557705192279b7a19457effbdced74a516e95efc6116288c1c4"
+      },
+      "dependency_launcher_pid": 1708228,
+      "child_worker_pid": null,
+      "observed_GPU5_processes": "2837432",
+      "exit_code": 0
+    },
+    {
+      "kind": "closed12_full_cache_acceptance_1027_212500",
+      "worker_pid": 1096878,
+      "status": "accepted_closed12_full_WSI_cache_qualified",
+      "exit_code": 0,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_cache_acceptance_1027_212500",
+      "summary_sha256": "46c57014c65dc6ae4c1f36fa5db27f16cdecc5c9006c4288d6136243e3bda70f"
+    },
+    {
+      "kind": "fullcell_output_gpu_gate_1027_223500",
+      "worker_pid": 2976375,
+      "status": "passed_fullcell_GPU_probability_audit_gate",
+      "exit_code": 0,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_output_gpu_gate_1027_223500",
+      "summary_sha256": "c9fbf24fb3ccdc7c5bddbc1d0ca3a6501012959725dba5f692ccb593791e1392"
+    },
+    {
+      "kind": "fullcell_output_acceptance_1027_223500",
+      "worker_pid": 2987265,
+      "status": "accepted_fullcell_full_WSI_probability_cache_qualified",
+      "exit_code": 0,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_output_acceptance_1027_223500",
+      "summary_sha256": "8c712876d75674d9adb5386731cb195574a61c32fad6caab2f9669e7740b1073"
+    },
+    {
+      "kind": "closed12_raster_full_1027_221200",
+      "worker_pid": 1250927,
+      "status": "complete_closed12_WSI_quality_execution_unaccepted",
+      "exit_code": 0,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_raster_full_1027_221200",
+      "summary_sha256": "c80cfa3b5a3325897ab87505fa0e3cea83f87201f8981d2d10d01c730c93451a"
+    },
+    {
+      "kind": "interactive_GPU_gate_fewclick_m3d_image_1028_001100",
+      "worker_pid": 3186865,
+      "status": "passed_interactive_native_cache_fixture",
+      "exit_code": 0,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_GPU_gate_fewclick_m3d_image_1028_001100",
+      "summary_sha256": "14c16b361661b6f3c93b27f5a1f6a777a5488ffd83aa21f72c5beba67d190a0c"
+    },
+    {
+      "kind": "closed12_extension_gate_1028_035100",
+      "worker_pid": 3654129,
+      "status": "passed_closed12_extension_native_gate",
+      "exit_code": 0,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_extension_gate_1028_035100",
+      "summary_sha256": "8357332e8ff6bdc779e41022bb4c5be6c5de91963b643b0b0bd3c9a8e4105d72"
+    },
+    {
+      "kind": "closed12_extension_gate_accept_1028_035100",
+      "worker_pid": 3664946,
+      "status": "accepted_closed12_extension_gate",
+      "exit_code": 0,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_extension_gate_accept_1028_035100",
+      "summary_sha256": "fb6b40f98d62624a5ac99b81159ed01efbf61c07768a58ec4667b1bff8e10911"
+    },
+    {
+      "kind": "closed12_full_valid_index_gate_1028_142800",
+      "worker_pid": 3673140,
+      "status": "passed_closed12_full_valid_index_fixture",
+      "exit_code": 0,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_full_valid_index_gate_1028_142800",
+      "summary_sha256": "af8cf5939792396212ff9d0fc905cf8e0ad33b937889a4c4b13a76a963af45fa"
     }
   ],
   "user_priority_1027_165114": {
