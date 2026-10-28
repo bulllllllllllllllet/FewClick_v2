@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-28T16:43:27.547237+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
+Updated: 2026-10-28T17:00:25.905363+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
 
 ## Objective
 
@@ -532,3 +532,10 @@ fullcell_efficiency_accepted_1028_143000派生报告已绑定source/contract/所
 2026-10-28T16:43:27.547237+08:00：协调631034 terminal EXIT0，四69908/69909/69910/69911各90行EXIT0，完整index0..359与30×12身份/SHA匹配。真实四独立auditor [172751, 172779, 172780, 172781] 已由693018启动并ps确认，仍需原GT/预测逐行独立disk BF1/count/block守恒与完整join；状态是execution complete/unaccepted，尚不发布BF1均值/CI。正常完成PID退出不当失败、不重启。
 
 registry退役631034并记录四producer未接受执行；其余16协调live、141源码绑定不变。WSISAM10324/20456、retrieval5/30片、额外closed cache747/8244。记录docs/运行记录/模型实验/运行记录_主30闭集BF1全360执行完成与独立复算启动_1028_164100.md，现场凭据/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_BF1_execution_milestone_1028_164300；整体goal active。
+
+
+## 1028_165900 固定首张WSI闭集参考三联图及显示映射接受
+
+2026-10-28T17:00:25.905363+08:00：新增render_closed12_overview.py（f7aac6ed3bb594177c2c3d1ab52d09693931a76790ae7980ec52099f7eafc787），实际renderer248014/265689与独立mapping audit276861均EXIT0。固定原manifest首WSI，H&E/GT/闭集12类CE无点击预测相同毫米坐标/类别配色，支持区/评分域/unknown灰域明确。独立逐867,328显示像素与527,712评分显示点原GT/原生预测映射核对精确；原完整远距分数继承，不从缩略图算指标。文字移出mask区，前后8数据文件byte相同，原图/源码保留。PNG/PDF与中文图注/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_first_WSI_overview_1028_165600，独立接受/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_overview_mapping_audit_1028_165800。
+
+这是单张特权闭集参考的定性图，未宣称用户视觉/临床/解剖配准接受、FewClick交互成绩或全30方法优势。记录docs/运行记录/模型实验/运行记录_首张WSI闭集参考三联图与显示映射核对_1028_165900.md，现场/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_overview_milestone_1028_165900；原16协调live、141源码绑定匹配；WSISAM14287/20456、retrieval11/30、cache扩展1392/8244，BF1完整独立接受/全方法统计仍pending，goal active。
