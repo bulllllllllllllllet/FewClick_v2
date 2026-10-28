@@ -3051,3 +3051,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 2026-10-28T22:53:10.942995+08:00：只读readiness worker2461194/session7709 EXIT0，原已接受CRC cell gate8字段/24NPZ与full-valid原20456别名候选几何一致，全部实际bytes/features74/reg64/unknown0/n=min255true/2zero-view匹配，7996新字段仍未prepare。当前InstanSeg adapter明确CUDA-only+CUDA autocast；保留原单serial-RNG语义和真实NPZ/token别名，未来须实GPU encoder角色核对/新7996 cell-cache接受，不能套用CPU或image-only证明。未运行新分割/encoder、未宣称此readiness是新GPU gate。
 
 记录docs/运行记录/特征缓存/运行记录_完整域XCell真实细胞复用前提核对_1028_225100.md；工件/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_full_valid_readiness_1028_224727。当前Cell2203/20456、R独立20/30、full-valid native11/30，12协调/3compute ps live、124冻结源码匹配；原主线继续，XCell全域实现/门控/prepare/输出仍pending，goal active。
+
+
+## 10-28 23:14:45
+
+- Purpose: 固定主30参考分割来源待确认限定，核对持续运行进度。
+- Changed: goal/registry/current record和来源审计记录；无模型/评分代码变化。
+- Validation: aligner只读审计worker2625081 EXIT0；30路径stat/manifest、readme/两TeX哈希、12协调live、88去重sources SHA匹配。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/reference_label_provenance_1028_231445
+- Docs record: docs/运行记录/数据审计/运行记录_主30参考组织分割图来源待确认与运行核对_1028_231445.md
+- Commit: 本条随来源限定记录提交，哈希以git log为准。
