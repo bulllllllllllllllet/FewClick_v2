@@ -2961,3 +2961,19 @@ fullcell_efficiency_accepted_1028_143000派生报告已绑定source/contract/所
 - Validation: all3 actual CPU8 and independent8/four old-alias exact probes plus index11 fixtures EXIT0; GPU actual/full extension branches queued after primary, not accepted.
 - Artifacts: interactive_valid_CPU_{gate,accept} and interactive_valid_index_CPU_gate three methods1028_145300/145500/145800; interactive_valid_chain_1028_150100.
 - Commit: this milestone commit.
+
+## 1028_152600 原review25项证据刷新及本地稿件指纹接受
+
+2026-10-28T15:27:46.642516+08:00：使用paper-skill逐条回应/可追溯矩阵，新增refresh_reviewer_board.py。实际CLI worker3952458/session93798 EXIT0，覆盖原3个人类review的全部11组challenge及14 AI自查；原HTML/逐note文本SHA复核、G3/三seed/G6/GenericHE/外部/留出/R接受与报告hash绑定、逐数值从已接受源读取、25行回放与所有证据指针SHA通过。旧board保留；新board不把AI当第四个人类评审，不声称新M3D/Dense/新数据就是原140WSI/F0复现。所有manuscript_edit_applied/submitted_version_bound均false，追踪表接受不等于全部review解决。
+
+本地main TeX/submission PDF/preview PDF/supp TeX/PDF共5文件只读fingerprint及pdftotext页/TeX行定位完成，前后hash不变。main TeX391/PDF7页写约.70 Dice，而supp TeX104/111、PDF4页分别列allTLS Dice.5229±.2270和unprompted polygon recall.6968±.1479；这是本地文本不一致，不是原预测重算，也未改稿。原.7522 matched与.7915共同子集解释可在本地344/347行与PDF定位，但旧两manifest/5-of30及上传版仍缺。匿名公开PDF一次GET403/web工具不可达，未用账号/cookie，不据本地submission文件名宣称上传身份。
+
+当前能回应训练适配/三seed/形态与普通HE控制/小外部域与MultiverSeg分支持信息比较；不能据现有差值证明稳定细胞或同网络mIF因果优势。当前代码192节点/窗口、top4/1e-8/KNN6与dense masked MHA、先软概率投影再最终pixel阈值、count无面积分母、负提示空集显式拒绝均静态核对；未把这些当已改论文或0负点实测。Eq10理想partition-unity下冗余，不能编造border插值必然破坏归一化的理由。完整main30组件/距离/BF1/CI、TLS标注/难阴性、同网络预训练目标及原模型/上传版本仍未闭合，G9 preparing。
+
+新report：/nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_refresh_1028_151200/traceability_1028_151800/report.md；local_manuscript_fingerprints.json与public_pdf_attempt.json在上级目录。源码SHA 7801125b50ac959fbf10ec122b1190b1fa1293dbe06de88b36d48cc8450c4bc9。主线实际仍存活：SAM3841375 9466/20456，closed native2359268 23/30完成片（当前1902897-15-HE-DX1）；整体goal active，原GPU/CPU/训练/评分源与旧论文未改。记录docs/运行记录/模型实验/运行记录_审稿逐条证据更新与本地稿版本核对_1028_151600.md。
+
+- Purpose: update all reviewer challenges using accepted current experimental evidence and exact local manuscript fingerprints.
+- Changed: refresh_reviewer_board.py.
+- Validation: real11human/14AI source/evidence/number pointer/unchanged5local files audit and generated matrix replay EXIT0; public PDF read403, no upload binding inferred.
+- Artifacts: reviewer_refresh_1028_151200/traceability_1028_151800 and local manuscript fingerprints; no historical paper edits.
+- Commit: this milestone commit.

@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-28T15:04:07.563352+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
+Updated: 2026-10-28T15:27:46.642516+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-28T15:04:07.563352+08:00. Native thread goal: **active**. Lates
 
 ## Resume here
 
-0. **WSI primary, full-label CRC12/fat supervised. Closed20208 caches accepted; native producer30/360 complete, independent2359268 still running (21/30 complete). First TLS fullcell cache/input/all-native probability accepted; mechanical efficiency report fullcell_efficiency_accepted_1028_143000, no TLS semantic accuracy. NoCell worker3189877 all20456 execution complete/unaccepted; GPU5 SAM3841375 running (1566/20456), WSISAM next; CRC fullcell gate530230 waits idleGPU1/3/4. Actual8 closed-extra native gate/index11 passed, coordinator3681174 queues8244 extra caches/28452 merged index after3441781 native acceptance. Full valid28452 inputs independently accepted; full-valid raster/quality pending. Existing prediction/BF1/statistics queues remain active, no complete main30 comparative quality/CI yet. Inspect registry actual PIDs; preserve all results and fair baselines.**
+0. **WSI primary, full-label CRC12/fat supervised. Closed20208 caches accepted; native producer30/360 complete, independent2359268 still running (23/30 complete). First TLS fullcell cache/input/all-native probability accepted; mechanical efficiency report fullcell_efficiency_accepted_1028_143000, no TLS semantic accuracy. NoCell worker3189877 all20456 execution complete/unaccepted; GPU5 SAM3841375 running (9466/20456), WSISAM next; CRC fullcell gate530230 waits idleGPU1/3/4. Actual8 closed-extra native gate/index11 passed, coordinator3681174 queues8244 extra caches/28452 merged index after3441781 native acceptance. Full valid28452 inputs independently accepted; full-valid raster/quality pending. Existing prediction/BF1/statistics queues remain active, no complete main30 comparative quality/CI yet. Inspect registry actual PIDs; preserve all results and fair baselines.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -478,3 +478,13 @@ fullcell_efficiency_accepted_1028_143000派生报告已绑定source/contract/所
 新协调3843395/tmux fewclick_interactive_valid_1028_150100真实waiting owned4172727的原主30三方法预测/独立评分接受；之后GPU5空闲各方法GPU8gate→独立GPU8→7996full→所有文件/结构+固定5fresh接受→28452 index，当前尚无新GPUchild，原主线优先不改。实际GPU/full新分支仍preparing，不把CPU gate说成全量完成；源码冻结、PID/命令/log/EXIT_CODE持久化，无retry/resume/fallback。
 
 原主线已推进：NoCell worker3189877全20456已EXIT0（8124.671s），状态complete_interactive_main30_cache_unaccepted，独立全cache仍等三方法准备完；SAM GPU7gate3840310 EXIT0 6.509s，正式GPU5 worker3841375当前1566/20456，之后WSISAM。closed native独立2359268完成21/30片，当前1809305-12-HE-DX1。主30完整quality/paired统计仍pending，不据缓存完成报模型胜负。整体goal active，记录docs/运行记录/特征缓存/运行记录_三方法完整有效域编码扩展与支持缓存复用_1028_145000.md。
+
+## 1028_152600 原review25项证据刷新及本地稿件指纹接受
+
+2026-10-28T15:27:46.642516+08:00：使用paper-skill逐条回应/可追溯矩阵，新增refresh_reviewer_board.py。实际CLI worker3952458/session93798 EXIT0，覆盖原3个人类review的全部11组challenge及14 AI自查；原HTML/逐note文本SHA复核、G3/三seed/G6/GenericHE/外部/留出/R接受与报告hash绑定、逐数值从已接受源读取、25行回放与所有证据指针SHA通过。旧board保留；新board不把AI当第四个人类评审，不声称新M3D/Dense/新数据就是原140WSI/F0复现。所有manuscript_edit_applied/submitted_version_bound均false，追踪表接受不等于全部review解决。
+
+本地main TeX/submission PDF/preview PDF/supp TeX/PDF共5文件只读fingerprint及pdftotext页/TeX行定位完成，前后hash不变。main TeX391/PDF7页写约.70 Dice，而supp TeX104/111、PDF4页分别列allTLS Dice.5229±.2270和unprompted polygon recall.6968±.1479；这是本地文本不一致，不是原预测重算，也未改稿。原.7522 matched与.7915共同子集解释可在本地344/347行与PDF定位，但旧两manifest/5-of30及上传版仍缺。匿名公开PDF一次GET403/web工具不可达，未用账号/cookie，不据本地submission文件名宣称上传身份。
+
+当前能回应训练适配/三seed/形态与普通HE控制/小外部域与MultiverSeg分支持信息比较；不能据现有差值证明稳定细胞或同网络mIF因果优势。当前代码192节点/窗口、top4/1e-8/KNN6与dense masked MHA、先软概率投影再最终pixel阈值、count无面积分母、负提示空集显式拒绝均静态核对；未把这些当已改论文或0负点实测。Eq10理想partition-unity下冗余，不能编造border插值必然破坏归一化的理由。完整main30组件/距离/BF1/CI、TLS标注/难阴性、同网络预训练目标及原模型/上传版本仍未闭合，G9 preparing。
+
+新report：/nfs-medical3/zyh/fewclick_v2/fair_comparison/reviewer_refresh_1028_151200/traceability_1028_151800/report.md；local_manuscript_fingerprints.json与public_pdf_attempt.json在上级目录。源码SHA 7801125b50ac959fbf10ec122b1190b1fa1293dbe06de88b36d48cc8450c4bc9。主线实际仍存活：SAM3841375 9466/20456，closed native2359268 23/30完成片（当前1902897-15-HE-DX1）；整体goal active，原GPU/CPU/训练/评分源与旧论文未改。记录docs/运行记录/模型实验/运行记录_审稿逐条证据更新与本地稿版本核对_1028_151600.md。
