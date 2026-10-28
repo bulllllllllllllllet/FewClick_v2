@@ -3121,3 +3121,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_index_fixture_1028_235400；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_index_fixture_acceptance_1028_235411；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_chain_1028_235700；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_index_and_chain_milestone_1028_235625
 - Docs record: docs/运行记录/特征缓存/运行记录_完整域XCell缓存索引与后置扩展队列_1028_235200.md
 - Commit: 随真实cell索引及后置队列提交，以git log为准。
+
+
+## 10-29 00:07:18
+
+- Purpose: 从实际16真实细胞cache验证完整域XCell三种query角色的预测/独立评分路径。
+- Changed: fullcell_valid_prediction.py/accept_fullcell_valid_prediction.py及goal/registry/current record/模型记录；原image full_valid源码不改。
+- Validation: GPU1实际2892249 EXIT0/48输出；独立2899527 EXIT0/48fresh概率及全部native/packed/GT/component/distance精确，online encoder0；remote完整不变性计数0，尚未完整30实验。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_cache_gate_1029_000500；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_cache_acceptance_1029_000700；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_milestone_1029_000718
+- Docs record: docs/运行记录/模型实验/运行记录_完整有效域XCell预测与独立评分门控_1029_000200.md
+- Commit: 随真实细胞完整域预测门控提交，以git log为准。

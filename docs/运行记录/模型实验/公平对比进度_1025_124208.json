@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-28T23:56:25.095408+08:00",
+  "updated": "2026-10-29T00:07:18.103979+08:00",
   "current_phase": "NoCell20456_cache_execution_complete_SAM_GPU_running_closed_native_GT_auditing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -795,11 +795,11 @@
       "child_progress": {
         "status": "independent_full_retrieval_counts",
         "worker_pid": 723130,
-        "item": "402638-9-HE-DX1-S02",
-        "items_complete": 24,
+        "item": "410204-14-HE-DX1-S01",
+        "items_complete": 25,
         "total_items": 30,
-        "GT_rows_complete": 12456,
-        "GT_rows_total": 17926
+        "GT_rows_complete": 10380,
+        "GT_rows_total": 17169
       }
     },
     {
@@ -858,11 +858,11 @@
       "child_progress": {
         "status": "preparing_CRC30_actual_cells",
         "worker_pid": 382752,
-        "completed_inputs": 2500,
+        "completed_inputs": 2534,
         "total_inputs": 20456,
-        "key": "1022100-8-HE-DX1:query:765",
+        "key": "1101299-3-HE-DX1:query:18",
         "scale": 1,
-        "true_cells": 557
+        "true_cells": 12
       }
     },
     {
@@ -1008,12 +1008,12 @@
       "child_progress": {
         "status": "native_probability_raster",
         "worker_pid": 1523624,
-        "completed_items": 15,
+        "completed_items": 16,
         "total_items": 30,
-        "wsi_id": "1447446-5-HE-DX1",
-        "tile": 1001,
-        "tiles": 1008,
-        "seconds": 13795.406770709902
+        "wsi_id": "1626589-10-HE-DX1",
+        "tile": 581,
+        "tiles": 992,
+        "seconds": 14452.603567328304
       }
     },
     {
@@ -4726,6 +4726,19 @@
       "record": "docs/运行记录/特征缓存/运行记录_完整域XCell缓存索引与后置扩展队列_1028_235200.md",
       "items": 16,
       "full28452_complete": false
+    },
+    {
+      "kind": "full_valid_XCell_GPU16_cache_prediction_and_independent_GT_fixture",
+      "status": "accepted_full_valid_prediction_gate",
+      "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_cache_gate_1029_000500",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_cache_acceptance_1029_000700",
+      "milestone": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_milestone_1029_000718",
+      "record": "docs/运行记录/模型实验/运行记录_完整有效域XCell预测与独立评分门控_1029_000200.md",
+      "rows": 48,
+      "fresh_probabilities": 48,
+      "remote_probability_checks": 0,
+      "remote_mask_cells_checked": 0,
+      "full30_quality_complete": false
     }
   ],
   "reviewer_response_draft": {

@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-28T23:56:25.095408+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
+Updated: 2026-10-29T00:07:18.103979+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-28T23:56:25.095408+08:00. Native thread goal: **active**. Lates
 
 ## Resume here
 
-0. **WSI primary, supervisedCRC12/fat included. Closed30 strict-remote native/Dice/BF1 accepted (WSI-equal all330 .713118/.427712, matched276 .719511/.423597); R all5520 execution done, independent723130 running 24/30. Three image caches all20456 generated; NoCell/SAM independently accepted;4018919 waits GPU5 idle for WSISAM, then original GPU prediction/full score chain. CRC actual GPU1 cell gate8/24views independently accepted; full preparation382752 running 2500/20456 under574146. Closed extra8244 and full28452 index accepted; full-valid native1523624 running 15/30 under3749768. Other main/full-valid/BF1/statistics queues remain active. FirstTLS fullcell mechanical accepted, semantic quality unconfirmed. Retired3990149/530230/3681174 and earlier completed workers must not restart. New full-valid real-cell8/24 GPU gate independently accepted; 16-index fixture independently accepted;2851935 waits main758578 for formal7996/merge28452, production not launched. Inspect registry/live PIDs; no complete interactive comparison/CI yet.**
+0. **WSI primary, supervisedCRC12/fat included. Closed30 strict-remote native/Dice/BF1 accepted (WSI-equal all330 .713118/.427712, matched276 .719511/.423597); R all5520 execution done, independent723130 running 25/30. Three image caches all20456 generated; NoCell/SAM independently accepted;4018919 waits GPU5 idle for WSISAM, then original GPU prediction/full score chain. CRC actual GPU1 cell gate8/24views independently accepted; full preparation382752 running 2534/20456 under574146. Closed extra8244 and full28452 index accepted; full-valid native1523624 running 16/30 under3749768. Other main/full-valid/BF1/statistics queues remain active. FirstTLS fullcell mechanical accepted, semantic quality unconfirmed. Retired3990149/530230/3681174 and earlier completed workers must not restart. New full-valid real-cell8/24 GPU gate independently accepted; 16-index fixture independently accepted;2851935 waits main758578 for formal7996/merge28452, production not launched. Inspect registry/live PIDs; no complete interactive comparison/CI yet.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -619,3 +619,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 Fixture /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_index_fixture_1028_235400，独立/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_index_fixture_acceptance_1028_235411；chain前置/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_chain_fixture_1028_235600；队列/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_chain_1028_235700；现场/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_index_and_chain_milestone_1028_235625；记录docs/运行记录/特征缓存/运行记录_完整域XCell缓存索引与后置扩展队列_1028_235200.md。原schema/NPZ/payload原样保留，完整域含support不是严格远距主表；新合并结果仍需full-valid预测/GT/BF1/remote不变性验收。
 
 13协调ps live、97去重active_jobs.sources绑定一致。主CRC Cell2500/20456、R独立24/30、closed full-valid native15/30（tile1001/1008）；整体goal active。
+
+
+## 1029_000718 完整有效域XCell真实缓存48输出独立接受
+
+2026-10-29T00:07:18.103979+08:00：只读迁移新增fullcell_valid_prediction.py/accept_fullcell_valid_prediction.py，原两个image full_valid源码SHA不变；迁移清单/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_migration_1029_000233/migration.json，最终源码指纹/补充断言见/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_milestone_1029_000718/evidence.json。实际GPU1 producer2892249/session98743 EXIT0/16.339s，fresh同GPU auditor2899527/session12677 EXIT0/31.627s；new_left/source_alias/remote_single三单窗、target0/fat10 group0四预算×graphDense/regionProto=48行。
+
+全部48实际FP32概率fresh重解码逐值一致、PIL原生投影/overlap/packed mask、原GT整计数/组件ID面积hit/未提示censor/物理距离独立重数精确，online encoder0。只用真实16 cell索引/原XCell模型，未重新检测、未用NoCell或CPU替代。当前remote_probability_digest_checks=0/remote_mask_cells_checked=0，不能称原远距不变性已通过；正式模式仍需实际主30/full28452 index、同scopeGPU gate及全部原远距512/整mask crop逐值核对。
+
+工件/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_cache_gate_1029_000500、/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_cache_acceptance_1029_000700；现场/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_milestone_1029_000718；记录docs/运行记录/模型实验/运行记录_完整有效域XCell预测与独立评分门控_1029_000200.md。这是48局部门控，不是30片质量/CI；完整域含支持位置应独立诊断表，不能替换严格远距。13协调ps live、97去重source绑定一致；CRC Cell2534/20456、R独立25/30、closed full-valid native16/30，goal active。
