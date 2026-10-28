@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-28T17:12:11.324246+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
+Updated: 2026-10-28T22:24:05.964319+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-28T17:12:11.324246+08:00. Native thread goal: **active**. Lates
 
 ## Resume here
 
-0. **WSI primary, full-label CRC12/fat supervised. Closed20208 caches and all30 native12/GT accepted; retired3441781/2359268 EXIT0. Closed12 privileged WSI-equal tissue Dice all330=0.713118, matched276=0.719511; no complete interactive comparison yet. First TLS fullcell cache/input/all-native probability accepted; mechanical efficiency report fullcell_efficiency_accepted_1028_143000, no TLS semantic accuracy. NoCell worker3189877 all20456 execution complete/unaccepted; SAM3841375 all20456 execution complete/unaccepted; GPU5 WSISAM4145669 running; CRC fullcell gate530230 waits idleGPU1/3/4. Actual8 closed-extra native gate/index11 passed, coordinator3681174 is running8244 extra caches (worker69453), then28452 merged index; closed BF1 all360 independently accepted (all330=0.427712, matched276=0.423597); retired693018. Full valid28452 inputs independently accepted; full-valid raster/quality pending. Existing prediction/BF1/statistics queues remain active, no complete main30 comparative quality/CI yet. Inspect registry actual PIDs; preserve all results and fair baselines.**
+0. **WSI primary, supervisedCRC12/fat included. Closed30 strict-remote native/Dice/BF1 accepted (WSI-equal all330 .713118/.427712, matched276 .719511/.423597); R all5520 execution done, independent723130 running 19/30. Three image caches all20456 generated; NoCell/SAM independently accepted;4018919 waits GPU5 idle for WSISAM, then original GPU prediction/full score chain. CRC actual GPU1 cell gate8/24views independently accepted; full preparation382752 running 2014/20456 under574146. Closed extra8244 and full28452 index accepted; full-valid native1523624 running 8/30 under3749768. Other main/full-valid/BF1/statistics queues remain active. FirstTLS fullcell mechanical accepted, semantic quality unconfirmed. Retired3990149/530230/3681174 and earlier completed workers must not restart. Inspect registry/live PIDs; no complete interactive comparison/CI yet.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -546,3 +546,12 @@ registry退役631034并记录四producer未接受执行；其余16协调live、1
 2026-10-28T17:12:11.324246+08:00：693018与四172751/172779/172780/172781全部EXIT0，聚合303375 EXIT0，完整360行/30WSI原GT/count/每block与原native字段接受，330组织+30背景，360可评/0NA。新增closed12_boundary_report.py（d1d2b92a4513be57289bfc77aa767e3cce832473ef51b46cab0b688868ef51a0），真实339909 EXIT0，从原整数计数Fraction重建标量及均值。闭集12类CE/target-ID/无点击特权参考：all330 WSI等权Dice 0.713118/BF1@2um 0.427712；固定276为0.719511/0.423597，背景另表，无交互比较/CI结论。
 
 原30整片各11组织皆GT存在，whole-WSI absent-target指标无可评样本，应NA；非目标pixel FPR与ROI-transfer缺失目标证据分别报告。registry退役693018与四auditor/聚合，当前15协调live、138源码项匹配。WSISAM17179/20456、retrieval15/30、extra1846/8244；完整交互/XCell/统计仍pending，goal active。记录docs/运行记录/模型实验/运行记录_主30闭集物理BF1全量独立接受与联合摘要_1028_170400.md，报告/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_Dice_BF1_accepted_report_1028_170100，接受/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/WSI_boundary_closed12_complete_1028_040500，现场/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_BF1_acceptance_milestone_1028_170400。
+
+
+## 1028_221500 三方法缓存完成、两方法独立接受及CRC细胞全量正式运行
+
+2026-10-28T22:24:05.964319+08:00：三image方法各20456缓存EXIT0，WSISAM4145669完成5053.749s；NoCell1455079/SAM1882448各完整20456独立接受，所有bytes/结构/输入/选权/source RGB及各5fresh native encoder精确，qualified非全部重新encode。4018919当前等待GPU5其他用户2023377任务自然释放，再WSISAM独立gate/full；不把缓存接受当质量结果。
+
+CRC GPU1实际8输入/24view门控370391 EXIT0，独立380292 EXIT0，NPZ/instance geometry/uncapped truecounts/74及24decode checks接受（无detector/reg64全重算）。574146已正式运行382752真实full20456准备，当前2014/20456，GPU1现有共享任务，效率按实际共享条件。闭集8244 extra69453和独立1430447/5fresh接受，1518839 merged28452完整index接受，1523624全域native/GT当前8/30；R producer69964全30/5520 EXIT0，独立723130 19/30。
+
+registry退役3990149/530230/3681174；当前12协调live、138原源码绑定匹配，刷新真实next_actions。权重/清单/接受summary SHA、真实commands/PIDs/GPU状态和未完差异见docs/运行记录/模型实验/运行记录_主30三方法缓存验收与细胞正式准备进展_1028_221500.md及/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_cache_and_fullcell_milestone_1028_221500/evidence.json。整体goal active，三image主30质量/XCell/full统计/full-valid/TLS语义等仍pending。
