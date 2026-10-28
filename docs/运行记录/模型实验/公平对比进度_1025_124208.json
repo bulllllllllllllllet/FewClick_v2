@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-29T00:07:18.103979+08:00",
+  "updated": "2026-10-29T00:16:09.163720+08:00",
   "current_phase": "NoCell20456_cache_execution_complete_SAM_GPU_running_closed_native_GT_auditing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -795,11 +795,11 @@
       "child_progress": {
         "status": "independent_full_retrieval_counts",
         "worker_pid": 723130,
-        "item": "410204-14-HE-DX1-S01",
-        "items_complete": 25,
+        "item": "422150-21-HE-DX1-S01",
+        "items_complete": 26,
         "total_items": 30,
-        "GT_rows_complete": 10380,
-        "GT_rows_total": 17169
+        "GT_rows_complete": 7266,
+        "GT_rows_total": 13697
       }
     },
     {
@@ -858,11 +858,11 @@
       "child_progress": {
         "status": "preparing_CRC30_actual_cells",
         "worker_pid": 382752,
-        "completed_inputs": 2534,
+        "completed_inputs": 2577,
         "total_inputs": 20456,
-        "key": "1101299-3-HE-DX1:query:18",
+        "key": "1101299-3-HE-DX1:query:82",
         "scale": 1,
-        "true_cells": 12
+        "true_cells": 3
       }
     },
     {
@@ -1008,12 +1008,12 @@
       "child_progress": {
         "status": "native_probability_raster",
         "worker_pid": 1523624,
-        "completed_items": 16,
+        "completed_items": 17,
         "total_items": 30,
-        "wsi_id": "1626589-10-HE-DX1",
-        "tile": 581,
-        "tiles": 992,
-        "seconds": 14452.603567328304
+        "wsi_id": "1710342-7-HE-DX1",
+        "tile": 141,
+        "tiles": 1640,
+        "seconds": 14976.082370504737
       }
     },
     {
@@ -1185,6 +1185,46 @@
       "child_worker_pid": null,
       "formal7996_started": false,
       "full28452_index_complete": false
+    },
+    {
+      "kind": "full_valid_XCell_full28452_prediction_remote_invariance_and_BF1_after_cache_acceptance_queue",
+      "worker_pid": 2953926,
+      "status": "waiting_owned_full28452_real_cell_cache_index",
+      "last_observed_status": {
+        "status": "waiting_owned_full28452_real_cell_cache_index",
+        "worker_pid": 2953926,
+        "dependency_worker_pid": 2851935
+      },
+      "process_alive_last_observed": true,
+      "process_observed_at": "2026-10-29T00:16:09.163720+08:00",
+      "dependency_worker_pid": 2851935,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_chain_1029_001800",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_chain_1029_001800.log",
+      "session": "fewclick_fullcell_valid_pred_1029_001800",
+      "sources": {
+        "benchmarks/v5/wsi_global/fullcell_valid_prediction_chain.py": "5f5597abc7cc94661f18f7ace18b63fcea83c1fbc989bc030f3e59bb5713689f",
+        "benchmarks/v5/wsi_global/fullcell_valid_prediction.py": "9cb48f3754795dff0c3b054212e887a02d55cbd785c977670b6579fc9322a7b0",
+        "benchmarks/v5/wsi_global/accept_fullcell_valid_prediction.py": "4862bf64c535990282fb225d303f282719bf1f2b4ca63ca8d6fae4901bef6aff",
+        "benchmarks/v5/wsi_global/fullcell_valid_boundary.py": "419e7a2a3bae07f7e2d552097b3518f436df8bf7400ce458a26b5542c9a5e53d",
+        "benchmarks/v5/wsi_global/accept_fullcell_valid_boundary.py": "9fbabc07e9f0d2b9e4170364f52bcaa578efb1d63a96a860ecf08d8930770736",
+        "benchmarks/v5/wsi_global/aggregate_fullcell_valid_boundary.py": "2a976582369e60c8f3ba26b497d720a59b198bf1ea08949d6a1d4254179d3bd3",
+        "benchmarks/v5/wsi_global/completion.py": "9bf687ca2d75fcf171b7e9cfae3ce3d0a05dc25d760b10844e9dd2357ef7149a",
+        "/home/zhaoyh/FewClick_v2/benchmarks/v5/wsi_global/fullcell_valid_prediction.py": "9cb48f3754795dff0c3b054212e887a02d55cbd785c977670b6579fc9322a7b0",
+        "benchmarks/v5/paper_multiscale/model.py": "a780f02e0f3b04fe214323cfc1814755ff81695155a4ca491304bdc6aa204a91",
+        "benchmarks/v5/external_evaluation/evaluate_adapted.py": "4c5719c4e5fd66e8b7f2efc9c34442b9df79a890c50be1f6e08f7395337430e2",
+        "benchmarks/v5/wsi_global/fullcell_prediction.py": "e03c2edf1106364a018234e258612ed7360c5bb2b95aea54016c18a275126653",
+        "benchmarks/v5/wsi_global/packed_prediction.py": "6388bc7b7b4ddc6a5c4e48555a10e743e5c5e72c1266ec581a04b834d0a9a050",
+        "benchmarks/v5/wsi_global/sampled_stripe.py": "06888a1400249d19c61edbac0f394c677584503cefdd1d5966ea9daaa17255f9",
+        "benchmarks/v5/wsi_global/native_remote_gate.py": "44b1d8330839ae7334ea33e8cc5c5159318df9f227555ccb8ac64d86539309b9",
+        "benchmarks/v5/wsi_global/retrieval_stream.py": "183c072fe0042f4b7a7f71bfed711185441d7da467ecf916dae6d0bb30acaebd",
+        "benchmarks/v5/wsi_global/retrieval_metrics.py": "7a717ec813cbe241273f85fa0c825396b8b4a915e3e46e306ba0c1f3363e61f9",
+        "benchmarks/v5/transfer_comparison/prototypes.py": "4d08c820d376da06646d0c27d2c5e0d894b0311f838b87328efb739fb99be025",
+        "benchmarks/v5/wsi_global/streaming_boundary.py": "62e6e2d53708ab482c5b2a3190ba1f16d0c49488289a6a002da714972deba448",
+        "benchmarks/v5/fair_comparison/metrics.py": "ee4797990e3679f807b4be1adfdb45b1c6d5e1e998f450801c4d7104ff5782cc"
+      },
+      "child_worker_pid": null,
+      "formal_full28452_prediction_started": false,
+      "full11040_quality_complete": false
     }
   ],
   "known_gaps": [
@@ -4739,6 +4779,20 @@
       "remote_probability_checks": 0,
       "remote_mask_cells_checked": 0,
       "full30_quality_complete": false
+    },
+    {
+      "kind": "full_valid_XCell_actual48_physical_BF1_and_deferred_prediction_chain_fixture",
+      "status": "accepted_full_valid_boundary_aggregation_gate",
+      "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_BF1_gate_1029_001300",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_BF1_accept_gate_1029_001400",
+      "join": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_BF1_join_gate_1029_001500",
+      "chain_fixture": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_chain_fixture_1029_001700",
+      "milestone": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_BF1_and_prediction_chain_milestone_1029_001609",
+      "record": "docs/运行记录/模型实验/运行记录_完整域XCell物理BF1与正式预测队列_1029_001200.md",
+      "rows": 48,
+      "GT_boundary_evaluable": 16,
+      "GT_boundary_NA": 32,
+      "full30_complete": false
     }
   ],
   "reviewer_response_draft": {

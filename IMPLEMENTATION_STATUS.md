@@ -3131,3 +3131,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_cache_gate_1029_000500；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_cache_acceptance_1029_000700；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_milestone_1029_000718
 - Docs record: docs/运行记录/模型实验/运行记录_完整有效域XCell预测与独立评分门控_1029_000200.md
 - Commit: 随真实细胞完整域预测门控提交，以git log为准。
+
+
+## 10-29 00:16:09
+
+- Purpose: 适配完整域XCell双分支11040行物理BF1，并后置正式预测/不变性/边界验收。
+- Changed: fullcell_valid_boundary.py/accept_fullcell_valid_boundary.py/aggregate_fullcell_valid_boundary.py/fullcell_valid_prediction_chain.py及四连续记录。
+- Validation: 实际48 BF1 producer2930439/独立2936175/join2951427全部EXIT0（16可评32NA）；前置2951430 EXIT0；正式2953926 ps live等待完整索引。原metric/kernel/原BF1源码SHA不变；不是整片全量验收。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_BF1_join_gate_1029_001500；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_chain_1029_001800；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_BF1_and_prediction_chain_milestone_1029_001609
+- Docs record: docs/运行记录/模型实验/运行记录_完整域XCell物理BF1与正式预测队列_1029_001200.md
+- Commit: 随完整域cell BF1及正式队列提交，以git log为准。
