@@ -3091,3 +3091,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_runtime_projection_1028_232911
 - Docs record: docs/运行记录/特征缓存/运行记录_主30细胞准备吞吐与剩余耗时实测_1028_232911.md
 - Commit: 随耗时实测记录提交，以git log为准。
+
+
+## 10-28 23:35:49
+
+- Purpose: 补齐完整域XCell已有真实细胞缓存支持位置作为query的同GPU重编码fixture。
+- Changed: fullcell_alias_gate.py/accept_fullcell_alias_gate.py、goal/registry/current record/特征缓存记录。
+- Validation: GPU1实际2726954 EXIT0/86.293s；独立2737053 EXIT0/7.460s，8输入/24view/152编码张量精确、两zero-view与真实NPZ/HE核对；未重新检测、未改主运行源码。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_alias_GPU_gate_1028_233500；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_alias_acceptance_1028_233700；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_alias_milestone_1028_233549
+- Docs record: docs/运行记录/特征缓存/运行记录_完整域XCell同GPU缓存别名复用门控_1028_233300.md
+- Commit: 随同GPU缓存别名fixture提交，以git log为准。

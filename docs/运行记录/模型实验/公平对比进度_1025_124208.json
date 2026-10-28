@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-28T23:30:34.964175+08:00",
+  "updated": "2026-10-28T23:35:49.668685+08:00",
   "current_phase": "NoCell20456_cache_execution_complete_SAM_GPU_running_closed_native_GT_auditing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -795,11 +795,11 @@
       "child_progress": {
         "status": "independent_full_retrieval_counts",
         "worker_pid": 723130,
-        "item": "1858136-9-HE-DX1",
-        "items_complete": 22,
+        "item": "1902897-15-HE-DX1",
+        "items_complete": 23,
         "total_items": 30,
-        "GT_rows_complete": 17127,
-        "GT_rows_total": 20640
+        "GT_rows_complete": 5363,
+        "GT_rows_total": 19732
       }
     },
     {
@@ -858,11 +858,11 @@
       "child_progress": {
         "status": "preparing_CRC30_actual_cells",
         "worker_pid": 382752,
-        "completed_inputs": 2387,
+        "completed_inputs": 2410,
         "total_inputs": 20456,
-        "key": "1022100-8-HE-DX1:query:596",
-        "scale": 0,
-        "true_cells": 26
+        "key": "1022100-8-HE-DX1:query:635",
+        "scale": 1,
+        "true_cells": 991
       }
     },
     {
@@ -1011,9 +1011,9 @@
         "completed_items": 14,
         "total_items": 30,
         "wsi_id": "1426313-R2-HE-DX1",
-        "tile": 81,
+        "tile": 441,
         "tiles": 667,
-        "seconds": 12154.90455077216
+        "seconds": 12549.68225793913
       }
     },
     {
@@ -4653,6 +4653,18 @@
       "status": "fullcell_full_valid_readiness_audited_not_new_model_or_detector_gate",
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_full_valid_readiness_1028_224727",
       "summary_sha256": "1b0f1df4cb32925f37a664374776c4bb2984048d4febb78d61bc1fb9028adc91"
+    },
+    {
+      "kind": "fullcell_same_GPU_full_valid_alias_fixture",
+      "status": "accepted_fullcell_same_GPU_full_valid_alias_fixture_only",
+      "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_alias_GPU_gate_1028_233500",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_alias_acceptance_1028_233700",
+      "milestone": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_alias_milestone_1028_233549",
+      "record": "docs/运行记录/特征缓存/运行记录_完整域XCell同GPU缓存别名复用门控_1028_233300.md",
+      "inputs": 8,
+      "views": 24,
+      "tensor_checks": 152,
+      "full28452_complete": false
     }
   ],
   "reviewer_response_draft": {
