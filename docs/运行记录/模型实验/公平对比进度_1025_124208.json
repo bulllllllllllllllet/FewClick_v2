@@ -4029,5 +4029,18 @@
     "heldout": "deferred; replacement ontology not selected; preserve old results"
   },
   "objective": "以当前三物理视野 FewClick 评估完整监督下的 CRC 十二标签（11类组织+背景）WSI 用户指定组织分割能力，脂肪正常参与训练。主证据优先建立在真实整片：主测试30张的来源/GT/物理域审计、固定少量支持点击后的远处组织检出与误报、整片分割质量、点击预算曲线，以及首次细胞/特征准备、缓存后整片响应和输出IO成本。局部patch比较、机制消融、外部与类别留出作为补充证据，按真实应用相关性安排，不以极端留出低分代表常规使用能力。\n\n实验在看结果前固定目标类/整片集合、支持选择、预算、权重选择、评价域与指标；保持合理监督和适配的基线，披露额外视野、预训练及监督差异。已有结果与失败案例保留，不按排名删除样本、削弱基线或修改评分。WSI扩展首先验证现有模型的缓存/分窗推理，不把分窗局部图称作跨整片全局图。类别留出后置，新类别先做本体/覆盖审计；只有保留相应泛化主张时才要求该证据闭环。审稿人明确要求的项目逐条回应，无法完成者说明限制。",
-  "wsi_priority_record": "docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md"
+  "wsi_priority_record": "docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md",
+  "runtime_verification_last": {
+    "status": "verified_live_wait_not_experiment_acceptance",
+    "observed_at": "2026-10-28T15:33:29.362945+08:00",
+    "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/runtime_verification_1028_153329",
+    "evidence_sha256": "43c3980e1645c18f43df5ec52ddd455f0fb95bcf251e56a28704eb32b957e4df",
+    "live_queues": 16,
+    "source_bindings_checked": 84,
+    "mismatches": 0,
+    "sam_cache_completed": 11602,
+    "sam_cache_total": 20456,
+    "closed_native_items_complete": 23,
+    "closed_native_items_total": 30
+  }
 }

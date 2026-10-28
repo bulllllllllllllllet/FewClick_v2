@@ -2977,3 +2977,10 @@ fullcell_efficiency_accepted_1028_143000派生报告已绑定source/contract/所
 - Validation: real11human/14AI source/evidence/number pointer/unchanged5local files audit and generated matrix replay EXIT0; public PDF read403, no upload binding inferred.
 - Artifacts: reviewer_refresh_1028_151200/traceability_1028_151800 and local manuscript fingerprints; no historical paper edits.
 - Commit: this milestone commit.
+
+
+## 1028_153329 WSI主线存活与冻结源码复核
+
+2026-10-28T15:33:29.362945+08:00：上一轮分类为progress（dc7a96b保存25项审稿证据）；本轮是verified wait。实际ps逐项确认全部16个协调进程及原closed/SAM计算worker仍存活，保存完整PID/命令/elapsed；84项冻结源码SHA全部匹配。SAM worker3841375为11602/20456，closed独立worker2359268完成23/30片、当前1902897-15-HE-DX1 block_y=40850。CRC fullcell协调530230仍等待GPU1/3/4，GPU进程查询确认原外部进程占用。无重启、模型/任务/阈值更改，无新完整quality/CI验收。
+
+运行证据：/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/runtime_verification_1028_153329/evidence.json，SHA256 43c3980e1645c18f43df5ec52ddd455f0fb95bcf251e56a28704eb32b957e4df。该证据只证明此时任务存活及源码未变，不把排队或进度当实验完成；整体goal active。
