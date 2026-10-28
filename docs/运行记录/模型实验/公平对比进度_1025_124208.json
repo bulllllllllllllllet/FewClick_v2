@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "active",
-  "updated": "2026-10-29T00:16:09.163720+08:00",
+  "updated": "2026-10-29T00:34:29.724652+08:00",
   "current_phase": "NoCell20456_cache_execution_complete_SAM_GPU_running_closed_native_GT_auditing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -795,11 +795,11 @@
       "child_progress": {
         "status": "independent_full_retrieval_counts",
         "worker_pid": 723130,
-        "item": "422150-21-HE-DX1-S01",
-        "items_complete": 26,
+        "item": "430171-6-HE-DX1",
+        "items_complete": 27,
         "total_items": 30,
-        "GT_rows_complete": 7266,
-        "GT_rows_total": 13697
+        "GT_rows_complete": 8304,
+        "GT_rows_total": 11090
       }
     },
     {
@@ -858,11 +858,11 @@
       "child_progress": {
         "status": "preparing_CRC30_actual_cells",
         "worker_pid": 382752,
-        "completed_inputs": 2577,
+        "completed_inputs": 2676,
         "total_inputs": 20456,
-        "key": "1101299-3-HE-DX1:query:82",
+        "key": "1101299-3-HE-DX1:query:223",
         "scale": 1,
-        "true_cells": 3
+        "true_cells": 5
       }
     },
     {
@@ -1011,9 +1011,9 @@
         "completed_items": 17,
         "total_items": 30,
         "wsi_id": "1710342-7-HE-DX1",
-        "tile": 141,
+        "tile": 1341,
         "tiles": 1640,
-        "seconds": 14976.082370504737
+        "seconds": 16087.379639524966
       }
     },
     {
@@ -4793,6 +4793,21 @@
       "GT_boundary_evaluable": 16,
       "GT_boundary_NA": 32,
       "full30_complete": false
+    },
+    {
+      "kind": "full_valid_six_interactive_arms_paired_statistics_fixture",
+      "status": "accepted_full_valid_WSI_statistics_fixture",
+      "gate": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_statistics_gate_1029_002900",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_statistics_acceptance_gate_1029_003100",
+      "milestone": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_statistics_milestone_1029_003429",
+      "record": "docs/运行记录/模型实验/运行记录_完整有效域配对统计与闭集独立参考_1029_002200.md",
+      "arms": 6,
+      "actual_rows": 144,
+      "tables": 648,
+      "paired": 1620,
+      "WSIs": 1,
+      "all_CI_NA": true,
+      "full30_statistics_complete": false
     }
   ],
   "reviewer_response_draft": {

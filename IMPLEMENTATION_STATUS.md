@@ -3141,3 +3141,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_BF1_join_gate_1029_001500；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_prediction_chain_1029_001800；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_valid_BF1_and_prediction_chain_milestone_1029_001609
 - Docs record: docs/运行记录/模型实验/运行记录_完整域XCell物理BF1与正式预测队列_1029_001200.md
 - Commit: 随完整域cell BF1及正式队列提交，以git log为准。
+
+
+## 10-29 00:34:29
+
+- Purpose: 完整有效域六个交互分支配对汇总/独立统计门控，保持严格远距主表独立。
+- Changed: full_valid_statistics.py/accept_full_valid_statistics.py及goal/registry/current record/模型记录。
+- Validation: 实际3016891 EXIT0/648tables/1620paired；独立3024006 EXIT0，以count重算均值/NA/配对；物理域guard前后5文件byte一致。单WSI全部CI=None，非全30统计完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_statistics_gate_1029_002900；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_statistics_acceptance_gate_1029_003100；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_statistics_milestone_1029_003429
+- Docs record: docs/运行记录/模型实验/运行记录_完整有效域配对统计与闭集独立参考_1029_002200.md
+- Commit: 随完整域统计门控提交，以git log为准。
