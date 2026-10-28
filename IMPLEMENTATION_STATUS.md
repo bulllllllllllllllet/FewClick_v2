@@ -3005,3 +3005,12 @@ fullcell_efficiency_accepted_1028_143000派生报告已绑定source/contract/所
 2026-10-28T16:17:21.516804+08:00：新增full_valid_boundary.py、accept_full_valid_boundary.py、aggregate_full_valid_boundary.py、full_valid_boundary_chain.py，仅接已接受full-valid源。真实gate协调6475/tmux fewclick_full_valid_BF1_gate_1028_161100及全部12子worker均EXIT0：closed36/NoCell48/SAM24/WSISAM24共132行，49GT边界可评、83NA，9个pred边界空且GT边界存在保留计0。流式EDT/whole EDT及独立197row anisotropic disk所有计数/BF1/block守恒精确，原2um欧氏/void/frame/eligibility口径不改。132是代表性局部任务行，非完整30片结果。
 
 正式协调21100/tmux fewclick_full_valid_BF1_full_1028_161600实际等待closed3749768/三image4140128的各自完整域GT/remote不变性接受，再各4CPU1 producer/4audit/全行join，预期22440行；7新源码项冻结，原142锁定项匹配，无GPU/重启/回退。XCell/full-valid统计仍缺；source-inclusive与严格远距表分开。原closed独立29/30，WSISAM3883/20456；整体goal active。记录docs/运行记录/模型实验/运行记录_完整有效域BF1四分支独立接受与排队_1028_161700.md，工件/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_BF1_milestone_1028_161700，gate /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_BF1_chain_gate_1028_161100，queue /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_BF1_chain_full_1028_161600。
+
+
+## 1028_163000 主30闭集原生全域独立接受及描述性结果
+
+2026-10-28T16:31:41.755811+08:00：独立2359268已30/30、24318.407s EXIT0，协调3441781 terminal EXIT0且两PID已退出。接受原固定20208远距输入、19,350,378,454原生像素全部12channel/类别/count及4,837,015,002GT有效cell/360类指标。新增closed12_native_report.py，report70305/session52463 EXIT0；Fraction audit89452 EXIT0，逐整数重算all330/matched276/所有class/WSI均值，最大均值舍入差1.11e-16。
+
+闭集12类CE/target-ID/无点击特权参考：all330组织—WSI对的WSI等权Dice 0.713118；原固定支持可用276子集WSI等权 0.719511（pair等权0.717464）。这些是单闭集描述性结果，背景另表；无FewClick交互结果/方法胜负/配对CI结论，不替代历史heldout。报告/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_accepted_report_1028_162700/report.md与独立audit /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_accepted_report_audit_1028_162900；native接受SHA 09dabc106812d65effabc722d57c5f64be37a9465356f8836b17d93c85507cac。
+
+已实际自动触发retrieval69964、BF1四69908..69911、额外cache69453，6子进程ps存活，均running未全接受。WSISAM4145669 7542/20456；其余17协调存活、145在用源码SHA匹配。registry退役3441781/2359268，刷新过期next_actions并保留旧快照，整体goal active。完整记录docs/运行记录/模型实验/运行记录_主30闭集原生输出独立接受与首份整片结果_1028_163000.md，现场证据/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/closed12_native_milestone_1028_163000。
