@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-28T22:24:05.964319+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
+Updated: 2026-10-28T22:53:10.942995+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
 
 ## Objective
 
@@ -10,7 +10,7 @@ Updated: 2026-10-28T22:24:05.964319+08:00. Native thread goal: **active**. Lates
 
 ## Resume here
 
-0. **WSI primary, supervisedCRC12/fat included. Closed30 strict-remote native/Dice/BF1 accepted (WSI-equal all330 .713118/.427712, matched276 .719511/.423597); R all5520 execution done, independent723130 running 19/30. Three image caches all20456 generated; NoCell/SAM independently accepted;4018919 waits GPU5 idle for WSISAM, then original GPU prediction/full score chain. CRC actual GPU1 cell gate8/24views independently accepted; full preparation382752 running 2014/20456 under574146. Closed extra8244 and full28452 index accepted; full-valid native1523624 running 8/30 under3749768. Other main/full-valid/BF1/statistics queues remain active. FirstTLS fullcell mechanical accepted, semantic quality unconfirmed. Retired3990149/530230/3681174 and earlier completed workers must not restart. Inspect registry/live PIDs; no complete interactive comparison/CI yet.**
+0. **WSI primary, supervisedCRC12/fat included. Closed30 strict-remote native/Dice/BF1 accepted (WSI-equal all330 .713118/.427712, matched276 .719511/.423597); R all5520 execution done, independent723130 running 20/30. Three image caches all20456 generated; NoCell/SAM independently accepted;4018919 waits GPU5 idle for WSISAM, then original GPU prediction/full score chain. CRC actual GPU1 cell gate8/24views independently accepted; full preparation382752 running 2203/20456 under574146. Closed extra8244 and full28452 index accepted; full-valid native1523624 running 11/30 under3749768. Other main/full-valid/BF1/statistics queues remain active. FirstTLS fullcell mechanical accepted, semantic quality unconfirmed. Retired3990149/530230/3681174 and earlier completed workers must not restart. Inspect registry/live PIDs; no complete interactive comparison/CI yet.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -555,3 +555,10 @@ registry退役631034并记录四producer未接受执行；其余16协调live、1
 CRC GPU1实际8输入/24view门控370391 EXIT0，独立380292 EXIT0，NPZ/instance geometry/uncapped truecounts/74及24decode checks接受（无detector/reg64全重算）。574146已正式运行382752真实full20456准备，当前2014/20456，GPU1现有共享任务，效率按实际共享条件。闭集8244 extra69453和独立1430447/5fresh接受，1518839 merged28452完整index接受，1523624全域native/GT当前8/30；R producer69964全30/5520 EXIT0，独立723130 19/30。
 
 registry退役3990149/530230/3681174；当前12协调live、138原源码绑定匹配，刷新真实next_actions。权重/清单/接受summary SHA、真实commands/PIDs/GPU状态和未完差异见docs/运行记录/模型实验/运行记录_主30三方法缓存验收与细胞正式准备进展_1028_221500.md及/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/main30_cache_and_fullcell_milestone_1028_221500/evidence.json。整体goal active，三image主30质量/XCell/full统计/full-valid/TLS语义等仍pending。
+
+
+## 1028_225100 完整域XCell真实NPZ/别名候选与CUDA前提核对
+
+2026-10-28T22:53:10.942995+08:00：只读readiness worker2461194/session7709 EXIT0，原已接受CRC cell gate8字段/24NPZ与full-valid原20456别名候选几何一致，全部实际bytes/features74/reg64/unknown0/n=min255true/2zero-view匹配，7996新字段仍未prepare。当前InstanSeg adapter明确CUDA-only+CUDA autocast；保留原单serial-RNG语义和真实NPZ/token别名，未来须实GPU encoder角色核对/新7996 cell-cache接受，不能套用CPU或image-only证明。未运行新分割/encoder、未宣称此readiness是新GPU gate。
+
+记录docs/运行记录/特征缓存/运行记录_完整域XCell真实细胞复用前提核对_1028_225100.md；工件/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_full_valid_readiness_1028_224727。当前Cell2203/20456、R独立20/30、full-valid native11/30，12协调/3compute ps live、124冻结源码匹配；原主线继续，XCell全域实现/门控/prepare/输出仍pending，goal active。
