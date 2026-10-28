@@ -2929,3 +2929,19 @@ fullcell_efficiency_accepted_1028_143000派生报告已绑定source/contract/所
 - Validation:8 actual native logits/cache and independent fresh normalization/model gates EXIT0;4+8 cache index fixture11 unique EXIT0. Original20208 cache and first fullcell3050/all-native two-budget accepts independently completed.
 - Artifacts: closed12_extension_{gate,gate_accept}_1028_035100, closed12_full_valid_index_gate_1028_142800, closed12_extension_chain_1028_142900, fullcell_efficiency_accepted_1028_143000.
 - Commit: this milestone commit.
+
+## 1028_144500 全有效域闭集native/GT输出及原remote不变性接受链
+
+2026-10-28T14:44:52.733161+08:00：新增closed12_full_valid_raster.py及accept_closed12_full_valid_raster.py，消费accepted28452 cache index，保留原FP32 softmax/PIL native每类resize/FP64均匀平均/argmax和原GT完整cell中心评分；输出签名明确complete_valid4x_including_support，和strictremote表严格分开。新独立程序不导入producer/stripe/scorer，全部12概率block/类别/count/所存连续概率/GT confusion及12类每项指标重算；正式还逐像素核对新输出原remote crop的全部12原生概率SHA、类别/count/prob0/10和GT confusion保持原已接受结果。全30不变性分支尚未执行。
+
+实际新left2×2缓存3725861/session12908 EXIT0 12.928s，新producer3730527/session67686 EXIT0 9.669s，覆盖full_left/原central/last_overlap三窗口12tile贡献、36原类行、9626720 native pixels/2406680 GTcells；独立3733162/session60752 EXIT0 14.900s全部严格相同，并独立原图/显式ImageNet normalize/selected网络重算左4条logits完全相同。非零offset1016 actualcrop门控3743609/session19466 EXIT0 1.496s，4129024像素已接受左窗口中2064512像素12channel crop与只用右列原输入的独立结果逐像素一致，category/count/prob0/10同样相同。只是机械核验，非全30模型质量。
+
+首leftcache fixture143600因将multiclass argmax与原wrapper target0的Boolean categorical_prediction直接比对而EXIT1；原日志/首缓存/failure.json保留，新143900只将测试断言改为argmax==0，不改模型/logits/阈值，也未重启任何正式实验。新producer SHA e9714261dfcb7c8628827a4b998c15c30ad2d2047b9d3cb802575a275f3be996，auditor SHA 0c00ff1767ceb394c49e2b399f9470573ac5b76406fc34f996e0135c651d7131。
+
+完整协调3749768/tmux fewclick_closed_full_valid_raster_1028_144400实际waiting owned3681174的全28452 cache index接受，再CPU4正式native/GT→完整独立全12/GT/原remote不变性接受；无新child，full域质量仍pending。源码hash锁定、命令/真实PID/log/EXIT_CODE记录，无retry/resume/fallback；原main30迁移/评分/BF1/统计队列不改。当前NoCell GPU5 worker3189877 18414/20456，原closed native独立2359268已完成19/30片（当前1726467-7-HE-DX1），无完整比较成绩，整体goal active。记录docs/运行记录/模型实验/运行记录_闭集完整有效域原生输出与远端不变性门控_1028_143400.md。
+
+- Purpose: add full-valid closed native output/GT and independent acceptance with original-remote invariance; preserve strict-remote benchmark.
+- Changed: closed12_full_valid_raster.py, accept_closed12_full_valid_raster.py.
+- Validation: actual left4 native caches,3-window12tile/36class fullnative/GT independent audit and nonzero-offset12channel crop all EXIT0. Formal28452/full30 remote-invariance branches preparing/queued.
+- Artifacts: closed12_full_valid_{left_cache_gate_1028_143900,raster_gate_1028_144000,raster_accept_gate_1028_144000,crop_gate_1028_144200,raster_chain_1028_144400}.
+- Commit: this milestone commit.
