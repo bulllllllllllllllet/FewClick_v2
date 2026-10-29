@@ -3161,3 +3161,25 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/goal_status_and_priority_1029_134255；/nfs-medical3/zyh/fewclick_v2/fair_comparison/training_main30_lineage_1029_004227
 - Docs record: docs/运行记录/模型实验/运行记录_goal简报与主线优先级收敛_1029_134255.md
 - Commit: 随主线优先级复核提交，以git log为准。
+
+## 用户预算修订：固定15张（1029_141301，优先于所有原30计划）
+
+用户明确选择保留原固定顺序前15张。主比较统一使用这15张原定严格远距评价域的全部窗口：8775查询+120支持=8895位置、26685多尺度视野；685最大点击任务、每variant四预算2740行。不是100%raw组织覆盖。原30数据、权重、缓存和结果全部保留，原30表与新15表不得混合。样本数减少是本次计算预算修订，应在报告披露；不根据模型分数重排或排除WSI，不能宣称原30方案全部完成。
+
+- Protocol：`/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_budget15_1029_141301/protocol.json`，输入SHA `00a91cf53d4957cd6bb0c613429243de8dc93015872eef2aa5b5dda9edab8a03`。
+- 当前细胞worker382752继续原GPU1串行计算；cutoff监控3268164，tmux `fewclick_budget15_cutoff_1029_142500`，状态 `/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_budget15_1029_141301/cutoff_1029_142500/status.json`，日志同目录`cutoff_1029_142500.log`。实测7073/8895，余1822；到8895后仅验证原PID/start/argv身份再SIGTERM，旧20456仍属partial。
+- 安全验证：toy子进程错误start/argv拒绝，正确身份SIGTERM真实exit-15；真实worker只读preflight通过，未提前停止。证据 `stop_safety_1029_142500.json`、`preflight_1029_142500/summary.json`。
+- 11个仍waiting且无子进程的旧30协调器已按用户预算取消，真实PID退出确认；证据 `retired_original30_waiting_1029_142500.json`。旧status不重写，不能把历史waiting视为仍活跃。保留细胞382752及父574146、闭集独立复核4179991及父3749768。
+- 新15-scope独立cache接受、预测、GT/BF1与统计仍在preparing；没有完整FewClick主15质量结果。不得直接运行旧30硬编码队列或把prefix生成当接受。下一会话从此适配继续，原模型/权重/训练/脂肪监督/原支持点/阈值/指标不变；所有基线同15。
+- 本地goal与registry更新为15优先；native goal的usageLimited状态不变。完整审稿目标和已接受旧证据仍保留。
+- 运行记录：[docs/运行记录/模型实验/运行记录_用户缩减15张WSI与8895位置切换_1029_141301.md](docs/运行记录/模型实验/运行记录_用户缩减15张WSI与8895位置切换_1029_141301.md)。
+
+## 10-29 14:24:11
+
+- Purpose: 按用户指令将主WSI比较固定为原前15张，并在8895位置生成后停止旧30输入细胞worker。
+- Changed: 新增budget15_cutoff.py；同步goal、registry与预算切换记录，取消11个无子进程的旧等待队列。
+- Validation: aligner真实producer只读preflight通过；toy错误身份拒绝/正确SIGTERM exit-15；当前真实manifest结构与encoded大小、三细胞文件存在验证通过；tmux监控PID3268164真实等待。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_budget15_1029_141301。
+- Docs record: docs/运行记录/模型实验/运行记录_用户缩减15张WSI与8895位置切换_1029_141301.md。
+- Remaining: 新15独立cache接受/预测/GT/BF1/统计仍preparing；没有完整主15质量结果。
+- Commit: 本条随本次budget15切换提交，哈希见git记录。

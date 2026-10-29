@@ -4,21 +4,23 @@ Updated: 2026-10-29T13:42:55.888875+08:00. Native thread goal observed: **usageL
 
 ## Objective
 
-以当前三物理视野 FewClick 评估完整监督下的 CRC 十二标签（11类组织+背景）WSI 用户指定组织分割能力，脂肪正常参与训练。主证据优先建立在真实整片：主测试30张的来源/GT/物理域审计、固定少量支持点击后的远处组织检出与误报、整片分割质量、点击预算曲线，以及首次细胞/特征准备、缓存后整片响应和输出IO成本。局部patch比较、机制消融、外部与类别留出作为补充证据，按真实应用相关性安排，不以极端留出低分代表常规使用能力。
+以当前三物理视野 FewClick 评估完整监督下的 CRC 十二标签（11类组织+背景）WSI 用户指定组织分割能力，脂肪正常参与训练。主证据优先建立在真实整片：主测试原固定顺序前15张的来源/GT/物理域审计、固定少量支持点击后的远处组织检出与误报、整片分割质量、点击预算曲线，以及首次细胞/特征准备、缓存后整片响应和输出IO成本。局部patch比较、机制消融、外部与类别留出作为补充证据，按真实应用相关性安排，不以极端留出低分代表常规使用能力。
 
 实验在看结果前固定目标类/整片集合、支持选择、预算、权重选择、评价域与指标；保持合理监督和适配的基线，披露额外视野、预训练及监督差异。已有结果与失败案例保留，不按排名删除样本、削弱基线或修改评分。WSI扩展首先验证现有模型的缓存/分窗推理，不把分窗局部图称作跨整片全局图。类别留出后置，新类别先做本体/覆盖审计；只有保留相应泛化主张时才要求该证据闭环。审稿人明确要求的项目逐条回应，无法完成者说明限制。
 
-## 当前执行优先级（用户进度复核 1029_134255）
+## 当前执行优先级（用户预算修订1029_141301）
 
-主30正式比较闭环前，除修复真实阻塞或验收失败外，不再新增外围门控、方法、数据集或辅助代码。完整目标与已有结果保留，已启动队列继续按原前置条件执行。
+主15正式比较闭环优先；允许完成本次15-scope切换所需代码与独立接受，避免增加外围方法/数据。旧30等待队列已取消，不再按原计划自动启动。
 
-1. P0：完成现有主30三图像方法与真实XCell缓存/预测/GT/BF1验收，记录GPU5排队和实际吞吐。
-2. P1：汇总主30 Dice、边界、未提示区域、距离、点击预算与WSI配对统计；闭集参考单列。
-3. P2：按已接受证据完成审稿回应和必要稿件修订。完整有效域扩展属于后续诊断，避免用其门控数量代替主实验进度。
+1. P0 User chose original fixed first15 WSIs:8895 positions=8775 query+120 support,26685 views. Real worker382752 continues unchanged serial preparation; monitor3268164 stops only after all8895 committed. Inspect cutoff status/summary/log, never restart original20456 producer.
+2. P1 Adapt independent cache acceptance/prediction/GT/BF1/statistics to frozen15 protocol without editing old frozen running sources. This adaptation is PREPARING, not launched/complete. Original full30 hardcoded20456/5520 guards must not be bypassed or mislabeled.
+3. P2 Reuse unchanged same15 image caches and independently accepted closed30 rows only with identity/hash checks; WSI-SAM selected cache acceptance still pending. Keep all methods identical selected slides/query domains/prompts/budgets, original checkpoints and metric rules.
+4. P3 Publish accepted primary15 WSI paired report; report15 scope and user budget revision explicitly. Preserve original30 references/partial failures, no score-based slide exclusion, local vs transfer separate, closed privileged reference separate.
+5. P4 Full-valid extensions secondary; eleven original30 waiting coordinators intentionally cancelled. Cell parent574146 retained until cutoff; its eventual child -15 is intentional user cutoff, NOT completed20456. Closed full-valid independent4179991 retained. Native goal usageLimited unchanged.
 
 ## Resume here
 
-0. **P0 primary30 remains incomplete. Real XCell382752 prepares6959/20456; image caches generated, NoCell/SAM accepted, WSI-SAM4018919 waits GPU5. Closed strict-remote native/Dice/BF1 and all5520 component/distance scores accepted;4151477/723130 retired EXIT0. Closed full-valid30 output executed; independent4179991 running24/30. Thirteen coordinators live. Do not add auxiliary code/methods/data before primary closure except fixing actual blockers. Existing full-valid queues remain secondary, fixtures are not full30 results. Native goal is usageLimited; no complete FewClick WSI comparison/CI yet.**
+0. **Primary15 protocol frozen; real-cell 7073/8895 running on382752, cutoff3268164 live. Eleven obsolete30 waiting queues retired. Fifteen-scope independent acceptance/prediction/BF1/statistics still preparing. Read latest budget revision below first. Native usageLimited unchanged.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -667,3 +669,15 @@ Fixture /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/ful
 真实现场：Cell382752为6959/20456（约34%）；三image缓存已生成、NoCell/SAM独立接受，4018919仍等待GPU5其他任务，自身后续primary预测仍等待。Closed严格远距native/Dice/BF1既已接受，5520组件/距离独立723130全30 EXIT0（25150.514s），4151477 terminal EXIT0正常退役，不能当缺失PID失败/重启。完整域闭集30输出执行完成；独立4179991当前24/30，尚非完整接受。13协调实际live。
 
 原生get_goal工具当前真实状态usageLimited，自动续跑受用量限制；后台计算仍在运行。记录事实而非手动改变系统goal状态；不标complete/paused/blocked。主30局部与整片/参考与FewClick/门控与完整验收继续分开。现场/nfs-medical3/zyh/fewclick_v2/fair_comparison/goal_status_and_priority_1029_134255/evidence.json；来源核对/nfs-medical3/zyh/fewclick_v2/fair_comparison/training_main30_lineage_1029_004227与docs/运行记录/数据审计/运行记录_主30与实际训练来源及选中权重监督量核对_1029_004000.md。正式主30比较/WSI CI与最终审稿闭环仍未完成。
+
+## 用户预算修订：固定15张（1029_141301，优先于所有原30计划）
+
+用户明确选择保留原固定顺序前15张。主比较统一使用这15张原定严格远距评价域的全部窗口：8775查询+120支持=8895位置、26685多尺度视野；685最大点击任务、每variant四预算2740行。不是100%raw组织覆盖。原30数据、权重、缓存和结果全部保留，原30表与新15表不得混合。样本数减少是本次计算预算修订，应在报告披露；不根据模型分数重排或排除WSI，不能宣称原30方案全部完成。
+
+- Protocol：`/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_budget15_1029_141301/protocol.json`，输入SHA `00a91cf53d4957cd6bb0c613429243de8dc93015872eef2aa5b5dda9edab8a03`。
+- 当前细胞worker382752继续原GPU1串行计算；cutoff监控3268164，tmux `fewclick_budget15_cutoff_1029_142500`，状态 `/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_budget15_1029_141301/cutoff_1029_142500/status.json`，日志同目录`cutoff_1029_142500.log`。实测7073/8895，余1822；到8895后仅验证原PID/start/argv身份再SIGTERM，旧20456仍属partial。
+- 安全验证：toy子进程错误start/argv拒绝，正确身份SIGTERM真实exit-15；真实worker只读preflight通过，未提前停止。证据 `stop_safety_1029_142500.json`、`preflight_1029_142500/summary.json`。
+- 11个仍waiting且无子进程的旧30协调器已按用户预算取消，真实PID退出确认；证据 `retired_original30_waiting_1029_142500.json`。旧status不重写，不能把历史waiting视为仍活跃。保留细胞382752及父574146、闭集独立复核4179991及父3749768。
+- 新15-scope独立cache接受、预测、GT/BF1与统计仍在preparing；没有完整FewClick主15质量结果。不得直接运行旧30硬编码队列或把prefix生成当接受。下一会话从此适配继续，原模型/权重/训练/脂肪监督/原支持点/阈值/指标不变；所有基线同15。
+- 本地goal与registry更新为15优先；native goal的usageLimited状态不变。完整审稿目标和已接受旧证据仍保留。
+- 运行记录：[docs/运行记录/模型实验/运行记录_用户缩减15张WSI与8895位置切换_1029_141301.md](docs/运行记录/模型实验/运行记录_用户缩减15张WSI与8895位置切换_1029_141301.md)。
