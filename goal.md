@@ -736,3 +736,10 @@ FewClick联合阶段9000步backbone梯度均非零、loss持续下降；没有�
 主15目标与原后台工作不变；本次不更新未经现场核验的细胞计数/PID活性，不把只读分析当WSI实验接受。native usageLimited未改。后续质量修复应先查区域/点击表示与代表性train/val误差，不继续盲扫负loss或验证阈值。
 
 报告：/nfs-medical3/zyh/fewclick_v2/fair_comparison/overall_gap_review_1029_172933/report_zh.md；独立接受：/nfs-medical3/zyh/fewclick_v2/fair_comparison/overall_gap_review_1029_172933/independent_acceptance.json。代码/数据/已接受权重选择指针SHA及实际命令/PID/log/EXIT0见同目录statistics/summary.json、dense_stage/summary.json、execution.json、dense_stage_execution.json、independent_execution.json。记录：docs/运行记录/模型实验/运行记录_FewClick与SAM整体差距证据复核_1029_172933.md。
+
+
+## 1029_175116 点击区域与训练验证诊断完成
+
+2026-10-29T18:08:31.623356+08:00：64例原权重CPU诊断和独立接受完成：worker108542 EXIT0/881.11s；独立186470 EXIT0，128阶段mask及NumPy双线性/纯度复算，max error2.073e-7，两域首例原forward逐值一致。训练base→Dense61.51→78.50%，验证63.23→63.03%；小目标训练38.27→64.75%，验证22.08→24.85%。CRC训练小目标36.45%、验证8.76%；TIGER93.05/40.94%。空间混合存在但非充分解释：case31纯度6.11%却Dice97.51%，case34纯度98.13%却Dice39.41%。提示Dense/匹配泛化值得优先排查，同时CRC训练难目标也有学习不足；不得据此直接定性全模型过拟合。域/粗面积匹配，具体类别及精确面积仍混杂（CRC训练/验证小目标平均1.61/0.54%），需下一步同类窄面积诊断。原权重/阈值/主15WSI与后台不改，无额外训练，native usageLimited不改。
+
+工件：/nfs-medical3/zyh/fewclick_v2/fair_comparison/prompt_region_diagnosis_1029_175116；记录：docs/运行记录/模型实验/运行记录_点击区域纯度与训练验证分层诊断_1029_175116.md。

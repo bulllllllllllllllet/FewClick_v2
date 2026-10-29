@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "usageLimited",
-  "updated": "2026-10-29T17:40:23.658993+08:00",
+  "updated": "2026-10-29T18:08:31.623356+08:00",
   "current_phase": "G8 user-authorized primary15 transition: real cell prefix running,15 acceptance/prediction adaptation preparing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -5035,5 +5035,103 @@
     "new_training": false,
     "main_WSI_acceptance": false,
     "finished_at": "2026-10-29T17:40:23.658993+08:00"
+  },
+  "prompt_region_diagnosis": {
+    "status": "complete_accepted_diagnostic_qualified",
+    "record": "docs/运行记录/模型实验/运行记录_点击区域纯度与训练验证分层诊断_1029_175116.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/prompt_region_diagnosis_1029_175116",
+    "report": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/prompt_region_diagnosis_1029_175116/report_zh.md",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/prompt_region_diagnosis_1029_175116/independent_acceptance.json",
+    "worker_pid": 108542,
+    "acceptance_pid": 186470,
+    "n": 64,
+    "stage_masks": 128,
+    "model_changed": false,
+    "new_training": false,
+    "groups": {
+      "train|all": {
+        "n": 32,
+        "base_dice": 0.6151364388447751,
+        "dense_dice": 0.7850337109947327,
+        "positive_purity": 0.5708154409658164,
+        "negative_purity": 0.1359954447470546,
+        "purity_separation": 0.4348199962187618
+      },
+      "train|small": {
+        "n": 8,
+        "base_dice": 0.3826823036970512,
+        "dense_dice": 0.6474990556879525,
+        "positive_purity": 0.18862242096414167,
+        "negative_purity": 0.010974046710153118,
+        "purity_separation": 0.17764837425398855
+      },
+      "train|medium_small": {
+        "n": 8,
+        "base_dice": 0.4322270778162478,
+        "dense_dice": 0.6170749929366348,
+        "positive_purity": 0.33725234058996045,
+        "negative_purity": 0.031709273496971946,
+        "purity_separation": 0.3055430670929885
+      },
+      "train|medium_large": {
+        "n": 8,
+        "base_dice": 0.832747177801141,
+        "dense_dice": 0.9367662141287265,
+        "positive_purity": 0.8798417672514915,
+        "negative_purity": 0.12293347623199224,
+        "purity_separation": 0.7569082910194993
+      },
+      "train|large": {
+        "n": 8,
+        "base_dice": 0.8128891960646603,
+        "dense_dice": 0.938794581225617,
+        "positive_purity": 0.8775452350576718,
+        "negative_purity": 0.3783649825491011,
+        "purity_separation": 0.49918025250857073
+      },
+      "val|all": {
+        "n": 32,
+        "base_dice": 0.6322972115068408,
+        "dense_dice": 0.6303085553278467,
+        "positive_purity": 0.6178420129193303,
+        "negative_purity": 0.12912643198014973,
+        "purity_separation": 0.48871558093918055
+      },
+      "val|small": {
+        "n": 8,
+        "base_dice": 0.22081178065049362,
+        "dense_dice": 0.24849464039469468,
+        "positive_purity": 0.1790268460754305,
+        "negative_purity": 0.006369959660741414,
+        "purity_separation": 0.1726568864146891
+      },
+      "val|medium_small": {
+        "n": 8,
+        "base_dice": 0.6039118163440169,
+        "dense_dice": 0.6082083759074474,
+        "positive_purity": 0.5116159127404292,
+        "negative_purity": 0.05911967380430383,
+        "purity_separation": 0.4524962389361254
+      },
+      "val|medium_large": {
+        "n": 8,
+        "base_dice": 0.8060771230660038,
+        "dense_dice": 0.8220114636262378,
+        "positive_purity": 0.8428906748692194,
+        "negative_purity": 0.09533757196186343,
+        "purity_separation": 0.747553102907356
+      },
+      "val|large": {
+        "n": 8,
+        "base_dice": 0.8983881259668487,
+        "dense_dice": 0.8425197413830071,
+        "positive_purity": 0.9378346179922421,
+        "negative_purity": 0.35567852249369025,
+        "purity_separation": 0.582156095498552
+      }
+    },
+    "causal_root_proven": false,
+    "confounding": "class and exact area differ across train/val; no global overfit assertion",
+    "next": "same-class narrow-area train/val diagnosis before training repair"
   }
 }

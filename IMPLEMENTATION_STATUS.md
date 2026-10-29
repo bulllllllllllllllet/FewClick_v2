@@ -3232,3 +3232,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/overall_gap_review_1029_172933，report_zh.md、independent_acceptance.json及全部输入/source SHA。
 - Docs record: docs/运行记录/模型实验/运行记录_FewClick与SAM整体差距证据复核_1029_172933.md（运行记录，complete accepted qualified）。
 - Commit: 本次提交（完成后由Git日志定位）。
+
+
+## 10-29 18:08:31
+
+- Purpose: 点击区域空间混合及训练/验证分层诊断。
+- Changed: 新增prompt_region_diagnosis.py、accept_prompt_region_diagnosis.py及连续性记录。
+- Validation: 实际原权重64例两域forward门控/128mask计数/独立NumPy采样纯度通过；108542与186470均EXIT0；max error2.073e-7。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/prompt_region_diagnosis_1029_175116。
+- Docs record: docs/运行记录/模型实验/运行记录_点击区域纯度与训练验证分层诊断_1029_175116.md（运行记录，complete accepted qualified）。
+- Commit: 本次提交，Git日志可定位。
