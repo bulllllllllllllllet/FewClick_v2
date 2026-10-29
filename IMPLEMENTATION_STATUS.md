@@ -3262,3 +3262,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120；正式511953 GPU3当前60/1184步运行，完整质量尚待自动评价/接受。冻结pipeline_contract来源。
 - Docs record: docs/运行记录/模型实验/运行记录_完整训练池Dense染色增强泛化对照_1029_190120.md（运行记录，gate accepted/formal running）。
 - Commit: 本次提交，由Git日志定位。
+
+
+## 10-29 21:33:30
+
+- Purpose: 接受完整训练池Dense泛化对照最终结果，保留原模型。
+- Changed: 同步goal、registry、当前记录及本次运行记录，无模型/训练源码变更。
+- Validation: 511953/749878和包装全部EXIT0；993mask计数、18fresh GPU head重放，summary绑定及13来源SHA一致。训练/接受约46.8分钟，颜色增强总体56.34%/小目标25.89%，原始57.13%/28.69%，未改善不采用。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120/formal/report_zh.md、independent_acceptance.json。
+- Docs record: docs/运行记录/模型实验/运行记录_完整训练池Dense染色增强泛化对照_1029_190120.md（运行记录，complete accepted/candidate ineffective）。
+- Commit: 本次提交，由Git日志定位。
