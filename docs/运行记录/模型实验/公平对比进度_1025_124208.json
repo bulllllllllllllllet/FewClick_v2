@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "usageLimited",
-  "updated": "2026-10-29T18:55:57.051563+08:00",
+  "updated": "2026-10-29T19:12:18.657152+08:00",
   "current_phase": "G8 user-authorized primary15 transition: real cell prefix running,15 acceptance/prediction adaptation preparing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -825,6 +825,18 @@
       "remaining": 1749,
       "tmux": "fewclick_budget15_cutoff_1029_142500",
       "process_observed_at": "2026-10-29T15:07:56.127014+08:00"
+    },
+    {
+      "kind": "Dense_full_pool_color_generalization_matched_continuation",
+      "worker_pid": 511953,
+      "status": "training",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120/formal",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120/training.log",
+      "tmux": "fewclick_dense_generalization_formal_1029_190120",
+      "GPU": 3,
+      "source_contract": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120/pipeline_contract.json",
+      "next": "automatic final development evaluation and independent acceptance; no retry",
+      "process_observed_at": "2026-10-29T19:12:18.657152+08:00"
     }
   ],
   "known_gaps": [
@@ -5210,5 +5222,27 @@
     "new_training": false,
     "causal_root_proven": false,
     "next": "Freeze full-pool matched-budget small-target generalization control before any candidate training"
+  },
+  "dense_generalization": {
+    "status": "gate_accepted_formal_training_running",
+    "record": "docs/运行记录/模型实验/运行记录_完整训练池Dense染色增强泛化对照_1029_190120.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120",
+    "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120/gate_center_points/independent_acceptance.json",
+    "formal": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120/formal",
+    "pipeline_status": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120/pipeline_status.json",
+    "formal_worker_pid": 511953,
+    "gate_worker_pid": 484548,
+    "gate_acceptance_pid": 503337,
+    "failed_gate_pid": 473208,
+    "failed_gate_reason": "deterministic CUDA point sampler backward unsupported; equivalent center loss validated",
+    "current_step": 60,
+    "total_steps": 1184,
+    "tasks_per_arm": 4733,
+    "fields": 1356,
+    "GPU": 3,
+    "model_replaced": false,
+    "quality_improvement_proven": false,
+    "auto_acceptance": true,
+    "freeze_sources": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120/pipeline_contract.json"
   }
 }

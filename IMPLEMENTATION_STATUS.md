@@ -3252,3 +3252,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/matched_dense_diagnosis_1029_181751；report_zh.md、independent_acceptance.json、SHA/日志/命令。
 - Docs record: docs/运行记录/模型实验/运行记录_同类窄面积Dense训练验证匹配诊断_1029_181751.md（运行记录，complete accepted qualified）。
 - Commit: 本次提交，由Git日志定位。
+
+
+## 10-29 19:12:18
+
+- Purpose: 原架构完整训练池Dense颜色增强泛化对照，回应小目标过拟合迹象。
+- Changed: dense_generalization.py、accept_dense_generalization.py和连续性记录；原模型/损失源码不改。
+- Validation: 40000任务239998点击中心审计；GPU point前向/CPU gradient逐值一致；真实训练gate484548与独立503337 EXIT0，6mask/6GPU fresh head接受、优化器继续一步一致；初版CUDA确定性限制失败473208保留。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120；正式511953 GPU3当前60/1184步运行，完整质量尚待自动评价/接受。冻结pipeline_contract来源。
+- Docs record: docs/运行记录/模型实验/运行记录_完整训练池Dense染色增强泛化对照_1029_190120.md（运行记录，gate accepted/formal running）。
+- Commit: 本次提交，由Git日志定位。

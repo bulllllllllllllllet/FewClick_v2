@@ -750,3 +750,18 @@ FewClick联合阶段9000步backbone梯度均非零、loss持续下降；没有�
 2026-10-29T18:55:57.051563+08:00：同类窄面积29配对（58例）完成接受，3锚点无匹配保留；worker252393 EXIT0/639.90s，独立428040 EXIT0，116阶段mask和匹配/实际点击独立复算，CRC/TIGER缓存原forward逐值一致。全部base训练46.31/验证42.23%、Dense72.28/51.98%；14小目标base17.27/9.26%、Dense53.54/15.88%，Dense增益36.28/6.62pp。11个CRC小目标base9.97/10.36%、Dense42.37/18.28%。非小目标增益16.35/12.68pp，差异主要在小目标。更支持小目标修正泛化/训练分布为优先修复方向；不是全模型过拟合或唯一模块因果证明。脂肪反向例训练6.50/验证93.89%保留；形态/染色/点位置等未匹配，极端面积开发子集不替代完整成绩。原权重/阈值/主15与后台不改，无新训练；native usageLimited未改。
 
 工件：/nfs-medical3/zyh/fewclick_v2/fair_comparison/matched_dense_diagnosis_1029_181751；记录：docs/运行记录/模型实验/运行记录_同类窄面积Dense训练验证匹配诊断_1029_181751.md。
+
+
+## 1029_190120 完整训练池Dense泛化：门控接受、正式运行
+
+2026-10-29T19:12:18.657152+08:00：用户授权训练泛化实验。当前证据符合Dense小目标修正过拟合/泛化不足迹象，困难CRC类别上游学习不足并存，不能定性全模型唯一根因。固定完整去重训练池4733图像-目标/1356视野、两臂各一遍1184更新，每更新4任务（末批1任务），原mask+0.1point loss/AdamW1e-5/wd1e-4/clip1，同起点同任务/点/步数，仅三视野同步RGB轻颜色增强不同；所有其它参数冻结。额外训练单seed开发对照，不并入原matched40k/SAM主表，不改主15WSI权重。
+
+首次门控473208 EXIT1：PyTorch确定性CUDA grid_sample backward不支持。旧目录gate/日志/producer_before_center_point_fix.py保留；已审计原40000任务239998点击全部为精确像素中心，改为数学等价的中心索引点击损失（非fallback）。真实GPU前向逐值相同、CPU梯度逐值相同。新门控484548 EXIT0/31.99s，四个真实train16次消费/每臂4更新；两域身份增强/颜色改变特征/冻结参数/有限非零梯度/实际head变化/严格checkpoint和optimizer继续一步一致。独立503337 EXIT0，6mask计数与6fresh GPU head概率逐值重放接受。gate分数不用于超参选择或效果结论。
+
+正式worker511953/物理GPU3 FP32已running，两臂同步60/1184更新、每臂240/4733任务（现场快照，不冒充完成）。tmux fewclick_dense_generalization_formal_1029_190120；pipeline_status.json记录真实PID/命令，training.log持续写。GPU0/2禁用，原细胞382752/GPU1保留。主15完整比较准备状态未由此改变。
+
+包装自动串行：正式训练→原权重/继续原loss/颜色增强在完整302组0/3+2与固定29匹配训练对评价→独立消费SHA/计数/鲜头GPU重放→formal/report_zh.md；任何非0停止，无自动重试/恢复。固定一遍、最终一次评价，不扫阈值或按开发分数挑最好步。训练与接受尚未完成，不能宣布修复有效。按门控与早期20步约45–75分钟估算整轮，共享GPU/IO可能改变。native usageLimited未修改。
+
+运行期间冻结pipeline_contract.json绑定的全部13个producer/auditor/model/loss/loader/metrics源码；不要修改或另起重试。下一会话先读pipeline_status、formal/status、两日志终端EXIT与formal/independent_acceptance；完成后才发布质量结果/更新该状态。若接受complete，报告总体与<5% Dice相对两控制、召回/大目标/BF1代价，门控接受不替代完整质量。
+
+工件：/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120；记录：docs/运行记录/模型实验/运行记录_完整训练池Dense染色增强泛化对照_1029_190120.md。
