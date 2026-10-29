@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "usageLimited",
-  "updated": "2026-10-29T14:24:11.333349+08:00",
+  "updated": "2026-10-29T15:07:56.127014+08:00",
   "current_phase": "G8 user-authorized primary15 transition: real cell prefix running,15 acceptance/prediction adaptation preparing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -820,10 +820,11 @@
       "status": "waiting_selected15_real_cell_prefix",
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_budget15_1029_141301/cutoff_1029_142500",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_budget15_1029_141301/cutoff_1029_142500.log",
-      "positions_committed": 7073,
+      "positions_committed": 7146,
       "selected_positions": 8895,
-      "remaining": 1822,
-      "tmux": "fewclick_budget15_cutoff_1029_142500"
+      "remaining": 1749,
+      "tmux": "fewclick_budget15_cutoff_1029_142500",
+      "process_observed_at": "2026-10-29T15:07:56.127014+08:00"
     }
   ],
   "known_gaps": [
@@ -4905,5 +4906,19 @@
     "retired_waiting_coordinators": 11,
     "cell_stop_after_selected_prefix": true,
     "model_and_metrics_unchanged": true
+  },
+  "cell_slowdown_diagnosis": {
+    "status": "complete_read_only_diagnosis_not_quality_acceptance",
+    "record": "docs/运行记录/模型实验/运行记录_细胞准备变慢只读排查_1029_150800.md",
+    "artifact": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/cell_slowdown_audit_1029_150800",
+    "committed": 7146,
+    "selected": 8895,
+    "worker_pid": 382752,
+    "mean_recent64_seconds": 36.298259403556585,
+    "mean_recent512_seconds": 24.438360502477735,
+    "CPU_load_1min": 497.18,
+    "logical_CPUs": 128,
+    "CPU_wait_saved10s_percent": 45.35,
+    "model_and_rng_unchanged": true
   }
 }
