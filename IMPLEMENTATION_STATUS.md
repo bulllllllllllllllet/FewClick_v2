@@ -3222,3 +3222,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_acceptance_1029_160900。
 - Docs record: docs/运行记录/模型实验/运行记录_Dense困难负区域训练修复试验_1029_160100.md。
 - Commit: 随本次结果登记提交，哈希见git记录。
+
+
+## 10-29 17:40:23
+
+- Purpose: 整体复核FewClick/SAM局部差距，区分已证实错误模式和表示/预训练机制假设。
+- Changed: 新增overall_gap_review.py、review_dense_stage_cache.py；同步goal、registry、当前记录与本次运行记录。原模型/损失/训练源码不改。
+- Validation: 原始四方法各6040行与40000实际训练任务、32诊断缓存Dense前后64mask独立复算接受；workers4189886/6018/16055全部EXIT0，最大聚合误差1.11e-16。Dense24/32改善；区域图输出已经有小目标错误，不把Dense单例当总体根因。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/overall_gap_review_1029_172933，report_zh.md、independent_acceptance.json及全部输入/source SHA。
+- Docs record: docs/运行记录/模型实验/运行记录_FewClick与SAM整体差距证据复核_1029_172933.md（运行记录，complete accepted qualified）。
+- Commit: 本次提交（完成后由Git日志定位）。

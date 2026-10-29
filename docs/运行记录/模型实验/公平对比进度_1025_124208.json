@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "usageLimited",
-  "updated": "2026-10-29T17:22:02.571769+08:00",
+  "updated": "2026-10-29T17:40:23.658993+08:00",
   "current_phase": "G8 user-authorized primary15 transition: real cell prefix running,15 acceptance/prediction adaptation preparing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -4999,5 +4999,41 @@
         "FP_per_valid": 0.05551611466303907
       }
     }
+  },
+  "overall_gap_review": {
+    "status": "complete_accepted_readonly_diagnosis_qualified",
+    "record": "docs/运行记录/模型实验/运行记录_FewClick与SAM整体差距证据复核_1029_172933.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/overall_gap_review_1029_172933",
+    "report": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/overall_gap_review_1029_172933/report_zh.md",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/overall_gap_review_1029_172933/independent_acceptance.json",
+    "workers": [
+      4189886,
+      6018,
+      16055
+    ],
+    "exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "training_small_fraction": 0.3285,
+    "validation_small_pairs": 120,
+    "small_strata_SAM_ahead": 14,
+    "small_strata_with_data": 14,
+    "dense_stage_diagnostic": {
+      "n": 32,
+      "improved": 24,
+      "base_dice": 0.4663538568498593,
+      "dense_dice": 0.5533963007502336,
+      "small_n": 14,
+      "small_improved": 11,
+      "small_base_dice": 0.09261772765670394,
+      "small_dense_dice": 0.15884318788729712
+    },
+    "causal_attribution_proven": false,
+    "model_fixes_applied": false,
+    "new_training": false,
+    "main_WSI_acceptance": false,
+    "finished_at": "2026-10-29T17:40:23.658993+08:00"
   }
 }
