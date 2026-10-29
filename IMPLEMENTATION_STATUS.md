@@ -3272,3 +3272,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120/formal/report_zh.md、independent_acceptance.json。
 - Docs record: docs/运行记录/模型实验/运行记录_完整训练池Dense染色增强泛化对照_1029_190120.md（运行记录，complete accepted/candidate ineffective）。
 - Commit: 本次提交，由Git日志定位。
+
+
+## 2026-10-29T22:48:32.577194+08:00
+
+- Purpose: 研究超越SAM的可验证路线，排除重复失败方案，并复算原Dense泛化训练/验证配对。
+- Changed: benchmarks/v5/fair_comparison/research_sam_routes.py；docs/建议/模型与训练/建议_超越SAM的可验证路线与失败实验复盘_1029_224158.md；goal/registry/current record连续性条目。
+- Validation: `aligner python -m benchmarks.v5.fair_comparison.research_sam_routes --output /nfs-medical3/zyh/fewclick_v2/fair_comparison/sam_routes_research_1029_224158` — EXIT0；993行Dice计数代数、身份/GT三臂一致、原接受分层均值复核，29配对连接通过；CPU worker1649692，无新模型训练/GPU使用。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/sam_routes_research_1029_224158/evidence.json；研究算术不是已实现提升；原模型及主15目标保留。
+- Docs record: docs/建议/模型与训练/建议_超越SAM的可验证路线与失败实验复盘_1029_224158.md（建议）；current record同步记录。
+- Commit: 本条与源码/建议同次提交，哈希见git历史。

@@ -5326,5 +5326,70 @@
     "candidate_adopted": false,
     "finished_observed_at": "2026-10-29T21:33:30.479190+08:00",
     "next": "Retain original weights; preserve failed candidates. No automatic retraining; primary15 WSI closure remains pending."
+  },
+  "sam_routes_research": {
+    "status": "complete_readonly_research_candidates_planned",
+    "record": "docs/建议/模型与训练/建议_超越SAM的可验证路线与失败实验复盘_1029_224158.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/sam_routes_research_1029_224158",
+    "evidence": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/sam_routes_research_1029_224158/evidence.json",
+    "worker_pid": 1649692,
+    "exit_code": 0,
+    "new_training": false,
+    "model_replaced": false,
+    "arithmetic": {
+      "protocol": "first seed, 302 pairs x five click groups, 3+2; not the color-training table",
+      "fewclick_dice": 0.5728928220877364,
+      "sam_dice": 0.7018590232018226,
+      "small_weight": 0.3973509933774834,
+      "hypothetical_total_if_small_only_matches_sam": 0.6608088365069665,
+      "required_small_dice_if_other_pairs_unchanged": 0.615432012062304,
+      "caveat": "Algebraic sensitivity only, not a measured model, ceiling, or predicted improvement."
+    },
+    "matched_small": {
+      "original": {
+        "train": {
+          "n": 14,
+          "dice": 0.5354302971608423,
+          "precision": 0.4809481783154252,
+          "recall": 0.8892262736565435
+        },
+        "val": {
+          "n": 14,
+          "dice": 0.1588438402554632,
+          "precision": 0.1144702998689412,
+          "recall": 0.9297116153779197
+        }
+      },
+      "continued_original_loss": {
+        "train": {
+          "n": 14,
+          "dice": 0.5164981181170621,
+          "precision": 0.4456665302773666,
+          "recall": 0.9118469485980526
+        },
+        "val": {
+          "n": 14,
+          "dice": 0.12763708959454184,
+          "precision": 0.08590073730800876,
+          "recall": 0.9437747148670621
+        }
+      },
+      "color_augmentation": {
+        "train": {
+          "n": 14,
+          "dice": 0.5036097411737546,
+          "precision": 0.427000222070411,
+          "recall": 0.9301724327030784
+        },
+        "val": {
+          "n": 14,
+          "dice": 0.11831879796069493,
+          "precision": 0.07709836692002894,
+          "recall": 0.9438008154506671
+        }
+      }
+    },
+    "priority": "Original architecture: controlled loss/joint adaptation; new version: SAM initialization plus FewClick context, with matched SAM continuation.",
+    "limitations": "Development-only evidence; no candidate quality demonstrated; original15 WSI priority unchanged."
   }
 }
