@@ -3203,3 +3203,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Docs record: docs/运行记录/模型实验/运行记录_局部FewClick差距与预测错误诊断_1029_152641.md。
 - Findings: 小面积目标误检突出；固定脂肪例Dense残差放大FP，但总体Dense仍平均有效。非因果定论。
 - Commit: 随本次诊断提交，哈希见git记录。
+
+## 10-29 16:09:00
+
+- Purpose: 按用户授权尝试Dense困难负区域训练修复，设置等更新继续训练对照。
+- Changed: 新增dense_hardnegative_repair.py、accept_dense_hardnegative_repair.py及运行记录，更新连续任务登记。
+- Validation: 真实保存脂肪概率梯度/ignore探针通过；CPU真实4train/4val两臂各32step、缓存等价、参数更新/重载及12mask独立复算通过。门控质量未改善，不宣称修复成功。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100；pilot3774537运行中，后续32pair接受未完成。
+- Docs record: docs/运行记录/模型实验/运行记录_Dense困难负区域训练修复试验_1029_160100.md。
+- Commit: 随本次实现提交，哈希见git记录。

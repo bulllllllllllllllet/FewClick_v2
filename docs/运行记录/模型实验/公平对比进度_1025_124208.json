@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "usageLimited",
-  "updated": "2026-10-29T15:38:30.650725+08:00",
+  "updated": "2026-10-29T16:09:46.788814+08:00",
   "current_phase": "G8 user-authorized primary15 transition: real cell prefix running,15 acceptance/prediction adaptation preparing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -825,6 +825,16 @@
       "remaining": 1749,
       "tmux": "fewclick_budget15_cutoff_1029_142500",
       "process_observed_at": "2026-10-29T15:07:56.127014+08:00"
+    },
+    {
+      "kind": "user_authorized_Dense_hardnegative_repair_matched_continuation_pilot",
+      "worker_pid": 3774537,
+      "status": "preparing_frozen_Dense_inputs",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_1029_160900",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_1029_160900.log",
+      "session": "fewclick_dense_repair_pilot_1029_160900",
+      "acceptance_log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_acceptance_1029_160900.log",
+      "device": "CPU float32 2threads CUDA hidden"
     }
   ],
   "known_gaps": [
@@ -4943,5 +4953,16 @@
     "small_area_gap_contribution": 0.6816981012060498,
     "model_fixes_applied": false,
     "limitations": "single seed; selected CPU cases, no representative train/val gap or formal GPU rescore"
+  },
+  "dense_repair_attempt": {
+    "status": "gate_accepted_pilot_running_effectiveness_unproven",
+    "record": "docs/运行记录/模型实验/运行记录_Dense困难负区域训练修复试验_1029_160100.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100",
+    "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/gate_acceptance_1029_160800/summary.json",
+    "pilot_worker_pid": 3774537,
+    "pilot_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_1029_160900",
+    "pending_acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_acceptance_1029_160900",
+    "scope": "Extra Dense-only posthoc local training; original15 WSI model unchanged",
+    "gate_quality_improved": false
   }
 }
