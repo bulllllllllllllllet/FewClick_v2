@@ -3151,3 +3151,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_statistics_gate_1029_002900；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_statistics_acceptance_gate_1029_003100；/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_statistics_milestone_1029_003429
 - Docs record: docs/运行记录/模型实验/运行记录_完整有效域配对统计与闭集独立参考_1029_002200.md
 - Commit: 随完整域统计门控提交，以git log为准。
+
+
+## 10-29 13:42:55
+
+- Purpose: 回答用户goal简报，区分实验与门控，收敛执行优先级并更新真实完成状态。
+- Changed: goal/registry/current record/简报记录及训练来源审计收尾；无模型或队列源码改动。
+- Validation: actual13协调+382752/4179991 ps live；R5520 source/accept SHA和terminal EXIT0；实际40k/权重/G3/catalog绑定，main30声明ID/path交集0；native goal usageLimited如实记录。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/goal_status_and_priority_1029_134255；/nfs-medical3/zyh/fewclick_v2/fair_comparison/training_main30_lineage_1029_004227
+- Docs record: docs/运行记录/模型实验/运行记录_goal简报与主线优先级收敛_1029_134255.md
+- Commit: 随主线优先级复核提交，以git log为准。

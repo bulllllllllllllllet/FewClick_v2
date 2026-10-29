@@ -1,6 +1,6 @@
 # FewClick supplementary experiment goal
 
-Updated: 2026-10-29T00:34:29.724652+08:00. Native thread goal: **active**. Latest priority: supervised CRC12 WSI quality, remote coverage and full-system efficiency.
+Updated: 2026-10-29T13:42:55.888875+08:00. Native thread goal observed: **usageLimited**; background experiments continue. Full objective preserved.
 
 ## Objective
 
@@ -8,9 +8,17 @@ Updated: 2026-10-29T00:34:29.724652+08:00. Native thread goal: **active**. Lates
 
 实验在看结果前固定目标类/整片集合、支持选择、预算、权重选择、评价域与指标；保持合理监督和适配的基线，披露额外视野、预训练及监督差异。已有结果与失败案例保留，不按排名删除样本、削弱基线或修改评分。WSI扩展首先验证现有模型的缓存/分窗推理，不把分窗局部图称作跨整片全局图。类别留出后置，新类别先做本体/覆盖审计；只有保留相应泛化主张时才要求该证据闭环。审稿人明确要求的项目逐条回应，无法完成者说明限制。
 
+## 当前执行优先级（用户进度复核 1029_134255）
+
+主30正式比较闭环前，除修复真实阻塞或验收失败外，不再新增外围门控、方法、数据集或辅助代码。完整目标与已有结果保留，已启动队列继续按原前置条件执行。
+
+1. P0：完成现有主30三图像方法与真实XCell缓存/预测/GT/BF1验收，记录GPU5排队和实际吞吐。
+2. P1：汇总主30 Dice、边界、未提示区域、距离、点击预算与WSI配对统计；闭集参考单列。
+3. P2：按已接受证据完成审稿回应和必要稿件修订。完整有效域扩展属于后续诊断，避免用其门控数量代替主实验进度。
+
 ## Resume here
 
-0. **WSI primary, supervisedCRC12/fat included. Closed30 strict-remote native/Dice/BF1 accepted (WSI-equal all330 .713118/.427712, matched276 .719511/.423597); R all5520 execution done, independent723130 running 27/30. Three image caches all20456 generated; NoCell/SAM independently accepted;4018919 waits GPU5 idle for WSISAM, then original GPU prediction/full score chain. CRC actual GPU1 cell gate8/24views independently accepted; full preparation382752 running 2676/20456 under574146. Closed extra8244 and full28452 index accepted; full-valid native1523624 running 17/30 under3749768. Other main/full-valid/BF1/statistics queues remain active. FirstTLS fullcell mechanical accepted, semantic quality unconfirmed. Retired3990149/530230/3681174 and earlier completed workers must not restart. New full-valid real-cell8/24 GPU gate independently accepted; 16-index fixture independently accepted;2851935 waits main758578 for formal7996/merge28452, production not launched. 48 real-cell full-valid prediction+BF1 fixture accepted;2953926 waits2851935 for formal output/remote invariance/BF1. Inspect registry/live PIDs; no complete interactive comparison/CI yet.**
+0. **P0 primary30 remains incomplete. Real XCell382752 prepares6959/20456; image caches generated, NoCell/SAM accepted, WSI-SAM4018919 waits GPU5. Closed strict-remote native/Dice/BF1 and all5520 component/distance scores accepted;4151477/723130 retired EXIT0. Closed full-valid30 output executed; independent4179991 running24/30. Thirteen coordinators live. Do not add auxiliary code/methods/data before primary closure except fixing actual blockers. Existing full-valid queues remain secondary, fixtures are not full30 results. Native goal is usageLimited; no complete FewClick WSI comparison/CI yet.**
 1. Read [registry](docs/运行记录/模型实验/公平对比进度_1025_124208.json) and [current record](docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md).
 2. Inspect actual status/logs and ps for active PIDs. Completed jobs moved to registry.completed_jobs, never restart them.
 3. G3/G4/G5 and heldout local/R counts/bindings are accepted qualified. Generic HE two-projection local training/scores also accepted; GenericHE preparation and paired statistics are now accepted; heldout/all-label descriptive statistics now accepted; next full WSI independent acceptance/cells/GPU efficiency and reviewer closure.
@@ -650,3 +658,12 @@ Fixture /nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/ful
 工件/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_statistics_gate_1029_002900、/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_statistics_acceptance_gate_1029_003100；独立迁移/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_statistics_auditor_migration_1029_002755/migration.json；现场/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/full_valid_statistics_milestone_1029_003429；记录docs/运行记录/模型实验/运行记录_完整有效域配对统计与闭集独立参考_1029_002200.md。正式full30统计/闭集unique参考及排队尚待后续，不能将fixture当完整WSI报告。
 
 14协调ps live、104去重source绑定一致；CRC Cell2676/20456、R独立27/30、closed full-valid native17/30，goal active。参考图来源限定、同病例空间相关性/不同先验视野容量及额外监督披露均保留。
+
+
+## 1029_134255 用户简报复核与优先级收敛
+
+2026-10-29T13:42:55.888875+08:00：用户询问goal进度和是否跑偏。结论：CRC12（11组织+背景）/脂肪正常监督/WSI主线未改变；最近完整域门控、索引/队列/统计实现投入偏多，主30 FewClick完整比较尚未完成，必须收回执行优先级。主30结果闭环前，除修复真实阻塞/失败外，不再增加外围门控、新方法或新数据；完整目标/原结果/已建队列保留，不停止/重启现有实验。
+
+真实现场：Cell382752为6959/20456（约34%）；三image缓存已生成、NoCell/SAM独立接受，4018919仍等待GPU5其他任务，自身后续primary预测仍等待。Closed严格远距native/Dice/BF1既已接受，5520组件/距离独立723130全30 EXIT0（25150.514s），4151477 terminal EXIT0正常退役，不能当缺失PID失败/重启。完整域闭集30输出执行完成；独立4179991当前24/30，尚非完整接受。13协调实际live。
+
+原生get_goal工具当前真实状态usageLimited，自动续跑受用量限制；后台计算仍在运行。记录事实而非手动改变系统goal状态；不标complete/paused/blocked。主30局部与整片/参考与FewClick/门控与完整验收继续分开。现场/nfs-medical3/zyh/fewclick_v2/fair_comparison/goal_status_and_priority_1029_134255/evidence.json；来源核对/nfs-medical3/zyh/fewclick_v2/fair_comparison/training_main30_lineage_1029_004227与docs/运行记录/数据审计/运行记录_主30与实际训练来源及选中权重监督量核对_1029_004000.md。正式主30比较/WSI CI与最终审稿闭环仍未完成。
