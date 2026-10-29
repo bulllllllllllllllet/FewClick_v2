@@ -3193,3 +3193,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 结论：进程持续推进，没有失败或停止迹象；主要慢区段在4x视野的读取/分割/CPU后处理/细胞特征准备组合，最终FewClick编码/写入并非主要耗时。未修改运行源码、模型、权重、细胞上限或随机顺序，未迁移GPU/终止他人任务；原15范围不变。单函数热点和各原因加速收益仍未精确profile；不以未经测量的提速倍数承诺完成时间。
 
 现场原始命令、PID、mtime明细、manifest SHA与采样返回码均在/nfs-medical3/zyh/fewclick_v2/fair_comparison/cell_slowdown_audit_1029_150800/summary.json、recent600.json、pidstat.txt、gpu_pmon.txt、gpu_health.txt等；全部采样EXIT0。新15预测/独立接受/BF1/统计仍preparing，不把本次排查当实验质量完成。运行记录docs/运行记录/模型实验/运行记录_细胞准备变慢只读排查_1029_150800.md。
+
+## 10-29 15:40:00
+
+- Purpose: 定位局部FewClick与SAM差距，不改运行模型。
+- Changed: 新增diagnose_local_errors.py与诊断记录；同步goal、registry、current record。
+- Validation: aligner完整6040行×3计数/身份对齐、独立302pair复算；真实CPU16forward与两个stage probe EXIT0，16保存mask及Dense残差代数独立复核通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/local_error_diagnosis_1029_152641。
+- Docs record: docs/运行记录/模型实验/运行记录_局部FewClick差距与预测错误诊断_1029_152641.md。
+- Findings: 小面积目标误检突出；固定脂肪例Dense残差放大FP，但总体Dense仍平均有效。非因果定论。
+- Commit: 随本次诊断提交，哈希见git记录。

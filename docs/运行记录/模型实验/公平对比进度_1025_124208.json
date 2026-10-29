@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "usageLimited",
-  "updated": "2026-10-29T15:07:56.127014+08:00",
+  "updated": "2026-10-29T15:38:30.650725+08:00",
   "current_phase": "G8 user-authorized primary15 transition: real cell prefix running,15 acceptance/prediction adaptation preparing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -4338,6 +4338,16 @@
       "acceptance_sha256": "3b45218ded8cf4a022768448743c19f326d3fb22f472ea8b975780efabad773f",
       "exit_code": 0,
       "observed_at": "2026-10-29T13:42:55.888875+08:00"
+    },
+    {
+      "kind": "local_error_read_only_saved_count_and_CPU_prediction_diagnosis",
+      "worker_pid": 3583778,
+      "stage_worker_pid": 3601279,
+      "statistics_worker_pid": 3576128,
+      "status": "complete_accepted_diagnostic_only",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/local_error_diagnosis_1029_152641",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/local_error_diagnosis_1029_152641/replay_1029_152900.log",
+      "source_sha256": "f192d80594c46fd92dd90c05a69d3ebbc419f82930ab0130278f7d6f6dfa6dc0"
     }
   ],
   "user_priority_1027_165114": {
@@ -4920,5 +4930,18 @@
     "logical_CPUs": 128,
     "CPU_wait_saved10s_percent": 45.35,
     "model_and_rng_unchanged": true
+  },
+  "local_error_diagnosis": {
+    "status": "complete_accepted_diagnostic_scope_causal_root_cause_pending",
+    "record": "docs/运行记录/模型实验/运行记录_局部FewClick差距与预测错误诊断_1029_152641.md",
+    "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/local_error_diagnosis_1029_152641",
+    "report": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/local_error_diagnosis_1029_152641/report_zh.md",
+    "saved_rows_per_method": 6040,
+    "CPU_replay_rows": 16,
+    "stage_probes": 2,
+    "independent_acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/local_error_diagnosis_1029_152641/replay_independent_acceptance_1029_153800.json",
+    "small_area_gap_contribution": 0.6816981012060498,
+    "model_fixes_applied": false,
+    "limitations": "single seed; selected CPU cases, no representative train/val gap or formal GPU rescore"
   }
 }
