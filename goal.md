@@ -713,3 +713,11 @@ FewClick联合阶段9000步backbone梯度均非零、loss持续下降；没有�
 预固定pilot3774537/tmux fewclick_dense_repair_pilot_1029_160900实际running，状态preparing_frozen_Dense_inputs；16域-类各首个actual train任务（16例）、每类GT面积最小/最大固定32val pair，group0/3+2。两臂各256次额外Dense更新，最终一次评价，不选最好步；只按GT面积选开发诊断样本，不按模型排名。pilot和独立接受在同包装脚本顺序运行，任何非0即停，不重试、不回退。当前不是已完成修复，不把小样本成绩混入旧40k/三seed/WSI主表。
 
 工件/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100，正式输出pilot_1029_160900及随后pilot_acceptance_1029_160900；日志pilot_1029_160900.log/pilot_acceptance_1029_160900.log，包装launch_pilot_1029_160900.sh记录EXIT_CODE。冻结两新源码至小试结束。原15张WSI382752/3268164继续，源码/权重/缓存不变，不占GPU；native usageLimited未改。完成后核对32pair Dice/precision/recall/BF1、大小目标及类/域分层，若仅误检下降而召回恶化则如实判无效，不替换主模型。记录docs/运行记录/模型实验/运行记录_Dense困难负区域训练修复试验_1029_160100.md。
+
+## 1029_172100 Dense困难负区域小试完成：本候选未改善，不替换主权重
+
+2026-10-29T17:22:02.571769+08:00：正式小试3774537 EXIT0（1227.544秒），16train/32固定val、两臂各256次额外Dense更新完成；独立3876306 EXIT0，96保存预测mask计数/BF1复算和两域×两候选4次fresh checkpoint重载逐值一致，source summary SHA绑定通过。完成接受代表证据正确，不代表修复有效。
+
+32pair原权重 / 继续原loss / 困难负修复：Dice55.3396/53.3261/53.0706%，recall87.6071/88.1199/84.6736%，FP/valid6.5353/7.0112/5.5516%，BF117.1023/15.4865/14.1461%。修复相对原Dice-2.2690pp、recall-2.9335pp，虽误检面积下降，整体与边界退化。14个<5%目标Dice15.8843→15.4213%；13个>50%目标87.3738→83.8922%。继续原loss同样退化，提示少量任务继续训练也可能造成分布偏移，尚未因果隔离。
+
+结论：本次固定困难负项系数/比例、只训Dense的小试未成功；不使用其权重替换原模型，不据此否定所有困难负训练方案，也不扫验证阈值挑最好结果。16/32为事后开发诊断子集、CPU FP32/单seed/额外训练，不替代原6040行/三seed或15张WSI主表。原权重/两候选/全部失败结果保留。报告/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_acceptance_1029_160900/report_zh.md；原始分层/权重SHA/96mask接受见同目录summary.json，两个日志各terminal EXIT_CODE=0。旧active3774537按正常完成退役，不重启。native goal usageLimited及其它任务不变。记录docs/运行记录/模型实验/运行记录_Dense困难负区域训练修复试验_1029_160100.md。

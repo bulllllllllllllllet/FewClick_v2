@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "usageLimited",
-  "updated": "2026-10-29T16:09:46.788814+08:00",
+  "updated": "2026-10-29T17:22:02.571769+08:00",
   "current_phase": "G8 user-authorized primary15 transition: real cell prefix running,15 acceptance/prediction adaptation preparing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -825,16 +825,6 @@
       "remaining": 1749,
       "tmux": "fewclick_budget15_cutoff_1029_142500",
       "process_observed_at": "2026-10-29T15:07:56.127014+08:00"
-    },
-    {
-      "kind": "user_authorized_Dense_hardnegative_repair_matched_continuation_pilot",
-      "worker_pid": 3774537,
-      "status": "preparing_frozen_Dense_inputs",
-      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_1029_160900",
-      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_1029_160900.log",
-      "session": "fewclick_dense_repair_pilot_1029_160900",
-      "acceptance_log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_acceptance_1029_160900.log",
-      "device": "CPU float32 2threads CUDA hidden"
     }
   ],
   "known_gaps": [
@@ -4358,6 +4348,20 @@
       "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/local_error_diagnosis_1029_152641",
       "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/local_error_diagnosis_1029_152641/replay_1029_152900.log",
       "source_sha256": "f192d80594c46fd92dd90c05a69d3ebbc419f82930ab0130278f7d6f6dfa6dc0"
+    },
+    {
+      "kind": "user_authorized_Dense_hardnegative_repair_matched_continuation_pilot",
+      "worker_pid": 3774537,
+      "status": "complete_accepted_pilot_ineffective_not_adopted",
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_1029_160900",
+      "log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_1029_160900.log",
+      "session": "fewclick_dense_repair_pilot_1029_160900",
+      "acceptance_log": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_acceptance_1029_160900.log",
+      "device": "CPU float32 2threads CUDA hidden",
+      "acceptance_worker_pid": 3876306,
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_acceptance_1029_160900/summary.json",
+      "exit_code": 0,
+      "finished_at": "2026-10-29T17:22:02.571769+08:00"
     }
   ],
   "user_priority_1027_165114": {
@@ -4955,7 +4959,7 @@
     "limitations": "single seed; selected CPU cases, no representative train/val gap or formal GPU rescore"
   },
   "dense_repair_attempt": {
-    "status": "gate_accepted_pilot_running_effectiveness_unproven",
+    "status": "complete_accepted_pilot_candidate_ineffective_not_adopted",
     "record": "docs/运行记录/模型实验/运行记录_Dense困难负区域训练修复试验_1029_160100.md",
     "root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100",
     "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/gate_acceptance_1029_160800/summary.json",
@@ -4963,6 +4967,37 @@
     "pilot_output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_1029_160900",
     "pending_acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_acceptance_1029_160900",
     "scope": "Extra Dense-only posthoc local training; original15 WSI model unchanged",
-    "gate_quality_improved": false
+    "gate_quality_improved": false,
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_acceptance_1029_160900/summary.json",
+    "report": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_acceptance_1029_160900/report_zh.md",
+    "candidate_adopted": false,
+    "model_fixes_applied": false,
+    "finished_at": "2026-10-29T17:22:02.571769+08:00",
+    "results": {
+      "original": {
+        "n": 32,
+        "dice": 0.5533963007502336,
+        "precision": 0.5745946885646058,
+        "recall": 0.8760705341029448,
+        "bf1": 0.1710231169524497,
+        "FP_per_valid": 0.065352868021413
+      },
+      "continued_original_loss": {
+        "n": 32,
+        "dice": 0.5332611384238815,
+        "precision": 0.5552338459398849,
+        "recall": 0.8811990061414439,
+        "bf1": 0.154864995825034,
+        "FP_per_valid": 0.07011198845423852
+      },
+      "hardnegative_repair": {
+        "n": 32,
+        "dice": 0.5307058693801148,
+        "precision": 0.5684110523296807,
+        "recall": 0.8467360320403226,
+        "bf1": 0.1414608079080598,
+        "FP_per_valid": 0.05551611466303907
+      }
+    }
   }
 }

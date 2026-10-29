@@ -3212,3 +3212,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100；pilot3774537运行中，后续32pair接受未完成。
 - Docs record: docs/运行记录/模型实验/运行记录_Dense困难负区域训练修复试验_1029_160100.md。
 - Commit: 随本次实现提交，哈希见git记录。
+
+## 10-29 17:21:00
+
+- Purpose: 完成Dense困难负修复小试并记录无效结果，保留原主模型。
+- Changed: 同步goal、registry、当前运行记录及修复试验记录；没有模型/阈值改动。
+- Validation: producer3774537和独立3876306均EXIT0；96mask计数/BF1、4次fresh Dense重载与summary SHA绑定通过。
+- Results: 32pair Dice原55.34/继续原loss53.33/修复53.07%；误检降低但召回与大目标退化，本候选不采用。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_hardnegative_repair_1029_160100/pilot_acceptance_1029_160900。
+- Docs record: docs/运行记录/模型实验/运行记录_Dense困难负区域训练修复试验_1029_160100.md。
+- Commit: 随本次结果登记提交，哈希见git记录。
