@@ -1,7 +1,7 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "usageLimited",
-  "updated": "2026-10-29T18:08:31.623356+08:00",
+  "updated": "2026-10-29T18:55:57.051563+08:00",
   "current_phase": "G8 user-authorized primary15 transition: real cell prefix running,15 acceptance/prediction adaptation preparing",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
@@ -5133,5 +5133,82 @@
     "causal_root_proven": false,
     "confounding": "class and exact area differ across train/val; no global overfit assertion",
     "next": "same-class narrow-area train/val diagnosis before training repair"
+  },
+  "matched_dense_diagnosis": {
+    "status": "complete_accepted_matched_diagnostic_qualified",
+    "record": "docs/运行记录/模型实验/运行记录_同类窄面积Dense训练验证匹配诊断_1029_181751.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/matched_dense_diagnosis_1029_181751",
+    "report": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/matched_dense_diagnosis_1029_181751/report_zh.md",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/matched_dense_diagnosis_1029_181751/independent_acceptance.json",
+    "worker_pid": 252393,
+    "acceptance_pid": 428040,
+    "pairs": 29,
+    "missing": 3,
+    "stage_masks": 116,
+    "groups": {
+      "all": {
+        "train": {
+          "n": 29,
+          "base_dice": 0.4631294894528862,
+          "dense_dice": 0.722826910594272,
+          "dense_gain": 0.25969742114138605
+        },
+        "val": {
+          "n": 29,
+          "base_dice": 0.4222973648718386,
+          "dense_dice": 0.5198473671151443,
+          "dense_gain": 0.0975500022433058
+        }
+      },
+      "small": {
+        "train": {
+          "n": 14,
+          "base_dice": 0.1726512326657997,
+          "dense_dice": 0.5354299219540215,
+          "dense_gain": 0.3627786892882217
+        },
+        "val": {
+          "n": 14,
+          "base_dice": 0.09261772765670394,
+          "dense_dice": 0.15884318788729712,
+          "dense_gain": 0.06622546023059321
+        }
+      },
+      "non_small": {
+        "train": {
+          "n": 15,
+          "base_dice": 0.7342425291208333,
+          "dense_dice": 0.8977307666585062,
+          "dense_gain": 0.16348823753767278
+        },
+        "val": {
+          "n": 15,
+          "base_dice": 0.7299983596059643,
+          "dense_dice": 0.8567846010611351,
+          "dense_gain": 0.12678624145517084
+        }
+      }
+    },
+    "pair_gain_summary": {
+      "all": {
+        "n": 29,
+        "train_gain_larger": 20,
+        "mean_gain_gap": 0.16214741889808024
+      },
+      "small": {
+        "n": 14,
+        "train_gain_larger": 12,
+        "mean_gain_gap": 0.29655322905762843
+      },
+      "non_small": {
+        "n": 15,
+        "train_gain_larger": 8,
+        "mean_gain_gap": 0.036701996082501916
+      }
+    },
+    "model_changed": false,
+    "new_training": false,
+    "causal_root_proven": false,
+    "next": "Freeze full-pool matched-budget small-target generalization control before any candidate training"
   }
 }

@@ -3242,3 +3242,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/prompt_region_diagnosis_1029_175116。
 - Docs record: docs/运行记录/模型实验/运行记录_点击区域纯度与训练验证分层诊断_1029_175116.md（运行记录，complete accepted qualified）。
 - Commit: 本次提交，Git日志可定位。
+
+
+## 10-29 18:55:57
+
+- Purpose: 同类别窄面积训练验证对照，定位小目标Dense修正泛化差异。
+- Changed: matched_dense_diagnosis.py、accept_matched_dense_diagnosis.py与连续性记录；原模型/训练源码不改。
+- Validation: 29对58例、116阶段mask独立计数及完整选择/点前缀/caliper复算通过；252393和428040均EXIT0；两域原forward与旧缓存逐值一致。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/matched_dense_diagnosis_1029_181751；report_zh.md、independent_acceptance.json、SHA/日志/命令。
+- Docs record: docs/运行记录/模型实验/运行记录_同类窄面积Dense训练验证匹配诊断_1029_181751.md（运行记录，complete accepted qualified）。
+- Commit: 本次提交，由Git日志定位。
