@@ -3399,3 +3399,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_cell_gate_1031_010248；cell_probe_protocol_1031_010248/contract.json；当前无后台任务。
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR细胞Probe冻结与权重门控_1031_004350.md。
 - Commit: 见产物commit.txt。
+
+
+## 10-31 01:15:14
+
+- Purpose: 冻结整体组织任务/footprint/历史暴露合同并接受P0，转入P1准备。
+- Changed: freeze_cvpr_tissue_contract.py、新阶段记录、路线/goal/registry/AGENTS。
+- Validation: 实际1737输入跨split最大context/RGB重复0；18本图+4迁移输入门控；4000实际train坐标冻结；全部570细胞crop真实解码；SAM/COCO全SHA复核。P0限定接受，不报新质量或独立确认。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_tissue_contract_1031_011514/P0_acceptance.json。
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR_P0接受与P1受控执行_1031_011514.md。
+- Commit: 见产物commit.txt。
