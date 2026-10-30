@@ -3340,3 +3340,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_views_1030_181346；report.json/acceptance.json限定接受范围。
 - Docs record: docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md。
 - Commit: 见产物commit.txt。
+
+
+## 10-30 18:18:20
+
+- Purpose: 固定96例HED/DAPI结构代理定量检查并登记可靠HE细胞标签备选。
+- Changed: quantify_xenium_registration.py、goal/registry、docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md。
+- Validation: 真实96例3域exit0、56.13秒；预登记代理门槛失败，全部实例保留且禁止训练。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_quant_1030_181656；全部行/源码与输入SHA/限定范围接受。
+- Docs record: docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md。
+- Commit: 见产物commit.txt。

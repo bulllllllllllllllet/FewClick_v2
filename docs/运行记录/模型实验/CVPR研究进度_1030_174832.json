@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-30T18:16:03.209981+08:00",
+  "updated_at": "2026-10-30T18:20:12.376899+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -73,6 +73,16 @@
           "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_views_1030_181346",
           "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_views_1030_181346/acceptance.json",
           "registration_accepted": false
+        },
+        {
+          "kind": "Xenium96_fixed_registration_proxy",
+          "status": "complete",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_quant_1030_181656",
+          "worker_pid": 3070839,
+          "exit_code": 0,
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_quant_1030_181656/scope_acceptance.json",
+          "quality_outcome": "proxy_gate_failed",
+          "registration_accepted": false
         }
       ],
       "coordinate_unit_finding": {
@@ -85,6 +95,11 @@
         "registration_accepted": false,
         "P0_complete": false,
         "source_code": "benchmarks/v5/tools/audit_xenium_coordinate_units.py"
+      },
+      "cell_supervision_branch": {
+        "Xenium_CosMx": "registration_diagnostic_only_not_approved_for_cell_label_training",
+        "alternative_candidate": "existing OCELOT high-detail cell patches with expert point labels; audit before adoption",
+        "limitation": "only BC/TC coarse classes; not diverse immune-cell truth; historical exposure must remain declared"
       }
     },
     "P1I": {
@@ -215,6 +230,16 @@
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_views_1030_181346",
       "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_views_1030_181346/acceptance.json",
       "registration_accepted": false
+    },
+    {
+      "kind": "Xenium96_fixed_registration_proxy",
+      "status": "complete",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_quant_1030_181656",
+      "worker_pid": 3070839,
+      "exit_code": 0,
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_quant_1030_181656/scope_acceptance.json",
+      "quality_outcome": "proxy_gate_failed",
+      "registration_accepted": false
     }
   ],
   "completed_milestones": [
@@ -226,10 +251,10 @@
     }
   ],
   "next_actions": [
-    "Poll live worker 3035367 and persisted exit_code/log; no automatic retry",
-    "Use verified bounded TIFF reader to expand fixed coordinate/nucleus audit; quantify mismatch before training permission",
-    "Audit full inventory if exit0; then verify local Xenium units and cell registration before assigning splits",
-    "Freeze full-footprint manifests, weight/exposure and confirmation contracts before encoder pilots"
+    "Poll existing NFS inventory worker3035367; do not relaunch",
+    "Audit existing OCELOT high-detail cell images, expert point labels, physical crop and full source footprint for reliable encoder probe",
+    "Keep Xenium/CosMx paired-cell labels diagnostic-only pending transform/landmark evidence; no endless scale/offset fitting",
+    "Freeze new spatial manifests, weight/pretraining exposure and unexposed confirmation before encoder pilots"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -260,6 +285,12 @@
       "evidence": "docs/运行记录/模型实验/运行记录_中规模五Cohort冻结Gate_0907_163300.md",
       "decision": "Audit reliable cell identity/labels and specify changed condition before new hypothesis",
       "qualification_1030": "Historical Xenium manifests may use micrometer coordinates directly as pixels. Freeze conclusion about encoder efficacy until local units/registration audited; raw scores preserved."
+    },
+    {
+      "id": "scale_only_Xenium_registration_proxy",
+      "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_quant_1030_181656",
+      "scope": "96 fixed cells, HED-DAPI correlation and +/-4um displacement proxy",
+      "decision": "Do not assume scale-only conversion establishes precise pairing; preserve all samples, do not lower gate or train with uncertain labels"
     }
   ],
   "deferred": [
