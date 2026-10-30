@@ -1,8 +1,8 @@
 {
   "version": "fair_comparison_1025_124208",
   "native_goal_status": "usageLimited",
-  "updated": "2026-10-29T21:33:30.479190+08:00",
-  "current_phase": "G8 user-authorized primary15 transition: real cell prefix running,15 acceptance/prediction adaptation preparing",
+  "updated": "2026-10-30T17:40:58.733247+08:00",
+  "current_phase": "CVPR research: cell vocabulary and dual-encoder outline complete; experimental gates planned",
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208",
   "current_record": "docs/运行记录/模型实验/运行记录_公平对比协议固定与首批基线_1025_124208.md",
   "prior_run": "/nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600",
@@ -836,11 +836,10 @@
     "Main30 has all11 target tissues present on all30 strict-remote WSIs; whole-WSI absent-target metrics have0eligible cases/NA. Report nontarget pixel FPR separately; do not substitute it for absent-concept evidence, ROI-transfer absence remains separate."
   ],
   "next_actions": [
-    "P0 User chose original fixed first15 WSIs:8895 positions=8775 query+120 support,26685 views. Real worker382752 continues unchanged serial preparation; monitor3268164 stops only after all8895 committed. Inspect cutoff status/summary/log, never restart original20456 producer.",
-    "P1 Adapt independent cache acceptance/prediction/GT/BF1/statistics to frozen15 protocol without editing old frozen running sources. This adaptation is PREPARING, not launched/complete. Original full30 hardcoded20456/5520 guards must not be bypassed or mislabeled.",
-    "P2 Reuse unchanged same15 image caches and independently accepted closed30 rows only with identity/hash checks; WSI-SAM selected cache acceptance still pending. Keep all methods identical selected slides/query domains/prompts/budgets, original checkpoints and metric rules.",
-    "P3 Publish accepted primary15 WSI paired report; report15 scope and user budget revision explicitly. Preserve original30 references/partial failures, no score-based slide exclusion, local vs transfer separate, closed privileged reference separate.",
-    "P4 Full-valid extensions secondary; eleven original30 waiting coordinators intentionally cancelled. Cell parent574146 retained until cutoff; its eventual child -15 is intentional user cutoff, NOT completed20456. Closed full-valid independent4179991 retained. Native goal usageLimited unchanged."
+    "先完成总体方案讨论：本轮文献与大纲已归档，尚未启动新训练。",
+    "核验小批实例crop、物理尺度、细胞注释本体与空间footprint；重读历史Phikon/RNA负结果。",
+    "分别准备更强image-only基线及原XCell/LEMON/病理中心空间特征cell encoder对照。",
+    "在固定encoder上比较连续细胞token、固定聚类和可学习词汇；有效后再做空间组合/支持查询训练和WSI扩展。"
   ],
   "provenance_clarifications": {
     "XCell": {
@@ -4390,7 +4389,7 @@
     "adipose_included": true,
     "heldout": "deferred; replacement ontology not selected; preserve old results"
   },
-  "objective": "以当前三物理视野 FewClick 评估完整监督下的 CRC 十二标签（11类组织+背景）WSI 用户指定组织分割能力，脂肪正常参与训练。主证据优先建立在真实整片：主测试原固定顺序前15张的来源/GT/物理域审计、固定少量支持点击后的远处组织检出与误报、整片分割质量、点击预算曲线，以及首次细胞/特征准备、缓存后整片响应和输出IO成本。局部patch比较、机制消融、外部与类别留出作为补充证据，按真实应用相关性安排，不以极端留出低分代表常规使用能力。\n\n实验在看结果前固定目标类/整片集合、支持选择、预算、权重选择、评价域与指标；保持合理监督和适配的基线，披露额外视野、预训练及监督差异。已有结果与失败案例保留，不按排名删除样本、削弱基线或修改评分。WSI扩展首先验证现有模型的缓存/分窗推理，不把分窗局部图称作跨整片全局图。类别留出后置，新类别先做本体/覆盖审计；只有保留相应泛化主张时才要求该证据闭环。审稿人明确要求的项目逐条回应，无法完成者说明限制。",
+  "objective": "面向CVPR新论文探索FewClick：比较更强的组织图像encoder与细胞encoder，研究H&E细胞形态表征、训练区共享词汇/软量化、细胞空间组合及提示条件密集分割，使少量支持点击能够识别WSI远处同类组织。允许新架构与细胞分支；以同协议基线、可证伪消融和真实WSI质量/效率证明贡献，不以必须超过SAM为由筛除结果。",
   "wsi_priority_record": "docs/建议/数据与评估/方案_十二标签WSI主线与补充实验目标调整_1027_170608.md",
   "runtime_verification_last": {
     "status": "verified_live_not_experiment_acceptance",
@@ -5391,5 +5390,26 @@
     },
     "priority": "Original architecture: controlled loss/joint adaptation; new version: SAM initialization plus FewClick context, with matched SAM continuation.",
     "limitations": "Development-only evidence; no candidate quality demonstrated; original15 WSI priority unchanged."
+  },
+  "cvpr_transition": {
+    "status": "complete_literature_outline_experiments_planned",
+    "updated": "2026-10-30T17:40:58.733247+08:00",
+    "record": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_tokenizer_outline_1030_173241",
+    "previous_objective": "以当前三物理视野 FewClick 评估完整监督下的 CRC 十二标签（11类组织+背景）WSI 用户指定组织分割能力，脂肪正常参与训练。主证据优先建立在真实整片：主测试原固定顺序前15张的来源/GT/物理域审计、固定少量支持点击后的远处组织检出与误报、整片分割质量、点击预算曲线，以及首次细胞/特征准备、缓存后整片响应和输出IO成本。局部patch比较、机制消融、外部与类别留出作为补充证据，按真实应用相关性安排，不以极端留出低分代表常规使用能力。\n\n实验在看结果前固定目标类/整片集合、支持选择、预算、权重选择、评价域与指标；保持合理监督和适配的基线，披露额外视野、预训练及监督差异。已有结果与失败案例保留，不按排名删除样本、削弱基线或修改评分。WSI扩展首先验证现有模型的缓存/分窗推理，不把分窗局部图称作跨整片全局图。类别留出后置，新类别先做本体/覆盖审计；只有保留相应泛化主张时才要求该证据闭环。审稿人明确要求的项目逐条回应，无法完成者说明限制。",
+    "previous_phase": "G8 user-authorized primary15 transition: real cell prefix running,15 acceptance/prediction adaptation preparing",
+    "previous_next_actions": [
+      "P0 User chose original fixed first15 WSIs:8895 positions=8775 query+120 support,26685 views. Real worker382752 continues unchanged serial preparation; monitor3268164 stops only after all8895 committed. Inspect cutoff status/summary/log, never restart original20456 producer.",
+      "P1 Adapt independent cache acceptance/prediction/GT/BF1/statistics to frozen15 protocol without editing old frozen running sources. This adaptation is PREPARING, not launched/complete. Original full30 hardcoded20456/5520 guards must not be bypassed or mislabeled.",
+      "P2 Reuse unchanged same15 image caches and independently accepted closed30 rows only with identity/hash checks; WSI-SAM selected cache acceptance still pending. Keep all methods identical selected slides/query domains/prompts/budgets, original checkpoints and metric rules.",
+      "P3 Publish accepted primary15 WSI paired report; report15 scope and user budget revision explicitly. Preserve original30 references/partial failures, no score-based slide exclusion, local vs transfer separate, closed privileged reference separate.",
+      "P4 Full-valid extensions secondary; eleven original30 waiting coordinators intentionally cancelled. Cell parent574146 retained until cutoff; its eventual child -15 is intentional user cutoff, NOT completed20456. Closed full-valid independent4179991 retained. Native goal usageLimited unchanged."
+    ],
+    "user_decision": "Abandon current AAAI rebuttal workstream; target CVPR with new encoders and cell branch research.",
+    "new_training": false,
+    "model_replaced": false,
+    "background_processes_modified": false,
+    "submission_platform_action": false,
+    "native_goal_status_modified": false
   }
 }

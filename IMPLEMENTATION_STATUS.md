@@ -3282,3 +3282,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/sam_routes_research_1029_224158/evidence.json；研究算术不是已实现提升；原模型及主15目标保留。
 - Docs record: docs/建议/模型与训练/建议_超越SAM的可验证路线与失败实验复盘_1029_224158.md（建议）；current record同步记录。
 - Commit: 本条与源码/建议同次提交，哈希见git历史。
+
+
+## 2026-10-30T17:40:58.733247+08:00
+
+- Purpose: 按用户最新决定将当前目标切换到CVPR新方法，归档细胞词汇与双encoder总体大纲。
+- Changed: docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md；goal.md当前入口；registry.cvpr_transition/objective/next_actions；current record追加记录。
+- Validation: 核对一手文献/模型卡与历史Phikon/RNA失败记录；JSON解析和新路径存在性检查，git diff --check；仅文档，未训练或改变模型。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_tokenizer_outline_1030_173241；所有新候选planned，旧数据/缓存/权重保留，后台活性未核验。
+- Docs record: docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md（建议）。
+- Commit: 与本条同次提交，哈希见git历史。
