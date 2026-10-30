@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-30T18:20:39.447240+08:00",
+  "updated_at": "2026-10-30T18:24:07.730630+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -85,6 +85,14 @@
           "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_quant_1030_181656/scope_acceptance.json",
           "quality_outcome": "proxy_gate_failed",
           "registration_accepted": false
+        },
+        {
+          "kind": "OCELOT_same_raster_expert_point_inventory",
+          "status": "complete",
+          "quality_outcome": "not_evaluated",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182153",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182153/independent_acceptance.json",
+          "training_contract_accepted": false
         }
       ],
       "coordinate_unit_finding": {
@@ -101,7 +109,15 @@
       "cell_supervision_branch": {
         "Xenium_CosMx": "registration_diagnostic_only_not_approved_for_cell_label_training",
         "alternative_candidate": "existing OCELOT high-detail cell patches with expert point labels; audit before adoption",
-        "limitation": "only BC/TC coarse classes; not diverse immune-cell truth; historical exposure must remain declared"
+        "limitation": "only BC/TC coarse classes; not diverse immune-cell truth; historical exposure must remain declared",
+        "OCELOT_inventory": {
+          "kind": "OCELOT_same_raster_expert_point_inventory",
+          "status": "complete",
+          "quality_outcome": "not_evaluated",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182153",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182153/independent_acceptance.json",
+          "training_contract_accepted": false
+        }
       }
     },
     "P1I": {
@@ -242,6 +258,14 @@
       "observed_at": "2026-10-30T18:10:50.549403+08:00",
       "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/independent_inventory_acceptance.json",
       "exit_code": 0
+    },
+    {
+      "kind": "OCELOT_same_raster_expert_point_inventory",
+      "status": "complete",
+      "quality_outcome": "not_evaluated",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182153",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182153/independent_acceptance.json",
+      "training_contract_accepted": false
     }
   ],
   "completed_milestones": [
@@ -253,9 +277,9 @@
     }
   ],
   "next_actions": [
-    "Audit existing OCELOT high-detail cell images, expert point labels, physical crop and full source footprint for reliable encoder probe",
-    "Keep Xenium/CosMx paired-cell labels diagnostic-only pending transform/landmark evidence; no endless scale/offset fitting",
-    "Freeze new spatial manifests, weight/pretraining exposure and unexposed confirmation before encoder pilots"
+    "Freeze organ/class-stratified OCELOT train/dev probe manifest with physical crop and full source footprint; retain zero fields and source provenance",
+    "Inventory accessible XCell/LEMON/Phikon image input and weight hashes/exposure, choose at most3 cell and3 image encoders",
+    "Freeze segmentation tasks and confirmation exposure contract before P1 pilots; uncertain Xenium/CosMx labels remain diagnostic-only"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -328,6 +352,12 @@
       "exit_code": 1,
       "error": "pyvips ENOSPC",
       "original_exec_session": 56148
+    },
+    {
+      "kind": "OCELOT_empty_annotation_audit_contract",
+      "status": "failed",
+      "exit_code": 1,
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182058"
     }
   ]
 }

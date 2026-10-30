@@ -3359,3 +3359,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/independent_inventory_acceptance.json。
 - Docs record: docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md；goal/registry已同步，无活跃worker。
 - Commit: 见产物closeout_commit.txt。
+
+
+## 10-30 18:22:00
+
+- Purpose: 审计OCELOT同HE专家细胞点作为可靠encoder probe候选。
+- Changed: audit_ocelot_cell_inputs.py、goal/registry、docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md。
+- Validation: 实际537图/90549点exit0，6.90秒；5空字段保留；7crop源像素全等及canonical SHA/shape复核。5类槽位缺合格点明确报告，未改变身份选样。首次空标注错误保留。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182153；完整空间footprint跨官方split重叠0，未读test GT。
+- Docs record: docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md。
+- Commit: 见产物commit.txt。
