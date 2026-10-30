@@ -3330,3 +3330,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_units_1030_181132；audit.json含源码/清单SHA，independent_scope_acceptance.json限定接受范围。
 - Docs record: docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md。
 - Commit: 见产物commit.txt。
+
+
+## 10-30 18:14:30
+
+- Purpose: 用有界TIFF读取验证真实crop并生成Xenium局部注册对照。
+- Changed: render_xenium_unit_diagnostics.py、goal/registry、docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md。
+- Validation: 实际9实例3域exit0，12.73秒；3旧crop像素全等；三域图已查看，配准仍未接受。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_views_1030_181346；report.json/acceptance.json限定接受范围。
+- Docs record: docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md。
+- Commit: 见产物commit.txt。

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-30T18:12:43.889789+08:00",
+  "updated_at": "2026-10-30T18:16:03.209981+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -65,6 +65,14 @@
           "registration_accepted": false,
           "P0_complete": false,
           "source_code": "benchmarks/v5/tools/audit_xenium_coordinate_units.py"
+        },
+        {
+          "kind": "Xenium_fast_TIFF_reader_and_registration_diagnostics",
+          "status": "complete",
+          "quality_outcome": "not_evaluated",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_views_1030_181346",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_views_1030_181346/acceptance.json",
+          "registration_accepted": false
         }
       ],
       "coordinate_unit_finding": {
@@ -199,6 +207,14 @@
       "registration_accepted": false,
       "P0_complete": false,
       "source_code": "benchmarks/v5/tools/audit_xenium_coordinate_units.py"
+    },
+    {
+      "kind": "Xenium_fast_TIFF_reader_and_registration_diagnostics",
+      "status": "complete",
+      "quality_outcome": "not_evaluated",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_views_1030_181346",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_views_1030_181346/acceptance.json",
+      "registration_accepted": false
     }
   ],
   "completed_milestones": [
@@ -211,6 +227,7 @@
   ],
   "next_actions": [
     "Poll live worker 3035367 and persisted exit_code/log; no automatic retry",
+    "Use verified bounded TIFF reader to expand fixed coordinate/nucleus audit; quantify mismatch before training permission",
     "Audit full inventory if exit0; then verify local Xenium units and cell registration before assigning splits",
     "Freeze full-footprint manifests, weight/exposure and confirmation contracts before encoder pilots"
   ],
