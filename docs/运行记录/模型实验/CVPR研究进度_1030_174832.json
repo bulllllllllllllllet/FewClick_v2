@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-30T17:59:41.078538+08:00",
+  "updated_at": "2026-10-30T18:08:38.620307+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_CVPR新Goal建立与旧任务退役_1030_174832.md",
+    "current_record": "docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
   },
@@ -26,7 +26,22 @@
       ],
       "acceptance": null,
       "quality_outcome": "not_evaluated",
-      "runs": []
+      "runs": [
+        {
+          "kind": "P0_bounded_real_input_inventory",
+          "status": "running",
+          "worker_pid": 3012322,
+          "exec_session": 56148,
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_1030_180457",
+          "monitor": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_1030_180457/runtime_observation.json",
+          "source": "benchmarks/v5/tools/audit_cvpr_p0_inputs.py",
+          "source_sha256": "dab11798a1ec918e91d2312aeae7610fb74431dbb7a3a3db498ee70b1ee03ed2",
+          "acceptance": null,
+          "quality_outcome": "not_evaluated",
+          "launch": "direct exec session; unexpectedly slow TIFF decoding; no retry",
+          "observed_at": "2026-10-30T18:08:38.620307+08:00"
+        }
+      ]
     },
     "P1I": {
       "title": "组织图像encoder受控筛选",
@@ -123,7 +138,22 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [],
+  "active_jobs": [
+    {
+      "kind": "P0_bounded_real_input_inventory",
+      "status": "running",
+      "worker_pid": 3012322,
+      "exec_session": 56148,
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_1030_180457",
+      "monitor": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_1030_180457/runtime_observation.json",
+      "source": "benchmarks/v5/tools/audit_cvpr_p0_inputs.py",
+      "source_sha256": "dab11798a1ec918e91d2312aeae7610fb74431dbb7a3a3db498ee70b1ee03ed2",
+      "acceptance": null,
+      "quality_outcome": "not_evaluated",
+      "launch": "direct exec session; unexpectedly slow TIFF decoding; no retry",
+      "observed_at": "2026-10-30T18:08:38.620307+08:00"
+    }
+  ],
   "completed_jobs": [],
   "completed_milestones": [
     {
@@ -134,9 +164,9 @@
     }
   ],
   "next_actions": [
-    "P0 inventory existing cell/image data, physical scale, reliable labels, candidate checkpoints and prior exposure",
-    "P0 build model-blind small manifests and full-input spatial-block audit",
-    "P0 freeze task/selection/metric/resource budgets and pass actual input gates before P1"
+    "Poll existing worker3012322 / exec56148; never relaunch on timeout",
+    "Inspect inventory output, then independently review cell registration/units and max input footprint",
+    "Freeze new spatial manifests and unexposed confirmation before encoder pilots"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

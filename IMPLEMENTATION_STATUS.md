@@ -3299,3 +3299,14 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 用户已废弃旧AAAI rebuttal目标并清空旧原生Goal；新原生Goal active。根goal缩为当前入口，旧全文完整归档。新路线P0→P1I/P1C→P2→P3→P4→P5→P6，当前P0 preparing；阶段对照/预算/独立接受/失败备选已登记。没有新训练或后台进程修改，没有新质量结果。旧15WSI细胞8895位置执行完成但未独立验收；三条旧active记录经PID/日志核验迁入历史索引，不自动重启。
 
 路线：[docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md)；registry：[docs/运行记录/模型实验/CVPR研究进度_1030_174832.json](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json)；当前记录：[docs/运行记录/模型实验/运行记录_CVPR新Goal建立与旧任务退役_1030_174832.md](docs/运行记录/模型实验/运行记录_CVPR新Goal建立与旧任务退役_1030_174832.md)。产物与核验：`/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832`。
+
+
+## 10-30 18:08:10
+
+- Purpose: P0有界真实输入/尺度核查，识别旧细胞配准证据的适用边界。
+- Changed: `benchmarks/v5/tools/audit_cvpr_p0_inputs.py`、`docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md`、当前goal/registry/AGENTS指针。
+- Validation: aligner真实路径已读取6个CosMx crop并通过ID/annotation断言；完整15个与组织loader检查仍running，未接受P0。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_1030_180457`；worker3012322、exec56148，运行中，不自动重试。
+- Docs record: `docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md`。
+- Environment: aligner新增h5py3.16.0，CPU affinity[0,1]，无GPU。
+- Commit: 本次提交hash保存在产物commit.txt。
