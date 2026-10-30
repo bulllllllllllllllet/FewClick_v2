@@ -3439,3 +3439,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_1031_015107；当前实际worker 1147325、coordinator 1122729。
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR_P1I正式缓存训练与评分_1031_015107.md。
 - Commit: 见产物commit.txt。
+
+
+## 10-31 02:21:28
+
+- Purpose: 接受三臂全部3438行的实际任务/预测重放，识别remote FPA取舍并冻结单因素诊断。
+- Changed: compare_pilots.py、cell_inputs.py、新结果记录及goal/registry/路线/AGENTS。
+- Validation: 三臂各1146行（总3438）重放通过、每臂4000消费SHA与1000 optimizer step通过；16既定view2467细胞同mask/order/RGB输入CPU门控通过。两个替代encoder均未通过FPA资源门槛，不晋升WSI。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_comparison_1031_022128；cell_downstream_input_gate_1031_021255。
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR_P1I三臂接受与误报诊断_1031_022128.md。
+- Commit: 见comparison产物commit.txt。

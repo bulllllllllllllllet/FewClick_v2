@@ -8,18 +8,18 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_CVPR_P1I正式缓存训练与评分_1031_015107.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_CVPR_P1I三臂接受与误报诊断_1031_022128.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
-当前：**P0 complete（开发合同限定接受），P1I running，P1C下游验证待做**。正式串行缓存/训练/评分coordinator 1122729，当前阶段resnet/pilot worker 1147325；看registry和实际/proc，不据旧快照重启。
+当前：**P0 complete；P1I冻结三臂pilot已独立接受，但整体约束未通过；P1I/P1C preparing**。当前无后台任务。Phikon local较强，但remote absent FPA更差，不能据此晋升WSI。
 
-下一步：监控同一流水线，逐臂缓存独立接受后才训练；各臂完成后用accept_pilot重放1146行原始mask/GT，再比较local/remote。不重复P0或已通过的模型门控，不以启动代替完成。
+下一步：按新记录预登记的唯一任务因素修订，构造并审计train-only空间mixed episodes，与同起点local控制做匹配延续对照。不得调query阈值、删absent或盲换模型；P2/P3仍需各自机制证据。
 
 ## 执行顺序
 
 | 阶段 | 目的 | 当前状态 |
 |---|---|---|
 | P0 | 数据、尺度、空间隔离与公平合同 | complete，限定接受 |
-| P1I / P1C | 图像与细胞 encoder 受控筛选 | P1I running；P1C downstream preparing |
+| P1I / P1C | 图像与细胞 encoder 受控筛选 | frozen pilot accepted；task/downstream preparing |
 | P2 | 连续特征 / 固定聚类 / 可学习词汇 | planned |
 | P3 | 空间组合与支持查询迁移 | planned |
 | P4 | WSI 质量、误报、缓存与交互效率 | planned |
@@ -64,3 +64,5 @@ P0里程碑（2026-10-31T01:21:17.383554+08:00）：组织/细胞manifest、实�
 P1C第一轮结果（2026-10-31T01:31:25.930423+08:00）：570共享输入特征和固定500步×六行probe已独立接受；macro-F1 CTransPath点中心.6389、LEMON.7235、Phikon空间.6744，打乱约.49–.51。LEMON仅暂定候选；组织mask收益未验证，P1C未complete。接下来P1I同decoder对照及下游连续细胞消融，不提前做词表。
 
 P1I工程里程碑（2026-10-31T01:48:32.514165+08:00）：公共提示decoder三臂真实训练/冻结/梯度/重载及optimizer继续一步完全一致通过；CUDA grid反向不确定性已用数学等价双线性GEMM修复并验前反向等价，原失败保留。正式1000x4训练/质量比较尚未执行；下一步绑定空间缓存、训练与local/remote评估。
+
+P1I结果（2026-10-31T02:31:42.882032+08:00）：三个共享decoder冻结encoder结果已接受，localDice ResNet.4758/Phikon.6285/SAM.5367；remote absent FPA.2105/.4279/.3190，均未使替代encoder通过误报守门。下一受控诊断保持架构/阈值不变，只改变train任务类型；目标仍为WSI，不降成仅local成功。
