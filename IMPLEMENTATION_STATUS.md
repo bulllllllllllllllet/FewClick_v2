@@ -3409,3 +3409,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_tissue_contract_1031_011514/P0_acceptance.json。
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR_P0接受与P1受控执行_1031_011514.md。
 - Commit: 见产物commit.txt。
+
+
+## 10-31 01:24:00
+
+- Purpose: 实际执行共享10µm三臂特征提取和固定线性probe，推进P1C候选筛选。
+- Changed: extract_cell_probe_features.py、run_cell_linear_probe.py、新结果记录和goal/registry/AGENTS。
+- Validation: 三臂570身份/像素/finite/SHA通过；6×186预测分数独立复算，train-only变换与保存head logits重建通过；真实finite梯度/参数变化/重载通过，单seedLEMON .7235领先点中心控制 .6389。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_features_1031_012400；/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_linear_probe_1031_012400/independent_acceptance.json。
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR_P1C共享视野特征与线性Probe_1031_012400.md。
+- Commit: 见产物commit.txt。

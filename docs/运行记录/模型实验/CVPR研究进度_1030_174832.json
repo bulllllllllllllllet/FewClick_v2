@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T01:21:17.383554+08:00",
+  "updated_at": "2026-10-31T01:31:25.930423+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_CVPR_P0接受与P1受控执行_1031_011514.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_CVPR_P1C共享视野特征与线性Probe_1031_012400.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
   },
@@ -222,8 +222,18 @@
         "真实组织mask下游控制"
       ],
       "acceptance": null,
-      "quality_outcome": "not_evaluated",
-      "runs": []
+      "quality_outcome": "LEMON .7235 vs CTransPath point control .6389 and Phikon .6744; one-seed development only",
+      "runs": [
+        {
+          "kind": "P1C_fixed_single_seed_linear_probe",
+          "status": "complete",
+          "worker_pid": 951024,
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_linear_probe_1031_012400",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_linear_probe_1031_012400/independent_acceptance.json",
+          "quality_outcome": "LEMON provisional best in coarse cell probe; downstream benefit unverified"
+        }
+      ],
+      "candidate": "LEMON provisional, no downstream acceptance"
     },
     "P2": {
       "title": "连续/固定词表/可学习词汇",
@@ -402,6 +412,14 @@
       "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_tissue_contract_1031_011514/P0_acceptance.json",
       "quality_outcome": "not_evaluated",
       "qualification": "development exposure declared; independent confirmation and WSI remain future gates"
+    },
+    {
+      "kind": "P1C_fixed_single_seed_linear_probe",
+      "status": "complete",
+      "worker_pid": 951024,
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_linear_probe_1031_012400",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_linear_probe_1031_012400/independent_acceptance.json",
+      "quality_outcome": "LEMON provisional best in coarse cell probe; downstream benefit unverified"
     }
   ],
   "completed_milestones": [
@@ -413,10 +431,10 @@
     }
   ],
   "next_actions": [
-    "Implement and run fixed570 common10um cell feature extraction, isolated CTransPath/LEMON/Phikon environments, first real small batch then full cache",
-    "Gate fixed train-only PCA64/linear500step + shuffle control, then execute P1C probe with source/weight/task identities",
-    "Freeze matched P1I shared decoder/input/optimizer and run1000x4 tasks using frozen tissue contract; local/remote separate",
-    "Keep original mask/context XCell reference separate; no tokenizer until downstream cell contribution evidence"
+    "Freeze and implement shared image decoder/adapter and P1I real training/reload gate for COCO-ResNet/Phikon/SAM; identical frozen1000x4 local tasks, fixed endpoint",
+    "Run P1I local and small remote validation separately, disclose input resolution/context and capacity",
+    "Test LEMON continuous cell branch versus image-only/original cells on selected image base under identical tissue supervision; secondseed required before scale-up",
+    "No tokenizer yet; cell probe success does not complete P1C or justify P2"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
