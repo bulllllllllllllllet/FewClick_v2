@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-30T18:10:50.549403+08:00",
+  "updated_at": "2026-10-30T18:12:43.889789+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -54,8 +54,30 @@
           "source_sha256": "85ec8c8ef5ce9e7979496f40520d2c3fb7cb94eb3339ebda7a5dc0ea70db13a7",
           "observed_at": "2026-10-30T18:10:50.549403+08:00",
           "acceptance": null
+        },
+        {
+          "kind": "Xenium_historical_coordinate_unit_extent_audit",
+          "status": "complete",
+          "quality_outcome": "not_evaluated",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_units_1030_181132",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_units_1030_181132/independent_scope_acceptance.json",
+          "cells": 1370,
+          "registration_accepted": false,
+          "P0_complete": false,
+          "source_code": "benchmarks/v5/tools/audit_xenium_coordinate_units.py"
         }
-      ]
+      ],
+      "coordinate_unit_finding": {
+        "kind": "Xenium_historical_coordinate_unit_extent_audit",
+        "status": "complete",
+        "quality_outcome": "not_evaluated",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_units_1030_181132",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_units_1030_181132/independent_scope_acceptance.json",
+        "cells": 1370,
+        "registration_accepted": false,
+        "P0_complete": false,
+        "source_code": "benchmarks/v5/tools/audit_xenium_coordinate_units.py"
+      }
     },
     "P1I": {
       "title": "组织图像encoder受控筛选",
@@ -166,7 +188,19 @@
       "acceptance": null
     }
   ],
-  "completed_jobs": [],
+  "completed_jobs": [
+    {
+      "kind": "Xenium_historical_coordinate_unit_extent_audit",
+      "status": "complete",
+      "quality_outcome": "not_evaluated",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_units_1030_181132",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_units_1030_181132/independent_scope_acceptance.json",
+      "cells": 1370,
+      "registration_accepted": false,
+      "P0_complete": false,
+      "source_code": "benchmarks/v5/tools/audit_xenium_coordinate_units.py"
+    }
+  ],
   "completed_milestones": [
     {
       "kind": "goal_reset_and_route_contract",
@@ -207,7 +241,8 @@
       "id": "historical_frozen_Phikon_RNA",
       "scope": "0907 fixed data/backbone/probe settings, not all cell encoders",
       "evidence": "docs/运行记录/模型实验/运行记录_中规模五Cohort冻结Gate_0907_163300.md",
-      "decision": "Audit reliable cell identity/labels and specify changed condition before new hypothesis"
+      "decision": "Audit reliable cell identity/labels and specify changed condition before new hypothesis",
+      "qualification_1030": "Historical Xenium manifests may use micrometer coordinates directly as pixels. Freeze conclusion about encoder efficacy until local units/registration audited; raw scores preserved."
     }
   ],
   "deferred": [
@@ -221,7 +256,8 @@
     "candidate checkpoint availability not yet inventoried",
     "unexposed confirmation domain not yet proven",
     "runtime and total duration require actual throughput",
-    "no new model quality result"
+    "no new model quality result",
+    "Historical Xenium sampled1370 coordinates extent supports missing µm-to-pixel conversion; candidate scale4.5304/4.5305 is diagnostic only, registration unaccepted"
   ],
   "legacy": {
     "status": "abandoned_superseded_by_user_not_completed",
