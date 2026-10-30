@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-30T18:20:12.376899+08:00",
+  "updated_at": "2026-10-30T18:20:39.447240+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -45,7 +45,7 @@
         },
         {
           "kind": "P0_bounded_inventory_NFS_temp_repair",
-          "status": "running",
+          "status": "complete",
           "worker_pid": 3035367,
           "tmux": "fewclick_p0_repair_1030_181008",
           "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/data",
@@ -53,7 +53,9 @@
           "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/contract.json",
           "source_sha256": "85ec8c8ef5ce9e7979496f40520d2c3fb7cb94eb3339ebda7a5dc0ea70db13a7",
           "observed_at": "2026-10-30T18:10:50.549403+08:00",
-          "acceptance": null
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/independent_inventory_acceptance.json",
+          "exit_code": 0,
+          "scope": "bounded inventory only, not registration or P0"
         },
         {
           "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -197,20 +199,7 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [
-    {
-      "kind": "P0_bounded_inventory_NFS_temp_repair",
-      "status": "running",
-      "worker_pid": 3035367,
-      "tmux": "fewclick_p0_repair_1030_181008",
-      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/data",
-      "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/worker.log",
-      "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/contract.json",
-      "source_sha256": "85ec8c8ef5ce9e7979496f40520d2c3fb7cb94eb3339ebda7a5dc0ea70db13a7",
-      "observed_at": "2026-10-30T18:10:50.549403+08:00",
-      "acceptance": null
-    }
-  ],
+  "active_jobs": [],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -240,6 +229,19 @@
       "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_quant_1030_181656/scope_acceptance.json",
       "quality_outcome": "proxy_gate_failed",
       "registration_accepted": false
+    },
+    {
+      "kind": "P0_bounded_inventory_NFS_temp_repair",
+      "status": "complete",
+      "worker_pid": 3035367,
+      "tmux": "fewclick_p0_repair_1030_181008",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/data",
+      "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/worker.log",
+      "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/contract.json",
+      "source_sha256": "85ec8c8ef5ce9e7979496f40520d2c3fb7cb94eb3339ebda7a5dc0ea70db13a7",
+      "observed_at": "2026-10-30T18:10:50.549403+08:00",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/independent_inventory_acceptance.json",
+      "exit_code": 0
     }
   ],
   "completed_milestones": [
@@ -251,7 +253,6 @@
     }
   ],
   "next_actions": [
-    "Poll existing NFS inventory worker3035367; do not relaunch",
     "Audit existing OCELOT high-detail cell images, expert point labels, physical crop and full source footprint for reliable encoder probe",
     "Keep Xenium/CosMx paired-cell labels diagnostic-only pending transform/landmark evidence; no endless scale/offset fitting",
     "Freeze new spatial manifests, weight/pretraining exposure and unexposed confirmation before encoder pilots"

@@ -3350,3 +3350,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_quant_1030_181656；全部行/源码与输入SHA/限定范围接受。
 - Docs record: docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md。
 - Commit: 见产物commit.txt。
+
+
+## 10-30 18:19:00
+
+- Purpose: 关闭P0有界库存核验并独立接受身份/文件完整性。
+- Validation: worker3035367 exit0；15固定身份crop SHA/shape与4个域-split loader输入覆盖复核通过，P0未完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/independent_inventory_acceptance.json。
+- Docs record: docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md；goal/registry已同步，无活跃worker。
+- Commit: 见产物closeout_commit.txt。
