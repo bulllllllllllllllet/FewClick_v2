@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-30T18:08:38.620307+08:00",
+  "updated_at": "2026-10-30T18:10:50.549403+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -29,7 +29,7 @@
       "runs": [
         {
           "kind": "P0_bounded_real_input_inventory",
-          "status": "running",
+          "status": "failed",
           "worker_pid": 3012322,
           "exec_session": 56148,
           "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_1030_180457",
@@ -39,7 +39,21 @@
           "acceptance": null,
           "quality_outcome": "not_evaluated",
           "launch": "direct exec session; unexpectedly slow TIFF decoding; no retry",
-          "observed_at": "2026-10-30T18:08:38.620307+08:00"
+          "observed_at": "2026-10-30T18:08:38.620307+08:00",
+          "exit_code": 1,
+          "error": "pyvips temporary-file ENOSPC;9 crop files preserved;full inventory absent"
+        },
+        {
+          "kind": "P0_bounded_inventory_NFS_temp_repair",
+          "status": "running",
+          "worker_pid": 3035367,
+          "tmux": "fewclick_p0_repair_1030_181008",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/data",
+          "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/worker.log",
+          "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/contract.json",
+          "source_sha256": "85ec8c8ef5ce9e7979496f40520d2c3fb7cb94eb3339ebda7a5dc0ea70db13a7",
+          "observed_at": "2026-10-30T18:10:50.549403+08:00",
+          "acceptance": null
         }
       ]
     },
@@ -140,18 +154,16 @@
   ],
   "active_jobs": [
     {
-      "kind": "P0_bounded_real_input_inventory",
+      "kind": "P0_bounded_inventory_NFS_temp_repair",
       "status": "running",
-      "worker_pid": 3012322,
-      "exec_session": 56148,
-      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_1030_180457",
-      "monitor": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_1030_180457/runtime_observation.json",
-      "source": "benchmarks/v5/tools/audit_cvpr_p0_inputs.py",
-      "source_sha256": "dab11798a1ec918e91d2312aeae7610fb74431dbb7a3a3db498ee70b1ee03ed2",
-      "acceptance": null,
-      "quality_outcome": "not_evaluated",
-      "launch": "direct exec session; unexpectedly slow TIFF decoding; no retry",
-      "observed_at": "2026-10-30T18:08:38.620307+08:00"
+      "worker_pid": 3035367,
+      "tmux": "fewclick_p0_repair_1030_181008",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/data",
+      "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/worker.log",
+      "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008/contract.json",
+      "source_sha256": "85ec8c8ef5ce9e7979496f40520d2c3fb7cb94eb3339ebda7a5dc0ea70db13a7",
+      "observed_at": "2026-10-30T18:10:50.549403+08:00",
+      "acceptance": null
     }
   ],
   "completed_jobs": [],
@@ -164,9 +176,9 @@
     }
   ],
   "next_actions": [
-    "Poll existing worker3012322 / exec56148; never relaunch on timeout",
-    "Inspect inventory output, then independently review cell registration/units and max input footprint",
-    "Freeze new spatial manifests and unexposed confirmation before encoder pilots"
+    "Poll live worker 3035367 and persisted exit_code/log; no automatic retry",
+    "Audit full inventory if exit0; then verify local Xenium units and cell registration before assigning splits",
+    "Freeze full-footprint manifests, weight/exposure and confirmation contracts before encoder pilots"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -223,6 +235,14 @@
       "at": "2026-10-30T17:59:41.078538+08:00",
       "source": "user request and user-cleared native goal",
       "decision": "Replace old AAAI goal with new active CVPR goal; no submission-platform action"
+    }
+  ],
+  "failed_jobs": [
+    {
+      "worker_pid": 3012322,
+      "exit_code": 1,
+      "error": "pyvips ENOSPC",
+      "original_exec_session": 56148
     }
   ]
 }

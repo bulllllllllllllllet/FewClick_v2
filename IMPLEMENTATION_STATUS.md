@@ -3310,3 +3310,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Docs record: `docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md`。
 - Environment: aligner新增h5py3.16.0，CPU affinity[0,1]，无GPU。
 - Commit: 本次提交hash保存在产物commit.txt。
+
+
+## 10-30 18:10:08
+
+- Purpose: 定位P0原worker TIFF解码ENOSPC，保留失败并登记单次NFS TMPDIR修复。
+- Changed: audit_cvpr_p0_inputs.py逐cohort部分回执、goal/registry、docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md。
+- Validation: 原exec56148明确exit1；9 crop保留，不能接受全任务；新worker3035367经/proc确认live，tmux/log持久化，仍running。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_inventory_repair_1030_181008；合同含源码SHA/实际命令/CPU2/无GPU。
+- Docs record: docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md。
+- Commit: 见产物commit.txt。

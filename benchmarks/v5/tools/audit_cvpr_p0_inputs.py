@@ -70,6 +70,10 @@ def main():
             tiff_description=str(image.get('image-description')) if image.get_typeof('image-description') else None,
             h5ad_resolution_metadata=resolutions, sampled_real_crops=len(sample),
             coordinate_warning='inside-raster and finite-feature checks do not prove cell-level registration'))
+        report['status'] = 'running_bounded_inventory'
+        (args.output/'inventory_partial.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n')
+        print(json.dumps(dict(event='cohort_complete', cohort=cohort,
+                              cells=len(report['cells']), worker_pid=os.getpid())), flush=True)
 
     from benchmarks.v5.fair_comparison.local_data import LocalData
     tasks = Path('/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400')
