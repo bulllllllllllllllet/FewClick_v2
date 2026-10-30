@@ -10,7 +10,7 @@
 
 依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_CVPR细胞Probe冻结与权重门控_1031_004350.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
-当前：**P0 preparing**。路线建立已完成；数据合同、候选实验均尚未完成。有界输入核验已exit0并完成限定验收；当前LEMON权重下载worker697874运行中，无模型训练，见新registry。无模型训练。
+当前：**P0 preparing**。路线建立已完成；数据合同、候选实验均尚未完成。有界输入核验已exit0并完成限定验收；当前无运行任务，无模型训练，见新registry。无模型训练。
 
 下一步仅做 P0：
 1. 盘点细胞实例/可靠标签/物理尺度/配准、组织任务与已有权重，核对历史 Phikon/RNA 等失败证据。
@@ -59,3 +59,5 @@ P0可靠细胞输入（2026-10-30T18:24:07.730630+08:00）：OCELOT train400/val
 P0细胞合同（2026-10-31T00:50:58.660815+08:00）：570实例（384train/186val）分层清单已独立核验，24实际crop门控通过。原CTransPath/XCell/Phikon权重SHA已核定；Phikon真实输入/空间token/fresh reload通过（重载误差0），不代表质量提升。LEMON固定revision下载中，worker697874；原XCell实例mask/上下文条件须匹配，不能以中心crop静默替代。
 
 P0原XCell真实分支（2026-10-31T01:00:45.739293+08:00）：4固定视野真实检测mask/32µm attended crop/CTransPath/XCell255上下文通过。独立复核654个有限Nx64特征、615专家点中486在5µm内一对一对应、129未匹配；完整保留覆盖，不作为质量优越证据。修复物理中心+.5像素后重新门控，原产物保留。LEMON697874继续下载。
+
+P0权重/输入门控收尾（2026-10-31T01:09:41.327206+08:00）：LEMON固定revision下载字节数与官方LFS SHA独立通过；真实4例strict load/26x384token/384特征/fresh reload误差0通过。cell probe protocol_1031_010248已冻结共享10µm三臂、train-only64D PCA及500步同头；原XCell32µm mask上下文参考另表。下一步先冻结整体分割任务/footprint/确认域暴露合同，再按协议实现特征与probe；P0仍preparing。

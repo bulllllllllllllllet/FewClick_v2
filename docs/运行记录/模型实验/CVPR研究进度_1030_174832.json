@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T01:00:45.739293+08:00",
+  "updated_at": "2026-10-31T01:09:41.327206+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -129,6 +129,15 @@
           "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/xcell_point_gate_1031_005709/independent_acceptance.json",
           "quality_outcome": "not_evaluated",
           "physical_GPU": 3
+        },
+        {
+          "kind": "LEMON_S8_real_input_reload_gate",
+          "status": "complete",
+          "worker_pid": 847410,
+          "physical_GPU": 3,
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_cell_gate_1031_010248",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_cell_gate_1031_010248/independent_acceptance.json",
+          "quality_outcome": "not_evaluated"
         }
       ],
       "coordinate_unit_finding": {
@@ -172,7 +181,17 @@
         "quality_outcome": "not_evaluated",
         "physical_GPU": 3
       },
-      "cell_probe_coverage_requirement": "Report all570 expert points, missing detection coverage and conditional classification separately; never compare matched subset against all-cell method without common-subset table"
+      "cell_probe_coverage_requirement": "Report all570 expert points, missing detection coverage and conditional classification separately; never compare matched subset against all-cell method without common-subset table",
+      "LEMON_input_gate": {
+        "kind": "LEMON_S8_real_input_reload_gate",
+        "status": "complete",
+        "worker_pid": 847410,
+        "physical_GPU": 3,
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_cell_gate_1031_010248",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_cell_gate_1031_010248/independent_acceptance.json",
+        "quality_outcome": "not_evaluated"
+      },
+      "frozen_cell_probe_design": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_probe_protocol_1031_010248/contract.json"
     },
     "P1I": {
       "title": "组织图像encoder受控筛选",
@@ -269,20 +288,7 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [
-    {
-      "kind": "pinned_LEMON_ViTS8_download",
-      "status": "running",
-      "worker_pid": 697874,
-      "process_alive_observed": true,
-      "tmux": "fewclick_lemon_1031_004350",
-      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_weights_1031_004350/data",
-      "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_weights_1031_004350/worker.log",
-      "observed_at": "2026-10-31T01:00:45.739293+08:00",
-      "acceptance": null,
-      "bytes_received": 570425344
-    }
-  ],
+  "active_jobs": [],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -358,6 +364,28 @@
       "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/xcell_point_gate_1031_005709/independent_acceptance.json",
       "quality_outcome": "not_evaluated",
       "physical_GPU": 3
+    },
+    {
+      "kind": "pinned_LEMON_ViTS8_download",
+      "status": "complete",
+      "worker_pid": 697874,
+      "process_alive_observed": true,
+      "tmux": "fewclick_lemon_1031_004350",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_weights_1031_004350/data",
+      "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_weights_1031_004350/worker.log",
+      "observed_at": "2026-10-31T01:00:45.739293+08:00",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_weights_1031_004350/download_acceptance.json",
+      "bytes_received": 570425344,
+      "exit_code": 0
+    },
+    {
+      "kind": "LEMON_S8_real_input_reload_gate",
+      "status": "complete",
+      "worker_pid": 847410,
+      "physical_GPU": 3,
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_cell_gate_1031_010248",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_cell_gate_1031_010248/independent_acceptance.json",
+      "quality_outcome": "not_evaluated"
     }
   ],
   "completed_milestones": [
@@ -369,9 +397,10 @@
     }
   ],
   "next_actions": [
-    "Finish existing pinned LEMON697874 download and verify published SHA/size; no retry on observation timeout",
-    "Real LEMON load/reload gate on same4 canonical cells; use reviewed pinned model code",
-    "Freeze full cell-probe train/dev steps, matching coverage tables and common/native-view conditions; freeze tissue task/footprint/exposure contract before formal P1"
+    "Freeze global P0 tissue task identities, maximum context footprints and historical confirmation exposure qualification; reuse verified existing development data explicitly",
+    "Implement frozen570 feature extraction and train-only64D normalization/PCA+linear500step probe with same expert-centered10um input for CTransPath/LEMON/Phikon",
+    "Keep native mask/context XCell reference separate and report all570 target coverage; run corresponding common-matched-subset comparisons",
+    "Complete per-stage acceptance before claiming P1 encoder quality or tokenizer contribution"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

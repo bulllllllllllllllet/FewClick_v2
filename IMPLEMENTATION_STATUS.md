@@ -3389,3 +3389,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/xcell_point_gate_1031_005709；cpsam SHA与源/其它权重身份均记录，无质量优越性结论。
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR细胞Probe冻结与权重门控_1031_004350.md。
 - Commit: 见产物commit.txt。
+
+
+## 10-31 01:02:48
+
+- Purpose: 接受LEMON完整权重身份与真实输入/reload，固定cell probe对照设计。
+- Changed: gate_lemon_cell_inputs.py、goal/registry、docs/运行记录/模型实验/运行记录_CVPR细胞Probe冻结与权重门控_1031_004350.md。
+- Validation: 下载697874 exit0、LFS SHA/字节复核通过；真实LEMON worker847410 gate exit0，4x384有限/身份/reload误差0，未训练。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_cell_gate_1031_010248；cell_probe_protocol_1031_010248/contract.json；当前无后台任务。
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR细胞Probe冻结与权重门控_1031_004350.md。
+- Commit: 见产物commit.txt。
