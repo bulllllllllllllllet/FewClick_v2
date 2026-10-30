@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T00:50:58.660815+08:00",
+  "updated_at": "2026-10-31T01:00:45.739293+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -120,6 +120,15 @@
           "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_weights_1031_004350/worker.log",
           "observed_at": "2026-10-31T00:50:58.660815+08:00",
           "acceptance": null
+        },
+        {
+          "kind": "legacy_XCell_real_masks_context_point_match_gate",
+          "status": "complete",
+          "worker_pid": 807407,
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/xcell_point_gate_1031_005709",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/xcell_point_gate_1031_005709/independent_acceptance.json",
+          "quality_outcome": "not_evaluated",
+          "physical_GPU": 3
         }
       ],
       "coordinate_unit_finding": {
@@ -153,7 +162,17 @@
         "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_cell_probe_manifest_1030_182424/independent_acceptance.json",
         "quality_outcome": "not_evaluated"
       },
-      "encoder_weight_inventory": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/encoder_inventory_1030_182424/local_weight_identities.json"
+      "encoder_weight_inventory": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/encoder_inventory_1030_182424/local_weight_identities.json",
+      "native_XCell_input_gate": {
+        "kind": "legacy_XCell_real_masks_context_point_match_gate",
+        "status": "complete",
+        "worker_pid": 807407,
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/xcell_point_gate_1031_005709",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/xcell_point_gate_1031_005709/independent_acceptance.json",
+        "quality_outcome": "not_evaluated",
+        "physical_GPU": 3
+      },
+      "cell_probe_coverage_requirement": "Report all570 expert points, missing detection coverage and conditional classification separately; never compare matched subset against all-cell method without common-subset table"
     },
     "P1I": {
       "title": "组织图像encoder受控筛选",
@@ -259,8 +278,9 @@
       "tmux": "fewclick_lemon_1031_004350",
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_weights_1031_004350/data",
       "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_weights_1031_004350/worker.log",
-      "observed_at": "2026-10-31T00:50:58.660815+08:00",
-      "acceptance": null
+      "observed_at": "2026-10-31T01:00:45.739293+08:00",
+      "acceptance": null,
+      "bytes_received": 570425344
     }
   ],
   "completed_jobs": [
@@ -329,6 +349,15 @@
       "quality_outcome": "not_evaluated",
       "physical_GPU": 3,
       "exec_session": 73532
+    },
+    {
+      "kind": "legacy_XCell_real_masks_context_point_match_gate",
+      "status": "complete",
+      "worker_pid": 807407,
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/xcell_point_gate_1031_005709",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/xcell_point_gate_1031_005709/independent_acceptance.json",
+      "quality_outcome": "not_evaluated",
+      "physical_GPU": 3
     }
   ],
   "completed_milestones": [
@@ -340,9 +369,9 @@
     }
   ],
   "next_actions": [
-    "Poll pinned LEMON download697874; accept only published byte count and SHA, no retry on timeout",
-    "Real LEMON load/finite/spatial input gate using same canonical crop identities; register native XCell mask and expert-point matching contract",
-    "Freeze P0 segmentation task/input footprint and historical confirmation exposure qualification before formal P1 pilots"
+    "Finish existing pinned LEMON697874 download and verify published SHA/size; no retry on observation timeout",
+    "Real LEMON load/reload gate on same4 canonical cells; use reviewed pinned model code",
+    "Freeze full cell-probe train/dev steps, matching coverage tables and common/native-view conditions; freeze tissue task/footprint/exposure contract before formal P1"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

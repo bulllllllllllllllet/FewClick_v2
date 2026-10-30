@@ -3379,3 +3379,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: p0_cell_probe_manifest_1030_182424、encoder_inventory_1030_182424、phikon_cell_gate_1031_004350、lemon_weights_1031_004350。
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR细胞Probe冻结与权重门控_1031_004350.md。
 - Commit: 见LEMON根目录continuity_commit.txt。
+
+
+## 10-31 00:57:09
+
+- Purpose: 真实XCell实例/attended输入与专家点对应门控，补齐P0原分支证据。
+- Changed: gate_xcell_expert_points.py、goal/registry、docs/运行记录/模型实验/运行记录_CVPR细胞Probe冻结与权重门控_1031_004350.md。
+- Validation: 新worker807407 exit0；654有限64维特征、486/615点匹配；质心物理位置与匹配唯一性/距离独立复核。原半像素版本保留。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/xcell_point_gate_1031_005709；cpsam SHA与源/其它权重身份均记录，无质量优越性结论。
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR细胞Probe冻结与权重门控_1031_004350.md。
+- Commit: 见产物commit.txt。
