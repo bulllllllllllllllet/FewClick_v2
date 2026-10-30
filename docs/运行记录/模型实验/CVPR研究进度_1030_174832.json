@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-30T17:59:41.078538+08:00",
+  "goal_status": "active",
+  "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
+  "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
+  "authority": {
+    "goal": "goal.md",
+    "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_CVPR新Goal建立与旧任务退役_1030_174832.md",
+    "fairness": "benchmarks/v5/fair_comparison/README.md",
+    "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
+  },
+  "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
+  "current_phase": "P0",
+  "current_status": "preparing",
+  "phases": {
+    "P0": {
+      "title": "数据、物理尺度、暴露与公平合同",
+      "status": "preparing",
+      "required_evidence": [
+        "cell/image manifests",
+        "空间footprint与历史暴露账本",
+        "任务/指标/预算合同",
+        "真实输入门控与吞吐"
+      ],
+      "acceptance": null,
+      "quality_outcome": "not_evaluated",
+      "runs": []
+    },
+    "P1I": {
+      "title": "组织图像encoder受控筛选",
+      "status": "planned",
+      "required_evidence": [
+        "至多3种匹配decoder特征对照",
+        "image-only local/remote结果及成本",
+        "选择理由或保留原底座"
+      ],
+      "acceptance": null,
+      "quality_outcome": "not_evaluated",
+      "runs": []
+    },
+    "P1C": {
+      "title": "细胞encoder受控筛选",
+      "status": "planned",
+      "required_evidence": [
+        "同实例与物理尺度对照",
+        "检索/probe/shuffle及吞吐",
+        "真实组织mask下游控制"
+      ],
+      "acceptance": null,
+      "quality_outcome": "not_evaluated",
+      "runs": []
+    },
+    "P2": {
+      "title": "连续/固定词表/可学习词汇",
+      "status": "planned",
+      "required_evidence": [
+        "三臂匹配与码本诊断",
+        "下游mask收益或压缩证据",
+        "保留词汇/保留连续的显式决定"
+      ],
+      "acceptance": null,
+      "quality_outcome": "not_evaluated",
+      "runs": []
+    },
+    "P3": {
+      "title": "空间组合与提示迁移",
+      "status": "planned",
+      "required_evidence": [
+        "单变量空间和任务训练对照",
+        "训练image-only与形态置乱控制",
+        "效果复验或简单融合备选"
+      ],
+      "acceptance": null,
+      "quality_outcome": "not_evaluated",
+      "runs": []
+    },
+    "P4": {
+      "title": "WSI质量与效率",
+      "status": "planned",
+      "required_evidence": [
+        "预冻结队列及2片工程门控",
+        "全固定域预测独立验收",
+        "逐片质量/误报/全成本"
+      ],
+      "acceptance": null,
+      "quality_outcome": "not_evaluated",
+      "runs": []
+    },
+    "P5": {
+      "title": "多seed与独立确认",
+      "status": "planned",
+      "required_evidence": [
+        "3seed与未调参确认域",
+        "配对结果/空间来源CI/seed方差",
+        "所有先验监督与适配机会披露"
+      ],
+      "acceptance": null,
+      "quality_outcome": "not_evaluated",
+      "runs": []
+    },
+    "P6": {
+      "title": "可复现方法与论文证据包",
+      "status": "planned",
+      "required_evidence": [
+        "代码/权重/数据身份/环境/命令",
+        "原始行和失败台账",
+        "真实方法/实验稿及先例对照"
+      ],
+      "acceptance": null,
+      "quality_outcome": "not_evaluated",
+      "runs": []
+    }
+  },
+  "phase_order": [
+    "P0",
+    "P1I",
+    "P1C",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "active_jobs": [],
+  "completed_jobs": [],
+  "completed_milestones": [
+    {
+      "kind": "goal_reset_and_route_contract",
+      "status": "complete",
+      "evidence": "docs/运行记录/模型实验/运行记录_CVPR新Goal建立与旧任务退役_1030_174832.md",
+      "not_equivalent_to": "P0 completion or model quality evidence"
+    }
+  ],
+  "next_actions": [
+    "P0 inventory existing cell/image data, physical scale, reliable labels, candidate checkpoints and prior exposure",
+    "P0 build model-blind small manifests and full-input spatial-block audit",
+    "P0 freeze task/selection/metric/resource budgets and pass actual input gates before P1"
+  ],
+  "exploration_limits": {
+    "image_encoders_including_control": 3,
+    "cell_encoders_including_XCell": 3,
+    "tokenizer_arms": 3,
+    "initial_codebook_K": 128,
+    "pilot_max_updates": 1000,
+    "tasks_per_update": 4,
+    "pilot_initial_seeds": 1,
+    "max_substantive_pilots_per_hypothesis": 2,
+    "parallel_GPU_training_jobs": 1,
+    "forbidden_physical_GPUs": [
+      0,
+      2
+    ],
+    "budget_revision": "before quality results; matched arms; logged evidence"
+  },
+  "failed_hypotheses": [
+    {
+      "id": "historical_dense_generalization",
+      "scope": "1029 matched continuation/color pilots, not a universal rejection of augmentation",
+      "evidence": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120",
+      "decision": "Do not repeat unchanged; reread independent report before proposing revised conditions"
+    },
+    {
+      "id": "historical_frozen_Phikon_RNA",
+      "scope": "0907 fixed data/backbone/probe settings, not all cell encoders",
+      "evidence": "docs/运行记录/模型实验/运行记录_中规模五Cohort冻结Gate_0907_163300.md",
+      "decision": "Audit reliable cell identity/labels and specify changed condition before new hypothesis"
+    }
+  ],
+  "deferred": [
+    "RNA teacher until reliable pairing and main route evidence",
+    "second neighborhood codebook",
+    "large scale self-supervised pretraining",
+    "full WSI caching before P4 gates"
+  ],
+  "known_gaps": [
+    "P0 exact manifests and counts not yet fixed",
+    "candidate checkpoint availability not yet inventoried",
+    "unexposed confirmation domain not yet proven",
+    "runtime and total duration require actual throughput",
+    "no new model quality result"
+  ],
+  "legacy": {
+    "status": "abandoned_superseded_by_user_not_completed",
+    "registry": "docs/运行记录/模型实验/公平对比进度_1025_124208.json",
+    "goal_archive": "docs/运行记录/模型实验/归档_AAAI旧Goal与CVPR初始过渡_1030_174832.md",
+    "jobs_audit": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/legacy_job_audit.json",
+    "reuse": "verify identity and independent acceptance under new contract; never automatic queue restart"
+  },
+  "decisions": [
+    {
+      "at": "2026-10-30T17:59:41.078538+08:00",
+      "source": "user request and user-cleared native goal",
+      "decision": "Replace old AAAI goal with new active CVPR goal; no submission-platform action"
+    }
+  ]
+}

@@ -3292,3 +3292,10 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_tokenizer_outline_1030_173241；所有新候选planned，旧数据/缓存/权重保留，后台活性未核验。
 - Docs record: docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md（建议）。
 - Commit: 与本条同次提交，哈希见git历史。
+
+
+## 1030_174832 CVPR新Goal与阶段合同
+
+用户已废弃旧AAAI rebuttal目标并清空旧原生Goal；新原生Goal active。根goal缩为当前入口，旧全文完整归档。新路线P0→P1I/P1C→P2→P3→P4→P5→P6，当前P0 preparing；阶段对照/预算/独立接受/失败备选已登记。没有新训练或后台进程修改，没有新质量结果。旧15WSI细胞8895位置执行完成但未独立验收；三条旧active记录经PID/日志核验迁入历史索引，不自动重启。
+
+路线：[docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md)；registry：[docs/运行记录/模型实验/CVPR研究进度_1030_174832.json](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json)；当前记录：[docs/运行记录/模型实验/运行记录_CVPR新Goal建立与旧任务退役_1030_174832.md](docs/运行记录/模型实验/运行记录_CVPR新Goal建立与旧任务退役_1030_174832.md)。产物与核验：`/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832`。
