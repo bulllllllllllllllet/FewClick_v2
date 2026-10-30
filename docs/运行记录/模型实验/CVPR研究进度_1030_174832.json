@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T01:48:32.514165+08:00",
+  "updated_at": "2026-10-31T02:07:09.622001+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_CVPR_P1I共享提示Decoder与真实门控_1031_014441.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_CVPR_P1I正式缓存训练与评分_1031_015107.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P1",
-  "current_status": "preparing",
+  "current_status": "running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -203,7 +203,7 @@
     },
     "P1I": {
       "title": "组织图像encoder受控筛选",
-      "status": "preparing",
+      "status": "running",
       "required_evidence": [
         "至多3种匹配decoder特征对照",
         "image-only local/remote结果及成本",
@@ -223,6 +223,23 @@
             1039658,
             1040357
           ]
+        },
+        {
+          "kind": "P1I_serial_frozen_encoder_cache_train_score",
+          "status": "running",
+          "coordinator_pid": 1122729,
+          "worker_pid": 1147325,
+          "worker_alive_observed": true,
+          "observed_at": "2026-10-31T02:05:43.215261+08:00",
+          "stage": {
+            "arm": "resnet",
+            "stage": "pilot"
+          },
+          "tmux": "fewclick_image_pilot_1031_015107",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_1031_015107",
+          "monitor": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_1031_015107/runtime_observation.json",
+          "acceptance": null,
+          "quality_outcome": "not_evaluated"
         }
       ],
       "decoder_gate": {
@@ -236,6 +253,16 @@
           1039658,
           1040357
         ]
+      },
+      "last_resnet_progress": {
+        "status": "complete",
+        "worker_pid": 1147325,
+        "arm": "resnet",
+        "updates": 1000,
+        "tasks": 4000,
+        "elapsed_seconds": 201.94365882873535,
+        "loss": 0.8382475674152374,
+        "scoring_rows": 1146
       }
     },
     "P1C": {
@@ -331,7 +358,25 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [],
+  "active_jobs": [
+    {
+      "kind": "P1I_serial_frozen_encoder_cache_train_score",
+      "status": "running",
+      "coordinator_pid": 1122729,
+      "worker_pid": 1147325,
+      "worker_alive_observed": true,
+      "observed_at": "2026-10-31T02:05:43.215261+08:00",
+      "stage": {
+        "arm": "resnet",
+        "stage": "pilot"
+      },
+      "tmux": "fewclick_image_pilot_1031_015107",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_1031_015107",
+      "monitor": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_1031_015107/runtime_observation.json",
+      "acceptance": null,
+      "quality_outcome": "not_evaluated"
+    }
+  ],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -468,10 +513,10 @@
     }
   ],
   "next_actions": [
-    "Implement bound frozen spatial feature caches for three image encoders over actual frozen train/dev/local/remote inputs; validate identities and small-batch before all",
-    "Run identical shared-head1000updates x4 frozen tasks, common init SHA, loss/optimizer fixed, actual task consumption and fresh reload acceptance",
-    "Score local302 pairs and fixed remote development subset separately; preserve full/valid GT domains and all absence FPA",
-    "Choose image base then compare image-only/original cells/LEMON continuous cells under matching tissue budgets; no tokenizer yet"
+    "Poll existing coordinator1122729 and actual stage worker; observation timeout is not terminal, no automatic restart",
+    "Accept all1737 cache files per arm before queued1000x4 training; record real consumed coordinates SHA and endpoint masks",
+    "Run independent accept_pilot.py for each completed arm to replay1146 saved masks/GT metrics before reporting results",
+    "After three accepted fixed pilots choose image base and test continuous LEMON cells under identical tissue budget; no tokenizer yet"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

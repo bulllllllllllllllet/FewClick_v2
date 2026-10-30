@@ -8,18 +8,18 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_CVPR_P1I共享提示Decoder与真实门控_1031_014441.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_CVPR_P1I正式缓存训练与评分_1031_015107.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
-当前：**P0 complete（开发合同限定接受），P1I/P1C preparing**。无运行作业。接受证据为新registry链接的P0_acceptance.json；历史暴露与最终确认缺口明确登记，不能称新盲测。
+当前：**P0 complete（开发合同限定接受），P1I running，P1C下游验证待做**。正式串行缓存/训练/评分coordinator 1122729，当前阶段resnet/pilot worker 1147325；看registry和实际/proc，不据旧快照重启。
 
-下一步：按固定570细胞清单实现三种共享10µm特征提取；先真实小批门控，再缓存、固定线性probe与打乱控制。同时在图像encoder训练前固定共享decoder合同；不得重复已接受的P0审计或启动旧队列。
+下一步：监控同一流水线，逐臂缓存独立接受后才训练；各臂完成后用accept_pilot重放1146行原始mask/GT，再比较local/remote。不重复P0或已通过的模型门控，不以启动代替完成。
 
 ## 执行顺序
 
 | 阶段 | 目的 | 当前状态 |
 |---|---|---|
 | P0 | 数据、尺度、空间隔离与公平合同 | complete，限定接受 |
-| P1I / P1C | 图像与细胞 encoder 受控筛选 | preparing |
+| P1I / P1C | 图像与细胞 encoder 受控筛选 | P1I running；P1C downstream preparing |
 | P2 | 连续特征 / 固定聚类 / 可学习词汇 | planned |
 | P3 | 空间组合与支持查询迁移 | planned |
 | P4 | WSI 质量、误报、缓存与交互效率 | planned |

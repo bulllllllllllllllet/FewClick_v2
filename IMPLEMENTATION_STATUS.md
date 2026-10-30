@@ -3429,3 +3429,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/image_decoder_gate_bilinear_1031_014441/independent_acceptance.json。
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR_P1I共享提示Decoder与真实门控_1031_014441.md。
 - Commit: 见产物commit.txt。
+
+
+## 10-31 01:51:07
+
+- Purpose: 启动P1I三个冻结image encoder的固定1000x4训练与local/remote评估流水线。
+- Changed: cache_images.py/accept_cache.py/train_shared_pilot.py/accept_pilot.py、新运行记录与goal/registry/AGENTS。
+- Validation: 原真实三臂梯度/reload门控已接受；ResNet1737cache实际完成，首例真实存储精度门控通过。整缓存接受/正式训练/1146mask重放仍running或待执行，不宣称完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_1031_015107；当前实际worker 1147325、coordinator 1122729。
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR_P1I正式缓存训练与评分_1031_015107.md。
+- Commit: 见产物commit.txt。
