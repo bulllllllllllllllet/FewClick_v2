@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T01:31:25.930423+08:00",
+  "updated_at": "2026-10-31T01:48:32.514165+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_CVPR_P1C共享视野特征与线性Probe_1031_012400.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_CVPR_P1I共享提示Decoder与真实门控_1031_014441.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
   },
@@ -211,7 +211,32 @@
       ],
       "acceptance": null,
       "quality_outcome": "not_evaluated",
-      "runs": []
+      "runs": [
+        {
+          "kind": "P1I_three_frozen_encoders_shared_decoder_gate",
+          "status": "complete",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_decoder_gate_bilinear_1031_014441",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_decoder_gate_bilinear_1031_014441/independent_acceptance.json",
+          "quality_outcome": "not_evaluated",
+          "workers": [
+            1038968,
+            1039658,
+            1040357
+          ]
+        }
+      ],
+      "decoder_gate": {
+        "kind": "P1I_three_frozen_encoders_shared_decoder_gate",
+        "status": "complete",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_decoder_gate_bilinear_1031_014441",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_decoder_gate_bilinear_1031_014441/independent_acceptance.json",
+        "quality_outcome": "not_evaluated",
+        "workers": [
+          1038968,
+          1039658,
+          1040357
+        ]
+      }
     },
     "P1C": {
       "title": "细胞encoder受控筛选",
@@ -420,6 +445,18 @@
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_linear_probe_1031_012400",
       "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_linear_probe_1031_012400/independent_acceptance.json",
       "quality_outcome": "LEMON provisional best in coarse cell probe; downstream benefit unverified"
+    },
+    {
+      "kind": "P1I_three_frozen_encoders_shared_decoder_gate",
+      "status": "complete",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_decoder_gate_bilinear_1031_014441",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_decoder_gate_bilinear_1031_014441/independent_acceptance.json",
+      "quality_outcome": "not_evaluated",
+      "workers": [
+        1038968,
+        1039658,
+        1040357
+      ]
     }
   ],
   "completed_milestones": [
@@ -431,10 +468,10 @@
     }
   ],
   "next_actions": [
-    "Freeze and implement shared image decoder/adapter and P1I real training/reload gate for COCO-ResNet/Phikon/SAM; identical frozen1000x4 local tasks, fixed endpoint",
-    "Run P1I local and small remote validation separately, disclose input resolution/context and capacity",
-    "Test LEMON continuous cell branch versus image-only/original cells on selected image base under identical tissue supervision; secondseed required before scale-up",
-    "No tokenizer yet; cell probe success does not complete P1C or justify P2"
+    "Implement bound frozen spatial feature caches for three image encoders over actual frozen train/dev/local/remote inputs; validate identities and small-batch before all",
+    "Run identical shared-head1000updates x4 frozen tasks, common init SHA, loss/optimizer fixed, actual task consumption and fresh reload acceptance",
+    "Score local302 pairs and fixed remote development subset separately; preserve full/valid GT domains and all absence FPA",
+    "Choose image base then compare image-only/original cells/LEMON continuous cells under matching tissue budgets; no tokenizer yet"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -511,6 +548,18 @@
       "status": "failed",
       "exit_code": 1,
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182058"
+    },
+    {
+      "kind": "shared_decoder_nondeterministic_continuation",
+      "worker_pid": 1008107,
+      "exit_code": 1,
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_decoder_gate_1031_013254"
+    },
+    {
+      "kind": "strict_CUDA_grid_backward_determinism",
+      "worker_pid": 1021398,
+      "exit_code": 1,
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_decoder_gate_deterministic_1031_014114"
     }
   ],
   "known_gaps_history_before_P0_acceptance": [
