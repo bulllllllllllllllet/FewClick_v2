@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-30T18:24:07.730630+08:00",
+  "updated_at": "2026-10-31T00:50:58.660815+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_CVPR细胞Probe冻结与权重门控_1031_004350.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
   },
@@ -93,6 +93,33 @@
           "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182153",
           "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182153/independent_acceptance.json",
           "training_contract_accepted": false
+        },
+        {
+          "kind": "OCELOT570_stratified_probe_manifest",
+          "status": "complete",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_cell_probe_manifest_1030_182424",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_cell_probe_manifest_1030_182424/independent_acceptance.json",
+          "quality_outcome": "not_evaluated"
+        },
+        {
+          "kind": "Phikon_real_frozen_spatial_input_reload_gate",
+          "status": "complete",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_cell_gate_1031_004350",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_cell_gate_1031_004350/scope_acceptance.json",
+          "quality_outcome": "not_evaluated",
+          "physical_GPU": 3,
+          "exec_session": 73532
+        },
+        {
+          "kind": "pinned_LEMON_ViTS8_download",
+          "status": "running",
+          "worker_pid": 697874,
+          "process_alive_observed": true,
+          "tmux": "fewclick_lemon_1031_004350",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_weights_1031_004350/data",
+          "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_weights_1031_004350/worker.log",
+          "observed_at": "2026-10-31T00:50:58.660815+08:00",
+          "acceptance": null
         }
       ],
       "coordinate_unit_finding": {
@@ -118,7 +145,15 @@
           "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182153/independent_acceptance.json",
           "training_contract_accepted": false
         }
-      }
+      },
+      "frozen_cell_probe_manifest": {
+        "kind": "OCELOT570_stratified_probe_manifest",
+        "status": "complete",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_cell_probe_manifest_1030_182424",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_cell_probe_manifest_1030_182424/independent_acceptance.json",
+        "quality_outcome": "not_evaluated"
+      },
+      "encoder_weight_inventory": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/encoder_inventory_1030_182424/local_weight_identities.json"
     },
     "P1I": {
       "title": "组织图像encoder受控筛选",
@@ -215,7 +250,19 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [],
+  "active_jobs": [
+    {
+      "kind": "pinned_LEMON_ViTS8_download",
+      "status": "running",
+      "worker_pid": 697874,
+      "process_alive_observed": true,
+      "tmux": "fewclick_lemon_1031_004350",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_weights_1031_004350/data",
+      "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/lemon_weights_1031_004350/worker.log",
+      "observed_at": "2026-10-31T00:50:58.660815+08:00",
+      "acceptance": null
+    }
+  ],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -266,6 +313,22 @@
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182153",
       "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182153/independent_acceptance.json",
       "training_contract_accepted": false
+    },
+    {
+      "kind": "OCELOT570_stratified_probe_manifest",
+      "status": "complete",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_cell_probe_manifest_1030_182424",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_cell_probe_manifest_1030_182424/independent_acceptance.json",
+      "quality_outcome": "not_evaluated"
+    },
+    {
+      "kind": "Phikon_real_frozen_spatial_input_reload_gate",
+      "status": "complete",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_cell_gate_1031_004350",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_cell_gate_1031_004350/scope_acceptance.json",
+      "quality_outcome": "not_evaluated",
+      "physical_GPU": 3,
+      "exec_session": 73532
     }
   ],
   "completed_milestones": [
@@ -277,9 +340,9 @@
     }
   ],
   "next_actions": [
-    "Freeze organ/class-stratified OCELOT train/dev probe manifest with physical crop and full source footprint; retain zero fields and source provenance",
-    "Inventory accessible XCell/LEMON/Phikon image input and weight hashes/exposure, choose at most3 cell and3 image encoders",
-    "Freeze segmentation tasks and confirmation exposure contract before P1 pilots; uncertain Xenium/CosMx labels remain diagnostic-only"
+    "Poll pinned LEMON download697874; accept only published byte count and SHA, no retry on timeout",
+    "Real LEMON load/finite/spatial input gate using same canonical crop identities; register native XCell mask and expert-point matching contract",
+    "Freeze P0 segmentation task/input footprint and historical confirmation exposure qualification before formal P1 pilots"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

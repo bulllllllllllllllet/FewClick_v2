@@ -3369,3 +3369,13 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_ocelot_cells_1030_182153；完整空间footprint跨官方split重叠0，未读test GT。
 - Docs record: docs/运行记录/数据审计/运行记录_CVPR_P0真实输入与尺度核查_1030_180457.md。
 - Commit: 见产物commit.txt。
+
+
+## 10-31 00:43:50
+
+- Purpose: 冻结570分层cell probe与权重输入合同，真实Phikon冻结输入/reload门控。
+- Changed: build_ocelot_cell_probe_manifest.py、fetch_lemon_weights.py、gate_phikon_cell_inputs.py、新运行记录与goal/registry/AGENTS。
+- Validation: 570点坐标/label独立回查、24真实crop通过；Phikon4例空间token/磁盘有限值/重载误差0通过。LEMON下载身份核验仍running；不报质量提升。
+- Artifacts: p0_cell_probe_manifest_1030_182424、encoder_inventory_1030_182424、phikon_cell_gate_1031_004350、lemon_weights_1031_004350。
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR细胞Probe冻结与权重门控_1031_004350.md。
+- Commit: 见LEMON根目录continuity_commit.txt。
