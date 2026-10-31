@@ -3505,3 +3505,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_comparison_context_1031_152820`、`/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_probe_source_uncertainty_1031_151743`、`/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048`；源码/权重/数据SHA与真实worker/命令/日志在各contract/history/report，原分析快照保留。
 - Docs record: `docs/运行记录/模型实验/运行记录_CVPR连续细胞残差三臂门控与Pilot_1031_150514.md`。
 - Commit: 本条随实现提交，见git history。
+
+## 2026-10-31T15:54:44.606878+08:00
+
+- Purpose: 接受两seed连续细胞完整比较与重复监督审计，停止未通过配方晋升，登记唯一公共decoder冻结修订。
+- Changed: audit_continuation_exposure.py/summarize_two_seed_cells.py、修订建议合同、goal/registry/current record。
+- Validation: 六模型22266mask回执/源码/任务/独立父模型/权重SHA和原守门一致，两seed合并通过；首/第二seed训练消费4000/4000逐行重复及optimizer/3711分层来源核验通过，无新训练；训练loss摘要独立重计数通过。两seed质量均未全过原守门，原负结果完整保留；所有worker退出0。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/two_seed_cell_summary_1031_154415`、`/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuation_exposure_audit_1031_153938`；真实PID/命令/日志/输入代码权重SHA见各report/contract/history/runtime_observation。
+- Docs record: `docs/运行记录/模型实验/运行记录_CVPR连续细胞残差三臂门控与Pilot_1031_150514.md`（运行接受）及`docs/建议/模型与训练/方案_CVPR冻结公共解码器细胞适配与P1收尾_1031_155213.md`（建议/准备，尚未启动）。
+- Commit: 本条随实现提交，见git history。

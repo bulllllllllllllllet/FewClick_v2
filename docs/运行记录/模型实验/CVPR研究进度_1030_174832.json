@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T15:33:29.848744+08:00",
+  "updated_at": "2026-10-31T15:54:44.606878+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,7 +13,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P1",
-  "current_status": "running",
+  "current_status": "preparing",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -366,7 +366,7 @@
       ],
       "candidate": "LEMON provisional, no downstream acceptance",
       "downstream_contract": "docs/建议/模型与训练/方案_CVPR连续细胞下游受控验证_1031_143011.md",
-      "downstream_status": "running_secondseed_replication",
+      "downstream_status": "two_seed_joint_continuation_not_accepted_for_promotion",
       "raw_cell_cache": {
         "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_cache_import_repair_1031_144058/full",
@@ -489,46 +489,149 @@
         "scope": "fixed BC_TC probe only"
       },
       "secondseed_continuous_pilot": {
-        "status": "running",
+        "status": "complete",
         "seed": 20261101,
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048",
         "tmux": "fewclick_continuous_seed2_1031_153048",
         "coordinator_pid": 803024,
-        "observed_at": "2026-10-31T15:33:29.848744+08:00",
+        "observed_at": "2026-10-31T15:54:44.606878+08:00",
         "observed_stage": {
-          "status": "running",
-          "arm": "image_only",
-          "stage": "pilot_train",
-          "worker_pid": 805870,
-          "command": [
-            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-            "-u",
-            "-m",
-            "benchmarks.v5.encoder_research.train_continuous_pilot",
-            "--arm",
-            "image_only",
-            "--seed",
-            "20261101",
-            "--images",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_1031_015107/phikon/cache",
-            "--grids",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335/full",
-            "--parent",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/task_seed2_run_1031_023222/mixed/checkpoint.pt",
-            "--training",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/task_diagnostic_manifest_1031_023222/mixed.jsonl",
-            "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/pilot/image_only",
-            "--gate-acceptance",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/gate/independent_gate_acceptance.json"
-          ]
+          "status": "complete",
+          "arms": 3
         },
         "runtime_observation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/runtime_observation.json",
         "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/gate/independent_gate_acceptance.json",
         "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/contract.json",
-        "acceptance": null,
-        "quality_outcome": "not_evaluated"
-      }
+        "acceptance": [
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/pilot/image_only/independent_acceptance.json",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/pilot/xcell/independent_acceptance.json",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/pilot/lemon/independent_acceptance.json"
+        ],
+        "quality_outcome": "XCell macro direction replicated but4cost guards fail; LEMON primary direction not replicated, FPA/small fail",
+        "comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/comparison/comparison.json"
+      },
+      "two_seed_summary": {
+        "status": "complete",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/two_seed_cell_summary_1031_154415",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/two_seed_cell_summary_1031_154415/result/summary.json",
+        "replication": {
+          "xcell_vs_image_only": {
+            "primary_changes": [
+              0.02287561656833559,
+              0.023243487500062332
+            ],
+            "positive_direction_in_both": true,
+            "resource_guard_pass_by_seed": [
+              true,
+              false
+            ],
+            "all_guards_pass_both": false,
+            "failed_tests_by_seed": [
+              [],
+              [
+                "remote_BF1",
+                "absent_FPA",
+                "local_Dice",
+                "small_Dice"
+              ]
+            ],
+            "primary_mean": 0.02305955203419896,
+            "primary_sample_std": 0.0002601240304253939
+          },
+          "lemon_vs_image_only": {
+            "primary_changes": [
+              0.014426954518174884,
+              -0.0038665029130427464
+            ],
+            "positive_direction_in_both": false,
+            "resource_guard_pass_by_seed": [
+              true,
+              false
+            ],
+            "all_guards_pass_both": false,
+            "failed_tests_by_seed": [
+              [],
+              [
+                "primary_Dice_gain",
+                "absent_FPA",
+                "small_Dice"
+              ]
+            ],
+            "primary_mean": 0.005280225802566069,
+            "primary_sample_std": 0.012935427800961427
+          },
+          "lemon_vs_xcell": {
+            "primary_changes": [
+              -0.008448662050160705,
+              -0.02710999041310508
+            ],
+            "positive_direction_in_both": false,
+            "resource_guard_pass_by_seed": [
+              false,
+              false
+            ],
+            "all_guards_pass_both": false,
+            "failed_tests_by_seed": [
+              [
+                "primary_Dice_gain"
+              ],
+              [
+                "primary_Dice_gain",
+                "fat_Dice"
+              ]
+            ],
+            "primary_mean": -0.01777932623163289,
+            "primary_sample_std": 0.01319555183138682
+          }
+        },
+        "parent_changes": {
+          "image_only": {
+            "changes": [
+              -0.03152585203193692,
+              -0.06849066157061406
+            ],
+            "improves_parent_in_both": false,
+            "qualification": "parent has2000 updates; descriptive, never replaces matched3000 control"
+          },
+          "xcell": {
+            "changes": [
+              -0.00865023546360133,
+              -0.04524717407055173
+            ],
+            "improves_parent_in_both": false,
+            "qualification": "parent has2000 updates; descriptive, never replaces matched3000 control"
+          },
+          "lemon": {
+            "changes": [
+              -0.017098897513762035,
+              -0.07235716448365681
+            ],
+            "improves_parent_in_both": false,
+            "qualification": "parent has2000 updates; descriptive, never replaces matched3000 control"
+          }
+        },
+        "quality_outcome": "no arm passes all original resource guards in both seeds",
+        "fullWSI_promoted": false
+      },
+      "continuation_exposure_audit": {
+        "status": "complete",
+        "first": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuation_exposure_audit_1031_153938/audit.json",
+        "second": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/two_seed_cell_summary_1031_154415/exposure_seed2/audit.json",
+        "exact_repeated_tasks": 4000,
+        "train_remote_same_cross": [
+          10,
+          1990
+        ],
+        "eval_remote_same_cross": [
+          333,
+          602
+        ],
+        "causal_overfitting_proven": false
+      },
+      "revision_contract": "docs/建议/模型与训练/方案_CVPR冻结公共解码器细胞适配与P1收尾_1031_155213.md",
+      "revision_status": "preparing",
+      "substantive_recipes_used": 1,
+      "remaining_evidence_based_revision_budget": 1
     },
     "P2": {
       "title": "连续/固定词表/可学习词汇",
@@ -757,9 +860,9 @@
     }
   ],
   "next_actions": [
-    "Monitor existing continuous_cell_seed2_1031_153048 real coordinator/worker; no duplicate launch or frozen source edits",
-    "After secondseed three3711-mask acceptances and same comparison, aggregate both seeds, retain intervals/rare NA and2000-to3000 starting-point regression; do not equate point-guard pass with superiority",
-    "Finish explicit P1 joint adaptation/stain sensitivity obligations under bounded contracts before claiming phase complete; P2/P3/P4/P5/P6 remain unfinished"
+    "Implement independent new-file cell-only adaptation under frozen shared decoder per docs/建议/模型与训练/方案_CVPR冻结公共解码器细胞适配与P1收尾_1031_155213.md; do not modify/restart finished first recipe",
+    "Gate shared weights/state counters invariant, new-cell gradients/updates, fresh optimizer continuation and all3711 image-only masks exactly matching frozen parent; then register one revised three-arm pilot",
+    "Hold all data/tasks/LR/representation/guards fixed; no third recipe or relaxed bounds. After revision acceptance/stop, finish P1I limited joint adaptation and P1C stain sensitivity before phase completion"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -796,6 +899,13 @@
       "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_registration_quant_1030_181656",
       "scope": "96 fixed cells, HED-DAPI correlation and +/-4um displacement proxy",
       "decision": "Do not assume scale-only conversion establishes precise pairing; preserve all samples, do not lower gate or train with uncertain labels"
+    },
+    {
+      "id": "P1C_joint_shared_decoder_cell_continuation",
+      "scope": "fixed4000 repeated tasks;1000 extra updates at sharedLR0.001;does not reject all cell encoders",
+      "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/two_seed_cell_summary_1031_154415/result/summary.json",
+      "quality_outcome": "not_accepted_for_promotion",
+      "next_bounded_revision": "docs/建议/模型与训练/方案_CVPR冻结公共解码器细胞适配与P1收尾_1031_155213.md"
     }
   ],
   "deferred": [
