@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T14:24:48.300145+08:00",
+  "updated_at": "2026-10-31T14:34:40.483276+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,7 +13,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P1",
-  "current_status": "running",
+  "current_status": "preparing",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -278,7 +278,7 @@
       },
       "task_diagnostic_contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_comparison_1031_022128/decision_contract.json",
       "full935_validation": {
-        "status": "running",
+        "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421",
         "tmux": "fewclick_full935_1031_141421",
         "coordinator_pid": 452892,
@@ -300,7 +300,7 @@
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421/seed0_local_control"
           ]
         },
-        "observed_at": "2026-10-31T14:24:48.300145+08:00",
+        "observed_at": "2026-10-31T14:34:40.483276+08:00",
         "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421/contract.json",
         "input_gate": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer_gate_1031_141421/report.json",
         "source_sha256": {
@@ -308,8 +308,15 @@
           "benchmarks/v5/encoder_research/accept_transfer_full.py": "2bca4a19913da18f74290734371ab9737a06b3e4e517cb0afb3f28071d90c754",
           "benchmarks/v5/encoder_research/shared_prompt.py": "718d9f74307abf6d2691f8d03f3b9389c5a9b44f136483a0adafd98ea409ead2"
         },
-        "acceptance": null,
-        "quality_outcome": "not_evaluated"
+        "acceptance": [
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421/seed0_local_control/independent_acceptance.json",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421/seed0_mixed/independent_acceptance.json",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421/seed1_local_control/independent_acceptance.json",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421/seed1_mixed/independent_acceptance.json"
+        ],
+        "quality_outcome": "mixed improves expanded transfer Dice/BF1/FPA in both seeds; per-class failures and original local cost/guard failure retained",
+        "comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_comparison_1031_143320/comparison.json",
+        "terminal_observation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421/milestone_observation.json"
       }
     },
     "P1C": {
@@ -332,7 +339,9 @@
           "quality_outcome": "LEMON provisional best in coarse cell probe; downstream benefit unverified"
         }
       ],
-      "candidate": "LEMON provisional, no downstream acceptance"
+      "candidate": "LEMON provisional, no downstream acceptance",
+      "downstream_contract": "docs/建议/模型与训练/方案_CVPR连续细胞下游受控验证_1031_143011.md",
+      "downstream_status": "preparing"
     },
     "P2": {
       "title": "连续/固定词表/可学习词汇",
@@ -561,10 +570,9 @@
     }
   ],
   "next_actions": [
-    "Prioritize fixed-checkpoint full935 frozen transfer evaluation, no retraining or threshold/model selection, report per-target support/query coverage and source-cluster uncertainty",
-    "Preserve original80 results/guards and secondseed remoteBF1 failure; expanded development data are not a new blind test",
-    "After full-cohort robustness check, test same-mask/order/RGB XCell versus LEMON continuous-cell contribution with matched tasks",
-    "No fullWSI promotion or tokenizer claim until respective quality/mechanism gates pass"
+    "Implement and validate same-instance/RGB XCell vs LEMON continuous-cell cache, train-only transforms and matched decoder gate under docs/建议/模型与训练/方案_CVPR连续细胞下游受控验证_1031_143011.md",
+    "After cache/model/optimizer real-path acceptance, execute three matched 1000x4 mixed-task arms including newly trained image-only control",
+    "Retain full935 per-target failures, original80 guards/local tradeoff; no fullWSI promotion, no tokenizer claim yet"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

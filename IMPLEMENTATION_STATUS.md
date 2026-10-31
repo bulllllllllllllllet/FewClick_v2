@@ -3469,3 +3469,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421`，合同记录源码/权重/缓存SHA，GPU3串行，PID/log/stage可接续。
 - Docs record: `docs/运行记录/模型实验/运行记录_CVPR任务诊断两Seed与验证覆盖_1031_140632.md`。
 - Commit: 本条随实现提交，提交身份由git history记录。
+
+## 2026-10-31T14:34:40.483276+08:00
+
+- Purpose: 完整935对四模型验证独立接受与配对/逐类报告；登记连续细胞三臂下一步，保留失败和开发集范围。
+- Changed: compare_transfer_full.py、goal/registry/current record，以及连续细胞准备合同。
+- Validation: 真实四模型各2805mask重放与各240旧mask复现通过；`aligner/python -m benchmarks.v5.encoder_research.compare_transfer_full --run ...full_transfer935_1031_141421 --output ...full_transfer935_comparison_1031_143320`通过，四权重/任务/源码SHA绑定。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_comparison_1031_143320`；全部worker已退出，coordinator EXIT_CODE=0，milestone_observation.json记录真实PID。
+- Docs record: `docs/运行记录/模型实验/运行记录_CVPR任务诊断两Seed与验证覆盖_1031_140632.md`（运行接受）及`docs/建议/模型与训练/方案_CVPR连续细胞下游受控验证_1031_143011.md`（建议/准备，未启动）。
+- Commit: 本条随实现提交，见git history。
