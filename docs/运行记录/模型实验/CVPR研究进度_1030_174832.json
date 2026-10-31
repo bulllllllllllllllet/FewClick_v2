@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T14:34:40.483276+08:00",
+  "updated_at": "2026-10-31T14:56:52.351855+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_CVPR任务诊断两Seed与验证覆盖_1031_140632.md",
+    "current_record": "docs/运行记录/特征缓存/运行记录_CVPR连续细胞缓存与训练区变换_1031_143838.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
   },
@@ -337,11 +337,49 @@
           "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_linear_probe_1031_012400",
           "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_linear_probe_1031_012400/independent_acceptance.json",
           "quality_outcome": "LEMON provisional best in coarse cell probe; downstream benefit unverified"
+        },
+        {
+          "kind": "P1C_all1737_same_instance_raw_cell_features",
+          "status": "complete",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_cache_import_repair_1031_144058",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_cache_import_repair_1031_144058/full/independent_acceptance.json",
+          "history": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_cache_import_repair_1031_144058/history.jsonl",
+          "source_contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_cache_import_repair_1031_144058/contract.json",
+          "quality_outcome": "not_evaluated"
+        },
+        {
+          "kind": "P1C_train_only64_projection_and75channel_inputs",
+          "status": "complete",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335/full/independent_acceptance.json",
+          "history": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335/history.jsonl",
+          "source_contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335/contract.json",
+          "quality_outcome": "not_evaluated"
         }
       ],
       "candidate": "LEMON provisional, no downstream acceptance",
       "downstream_contract": "docs/建议/模型与训练/方案_CVPR连续细胞下游受控验证_1031_143011.md",
-      "downstream_status": "preparing"
+      "downstream_status": "preparing_model_gate",
+      "raw_cell_cache": {
+        "status": "complete",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_cache_import_repair_1031_144058/full",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_cache_import_repair_1031_144058/full/independent_acceptance.json",
+        "retained_cells": 304747,
+        "detected_instances": 405708,
+        "capped_frames": 670
+      },
+      "cell_input_grids": {
+        "status": "complete",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335/full",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335/full/independent_acceptance.json",
+        "transforms_sha256": "5ee94c93cb3bab8911aba3e39b651a7411659a3ca3ec0ad018cc5649b7f3429b",
+        "index_sha256": "9059530cc6fda66c9dc7890bd596e31e64ff83cb5af9b72a52f0c3ddeecee073",
+        "fitting_cells": 234056,
+        "validation_fitting_cells": 0,
+        "channels": 75,
+        "quality_outcome": "not_evaluated",
+        "milestone": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335/milestone_observation.json"
+      }
     },
     "P2": {
       "title": "连续/固定词表/可学习词汇",
@@ -570,9 +608,9 @@
     }
   ],
   "next_actions": [
-    "Implement and validate same-instance/RGB XCell vs LEMON continuous-cell cache, train-only transforms and matched decoder gate under docs/建议/模型与训练/方案_CVPR连续细胞下游受控验证_1031_143011.md",
-    "After cache/model/optimizer real-path acceptance, execute three matched 1000x4 mixed-task arms including newly trained image-only control",
-    "Retain full935 per-target failures, original80 guards/local tradeoff; no fullWSI promotion, no tokenizer claim yet"
+    "Use accepted cell raw/grid caches without re-extraction or PCA refit; implement matched image-only/XCell/LEMON residual decoder and real eight-task gate under downstream contract143011",
+    "Bind same accepted seed20261031 mixed2000 parent model/optimizer and frozen mixed4000 tasks; prove initial identity, cell perturbation control, gradients, disk/optimizer continuation and mask metric replay",
+    "After engineering gates, register/execute three matched1000x4 pilots; retain per-class failures, cap255 limitation, original80 guards/local cost; no WSI or tokenizer promotion yet"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -671,5 +709,23 @@
     "runtime and total duration require actual throughput",
     "no new model quality result",
     "Historical Xenium sampled1370 coordinates extent supports missing µm-to-pixel conversion; candidate scale4.5304/4.5305 is diagnostic only, registration unaccepted"
+  ],
+  "engineering_failures": [
+    {
+      "kind": "continuous_cell_cache_unused_slideIO_import",
+      "status": "failed_diagnosed_repaired",
+      "worker_pid": 533808,
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_cache_1031_143838",
+      "repair": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_cache_import_repair_1031_144058",
+      "biological_hypothesis_failure": false
+    },
+    {
+      "kind": "continuous_PCA_singleton_memory_layout_rounding",
+      "status": "failed_diagnosed_repaired",
+      "worker_pid": 594657,
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_1031_144448",
+      "repair": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335",
+      "biological_hypothesis_failure": false
+    }
   ]
 }

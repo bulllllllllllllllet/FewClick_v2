@@ -3478,3 +3478,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_comparison_1031_143320`；全部worker已退出，coordinator EXIT_CODE=0，milestone_observation.json记录真实PID。
 - Docs record: `docs/运行记录/模型实验/运行记录_CVPR任务诊断两Seed与验证覆盖_1031_140632.md`（运行接受）及`docs/建议/模型与训练/方案_CVPR连续细胞下游受控验证_1031_143011.md`（建议/准备，未启动）。
 - Commit: 本条随实现提交，见git history。
+
+## 2026-10-31T14:56:52.351855+08:00
+
+- Purpose: P1C原XCell/LEMON同实例原始缓存和train-only64维输入完成独立接受；登记残差三臂模型门控下一步。
+- Changed: cell_catalog.py/lemon_features.py/cache_continuous_cells.py/accept_continuous_cells.py/cell_grids.py/fit_continuous_cells.py/accept_cell_grids.py；连续性goal/registry/AGENTS与记录。
+- Validation: 真实16图2467细胞LEMON fresh reload误差0；全1737/304747细胞身份/数组/SHA接受；1356train234056细胞拟合、val0；全1737两种网格逐格精确重放及train统计/单细胞C-F/空实例门控通过。TIFF导入和PCA内存布局故障定位后新目录修复，原失败/源码快照保留；没有放宽容差。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_cache_import_repair_1031_144058`及`/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335`；真实worker/命令/日志/退出/全部SHA见milestone_observation.json与contract/history。
+- Docs record: `docs/运行记录/特征缓存/运行记录_CVPR连续细胞缓存与训练区变换_1031_143838.md`（运行记录）；准备方案143011继续适用。
+- Commit: 本条随实现提交，见git history。
