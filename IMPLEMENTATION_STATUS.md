@@ -3514,3 +3514,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/two_seed_cell_summary_1031_154415`、`/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuation_exposure_audit_1031_153938`；真实PID/命令/日志/输入代码权重SHA见各report/contract/history/runtime_observation。
 - Docs record: `docs/运行记录/模型实验/运行记录_CVPR连续细胞残差三臂门控与Pilot_1031_150514.md`（运行接受）及`docs/建议/模型与训练/方案_CVPR冻结公共解码器细胞适配与P1收尾_1031_155213.md`（建议/准备，尚未启动）。
 - Commit: 本条随实现提交，见git history。
+
+## 2026-10-31T16:11:49.317015+08:00
+
+- Purpose: 实现唯一冻结公共decoder细胞适配修订，真实三臂门控接受后启动正式Pilot。
+- Changed: cell_only_checks.py/train_cell_only_pilot.py/accept_cell_only_pilot.py；goal/registry/AGENTS和接续记录。原配方源码保留未改。
+- Validation: 各2×4真实任务；公参/完整optimizer逐字节不变（共享2000），new-cell B/C非零梯度与更新、A0梯度；磁盘与真实继续一步一致。A全部3711mask逐位匹配父模型，B/C各8mask，合计3727mask独立GT指标重放通过。正式三臂running未声称质量完成；正式mask数量元数据澄清已在结果前另存addendum，无运行/门槛变化。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_gate_1031_160252`（complete）、`/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_pilot_1031_160823`（running），全部代码/输入/权重/参考mask SHA及真实PID/命令/log在contract/source_snapshot/history/runtime_observation。
+- Docs record: `docs/运行记录/模型实验/运行记录_CVPR冻结公共Decoder细胞修订_1031_160252.md`。
+- Commit: 本条随实现提交，见git history。
