@@ -3559,3 +3559,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_pilot_1101_043337; gate under same parent; commands/source SHA/real PIDs/logs persisted.
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md.
 - Commit: this commit; full3711 evaluation/quality comparison pending.
+
+## 2026-11-01T04:35:31.858995+08:00
+
+- Purpose: Prepare fixed six-guard comparison while the existing Phikon pilot runs.
+- Changed: compare_joint_pilots.py, goal, registry and current run record.
+- Validation: compare_joint_pilots --verify-gate on both real20-mask gates — exit0; validates common initialization, input/task identity, evidence hashes and summary path. Formal3711 guard/interval comparison not yet executed; no quality claim.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/joint_comparison_gate_1101_043455/data/comparison.json; original worker416957 confirmed live, frozen updates326/1000.
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md.
+- Commit: this commit.

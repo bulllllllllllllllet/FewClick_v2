@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T04:34:02.174984+08:00",
+  "updated_at": "2026-11-01T04:35:31.858995+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -371,7 +371,7 @@
         "formal_pilot": {
           "status": "running",
           "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_pilot_1101_043337",
-          "observed_at": "2026-11-01T04:34:02.174984+08:00",
+          "observed_at": "2026-11-01T04:35:31.858995+08:00",
           "stage": {
             "status": "running",
             "stage": "frozen_train",
@@ -391,7 +391,23 @@
           },
           "worker_alive": true,
           "acceptance": null,
-          "quality_outcome": "not_evaluated"
+          "quality_outcome": "not_evaluated",
+          "training_status": {
+            "status": "training",
+            "worker_pid": 416957,
+            "updates": 326,
+            "losses": [
+              0.5154874324798584,
+              1.5303406715393066,
+              0.828609049320221,
+              1.0549612045288086
+            ]
+          }
+        },
+        "comparison_script_gate": {
+          "status": "complete",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/joint_comparison_gate_1101_043455/data/comparison.json",
+          "scope": "40 real gate rows only; no quality decision"
         }
       }
     },
