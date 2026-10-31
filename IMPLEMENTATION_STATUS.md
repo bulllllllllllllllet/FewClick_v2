@@ -3487,3 +3487,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_cache_import_repair_1031_144058`及`/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335`；真实worker/命令/日志/退出/全部SHA见milestone_observation.json与contract/history。
 - Docs record: `docs/运行记录/特征缓存/运行记录_CVPR连续细胞缓存与训练区变换_1031_143838.md`（运行记录）；准备方案143011继续适用。
 - Commit: 本条随实现提交，见git history。
+
+## 2026-10-31T15:10:18.977807+08:00
+
+- Purpose: 实现同结构连续细胞残差三臂，独立接受真实8任务门控并启动匹配正式Pilot。
+- Changed: continuous_prompt.py/continuous_data.py/train_continuous_pilot.py/accept_continuous_pilot.py，以及goal/registry/AGENTS和接续记录。
+- Validation: 三臂各2×4真实任务；初始父模型logits精确一致，共享optimizer2000/新组0步真恢复，细胞梯度/参数、无细胞扰动不变、磁盘及继续一步状态一致通过；24mask指标独立复算通过；全3711验证身份/顺序与已接受parent记录一致。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_prompt_gate_1031_150514`（complete）与`/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740`（running）；源/权重/任务/缓存SHA冻结，真实PID/命令/日志见contract/history/runtime_observation，尚无正式质量结果。
+- Docs record: `docs/运行记录/模型实验/运行记录_CVPR连续细胞残差三臂门控与Pilot_1031_150514.md`（运行记录，原始输入记录保留）。
+- Commit: 本条随实现提交，见git history。

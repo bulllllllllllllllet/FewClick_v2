@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T14:56:52.351855+08:00",
+  "updated_at": "2026-10-31T15:10:18.977807+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/特征缓存/运行记录_CVPR连续细胞缓存与训练区变换_1031_143838.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_CVPR连续细胞残差三臂门控与Pilot_1031_150514.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P1",
-  "current_status": "preparing",
+  "current_status": "running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -355,11 +355,18 @@
           "history": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335/history.jsonl",
           "source_contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335/contract.json",
           "quality_outcome": "not_evaluated"
+        },
+        {
+          "kind": "P1C_continuous_residual_three_real_training_gates",
+          "status": "complete",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_prompt_gate_1031_150514",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_prompt_gate_1031_150514/independent_gate_acceptance.json",
+          "quality_outcome": "not_evaluated"
         }
       ],
       "candidate": "LEMON provisional, no downstream acceptance",
       "downstream_contract": "docs/建议/模型与训练/方案_CVPR连续细胞下游受控验证_1031_143011.md",
-      "downstream_status": "preparing_model_gate",
+      "downstream_status": "running_three_matched_continuations",
       "raw_cell_cache": {
         "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_cache_import_repair_1031_144058/full",
@@ -379,6 +386,58 @@
         "channels": 75,
         "quality_outcome": "not_evaluated",
         "milestone": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335/milestone_observation.json"
+      },
+      "continuous_prompt_gate": {
+        "status": "complete",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_prompt_gate_1031_150514",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_prompt_gate_1031_150514/independent_gate_acceptance.json",
+        "sources": {
+          "train_continuous_pilot.py": "9ab0c9fae1702001cd2ab8a4f5b7b8203d9eda4db383cfc5a9f4dbda8c68eb62",
+          "continuous_prompt.py": "daf9f9ddfbe5fa44854cbb26c00007ec382a848904771d7728867b9609975819",
+          "continuous_data.py": "a27dd95aeb0ee0afc2653e50cdc7750160c3f00b0b359b0d609b85a865469e72",
+          "shared_prompt.py": "718d9f74307abf6d2691f8d03f3b9389c5a9b44f136483a0adafd98ea409ead2"
+        },
+        "parent_sha256": "d8d7c4d0828ac1b95b97e0791f64800be6a84246476c066d026aed720e4d6843",
+        "training_sha256": "7fef447ee63ab82de3a87d92e037d9dd194b27b51912f22c088648095661e5ae",
+        "quality_outcome": "not_evaluated"
+      },
+      "continuous_pilot": {
+        "status": "running",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740",
+        "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740/contract.json",
+        "tmux": "fewclick_continuous_pilot_1031_150740",
+        "coordinator_pid": 685437,
+        "observed_stage": {
+          "status": "running",
+          "arm": "image_only",
+          "stage": "train",
+          "worker_pid": 685446,
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.encoder_research.train_continuous_pilot",
+            "--arm",
+            "image_only",
+            "--images",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_1031_015107/phikon/cache",
+            "--grids",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335/full",
+            "--parent",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/task_diagnostic_run_1031_023222/mixed/checkpoint.pt",
+            "--training",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/task_diagnostic_manifest_1031_023222/mixed.jsonl",
+            "--output",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740/image_only",
+            "--gate-acceptance",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_prompt_gate_1031_150514/independent_gate_acceptance.json"
+          ]
+        },
+        "runtime_observation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740/runtime_observation.json",
+        "observed_at": "2026-10-31T15:10:18.977807+08:00",
+        "acceptance": null,
+        "quality_outcome": "not_evaluated",
+        "validation_manifest_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740/validation_manifest_acceptance.json"
       }
     },
     "P2": {
@@ -608,9 +667,9 @@
     }
   ],
   "next_actions": [
-    "Use accepted cell raw/grid caches without re-extraction or PCA refit; implement matched image-only/XCell/LEMON residual decoder and real eight-task gate under downstream contract143011",
-    "Bind same accepted seed20261031 mixed2000 parent model/optimizer and frozen mixed4000 tasks; prove initial identity, cell perturbation control, gradients, disk/optimizer continuation and mask metric replay",
-    "After engineering gates, register/execute three matched1000x4 pilots; retain per-class failures, cap255 limitation, original80 guards/local cost; no WSI or tokenizer promotion yet"
+    "Monitor existing continuous_cell_pilot_1031_150740 live coordinator/worker and stage; no duplicate launch or frozen source edits",
+    "After all three fixed1000x4 arms finish and all3711 masks per arm independently replay, compare preregistered remote macroDice and all cost guards, including LEMON vs original XCell",
+    "Keep all per-class/rare negative results, original80 guard failure/local tradeoff, cap255 and development exposure; no WSI/tokenizer or independent-confirmation claim"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
