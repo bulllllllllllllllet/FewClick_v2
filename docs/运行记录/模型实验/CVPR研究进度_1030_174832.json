@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T22:38:47.646804+08:00",
-  "goal_status": "usageLimited",
+  "updated_at": "2026-11-01T04:30:56.625146+08:00",
+  "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
@@ -353,7 +353,15 @@
           "acceptance_worker_pid": 2911826,
           "exit_code": 0
         },
-        "formal_training_started": false
+        "formal_training_started": false,
+        "data_loss_metric_integration": {
+          "status": "complete",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/joint_data_gate_1101_043006/data/acceptance.json",
+          "worker_pid": 398994,
+          "exit_code": 0,
+          "masks_replayed": 16,
+          "scope": "8 train tasks each arm; formal trainer/full3711 validation pending"
+        }
       }
     },
     "P1C": {
@@ -1106,5 +1114,5 @@
     "Audit entire P1 acceptance before P2; no promotion based on engineering gates"
   ],
   "native_goal_observed_at": "2026-10-31T22:36:21.094929+08:00",
-  "execution_authorization": "latest user continue permits manual progress; native Goal not resumed or completed"
+  "execution_authorization": "user resumed native goal; observed active"
 }

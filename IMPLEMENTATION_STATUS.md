@@ -3541,3 +3541,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_prefix_1031_223355/full/independent_acceptance.json; same root native_goal_observation.json.
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md.
 - Commit: this documentation acceptance commit; implementation3f4c48a.
+
+## 2026-11-01T04:30:56.625146+08:00
+
+- Purpose: Integrate accepted Phikon prefixes with saved tail/head checkpoints, real training loss and mask metric replay.
+- Changed: benchmarks/v5/encoder_research/joint_data.py and gate_joint_data.py; goal, registry, current record.
+- Validation: aligner python -m benchmarks.v5.encoder_research.gate_joint_data --output /nfs-medical3/zyh/fewclick_v2/cvpr_research/joint_data_gate_1101_043006/data — worker398994 exit0; 16 real masks independently unpacked/rescored; logits exact against previous prefix path; saved optimizer exact and actual update respects frozen/joint tail.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/joint_data_gate_1101_043006; contract records command/code SHA/GPU3/CPU2; no formal quality claim.
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md.
+- Commit: this commit; formal trainer and full3711 evaluation still pending.
