@@ -3523,3 +3523,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_gate_1031_160252`（complete）、`/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_pilot_1031_160823`（running），全部代码/输入/权重/参考mask SHA及真实PID/命令/log在contract/source_snapshot/history/runtime_observation。
 - Docs record: `docs/运行记录/模型实验/运行记录_CVPR冻结公共Decoder细胞修订_1031_160252.md`。
 - Commit: 本条随实现提交，见git history。
+
+## 2026-10-31T22:35:23.289757+08:00
+
+- Purpose: Stop exhausted cell residual recipes and advance the preregistered Phikon limited joint adaptation preparation.
+- Changed: compare_cell_only_pilots.py, audit_phikon_joint_capacity.py, build_joint_task_manifest.py, accept_joint_task_manifest.py, gate_phikon_joint.py, phikon_prefix_cache.py; joint protocol; current run record, goal, registry and AGENTS pointer.
+- Validation: full three-arm comparison accepted 11133 masks with control3711 identical to parent; neither cell arm passes primary guard. Actual immutable Phikon header/weight SHA passed. New4000 train episodes independently replayed including all source points, GT signs, query presence and2000 footprints. Real two-domain8-task/14-image full-vs-segment forward, gradients, parameter changes, fresh checkpoint and optimizer continuation exact; gate worker2883195 exit0. Prefix implementation gate14 independent replay accepted worker2895925 exit0; full1737 cache running worker2895990.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_analysis_1031_162255; phikon_joint_capacity_1031_162558; phikon_joint_tasks_1031_222610; phikon_joint_gate_1031_223143; phikon_prefix_1031_223355.
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md; docs/建议/模型与训练/方案_CVPR_Phikon单候选有限联合适配与P1收尾_1031_163819.md; prior frozen-decoder record closed. Formal trainer/evaluation integration and independent mask metrics still pending; P1 and downstream phases incomplete.
+- Commit: this commit (hash available in Git history).

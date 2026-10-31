@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T16:11:49.317015+08:00",
+  "updated_at": "2026-10-31T22:35:23.289757+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_CVPR冻结公共Decoder细胞修订_1031_160252.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P1",
-  "current_status": "running",
+  "current_status": "preparing",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -226,10 +226,9 @@
         },
         {
           "kind": "P1I_serial_frozen_encoder_cache_train_score",
-          "status": "running",
+          "status": "complete",
           "coordinator_pid": 1122729,
           "worker_pid": 1147325,
-          "worker_alive_observed": true,
           "observed_at": "2026-10-31T02:05:43.215261+08:00",
           "stage": {
             "arm": "resnet",
@@ -239,7 +238,9 @@
           "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_1031_015107",
           "monitor": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_1031_015107/runtime_observation.json",
           "acceptance": null,
-          "quality_outcome": "not_evaluated"
+          "quality_outcome": "not_evaluated",
+          "qualification": "same root completed; see subsequent three_fixed_frozen_image_pilots acceptances",
+          "last_running_observation_worker_alive": true
         },
         {
           "kind": "P1I_three_fixed_frozen_image_pilots",
@@ -317,6 +318,48 @@
         "quality_outcome": "mixed improves expanded transfer Dice/BF1/FPA in both seeds; per-class failures and original local cost/guard failure retained",
         "comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_comparison_1031_143320/comparison.json",
         "terminal_observation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421/milestone_observation.json"
+      },
+      "limited_joint_adaptation": {
+        "status": "preparing",
+        "protocol": "docs/建议/模型与训练/方案_CVPR_Phikon单候选有限联合适配与P1收尾_1031_163819.md",
+        "capacity": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_capacity_1031_162558/capacity.json",
+        "training_tasks": {
+          "status": "complete",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_tasks_1031_222610/data/independent_acceptance.json",
+          "tasks": 4000,
+          "novel_relative_to_parent": true,
+          "independent_data": false,
+          "sha256": "97d2941fe9197ba6146c26db1752a1f6a76f26eeae26f913eff44adae5b467bb"
+        },
+        "real_prefix_gradient_reload_gate": {
+          "status": "complete",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_gate_1031_223143/data/acceptance.json",
+          "worker_pid": 2883195,
+          "exit_code": 0,
+          "scope": "engineering only; trainer integration and independent mask metric replay remain"
+        },
+        "prefix_cache": {
+          "status": "running",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_prefix_1031_223355",
+          "stage": {
+            "status": "running",
+            "stage": "full_build",
+            "worker_pid": 2895990,
+            "command": [
+              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+              "-u",
+              "-m",
+              "benchmarks.v5.encoder_research.phikon_prefix_cache",
+              "--gate",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_gate_1031_223143/data",
+              "--output",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_prefix_1031_223355/full"
+            ]
+          },
+          "gate14_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_prefix_1031_223355/gate14/independent_acceptance.json",
+          "gate14_status": "complete"
+        },
+        "formal_training_started": false
       }
     },
     "P1C": {
@@ -328,7 +371,7 @@
         "真实组织mask下游控制"
       ],
       "acceptance": null,
-      "quality_outcome": "LEMON .7235 vs CTransPath point control .6389 and Phikon .6744; one-seed development only",
+      "quality_outcome": "both residual recipes stopped; neither frozen revision arm passes primary guard; not a rejection of all cell encoders",
       "runs": [
         {
           "kind": "P1C_fixed_single_seed_linear_probe",
@@ -629,7 +672,7 @@
         "causal_overfitting_proven": false
       },
       "revision_contract": "docs/建议/模型与训练/方案_CVPR冻结公共解码器细胞适配与P1收尾_1031_155213.md",
-      "revision_status": "running",
+      "revision_status": "complete_quality_failed",
       "substantive_recipes_used": 2,
       "remaining_evidence_based_revision_budget": 0,
       "cell_only_gate": {
@@ -644,12 +687,22 @@
         "quality_outcome": "not_evaluated"
       },
       "cell_only_pilot": {
-        "status": "running",
+        "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_pilot_1031_160823",
         "tmux": "fewclick_cell_only_pilot_1031_160823",
         "coordinator_pid": 1003384,
-        "observed_at": "2026-10-31T16:11:49.317015+08:00",
-        "observed_stage": {
+        "observed_at": "2026-10-31T22:34:36.179087+08:00",
+        "runtime_observation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_pilot_1031_160823/runtime_observation.json",
+        "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_pilot_1031_160823/contract.json",
+        "contract_addendum": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_pilot_1031_160823/contract_mask_count_addendum.json",
+        "acceptance": [
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_pilot_1031_160823/image_only/independent_acceptance.json",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_pilot_1031_160823/xcell/independent_acceptance.json",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_pilot_1031_160823/lemon/independent_acceptance.json"
+        ],
+        "quality_outcome": "not_accepted_for_promotion",
+        "exit_code": 0,
+        "last_running_observation": {
           "status": "running",
           "arm": "image_only",
           "stage": "train",
@@ -678,13 +731,21 @@
             "--gate-acceptance",
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_gate_1031_160252/independent_gate_acceptance.json"
           ]
+        }
+      },
+      "cell_only_comparison": {
+        "status": "complete",
+        "comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_analysis_1031_162255/result/comparison.json",
+        "macroDice": {
+          "image_only": 0.3700697538830156,
+          "xcell": 0.3385215261098476,
+          "lemon": 0.36242340341141477
         },
-        "runtime_observation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_pilot_1031_160823/runtime_observation.json",
-        "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_pilot_1031_160823/contract.json",
-        "contract_addendum": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_pilot_1031_160823/contract_mask_count_addendum.json",
-        "acceptance": null,
-        "quality_outcome": "not_evaluated"
-      }
+        "image_only_parent_masks_exact": 3711,
+        "eligible_for_second_seed": [],
+        "fullWSI_promoted": false
+      },
+      "residual_family_decision": "stop; two substantive recipes exhausted; no third recipe or second seed for failed frozen revision"
     },
     "P2": {
       "title": "连续/固定词表/可学习词汇",
@@ -913,9 +974,9 @@
     }
   ],
   "next_actions": [
-    "Monitor existing cell_only_pilot_1031_160823 actual coordinator/worker; no duplicate launch or source changes",
-    "After all three accepted_cell_only_pilot receipts, compare exact same six guards with A3711 masks equal parent; shared optimizer2000 and cell1000 verified; replicate seed only if first passes",
-    "This is last allowed recipe for current cell residual adaptation hypothesis; preserve all negatives and do not blind-sweep. Complete P1I limited joint adaptation/P1C stain sensitivity before P1 completion"
+    "Monitor existing phikon_prefix_1031_223355; accept gate14 before full1737; no duplicate launch or live source edits",
+    "After full prefix independent acceptance, implement joint trainer using accepted4000 tasks; real checkpoint/training/evaluation mask replay gate before formal two arms",
+    "Complete one P1I joint recipe; seed2 only if original guards pass; P1C stain sensitivity and costs remain; no WSI or tokenizer promotion yet"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -959,6 +1020,12 @@
       "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/two_seed_cell_summary_1031_154415/result/summary.json",
       "quality_outcome": "not_accepted_for_promotion",
       "next_bounded_revision": "docs/建议/模型与训练/方案_CVPR冻结公共解码器细胞适配与P1收尾_1031_155213.md"
+    },
+    {
+      "id": "P1C_frozen_shared_cell_residual",
+      "scope": "fixed75channel residual with76800 trainable projection; shared decoder fixed; same repeated4000 episodes; not all encoders",
+      "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_analysis_1031_162255/result/comparison.json",
+      "decision": "stop both residual recipes; no secondseed since firstseed primary fails"
     }
   ],
   "deferred": [
@@ -968,11 +1035,10 @@
     "full WSI caching before P4 gates"
   ],
   "known_gaps": [
-    "Independent confirmation domain not yet proven; required before P5",
-    "P1 decoder/feature-extraction/probe training implementations and run gates remain",
-    "No new cell classification or tissue quality comparison yet",
-    "New whole-slide contracts and actual quality/efficiency remain P4 obligations",
-    "Remote absent FPA increases despite stronger local image representations; no fullWSI promotion permitted until joint guard passes"
+    "Independent confirmation domain not yet proven; development results remain exposed",
+    "P1I finite joint training/evaluation evidence pending; cache launch is not completed experiment",
+    "P1C stain sensitivity/cost evidence pending; residual recipes stopped without robust benefit",
+    "WSI quality and efficiency remain P4 obligations; P2/P3 mechanism evidence pending"
   ],
   "legacy": {
     "status": "abandoned_superseded_by_user_not_completed",
@@ -1041,8 +1107,8 @@
     }
   ],
   "remaining_explicit_P1_requirements": [
-    "P1I single selected-image-candidate limited joint adaptation lacks accepted evidence in active route",
-    "P1C stain sensitivity lacks accepted evidence",
-    "Complete independent secondseed cell effect/guard assessment; preserve starting-point regression and all costs"
+    "P1I single selected-image limited joint training and independent evaluation acceptance",
+    "P1C stain sensitivity and cost evidence; retain all cell negatives",
+    "Audit entire P1 acceptance before P2; no promotion based on engineering gates"
   ]
 }

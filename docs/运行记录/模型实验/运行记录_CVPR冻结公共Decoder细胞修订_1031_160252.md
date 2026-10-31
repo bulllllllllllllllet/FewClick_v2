@@ -31,3 +31,17 @@ formal contract继承的expected_masks表是gate的A3711/B8/C8；正式模式源
 当前实质配方预算已用2次：初次共同更新、这次冻结公共参数；seed重复不是新配方。正式全三臂accepted_cell_only_pilot后实现冻结政策专用配对比较，验证A3711预测恒等parent，且公共state计数2000/new组1000；沿用六门槛和query-space条件区间。通过才独立第二seed；不通过停止此残差配方，禁止第三次LR/数据/表示混改盲扫。
 
 P1I有限联合适配/P1C染色敏感性继续待办；当前只接受工程门控，未接受新细胞组织收益，P1整体仍未complete。
+
+## 2026-10-31T16:22:55.228585+08:00 冻结政策专用配对比较登记
+
+新入口compare_cell_only_pilots --run ... --parent-transfer-reference ... --output ...，CPU2无GPU，目录`/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_analysis_1031_162255`，tmux `fewclick_cell_only_analysis_1031_162255`。等待原coordinator1003384实际存活/退出0且全三臂accepted_cell_only_pilot后才执行；不重启训练。
+
+比较核验共有参数/optimizer冻结2000、新cell1000、相同输入任务/源码/身份/实际消费、全部mask与接受SHA；重新对照A3711父mask及父指标恒等，读取正式mask数量addendum。沿用原六门槛/3预算/逐类NA及query-space2000次条件区间，不把A标为充分训练的强基线。无通过则停止此残差配方而非第三次修订。源码SHA在contract/source_snapshot，真实比较worker/命令/log/退出在stage/worker.log/exit_code。
+
+## 2026-10-31T16:25:58.191870+08:00 P1I单一候选联合适配容量预检查
+
+CPU2只读既定Phikon-v2权重header/config并重新核对P0记录SHA，不加载GPU、不推理、不训练、不新增候选。入口audit_phikon_joint_capacity --output `/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_capacity_1031_162558`，记录439权重tensor和候选末block23+最终norm的形状/参数量。FP32参数+梯度+两AdamW矩只作理论存储下界，不包括完整模型/激活/工作区，不能当实际显存已通过；梯度/重载/质量均尚未接受，正式联合适配预算/控制仍待登记。源码SHA=72118d206ff905863641b0fd5a5d9f13e53e644858dae5218303265c0101c697。当前细胞修订队列不变。
+
+## 2026-10-31T22:34:36.179087+08:00 正式结论与接续
+
+三臂完整接受各3711mask，comparison cell_only_analysis_1031_162255/result/comparison.json；macroDice A/XCell/LEMON=.37006975/.33852153/.36242340。A3711mask逐位等父模型，共享optimizer2000不变；两细胞臂未过主门槛，eligible_for_second_seed=[]。停止当前残差家族，第2配方预算耗尽。不得称全细胞encoder否定或WSI晋升。接续原P1I有限联合适配，当前记录 `docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md`。
