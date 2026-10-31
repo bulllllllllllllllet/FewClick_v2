@@ -26,6 +26,11 @@ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--cache',type=Path,required=True)
     p.add_argument('--remote-selection',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--training-path',type=Path)
+    p.add_argument('--initial-checkpoint',type=Path)
+    p.add_argument('--mixed-training',action='store_true')
+    p.add_argument('--gate',action='store_true')
+    p.add_argument('--seed',type=int,default=20261031)
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False);start=time.time()
     torch.set_num_threads(2);torch.use_deterministic_algorithms(True);torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=True
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
@@ -33,7 +38,11 @@ def main():
     arm=accepted['arm'];entries={r['tile_id']:r for r in [json.loads(s) for s in (a.cache/'index.jsonl').read_text().splitlines()]}
     local=LocalData('/nfs-medical3/zyh/fewclick_v2/fair_comparison/protocol_1025_124208/tasks_1025_125400')
     remote=TransferData('/nfs-medical3/zyh/fewclick_v2/fair_comparison/transfer_1025_131856/tasks_1025_132300')
-    training_path=Path('/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_tissue_contract_1031_011514/pilot_training4000.jsonl')
+    training_path=a.training_path or Path('/nfs-medical3/zyh/fewclick_v2/cvpr_research/p0_tissue_contract_1031_011514/pilot_training4000.jsonl')
+    if a.training_path:
+        task_acceptance=json.loads((training_path.parent/'independent_acceptance.json').read_text())
+        assert task_acceptance['status']=='accepted_train_only_task_factors'
+        assert sha(training_path)==task_acceptance['files'][training_path.name]
     lines=training_path.read_text().splitlines(keepends=True);assert len(lines)==4000
     status=dict(status='training',worker_pid=os.getpid(),arm=arm,updates=0,tasks=0)
     def save():
@@ -57,30 +66,55 @@ def main():
         positive=torch.tensor([plan['positive_xy']],device='cuda:0',dtype=torch.float32)
         negative=torch.tensor([plan['negative_xy']],device='cuda:0',dtype=torch.float32)
         return model(qf,qr,positive,negative,support_feature=sf,local=plan['support_id']==plan['query_id'])
-    torch.manual_seed(20261031);model=SharedPromptDecoder(CHANNELS[arm]).to('cuda:0')
+    torch.manual_seed(a.seed);model=SharedPromptDecoder(CHANNELS[arm]).to('cuda:0')
     common_sha=hashlib.sha256(b''.join(v.cpu().numpy().tobytes() for k,v in sorted(model.state_dict().items()) if not k.startswith('project.'))).hexdigest()
-    assert common_sha=='552f5609885b2ea3f6545f537f7bd01aa1c5b43cda66405545a41e681b1bb4c4'
-    optimizer=torch.optim.AdamW(model.parameters(),lr=.001,weight_decay=.0001);save();losses=[]
+    if a.seed==20261031:assert common_sha=='552f5609885b2ea3f6545f537f7bd01aa1c5b43cda66405545a41e681b1bb4c4'
+    optimizer=torch.optim.AdamW(model.parameters(),lr=.001,weight_decay=.0001)
+    starting_updates=0;initial_identity=None
+    if a.initial_checkpoint:
+        state=torch.load(a.initial_checkpoint,map_location='cuda:0',weights_only=True)
+        assert int(state.get('seed',20261031))==a.seed,'continuation seed must match its independently trained parent'
+        model.load_state_dict(state['model'],strict=True);optimizer.load_state_dict(state['optimizer'])
+        starting_updates=int(state['updates']);initial_identity=sha(a.initial_checkpoint)
+        assert starting_updates==1000 and all(int(v['step'])==1000 for v in optimizer.state.values())
+    start_model_sha=hashlib.sha256(b''.join(v.cpu().numpy().tobytes() for k,v in sorted(model.state_dict().items()))).hexdigest()
+    common_sha=hashlib.sha256(b''.join(v.cpu().numpy().tobytes() for k,v in sorted(model.state_dict().items()) if not k.startswith('project.'))).hexdigest()
+    updates=2 if a.gate else 1000;save();losses=[]
     with (a.output/'training_consumed.jsonl').open('w') as stream:
-        for step in range(1000):
+        for step in range(updates):
             optimizer.zero_grad();total=0.
             for line in lines[step*4:(step+1)*4]:
-                plan=json.loads(line);assert plan['split']=='train' and plan['kind']=='local'
+                plan=json.loads(line);assert plan['split']=='train'
+                assert a.mixed_training or plan['kind']=='local'
+                assert local.rows[plan['query_id']]['split']==local.rows[plan['support_id']]['split']=='train'
                 logits=predict(plan,model);gt,_=labels(plan['query_id']);valid=torch.from_numpy(gt!=255)[None].to('cuda:0')
                 truth=torch.from_numpy(gt==plan['target'])[None].to('cuda:0')
                 loss=loss_fn(logits,truth,valid)/4;assert torch.isfinite(loss);loss.backward();total+=float(loss.detach());stream.write(line)
             assert all(p.grad is not None and torch.isfinite(p.grad).all() for p in model.parameters());optimizer.step();losses.append(total)
             if step%25==0:stream.flush();status.update(updates=step+1,tasks=(step+1)*4,loss=total);save();print(json.dumps(status),flush=True)
-    assert sha(a.output/'training_consumed.jsonl')==sha(training_path)
-    torch.save({'model':model.state_dict(),'optimizer':optimizer.state_dict(),'updates':1000},a.output/'checkpoint.pt')
+    expected_bytes=''.join(lines[:updates*4]).encode()
+    assert sha(a.output/'training_consumed.jsonl')==hashlib.sha256(expected_bytes).hexdigest()
+    torch.save({'model':model.state_dict(),'optimizer':optimizer.state_dict(),'updates':starting_updates+updates,'seed':a.seed},a.output/'checkpoint.pt')
     sample=json.loads(lines[0]);model.eval()
     with torch.no_grad():reference=predict(sample,model)
     fresh=SharedPromptDecoder(CHANNELS[arm]).to('cuda:0');checkpoint=torch.load(a.output/'checkpoint.pt',map_location='cuda:0',weights_only=True);fresh.load_state_dict(checkpoint['model'],strict=True);fresh.eval()
     with torch.no_grad():assert torch.equal(reference,predict(sample,fresh))
+    if a.gate:
+        fresh_opt=torch.optim.AdamW(fresh.parameters(),lr=.001,weight_decay=.0001);fresh_opt.load_state_dict(checkpoint['optimizer'])
+        plan=json.loads(lines[3]);gt,_=labels(plan['query_id']);valid=torch.from_numpy(gt!=255)[None].to('cuda:0');truth=torch.from_numpy(gt==plan['target'])[None].to('cuda:0')
+        for head,opt in [(model,optimizer),(fresh,fresh_opt)]:
+            opt.zero_grad();loss_fn(predict(plan,head),truth,valid).backward();opt.step()
+        assert all(torch.equal(v,fresh.state_dict()[k]) for k,v in model.state_dict().items())
+        result=dict(status='complete_task_continuation_gate',worker_pid=os.getpid(),training_updates=updates,training_tasks=updates*4,
+            starting_updates=starting_updates,initial_checkpoint_sha256=initial_identity,start_model_state_sha256=start_model_sha,
+            seed=a.seed,common_initialization_sha256=common_sha,
+            exact_model_reload=True,exact_optimizer_continuation=True,losses=losses,includes_remote_absent=a.mixed_training,
+            source_sha256=sha(__file__),training_path=str(training_path),training_sha256=sha(training_path))
+        (a.output/'gate_acceptance.json').write_text(json.dumps(result,indent=2)+'\n');status.update(status='complete_gate');save();print(json.dumps(result),flush=True);return
     selection=json.loads(a.remote_selection.read_text());wanted=set(selection['pair_ids'])
     remote_plans=[p for p in remote.plans if p['prompt_group']==0 and p['pair_id'] in wanted]
     assert len(remote_plans)==len(wanted)==80
-    rows=[];packed=[];status.update(status='scoring',updates=1000,tasks=4000);save()
+    rows=[];packed=[];status.update(status='scoring',updates=updates,tasks=updates*4);save()
     with torch.inference_mode():
         for scope,plans in [('local',[p for p in json.loads((local.tasks/'validation_maximum.json').read_text()) if p['prompt_group']==0]),('remote',remote_plans)]:
             for budget in ['3+2','1+1','5+1']:
@@ -107,6 +141,9 @@ def main():
         training_updates=1000,training_tasks=4000,actual_consumed_sha256=sha(a.output/'training_consumed.jsonl'),
         common_initialization_sha256=common_sha,exact_final_reload=True,checkpoint_sha256=sha(a.output/'checkpoint.pt'),
         cache_index_sha256=accepted['index_sha256'],remote_selection_sha256=sha(a.remote_selection),source_sha256=sha(__file__),
+        training_path=str(training_path),starting_updates=starting_updates,total_optimizer_updates=starting_updates+updates,
+        seed=a.seed,
+        initial_checkpoint_sha256=initial_identity,start_model_state_sha256=start_model_sha,mixed_training=a.mixed_training,
         elapsed_seconds=time.time()-start,losses=losses,qualification='fixed-budget frozen encoder development pilot, not native SAM system or final WSI superiority')
     (a.output/'report.json').write_text(json.dumps(report,indent=2)+'\n');status.update(status='complete',scoring_rows=len(rows));save();print(json.dumps(dict(arm=arm,summary=summary)),flush=True)
 

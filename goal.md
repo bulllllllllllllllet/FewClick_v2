@@ -8,11 +8,11 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_CVPR_P1I三臂接受与误报诊断_1031_022128.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_CVPR任务诊断两Seed与验证覆盖_1031_140632.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
-当前：**P0 complete；P1I冻结三臂pilot已独立接受，但整体约束未通过；P1I/P1C preparing**。当前无后台任务。Phikon local较强，但remote absent FPA更差，不能据此晋升WSI。
+当前：**P0 complete；P1任务因素两seed已接受；P1I/P1C准备扩大验证**。无后台任务。mixed误报改善复现，但local Dice下降，第二seed远端BF1略低于预设守门，禁止直接晋升WSI。
 
-下一步：按新记录预登记的唯一任务因素修订，构造并审计train-only空间mixed episodes，与同起点local控制做匹配延续对照。不得调query阈值、删absent或盲换模型；P2/P3仍需各自机制证据。
+下一步优先验证数据覆盖：用固定checkpoint扩到已冻结935对完整迁移开发集，逐组织/来源报告n与不确定性；不重新训练或改阈值。80对结果/原guard保留，开发集扩大不改称blind test。之后继续原计划的连续细胞贡献验证。
 
 ## 执行顺序
 

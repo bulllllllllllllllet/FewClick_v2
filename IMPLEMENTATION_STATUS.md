@@ -3449,3 +3449,14 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_comparison_1031_022128；cell_downstream_input_gate_1031_021255。
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR_P1I三臂接受与误报诊断_1031_022128.md。
 - Commit: 见comparison产物commit.txt。
+
+
+## 10-31 14:06:32
+
+- Purpose: 收尾任务因素两seed真实实验并核实验证覆盖，响应用户数据量担忧。
+- Changed: 四个任务构造/续训/接受/比较脚本、新记录、goal/registry/AGENTS。
+- Validation: 两seed真实checkpoint分支及各1146mask重放exit0；源码与seed2运行合同SHA一致。首guard通过，次seed remoteBF1略低，保留失败与local代价。
+- Artifacts: task_diagnostic_run_1031_023222、task_seed2_run_1031_023222。
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR任务诊断两Seed与验证覆盖_1031_140632.md。
+- Next: 固定checkpoint全935开发对验证优先，无新作业启动。
+- Commit: 见seed2根continuity_commit.txt。

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T02:31:42.882032+08:00",
+  "updated_at": "2026-10-31T14:11:57.429670+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_CVPR_P1I三臂接受与误报诊断_1031_022128.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_CVPR任务诊断两Seed与验证覆盖_1031_140632.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
   },
@@ -210,7 +210,7 @@
         "选择理由或保留原底座"
       ],
       "acceptance": null,
-      "quality_outcome": "frozen comparison accepted; no candidate meets joint absent-FPA guard",
+      "quality_outcome": "two-seed task mix reduces absent FPA, costs local Dice; full935 transfer coverage validation next; secondseed boundary gate not passed",
       "runs": [
         {
           "kind": "P1I_three_frozen_encoders_shared_decoder_gate",
@@ -509,6 +509,13 @@
         "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_1031_015107/sam/pilot/independent_acceptance.json"
       ],
       "quality_outcome": "Phikon local best; both alternatives fail absent FPA guard; no WSI promotion"
+    },
+    {
+      "kind": "matched_task_diagnostic_two_independent_seeds",
+      "status": "complete",
+      "first": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/task_diagnostic_comparison_verified_1031_023222/comparison.json",
+      "second": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/task_seed2_run_1031_023222/comparison/comparison.json",
+      "quality_outcome": "FPA direction replicated with localDice cost; secondseed remoteBF1 guard fails slightly, no fullscale"
     }
   ],
   "completed_milestones": [
@@ -520,10 +527,10 @@
     }
   ],
   "next_actions": [
-    "Generate and independently audit fixed train-only local/remote-present/remote-absent task mix, max footprint disjoint, no dev labels",
-    "Gate then execute one matched-continuation Phikon local-control vs mixed-task diagnostic from identical accepted weights+optimizer; no encoder/loss/threshold changes",
-    "Report all original three pilots including adverse absent FPA, small/fat and source-cluster uncertainty; no native SAM superiority claim",
-    "After image task readiness, validate LEMON continuous cells using identical retained masks/order/RGB; no tokenizer before downstream evidence"
+    "Prioritize fixed-checkpoint full935 frozen transfer evaluation, no retraining or threshold/model selection, report per-target support/query coverage and source-cluster uncertainty",
+    "Preserve original80 results/guards and secondseed remoteBF1 failure; expanded development data are not a new blind test",
+    "After full-cohort robustness check, test same-mask/order/RGB XCell versus LEMON continuous-cell contribution with matched tasks",
+    "No fullWSI promotion or tokenizer claim until respective quality/mechanism gates pass"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
