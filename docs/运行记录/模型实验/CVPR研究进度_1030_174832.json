@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T14:11:57.429670+08:00",
+  "updated_at": "2026-10-31T14:24:48.300145+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,7 +13,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P1",
-  "current_status": "preparing",
+  "current_status": "running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -276,7 +276,41 @@
         "loss": 0.8382475674152374,
         "scoring_rows": 1146
       },
-      "task_diagnostic_contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_comparison_1031_022128/decision_contract.json"
+      "task_diagnostic_contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_comparison_1031_022128/decision_contract.json",
+      "full935_validation": {
+        "status": "running",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421",
+        "tmux": "fewclick_full935_1031_141421",
+        "coordinator_pid": 452892,
+        "observed_stage": {
+          "status": "running",
+          "arm": "seed0_local_control",
+          "stage": "evaluate",
+          "worker_pid": 452893,
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.encoder_research.evaluate_transfer_full",
+            "--cache",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_1031_015107/phikon/cache",
+            "--reference-pilot",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/task_diagnostic_run_1031_023222/local_control",
+            "--output",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421/seed0_local_control"
+          ]
+        },
+        "observed_at": "2026-10-31T14:24:48.300145+08:00",
+        "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421/contract.json",
+        "input_gate": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer_gate_1031_141421/report.json",
+        "source_sha256": {
+          "benchmarks/v5/encoder_research/evaluate_transfer_full.py": "651d4fbcad5474f0094db58e32cdb5a6a0c736bcf74f6bbb15252f35870bdf5f",
+          "benchmarks/v5/encoder_research/accept_transfer_full.py": "2bca4a19913da18f74290734371ab9737a06b3e4e517cb0afb3f28071d90c754",
+          "benchmarks/v5/encoder_research/shared_prompt.py": "718d9f74307abf6d2691f8d03f3b9389c5a9b44f136483a0adafd98ea409ead2"
+        },
+        "acceptance": null,
+        "quality_outcome": "not_evaluated"
+      }
     },
     "P1C": {
       "title": "细胞encoder受控筛选",

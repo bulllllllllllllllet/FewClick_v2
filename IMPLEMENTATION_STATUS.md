@@ -3460,3 +3460,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR任务诊断两Seed与验证覆盖_1031_140632.md。
 - Next: 固定checkpoint全935开发对验证优先，无新作业启动。
 - Commit: 见seed2根continuity_commit.txt。
+
+## 2026-10-31T14:24:48.300145+08:00
+
+- Purpose: 扩大固定checkpoint迁移开发验证覆盖，保留原80结果/守门和稀有类NA。
+- Changed: evaluate_transfer_full.py、accept_transfer_full.py及goal/registry/current record。
+- Validation: aligner真实8例evaluate_transfer_full --gate通过，原mask逐位相同8/8；完整四模型验证running，未宣称完整接受。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421`，合同记录源码/权重/缓存SHA，GPU3串行，PID/log/stage可接续。
+- Docs record: `docs/运行记录/模型实验/运行记录_CVPR任务诊断两Seed与验证覆盖_1031_140632.md`。
+- Commit: 本条随实现提交，提交身份由git history记录。
