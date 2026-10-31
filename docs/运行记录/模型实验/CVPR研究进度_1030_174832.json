@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T15:10:18.977807+08:00",
+  "updated_at": "2026-10-31T15:33:29.848744+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -366,7 +366,7 @@
       ],
       "candidate": "LEMON provisional, no downstream acceptance",
       "downstream_contract": "docs/建议/模型与训练/方案_CVPR连续细胞下游受控验证_1031_143011.md",
-      "downstream_status": "running_three_matched_continuations",
+      "downstream_status": "running_secondseed_replication",
       "raw_cell_cache": {
         "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_cache_import_repair_1031_144058/full",
@@ -402,16 +402,104 @@
         "quality_outcome": "not_evaluated"
       },
       "continuous_pilot": {
-        "status": "running",
+        "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740",
         "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740/contract.json",
         "tmux": "fewclick_continuous_pilot_1031_150740",
         "coordinator_pid": 685437,
         "observed_stage": {
+          "status": "complete",
+          "arms": 3
+        },
+        "runtime_observation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740/runtime_observation.json",
+        "observed_at": "2026-10-31T15:33:29.848744+08:00",
+        "acceptance": [
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740/image_only/independent_acceptance.json",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740/xcell/independent_acceptance.json",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740/lemon/independent_acceptance.json"
+        ],
+        "quality_outcome": "both cell arms pass relative control point guards, intervals cross0; no LEMON-over-XCell or absolute parent upgrade",
+        "validation_manifest_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740/validation_manifest_acceptance.json",
+        "comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_comparison_context_1031_152820/comparison.json"
+      },
+      "continuous_comparison": {
+        "status": "complete",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_comparison_context_1031_152820",
+        "values": {
+          "image_only": {
+            "remote_macro_Dice": 0.3385439018510787,
+            "remote_Dice": 0.32160086775322333,
+            "remote_BF1": 0.1248281128201517,
+            "absent_FPA": 0.034577906052065316,
+            "local_Dice": 0.6157749901442473,
+            "local_BF1": 0.21367447161723233,
+            "small_Dice": 0.3799170100637479,
+            "fat_Dice": 0.6835297881013734
+          },
+          "xcell": {
+            "remote_macro_Dice": 0.3614195184194143,
+            "remote_Dice": 0.3459396262203832,
+            "remote_BF1": 0.1381125738965231,
+            "absent_FPA": 0.0322334407041321,
+            "local_Dice": 0.6146201338477897,
+            "local_BF1": 0.20015564787006773,
+            "small_Dice": 0.41283582013268766,
+            "fat_Dice": 0.6981155259451297
+          },
+          "lemon": {
+            "remote_macro_Dice": 0.35297085636925357,
+            "remote_Dice": 0.3357193141418359,
+            "remote_BF1": 0.12973308650314586,
+            "absent_FPA": 0.033521459706397166,
+            "local_Dice": 0.6281474895954329,
+            "local_BF1": 0.22737816470243893,
+            "small_Dice": 0.41978159529322107,
+            "fat_Dice": 0.7124307434218717
+          }
+        },
+        "eligible_for_second_seed": [
+          "xcell",
+          "lemon"
+        ],
+        "parent_context": {
+          "updates": 2000,
+          "remote_macro_Dice": 0.3700697538830156,
+          "remote_Dice": 0.3516820340576456,
+          "remote_BF1": 0.15027519737261041,
+          "absent_FPA": 0.02446098677417013,
+          "local_Dice": 0.6300562087868697,
+          "checkpoint_sha256": "d8d7c4d0828ac1b95b97e0791f64800be6a84246476c066d026aed720e4d6843",
+          "remote_acceptance_sha256": "7a8fb5118265674fe5440253d75dd3a501858ed538ff1b5d12165d9370001d19",
+          "qualification": "descriptive starting point with different update budget; does not replace matched control or change guards"
+        },
+        "original80_guards_unchanged": true,
+        "fullWSI_promoted": false
+      },
+      "probe_source_uncertainty": {
+        "status": "complete",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_probe_source_uncertainty_1031_151743",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_probe_source_uncertainty_1031_151743/uncertainty.json",
+        "clusters": {
+          "field_id": 99,
+          "slide": 57,
+          "patient": 41
+        },
+        "training_updates": 0,
+        "split_changed": false,
+        "scope": "fixed BC_TC probe only"
+      },
+      "secondseed_continuous_pilot": {
+        "status": "running",
+        "seed": 20261101,
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048",
+        "tmux": "fewclick_continuous_seed2_1031_153048",
+        "coordinator_pid": 803024,
+        "observed_at": "2026-10-31T15:33:29.848744+08:00",
+        "observed_stage": {
           "status": "running",
           "arm": "image_only",
-          "stage": "train",
-          "worker_pid": 685446,
+          "stage": "pilot_train",
+          "worker_pid": 805870,
           "command": [
             "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
             "-u",
@@ -419,25 +507,27 @@
             "benchmarks.v5.encoder_research.train_continuous_pilot",
             "--arm",
             "image_only",
+            "--seed",
+            "20261101",
             "--images",
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_pilot_1031_015107/phikon/cache",
             "--grids",
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335/full",
             "--parent",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/task_diagnostic_run_1031_023222/mixed/checkpoint.pt",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/task_seed2_run_1031_023222/mixed/checkpoint.pt",
             "--training",
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/task_diagnostic_manifest_1031_023222/mixed.jsonl",
             "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740/image_only",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/pilot/image_only",
             "--gate-acceptance",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_prompt_gate_1031_150514/independent_gate_acceptance.json"
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/gate/independent_gate_acceptance.json"
           ]
         },
-        "runtime_observation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740/runtime_observation.json",
-        "observed_at": "2026-10-31T15:10:18.977807+08:00",
+        "runtime_observation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/runtime_observation.json",
+        "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/gate/independent_gate_acceptance.json",
+        "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048/contract.json",
         "acceptance": null,
-        "quality_outcome": "not_evaluated",
-        "validation_manifest_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740/validation_manifest_acceptance.json"
+        "quality_outcome": "not_evaluated"
       }
     },
     "P2": {
@@ -667,9 +757,9 @@
     }
   ],
   "next_actions": [
-    "Monitor existing continuous_cell_pilot_1031_150740 live coordinator/worker and stage; no duplicate launch or frozen source edits",
-    "After all three fixed1000x4 arms finish and all3711 masks per arm independently replay, compare preregistered remote macroDice and all cost guards, including LEMON vs original XCell",
-    "Keep all per-class/rare negative results, original80 guard failure/local tradeoff, cap255 and development exposure; no WSI/tokenizer or independent-confirmation claim"
+    "Monitor existing continuous_cell_seed2_1031_153048 real coordinator/worker; no duplicate launch or frozen source edits",
+    "After secondseed three3711-mask acceptances and same comparison, aggregate both seeds, retain intervals/rare NA and2000-to3000 starting-point regression; do not equate point-guard pass with superiority",
+    "Finish explicit P1 joint adaptation/stain sensitivity obligations under bounded contracts before claiming phase complete; P2/P3/P4/P5/P6 remain unfinished"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -786,5 +876,10 @@
       "repair": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_grids_layout_repair_1031_145335",
       "biological_hypothesis_failure": false
     }
+  ],
+  "remaining_explicit_P1_requirements": [
+    "P1I single selected-image-candidate limited joint adaptation lacks accepted evidence in active route",
+    "P1C stain sensitivity lacks accepted evidence",
+    "Complete independent secondseed cell effect/guard assessment; preserve starting-point regression and all costs"
   ]
 }

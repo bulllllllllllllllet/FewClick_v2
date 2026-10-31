@@ -3496,3 +3496,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_prompt_gate_1031_150514`（complete）与`/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_pilot_1031_150740`（running）；源/权重/任务/缓存SHA冻结，真实PID/命令/日志见contract/history/runtime_observation，尚无正式质量结果。
 - Docs record: `docs/运行记录/模型实验/运行记录_CVPR连续细胞残差三臂门控与Pilot_1031_150514.md`（运行记录，原始输入记录保留）。
 - Commit: 本条随实现提交，见git history。
+
+## 2026-10-31T15:33:29.848744+08:00
+
+- Purpose: 接受首seed连续细胞三臂比较、审计probe来源不确定性，按原守门分支启动独立第二seed复验。
+- Changed: compare_continuous_pilots.py、audit_cell_probe_uncertainty.py及goal/registry/current record。
+- Validation: 真实三臂3711mask接受共11133，任务/起点/消费/权重/源码SHA与六项预登记守门核验通过；LEMON相对XCell主门槛未通过、区间跨0/父模型回落/局部代价保留。186cell×6固定预测F1与旧接受完全一致，99field/57slide/41patient bootstrap完成，无重训/改split。第二seed三臂真实门控通过，正式训练running。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_comparison_context_1031_152820`、`/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_probe_source_uncertainty_1031_151743`、`/nfs-medical3/zyh/fewclick_v2/cvpr_research/continuous_cell_seed2_1031_153048`；源码/权重/数据SHA与真实worker/命令/日志在各contract/history/report，原分析快照保留。
+- Docs record: `docs/运行记录/模型实验/运行记录_CVPR连续细胞残差三臂门控与Pilot_1031_150514.md`。
+- Commit: 本条随实现提交，见git history。
