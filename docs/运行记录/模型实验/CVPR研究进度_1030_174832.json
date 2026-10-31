@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T04:30:56.625146+08:00",
+  "updated_at": "2026-11-01T04:34:02.174984+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,7 +13,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P1",
-  "current_status": "preparing",
+  "current_status": "running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -320,7 +320,7 @@
         "terminal_observation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421/milestone_observation.json"
       },
       "limited_joint_adaptation": {
-        "status": "preparing",
+        "status": "running",
         "protocol": "docs/建议/模型与训练/方案_CVPR_Phikon单候选有限联合适配与P1收尾_1031_163819.md",
         "capacity": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_capacity_1031_162558/capacity.json",
         "training_tasks": {
@@ -353,7 +353,7 @@
           "acceptance_worker_pid": 2911826,
           "exit_code": 0
         },
-        "formal_training_started": false,
+        "formal_training_started": true,
         "data_loss_metric_integration": {
           "status": "complete",
           "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/joint_data_gate_1101_043006/data/acceptance.json",
@@ -361,6 +361,37 @@
           "exit_code": 0,
           "masks_replayed": 16,
           "scope": "8 train tasks each arm; formal trainer/full3711 validation pending"
+        },
+        "trainer_gate": {
+          "status": "complete",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/joint_trainer_gate_1101_043209",
+          "masks_replayed": 40,
+          "initial_parameters_and_logits_equal": true
+        },
+        "formal_pilot": {
+          "status": "running",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_pilot_1101_043337",
+          "observed_at": "2026-11-01T04:34:02.174984+08:00",
+          "stage": {
+            "status": "running",
+            "stage": "frozen_train",
+            "worker_pid": 416957,
+            "command": [
+              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+              "-u",
+              "-m",
+              "benchmarks.v5.encoder_research.train_joint_pilot",
+              "--output",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_pilot_1101_043337/frozen",
+              "--arm",
+              "frozen",
+              "--gate-root",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/joint_trainer_gate_1101_043209"
+            ]
+          },
+          "worker_alive": true,
+          "acceptance": null,
+          "quality_outcome": "not_evaluated"
         }
       }
     },
@@ -976,9 +1007,9 @@
     }
   ],
   "next_actions": [
-    "Implement P1I matched frozen-vs-last-block trainer with accepted4000 tasks and accepted1737 prefix cache",
-    "Before formal two-arm1000x4 training, run actual training/evaluation integration gate and independent mask/metric replay; no new recipe or sweep",
-    "Preserve original guards and negatives; seed2 only on success; P1C stain sensitivity/costs still required; P1 incomplete"
+    "Monitor existing phikon_joint_pilot_1101_043337 process and logs; no duplicate launch or live source edits",
+    "After both full3711 independent acceptances, compare original six guards and per-class/source limitations; seed2 only if pass",
+    "P1C stain sensitivity/costs and P1 audit remain before P2; no premature WSI promotion"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

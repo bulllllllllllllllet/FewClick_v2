@@ -3550,3 +3550,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/joint_data_gate_1101_043006; contract records command/code SHA/GPU3/CPU2; no formal quality claim.
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md.
 - Commit: this commit; formal trainer and full3711 evaluation still pending.
+
+## 2026-11-01T04:34:02.174984+08:00
+
+- Purpose: Implement and validate the fixed Phikon two-arm trainer, then launch the preregistered formal pilot.
+- Changed: train_joint_pilot.py; goal, registry, current run record.
+- Validation: joint_trainer_gate_1101_043209 — both two-update gates plus independent acceptance exit0, all40 real masks/metrics replayed, common initial state/logits exact, fresh optimizer continuation exact; public weight SHA checked. Formal worker416957 confirmed alive; launch is not completion.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_pilot_1101_043337; gate under same parent; commands/source SHA/real PIDs/logs persisted.
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md.
+- Commit: this commit; full3711 evaluation/quality comparison pending.
