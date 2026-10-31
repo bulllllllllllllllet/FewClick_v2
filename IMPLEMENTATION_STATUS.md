@@ -3532,3 +3532,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_analysis_1031_162255; phikon_joint_capacity_1031_162558; phikon_joint_tasks_1031_222610; phikon_joint_gate_1031_223143; phikon_prefix_1031_223355.
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md; docs/建议/模型与训练/方案_CVPR_Phikon单候选有限联合适配与P1收尾_1031_163819.md; prior frozen-decoder record closed. Formal trainer/evaluation integration and independent mask metrics still pending; P1 and downstream phases incomplete.
 - Commit: this commit (hash available in Git history).
+
+## 2026-10-31T22:38:47.646804+08:00
+
+- Purpose: Accept all1737 immutable Phikon prefix caches and correct native Goal status.
+- Changed: goal.md, CVPR registry and current Phikon run record; implementation is commit3f4c48a.
+- Validation: phikon_prefix_cache build/accept — both exit0, build worker2895990 and independent acceptance worker2911826. All1737 identities/splits/files/arrays checked, fourteen real gate prefixes exact, no GT read or fitted statistics. No formal training started; trainer integration/evaluation gate still pending. Native get_goal returns usageLimited, so records no longer call it active; user continue authorizes manual work.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_prefix_1031_223355/full/independent_acceptance.json; same root native_goal_observation.json.
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md.
+- Commit: this documentation acceptance commit; implementation3f4c48a.

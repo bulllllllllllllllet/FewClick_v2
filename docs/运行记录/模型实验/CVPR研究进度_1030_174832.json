@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T22:35:23.289757+08:00",
-  "goal_status": "active",
+  "updated_at": "2026-10-31T22:38:47.646804+08:00",
+  "goal_status": "usageLimited",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
@@ -339,25 +339,19 @@
           "scope": "engineering only; trainer integration and independent mask metric replay remain"
         },
         "prefix_cache": {
-          "status": "running",
+          "status": "complete",
           "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_prefix_1031_223355",
           "stage": {
-            "status": "running",
-            "stage": "full_build",
-            "worker_pid": 2895990,
-            "command": [
-              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-              "-u",
-              "-m",
-              "benchmarks.v5.encoder_research.phikon_prefix_cache",
-              "--gate",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_gate_1031_223143/data",
-              "--output",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_prefix_1031_223355/full"
-            ]
+            "status": "complete",
+            "exit_code": 0
           },
           "gate14_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_prefix_1031_223355/gate14/independent_acceptance.json",
-          "gate14_status": "complete"
+          "gate14_status": "complete",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_prefix_1031_223355/full/independent_acceptance.json",
+          "index_sha256": "cf15344c7cd4aec847cd19b302d762753ccd8d7df68bf94f3689abd08181c339",
+          "full_worker_pid": 2895990,
+          "acceptance_worker_pid": 2911826,
+          "exit_code": 0
         },
         "formal_training_started": false
       }
@@ -974,9 +968,9 @@
     }
   ],
   "next_actions": [
-    "Monitor existing phikon_prefix_1031_223355; accept gate14 before full1737; no duplicate launch or live source edits",
-    "After full prefix independent acceptance, implement joint trainer using accepted4000 tasks; real checkpoint/training/evaluation mask replay gate before formal two arms",
-    "Complete one P1I joint recipe; seed2 only if original guards pass; P1C stain sensitivity and costs remain; no WSI or tokenizer promotion yet"
+    "Implement P1I matched frozen-vs-last-block trainer with accepted4000 tasks and accepted1737 prefix cache",
+    "Before formal two-arm1000x4 training, run actual training/evaluation integration gate and independent mask/metric replay; no new recipe or sweep",
+    "Preserve original guards and negatives; seed2 only on success; P1C stain sensitivity/costs still required; P1 incomplete"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1110,5 +1104,7 @@
     "P1I single selected-image limited joint training and independent evaluation acceptance",
     "P1C stain sensitivity and cost evidence; retain all cell negatives",
     "Audit entire P1 acceptance before P2; no promotion based on engineering gates"
-  ]
+  ],
+  "native_goal_observed_at": "2026-10-31T22:36:21.094929+08:00",
+  "execution_authorization": "latest user continue permits manual progress; native Goal not resumed or completed"
 }
