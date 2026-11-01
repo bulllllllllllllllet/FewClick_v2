@@ -3639,3 +3639,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_phikon_zerohead_1101_132824; original failed bridge_phikon_gate_1101_132730.
 - Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
 - Commit: this commit; multiscaleLEMON/full four-arm continuation and formal quality pending.
+
+## 2026-11-01T13:34:51.769505+08:00
+
+- Purpose: Prepare same-cell three-scale LEMON inputs for controlled architecture bridge.
+- Changed: architecture_bridge/cache_multiscale_lemon.py; registry/goal/current record.
+- Validation: real CRC/TIGER train+val4frames/12scales; retained cells935/1020/1020; native10um crop, immutable metadata and train-only transform; fresh encoder replay and CPU reconstruction exact — gate/accept exit0. Full1737 worker3046890 confirmed live, not complete.
+- Artifacts: bridge_lemon_1101_133328; /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_lemon_full_1101_133430.
+- Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
+- Commit: this commit; four-arm training and full acceptance remain pending.
