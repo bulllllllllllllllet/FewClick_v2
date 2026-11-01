@@ -3720,3 +3720,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409.
 - Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
 - Commit: this evidence status commit.
+
+## 2026-11-02T01:19:19.570235+08:00
+
+- Purpose: Accept all restored bridge arms and report fixed comparisons with explicit first-seed limits.
+- Changed: architecture_bridge/compare_restored.py; goal/registry/current record.
+- Validation: actual four accepted3711 mask sets; checkpoint/report hashes, all8000 consumed tasks equal, paired inputs/clicks/validity equal; all budgets/class strata and six guards plus conditional query-space intervals computed — exit0. AllB/C/D versusA pass; D versusB fails primary/local/fat. No final promotion or second-seed completion claim.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_comparison_1102_011833/data/comparison.json; original failed and restored checkpoints retained.
+- Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
+- Commit: this accepted-comparison commit.

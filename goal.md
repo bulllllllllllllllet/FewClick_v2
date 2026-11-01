@@ -12,7 +12,7 @@
 
 当前：**P0 complete；P1 bounded encoder screening complete；P2 preparing**。P1最终接受p1_selection_close_1101_123321/data/acceptance.json：图像冻结Phikon、细胞LEMON10µm为机制研究候选，native XCell对照保留；没有可靠组织替换或WSI晋升。原细胞残差两配方和limited joint阴性/原80守门保持。颜色稳定性和native分环节成本已接受，成本范围不可混用。
 
-用户已授权恢复原训练目标重新训练。bridge_restored_retrain_1101_210409正在GPU3运行固定32train任务/256更新的A基线功能检查；通过预设空间拟合/点击响应门槛后自动执行四臂恢复检查、smoke、各2000×4和3711mask接受。功能checkpoint不作为正式初始化，不使用val挑阈值/配方；任何阶段失败停止、不自动加步重试。原失败四臂/A常数解保留。新fewclick-training-quality skill已安装并验证，原生Goal暂停保持、当前用户授权重训继续，P2词表后置。
+恢复原训练目标后的桥接四臂首seed已complete：各2000×4/3711mask独立接受全exit0。A/B/C/D local Dice40.83/44.92/40.07/42.12%，remote macro18.09/27.05/19.24/25.19%，absentFPA11.64/4.53/10.68/3.71%。全部配对/权重/消费核对及原六守门比较见bridge_restored_comparison_1102_011833/data/comparison.json。B为暂定质量最佳，D较低误报但相对B质量下降；未证明LEMON在Phikon上额外提升。首seed资格不等于独立复验通过；第二seed尚未执行，当前无后台训练，P2/WSI仍后置。原失败配方/A常数结果保留，原生Goal暂停保持。
 
 ## 执行顺序
 

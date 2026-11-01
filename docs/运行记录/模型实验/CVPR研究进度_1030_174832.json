@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T00:15:21.755220+08:00",
+  "updated_at": "2026-11-02T01:19:19.570235+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,7 +13,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P2",
-  "current_status": "restored_objective_formal_training_running",
+  "current_status": "restored_bridge_first_seed_complete",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -1172,9 +1172,9 @@
     }
   ],
   "next_actions": [
-    "Monitor existing restored queue: A complete; B scoring; C/D queued; no duplicate launch or source change",
-    "After all3711 independent acceptances compare matched restored-objective arms and retain first failed recipe separately",
-    "Do not interpret small train-only functional score as generalization or declare final upgrade before full comparison"
+    "First-seed bridge complete; retain B as provisional strongest quality arm, D lower FPA tradeoff; no final replacement claim",
+    "Repeat matched independent seed before confirming backbone/cell replacement; do not declare LEMON superior from probe",
+    "Keep first failed recipe, restored-recipe provenance and full class/source limitations; P2/WSI not automatically promoted"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1501,26 +1501,13 @@
       "unique_cause_proven": false
     },
     "restored_retrain": {
-      "status": "running_formal_queue",
+      "status": "complete",
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409",
       "stage": {
-        "status": "running",
-        "stage": "D_train",
-        "worker_pid": 2541157,
-        "command": [
-          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-          "-u",
-          "-m",
-          "benchmarks.v5.architecture_bridge.train_restored",
-          "--arm",
-          "D",
-          "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409/D",
-          "--gate",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409/gates"
-        ]
+        "status": "complete",
+        "exit_code": 0
       },
-      "worker_alive": true,
+      "worker_alive": false,
       "formal_four_arm_started": true,
       "functional_gate_updates": 256,
       "functional_gate_train_tasks": 32,
@@ -1542,7 +1529,8 @@
       "completed_arms": [
         "A",
         "B",
-        "C"
+        "C",
+        "D"
       ],
       "completed_values_primary": {
         "A": {
@@ -1570,7 +1558,56 @@
         "loss": 1.3146864473819733,
         "seconds": 1049.741204738617
       },
-      "four_arm_complete": false
+      "four_arm_complete": true,
+      "comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_comparison_1102_011833/data/comparison.json",
+      "values": {
+        "A": {
+          "remote_macro_Dice": 0.18092718763103538,
+          "remote_Dice": 0.16929175494133702,
+          "remote_BF1": 0.03065545730277534,
+          "absent_FPA": 0.1164257633227251,
+          "local_Dice": 0.40832651559933164,
+          "local_BF1": 0.04933264011836506,
+          "small_Dice": 0.12224296879414677,
+          "fat_Dice": 0.3067240660555562
+        },
+        "B": {
+          "remote_macro_Dice": 0.27051611519456853,
+          "remote_Dice": 0.24878329287391693,
+          "remote_BF1": 0.03877063675245387,
+          "absent_FPA": 0.045259719770792,
+          "local_Dice": 0.4492070294653869,
+          "local_BF1": 0.06116306872350262,
+          "small_Dice": 0.13777388958855066,
+          "fat_Dice": 0.36813321071207356
+        },
+        "C": {
+          "remote_macro_Dice": 0.19239441519668682,
+          "remote_Dice": 0.18165442281846103,
+          "remote_BF1": 0.02860656257226259,
+          "absent_FPA": 0.10679137010542923,
+          "local_Dice": 0.40067101397707966,
+          "local_BF1": 0.04249313561357266,
+          "small_Dice": 0.12183883896879427,
+          "fat_Dice": 0.3346224797428637
+        },
+        "D": {
+          "remote_macro_Dice": 0.2519280641647592,
+          "remote_Dice": 0.22783712582970433,
+          "remote_BF1": 0.03447532141234741,
+          "absent_FPA": 0.0370732555213936,
+          "local_Dice": 0.4211853683115279,
+          "local_BF1": 0.05409613143710156,
+          "small_Dice": 0.1411888329621145,
+          "fat_Dice": 0.31913706569312705
+        }
+      },
+      "seed2_eligible": [
+        "B",
+        "C",
+        "D"
+      ],
+      "fullWSI_promoted": false
     }
   }
 }
