@@ -12,7 +12,7 @@
 
 当前：**P0 complete；P1仍preparing。细胞残差两种配方已完成比较且均未获质量晋升，停止这一家族；转回P1I既定Phikon有限联合适配。** 冻结修订A全部3711mask精确复现父模型，remote macroDice A/XCell/LEMON=37.01%/33.85%/36.24%，两细胞臂未过主门槛，不启动第二seed，不再试第三配方。该阴性结果不否定所有细胞encoder或词汇方案。原80对守门及完整935对开发集限定保持。
 
-Phikon有限联合适配已complete：两臂各1000×4及3711mask独立接受，remote macroDice frozen=.3654245、joint=.3650380，增量−0.0387pp，未过原+1pp主守门；其余五代价守门通过。停止此单配方，不启动第二seed、不扫描层/LR；保留冻结候选，不把阴性外推到全部微调。证据phikon_joint_comparison_1101_122214/data/comparison.json。下一步P1C固定颜色敏感性/成本：186val×5共930canonical输入已接受，encoder/probe稳定性尚未执行。P1整体/P2–P6不提前完成。
+Phikon有限联合适配已complete：两臂各1000×4及3711mask独立接受，remote macroDice frozen=.3654245、joint=.3650380，增量−0.0387pp，未过原+1pp主守门；其余五代价守门通过。停止此单配方，不启动第二seed、不扫描层/LR；保留冻结候选，不把阴性外推到全部微调。证据phikon_joint_comparison_1101_122214/data/comparison.json。下一步P1C固定颜色敏感性/成本：186val×5共930canonical输入和三encoder固定probe稳定性已接受，identity预测均精确复现；结果见cell_color_probe_1101_122516/data/report.json。P1整体/P2–P6不提前完成。
 
 ## 执行顺序
 
@@ -90,3 +90,5 @@ P1集成进展（2026-11-01T04:30:56.625146+08:00）：新JointData实际缓存�
 P1正式启动（2026-11-01T04:34:02.174984+08:00）：统一trainer真实梯度/重载/继续训练及40mask独立验收通过，固定末步两臂正式running；真实PID/命令/源码SHA在registry/current record和产物history.jsonl。
 
 P1比较准备（2026-11-01T04:35:31.858995+08:00）：compare_joint_pilots已对40真实gate rows验证共同起点/身份与分组汇总；正式质量比较仍等待两臂完整3711接受。已有worker416957现场存活，最近冻结臂326/1000更新；不重复启动。
+
+P1C敏感性（2026-11-01T12:25:45.437974+08:00）：三臂930特征和固定PCA/head/train gallery评估通过，identity F1 CTransPath点中心/LEMON/Phikon=.6389/.7235/.6744；四扰动最小F1=.6052/.6829/.6584，全部条件/器官与暖机后含读取预处理cost保留。仅合成颜色开发probe，不替代外部域或组织mask收益；下一步完整P1接受审计，P2–P6未完成。

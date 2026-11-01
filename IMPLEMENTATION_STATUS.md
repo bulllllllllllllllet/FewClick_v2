@@ -3577,3 +3577,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_comparison_1101_122214/data/comparison.json; /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_color_inputs_1101_122151.
 - Docs record: current Phikon record; docs/建议/模型与训练/方案_CVPR细胞颜色敏感性固定合同_1101_122151.md.
 - Commit: this commit; color encoder/probe evaluation and P1 audit remain.
+
+## 2026-11-01T12:25:45.437974+08:00
+
+- Purpose: Execute fixed cell color sensitivity using immutable encoders/PCA/probes/gallery.
+- Changed: extract_cell_color_features.py, evaluate_cell_color_probe.py, goal, registry, current record.
+- Validation: real three-arm930-feature extraction exit0; all186 identity features reproduce within1e-5, paired predictions exact and logits within1e-5. CPU fixed-probe evaluation exit0; disk predictions rescored for all15 conditions. No refitting or condition selection.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_color_features_1101_122407; /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_color_probe_1101_122516/data/report.json.
+- Docs record: current Phikon run record; fixed color protocol1101_122151.
+- Commit: this commit; full P1 acceptance/cost audit and P2–P6 remain.
