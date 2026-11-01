@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T01:19:19.570235+08:00",
+  "updated_at": "2026-11-02T01:26:09.100646+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,7 +13,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P2",
-  "current_status": "restored_bridge_first_seed_complete",
+  "current_status": "bridge_independent_seed2_functional_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -1172,9 +1172,9 @@
     }
   ],
   "next_actions": [
-    "First-seed bridge complete; retain B as provisional strongest quality arm, D lower FPA tradeoff; no final replacement claim",
-    "Repeat matched independent seed before confirming backbone/cell replacement; do not declare LEMON superior from probe",
-    "Keep first failed recipe, restored-recipe provenance and full class/source limitations; P2/WSI not automatically promoted"
+    "Monitor existing secondseed functional/recovery/smoke/formal queue; no duplicate launch or source edits",
+    "After terminal all4 acceptances run unchanged comparison separately then paired two-seed synthesis; keep real independent init distinction",
+    "Only confirmed stable choices inform P2 preregistration; P3–P6/WSI/independent confirmation remain required"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1608,6 +1608,31 @@
         "D"
       ],
       "fullWSI_promoted": false
+    },
+    "second_seed": {
+      "status": "running_functional_gate",
+      "seed": 20261102,
+      "first_seed": 20261101,
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_orchestration_1102_012458",
+      "stage": {
+        "status": "running",
+        "stage": "functional_A",
+        "worker_pid": 2964584,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.architecture_bridge.functional_replication",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_orchestration_1102_012458/functional_A"
+        ]
+      },
+      "worker_alive": true,
+      "only_research_change": "initialization seed",
+      "formal_training_started": false,
+      "native_goal_observed": "paused",
+      "user_resume_authorized": true,
+      "orchestration_repair_from": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_1102_012347"
     }
   }
 }
