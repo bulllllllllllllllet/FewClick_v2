@@ -3684,3 +3684,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_outcome_audit_1101_200853/audit.json; original bridge_training_1101_155846 retained.
 - Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
 - Commit: this outcome audit commit; baseline diagnosis pending.
+
+## 2026-11-01T20:44:06.879106+08:00
+
+- Purpose: Diagnose all-empty bridge control using fixed checkpoints and actual train objective.
+- Changed: architecture_bridge/diagnose_collapse.py; diagnosis document; registry/goal/current record.
+- Validation: real four-arm14-task fixed forward/activation/assignment/prompt-swap checks, A graph-bypass/raw-cell counterfactuals — worker1610330 exit0. Training4000 constant predictor objective analytically recomputed. A nearconstant on train and dev; original-vs-bridge objective difference verified; no unique-cause or repair-success claim.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_collapse_diagnosis_1101_203603; all checkpoints preserved; training updates0/threshold unchanged.
+- Docs record: docs/运行记录/模型实验/诊断_桥接基线常数输出与训练目标差异_1101_204406.md.
+- Commit: this diagnosis commit.

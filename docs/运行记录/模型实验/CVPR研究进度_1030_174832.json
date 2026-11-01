@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T20:09:30.012908+08:00",
+  "updated_at": "2026-11-01T20:44:06.879106+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1172,9 +1172,9 @@
     }
   ],
   "next_actions": [
-    "Diagnose A all-empty baseline at fixed final checkpoint: logits/probabilities, train/dev behavior, region assignments and head/backbone/cell activation scale",
-    "Keep all original checkpoints/results and thresholds; do not call gains over degenerate baseline valid upgrades or start seed2",
-    "Only after diagnosis preregister a matched repair across relevant arms; P2 remains deferred"
+    "Preregister restoration of common original episode objective and deterministic click supervision",
+    "Train-only small-sample functional gate must verify nonconstant spatial masks and prompt responsiveness, beyond finite loss/reload",
+    "Only after repaired baseline functional gate, preregister matched four-arm rerun; no threshold selection or immediate seed2"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1486,6 +1486,19 @@
         }
       },
       "valid_upgrade_claim": false
+    },
+    "collapse_diagnosis": {
+      "status": "complete",
+      "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_collapse_diagnosis_1101_203603/data/report.json",
+      "summary": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_collapse_diagnosis_1101_203603/summary.json",
+      "document": "docs/运行记录/模型实验/诊断_桥接基线常数输出与训练目标差异_1101_204406.md",
+      "training_updates": 0,
+      "observed_A_probability": [
+        0.22858081758022308,
+        0.22905899584293365
+      ],
+      "loss_recipe_difference_verified": true,
+      "unique_cause_proven": false
     }
   }
 }
