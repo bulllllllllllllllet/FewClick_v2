@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T22:53:41.981463+08:00",
+  "updated_at": "2026-11-02T00:15:21.755220+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1505,17 +1505,17 @@
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409",
       "stage": {
         "status": "running",
-        "stage": "B_train",
-        "worker_pid": 1958746,
+        "stage": "D_train",
+        "worker_pid": 2541157,
         "command": [
           "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
           "-u",
           "-m",
           "benchmarks.v5.architecture_bridge.train_restored",
           "--arm",
-          "B",
+          "D",
           "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409/B",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409/D",
           "--gate",
           "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409/gates"
         ]
@@ -1538,7 +1538,39 @@
         "small_Dice": 0.12224296879414677,
         "fat_Dice": 0.3067240660555562
       },
-      "A_empty_masks": 858
+      "A_empty_masks": 858,
+      "completed_arms": [
+        "A",
+        "B",
+        "C"
+      ],
+      "completed_values_primary": {
+        "A": {
+          "local_Dice": 0.40832651559933164,
+          "remote_macro_Dice": 0.18092718763103538,
+          "absent_FPA": 0.1164257633227251
+        },
+        "B": {
+          "local_Dice": 0.4492070294653869,
+          "remote_macro_Dice": 0.27051611519456853,
+          "absent_FPA": 0.045259719770792
+        },
+        "C": {
+          "local_Dice": 0.40067101397707966,
+          "remote_macro_Dice": 0.19239441519668682,
+          "absent_FPA": 0.10679137010542923
+        }
+      },
+      "D_training_status": {
+        "status": "training",
+        "arm": "D",
+        "worker_pid": 2541157,
+        "updates": 701,
+        "total_updates": 2000,
+        "loss": 1.3146864473819733,
+        "seconds": 1049.741204738617
+      },
+      "four_arm_complete": false
     }
   }
 }

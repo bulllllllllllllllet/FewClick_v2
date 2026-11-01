@@ -3711,3 +3711,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409/progress_observation.json and accepted A.
 - Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
 - Commit: this evidence status commit.
+
+## 2026-11-02T00:15:21.755220+08:00
+
+- Purpose: Record accepted restored A/B/C results and live final D arm.
+- Changed: goal/registry/current record only.
+- Validation: terminal A/B/C train/3711 independent accept logs exit0; recomputed original primary summaries from row files. D worker2541157 confirmed live at701/2000; no full-four-arm claim.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409.
+- Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
+- Commit: this evidence status commit.
