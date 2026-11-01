@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T16:01:30.810883+08:00",
+  "updated_at": "2026-11-01T20:09:30.012908+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,7 +13,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P2",
-  "current_status": "bridge_training_running",
+  "current_status": "bridge_complete_baseline_degenerate",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -1172,9 +1172,9 @@
     }
   ],
   "next_actions": [
-    "Monitor existing bridge_training_1101_155846 actual worker/logs; no duplicate launch or live source edits",
-    "Pipeline automatically serializes A/B/C/D2000x4 and each3711 independent mask acceptance; stop on error without retry",
-    "After all four full acceptances compare fixed original guards B-A C-A D-A and factorial interaction, retain all negatives; seed2 conditional; P2 deferred"
+    "Diagnose A all-empty baseline at fixed final checkpoint: logits/probabilities, train/dev behavior, region assignments and head/backbone/cell activation scale",
+    "Keep all original checkpoints/results and thresholds; do not call gains over degenerate baseline valid upgrades or start seed2",
+    "Only after diagnosis preregister a matched repair across relevant arms; P2 remains deferred"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1384,28 +1384,15 @@
       "total_masks_replayed": 32
     },
     "formal_training": {
-      "status": "running",
+      "status": "complete",
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_training_1101_155846",
       "gate": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_deterministic_gate_1101_155554",
       "observed_at": "2026-11-01T16:01:30.810883+08:00",
       "stage": {
-        "status": "running",
-        "stage": "A_train",
-        "worker_pid": 3808606,
-        "command": [
-          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-          "-u",
-          "-m",
-          "benchmarks.v5.architecture_bridge.train_bridge",
-          "--arm",
-          "A",
-          "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_training_1101_155846/A",
-          "--gate",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_deterministic_gate_1101_155554"
-        ]
+        "status": "complete",
+        "exit_code": 0
       },
-      "worker_alive": true,
+      "worker_alive": false,
       "training_status": {
         "status": "training",
         "arm": "A",
@@ -1420,7 +1407,85 @@
       "source_tasks": 4000,
       "epochs": 2,
       "smoke_rows_replayed": 12,
-      "quality_outcome": "not_evaluated"
+      "quality_outcome": "A all3711 masks empty; no valid replacement upgrade claim",
+      "acceptance_rows_per_arm": 3711
+    },
+    "outcome_audit": {
+      "status": "completed_training_and_replay_but_baseline_degenerate",
+      "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_outcome_audit_1101_200853/audit.json",
+      "values": {
+        "A": {
+          "remote_macro_Dice": 0.0,
+          "remote_Dice": 0.0,
+          "remote_BF1": 0.0,
+          "absent_FPA": 0.0,
+          "local_Dice": 0.0,
+          "local_BF1": 0.0,
+          "small_Dice": 0.0,
+          "fat_Dice": 0.0
+        },
+        "B": {
+          "remote_macro_Dice": 0.20093555271913732,
+          "remote_Dice": 0.16982524803968038,
+          "remote_BF1": 0.01758487264032312,
+          "absent_FPA": 0.049540469255286226,
+          "local_Dice": 0.29775795135551614,
+          "local_BF1": 0.032171022206580906,
+          "small_Dice": 0.036177710693150206,
+          "fat_Dice": 0.25325105130779335
+        },
+        "C": {
+          "remote_macro_Dice": 0.0957643365333098,
+          "remote_Dice": 0.07997806593394381,
+          "remote_BF1": 0.00638255942309565,
+          "absent_FPA": 0.08688003910180953,
+          "local_Dice": 0.11612263677689146,
+          "local_BF1": 0.009651267921282226,
+          "small_Dice": 0.009490993383859182,
+          "fat_Dice": 0.032553899529333644
+        },
+        "D": {
+          "remote_macro_Dice": 0.2263141940338505,
+          "remote_Dice": 0.1953451721817676,
+          "remote_BF1": 0.027052568389889346,
+          "absent_FPA": 0.12777054616285272,
+          "local_Dice": 0.3409110418096655,
+          "local_BF1": 0.03602948586537853,
+          "small_Dice": 0.06213454504222301,
+          "fat_Dice": 0.2556810013330466
+        }
+      },
+      "diagnostics": {
+        "A": {
+          "empty_masks": 3711,
+          "full_masks": 0,
+          "total_masks": 3711,
+          "training_seconds": 1598.5929839611053,
+          "train_and_score_seconds": 2204.2974014282227
+        },
+        "B": {
+          "empty_masks": 2339,
+          "full_masks": 36,
+          "total_masks": 3711,
+          "training_seconds": 2917.749939918518,
+          "train_and_score_seconds": 4298.16432261467
+        },
+        "C": {
+          "empty_masks": 2673,
+          "full_masks": 52,
+          "total_masks": 3711,
+          "training_seconds": 1673.0845489501953,
+          "train_and_score_seconds": 2299.706128358841
+        },
+        "D": {
+          "empty_masks": 1762,
+          "full_masks": 60,
+          "total_masks": 3711,
+          "training_seconds": 2987.86425447464,
+          "train_and_score_seconds": 4406.569951295853
+        }
+      },
+      "valid_upgrade_claim": false
     }
   }
 }

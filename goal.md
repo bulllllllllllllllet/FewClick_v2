@@ -12,7 +12,7 @@
 
 当前：**P0 complete；P1 bounded encoder screening complete；P2 preparing**。P1最终接受p1_selection_close_1101_123321/data/acceptance.json：图像冻结Phikon、细胞LEMON10µm为机制研究候选，native XCell对照保留；没有可靠组织替换或WSI晋升。原细胞残差两配方和limited joint阴性/原80守门保持。颜色稳定性和native分环节成本已接受，成本范围不可混用。
 
-当前优先执行用户授权的原架构桥接四臂对照：确定性完整恢复门控A/B/C/D及统一trainer smoke均已接受，bridge_training_1101_155846在GPU3串行运行A/B/C/D各2000×4及各3711mask独立复算。监控既有真实worker/log，不重复启动、不修改活跃源码/预算/阈值。全部正式接受后做固定六守门与交互分析；P2词表后置，P3–P6未完成，不能凭筛选或启动宣布升级。
+用户授权桥接四臂训练和评估已完成：四组各2000×4、各3711mask独立复算全部exit0。但A基线3711保存mask全部为空，local/remote Dice均0；当前不能用其他臂相对退化基线的增幅证明升级。结果/分层保留在bridge_outcome_audit_1101_200853/audit.json。下一步先诊断基线退化，禁止改阈值挑结果、盲重跑或直接seed2，P2继续后置；主Goal暂停状态保持。
 
 ## 执行顺序
 
