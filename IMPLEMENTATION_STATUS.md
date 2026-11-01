@@ -3613,3 +3613,11 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_selection_close_1101_123321/data/acceptance.json; same root selection.json/worker command and log.
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR_P1接受与P2词汇准备_1101_123321.md; docs/建议/模型与训练/结论_CVPR_P1编码器选择与阶段边界_1101_123321.md.
 - Commit: this commit; P2 contract/implementation pending, P3–P6 unfulfilled.
+
+## 2026-11-01T12:37:36.822380
+
+- Purpose: User-requested paused-goal P0/P1 audit and original-algorithm comparison.
+- Changed: docs/运行记录/模型实验/审查_P0_P1流程缺陷与原始算法差异_1101_123736.md; documentation only, no experiment restart or model edit.
+- Validation: inspected actual shared_prompt/continuous_prompt/image_features/cell_inputs/cell_grids and close_p1_evidence; read P0/three-image/two-seed/frozen/joint reports; reopened1737 catalog/raw index and confirmed670 truncated frames. Distinguishes engineering acceptance from architecture-transfer validation.
+- Docs record: docs/运行记录/模型实验/审查_P0_P1流程缺陷与原始算法差异_1101_123736.md.
+- Commit: this review commit.
