@@ -12,7 +12,7 @@
 
 当前：**P0 complete；P1仍preparing。细胞残差两种配方已完成比较且均未获质量晋升，停止这一家族；转回P1I既定Phikon有限联合适配。** 冻结修订A全部3711mask精确复现父模型，remote macroDice A/XCell/LEMON=37.01%/33.85%/36.24%，两细胞臂未过主门槛，不启动第二seed，不再试第三配方。该阴性结果不否定所有细胞encoder或词汇方案。原80对守门及完整935对开发集限定保持。
 
-当前按[Phikon有限联合适配合同](docs/建议/模型与训练/方案_CVPR_Phikon单候选有限联合适配与P1收尾_1031_163819.md)正式运行：4000任务/1737前缀及统一trainer两臂共40mask门控均已接受；phikon_joint_pilot_1101_043337在GPU3串行执行两臂各1000×4及各3711mask独立验收。监控已有worker，禁止重复启动/改源码/改数据/LR/阈值或中途选模。尚无正式质量结果；两臂全接受后做原六守门比较，通过才seed2。P1C染色敏感性/成本仍缺，P1/P2–P6不提前完成。
+Phikon有限联合适配已complete：两臂各1000×4及3711mask独立接受，remote macroDice frozen=.3654245、joint=.3650380，增量−0.0387pp，未过原+1pp主守门；其余五代价守门通过。停止此单配方，不启动第二seed、不扫描层/LR；保留冻结候选，不把阴性外推到全部微调。证据phikon_joint_comparison_1101_122214/data/comparison.json。下一步P1C固定颜色敏感性/成本：186val×5共930canonical输入已接受，encoder/probe稳定性尚未执行。P1整体/P2–P6不提前完成。
 
 ## 执行顺序
 

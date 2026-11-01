@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T04:35:31.858995+08:00",
+  "updated_at": "2026-11-01T12:22:49.957620+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,7 +13,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P1",
-  "current_status": "running",
+  "current_status": "preparing",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -320,7 +320,7 @@
         "terminal_observation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/full_transfer935_1031_141421/milestone_observation.json"
       },
       "limited_joint_adaptation": {
-        "status": "running",
+        "status": "complete",
         "protocol": "docs/建议/模型与训练/方案_CVPR_Phikon单候选有限联合适配与P1收尾_1031_163819.md",
         "capacity": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_capacity_1031_162558/capacity.json",
         "training_tasks": {
@@ -369,29 +369,19 @@
           "initial_parameters_and_logits_equal": true
         },
         "formal_pilot": {
-          "status": "running",
+          "status": "complete",
           "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_pilot_1101_043337",
           "observed_at": "2026-11-01T04:35:31.858995+08:00",
           "stage": {
-            "status": "running",
-            "stage": "frozen_train",
-            "worker_pid": 416957,
-            "command": [
-              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-              "-u",
-              "-m",
-              "benchmarks.v5.encoder_research.train_joint_pilot",
-              "--output",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_pilot_1101_043337/frozen",
-              "--arm",
-              "frozen",
-              "--gate-root",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/joint_trainer_gate_1101_043209"
-            ]
+            "status": "complete",
+            "exit_code": 0
           },
-          "worker_alive": true,
-          "acceptance": null,
-          "quality_outcome": "not_evaluated",
+          "worker_alive": false,
+          "acceptance": [
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_pilot_1101_043337/frozen/independent_acceptance.json",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_pilot_1101_043337/joint/independent_acceptance.json"
+          ],
+          "quality_outcome": "primary_gain_failed; five cost guards pass",
           "training_status": {
             "status": "training",
             "worker_pid": 416957,
@@ -408,6 +398,54 @@
           "status": "complete",
           "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/joint_comparison_gate_1101_043455/data/comparison.json",
           "scope": "40 real gate rows only; no quality decision"
+        },
+        "comparison": {
+          "status": "complete",
+          "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_comparison_1101_122214/data/comparison.json",
+          "values": {
+            "frozen": {
+              "remote_macro_Dice": 0.3654245353736739,
+              "remote_Dice": 0.34637490984490593,
+              "remote_BF1": 0.15104139718315046,
+              "absent_FPA": 0.022680279188859225,
+              "local_Dice": 0.6505285700287881,
+              "local_BF1": 0.2528318803927275,
+              "small_Dice": 0.44614393571255617,
+              "fat_Dice": 0.7111179853637931
+            },
+            "joint": {
+              "remote_macro_Dice": 0.365037952165808,
+              "remote_Dice": 0.34604359137249435,
+              "remote_BF1": 0.15119337055986518,
+              "absent_FPA": 0.022561641782983068,
+              "local_Dice": 0.6508315270344918,
+              "local_BF1": 0.2531179559790658,
+              "small_Dice": 0.44696910801611195,
+              "fat_Dice": 0.711476329357253
+            }
+          },
+          "decision": {
+            "tests": {
+              "primary_Dice_gain": false,
+              "remote_BF1": true,
+              "absent_FPA": true,
+              "local_Dice": true,
+              "small_Dice": true,
+              "fat_Dice": true
+            },
+            "pass_all": false,
+            "candidate_minus_reference": {
+              "remote_macro_Dice": -0.0003865832078659426,
+              "remote_Dice": -0.0003313184724115792,
+              "remote_BF1": 0.00015197337671471467,
+              "absent_FPA": -0.0001186374058761569,
+              "local_Dice": 0.00030295700570370787,
+              "local_BF1": 0.0002860755863382525,
+              "small_Dice": 0.0008251723035557768,
+              "fat_Dice": 0.00035834399345990864
+            }
+          },
+          "eligible_for_second_seed": false
         }
       }
     },
@@ -794,7 +832,15 @@
         "eligible_for_second_seed": [],
         "fullWSI_promoted": false
       },
-      "residual_family_decision": "stop; two substantive recipes exhausted; no third recipe or second seed for failed frozen revision"
+      "residual_family_decision": "stop; two substantive recipes exhausted; no third recipe or second seed for failed frozen revision",
+      "color_sensitivity": {
+        "status": "preparing",
+        "protocol": "docs/建议/模型与训练/方案_CVPR细胞颜色敏感性固定合同_1101_122151.md",
+        "input_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_color_inputs_1101_122151/data/acceptance.json",
+        "cells": 186,
+        "variants": 930,
+        "encoder_evaluation_started": false
+      }
     },
     "P2": {
       "title": "连续/固定词表/可学习词汇",
@@ -1023,9 +1069,9 @@
     }
   ],
   "next_actions": [
-    "Monitor existing phikon_joint_pilot_1101_043337 process and logs; no duplicate launch or live source edits",
-    "After both full3711 independent acceptances, compare original six guards and per-class/source limitations; seed2 only if pass",
-    "P1C stain sensitivity/costs and P1 audit remain before P2; no premature WSI promotion"
+    "Evaluate fixed color perturbations with frozen existing transforms/probes/train gallery; identity replay gate before all conditions",
+    "Complete P1C cost/sensitivity and full P1 acceptance audit; keep limited joint negative and all class n/NA",
+    "Then preregister P2 continuous/fixed128cluster/learned vocabulary comparison with controlled downstream; no WSI promotion yet"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1075,6 +1121,12 @@
       "scope": "fixed75channel residual with76800 trainable projection; shared decoder fixed; same repeated4000 episodes; not all encoders",
       "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_only_analysis_1031_162255/result/comparison.json",
       "decision": "stop both residual recipes; no secondseed since firstseed primary fails"
+    },
+    {
+      "id": "P1I_Phikon_last_block_joint",
+      "scope": "one preregistered last-block+norm1000x4 recipe; not all finetuning",
+      "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_comparison_1101_122214/data/comparison.json",
+      "decision": "retain frozen candidate; no seed2 or layer/LR scan"
     }
   ],
   "deferred": [

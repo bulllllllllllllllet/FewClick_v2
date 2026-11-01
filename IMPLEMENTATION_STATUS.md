@@ -3568,3 +3568,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/joint_comparison_gate_1101_043455/data/comparison.json; original worker416957 confirmed live, frozen updates326/1000.
 - Docs record: docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md.
 - Commit: this commit.
+
+## 2026-11-01T12:22:49.957620+08:00
+
+- Purpose: Accept completed Phikon joint comparison and prepare fixed color-sensitivity inputs.
+- Changed: prepare_cell_color_stress.py; color protocol; goal, registry, current record.
+- Validation: both formal3711 independent acceptances and compare_joint_pilots exit0. Remote macroDice frozen.365425/joint.365038; primary gain fails, five cost guards pass; no seed2. Color input module actual186val/930 PNGs: original canonical SHA, independent power-formula perturbation and disk pixel replay all pass.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/phikon_joint_comparison_1101_122214/data/comparison.json; /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_color_inputs_1101_122151.
+- Docs record: current Phikon record; docs/建议/模型与训练/方案_CVPR细胞颜色敏感性固定合同_1101_122151.md.
+- Commit: this commit; color encoder/probe evaluation and P1 audit remain.
