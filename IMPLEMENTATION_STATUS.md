@@ -3702,3 +3702,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409; source/skill snapshots, preregistered functional thresholds and automatic dependent queue, true PID/logs.
 - Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
 - Commit: this commit; formal four-arm retrain waits on functional gate.
+
+## 2026-11-01T22:53:41.981463+08:00
+
+- Purpose: Record real restored retraining progress and accepted A outcomes.
+- Changed: goal/registry/current record only.
+- Validation: functional train-only gate passed (Dice.491825, spatialstd.22823, swap.82036); four recovery gates/smoke exit0. A2000 updates/3711 accepted, row summaries and packed masks read,858 empty versus prior3711 empty. B worker1958746 confirmed live; no premature four-arm comparison.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409/progress_observation.json and accepted A.
+- Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
+- Commit: this evidence status commit.

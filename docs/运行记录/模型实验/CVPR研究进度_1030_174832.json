@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T21:05:57.946955+08:00",
+  "updated_at": "2026-11-01T22:53:41.981463+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,7 +13,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P2",
-  "current_status": "restored_objective_functional_training_running",
+  "current_status": "restored_objective_formal_training_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -1172,9 +1172,9 @@
     }
   ],
   "next_actions": [
-    "Monitor existing bridge_restored_retrain_1101_210409 actual worker; no duplicate launch or live source edits",
-    "Functional gate must pass train-only spatial fitting and prompt responsiveness before auto four-arm restored-loss gates/formal queue",
-    "Stop on failure without threshold tuning or extra updates; preserve previous failed recipe and P2 deferment"
+    "Monitor existing restored queue: A complete; B scoring; C/D queued; no duplicate launch or source change",
+    "After all3711 independent acceptances compare matched restored-objective arms and retain first failed recipe separately",
+    "Do not interpret small train-only functional score as generalization or declare final upgrade before full comparison"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1501,27 +1501,44 @@
       "unique_cause_proven": false
     },
     "restored_retrain": {
-      "status": "running_functional_gate",
+      "status": "running_formal_queue",
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409",
       "stage": {
         "status": "running",
-        "stage": "functional_A",
-        "worker_pid": 1741327,
+        "stage": "B_train",
+        "worker_pid": 1958746,
         "command": [
           "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
           "-u",
           "-m",
-          "benchmarks.v5.architecture_bridge.functional_gate",
+          "benchmarks.v5.architecture_bridge.train_restored",
+          "--arm",
+          "B",
           "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409/functional_A"
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409/B",
+          "--gate",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409/gates"
         ]
       },
       "worker_alive": true,
-      "formal_four_arm_started": false,
+      "formal_four_arm_started": true,
       "functional_gate_updates": 256,
       "functional_gate_train_tasks": 32,
       "then_auto_queue": "four restored-objective recovery gates, smoke, A/B/C/D2000x4 and3711 acceptances",
-      "skill": "/home/zhaoyh/.codex/skills/fewclick-training-quality/SKILL.md"
+      "skill": "/home/zhaoyh/.codex/skills/fewclick-training-quality/SKILL.md",
+      "functional_gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409/functional_A/report.json",
+      "functional_train_Dice": 0.49182525959220513,
+      "A_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409/A/independent_acceptance.json",
+      "A_values": {
+        "local_Dice": 0.40832651559933164,
+        "remote_macro_Dice": 0.18092718763103538,
+        "remote_Dice": 0.16929175494133702,
+        "remote_BF1": 0.03065545730277534,
+        "absent_FPA": 0.1164257633227251,
+        "small_Dice": 0.12224296879414677,
+        "fat_Dice": 0.3067240660555562
+      },
+      "A_empty_masks": 858
     }
   }
 }
