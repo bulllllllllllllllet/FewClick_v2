@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T12:27:43.908878+08:00",
+  "updated_at": "2026-11-01T12:32:02.445380+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -923,6 +923,24 @@
           }
         },
         "scope": "fixed synthetic dev cell probe; not native XCell or external tissue validation"
+      },
+      "native_component_cost": {
+        "status": "complete",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/native_xcell_cost_1101_122838/data/report.json",
+        "worker_pid": 2738954,
+        "exit_code": 0,
+        "fields": 4,
+        "retained_cells": 654,
+        "summary": {
+          "crop_seconds": 10.178954359143972,
+          "ctranspath_seconds": 0.34870071709156036,
+          "xcell_seconds": 0.011755906045436859,
+          "feature_path_seconds": 10.543865416198969,
+          "detector_seconds": 6.715637616813183,
+          "all_detector_masks_equal": true,
+          "max_feature_error": 0.0
+        },
+        "scope": "four fixed train fields; detector cold/serial observed separately; cached accepted masks used for three warm feature-path repeats; excludes file decode/resample and expert GT; not matched FLOPs/WSI/online-click latency"
       }
     },
     "P2": {
@@ -1152,9 +1170,9 @@
     }
   ],
   "next_actions": [
-    "Measure native XCell mask/context cost with explicit detector/crop/context scope; do not substitute CTransPath center-crop timing",
-    "Freeze image/cell candidate/input choice in a P1 synthesis retaining all negative downstream/limited-joint results",
-    "Reaudit P1 requirements before controlled P2 vocabulary experiments; original P2/P3/WSI scope unchanged"
+    "Write final image/cell candidate and input freeze synthesis retaining all tissue negatives; choose research representation without claiming superiority",
+    "Rerun full P1 obligation audit including actual native component cost and selection evidence before marking P1 complete",
+    "Prepare fixed P2 continuous/kmeans128/learned vocabulary downstream protocol with image baseline kept fixed; no new encoder or residual recipe sweep"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1304,6 +1322,9 @@
     "gaps": [
       "P1C_native_XCell_cost_comparable_ledger",
       "P1_candidate_freeze_and_transfer_selection"
-    ]
+    ],
+    "resolved_gap_evidence": {
+      "P1C_native_XCell_cost_comparable_ledger": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/native_xcell_cost_1101_122838/data/report.json"
+    }
   }
 }

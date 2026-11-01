@@ -3595,3 +3595,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_obligation_audit_1101_122702/data/audit.json.
 - Docs record: current Phikon run record.
 - Commit: this commit; next native cost measurement and candidate/input synthesis before P2.
+
+## 2026-11-01T12:32:02.445380+08:00
+
+- Purpose: Measure native mask/context XCell cost instead of substituting center-crop CTransPath throughput.
+- Changed: benchmark_native_xcell.py; registry, goal and current record.
+- Validation: actual four accepted fields/654 cells; three warm feature-path repeats per field; original features allclose1e-5; real detector output equality recorded; worker2738954 exit0. CUDA synchronization separates crop/CTransPath/context; detector and model load separately measured.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/native_xcell_cost_1101_122838/data/report.json; native_xcell_cost_1101_122838 contract/source snapshot/real PID/log.
+- Docs record: current Phikon record.
+- Commit: this commit; final candidate/input synthesis and full P1 reaudit still pending.
