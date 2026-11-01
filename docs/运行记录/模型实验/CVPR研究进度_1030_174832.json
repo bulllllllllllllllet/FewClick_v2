@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T15:25:20.919429+08:00",
+  "updated_at": "2026-11-01T15:31:44.964342+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1172,9 +1172,9 @@
     }
   ],
   "next_actions": [
-    "Implement common standardized XCell/LEMON loader on accepted3scale cache; native reference remains raw",
-    "Complete all four arms fresh model/optimizer continuation and real remote/local evaluation gates",
-    "Then launch fixed-budget architecture bridge comparison; no four-arm training has started"
+    "Integrate deterministic assignment sampling in v5 bridge model only, preserving bilinear border semantics and v4 read-only",
+    "Run new-directory four-arm full fresh-model/optimizer continuation gates under deterministic algorithms; old failure preserved",
+    "Only then formal fixed-budget comparison; P2 vocabulary deferred"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1366,6 +1366,16 @@
       ],
       "index_sha256": "4787f86be19f86e594820f693a2d9bbb5323e481cf8d40ae31190caf42b68fc2",
       "acceptance_worker_pid": 3233322
+    },
+    "four_arm_gate": {
+      "status": "failed_diagnosed_engineering",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_four_gate_1101_152914",
+      "failed_arm": "A",
+      "worker_pid": 3661789,
+      "exit_code": 1,
+      "diagnostic": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_four_gate_1101_152914/grid_backward_diagnostic.json",
+      "operator_repair_gate": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_four_gate_1101_152914/deterministic_operator_gate.json",
+      "full_repair_accepted": false
     }
   }
 }

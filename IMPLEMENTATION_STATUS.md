@@ -3657,3 +3657,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_lemon_full_1101_133430/data/independent_acceptance.json.
 - Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
 - Commit: this status evidence commit.
+
+## 2026-11-01T15:31:44.964342+08:00
+
+- Purpose: Build common bridge input/optimizer recovery gates and diagnose non-deterministic assignment sampling.
+- Changed: architecture_bridge/data.py, gate_four_arms.py, deterministic_sampling.py; goal/registry/current record.
+- Validation: real8 local/remote tasks A fresh model prediction/loss and disk metric replay pass, optimizer continuation final-state exact check failed; B/C/D not launched. Actual255-cell CUDA grid backward repeat error2.98e-8, deterministic mode refuses kernel. New bilinear matmul operator real-coordinate float64 forward/gradient error4.44e-16 and exact repeated deterministic gradients; full integration pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_four_gate_1101_152914; all failed artifacts retained.
+- Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
+- Commit: this commit; no formal training/quality completion claim.
