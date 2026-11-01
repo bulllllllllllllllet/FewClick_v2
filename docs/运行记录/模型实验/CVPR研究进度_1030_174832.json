@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T12:32:02.445380+08:00",
+  "updated_at": "2026-11-01T12:34:02.730246+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_CVPR_P1接受与P2词汇准备_1101_123321.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
-  "current_phase": "P1",
+  "current_phase": "P2",
   "current_status": "preparing",
   "phases": {
     "P0": {
@@ -203,13 +203,13 @@
     },
     "P1I": {
       "title": "组织图像encoder受控筛选",
-      "status": "preparing",
+      "status": "complete",
       "required_evidence": [
         "至多3种匹配decoder特征对照",
         "image-only local/remote结果及成本",
         "选择理由或保留原底座"
       ],
-      "acceptance": null,
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_selection_close_1101_123321/data/acceptance.json",
       "quality_outcome": "two-seed task mix reduces absent FPA, costs local Dice; full935 transfer coverage validation next; secondseed boundary gate not passed",
       "runs": [
         {
@@ -451,13 +451,13 @@
     },
     "P1C": {
       "title": "细胞encoder受控筛选",
-      "status": "preparing",
+      "status": "complete",
       "required_evidence": [
         "同实例与物理尺度对照",
         "检索/probe/shuffle及吞吐",
         "真实组织mask下游控制"
       ],
-      "acceptance": null,
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_selection_close_1101_123321/data/acceptance.json",
       "quality_outcome": "both residual recipes stopped; neither frozen revision arm passes primary guard; not a rejection of all cell encoders",
       "runs": [
         {
@@ -494,7 +494,7 @@
           "quality_outcome": "not_evaluated"
         }
       ],
-      "candidate": "LEMON provisional, no downstream acceptance",
+      "candidate": "LEMON10um research representation; tissue replacement unproven; native XCell retained",
       "downstream_contract": "docs/建议/模型与训练/方案_CVPR连续细胞下游受控验证_1031_143011.md",
       "downstream_status": "running_one_frozen_shared_revision",
       "raw_cell_cache": {
@@ -945,7 +945,7 @@
     },
     "P2": {
       "title": "连续/固定词表/可学习词汇",
-      "status": "planned",
+      "status": "preparing",
       "required_evidence": [
         "三臂匹配与码本诊断",
         "下游mask收益或压缩证据",
@@ -953,7 +953,9 @@
       ],
       "acceptance": null,
       "quality_outcome": "not_evaluated",
-      "runs": []
+      "runs": [],
+      "candidate_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_selection_close_1101_123321/selection.json",
+      "training_started": false
     },
     "P3": {
       "title": "空间组合与提示迁移",
@@ -1170,9 +1172,9 @@
     }
   ],
   "next_actions": [
-    "Write final image/cell candidate and input freeze synthesis retaining all tissue negatives; choose research representation without claiming superiority",
-    "Rerun full P1 obligation audit including actual native component cost and selection evidence before marking P1 complete",
-    "Prepare fixed P2 continuous/kmeans128/learned vocabulary downstream protocol with image baseline kept fixed; no new encoder or residual recipe sweep"
+    "Preregister concrete P2 continuous/fixedK128/learned vocabulary tissue contract: shared fusion decoder, capacity, initialization, losses and budget",
+    "Then implement train-only vocab/input/model gates, no GT query leakage, shared tasks and independent full mask acceptance",
+    "Retain all P1 negatives; no decoder-only repetition disguised as new residual recipe; P3–P6 scope intact"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1316,15 +1318,13 @@
   "native_goal_observed_at": "2026-10-31T22:36:21.094929+08:00",
   "execution_authorization": "user resumed native goal; observed active",
   "P1_acceptance_audit": {
-    "status": "complete_with_gaps",
-    "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_obligation_audit_1101_122702/data/audit.json",
-    "P1_complete": false,
-    "gaps": [
-      "P1C_native_XCell_cost_comparable_ledger",
-      "P1_candidate_freeze_and_transfer_selection"
-    ],
+    "status": "complete",
+    "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_selection_close_1101_123321/data/acceptance.json",
+    "P1_complete": true,
+    "gaps": [],
     "resolved_gap_evidence": {
       "P1C_native_XCell_cost_comparable_ledger": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/native_xcell_cost_1101_122838/data/report.json"
-    }
+    },
+    "scope": "bounded encoder screening, no tissue upgrade or WSI promotion"
   }
 }

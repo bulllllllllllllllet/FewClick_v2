@@ -3604,3 +3604,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/native_xcell_cost_1101_122838/data/report.json; native_xcell_cost_1101_122838 contract/source snapshot/real PID/log.
 - Docs record: current Phikon record.
 - Commit: this commit; final candidate/input synthesis and full P1 reaudit still pending.
+
+## 2026-11-01T12:34:02.730246+08:00
+
+- Purpose: Freeze bounded P1 research candidates, verify final gaps and transition to original P2 scope.
+- Changed: close_p1_evidence.py; candidate synthesis document; P2 current record; goal/AGENTS/registry.
+- Validation: actual prior-audit evidence hashes, candidate bindings, native4field654cell3repeat cost, grid index and train-only transforms verified — exit0, accepted_bounded_P1_encoder_screening. Research candidate selection is not tissue superiority.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_selection_close_1101_123321/data/acceptance.json; same root selection.json/worker command and log.
+- Docs record: docs/运行记录/模型实验/运行记录_CVPR_P1接受与P2词汇准备_1101_123321.md; docs/建议/模型与训练/结论_CVPR_P1编码器选择与阶段边界_1101_123321.md.
+- Commit: this commit; P2 contract/implementation pending, P3–P6 unfulfilled.

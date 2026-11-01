@@ -8,19 +8,19 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_CVPR_Phikon有限联合适配准备_1031_222610.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_CVPR_P1接受与P2词汇准备_1101_123321.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
-当前：**P0 complete；P1仍preparing。细胞残差两种配方已完成比较且均未获质量晋升，停止这一家族；转回P1I既定Phikon有限联合适配。** 冻结修订A全部3711mask精确复现父模型，remote macroDice A/XCell/LEMON=37.01%/33.85%/36.24%，两细胞臂未过主门槛，不启动第二seed，不再试第三配方。该阴性结果不否定所有细胞encoder或词汇方案。原80对守门及完整935对开发集限定保持。
+当前：**P0 complete；P1 bounded encoder screening complete；P2 preparing**。P1最终接受p1_selection_close_1101_123321/data/acceptance.json：图像冻结Phikon、细胞LEMON10µm为机制研究候选，native XCell对照保留；没有可靠组织替换或WSI晋升。原细胞残差两配方和limited joint阴性/原80守门保持。颜色稳定性和native分环节成本已接受，成本范围不可混用。
 
-Phikon有限联合适配已complete：两臂各1000×4及3711mask独立接受，remote macroDice frozen=.3654245、joint=.3650380，增量−0.0387pp，未过原+1pp主守门；其余五代价守门通过。停止此单配方，不启动第二seed、不扫描层/LR；保留冻结候选，不把阴性外推到全部微调i。证据phikon_joint_comparson_1101_122214/data/comparison.json。下一步P1C固定颜色敏感性/成本：186val×5共930canonical输入和三encoder固定probe稳定性已接受，identity预测均精确复现；结果见cell_color_probe_1101_122516/data/report.json。P1整体/P2–P6不提前完成。
+下一步先按原P2路线登记连续/固定K128/可学习词表的完整受控组织mask合同，固定共同decoder/容量/初始化/任务/预算/损失/守门，再实现真实门控与pilot。不把P1的probe优势称组织收益，不原样重复失败残差配方。P2未训练、P3–P6未完成；独立确认/WSI/系统原生SAM基线等全目标义务保留。
 
 ## 执行顺序
 
 | 阶段 | 目的 | 当前状态 |
 |---|---|---|
 | P0 | 数据、尺度、空间隔离与公平合同 | complete，限定接受 |
-| P1I / P1C | 图像与细胞 encoder 受控筛选 | frozen pilot accepted；task/downstream preparing |
-| P2 | 连续特征 / 固定聚类 / 可学习词汇 | planned |
+| P1I / P1C | 图像与细胞 encoder 受控筛选 | complete，限定筛选接受；无组织升级 |
+| P2 | 连续特征 / 固定聚类 / 可学习词汇 | preparing，合同待固定 |
 | P3 | 空间组合与支持查询迁移 | planned |
 | P4 | WSI 质量、误报、缓存与交互效率 | planned |
 | P5 | 三 seed 与独立确认 | planned |
