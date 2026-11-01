@@ -11,3 +11,5 @@ The active CVPR roadmap is `docs/建议/模型与训练/路线_CVPR细胞词汇�
 - Never label retained-J5 comparisons as equal-total-target-supervision experiments. Do not use query GT for inference, prompt candidate selection or thresholds.
 - Preserve the user's spatial-block splitting policy; do not impose patient-disjoint splits. Audit the full input footprint and preserve patient/slide provenance for reporting.
 - After each milestone, update the registry, `goal.md`, the current run record and `IMPLEMENTATION_STATUS.md`. Record commands, code/data/weight hashes, real worker PIDs, logs, results and remaining gaps so another session can continue.
+
+For FewClick model training, retraining or collapse diagnosis, consult `/home/zhaoyh/.codex/skills/fewclick-training-quality/SKILL.md` (versioned source: `benchmarks/v5/architecture_bridge/training_quality_skill/SKILL.md`). Follow the active experiment contract for concrete budgets and functional gates; finite loss/checkpoint replay alone is not functional learning acceptance.

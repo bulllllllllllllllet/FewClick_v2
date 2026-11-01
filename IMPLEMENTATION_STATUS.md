@@ -3693,3 +3693,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_collapse_diagnosis_1101_203603; all checkpoints preserved; training updates0/threshold unchanged.
 - Docs record: docs/运行记录/模型实验/诊断_桥接基线常数输出与训练目标差异_1101_204406.md.
 - Commit: this diagnosis commit.
+
+## 2026-11-01T21:05:57.946955+08:00
+
+- Purpose: User-authorized restored-objective retraining with functional learning gate and reusable training quality skill.
+- Changed: restored_loss.py, gate_restored_objective.py, train_restored.py, functional_gate.py; versioned training_quality_skill/SKILL.md; local installed skill; AGENTS/goal/registry/current record.
+- Validation: restored deterministic point loss and gradient match original within1e-6; actual functional baseline real-data forward/backward training running worker1741327 (observed65/256). Full repair acceptance not claimed. Official curated skill listing contains no specialized ML training skill; custom narrow skill quick_validate passed and applied to this workflow.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_restored_retrain_1101_210409; source/skill snapshots, preregistered functional thresholds and automatic dependent queue, true PID/logs.
+- Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
+- Commit: this commit; formal four-arm retrain waits on functional gate.
