@@ -3738,3 +3738,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_orchestration_1102_012458; old bridge_seed2_1102_012347 orchestration_issue.json.
 - Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
 - Commit: this commit; native Goal observed paused, manual continuation authorized.
+
+## 2026-11-02T01:44:36.114847+08:00
+
+- Purpose: Continue active Goal with live independent seed2 and useful CPU P2 input preparation.
+- Changed: prepare_vocabulary_samples.py; goal/registry/current record.
+- Validation: actual2train frames/3scales384 matched XCell/LEMON observations independently reconstructed exactly, validation0; optimized acceptance only changes read order to reuse cache. Full1356train preparation worker3051940 live. Seed2 functional+all4 recovery gates passed; formal A worker2992922 confirmed live at926/2000.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352; earlier p2_sample_prepare_1102_014305 passed gate retained.
+- Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
+- Commit: this commit; full sample acceptance/codebook/seed2 result not claimed complete.

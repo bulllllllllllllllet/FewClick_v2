@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T01:26:09.100646+08:00",
-  "goal_status": "paused",
+  "updated_at": "2026-11-02T01:44:36.114847+08:00",
+  "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
@@ -955,7 +955,20 @@
       "quality_outcome": "not_evaluated",
       "runs": [],
       "candidate_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_selection_close_1101_123321/selection.json",
-      "training_started": false
+      "training_started": false,
+      "matched_sample_inventory": {
+        "status": "running_preparation",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352",
+        "stage": {
+          "status": "running",
+          "stage": "full_build",
+          "worker_pid": 3051940
+        },
+        "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352/gate/independent_acceptance.json",
+        "validation_samples": 0,
+        "encoder_choice_frozen": false,
+        "codebook_fit_started": false
+      }
     },
     "P3": {
       "title": "空间组合与提示迁移",
@@ -1172,9 +1185,9 @@
     }
   ],
   "next_actions": [
-    "Monitor existing secondseed functional/recovery/smoke/formal queue; no duplicate launch or source edits",
-    "After terminal all4 acceptances run unchanged comparison separately then paired two-seed synthesis; keep real independent init distinction",
-    "Only confirmed stable choices inform P2 preregistration; P3–P6/WSI/independent confirmation remain required"
+    "Monitor existing independent seed2 serial four-arm queue; no duplicate GPU launch",
+    "Finish and independently accept P2 matched train-only cell observations for both candidate representations; no validation fitting",
+    "Freeze P2 representation/decoder/capacity/budget and quality-efficiency stopping branches after seed2 synthesis; P3–P6 scope intact"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1610,29 +1623,42 @@
       "fullWSI_promoted": false
     },
     "second_seed": {
-      "status": "running_functional_gate",
+      "status": "running_formal_queue",
       "seed": 20261102,
       "first_seed": 20261101,
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_orchestration_1102_012458",
       "stage": {
         "status": "running",
-        "stage": "functional_A",
-        "worker_pid": 2964584,
+        "stage": "A_train",
+        "worker_pid": 2992922,
         "command": [
           "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
           "-u",
           "-m",
-          "benchmarks.v5.architecture_bridge.functional_replication",
+          "benchmarks.v5.architecture_bridge.train_replication",
+          "--arm",
+          "A",
           "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_orchestration_1102_012458/functional_A"
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_orchestration_1102_012458/A",
+          "--gate",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_orchestration_1102_012458/gates"
         ]
       },
       "worker_alive": true,
       "only_research_change": "initialization seed",
-      "formal_training_started": false,
+      "formal_training_started": true,
       "native_goal_observed": "paused",
       "user_resume_authorized": true,
-      "orchestration_repair_from": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_1102_012347"
+      "orchestration_repair_from": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_1102_012347",
+      "A_status": {
+        "status": "training",
+        "arm": "A",
+        "worker_pid": 2992922,
+        "updates": 926,
+        "total_updates": 2000,
+        "loss": 1.4653126895427704,
+        "seconds": 795.1811351776123
+      }
     }
   }
 }
