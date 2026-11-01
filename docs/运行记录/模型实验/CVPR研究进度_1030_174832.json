@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T13:34:51.769505+08:00",
+  "updated_at": "2026-11-01T15:25:20.919429+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1172,9 +1172,9 @@
     }
   ],
   "next_actions": [
-    "Monitor existing bridge_lemon_full_1101_133430 and accept all1737 frames; no duplicate launch or source changes",
-    "Build common XCell/LEMON standardized input loader for all3views; historicalJ5 keeps raw input",
-    "Gate all four arms including fresh model/optimizer continuation, real remote/local tasks and independent masks before formal training"
+    "Implement common standardized XCell/LEMON loader on accepted3scale cache; native reference remains raw",
+    "Complete all four arms fresh model/optimizer continuation and real remote/local evaluation gates",
+    "Then launch fixed-budget architecture bridge comparison; no four-arm training has started"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1349,15 +1349,23 @@
       "scope": "image replacement engineering gate only; multiscaleLEMON/four-arm fresh reload and formal quality remain pending"
     },
     "multiscale_LEMON": {
-      "status": "running",
+      "status": "complete",
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_lemon_full_1101_133430",
       "stage": {
-        "status": "running",
-        "stage": "full_build",
-        "worker_pid": 3046890
+        "status": "complete",
+        "exit_code": 0
       },
       "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_lemon_1101_133328/gate/independent_acceptance.json",
-      "scope": "native context RGB; fixed centers/order; same train-only transform; no context instance-mask claim"
+      "scope": "native context RGB; fixed centers/order; same train-only transform; no context instance-mask claim",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_lemon_full_1101_133430/data/independent_acceptance.json",
+      "frames": 1737,
+      "retained_cells_by_scale": [
+        304747,
+        415008,
+        440790
+      ],
+      "index_sha256": "4787f86be19f86e594820f693a2d9bbb5323e481cf8d40ae31190caf42b68fc2",
+      "acceptance_worker_pid": 3233322
     }
   }
 }

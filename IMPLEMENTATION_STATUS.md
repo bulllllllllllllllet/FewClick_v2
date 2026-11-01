@@ -3648,3 +3648,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: bridge_lemon_1101_133328; /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_lemon_full_1101_133430.
 - Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
 - Commit: this commit; four-arm training and full acceptance remain pending.
+
+## 2026-11-01T15:25:20.919429+08:00
+
+- Purpose: Record authoritative completed multiscale LEMON cache after user status query.
+- Changed: goal/registry/current record; no model change.
+- Validation: root stage complete/exit0, full independent acceptance1737 frames and3scale observation counts read; process search shows no architecture_bridge/encoder_research worker. Formal four-arm training not launched.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_lemon_full_1101_133430/data/independent_acceptance.json.
+- Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
+- Commit: this status evidence commit.
