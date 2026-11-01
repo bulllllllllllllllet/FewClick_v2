@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T15:31:44.964342+08:00",
+  "updated_at": "2026-11-01T16:01:30.810883+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,7 +13,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P2",
-  "current_status": "bridge_preparing_user_authorized",
+  "current_status": "bridge_training_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -1172,9 +1172,9 @@
     }
   ],
   "next_actions": [
-    "Integrate deterministic assignment sampling in v5 bridge model only, preserving bilinear border semantics and v4 read-only",
-    "Run new-directory four-arm full fresh-model/optimizer continuation gates under deterministic algorithms; old failure preserved",
-    "Only then formal fixed-budget comparison; P2 vocabulary deferred"
+    "Monitor existing bridge_training_1101_155846 actual worker/logs; no duplicate launch or live source edits",
+    "Pipeline automatically serializes A/B/C/D2000x4 and each3711 independent mask acceptance; stop on error without retry",
+    "After all four full acceptances compare fixed original guards B-A C-A D-A and factorial interaction, retain all negatives; seed2 conditional; P2 deferred"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1337,7 +1337,7 @@
       "exit_code": 0,
       "scope": "baseline forward/backward/disk-state gate only; replacement arms and full fresh reload/continuation still pending"
     },
-    "main_four_arm_training_started": false,
+    "main_four_arm_training_started": true,
     "native_goal_resumed": false,
     "authorization": "user asked supplement controlled comparisons",
     "Phikon_interface": {
@@ -1376,6 +1376,51 @@
       "diagnostic": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_four_gate_1101_152914/grid_backward_diagnostic.json",
       "operator_repair_gate": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_four_gate_1101_152914/deterministic_operator_gate.json",
       "full_repair_accepted": false
+    },
+    "deterministic_four_arm_gate": {
+      "status": "complete",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_deterministic_gate_1101_155554/independent_gate_acceptance.json",
+      "all_exact_optimizer_continuation": true,
+      "total_masks_replayed": 32
+    },
+    "formal_training": {
+      "status": "running",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_training_1101_155846",
+      "gate": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_deterministic_gate_1101_155554",
+      "observed_at": "2026-11-01T16:01:30.810883+08:00",
+      "stage": {
+        "status": "running",
+        "stage": "A_train",
+        "worker_pid": 3808606,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.architecture_bridge.train_bridge",
+          "--arm",
+          "A",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_training_1101_155846/A",
+          "--gate",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_deterministic_gate_1101_155554"
+        ]
+      },
+      "worker_alive": true,
+      "training_status": {
+        "status": "training",
+        "arm": "A",
+        "worker_pid": 3808606,
+        "updates": 76,
+        "total_updates": 2000,
+        "loss": 1.3547594547271729,
+        "seconds": 65.12185001373291
+      },
+      "updates_per_arm": 2000,
+      "tasks_per_update": 4,
+      "source_tasks": 4000,
+      "epochs": 2,
+      "smoke_rows_replayed": 12,
+      "quality_outcome": "not_evaluated"
     }
   }
 }

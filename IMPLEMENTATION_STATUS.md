@@ -3666,3 +3666,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_four_gate_1101_152914; all failed artifacts retained.
 - Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
 - Commit: this commit; no formal training/quality completion claim.
+
+## 2026-11-01T16:01:30.810883+08:00
+
+- Purpose: Finish deterministic four-arm recovery and continuously launch actual bridge training.
+- Changed: deterministic_graph.py source-preserving v5 copy (only differentiable assignment sampling replaced), deterministic_model.py, gate_four_deterministic.py, train_bridge.py; registry/goal/current record.
+- Validation: all four real8-task gates exit0;32 masks exact reload/replay; optimizer continuation full model/state exact, common initialized heads equal. Unified trainer actual2x4 smoke plus12 local/remote/3budget validation masks independently replayed exit0. Formal A worker3808606 confirmed alive; B/C/D and full3711 acceptance queued serially.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_deterministic_gate_1101_155554; /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_training_1101_155846; source snapshots/commands/PIDs/history/logs.
+- Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
+- Commit: this commit; launch is not quality completion; no retries or live-source changes.
