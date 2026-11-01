@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T12:34:02.730246+08:00",
-  "goal_status": "active",
+  "updated_at": "2026-11-01T12:49:45.461556+08:00",
+  "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_CVPR_P1接受与P2词汇准备_1101_123321.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P2",
-  "current_status": "preparing",
+  "current_status": "bridge_preparing_user_authorized",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -1172,9 +1172,9 @@
     }
   ],
   "next_actions": [
-    "Preregister concrete P2 continuous/fixedK128/learned vocabulary tissue contract: shared fusion decoder, capacity, initialization, losses and budget",
-    "Then implement train-only vocab/input/model gates, no GT query leakage, shared tasks and independent full mask acceptance",
-    "Retain all P1 negatives; no decoder-only repetition disguised as new residual recipe; P3–P6 scope intact"
+    "Implement Phikon feature-to-region interface preserving three-view region/cell/hierarchy/graph path",
+    "Prepare same-instance LEMON features for all three scales with train-only transforms and footprint gates",
+    "Accept all four controlled arms and fresh optimizer continuation before fixed-budget bridge pilot; retainedJ5 reference separate; defer P2 vocabulary"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1326,5 +1326,19 @@
       "P1C_native_XCell_cost_comparable_ledger": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/native_xcell_cost_1101_122838/data/report.json"
     },
     "scope": "bounded encoder screening, no tissue upgrade or WSI promotion"
+  },
+  "architecture_bridge": {
+    "status": "preparing",
+    "protocol": "docs/建议/模型与训练/方案_原架构桥接四臂对照_1101_124753.md",
+    "baseline_gate": {
+      "status": "complete",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/architecture_bridge_1101_124753/data/report.json",
+      "worker_pid": 2831817,
+      "exit_code": 0,
+      "scope": "baseline forward/backward/disk-state gate only; replacement arms and full fresh reload/continuation still pending"
+    },
+    "main_four_arm_training_started": false,
+    "native_goal_resumed": false,
+    "authorization": "user asked supplement controlled comparisons"
   }
 }

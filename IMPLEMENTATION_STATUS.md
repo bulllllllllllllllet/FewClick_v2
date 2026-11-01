@@ -3621,3 +3621,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Validation: inspected actual shared_prompt/continuous_prompt/image_features/cell_inputs/cell_grids and close_p1_evidence; read P0/three-image/two-seed/frozen/joint reports; reopened1737 catalog/raw index and confirmed670 truncated frames. Distinguishes engineering acceptance from architecture-transfer validation.
 - Docs record: docs/运行记录/模型实验/审查_P0_P1流程缺陷与原始算法差异_1101_123736.md.
 - Commit: this review commit.
+
+## 2026-11-01T12:49:45.461556+08:00
+
+- Purpose: Start user-authorized original-architecture bridge comparisons after P0/P1 critique.
+- Changed: architecture_bridge/gate_baseline.py; preregistered four-arm protocol/current record; goal/registry/AGENTS pointers.
+- Validation: real retainedJ5 and controlledCOCO baselines on CRC/TIGER each with3views; finite512 mask/loss, decoder gradients and parameter update, disk model state exact — worker2831817 exit0. Fresh reconstruction/optimizer continuation/replacement-arm gates still pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/architecture_bridge_1101_124753; commands/code SHA/snapshot/PID/log persisted.
+- Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md; docs/建议/模型与训练/方案_原架构桥接四臂对照_1101_124753.md.
+- Commit: this commit; main four-arm training not started, native Goal paused.
