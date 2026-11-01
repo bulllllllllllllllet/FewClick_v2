@@ -3586,3 +3586,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_color_features_1101_122407; /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_color_probe_1101_122516/data/report.json.
 - Docs record: current Phikon run record; fixed color protocol1101_122151.
 - Commit: this commit; full P1 acceptance/cost audit and P2–P6 remain.
+
+## 2026-11-01T12:27:43.908878+08:00
+
+- Purpose: Audit original P1 obligations without treating proxy cell timing or negative results as promotion.
+- Changed: audit_p1_evidence.py; goal, registry, current record.
+- Validation: actual audit reads/hash-checks three1737 image indexes, comparison strata, native gate, probes, conditional source statistics, residual negatives, joint negative and all frozen color bindings — exit0. P1 remains incomplete with two explicit gaps.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_obligation_audit_1101_122702/data/audit.json.
+- Docs record: current Phikon run record.
+- Commit: this commit; next native cost measurement and candidate/input synthesis before P2.

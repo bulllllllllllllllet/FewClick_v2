@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T12:25:45.437974+08:00",
+  "updated_at": "2026-11-01T12:27:43.908878+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1152,9 +1152,9 @@
     }
   ],
   "next_actions": [
-    "Audit all original P1I/P1C acceptance obligations including costs/provenance and retained negative results; do not mark entire P1 complete from color probe",
-    "Close any measured-cost or input/candidate-selection evidence gaps before P2",
-    "Prepare P2 continuous/fixed128cluster/learned vocabulary controlled tissue protocol; preserve original negative cell residual results and WSI objective"
+    "Measure native XCell mask/context cost with explicit detector/crop/context scope; do not substitute CTransPath center-crop timing",
+    "Freeze image/cell candidate/input choice in a P1 synthesis retaining all negative downstream/limited-joint results",
+    "Reaudit P1 requirements before controlled P2 vocabulary experiments; original P2/P3/WSI scope unchanged"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1296,5 +1296,14 @@
     "Audit entire P1 acceptance before P2; no promotion based on engineering gates"
   ],
   "native_goal_observed_at": "2026-10-31T22:36:21.094929+08:00",
-  "execution_authorization": "user resumed native goal; observed active"
+  "execution_authorization": "user resumed native goal; observed active",
+  "P1_acceptance_audit": {
+    "status": "complete_with_gaps",
+    "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_obligation_audit_1101_122702/data/audit.json",
+    "P1_complete": false,
+    "gaps": [
+      "P1C_native_XCell_cost_comparable_ledger",
+      "P1_candidate_freeze_and_transfer_selection"
+    ]
+  }
 }
