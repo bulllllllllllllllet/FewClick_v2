@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T01:44:36.114847+08:00",
+  "updated_at": "2026-11-02T01:48:58.598259+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -961,13 +961,21 @@
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352",
         "stage": {
           "status": "running",
-          "stage": "full_build",
-          "worker_pid": 3051940
+          "stage": "full_accept",
+          "worker_pid": 3057660
         },
         "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352/gate/independent_acceptance.json",
         "validation_samples": 0,
         "encoder_choice_frozen": false,
         "codebook_fit_started": false
+      },
+      "contract_draft": "docs/建议/模型与训练/方案_P2连续固定词表与可学习词表受控合同草案_1102_014819.md",
+      "representation_operator_gate": {
+        "status": "complete",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_representation_gate_1102_014659/report.json",
+        "trainable_mapper_parameters_each_arm": 4160,
+        "codebook_fitted": false,
+        "downstream_training_started": false
       }
     },
     "P3": {

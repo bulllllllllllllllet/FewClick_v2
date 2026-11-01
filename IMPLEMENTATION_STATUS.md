@@ -3747,3 +3747,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352; earlier p2_sample_prepare_1102_014305 passed gate retained.
 - Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
 - Commit: this commit; full sample acceptance/codebook/seed2 result not claimed complete.
+
+## 2026-11-02T01:48:58.598259+08:00
+
+- Purpose: Specify controlled P2 representation mechanism and validate capacity/gradient/reload behavior while seed2 runs.
+- Changed: cell_vocabulary.py; P2 contract draft; goal/registry/current record.
+- Validation: real384 accepted train vectors, temporary128 input centers (not fitted codebook); all3 arms4160 trainable params, continuous identity, quantized center values, finite mapper gradients, EMA-only center update, exact reload, eval update rejection all passed. No downstream or efficiency claim.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_representation_gate_1102_014659/report.json.
+- Docs record: docs/建议/模型与训练/方案_P2连续固定词表与可学习词表受控合同草案_1102_014819.md; current bridge run record.
+- Commit: this commit; independent seed2/data acceptance still running.
