@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T12:49:45.461556+08:00",
+  "updated_at": "2026-11-01T13:29:56.446438+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1172,9 +1172,9 @@
     }
   ],
   "next_actions": [
-    "Implement Phikon feature-to-region interface preserving three-view region/cell/hierarchy/graph path",
-    "Prepare same-instance LEMON features for all three scales with train-only transforms and footprint gates",
-    "Accept all four controlled arms and fresh optimizer continuation before fixed-budget bridge pilot; retainedJ5 reference separate; defer P2 vocabulary"
+    "Prepare three-scale LEMON center crops using existing same-cell metadata/order; 2x4x archives lack instance masks, disclose that limitation",
+    "Validate all four common-head arms, fresh model/optimizer continuation and exact task identities",
+    "Then fixed-budget original-architecture bridge pilot; no P2 vocabulary or native Goal resume"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1339,6 +1339,14 @@
     },
     "main_four_arm_training_started": false,
     "native_goal_resumed": false,
-    "authorization": "user asked supplement controlled comparisons"
+    "authorization": "user asked supplement controlled comparisons",
+    "Phikon_interface": {
+      "status": "complete_engineering_gate",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_phikon_zerohead_1101_132824/data/report.json",
+      "worker_pid": 3017389,
+      "exit_code": 0,
+      "first_gate_failure": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_phikon_gate_1101_132730",
+      "scope": "image replacement engineering gate only; multiscaleLEMON/four-arm fresh reload and formal quality remain pending"
+    }
   }
 }

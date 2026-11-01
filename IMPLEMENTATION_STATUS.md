@@ -3630,3 +3630,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/architecture_bridge_1101_124753; commands/code SHA/snapshot/PID/log persisted.
 - Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md; docs/建议/模型与训练/方案_原架构桥接四臂对照_1101_124753.md.
 - Commit: this commit; main four-arm training not started, native Goal paused.
+
+## 2026-11-01T13:29:56.446438+08:00
+
+- Purpose: Bridge frozen Phikon into the original three-view region/hierarchy/graph architecture with identical common heads.
+- Changed: architecture_bridge/image_interface.py, gate_image_interface.py and diagnosed zero-head gate_image_zero_head.py; goal/registry/current record.
+- Validation: original gate failed because initial zero delta_head blocks upstream; preserved source/artifacts. New4-update real CRC/TIGER gate exit0 worker3017389; exact RGB recovery/common initial heads, fixed2048x64x64 shape, first zero/subsequent positive upstream gradients, frozen backbone and disk state exact.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_phikon_zerohead_1101_132824; original failed bridge_phikon_gate_1101_132730.
+- Docs record: docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md.
+- Commit: this commit; multiscaleLEMON/full four-arm continuation and formal quality pending.
