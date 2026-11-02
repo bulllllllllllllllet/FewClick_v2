@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T17:59:52.980410+08:00",
+  "updated_at": "2026-11-02T19:32:46.284812+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -9,7 +9,8 @@
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
     "current_record": "docs/运行记录/模型实验/运行记录_P2收尾与P3空间对照准备_1102_174800.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
-    "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
+    "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
+    "current_run_record": "docs/运行记录/模型实验/运行记录_细胞采样坐标修复_1102_192314.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
@@ -1600,7 +1601,7 @@
       "representation_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json",
       "next_action": "Audit all-scale cap geometry; freeze and validate matched input repair before P3 spatial training",
       "input_readiness": {
-        "status": "requires_repair_and_acceptance_before_training",
+        "status": "repair_running_gate_accepted_full_pending",
         "issues": [
           "ascending-instance-ID cap creates observed spatial sampling bias",
           "pixel-center convention mismatch",
@@ -1608,6 +1609,33 @@
         ],
         "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_followup_audit_1102_175633/audit.json",
         "training_allowed": false
+      },
+      "input_repair": {
+        "status": "running",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314",
+        "record": "docs/运行记录/模型实验/运行记录_细胞采样坐标修复_1102_192314.md",
+        "stage": {
+          "status": "running",
+          "stage": "full_extract",
+          "worker_pid": 3750661,
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.architecture_bridge.repair_cell_cache",
+            "--output",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314/full",
+            "--gate-receipt",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314/gate/acceptance.json"
+          ],
+          "time": 1793619049.5741954
+        },
+        "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314/gate/acceptance.json",
+        "physical_GPU": 3,
+        "tmux": "fewclick_repair_full_1102_192314",
+        "worker_alive_at": "2026-11-02T19:32:46.284812+08:00",
+        "all_inputs_accepted": false,
+        "remote_learning_accepted": false
       }
     },
     "P4": {
@@ -1657,7 +1685,35 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [],
+  "active_jobs": [
+    {
+      "status": "running",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314",
+      "record": "docs/运行记录/模型实验/运行记录_细胞采样坐标修复_1102_192314.md",
+      "stage": {
+        "status": "running",
+        "stage": "full_extract",
+        "worker_pid": 3750661,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.architecture_bridge.repair_cell_cache",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314/full",
+          "--gate-receipt",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314/gate/acceptance.json"
+        ],
+        "time": 1793619049.5741954
+      },
+      "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314/gate/acceptance.json",
+      "physical_GPU": 3,
+      "tmux": "fewclick_repair_full_1102_192314",
+      "worker_alive_at": "2026-11-02T19:32:46.284812+08:00",
+      "all_inputs_accepted": false,
+      "remote_learning_accepted": false
+    }
+  ],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -1813,8 +1869,8 @@
     }
   ],
   "next_actions": [
-    "先完成P2复核发现的全尺度cap/坐标输入审计与匹配修复门控，见docs/运行记录/模型实验/审计_P2整体复核与P3输入缺陷_1102_175952.md",
-    "输入验收后冻结P3空间对照与remote分层功能门控；不恢复旧AAAI队列"
+    "核对cell_input_repair_1102_192314实际worker/continuation_stage，等待既有全量链，不重复启动",
+    "全量输入与remote功能全部接受后，冻结P3空间合同与新增安全守门"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

@@ -3927,3 +3927,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_followup_audit_1102_175633/audit.json
 - Docs record: docs/运行记录/模型实验/审计_P2整体复核与P3输入缺陷_1102_175952.md
 - Commit: accompanying scoped audit commit.
+
+## 11-02 19:32:46
+
+- Purpose: Repair biased cell retention and coordinate conventions before P3.
+- Changed: Six v5 repair/cache/model/functional/report modules; run record, goal, registry, AGENTS pointer.
+- Validation: Real four-field/12-view GPU3 extraction, independent geometry/crop checks and fresh feature reload passed; synthetic empty/repeatability/sampling passed; remote safety ran on full P2 rows. Full1737 rebuild running, not accepted; normalization/learning pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314
+- Docs record: docs/运行记录/模型实验/运行记录_细胞采样坐标修复_1102_192314.md
+- Commit: accompanying repair commit.
