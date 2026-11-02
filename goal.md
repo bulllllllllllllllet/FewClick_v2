@@ -136,3 +136,5 @@ P2原生颜色输入（2026-11-02T12:54:23.335017+08:00）：固定16fine视野/
 P2颜色特征衔接（2026-11-02T12:58:26.536314+08:00）：原生提取脚本input/weight预检查通过，p2_native_color_features_1102_130000真实watcher等待主GPU队列完成和GPU3空闲，再4field identity/颜色gate→CPU接受→16field full→CPU接受。现在没有额外GPU提取启动；GPU feature identity/颜色code稳定性仍未接受，后续须用末步fixed/EMA状态诊断。
 
 P2颜色码分析衔接（2026-11-02T13:06:50.427802+08:00）：新增末步连续/fixed/EMA的颜色翻转/表示距离工具；2962真实向量identity与错配工程检查及独立affine/nearest通过，未完成正式run被拒绝。p2_color_code_analysis_1102_131000真实CPU watcher等待原生颜色feature完成后analysis→accept；正式颜色稳定性仍未接受，禁止用工程检查代替。
+
+P2组织上下文诊断（2026-11-02T13:20:47.304328+08:00）：initial已完成1737fine视野/304747保留细胞离线GT上下文、全部raw类覆盖/码频率/量化误差与独立复算；1007忽略上下文、928半像素边界标签变化保留报告。GT仅诊断，不改推理/坐标/fit；不是细胞类型。p2_initial_tissue_context_1102_131600控制进程存活，等待末步fixed/EMA census后按同定义审计；P2整体未接受。

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T13:06:50.427802+08:00",
+  "updated_at": "2026-11-02T13:20:47.304328+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1025,7 +1025,7 @@
         "formal_training_started": true,
         "budget_per_arm": "2000x4 after fixed gates and smoke",
         "quality_outcome": "not_evaluated",
-        "last_observed_at": "2026-11-02T13:06:50.427802+08:00",
+        "last_observed_at": "2026-11-02T13:20:47.304328+08:00",
         "functional_reports": {
           "continuous": {
             "status": "accepted_train_only_functional_gate",
@@ -1053,10 +1053,10 @@
           "status": "training",
           "arm": "continuous",
           "worker_pid": 1847973,
-          "updates": 1001,
+          "updates": 1551,
           "total_updates": 2000,
-          "loss": 1.5455697625875473,
-          "seconds": 1577.800083398819
+          "loss": 1.3435831367969513,
+          "seconds": 2413.5729887485504
         },
         "smoke_acceptances": {
           "continuous": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous_smoke/independent_acceptance.json"
@@ -1424,6 +1424,51 @@
         "CPU_threads": 2,
         "GPU": false,
         "P2_automatic_acceptance": false
+      },
+      "tissue_context_diagnostics": {
+        "status": "complete_initial_only_waiting_final_censuses",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_tissue_context_1102_131600",
+        "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_tissue_context_1102_131600/gate/independent_acceptance.json",
+        "initial_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_tissue_context_1102_131600/full/independent_acceptance.json",
+        "frames": 1737,
+        "fine_retained_cells": 304747,
+        "ignored_context_cells": 1007,
+        "half_pixel_context_label_changes": 928,
+        "stage": {
+          "status": "waiting",
+          "stage": "waiting_for_final_censuses",
+          "worker_pid": 2019442,
+          "initial_diagnostics_complete": true,
+          "dependency_stage": {
+            "status": "waiting",
+            "stage": "waiting_for_training",
+            "worker_pid": 1879118,
+            "dependency_controller_pid": 1754183,
+            "dependency_stage": {
+              "status": "running",
+              "stage": "continuous_train",
+              "worker_pid": 1847973,
+              "command": [
+                "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+                "-u",
+                "-m",
+                "benchmarks.v5.architecture_bridge.train_vocabulary",
+                "--arm",
+                "continuous",
+                "--output",
+                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous",
+                "--gate",
+                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates"
+              ]
+            }
+          }
+        },
+        "watcher_alive": true,
+        "observed_at": "2026-11-02T13:20:47.304328+08:00",
+        "diagnostic_GT_only": true,
+        "inference_or_fit_changed": false,
+        "final_checkpoint_coverage": false,
+        "P2_accepted": false
       }
     },
     "P3": {
