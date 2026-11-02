@@ -3873,3 +3873,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_source_preparation_1102_132500/sources.json
 - Docs record: docs/建议/模型与训练/方案_P3细胞空间信息来源与对照边界预审_1102_132500.md（建议/预审）；docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md（运行记录）。
 - Commit: 本次P3空间来源预审提交（见git log）。
+
+## 2026-11-02T13:37:22.437370+08:00
+
+- Purpose: 接受P2首臂continuous的完整训练预算与checkpoint，准确区分验证中与实验完成。
+- Changed: goal.md、CVPR registry和当前P2运行记录；无活跃训练源码变化。
+- Validation: aligner `/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_training_accept_1102_133400/verify.py` exit0，2000更新/8000序列精确、152个active optimizer状态step=2000、1191去重tensor块有限、source/weight SHA核对；同worker评分至少1100/3711，mask replay未完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_training_accept_1102_133400/report.json；/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
+- Commit: 本次首臂训练预算接受提交（见git log）。

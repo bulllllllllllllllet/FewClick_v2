@@ -10,9 +10,9 @@
 
 依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
-当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 running_formal_training**。双seed桥接接受后，P2固定图像Phikon、细胞XCell标准化64；LEMON保留对照。本阶段尚无正式组织质量或WSI结论。
+当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 running_formal_training_and_evaluation**。双seed桥接接受后，P2固定图像Phikon、细胞XCell标准化64；LEMON保留对照。本阶段尚无正式组织质量或WSI结论。
 
-桥接双seed已接受，P2固定Phikon+XCell64、train-only K128/30000观察/val0接受。P2三表示已接入原三视野共同模型，三臂8任务工程门控全部通过：共同参数/初始core、24mask复算、fresh model/optimizer/EMA继续精确、eval冻结。p2_vocabulary_pilot_1102_122100的三臂功能门控全部通过，fixed/EMA功能checkpoint在30000train观察均使用128码；continuous smoke已接受，GPU3正在首臂正式2000×4训练，随后按原队列完成三臂/各3711mask接受。当前未出P2正式质量，禁止重复启动/改活跃源码或调阈值；码使用/稳定性/效率和下游质量证据齐备后才P2接受，P3–P6未完成。
+桥接双seed已接受，P2固定Phikon+XCell64、train-only K128/30000观察/val0接受。P2三表示已接入原三视野共同模型，三臂8任务工程门控全部通过：共同参数/初始core、24mask复算、fresh model/optimizer/EMA继续精确、eval冻结。p2_vocabulary_pilot_1102_122100的三臂功能门控全部通过，fixed/EMA功能checkpoint在30000train观察均使用128码；continuous smoke已接受，GPU3首臂continuous已完成2000×4更新及独立预算/checkpoint核对，正在3711mask评分，随后按原队列完成三臂/各3711mask接受。当前未出P2正式质量，禁止重复启动/改活跃源码或调阈值；码使用/稳定性/效率和下游质量证据齐备后才P2接受，P3–P6未完成。
 
 ## 执行顺序
 
@@ -20,7 +20,7 @@
 |---|---|---|
 | P0 | 数据、尺度、空间隔离与公平合同 | complete，限定接受 |
 | P1I / P1C | 图像与细胞 encoder 受控筛选 | complete，限定筛选接受；无组织升级 |
-| P2 | 连续特征 / 固定聚类 / 可学习词汇 | running_formal_training；三臂功能门控通过，首臂实际更新，正式质量待验收 |
+| P2 | 连续特征 / 固定聚类 / 可学习词汇 | running_formal_training_and_evaluation；首臂2000×4更新接受、3711mask评分中，正式质量待验收 |
 | P3 | 空间组合与支持查询迁移 | planned |
 | P4 | WSI 质量、误报、缓存与交互效率 | planned |
 | P5 | 三 seed 与独立确认 | planned |
@@ -140,3 +140,5 @@ P2颜色码分析衔接（2026-11-02T13:06:50.427802+08:00）：新增末步连�
 P2组织上下文诊断（2026-11-02T13:20:47.304328+08:00）：initial已完成1737fine视野/304747保留细胞离线GT上下文、全部raw类覆盖/码频率/量化误差与独立复算；1007忽略上下文、928半像素边界标签变化保留报告。GT仅诊断，不改推理/坐标/fit；不是细胞类型。p2_initial_tissue_context_1102_131600控制进程存活，等待末步fixed/EMA census后按同定义审计；P2整体未接受。
 
 P3仅准备（2026-11-02T13:28:50.625336+08:00）：已只读核对既有cell坐标/mass-density、region图与support geometry路径，候选对照边界见docs/建议/模型与训练/方案_P3细胞空间信息来源与对照边界预审_1102_132500.md；P3仍planned，无新训练/预算/数值门控。当前P2及其后处理/颜色/上下文队列继续，不更改活动源码。
+
+P2首臂训练里程碑（2026-11-02T13:37:22.437370+08:00）：continuous 2000更新/8000消费/optimizer step及checkpoint有限性独立接受，权重SHA已登记；至少1100/3711mask评分，尚未独立mask接受。模块stage仍continuous_train包含评分，禁止据此重启。
