@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T00:47:15.205582",
+  "updated_at": "2026-11-03T00:49:57.989734",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1755,19 +1755,19 @@
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148",
         "stage": {
           "status": "running",
-          "stage": "I_learn",
-          "worker_pid": 1214325,
+          "stage": "S00_learn",
+          "worker_pid": 1253782,
           "command": [
             "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
             "-u",
             "-m",
             "benchmarks.v5.architecture_bridge.functional_repaired",
             "--arm",
-            "I",
+            "S00",
             "--cache",
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
             "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/I"
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/S00"
           ]
         },
         "GPU": 3,
@@ -1776,7 +1776,8 @@
         "formal_training_started": false,
         "observed_at": "2026-11-03T00:33:22.409109",
         "accepted_arms": [
-          "S11"
+          "S11",
+          "I"
         ]
       },
       "geometry_inventory": {
@@ -1851,6 +1852,16 @@
         "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_comparison_binding_gate_1103_004619/report.json",
         "negative_run_binding_tested": true,
         "positive_formal_run_binding_tested": false
+      },
+      "environment_preflight": {
+        "status": "validated_environment_and_partial_evidence_audit",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_preflight_1103_004828",
+        "training_allowed": false,
+        "remaining": [
+          "formal_train_monitor_fixed_nodes",
+          "GPU20update100mask_benchmark",
+          "frozen_execution_contract_and_source_binding"
+        ]
       }
     },
     "P4": {
@@ -2123,9 +2134,9 @@
     }
   ],
   "next_actions": [
-    "现有三个worker仍真实运行，继续核对六臂学习/CPU smoke最后重载评分/库存全量接受，不重复启动",
-    "后续在同GPU串行空档完成GPU smoke与20更新100mask测速，补train-only固定节点监控/完整执行绑定；通过后正式六臂训练",
-    "compare_spatial须在正式输出生成后运行，当前仅拒绝未完成/旧P2与真实历史行守门测试通过"
+    "监控六臂学习S00及后续、CPU smoke末步重载、库存三个既有worker",
+    "CPU smoke结束后补trainer评分阶段持续进度、固定train-only监控节点与执行源码绑定，避免运行中改源码",
+    "全部门控后GPU串行smoke/20更新100mask测速并冻结正式合同，不以环境预检替代学习接受"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
