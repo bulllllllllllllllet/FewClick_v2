@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T00:56:58.260154",
+  "updated_at": "2026-11-03T01:00:40.011575",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1755,19 +1755,19 @@
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148",
         "stage": {
           "status": "running",
-          "stage": "S00_learn",
-          "worker_pid": 1253782,
+          "stage": "H11_learn",
+          "worker_pid": 1291797,
           "command": [
             "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
             "-u",
             "-m",
             "benchmarks.v5.architecture_bridge.functional_repaired",
             "--arm",
-            "S00",
+            "H11",
             "--cache",
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
             "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/S00"
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/H11"
           ]
         },
         "GPU": 3,
@@ -1777,7 +1777,8 @@
         "observed_at": "2026-11-03T00:33:22.409109",
         "accepted_arms": [
           "S11",
-          "I"
+          "I",
+          "S00"
         ]
       },
       "geometry_inventory": {
@@ -1816,7 +1817,7 @@
         "formal_P3_comparison": false
       },
       "trainer_integration": {
-        "status": "running_integration_not_accepted",
+        "status": "old_CPU_smoke_accepted_new_monitor_integration_pending",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_trainer_smoke_1103_004220",
         "stage": {
           "status": "running",
@@ -1845,7 +1846,9 @@
         "device": "cpu",
         "threads": 2,
         "formal_training_started": false,
-        "observed_training_updates": 2
+        "observed_training_updates": 2,
+        "old_smoke_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_trainer_smoke_1103_004220/S11_smoke/independent_acceptance.json",
+        "integrated_smoke_queue": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_integrated_smokes_1103_010002"
       },
       "formal_comparison_tool": {
         "status": "implemented_positive_formal_binding_pending",
@@ -1903,6 +1906,11 @@
         },
         "GPU": 3,
         "source_implementation": "pending_real_probe_execution",
+        "formal_training_started": false
+      },
+      "integrated_smoke_queue": {
+        "status": "waiting_verified_dependencies",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_integrated_smokes_1103_010002",
         "formal_training_started": false
       }
     },
@@ -1975,33 +1983,6 @@
       }
     },
     {
-      "kind": "trainer",
-      "stage": {
-        "status": "running",
-        "stage": "smoke_train",
-        "worker_pid": 1226037,
-        "command": [
-          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-          "-u",
-          "-m",
-          "benchmarks.v5.architecture_bridge.train_spatial",
-          "--arm",
-          "S11",
-          "--device",
-          "cpu",
-          "--smoke",
-          "--cache",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-          "--protocol",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729",
-          "--learning",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148",
-          "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_trainer_smoke_1103_004220/S11_smoke"
-        ]
-      }
-    },
-    {
       "kind": "inventory",
       "stage": {
         "status": "running",
@@ -2061,6 +2042,18 @@
       "GPU": 3,
       "source_implementation": "pending_real_probe_execution",
       "formal_training_started": false
+    },
+    {
+      "kind": "integrated_smoke_dependency_queue",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_integrated_smokes_1103_010002",
+      "stage": {
+        "status": "waiting_verified_dependencies",
+        "pending": [
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_throughput_queue_1103_005618",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438"
+        ]
+      }
     }
   ],
   "completed_jobs": [
@@ -2218,9 +2211,9 @@
     }
   ],
   "next_actions": [
-    "学习六组通过后同GPU3自动测速；CPU smoke/monitor/库存现有任务继续，不重复启动",
-    "CPU smoke终态后才能改train_spatial接入监控/进度；GPU probe目前只排队未运行",
-    "所有阶段实际接受与完整执行合同冻结后再正式六臂训练，当前不得宣称ready"
+    "既有学习H11/S10/S01→吞吐probe，与CPU监控/库存并行；依赖接受后新六臂GPU integrated smoke自动执行",
+    "新trainer已接monitor与进度，但尚未实际验证；队列已冻源码，不修改",
+    "GPU smoke全部接受后构建最终执行合同并严格绑定所有凭证/source，正式六臂训练仍未启动"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

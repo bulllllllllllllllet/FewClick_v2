@@ -186,3 +186,5 @@ S11学习接受与trainer集成运行（2026-11-03T00:44:16.809785）：S11全�
 训练监控组件进展（2026-11-03T00:53:32.923178）：真实32mask helper指标与固定task名单接受；实际S11 checkpoint的CPU32task正常/提示交换检查worker1276421存活，产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125/model_gate。检查权重/RNG/模式不变，非新的学习质量比较。模型组件整体验收、正式trainer接入均pending。前一goal turn完成环境预检并产出证据，分类progress；本轮新增真实指标验证与组件运行，亦为progress，整体Goal保持active。
 
 依赖队列现场核验（2026-11-03T00:56:58.260154）：watcher1292045存活，实际六臂controller1175114仍live，/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_throughput_queue_1103_005618/stage.json明确waiting；没有新GPU训练启动。新增benchmark_spatial待真实20update/100inference门控，不能以源码存在标接受。CPU trainer smoke/monitor尚未终态，相关源码未改。
+
+旧CPU smoke接受与集成队列（2026-11-03T01:00:40.011575）：旧CPU smoke2更新/12验证/12fresh预测/12mask独立复算全部通过，耗时816.21秒。S00学习独立接受，当前H11实际worker1291797存活。train_spatial新版本接入固定monitor节点、正式凭证限制和连续评分/重载进度，语法通过，真实端到端验证pending。/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_integrated_smokes_1103_010002实际waiting三个已核对live的依赖；完成后自动六臂GPU smoke，不启动正式预算。

@@ -4071,3 +4071,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_throughput_queue_1103_005618
 - Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
 - Commit: accompanying pending-throughput commit.
+
+## 11-03 01:00:40
+
+- Purpose: Integrate fixed train monitoring and launch evidence into the accepted smoke path.
+- Changed: train_spatial.py monitor nodes/progress/strict formal arguments and continuity records.
+- Validation: Old CPU smoke accepted2 updates/12 masks/fresh predictions; new integrated trainer syntax passed, actual smoke pending in a fixed-source GPU dependency queue. S00 learning independently accepted. No formal training started.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_integrated_smokes_1103_010002
+- Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
+- Commit: accompanying pending integrated-smoke commit.
