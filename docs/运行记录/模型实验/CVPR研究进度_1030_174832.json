@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T13:20:47.304328+08:00",
+  "updated_at": "2026-11-02T13:28:50.625336+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1025,7 +1025,7 @@
         "formal_training_started": true,
         "budget_per_arm": "2000x4 after fixed gates and smoke",
         "quality_outcome": "not_evaluated",
-        "last_observed_at": "2026-11-02T13:20:47.304328+08:00",
+        "last_observed_at": "2026-11-02T13:28:50.625336+08:00",
         "functional_reports": {
           "continuous": {
             "status": "accepted_train_only_functional_gate",
@@ -1053,10 +1053,10 @@
           "status": "training",
           "arm": "continuous",
           "worker_pid": 1847973,
-          "updates": 1551,
+          "updates": 1876,
           "total_updates": 2000,
-          "loss": 1.3435831367969513,
-          "seconds": 2413.5729887485504
+          "loss": 1.0664443895220757,
+          "seconds": 2905.671306848526
         },
         "smoke_acceptances": {
           "continuous": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous_smoke/independent_acceptance.json"
@@ -1481,7 +1481,16 @@
       ],
       "acceptance": null,
       "quality_outcome": "not_evaluated",
-      "runs": []
+      "runs": [],
+      "source_preparation": {
+        "status": "complete_source_audit_only",
+        "proposal": "docs/建议/模型与训练/方案_P3细胞空间信息来源与对照边界预审_1102_132500.md",
+        "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_source_preparation_1102_132500/sources.json",
+        "P3_training_started": false,
+        "numerical_gate_run": false,
+        "four_arm_contract_frozen": false,
+        "new_GPU_jobs": 0
+      }
     },
     "P4": {
       "title": "WSI质量与效率",

@@ -3864,3 +3864,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_tissue_context_1102_131600
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
 - Commit: 本次组织上下文审计实现提交（见git log）。
+
+## 2026-11-02T13:28:50.625336+08:00
+
+- Purpose: 在P2结果等待期间梳理已有空间/提示机制，避免P3将现有功能误写成新增贡献或误称无空间基线。
+- Changed: P3对照边界预审文档、goal.md、CVPR registry及当前运行记录；无模型源修改。
+- Validation: 实际builder/forward只读追踪，源码SHA与XCell forward AST接口/既有mass-density/geometry路径检查通过；未做数值或质量门控，P3保持planned。P2 worker现场存活。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_source_preparation_1102_132500/sources.json
+- Docs record: docs/建议/模型与训练/方案_P3细胞空间信息来源与对照边界预审_1102_132500.md（建议/预审）；docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md（运行记录）。
+- Commit: 本次P3空间来源预审提交（见git log）。
