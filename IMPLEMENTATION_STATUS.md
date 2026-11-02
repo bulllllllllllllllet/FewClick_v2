@@ -4080,3 +4080,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_integrated_smokes_1103_010002
 - Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
 - Commit: accompanying pending integrated-smoke commit.
+
+## 11-03 01:06:12
+
+- Purpose: Queue fixed six-arm formal study behind complete startup acceptance.
+- Changed: run_spatial_study.py, current record and continuity pointers.
+- Validation: Actual missing-evidence validation rejected launch; audit-only verified live dependency; formal watcher1333314 alive with no contract/compute worker yet. Full inventory1737/5211 accepted. Positive formal execution pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403
+- Docs record: docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md
+- Commit: accompanying dependency-controller commit.

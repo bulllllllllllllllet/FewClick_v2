@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T01:00:40.011575",
+  "updated_at": "2026-11-03T01:06:12.330914",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -10,7 +10,7 @@
     "current_record": "docs/运行记录/模型实验/运行记录_P2收尾与P3空间对照准备_1102_174800.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
@@ -1599,7 +1599,7 @@
       "training_started": false,
       "selected_representation": "continuous",
       "representation_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json",
-      "next_action": "Implement and validate six controls, seed parameterization, environment preflight and telemetry before freezing executable run contract",
+      "next_action": "Keep source frozen; monitor learning/inventory/monitor/probe/integrated smoke chain; formal controller starts only on complete evidence",
       "input_readiness": {
         "status": "accepted_repair_and_functional_gate",
         "issues": [
@@ -1782,7 +1782,7 @@
         ]
       },
       "geometry_inventory": {
-        "status": "running",
+        "status": "complete",
         "kind": "P3_full_geometry_and_pixel_view_inventory",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438",
         "stage": {
@@ -1804,7 +1804,8 @@
         "CPU_threads": 2,
         "GPU": null,
         "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/gate/acceptance.json",
-        "observed_at": "2026-11-03T00:35:43.902764"
+        "observed_at": "2026-11-03T00:35:43.902764",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/full/acceptance.json"
       },
       "task_protocol": {
         "status": "complete_task_manifest_only",
@@ -1911,6 +1912,24 @@
       "integrated_smoke_queue": {
         "status": "waiting_verified_dependencies",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_integrated_smokes_1103_010002",
+        "formal_training_started": false
+      },
+      "formal_study_queue": {
+        "status": "waiting_verified_dependency",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403",
+        "watcher_pid": 1333314,
+        "stage": {
+          "status": "waiting_verified_dependency",
+          "controller": 1309988,
+          "dependency": {
+            "status": "waiting_verified_dependencies",
+            "pending": [
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_throughput_queue_1103_005618",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125"
+            ]
+          },
+          "observed_at": 1793639171.4286
+        },
         "formal_training_started": false
       }
     },
@@ -2054,6 +2073,24 @@
           "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438"
         ]
       }
+    },
+    {
+      "status": "waiting_verified_dependency",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403",
+      "watcher_pid": 1333314,
+      "stage": {
+        "status": "waiting_verified_dependency",
+        "controller": 1309988,
+        "dependency": {
+          "status": "waiting_verified_dependencies",
+          "pending": [
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_throughput_queue_1103_005618",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125"
+          ]
+        },
+        "observed_at": 1793639171.4286
+      },
+      "formal_training_started": false
     }
   ],
   "completed_jobs": [
@@ -2211,9 +2248,8 @@
     }
   ],
   "next_actions": [
-    "既有学习H11/S10/S01→吞吐probe，与CPU监控/库存并行；依赖接受后新六臂GPU integrated smoke自动执行",
-    "新trainer已接monitor与进度，但尚未实际验证；队列已冻源码，不修改",
-    "GPU smoke全部接受后构建最终执行合同并严格绑定所有凭证/source，正式六臂训练仍未启动"
+    "从新当前record核对已部署依赖链及真实PID，保持bridge源码冻结",
+    "正向验收全部通过才自动生成正式contract/六臂首seed训练；失败停止不重试；所有结果仍需独立验收"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

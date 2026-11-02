@@ -8,7 +8,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3 preparing**。三臂各2000×4/3711mask及全部后处理接受；fixed/EMA的Dice增益伴随超界FPA，EMA另有small代价，均不晋升。按合同保留Phikon+XCell64连续表示，P3训练尚未启动。
 
@@ -188,3 +188,5 @@ S11学习接受与trainer集成运行（2026-11-03T00:44:16.809785）：S11全�
 依赖队列现场核验（2026-11-03T00:56:58.260154）：watcher1292045存活，实际六臂controller1175114仍live，/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_throughput_queue_1103_005618/stage.json明确waiting；没有新GPU训练启动。新增benchmark_spatial待真实20update/100inference门控，不能以源码存在标接受。CPU trainer smoke/monitor尚未终态，相关源码未改。
 
 旧CPU smoke接受与集成队列（2026-11-03T01:00:40.011575）：旧CPU smoke2更新/12验证/12fresh预测/12mask独立复算全部通过，耗时816.21秒。S00学习独立接受，当前H11实际worker1291797存活。train_spatial新版本接入固定monitor节点、正式凭证限制和连续评分/重载进度，语法通过，真实端到端验证pending。/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_integrated_smokes_1103_010002实际waiting三个已核对live的依赖；完成后自动六臂GPU smoke，不启动正式预算。
+
+正式依赖链部署（2026-11-03T01:06:12.330914）：全库存1737/5211已接受，首seed六臂root/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403控制器1333314等待新版smoke真实controller。尚无正式contract/训练worker；完整source/weight已快照冻结，不改运行源码、不重复开队列。下一步依赖接受后自动首seed6臂，再独立比较；完整目标仍active。
