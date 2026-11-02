@@ -134,3 +134,5 @@ P2后处理衔接（2026-11-02T12:47:04.681717+08:00）：三臂比较工具已�
 P2原生颜色输入（2026-11-02T12:54:23.335017+08:00）：固定16fine视野/2962保留细胞/80色输入，沿用原InstanSeg mask、XCell顺序/上下文和五种既定OD条件；几何/crop像素/全部颜色独立复算接受。GPU feature identity与颜色码稳定性仍未验证，不能以既有CTransPath点crop代替；当前GPU训练与后处理等待队列保持。
 
 P2颜色特征衔接（2026-11-02T12:58:26.536314+08:00）：原生提取脚本input/weight预检查通过，p2_native_color_features_1102_130000真实watcher等待主GPU队列完成和GPU3空闲，再4field identity/颜色gate→CPU接受→16field full→CPU接受。现在没有额外GPU提取启动；GPU feature identity/颜色code稳定性仍未接受，后续须用末步fixed/EMA状态诊断。
+
+P2颜色码分析衔接（2026-11-02T13:06:50.427802+08:00）：新增末步连续/fixed/EMA的颜色翻转/表示距离工具；2962真实向量identity与错配工程检查及独立affine/nearest通过，未完成正式run被拒绝。p2_color_code_analysis_1102_131000真实CPU watcher等待原生颜色feature完成后analysis→accept；正式颜色稳定性仍未接受，禁止用工程检查代替。

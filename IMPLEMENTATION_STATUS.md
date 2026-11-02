@@ -3846,3 +3846,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_features_1102_130000
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
 - Commit: 本次原生颜色特征提取准备提交（见git log）。
+
+## 2026-11-02T13:06:50.427802+08:00
+
+- Purpose: 补齐P2原生颜色feature之后的末步词表码翻转/距离诊断与依赖执行。
+- Changed: analyze_native_color.py、goal.md、CVPR registry和P2当前记录。
+- Validation: 2962原生真实向量+三臂功能checkpoint的identity/错配与独立float64 affine/nearest工程检查通过、state不变；未完成正式run被拒绝，CPU watcher与训练worker现场存活。正式颜色结果尚未可用。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_color_analysis_engineering_1102_130600；/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_color_code_analysis_1102_131000
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
+- Commit: 本次颜色码分析实现提交（见git log）。
