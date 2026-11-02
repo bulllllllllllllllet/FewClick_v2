@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T01:34:46.444597",
+  "updated_at": "2026-11-03T01:48:20.826553",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1985,6 +1985,14 @@
         "status": "complete_for_four_accepted_arms",
         "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_partial_learning_audit_1103_011106/audit.json",
         "formal_quality_claim": false
+      },
+      "task_mix_preparation": {
+        "status": "accepted_ledger_and_unrealized_recipe_only",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_mix_prepare_1103_014445",
+        "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_mix_prepare_1103_014445/data/report.json",
+        "local_clicks_realized": false,
+        "training_started": false,
+        "final_architecture_fixed": false
       }
     },
     "P4": {
@@ -2070,12 +2078,12 @@
       },
       "worker_status": {
         "stage": "training",
-        "updates": 51,
+        "updates": 576,
         "total_updates": 2000,
-        "loss": 1.853542983531952,
+        "loss": 1.5435654819011688,
         "worker_pid": 1501978,
         "arm": "S11",
-        "seconds": 96.13054219260812
+        "seconds": 929.9880597107112
       },
       "GPU": 3
     }
@@ -2235,9 +2243,9 @@
     }
   ],
   "next_actions": [
-    "监控现有S11 worker与固定节点train-only诊断，不重启",
-    "全部六臂2000×4/3711mask独立接受和预定对照后才决定复验；不按中间dev调参",
-    "保持运行源码冻结；P3-B/C、P4–P6仍待完成"
+    "继续核对原S11正式worker和固定train monitor，不按中间结果改配方",
+    "P3-C已有同domain/target/点击数配额recipe和监督账本，但需解析真实点击/独立验收且架构冻结后才运行",
+    "全部六臂正式评分/预定比较完成后按固定分支决定复验，源码保持冻结"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

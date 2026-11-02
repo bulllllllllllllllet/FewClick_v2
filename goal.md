@@ -12,7 +12,7 @@
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3 running**。三臂各2000×4/3711mask及全部后处理接受；fixed/EMA的Dice增益伴随超界FPA，EMA另有small代价，均不晋升。按合同保留Phikon+XCell64连续表示，P3首seed六臂正式队列已启动，S11实际更新中。
 
-**最新规划（2026-11-03T00:18:24.769941+08:00）**：细胞采样/坐标/标准化与分组学习门控已完整接受。P3首轮六臂、主比较S11−S00、条件复验及总预算见[执行规划](docs/建议/模型与训练/方案_P3空间机制对照与防返工执行合同_1103_001657.md)。设计已登记，六臂实现/seed参数化/环境预检/遥测/执行合同仍待验收；本轮仅规划，未启动正式训练。
+**当前执行（2026-11-03T01:48:20.826553）**：P3六臂门控/库存/测速/新版smoke全部通过，首seed正式S11运行中，其余五臂与完整评分已串行排队。设计见[执行规划](docs/建议/模型与训练/方案_P3空间机制对照与防返工执行合同_1103_001657.md)。所有运行源已冻结，启动不等于完成；P3-C只做账本/未解析清单准备，未开始训练。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
@@ -198,3 +198,5 @@ S10接受与verified wait（2026-11-03T01:15:31.414796）：S10独立32mask/6组
 六臂学习/监控/测速接受（2026-11-03T01:25:10.180980）：六臂256×4固定32train功能、fresh optimizer与末步预测/独立32mask全通过，共192mask接受，证据/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_closeout_1103_012327/acceptance.json。CPU monitor组件32task真实forward通过权重/RNG/模式不变，CPU原进程正常exit0。GPU测速20update/100inference正常exit0，暖机后均值1.5152秒/update、推理0.3044秒/task（不含BF1/最终checkpoint/固定训练监控，非WSI延迟）。新版集成六臂smoke已实际自动进入I_smoke worker1460577；正式controller仍等待且未生成contract，不称正式已训练。此前goal turn为progress，本轮完成实际门控接受并验证自动衔接，亦为progress。
 
 P3正式运行（2026-11-03T01:34:46.444597）：冻结合同/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/contract.json已生成，S11实际worker1501978更新51/2000；六臂正式/全部评分与比较自动串行，启动不等于完成，源码保持冻结。
+
+P3-C离线准备：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_mix_prepare_1103_014445/data/report.json，4k未解析local recipe及监督使用差异已审计，禁止未解析清单直接训练；不改当前P3-A。
