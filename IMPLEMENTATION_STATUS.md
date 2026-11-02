@@ -3936,3 +3936,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314
 - Docs record: docs/运行记录/模型实验/运行记录_细胞采样坐标修复_1102_192314.md
 - Commit: accompanying repair commit.
+
+## 11-02 19:42:32
+
+- Purpose: Accelerate user-authorized cell repair by explicit four-GPU preparation shards.
+- Changed: sharded_repair.py, parallel_repair_pipeline.py, continuity pointers and scheduling record.
+- Validation: Real GPU1 vs original GPU3 three-view probe: identical masks/IDs/geometry/images and reg/cells max error0. Four actual workers alive, disjoint remaining1658 IDs, old79 completed outputs preserved for validated adoption. Full acceptance pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_parallel_1102_193912
+- Docs record: docs/运行记录/模型实验/运行记录_细胞缓存并行加速_1102_194118.md
+- Commit: accompanying parallel-preparation commit.
