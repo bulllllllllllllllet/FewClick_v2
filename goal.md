@@ -132,3 +132,5 @@ P2正式训练里程碑（2026-11-02T12:42:34.304743+08:00）：三臂功能及t
 P2后处理衔接（2026-11-02T12:47:04.681717+08:00）：三臂比较工具已在历史14844真实rows验证聚合/守门/主区间并正确拒绝未完成P2；formal结果待出。p2_post_training_audit_1102_124900 watcher已核验存活、等待训练正常完成，随后自动比较和两离散臂末步全量census/独立重放，不能自动标P2接受；颜色/稀有/效率/复验义务保留。
 
 P2原生颜色输入（2026-11-02T12:54:23.335017+08:00）：固定16fine视野/2962保留细胞/80色输入，沿用原InstanSeg mask、XCell顺序/上下文和五种既定OD条件；几何/crop像素/全部颜色独立复算接受。GPU feature identity与颜色码稳定性仍未验证，不能以既有CTransPath点crop代替；当前GPU训练与后处理等待队列保持。
+
+P2颜色特征衔接（2026-11-02T12:58:26.536314+08:00）：原生提取脚本input/weight预检查通过，p2_native_color_features_1102_130000真实watcher等待主GPU队列完成和GPU3空闲，再4field identity/颜色gate→CPU接受→16field full→CPU接受。现在没有额外GPU提取启动；GPU feature identity/颜色code稳定性仍未接受，后续须用末步fixed/EMA状态诊断。

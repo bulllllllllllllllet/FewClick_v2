@@ -3837,3 +3837,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_inputs_1102_125400
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
 - Commit: 本次原生颜色输入实现提交（见git log）。
+
+## 2026-11-02T12:58:26.536314+08:00
+
+- Purpose: 将P2原生XCell颜色特征提取按身份门控接入现有GPU训练之后，避免并行资源争用。
+- Changed: extract_native_color.py、goal.md、CVPR registry与P2运行记录。
+- Validation: CLI及真实gate4/full16共20条输入几何/ID/shape/finite、权重SHA预检查通过；GPU3占用查询返回当前worker；等待watcher与训练worker现场PID身份核对存活。实际GPU feature identity尚未执行，不称通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_features_1102_130000
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
+- Commit: 本次原生颜色特征提取准备提交（见git log）。

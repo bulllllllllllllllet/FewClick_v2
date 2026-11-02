@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T12:54:23.335017+08:00",
+  "updated_at": "2026-11-02T12:58:26.536314+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1025,7 +1025,7 @@
         "formal_training_started": true,
         "budget_per_arm": "2000x4 after fixed gates and smoke",
         "quality_outcome": "not_evaluated",
-        "last_observed_at": "2026-11-02T12:54:23.335017+08:00",
+        "last_observed_at": "2026-11-02T12:58:26.536314+08:00",
         "functional_reports": {
           "continuous": {
             "status": "accepted_train_only_functional_gate",
@@ -1053,10 +1053,10 @@
           "status": "training",
           "arm": "continuous",
           "worker_pid": 1847973,
-          "updates": 526,
+          "updates": 676,
           "total_updates": 2000,
-          "loss": 1.391297608613968,
-          "seconds": 823.138753414154
+          "loss": 1.380552500486374,
+          "seconds": 1057.0655381679535
         },
         "smoke_acceptances": {
           "continuous": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous_smoke/independent_acceptance.json"
@@ -1337,6 +1337,52 @@
         "feature_identity_accepted": false,
         "color_code_stability_accepted": false,
         "GPU_feature_job_started": false
+      },
+      "native_color_features": {
+        "status": "waiting_for_training",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_features_1102_130000",
+        "stage": {
+          "status": "waiting",
+          "stage": "waiting_for_training",
+          "worker_pid": 1933899,
+          "dependency_stage": {
+            "status": "running",
+            "stage": "continuous_train",
+            "worker_pid": 1847973,
+            "command": [
+              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+              "-u",
+              "-m",
+              "benchmarks.v5.architecture_bridge.train_vocabulary",
+              "--arm",
+              "continuous",
+              "--output",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous",
+              "--gate",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates"
+            ]
+          }
+        },
+        "watcher_alive": true,
+        "observed_at": "2026-11-02T12:58:26.536314+08:00",
+        "CPU_preflight": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_features_1102_130000/CPU_preflight.json",
+        "GPU_feature_identity_accepted": false,
+        "GPU_feature_job_started": false,
+        "GPU_extraction_queued": true,
+        "GPU": 3,
+        "exclusive_compute_required": true,
+        "identity_tolerance": {
+          "rtol": 1e-05,
+          "atol": 1e-05
+        },
+        "steps": [
+          "four_frame_gate",
+          "gate_CPU_accept",
+          "sixteen_frame_full",
+          "full_CPU_accept"
+        ],
+        "color_code_stability_accepted": false,
+        "next_after_features": "offline final fixed/EMA mapper and codebook color-flip/distance diagnostics"
       }
     },
     "P3": {
