@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T00:44:16.809785",
+  "updated_at": "2026-11-03T00:47:15.205582",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1843,7 +1843,14 @@
         },
         "device": "cpu",
         "threads": 2,
-        "formal_training_started": false
+        "formal_training_started": false,
+        "observed_training_updates": 2
+      },
+      "formal_comparison_tool": {
+        "status": "implemented_positive_formal_binding_pending",
+        "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_comparison_binding_gate_1103_004619/report.json",
+        "negative_run_binding_tested": true,
+        "positive_formal_run_binding_tested": false
       }
     },
     "P4": {
@@ -1895,7 +1902,7 @@
   ],
   "active_jobs": [
     {
-      "kind": "spatial_learning",
+      "kind": "learning",
       "stage": {
         "status": "running",
         "stage": "I_learn",
@@ -1912,12 +1919,10 @@
           "--output",
           "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/I"
         ]
-      },
-      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148"
+      }
     },
     {
-      "status": "running_integration_not_accepted",
-      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_trainer_smoke_1103_004220",
+      "kind": "trainer",
       "stage": {
         "status": "running",
         "stage": "smoke_train",
@@ -1941,15 +1946,10 @@
           "--output",
           "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_trainer_smoke_1103_004220/S11_smoke"
         ]
-      },
-      "device": "cpu",
-      "threads": 2,
-      "formal_training_started": false
+      }
     },
     {
-      "status": "running",
-      "kind": "P3_full_geometry_and_pixel_view_inventory",
-      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438",
+      "kind": "inventory",
       "stage": {
         "status": "running",
         "worker_pid": 1191413,
@@ -1965,11 +1965,7 @@
           "--gate-receipt",
           "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/gate/acceptance.json"
         ]
-      },
-      "CPU_threads": 2,
-      "GPU": null,
-      "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/gate/acceptance.json",
-      "observed_at": "2026-11-03T00:35:43.902764"
+      }
     }
   ],
   "completed_jobs": [
@@ -2127,8 +2123,9 @@
     }
   ],
   "next_actions": [
-    "核对既有CPU smoke、六臂学习和库存worker；正式trainer尚未端到端接受，禁止正式训练",
-    "CPU smoke最终重载/12mask复算通过后再审计trainer与原计划的train-only监控/环境绑定/20更新100mask测速缺口，完成后冻结正式执行合同"
+    "现有三个worker仍真实运行，继续核对六臂学习/CPU smoke最后重载评分/库存全量接受，不重复启动",
+    "后续在同GPU串行空档完成GPU smoke与20更新100mask测速，补train-only固定节点监控/完整执行绑定；通过后正式六臂训练",
+    "compare_spatial须在正式输出生成后运行，当前仅拒绝未完成/旧P2与真实历史行守门测试通过"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

@@ -4035,3 +4035,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_trainer_smoke_1103_004220
 - Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
 - Commit: accompanying pending-integration commit.
+
+## 11-03 00:47:15
+
+- Purpose: Bind formal six-arm P3 results before any comparative claims.
+- Changed: compare_spatial.py plus continuity records.
+- Validation: Current incomplete P3 and old P2 runs rejected; original guard on real3711 historical rows checked. Positive binding awaits actual formal P3 outputs. Existing CPU smoke completed2 training steps; scoring/reload pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_comparison_binding_gate_1103_004619
+- Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
+- Commit: accompanying formal comparison binding commit.
