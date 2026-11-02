@@ -4053,3 +4053,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_preflight_1103_004828
 - Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
 - Commit: accompanying preflight commit.
+
+## 11-03 00:53:32
+
+- Purpose: Implement fixed train-only collapse/prompt diagnostics without validation selection.
+- Changed: train_monitor.py, gate_train_monitor.py; continuity records.
+- Validation: Helper Dice/FPA replay on32 real masks/GT, constant predictor and fixed task selection checks passed; actual checkpoint CPU monitor worker1276421 running. State/RNG/model integration acceptance pending, formal trainer not yet integrated.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125
+- Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
+- Commit: accompanying train-monitor component commit.

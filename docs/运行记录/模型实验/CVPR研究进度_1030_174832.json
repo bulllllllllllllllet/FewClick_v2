@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T00:49:57.989734",
+  "updated_at": "2026-11-03T00:53:32.923178",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1862,6 +1862,18 @@
           "GPU20update100mask_benchmark",
           "frozen_execution_contract_and_source_binding"
         ]
+      },
+      "fixed_train_monitor": {
+        "status": "model_component_gate_running",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125",
+        "stage": {
+          "status": "running",
+          "worker_pid": 1276421
+        },
+        "device": "cpu",
+        "threads": 2,
+        "metric_helpers_accepted": true,
+        "trainer_integrated": false
       }
     },
     "P4": {
@@ -1977,6 +1989,18 @@
           "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/gate/acceptance.json"
         ]
       }
+    },
+    {
+      "status": "model_component_gate_running",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125",
+      "stage": {
+        "status": "running",
+        "worker_pid": 1276421
+      },
+      "device": "cpu",
+      "threads": 2,
+      "metric_helpers_accepted": true,
+      "trainer_integrated": false
     }
   ],
   "completed_jobs": [
@@ -2134,9 +2158,9 @@
     }
   ],
   "next_actions": [
-    "监控六臂学习S00及后续、CPU smoke末步重载、库存三个既有worker",
-    "CPU smoke结束后补trainer评分阶段持续进度、固定train-only监控节点与执行源码绑定，避免运行中改源码",
-    "全部门控后GPU串行smoke/20更新100mask测速并冻结正式合同，不以环境预检替代学习接受"
+    "监控六臂学习S00/后续、库存、CPU trainer smoke及独立monitor实际worker，保持源码冻结",
+    "CPU trainer smoke终态后接入固定0/250/500/1000/2000 train-only monitor与持续评分/重载进度，重新版本化smoke",
+    "全部门控后同GPU串行完成GPU smoke/吞吐测试与正式合同，再执行六臂2000更新"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
