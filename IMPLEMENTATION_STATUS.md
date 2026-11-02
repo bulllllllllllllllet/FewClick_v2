@@ -3828,3 +3828,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_comparison_engineering_1102_124500；/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_post_training_audit_1102_124900
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
 - Commit: 本次三臂比较工具提交（见git log）。
+
+## 2026-11-02T12:54:23.335017+08:00
+
+- Purpose: 为P2原生XCell颜色稳定性准备与实际缓存匹配的固定mask输入，避免复用错误点crop证据。
+- Changed: prepare_native_color.py、goal.md、CVPR registry与P2运行记录。
+- Validation: gate4frame/388cells、full16frame/2962cells/80色输入及各独立accept exit0；source SHA/原生recipe/权重、metadata排序/area/74维、cropper像素、独立power颜色复算通过。GPU原生feature identity未执行；formal worker和后处理watcher现场存活。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_inputs_1102_125400
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
+- Commit: 本次原生颜色输入实现提交（见git log）。

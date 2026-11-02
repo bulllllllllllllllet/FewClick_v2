@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T12:47:04.681717+08:00",
+  "updated_at": "2026-11-02T12:54:23.335017+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1025,7 +1025,7 @@
         "formal_training_started": true,
         "budget_per_arm": "2000x4 after fixed gates and smoke",
         "quality_outcome": "not_evaluated",
-        "last_observed_at": "2026-11-02T12:47:04.681717+08:00",
+        "last_observed_at": "2026-11-02T12:54:23.335017+08:00",
         "functional_reports": {
           "continuous": {
             "status": "accepted_train_only_functional_gate",
@@ -1053,10 +1053,10 @@
           "status": "training",
           "arm": "continuous",
           "worker_pid": 1847973,
-          "updates": 251,
+          "updates": 526,
           "total_updates": 2000,
-          "loss": 1.8013978898525238,
-          "seconds": 389.2660880088806
+          "loss": 1.391297608613968,
+          "seconds": 823.138753414154
         },
         "smoke_acceptances": {
           "continuous": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous_smoke/independent_acceptance.json"
@@ -1305,7 +1305,7 @@
           }
         },
         "watcher_alive": true,
-        "observed_at": "2026-11-02T12:47:04.681717+08:00",
+        "observed_at": "2026-11-02T12:54:23.335017+08:00",
         "steps": [
           "three_arm_quality_comparison",
           "fixed_final_all_cell_census",
@@ -1314,6 +1314,29 @@
           "ema_census_accept"
         ],
         "P2_automatic_acceptance": false
+      },
+      "native_color_inputs": {
+        "status": "complete_inputs_only",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_inputs_1102_125400",
+        "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_inputs_1102_125400/gate/independent_acceptance.json",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_inputs_1102_125400/full/independent_acceptance.json",
+        "recipe_provenance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_inputs_1102_125400/native_recipe_provenance.json",
+        "selection_recipe_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_inputs_1102_125400/selection_recipe_acceptance.json",
+        "frames": 16,
+        "retained_cells": 2962,
+        "frame_color_variants": 80,
+        "conditions": [
+          "identity",
+          "OD_RG_plus",
+          "OD_RG_minus",
+          "OD_light",
+          "OD_dark"
+        ],
+        "fine_only": true,
+        "detector_rerun": false,
+        "feature_identity_accepted": false,
+        "color_code_stability_accepted": false,
+        "GPU_feature_job_started": false
       }
     },
     "P3": {
