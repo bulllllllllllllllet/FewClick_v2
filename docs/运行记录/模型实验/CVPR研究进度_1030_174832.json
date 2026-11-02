@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T13:37:22.437370+08:00",
+  "updated_at": "2026-11-02T14:02:23.729150+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -952,24 +952,36 @@
         "保留词汇/保留连续的显式决定"
       ],
       "acceptance": null,
-      "quality_outcome": "not_evaluated",
+      "quality_outcome": "continuous_reference_complete_other_arms_pending",
       "runs": [
         {
           "kind": "P2_vocabulary_formal_arm",
           "arm": "continuous",
-          "status": "running_evaluation",
+          "status": "complete",
           "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous",
           "training_updates": 2000,
           "consumed_tasks": 8000,
           "training_budget_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_training_accept_1102_133400/report.json",
           "checkpoint_sha256": "92f9cefd8926724853086f0dd0cbe4f2608d3eae3e49e1991df89f492f5d6388",
           "training_sha256": "97d2941fe9197ba6146c26db1752a1f6a76f26eeae26f913eff44adae5b467bb",
-          "scored_masks_observed": 1100,
+          "scored_masks_observed": 3711,
           "expected_scored_masks": 3711,
-          "mask_replay_accepted": false,
-          "quality_outcome": "not_evaluated",
+          "mask_replay_accepted": true,
+          "quality_outcome": "accepted_reference_only_not_compared",
           "worker_pid": 1847973,
-          "observed_at": "2026-11-02T13:37:22.437370+08:00"
+          "observed_at": "2026-11-02T14:02:23.729150+08:00",
+          "independent_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous/independent_acceptance.json",
+          "summary": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_summary_1102_135700/summary.json",
+          "values": {
+            "remote_macro_Dice": 0.22042961086035973,
+            "remote_Dice": 0.19882458971823985,
+            "remote_BF1": 0.033511755904736075,
+            "absent_FPA": 0.028989057308529135,
+            "local_Dice": 0.40080636484702464,
+            "local_BF1": 0.05592912635404749,
+            "small_Dice": 0.13931744484922828,
+            "fat_Dice": 0.3923479313461324
+          }
         }
       ],
       "candidate_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_selected_vocabulary_1102_121546/synthesis/summary.json",
@@ -1020,21 +1032,21 @@
         "mask_rows_replayed": 24
       },
       "pilot": {
-        "status": "running_formal_evaluation",
+        "status": "running_formal_training",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100",
         "stage": {
           "status": "running",
-          "stage": "continuous_train",
-          "worker_pid": 1847973,
+          "stage": "fixed_train",
+          "worker_pid": 2220343,
           "command": [
             "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
             "-u",
             "-m",
             "benchmarks.v5.architecture_bridge.train_vocabulary",
             "--arm",
-            "continuous",
+            "fixed",
             "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/fixed",
             "--gate",
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates"
           ]
@@ -1042,8 +1054,8 @@
         "worker_alive": true,
         "formal_training_started": true,
         "budget_per_arm": "2000x4 after fixed gates and smoke",
-        "quality_outcome": "not_evaluated",
-        "last_observed_at": "2026-11-02T13:37:22.437370+08:00",
+        "quality_outcome": "continuous_reference_only_not_compared",
+        "last_observed_at": "2026-11-02T14:02:23.729150+08:00",
         "functional_reports": {
           "continuous": {
             "status": "accepted_train_only_functional_gate",
@@ -1069,18 +1081,29 @@
         },
         "latest_training_status": {
           "status": "training",
-          "arm": "continuous",
-          "worker_pid": 1847973,
-          "updates": 2000,
+          "arm": "fixed",
+          "worker_pid": 2220343,
+          "updates": 151,
           "total_updates": 2000,
-          "loss": 1.3326399326324463,
-          "seconds": 3093.57559466362
+          "loss": 1.7835249602794647,
+          "seconds": 237.57728004455566
         },
         "smoke_acceptances": {
-          "continuous": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous_smoke/independent_acceptance.json"
+          "continuous": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous_smoke/independent_acceptance.json",
+          "fixed": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/fixed_smoke/independent_acceptance.json"
         },
-        "current_activity": "continuous_scoring",
-        "scored_masks_observed": 1100
+        "current_activity": "fixed_training",
+        "scored_masks_observed": 1100,
+        "continuous_summary": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_summary_1102_135700/summary.json",
+        "arm_progress": {
+          "continuous": "complete_2000_updates_3711_mask_replay",
+          "fixed": {
+            "status": "running_training",
+            "last_observed_updates": 151,
+            "worker_pid": 2220343
+          },
+          "ema": "queued_after_fixed"
+        }
       },
       "code_inventory_diagnostics": {
         "status": "complete_initial_and_engineering_checkpoint_only",

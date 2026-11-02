@@ -3882,3 +3882,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_training_accept_1102_133400/report.json；/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
 - Commit: 本次首臂训练预算接受提交（见git log）。
+
+## 2026-11-02T14:02:23.729150+08:00
+
+- Purpose: 接受P2 continuous正式整臂结果并记录fixed自动衔接，保持三臂比较定义。
+- Changed: goal.md、CVPR registry与当前P2运行记录；无活跃训练代码变动。
+- Validation: continuous训练/评分及--accept exit0，3711mask重放、2000更新/8000消费/weight SHA通过；完整聚合参考已输出。fixed smoke12mask接受，正式worker2220343现场存活、至少151更新。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_summary_1102_135700/summary.json；/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous/independent_acceptance.json
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
+- Commit: 本次首臂完整接受提交（见git log）。
