@@ -4116,3 +4116,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_closeout_1103_012327
 - Docs record: docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md
 - Commit: accompanying complete-startup-gates milestone commit.
+
+## 11-03 01:34:46
+
+- Purpose: Record actual formal P3 startup after all integrated gates.
+- Changed: goal/registry/current record, no frozen source edits.
+- Validation: Six GPU smoke72 masks accepted; source/evidence hashes bound; S11 worker1501978 live, node0 done, actual update51/2000 finite.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/startup_acceptance.json
+- Docs record: docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md
+- Commit: accompanying formal-start milestone commit.
