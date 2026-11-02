@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T01:48:20.826553",
+  "updated_at": "2026-11-03T04:26:42.570531",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1950,15 +1950,15 @@
         "watcher_pid": 1333314,
         "stage": {
           "status": "running",
-          "stage": "S11_train",
-          "worker_pid": 1501978,
+          "stage": "S00_train",
+          "worker_pid": 2212192,
           "command": [
             "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
             "-u",
             "-m",
             "benchmarks.v5.architecture_bridge.train_spatial",
             "--arm",
-            "S11",
+            "S00",
             "--cache",
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
             "--protocol",
@@ -1968,7 +1968,7 @@
             "--inventory",
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/full/acceptance.json",
             "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/S11",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/S00",
             "--execution-contract",
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/contract.json",
             "--benchmark-receipt",
@@ -1976,10 +1976,15 @@
             "--monitor-receipt",
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125/model_gate/acceptance.json"
           ],
-          "observed_at": 1793640746.7736635
+          "observed_at": 1793649840.5863984
         },
         "formal_training_started": true,
-        "startup_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/startup_acceptance.json"
+        "startup_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/startup_acceptance.json",
+        "accepted_arms": [
+          "S11",
+          "I"
+        ],
+        "partial_budget_audit": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_partial_formal_audit_1103_042531/acceptance.json"
       },
       "partial_learning_state_audit": {
         "status": "complete_for_four_accepted_arms",
@@ -1987,12 +1992,14 @@
         "formal_quality_claim": false
       },
       "task_mix_preparation": {
-        "status": "accepted_ledger_and_unrealized_recipe_only",
+        "status": "real_click_gate_accepted_full_running",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_mix_prepare_1103_014445",
         "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_mix_prepare_1103_014445/data/report.json",
         "local_clicks_realized": false,
         "training_started": false,
-        "final_architecture_fixed": false
+        "final_architecture_fixed": false,
+        "realization_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_clicks_1103_042442",
+        "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_clicks_1103_042442/gate/acceptance.json"
       }
     },
     "P4": {
@@ -2044,19 +2051,19 @@
   ],
   "active_jobs": [
     {
-      "kind": "P3_formal_six_arm_study",
+      "kind": "P3_formal_study",
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403",
       "stage": {
         "status": "running",
-        "stage": "S11_train",
-        "worker_pid": 1501978,
+        "stage": "S00_train",
+        "worker_pid": 2212192,
         "command": [
           "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
           "-u",
           "-m",
           "benchmarks.v5.architecture_bridge.train_spatial",
           "--arm",
-          "S11",
+          "S00",
           "--cache",
           "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
           "--protocol",
@@ -2066,7 +2073,7 @@
           "--inventory",
           "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/full/acceptance.json",
           "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/S11",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/S00",
           "--execution-contract",
           "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/contract.json",
           "--benchmark-receipt",
@@ -2074,18 +2081,39 @@
           "--monitor-receipt",
           "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125/model_gate/acceptance.json"
         ],
-        "observed_at": 1793640746.7736635
+        "observed_at": 1793649840.5863984
       },
       "worker_status": {
         "stage": "training",
-        "updates": 576,
+        "updates": 851,
         "total_updates": 2000,
-        "loss": 1.5435654819011688,
-        "worker_pid": 1501978,
-        "arm": "S11",
-        "seconds": 929.9880597107112
+        "loss": 1.674270898103714,
+        "worker_pid": 2212192,
+        "arm": "S00",
+        "seconds": 1318.1321142092347
+      }
+    },
+    {
+      "kind": "P3_C_local_click_realization",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_clicks_1103_042442",
+      "stage": {
+        "status": "running",
+        "worker_pid": 2318669,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.spatial_task_mix.realize",
+          "--prepared",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_mix_prepare_1103_014445/data",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_clicks_1103_042442/full",
+          "--gate-receipt",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_clicks_1103_042442/gate/acceptance.json"
+        ]
       },
-      "GPU": 3
+      "workers": 2,
+      "training_started": false
     }
   ],
   "completed_jobs": [
@@ -2243,9 +2271,9 @@
     }
   ],
   "next_actions": [
-    "继续核对原S11正式worker和固定train monitor，不按中间结果改配方",
-    "P3-C已有同domain/target/点击数配额recipe和监督账本，但需解析真实点击/独立验收且架构冻结后才运行",
-    "全部六臂正式评分/预定比较完成后按固定分支决定复验，源码保持冻结"
+    "现有正式S00 worker继续，六臂全部完成后一次比较；先前S11/I完整预算已独立复核",
+    "CPU local4000真实点击接受后仍仅数据准备，最终结构/监督范围合同与新学习门控未冻结不训练P3-C",
+    "保持65冻结源不变，不重启原正式队列"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

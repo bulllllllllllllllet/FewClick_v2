@@ -4134,3 +4134,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_mix_prepare_1103_014445
 - Docs record: docs/建议/模型与训练/方案_P3任务配方对照清单准备_1103_014445.md; docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md
 - Commit: accompanying task-mix preparation commit.
+
+## 11-03 04:26:42
+
+- Purpose: Verify two finished formal budgets and prepare actual P3-C local clicks in parallel.
+- Changed: spatial_task_mix/realize.py; continuity records.
+- Validation: S11/I real checkpoints finite, optimizer steps2000, complete3711 receipts/monitor hashes and shared protocol/initialization accepted; local4task real-click gate/signs/public resolver replay passed, full4000 CPU2 running. Current65 frozen sources unchanged.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_clicks_1103_042442; /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_partial_formal_audit_1103_042531
+- Docs record: docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md
+- Commit: accompanying local-realization preparation commit.

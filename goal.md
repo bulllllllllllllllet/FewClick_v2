@@ -200,3 +200,6 @@ S10接受与verified wait（2026-11-03T01:15:31.414796）：S10独立32mask/6组
 P3正式运行（2026-11-03T01:34:46.444597）：冻结合同/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/contract.json已生成，S11实际worker1501978更新51/2000；六臂正式/全部评分与比较自动串行，启动不等于完成，源码保持冻结。
 
 P3-C离线准备：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_mix_prepare_1103_014445/data/report.json，4k未解析local recipe及监督使用差异已审计，禁止未解析清单直接训练；不改当前P3-A。
+
+首两臂正式接受与P3-C点击准备（2026-11-03T04:26:42.570531）：S11/I各2000×4/3711mask已独立接受，本轮checkpoint全有限、optimizer所有active state=2000、5监控节点SHA和fresh12预测绑定复核通过；证据/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_partial_formal_audit_1103_042531/acceptance.json，不提前比较质量。S00实际worker2212192已更新851/2000。全部65冻结源SHA一致。
+local-only原政策真实点击gate4任务（CRC0/10、TIGER1/3）通过逐点train GT正负核对与独立resolve_clicks重放；CPU2 full4000解析实际worker2318669存活，命令/快照/log/EXIT_CODE在/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_clicks_1103_042442。解析结果待全量接受；P3-C不训练，不改当前A。source在v5/spatial_task_mix/realize.py，正式冻结源未改。
