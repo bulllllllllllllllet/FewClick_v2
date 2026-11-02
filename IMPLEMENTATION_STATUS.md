@@ -4089,3 +4089,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403
 - Docs record: docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md
 - Commit: accompanying dependency-controller commit.
+
+## 11-03 01:12:10
+
+- Purpose: Independently audit completed learning budgets while preserving the frozen dependency chain.
+- Changed: Continuity records only; no frozen source edits.
+- Validation: Four accepted arms checkpoint finite, all optimizer states256, same tasks/seed and receipt/checkpoint hashes verified; five actual controllers live. Auxiliary thread oversubscription explicitly stopped and rechecked with2 threads, old interruption preserved.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_partial_learning_audit_1103_011106
+- Docs record: docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md
+- Commit: accompanying partial-learning audit record commit.

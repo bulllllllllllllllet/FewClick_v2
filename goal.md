@@ -190,3 +190,5 @@ S11学习接受与trainer集成运行（2026-11-03T00:44:16.809785）：S11全�
 旧CPU smoke接受与集成队列（2026-11-03T01:00:40.011575）：旧CPU smoke2更新/12验证/12fresh预测/12mask独立复算全部通过，耗时816.21秒。S00学习独立接受，当前H11实际worker1291797存活。train_spatial新版本接入固定monitor节点、正式凭证限制和连续评分/重载进度，语法通过，真实端到端验证pending。/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_integrated_smokes_1103_010002实际waiting三个已核对live的依赖；完成后自动六臂GPU smoke，不启动正式预算。
 
 正式依赖链部署（2026-11-03T01:06:12.330914）：全库存1737/5211已接受，首seed六臂root/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403控制器1333314等待新版smoke真实controller。尚无正式contract/训练worker；完整source/weight已快照冻结，不改运行源码、不重复开队列。下一步依赖接受后自动首seed6臂，再独立比较；完整目标仍active。
+
+四臂预算复核与verified wait（2026-11-03T01:12:10.378004）：S11/I/S00/H11全部checkpoint有限、每active optimizer state步数256、32task/seed/预算及独立receipt SHA链一致，证据/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_partial_learning_audit_1103_011106/audit.json；实际四臂同固定任务，不是正式泛化比较。首次辅助检查torch默认191线程开销过大，显式仅终止辅助worker1353066并登记原目录interruption.json；重新以torch/OMP/BLAS2线程同检查通过，现有训练/监控进程未重启。所有五个当前controller均现场核对live，65冻结源SHA前次核验一致；目前实际接受学习组['S11', 'I', 'S00', 'H11']。本轮有新增权重/优化器证据并核验等待链，整体Goal仍active。

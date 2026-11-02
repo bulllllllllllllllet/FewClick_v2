@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T01:06:12.330914",
+  "updated_at": "2026-11-03T01:12:10.378004",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1755,19 +1755,19 @@
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148",
         "stage": {
           "status": "running",
-          "stage": "H11_learn",
-          "worker_pid": 1291797,
+          "stage": "S10_learn",
+          "worker_pid": 1331288,
           "command": [
             "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
             "-u",
             "-m",
             "benchmarks.v5.architecture_bridge.functional_repaired",
             "--arm",
-            "H11",
+            "S10",
             "--cache",
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
             "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/H11"
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/S10"
           ]
         },
         "GPU": 3,
@@ -1778,7 +1778,8 @@
         "accepted_arms": [
           "S11",
           "I",
-          "S00"
+          "S00",
+          "H11"
         ]
       },
       "geometry_inventory": {
@@ -1931,6 +1932,11 @@
           "observed_at": 1793639171.4286
         },
         "formal_training_started": false
+      },
+      "partial_learning_state_audit": {
+        "status": "complete_for_four_accepted_arms",
+        "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_partial_learning_audit_1103_011106/audit.json",
+        "formal_quality_claim": false
       }
     },
     "P4": {
@@ -1982,102 +1988,73 @@
   ],
   "active_jobs": [
     {
-      "kind": "learning",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148",
+      "controller_pid": 1175114,
       "stage": {
         "status": "running",
-        "stage": "I_learn",
-        "worker_pid": 1214325,
+        "stage": "S10_learn",
+        "worker_pid": 1331288,
         "command": [
           "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
           "-u",
           "-m",
           "benchmarks.v5.architecture_bridge.functional_repaired",
           "--arm",
-          "I",
+          "S10",
           "--cache",
           "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
           "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/I"
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/S10"
         ]
       }
     },
     {
-      "kind": "inventory",
-      "stage": {
-        "status": "running",
-        "worker_pid": 1191413,
-        "command": [
-          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-          "-u",
-          "-m",
-          "benchmarks.v5.architecture_bridge.audit_spatial_inventory",
-          "--cache",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-          "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/full",
-          "--gate-receipt",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/gate/acceptance.json"
-        ]
-      }
-    },
-    {
-      "status": "model_component_gate_running",
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125",
+      "controller_pid": 1276419,
       "stage": {
         "status": "running",
         "worker_pid": 1276421
-      },
-      "device": "cpu",
-      "threads": 2,
-      "metric_helpers_accepted": true,
-      "trainer_integrated": false
+      }
     },
     {
-      "status": "waiting_verified_live_controller",
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_throughput_queue_1103_005618",
-      "watcher_pid": 1292045,
-      "dependency_controller": 1175114,
+      "controller_pid": 1292045,
       "stage": {
         "status": "waiting_verified_live_controller",
         "controller": 1175114,
         "dependency": {
           "status": "running",
-          "stage": "H11_learn",
-          "worker_pid": 1291797,
+          "stage": "S10_learn",
+          "worker_pid": 1331288,
           "command": [
             "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
             "-u",
             "-m",
             "benchmarks.v5.architecture_bridge.functional_repaired",
             "--arm",
-            "H11",
+            "S10",
             "--cache",
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
             "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/H11"
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/S10"
           ]
         }
-      },
-      "GPU": 3,
-      "source_implementation": "pending_real_probe_execution",
-      "formal_training_started": false
+      }
     },
     {
-      "kind": "integrated_smoke_dependency_queue",
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_integrated_smokes_1103_010002",
+      "controller_pid": 1309988,
       "stage": {
         "status": "waiting_verified_dependencies",
         "pending": [
           "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_throughput_queue_1103_005618",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438"
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125"
         ]
       }
     },
     {
-      "status": "waiting_verified_dependency",
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403",
-      "watcher_pid": 1333314,
+      "controller_pid": 1333314,
       "stage": {
         "status": "waiting_verified_dependency",
         "controller": 1309988,
@@ -2088,9 +2065,8 @@
             "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125"
           ]
         },
-        "observed_at": 1793639171.4286
-      },
-      "formal_training_started": false
+        "observed_at": 1793639523.1419656
+      }
     }
   ],
   "completed_jobs": [
@@ -2248,8 +2224,9 @@
     }
   ],
   "next_actions": [
-    "从新当前record核对已部署依赖链及真实PID，保持bridge源码冻结",
-    "正向验收全部通过才自动生成正式contract/六臂首seed训练；失败停止不重试；所有结果仍需独立验收"
+    "保持所有bridge源码冻结，监控现有五个实际controller，不重复启动",
+    "六臂学习→测速→新版六臂smoke→完整冻结contract→正式六臂首seed的链已部署；失败停止后再诊断",
+    "当前只32train功能与库存证据，不作正式质量/WSI结论"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
