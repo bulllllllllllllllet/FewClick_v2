@@ -12,7 +12,7 @@
 
 当前：**P0 complete；P1 bounded encoder screening complete；P2 preparing**。P1最终接受p1_selection_close_1101_123321/data/acceptance.json：图像冻结Phikon、细胞LEMON10µm为机制研究候选，native XCell对照保留；没有可靠组织替换或WSI晋升。原细胞残差两配方和limited joint阴性/原80守门保持。颜色稳定性和native分环节成本已接受，成本范围不可混用。
 
-桥接两seed已complete并接受：B-A远端macro +8.96/+9.51pp且两次过原6守门；D-B两次远端下降，不能凭LEMON probe强替换。P2正式选择冻结Phikon+XCell标准化64。train-only30000观察及K128拟合/独立距离inertia重放已接受（val0、占用128码），证据p2_selected_vocabulary_1102_121546。P2组织下游尚未执行；下一步接原三视野共同模型并验证EMA更新/冻结、功能学习、重载继续与真实mask，之后固定三臂pilot。P2/P3–P6未完成，Goal active，既有全部阴性与来源/确认限制保留。
+桥接双seed已接受，P2固定Phikon+XCell64、train-only K128/30000观察/val0接受。P2三表示已接入原三视野共同模型，三臂8任务工程门控全部通过：共同参数/初始core、24mask复算、fresh model/optimizer/EMA继续精确、eval冻结。p2_vocabulary_pilot_1102_122100正在GPU3串行功能门控，通过后自动smoke+各2000×4/3711mask接受。当前未出P2正式质量，禁止重复启动/改活跃源码或调阈值；码使用/稳定性/效率和下游质量证据齐备后才P2接受，P3–P6未完成。
 
 ## 执行顺序
 

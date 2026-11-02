@@ -3765,3 +3765,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_selected_vocabulary_1102_121546; bridge_seed2_comparison_1102_121359 and accepted30000 samples.
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md.
 - Commit: this commit; codebook fitting is not tissue segmentation completion; P2 downstream and P3–P6 remain.
+
+## 2026-11-02T12:25:08.520775+08:00
+
+- Purpose: Integrate P2 representations into unchanged three-view region/cell/hierarchy/graph and queue functional-to-formal experiments.
+- Changed: vocabulary_model.py, gate_vocabulary_model.py, functional_vocabulary.py, train_vocabulary.py; goal/registry/current record.
+- Validation: actual all3 eight-task gates exit0;24 masks exact reload/replay, common initialization/trainable7008023,4160 mapper each, fixed centers unchanged/EMA updates, eval state immutable and fresh optimizer/EMA continuation exact. Functional worker1768605 live; formal training and quality not yet completed.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100; sources/commands/source snapshots/PID/history/logs.
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md.
+- Commit: this commit; no live source changes permitted during queue.

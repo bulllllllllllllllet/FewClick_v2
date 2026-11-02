@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T12:18:10.218477+08:00",
+  "updated_at": "2026-11-02T12:25:08.520775+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,7 +13,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P2",
-  "current_status": "preparing_downstream_gate",
+  "current_status": "P2_running_functional_gate",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -945,7 +945,7 @@
     },
     "P2": {
       "title": "连续/固定词表/可学习词汇",
-      "status": "preparing",
+      "status": "running_functional_gate",
       "required_evidence": [
         "三臂匹配与码本诊断",
         "下游mask收益或压缩证据",
@@ -989,7 +989,42 @@
         "val_fit_samples": 0,
         "occupied_codes": 128
       },
-      "downstream_training_started": false
+      "downstream_training_started": false,
+      "downstream_gate": {
+        "status": "complete",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates/independent_gate_acceptance.json",
+        "mode_reports": [
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates/continuous/report.json",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates/fixed/report.json",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates/ema/report.json"
+        ],
+        "trainable_parameters": 7008023,
+        "mapper_parameters": 4160,
+        "mask_rows_replayed": 24
+      },
+      "pilot": {
+        "status": "running_functional_gate",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100",
+        "stage": {
+          "status": "running",
+          "stage": "continuous_functional",
+          "worker_pid": 1768605,
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.architecture_bridge.functional_vocabulary",
+            "--mode",
+            "continuous",
+            "--output",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous_functional"
+          ]
+        },
+        "worker_alive": true,
+        "formal_training_started": false,
+        "budget_per_arm": "2000x4 after fixed gates and smoke",
+        "quality_outcome": "not_evaluated"
+      }
     },
     "P3": {
       "title": "空间组合与提示迁移",
@@ -1206,9 +1241,9 @@
     }
   ],
   "next_actions": [
-    "Integrate selected XCell64 vocabulary into shared original3view architecture with fixed Phikon, metadata and training loss",
-    "Gate three arms functional learning, EMA optimizer boundary, eval freeze, exact fresh checkpoint/optimizer/EMA continuation and masks",
-    "Then fixed2000x4 three-arm P2 with all quality/efficiency/negative branches and independent acceptance; P3–P6 scope unchanged"
+    "Monitor existing p2_vocabulary_pilot_1102_122100 serial functional/gated formal queue; no duplicate job/live source edits",
+    "After three full3711 acceptances compare original guards and paired contrasts; retain failed functionality/negative results",
+    "Audit code usage/quantization/source-color stability and actual storage/cost before P2 acceptance; quality or efficiency or retain-continuous branch; P3–P6 remain"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
