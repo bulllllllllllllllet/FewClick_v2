@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T22:46:21.217126",
+  "updated_at": "2026-11-03T00:00:21.006586",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1599,19 +1599,21 @@
       "training_started": false,
       "selected_representation": "continuous",
       "representation_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json",
-      "next_action": "Audit all-scale cap geometry; freeze and validate matched input repair before P3 spatial training",
+      "next_action": "Freeze P3 matched spatial-control contract, implement and validate controls before formal training",
       "input_readiness": {
-        "status": "cache_accepted_remote_functional_pending",
+        "status": "accepted_repair_and_functional_gate",
         "issues": [
           "ascending-instance-ID cap creates observed spatial sampling bias",
           "pixel-center convention mismatch",
           "remote functional and subgroup guard coverage"
         ],
         "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_followup_audit_1102_175633/audit.json",
-        "training_allowed": false
+        "training_allowed": false,
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_closeout_1103_000021/acceptance.json",
+        "qualification": "input readiness accepted; spatial contract and matched controls still required"
       },
       "input_repair": {
-        "status": "cache_complete_functional_running",
+        "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552",
         "record": "docs/运行记录/模型实验/运行记录_细胞缓存尾部分片再平衡_1102_210552.md",
         "workers": [
@@ -1699,7 +1701,7 @@
         "extracted_frames": 1737,
         "merged_acceptance_complete": true,
         "normalization_complete": true,
-        "functional_learning_complete": false,
+        "functional_learning_complete": true,
         "observed_at": "2026-11-02T22:03:56.809569",
         "functional_run": {
           "status": "running",
@@ -1721,7 +1723,8 @@
           "cache_output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
           "environment_fix": "restored original vendor transformers4.49.0 and CUBLAS config",
           "formal_P3_training_started": false
-        }
+        },
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_closeout_1103_000021/acceptance.json"
       }
     },
     "P4": {
@@ -1771,29 +1774,7 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [
-    {
-      "status": "running",
-      "stage": {
-        "status": "running",
-        "worker_pid": 684502,
-        "command": [
-          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-          "-u",
-          "-m",
-          "benchmarks.v5.architecture_bridge.functional_repaired",
-          "--cache",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-          "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/repaired_functional_envfix_1102_224548/gate"
-        ]
-      },
-      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/repaired_functional_envfix_1102_224548",
-      "cache_output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-      "environment_fix": "restored original vendor transformers4.49.0 and CUBLAS config",
-      "formal_P3_training_started": false
-    }
-  ],
+  "active_jobs": [],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -1949,8 +1930,8 @@
     }
   ],
   "next_actions": [
-    "监控repaired_functional_envfix_1102_224548实际worker；固定256更新/原分组守门通过才可接受，不放宽阈值",
-    "输入学习接受后冻结P3空间对照合同并训练；原失败记录保留"
+    "输入修复与32train任务学习门控已接受，冻结P3空间对照合同及公平基线/远端安全守门",
+    "实现并验证P3 image-only/形态重排/空间对照，之后正式训练；不将门控Dice当验证泛化"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

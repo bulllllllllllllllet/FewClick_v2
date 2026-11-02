@@ -164,3 +164,5 @@ P2整体复核（2026-11-02T17:59:52.980410+08:00）：发现first-ID cap在既�
 重建提取完成（2026-11-02T22:03:56.809569）：全部1737场三尺度特征已写出；尾部89/88/88三个分片独立raw接受均通过。当前真实controller193653处于merged_geometry_accept（22:02:39开始），进程现场存活；正在对含历史采用文件的全集做身份/SHA/几何复核。merged、normalize、functional最终接受尚未生成，不标全部修复完成，不重复启动队列。
 
 缓存与标准化接受（2026-11-02T22:46:21.217126）：1737场三尺度与fine train234056统计复算通过。学习门控因启动遗漏vendor transformers路径在初始化前失败（未更新），已登记并恢复原4.49.0/CUBLAS环境，新目录/nfs-medical3/zyh/fewclick_v2/cvpr_research/repaired_functional_envfix_1102_224548，实际worker684502运行；学习未接受，P3不训练。
+
+输入修复完整接受（2026-11-03T00:00:21.006586）：全1737三尺度、train-only标准化和32train任务local/remote/absent六组学习门控全部接受，fresh optimizer/末步预测一致。证据/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_closeout_1103_000021/acceptance.json；无本组活动worker，P3准备冻结空间对照合同，未正式训练。门控Dice不是泛化结果。
