@@ -8,11 +8,11 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1 bounded encoder screening complete；P2 preparing**。P1最终接受p1_selection_close_1101_123321/data/acceptance.json：图像冻结Phikon、细胞LEMON10µm为机制研究候选，native XCell对照保留；没有可靠组织替换或WSI晋升。原细胞残差两配方和limited joint阴性/原80守门保持。颜色稳定性和native分环节成本已接受，成本范围不可混用。
 
-恢复原训练目标后的桥接四臂首seed已complete：各2000×4/3711mask独立接受全exit0。A/B/C/D local Dice40.83/44.92/40.07/42.12%，remote macro18.09/27.05/19.24/25.19%，absentFPA11.64/4.53/10.68/3.71%。全部配对/权重/消费核对及原六守门比较见bridge_restored_comparison_1102_011833/data/comparison.json。B为暂定质量最佳，D较低误报但相对B质量下降；未证明LEMON在Phikon上额外提升。首seed资格不等于独立复验通过；第二seed尚未执行，当前无后台训练，P2/WSI仍后置。原失败配方/A常数结果保留，原生Goal暂停保持。
+桥接两seed已complete并接受：B-A远端macro +8.96/+9.51pp且两次过原6守门；D-B两次远端下降，不能凭LEMON probe强替换。P2正式选择冻结Phikon+XCell标准化64。train-only30000观察及K128拟合/独立距离inertia重放已接受（val0、占用128码），证据p2_selected_vocabulary_1102_121546。P2组织下游尚未执行；下一步接原三视野共同模型并验证EMA更新/冻结、功能学习、重载继续与真实mask，之后固定三臂pilot。P2/P3–P6未完成，Goal active，既有全部阴性与来源/确认限制保留。
 
 ## 执行顺序
 

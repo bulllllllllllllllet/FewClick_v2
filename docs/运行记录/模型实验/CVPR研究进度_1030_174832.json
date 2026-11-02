@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T01:48:58.598259+08:00",
+  "updated_at": "2026-11-02T12:18:10.218477+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_原架构桥接基线门控_1101_124753.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P2",
-  "current_status": "bridge_independent_seed2_functional_running",
+  "current_status": "preparing_downstream_gate",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -957,7 +957,7 @@
       "candidate_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_selection_close_1101_123321/selection.json",
       "training_started": false,
       "matched_sample_inventory": {
-        "status": "running_preparation",
+        "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352",
         "stage": {
           "status": "running",
@@ -966,8 +966,9 @@
         },
         "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352/gate/independent_acceptance.json",
         "validation_samples": 0,
-        "encoder_choice_frozen": false,
-        "codebook_fit_started": false
+        "encoder_choice_frozen": true,
+        "codebook_fit_started": false,
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352/full/independent_acceptance.json"
       },
       "contract_draft": "docs/建议/模型与训练/方案_P2连续固定词表与可学习词表受控合同草案_1102_014819.md",
       "representation_operator_gate": {
@@ -976,7 +977,19 @@
         "trainable_mapper_parameters_each_arm": 4160,
         "codebook_fitted": false,
         "downstream_training_started": false
-      }
+      },
+      "selected_image": "frozen_phikon",
+      "selected_cell": "xcell_standardized64",
+      "selection_evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_selected_vocabulary_1102_121546/synthesis/summary.json",
+      "vocabulary": {
+        "status": "complete_input_fit",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_selected_vocabulary_1102_121546/full/independent_acceptance.json",
+        "K": 128,
+        "fit_samples": 30000,
+        "val_fit_samples": 0,
+        "occupied_codes": 128
+      },
+      "downstream_training_started": false
     },
     "P3": {
       "title": "空间组合与提示迁移",
@@ -1193,9 +1206,9 @@
     }
   ],
   "next_actions": [
-    "Monitor existing independent seed2 serial four-arm queue; no duplicate GPU launch",
-    "Finish and independently accept P2 matched train-only cell observations for both candidate representations; no validation fitting",
-    "Freeze P2 representation/decoder/capacity/budget and quality-efficiency stopping branches after seed2 synthesis; P3–P6 scope intact"
+    "Integrate selected XCell64 vocabulary into shared original3view architecture with fixed Phikon, metadata and training loss",
+    "Gate three arms functional learning, EMA optimizer boundary, eval freeze, exact fresh checkpoint/optimizer/EMA continuation and masks",
+    "Then fixed2000x4 three-arm P2 with all quality/efficiency/negative branches and independent acceptance; P3–P6 scope unchanged"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -1631,28 +1644,15 @@
       "fullWSI_promoted": false
     },
     "second_seed": {
-      "status": "running_formal_queue",
+      "status": "complete",
       "seed": 20261102,
       "first_seed": 20261101,
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_orchestration_1102_012458",
       "stage": {
-        "status": "running",
-        "stage": "A_train",
-        "worker_pid": 2992922,
-        "command": [
-          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-          "-u",
-          "-m",
-          "benchmarks.v5.architecture_bridge.train_replication",
-          "--arm",
-          "A",
-          "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_orchestration_1102_012458/A",
-          "--gate",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_orchestration_1102_012458/gates"
-        ]
+        "status": "complete",
+        "exit_code": 0
       },
-      "worker_alive": true,
+      "worker_alive": false,
       "only_research_change": "initialization seed",
       "formal_training_started": true,
       "native_goal_observed": "paused",
@@ -1666,7 +1666,14 @@
         "total_updates": 2000,
         "loss": 1.4653126895427704,
         "seconds": 795.1811351776123
-      }
+      },
+      "comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/bridge_seed2_comparison_1102_121359/data/comparison.json"
+    },
+    "two_seed_synthesis": {
+      "status": "complete",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_selected_vocabulary_1102_121546/synthesis/summary.json",
+      "P2_image": "frozen_phikon",
+      "P2_cell": "xcell_standardized64"
     }
   }
 }

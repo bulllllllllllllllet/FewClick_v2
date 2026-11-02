@@ -3756,3 +3756,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_representation_gate_1102_014659/report.json.
 - Docs record: docs/建议/模型与训练/方案_P2连续固定词表与可学习词表受控合同草案_1102_014819.md; current bridge run record.
 - Commit: this commit; independent seed2/data acceptance still running.
+
+## 2026-11-02T12:18:10.218477+08:00
+
+- Purpose: Accept independent bridge replication, freeze P2 input and fit only selected train-only K128 vocabulary.
+- Changed: summarize_bridge_seeds.py, fit_vocabulary.py; P2 current record and goal/registry/AGENTS.
+- Validation: original comparison on second4x3711 accepted masks exit0; two-seed synthesis verifies distinct seeds/trainer AST equality except seed and contrasts. Gate2048/full30000 KMeans train-only fits plus independent float64 nearest-distance/inertia checks exit0, occupied128/128.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_selected_vocabulary_1102_121546; bridge_seed2_comparison_1102_121359 and accepted30000 samples.
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md.
+- Commit: this commit; codebook fitting is not tissue segmentation completion; P2 downstream and P3–P6 remain.
