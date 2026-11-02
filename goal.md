@@ -162,3 +162,5 @@ P2整体复核（2026-11-02T17:59:52.980410+08:00）：发现first-ID cap在既�
 缓存尾部再平衡（2026-11-02T21:06:18.752962）：三个旧分片完成，合计1472/1737已登记采用，265场分为89/88/88转GPU1/4/5。旧剩余分片近期约50秒/场，原因未定；controller/worker已明确中断。新root /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552，全部接受/标准化/功能仍待完成，P3不训练。
 
 重建提取完成（2026-11-02T22:03:56.809569）：全部1737场三尺度特征已写出；尾部89/88/88三个分片独立raw接受均通过。当前真实controller193653处于merged_geometry_accept（22:02:39开始），进程现场存活；正在对含历史采用文件的全集做身份/SHA/几何复核。merged、normalize、functional最终接受尚未生成，不标全部修复完成，不重复启动队列。
+
+缓存与标准化接受（2026-11-02T22:46:21.217126）：1737场三尺度与fine train234056统计复算通过。学习门控因启动遗漏vendor transformers路径在初始化前失败（未更新），已登记并恢复原4.49.0/CUBLAS环境，新目录/nfs-medical3/zyh/fewclick_v2/cvpr_research/repaired_functional_envfix_1102_224548，实际worker684502运行；学习未接受，P3不训练。

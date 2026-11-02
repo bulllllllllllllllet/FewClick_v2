@@ -3963,3 +3963,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/observation_220335.json
 - Docs record: docs/运行记录/模型实验/运行记录_细胞缓存尾部分片再平衡_1102_210552.md
 - Commit: accompanying extraction milestone commit.
+
+## 11-02 22:46:21
+
+- Purpose: Record accepted repaired cache and explicit functional startup environment fix.
+- Changed: goal/registry/current record; no model or thresholds changed.
+- Validation:1737 raw and normalized receipts accepted, transform/index SHA checked; vendor4.49.0 local dinov2 config loads. Original gate failed before training with default4.25.1; new exact-budget gate worker684502 alive under restored P2 environment.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/repaired_functional_envfix_1102_224548
+- Docs record: docs/运行记录/模型实验/运行记录_细胞缓存尾部分片再平衡_1102_210552.md
+- Commit: accompanying environment-fix record commit.
