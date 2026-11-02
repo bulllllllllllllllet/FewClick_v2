@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T00:35:43.902764",
+  "updated_at": "2026-11-03T00:39:23.398424",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1800,6 +1800,16 @@
         "GPU": null,
         "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/gate/acceptance.json",
         "observed_at": "2026-11-03T00:35:43.902764"
+      },
+      "task_protocol": {
+        "status": "complete_task_manifest_only",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729/acceptance.json",
+        "training_allowed": false
+      },
+      "quality_guard_tool": {
+        "status": "validated_on_historical_real_rows_only",
+        "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729/guard_tool_validation.json",
+        "formal_P3_comparison": false
       }
     },
     "P4": {
@@ -2053,8 +2063,8 @@
     }
   ],
   "next_actions": [
-    "监控现有六臂学习门控和CPU全库存审计；不要修改两队列已冻结源码/重复启动",
-    "随后实现并验证正式六臂trainer/完整3711mask评分接受及比较工具，先真实smoke与恢复再正式训练"
+    "核对现有学习门控与CPU库存两个真实worker；不重启",
+    "实现正式SpatialModel trainer与固定3711mask评分/独立验收和fresh末步重载，先smoke、测速及启动合同再正式训练"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

@@ -4017,3 +4017,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438
 - Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
 - Commit: accompanying inventory audit commit.
+
+## 11-03 00:39:23
+
+- Purpose: Freeze exact spatial task consumption/evaluation and implement preregistered remote safety guards.
+- Changed: prepare_spatial_protocol.py, spatial_quality_guards.py; continuity records.
+- Validation: Actual4000 source tasks×2 and3711 evaluation tasks replayed with split/click/identity checks, no query GT reads; guard tool exercised on real P2 rows and self-comparison. Formal P3 trainer integration remains pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729
+- Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
+- Commit: accompanying spatial protocol/guard commit.

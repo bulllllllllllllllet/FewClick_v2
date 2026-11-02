@@ -174,3 +174,5 @@ P3控制工程接受（2026-11-03T00:30:20.865477）：/nfs-medical3/zyh/fewclic
 六臂学习队列running（2026-11-03T00:33:22.409109）：GPU3 S11真实worker1175116存活，磁盘fresh optimizer继续精确已接受，固定256更新运行；后续I/S00/H11/S10/S01及每臂32mask独立接受已登记串行。产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148，功能/正式结果尚未完成。
 
 库存gate接受与全量运行（2026-11-03T00:35:43.902764）：4场12尺度的图像逐像素/物理范围、检测与保留统计门控通过；CPU全1737×3扫描worker1191413已实际存活，持续写status/frames.jsonl，产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438。六臂学习原worker1175116仍存活，未重启。全库存接受尚未生成。
+
+P3任务协议与比较守门（2026-11-03T00:39:23.398424）：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729/acceptance.json接受8000固定训练消费与3711评估任务，split/点击预算/各分母及source SHA逐项核对，不读query GT；supervision ledger记录mask/click次数。spatial_quality_guards复用原6守门，增加remote small/fat与各域FPA；已对P2实际两臂3711rows检查身份/GT分母并复现fixed的CRC误报失败，对同一臂比较仅主增益不通过。验证仅工具级，不更新P2结论或P3质量结果。正式trainer/fresh末步评分集成与smoke尚未完成。
