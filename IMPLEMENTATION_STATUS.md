@@ -4152,3 +4152,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_loader_accept_1103_042845/data/acceptance.json
 - Docs record: docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md
 - Commit: accompanying local task data acceptance commit.
+
+## 11-03 04:36:55
+
+- Purpose: Establish physical interpretation of planned k8 retained-cell neighborhoods before conditional P3-B.
+- Changed: spatial_neighborhood/geometry.py and audit.py; audit record and continuity.
+- Validation: Synthetic10µm/ties/empty/single-cell checks, four actual train fields all-node scalar replay, full1356train×3 audit passed exit0. No GT/val, model training or k search; current65 sources unchanged.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_knn_geometry_1103_043329
+- Docs record: docs/运行记录/模型实验/审计_P3训练近邻物理尺度与解释边界_1103_043655.md; docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md
+- Commit: accompanying physical-neighborhood audit commit.

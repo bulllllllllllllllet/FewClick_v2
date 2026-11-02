@@ -12,7 +12,7 @@
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3 running**。三臂各2000×4/3711mask及全部后处理接受；fixed/EMA的Dice增益伴随超界FPA，EMA另有small代价，均不晋升。按合同保留Phikon+XCell64连续表示，P3首seed六臂正式运行；S11/I已接受，S00训练中。
 
-**当前执行（2026-11-03T01:48:20.826553）**：P3六臂门控/库存/测速/新版smoke全部通过，首seed正式S11运行中，其余五臂与完整评分已串行排队。设计见[执行规划](docs/建议/模型与训练/方案_P3空间机制对照与防返工执行合同_1103_001657.md)。所有运行源已冻结，启动不等于完成；P3-C只做账本/未解析清单准备，未开始训练。
+**当前执行（2026-11-03T04:36:55.082779）**：首seed正式六臂运行，S11/I已接受、S00训练中，其余排队。P3-C真实local4000数据已验收、P3-B train几何已验收，但均未开始模型对照训练。执行规划仍为原P3合同，65正式源冻结，完成后统一比较。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
@@ -205,3 +205,5 @@ P3-C离线准备：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_mix_prepa
 local-only原政策真实点击gate4任务（CRC0/10、TIGER1/3）通过逐点train GT正负核对与独立resolve_clicks重放；CPU2 full4000解析实际worker2318669存活，命令/快照/log/EXIT_CODE在/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_clicks_1103_042442。解析结果待全量接受；P3-C不训练，不改当前A。source在v5/spatial_task_mix/realize.py，正式冻结源未改。
 
 P3-C数据准备接受（2026-11-03T04:31:04.601112）：local4000实际点击和全量独立符号/配额/GT审计、16真实loader任务通过，见/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_loader_accept_1103_042845/data/acceptance.json。最终结构与模型门控/监督范围合同未定，P3-C未训练；当前S00正式队列继续。
+
+P3-B训练几何准备接受（2026-11-03T04:36:55.082779）：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_knn_geometry_1103_043329/full/acceptance.json覆盖1356train/4068views，k8真实物理排序/单位/同距/边界完整接受，无val/GT/模型训练。fine边中位17–19µm，4×59–67µm，不能声称等物理半径或完整细胞邻接；解释记录docs/运行记录/模型实验/审计_P3训练近邻物理尺度与解释边界_1103_043655.md。未改变k或原预注册方案。S00仍实际worker2212192运行，状态{"stage": "training", "updates": 1251, "total_updates": 2000, "loss": 1.400077372789383, "worker_pid": 2212192, "arm": "S00", "seconds": 1934.9668383672833}；全部65冻结源SHA一致。

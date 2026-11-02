@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T04:31:04.601112",
+  "updated_at": "2026-11-03T04:36:55.082779",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -2001,6 +2001,15 @@
         "realization_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_clicks_1103_042442",
         "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_clicks_1103_042442/gate/acceptance.json",
         "independent_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_loader_accept_1103_042845/data/acceptance.json"
+      },
+      "cell_neighbor_geometry_preparation": {
+        "status": "complete_train_geometry_only",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_knn_geometry_1103_043329",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_knn_geometry_1103_043329/full/acceptance.json",
+        "record": "docs/运行记录/模型实验/审计_P3训练近邻物理尺度与解释边界_1103_043655.md",
+        "k": 8,
+        "model_training_started": false,
+        "conditional_B_not_triggered": true
       }
     },
     "P4": {
@@ -2052,7 +2061,7 @@
   ],
   "active_jobs": [
     {
-      "kind": "P3_formal_six_arm_study",
+      "kind": "P3_formal_study",
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403",
       "stage": {
         "status": "running",
@@ -2086,12 +2095,12 @@
       },
       "worker_status": {
         "stage": "training",
-        "updates": 1026,
+        "updates": 1251,
         "total_updates": 2000,
-        "loss": 1.3281849324703217,
+        "loss": 1.400077372789383,
         "worker_pid": 2212192,
         "arm": "S00",
-        "seconds": 1597.6605936065316
+        "seconds": 1934.9668383672833
       },
       "GPU": 3
     }
@@ -2251,9 +2260,9 @@
     }
   ],
   "next_actions": [
-    "现有S00正式训练继续，其他三臂排队，六臂全接受后统一比较",
-    "P3-C本地4000实际点击/配额/loader准备接受，须最终结构与任务配方监督范围合同及模型门控后才训练",
-    "保持正式65源冻结，已完成两臂质量不提前用于调参/选择"
+    "原S00正式worker继续，全部六臂独立接受后按预定对照比较",
+    "P3-B训练几何审计已完成但条件未触发，不改k/radius或启动新模块；P3-C数据已准备但结构未定不训练",
+    "65正式冻结源保持一致；禁止读取部分dev结果后调参"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
