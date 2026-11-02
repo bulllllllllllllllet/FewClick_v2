@@ -144,3 +144,5 @@ P3仅准备（2026-11-02T13:28:50.625336+08:00）：已只读核对既有cell坐
 P2首臂训练里程碑（2026-11-02T13:37:22.437370+08:00）：continuous 2000更新/8000消费/optimizer step及checkpoint有限性独立接受，权重SHA已登记；至少1100/3711mask评分，尚未独立mask接受。模块stage仍continuous_train包含评分，禁止据此重启。
 
 P2首臂完整接受（2026-11-02T14:02:23.729150+08:00）：continuous 2000更新/3711mask重放通过，3+2 local Dice .400806、remote宏Dice .220430、absent FPA .028989。固定同容量参照；单seed/开发区间，不作跨旧seed或SAM胜负结论。fixed正式PID2220343已实际更新，EMA待队列，P2不complete。
+
+P2正式mask覆盖（2026-11-02T14:18:30.035326+08:00）：continuous全部3711mask独立byte计数与统计检查通过；主3+2 local17/302、remote137/470有目标任务valid预测全空，present BF1均可评/NA0。保留全预算逐类表，不改阈值；p2_mask_coverage_after_training_1102_141000真实CPU watcher等待主队列结束后同法审计fixed/EMA。此诊断不完成P2。

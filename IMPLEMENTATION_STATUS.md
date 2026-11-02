@@ -3891,3 +3891,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_summary_1102_135700/summary.json；/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous/independent_acceptance.json
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
 - Commit: 本次首臂完整接受提交（见git log）。
+
+## 2026-11-02T14:18:30.035326+08:00
+
+- Purpose: 补齐P2正式预测的空/满mask与每类BF1可评分母，识别跨图漏检而不改实验。
+- Changed: audit_mask_coverage.py、goal.md、CVPR registry及P2运行记录。
+- Validation: 实际3711mask分块unpackbits与独立byte popcount逐行一致，raw/valid计数界和BF1可评标记通过；全部预算/类别统计已输出。fixed实际训练worker与等待CPU控制进程现场存活。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_mask_coverage_1102_140700/report.json；/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_mask_coverage_after_training_1102_141000
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
+- Commit: 本次完整mask覆盖诊断提交（见git log）。

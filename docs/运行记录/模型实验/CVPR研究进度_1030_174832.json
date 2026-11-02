@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T14:02:23.729150+08:00",
+  "updated_at": "2026-11-02T14:18:30.035326+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -981,7 +981,8 @@
             "local_BF1": 0.05592912635404749,
             "small_Dice": 0.13931744484922828,
             "fat_Dice": 0.3923479313461324
-          }
+          },
+          "mask_coverage_diagnostics": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_mask_coverage_1102_140700/report.json"
         }
       ],
       "candidate_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_selected_vocabulary_1102_121546/synthesis/summary.json",
@@ -1055,7 +1056,7 @@
         "formal_training_started": true,
         "budget_per_arm": "2000x4 after fixed gates and smoke",
         "quality_outcome": "continuous_reference_only_not_compared",
-        "last_observed_at": "2026-11-02T14:02:23.729150+08:00",
+        "last_observed_at": "2026-11-02T14:18:30.035326+08:00",
         "functional_reports": {
           "continuous": {
             "status": "accepted_train_only_functional_gate",
@@ -1083,10 +1084,10 @@
           "status": "training",
           "arm": "fixed",
           "worker_pid": 2220343,
-          "updates": 151,
+          "updates": 776,
           "total_updates": 2000,
-          "loss": 1.7835249602794647,
-          "seconds": 237.57728004455566
+          "loss": 1.6016837060451508,
+          "seconds": 1192.706456899643
         },
         "smoke_acceptances": {
           "continuous": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous_smoke/independent_acceptance.json",
@@ -1099,7 +1100,7 @@
           "continuous": "complete_2000_updates_3711_mask_replay",
           "fixed": {
             "status": "running_training",
-            "last_observed_updates": 151,
+            "last_observed_updates": 776,
             "worker_pid": 2220343
           },
           "ema": "queued_after_fixed"
@@ -1511,6 +1512,74 @@
         "diagnostic_GT_only": true,
         "inference_or_fit_changed": false,
         "final_checkpoint_coverage": false,
+        "P2_accepted": false
+      },
+      "mask_coverage_diagnostics": {
+        "status": "complete_continuous_waiting_other_arms",
+        "source": "benchmarks/v5/architecture_bridge/audit_mask_coverage.py",
+        "continuous_report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_mask_coverage_1102_140700/report.json",
+        "main_budget": {
+          "local": {
+            "tasks": 302,
+            "present": 302,
+            "absent": 0,
+            "BF1_evaluable_present": 302,
+            "BF1_NA_present": 0,
+            "raw_empty_present": 16,
+            "valid_empty_present": 17,
+            "raw_full_present": 0,
+            "valid_full_present": 0,
+            "valid_empty_absent": 0,
+            "present_Dice": 0.40080636484702464,
+            "present_BF1": 0.05592912635404749,
+            "absent_FPA": null,
+            "mean_present_prediction_fraction": 0.2108435485278552,
+            "mean_present_GT_fraction": 0.23698857189355454
+          },
+          "remote": {
+            "tasks": 935,
+            "present": 470,
+            "absent": 465,
+            "BF1_evaluable_present": 470,
+            "BF1_NA_present": 0,
+            "raw_empty_present": 136,
+            "valid_empty_present": 137,
+            "raw_full_present": 0,
+            "valid_full_present": 0,
+            "valid_empty_absent": 320,
+            "present_Dice": 0.19882458971823985,
+            "present_BF1": 0.033511755904736075,
+            "absent_FPA": 0.028989057308529135,
+            "mean_present_prediction_fraction": 0.11239523809049587,
+            "mean_present_GT_fraction": 0.18387221087189778
+          }
+        },
+        "other_arm_queue": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_mask_coverage_after_training_1102_141000",
+        "stage": {
+          "status": "waiting",
+          "stage": "waiting_for_training",
+          "worker_pid": 2306649,
+          "dependency_stage": {
+            "status": "running",
+            "stage": "fixed_train",
+            "worker_pid": 2220343,
+            "command": [
+              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+              "-u",
+              "-m",
+              "benchmarks.v5.architecture_bridge.train_vocabulary",
+              "--arm",
+              "fixed",
+              "--output",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/fixed",
+              "--gate",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates"
+            ]
+          }
+        },
+        "watcher_alive": true,
+        "observed_at": "2026-11-02T14:18:30.035326+08:00",
+        "inference_or_threshold_changed": false,
         "P2_accepted": false
       }
     },
