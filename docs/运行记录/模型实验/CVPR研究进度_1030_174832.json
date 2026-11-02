@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T12:37:42.492856+08:00",
+  "updated_at": "2026-11-02T12:42:34.304743+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,7 +13,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P2",
-  "current_status": "P2_running_functional_gate",
+  "current_status": "P2_running_formal_training",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -945,7 +945,7 @@
     },
     "P2": {
       "title": "连续/固定词表/可学习词汇",
-      "status": "running_functional_gate",
+      "status": "running_formal_training",
       "required_evidence": [
         "三臂匹配与码本诊断",
         "下游mask收益或压缩证据",
@@ -955,7 +955,7 @@
       "quality_outcome": "not_evaluated",
       "runs": [],
       "candidate_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_selected_vocabulary_1102_121546/synthesis/summary.json",
-      "training_started": false,
+      "training_started": true,
       "matched_sample_inventory": {
         "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352",
@@ -988,7 +988,7 @@
         "val_fit_samples": 0,
         "occupied_codes": 128
       },
-      "downstream_training_started": false,
+      "downstream_training_started": true,
       "downstream_gate": {
         "status": "complete",
         "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates/independent_gate_acceptance.json",
@@ -1002,28 +1002,30 @@
         "mask_rows_replayed": 24
       },
       "pilot": {
-        "status": "running_functional_gate",
+        "status": "running_formal_training",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100",
         "stage": {
           "status": "running",
-          "stage": "ema_functional",
-          "worker_pid": 1816418,
+          "stage": "continuous_train",
+          "worker_pid": 1847973,
           "command": [
             "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
             "-u",
             "-m",
-            "benchmarks.v5.architecture_bridge.functional_vocabulary",
-            "--mode",
-            "ema",
+            "benchmarks.v5.architecture_bridge.train_vocabulary",
+            "--arm",
+            "continuous",
             "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/ema_functional"
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous",
+            "--gate",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates"
           ]
         },
         "worker_alive": true,
-        "formal_training_started": false,
+        "formal_training_started": true,
         "budget_per_arm": "2000x4 after fixed gates and smoke",
         "quality_outcome": "not_evaluated",
-        "last_observed_at": "2026-11-02T12:37:42.492856+08:00",
+        "last_observed_at": "2026-11-02T12:42:34.304743+08:00",
         "functional_reports": {
           "continuous": {
             "status": "accepted_train_only_functional_gate",
@@ -1038,7 +1040,26 @@
             "mean_spatial_std": 0.24104294436983764,
             "max_prompt_swap_change": 0.7514016628265381,
             "worker_pid": 1791359
+          },
+          "ema": {
+            "status": "accepted_train_only_functional_gate",
+            "train_mean_Dice": 0.5282583339974736,
+            "mean_spatial_std": 0.25216932012699544,
+            "max_prompt_swap_change": 0.8503963947296143,
+            "worker_pid": 1816418
           }
+        },
+        "latest_training_status": {
+          "status": "training",
+          "arm": "continuous",
+          "worker_pid": 1847973,
+          "updates": 76,
+          "total_updates": 2000,
+          "loss": 1.907243013381958,
+          "seconds": 119.40735721588135
+        },
+        "smoke_acceptances": {
+          "continuous": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous_smoke/independent_acceptance.json"
         }
       },
       "code_inventory_diagnostics": {
@@ -1216,6 +1237,39 @@
             "per_dimension_mse": 0.19241711661732472
           }
         }
+      },
+      "functional_code_noncollapse": {
+        "status": "complete_train_inventory_diagnostics_only",
+        "code_count_min_exclusive": 1,
+        "outputs": {
+          "fixed": {
+            "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_functional_code_audit_1102_124600/fixed/independent_acceptance.json",
+            "checkpoint_sha256": "d531f9ce9ca953a62aa016dd4709db6ace182acc83160d0f75971c47aac5ce9d",
+            "metrics": {
+              "observations": 30000,
+              "occupied_codes": 128,
+              "entropy_nats": 4.602819520912862,
+              "effective_codes": 99.76520955743744,
+              "largest_code_fraction": 0.037,
+              "mean_squared_distance": 10.166787274542736,
+              "per_dimension_mse": 0.15885605116473026
+            }
+          },
+          "ema": {
+            "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_functional_code_audit_1102_124600/ema/independent_acceptance.json",
+            "checkpoint_sha256": "cd7aee4a5834fa7d3e518f7fec2f59fdc27f9ab27cf13ac97d113b3c1201a68b",
+            "metrics": {
+              "observations": 30000,
+              "occupied_codes": 128,
+              "entropy_nats": 4.50982608253783,
+              "effective_codes": 90.90600699358764,
+              "largest_code_fraction": 0.043366666666666664,
+              "mean_squared_distance": 12.726816491345106,
+              "per_dimension_mse": 0.19885650767726729
+            }
+          }
+        },
+        "final_checkpoint_coverage": false
       }
     },
     "P3": {

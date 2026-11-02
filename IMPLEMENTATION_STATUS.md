@@ -3810,3 +3810,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_census_pathfix_1102_124050/full/independent_acceptance.json
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
 - Commit: 本次全量census接受提交（见git log）。
+
+## 2026-11-02T12:42:34.304743+08:00
+
+- Purpose: 接受三臂功能学习与功能checkpoint码非塌缩诊断，推进P2正式训练。
+- Changed: goal.md、CVPR registry及当前P2运行记录。
+- Validation: 三臂256更新固定门控exit0；fixed/EMA真实checkpoint各30000train diag/独立accept exit0、128码均占用；continuous smoke 12mask接受；正式worker1847973现场存活并完成76更新。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100；/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_functional_code_audit_1102_124600
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
+- Commit: 本次正式训练状态提交（见git log）。

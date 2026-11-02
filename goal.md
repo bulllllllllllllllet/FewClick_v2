@@ -10,9 +10,9 @@
 
 依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
-当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 running_functional_gate**。双seed桥接接受后，P2固定图像Phikon、细胞XCell标准化64；LEMON保留对照。本阶段尚无正式组织质量或WSI结论。
+当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 running_formal_training**。双seed桥接接受后，P2固定图像Phikon、细胞XCell标准化64；LEMON保留对照。本阶段尚无正式组织质量或WSI结论。
 
-桥接双seed已接受，P2固定Phikon+XCell64、train-only K128/30000观察/val0接受。P2三表示已接入原三视野共同模型，三臂8任务工程门控全部通过：共同参数/初始core、24mask复算、fresh model/optimizer/EMA继续精确、eval冻结。p2_vocabulary_pilot_1102_122100正在GPU3串行功能门控，通过后自动smoke+各2000×4/3711mask接受。当前未出P2正式质量，禁止重复启动/改活跃源码或调阈值；码使用/稳定性/效率和下游质量证据齐备后才P2接受，P3–P6未完成。
+桥接双seed已接受，P2固定Phikon+XCell64、train-only K128/30000观察/val0接受。P2三表示已接入原三视野共同模型，三臂8任务工程门控全部通过：共同参数/初始core、24mask复算、fresh model/optimizer/EMA继续精确、eval冻结。p2_vocabulary_pilot_1102_122100的三臂功能门控全部通过，fixed/EMA功能checkpoint在30000train观察均使用128码；continuous smoke已接受，GPU3正在首臂正式2000×4训练，随后按原队列完成三臂/各3711mask接受。当前未出P2正式质量，禁止重复启动/改活跃源码或调阈值；码使用/稳定性/效率和下游质量证据齐备后才P2接受，P3–P6未完成。
 
 ## 执行顺序
 
@@ -20,7 +20,7 @@
 |---|---|---|
 | P0 | 数据、尺度、空间隔离与公平合同 | complete，限定接受 |
 | P1I / P1C | 图像与细胞 encoder 受控筛选 | complete，限定筛选接受；无组织升级 |
-| P2 | 连续特征 / 固定聚类 / 可学习词汇 | running_functional_gate；三臂工程门控通过，正式质量待验收 |
+| P2 | 连续特征 / 固定聚类 / 可学习词汇 | running_formal_training；三臂功能门控通过，首臂实际更新，正式质量待验收 |
 | P3 | 空间组合与支持查询迁移 | planned |
 | P4 | WSI 质量、误报、缓存与交互效率 | planned |
 | P5 | 三 seed 与独立确认 | planned |
@@ -126,3 +126,5 @@ P2库存诊断（2026-11-02T12:32:39.802798+08:00）：新增初始码本及真�
 P2全保留观察审计（2026-11-02T12:36:51.444371+08:00）：fixed功能门控已通过，GPU进入ema_functional。新增census在4frame/12view/2975观察完成与真实loader逐位等价及独立距离门控；initial全1737frame/1160545保留观察CPU扫描/接受队列p2_initial_census_pathfix_1102_124050运行。初次目录错误已留档；全量、末步checkpoint、颜色/质量/效率尚未接受。
 
 P2 initial全量census接受（2026-11-02T12:37:42.492856+08:00）：1737frame/1160545保留跨尺度观察，train901192/val259353，full和独立重放exit0；TIGER val使用分布更集中，保持中心/训练配方冻结。初始覆盖不等于最终训练后词汇或分割接受；后者仍待验证。
+
+P2正式训练里程碑（2026-11-02T12:42:34.304743+08:00）：三臂功能及train库存码非塌缩诊断接受；continuous正式worker1847973已更新76/2000。仅running，不作正式质量结论。
