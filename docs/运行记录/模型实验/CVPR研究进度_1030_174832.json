@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T00:30:20.865477",
+  "updated_at": "2026-11-03T00:33:22.409109",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1748,6 +1748,33 @@
         "formal_training_started": false,
         "functional_learning_accepted": false,
         "optimizer_continuation_accepted": false
+      },
+      "spatial_learning_gates": {
+        "status": "running",
+        "kind": "P3_six_arm_train_functional_gates",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148",
+        "stage": {
+          "status": "running",
+          "stage": "S11_learn",
+          "worker_pid": 1175116,
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.architecture_bridge.functional_repaired",
+            "--arm",
+            "S11",
+            "--cache",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+            "--output",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/S11"
+          ]
+        },
+        "GPU": 3,
+        "seed": 20261103,
+        "updates": 256,
+        "formal_training_started": false,
+        "observed_at": "2026-11-03T00:33:22.409109"
       }
     },
     "P4": {
@@ -1797,7 +1824,35 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [],
+  "active_jobs": [
+    {
+      "status": "running",
+      "kind": "P3_six_arm_train_functional_gates",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148",
+      "stage": {
+        "status": "running",
+        "stage": "S11_learn",
+        "worker_pid": 1175116,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.architecture_bridge.functional_repaired",
+          "--arm",
+          "S11",
+          "--cache",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/S11"
+        ]
+      },
+      "GPU": 3,
+      "seed": 20261103,
+      "updates": 256,
+      "formal_training_started": false,
+      "observed_at": "2026-11-03T00:33:22.409109"
+    }
+  ],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -1953,8 +2008,8 @@
     }
   ],
   "next_actions": [
-    "按固定32train任务实现并运行六臂optimizer继续/功能门控，不复用旧功能checkpoint",
-    "补全全尺度cap汇总/环境预检/带进度正式trainer与3711mask比较器；全部接受后启动固定六臂"
+    "核对p3_learning_gates_1103_003148既有worker/stage，六臂恢复/功能/独立mask接受串行，失败停止不重启",
+    "在学习门控运行期间补全几何库存汇总、正式训练/评分/独立比较器及预检/遥测；全部启动要求通过后才正式训练"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

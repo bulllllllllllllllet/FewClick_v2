@@ -2,6 +2,8 @@
 import argparse
 import copy
 import json
+import os
+import time
 from pathlib import Path
 import numpy as np
 import torch
@@ -16,7 +18,8 @@ BOUNDS=dict(present_group_Dice_min=.2,absent_group_FPA_max=.1,
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--cache',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--cache',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--arm',choices=['I','S00','S10','S01','S11','H11']);p.add_argument('--seed',type=int,default=20261103);a=p.parse_args()
     torch.set_num_threads(2);torch.use_deterministic_algorithms(True)
     torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=True
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
@@ -26,10 +29,17 @@ def main():
     for d in ['crc','tiger']:
         for kind,n in [('local',8),('cross_present',4),('cross_absent',4)]:
             group=[r for r in plans if r['dataset']==d and r['kind']==kind][:n];assert len(group)==n;selected+=group
-    data=RepairedData(a.cache)
+    if a.arm:
+        from .spatial_controls import SpatialData,SpatialModel
+        data=SpatialData(a.cache,a.arm,a.seed)
+        build=lambda:SpatialModel(a.arm,a.seed)
+    else:
+        data=RepairedData(a.cache)
+        build=lambda:RepairedContinuous(a.seed)
     assert all(data.rows[r['support_id']]['split']==data.rows[r['query_id']]['split']=='train' for r in selected)
-    (a.output/'contract.json').write_text(json.dumps(dict(tasks=selected,source_sha256=sha(source),cache=data.identity,bounds=BOUNDS,updates=256,batch=4,seed=20261103),indent=2))
-    model=RepairedContinuous();model.train();opt=torch.optim.AdamW([p for p in model.parameters() if p.requires_grad],lr=1e-4,weight_decay=1e-4)
+    (a.output/'contract.json').write_text(json.dumps(dict(tasks=selected,source_sha256=sha(source),cache=data.identity,bounds=BOUNDS,updates=256,batch=4,seed=a.seed,arm=a.arm),indent=2))
+    started=time.monotonic()
+    model=build();model.train();opt=torch.optim.AdamW([p for p in model.parameters() if p.requires_grad],lr=1e-4,weight_decay=1e-4)
     def update(m,o,batch):
         o.zero_grad(set_to_none=True)
         for plan in batch:
@@ -40,15 +50,18 @@ def main():
     for step in range(2):update(model,opt,selected[step*4:step*4+4])
     torch.save(dict(model=model.state_dict(),optimizer=opt.state_dict()),a.output/'engineering.pt')
     update(model,opt,selected[8:12]);expected=copy.deepcopy(model.state_dict());expected_opt=copy.deepcopy(opt.state_dict())
-    fresh=RepairedContinuous();saved=torch.load(a.output/'engineering.pt',weights_only=True)
+    fresh=build();saved=torch.load(a.output/'engineering.pt',weights_only=True)
     fresh.load_state_dict(saved['model']);fresh.train();fresh_opt=torch.optim.AdamW([p for p in fresh.parameters() if p.requires_grad],lr=1e-4,weight_decay=1e-4);fresh_opt.load_state_dict(saved['optimizer'])
     update(fresh,fresh_opt,selected[8:12])
     from benchmarks.v5.encoder_research.continuous_prompt import tree_sha
     assert tree_sha(expected)==tree_sha(fresh.state_dict()) and tree_sha(expected_opt)==tree_sha(fresh_opt.state_dict())
+    (a.output/'optimizer_acceptance.json').write_text(json.dumps(dict(exact_optimizer_continuation=True,arm=a.arm,seed=a.seed)))
     del fresh,fresh_opt,expected,expected_opt,saved
     for step in range(3,256):
         batch=[selected[(step*4+j)%32] for j in range(4)];update(model,opt,batch)
-        if step%32==0:print(json.dumps(dict(updates=step+1)),flush=True)
+        if step%16==0:
+            status=dict(status='learning',arm=a.arm,updates=step+1,total_updates=256,worker_pid=os.getpid(),seconds=time.monotonic()-started)
+            (a.output/'status.json').write_text(json.dumps(status));print(json.dumps(status),flush=True)
     torch.save(dict(model=model.state_dict(),optimizer=opt.state_dict()),a.output/'checkpoint.pt')
     model.eval();rows=[];reference=[]
     with torch.no_grad():
@@ -60,9 +73,10 @@ def main():
             rows.append(dict(plan=plan,metrics=score((prob[0]>=.5).cpu().numpy(),gt==plan['target'],gt!=255,mpp),valid_spatial_std=float(prob[0][valid].std()),swap_valid_mean=float((prob-other)[0][valid].abs().mean())))
             reference.append(prob.cpu())
     # Reload a new model from the actual final checkpoint, then replay all32.
-    del model;torch.cuda.empty_cache();fresh=RepairedContinuous();fresh.load_state_dict(torch.load(a.output/'checkpoint.pt',weights_only=True)['model']);fresh.eval()
+    del model;torch.cuda.empty_cache();fresh=build();fresh.load_state_dict(torch.load(a.output/'checkpoint.pt',weights_only=True)['model']);fresh.eval()
     with torch.no_grad():
         for plan,expected in zip(selected,reference):assert torch.equal(fresh(**data.model_inputs(plan,'xcell','cuda:0'))['query']['pixel_probability'].cpu(),expected)
+    np.savez_compressed(a.output/'masks.npz',masks=np.stack([np.packbits((x[0]>=.5).numpy()) for x in reference]))
     groups={};passed=True
     for d in ['crc','tiger']:
         for kind in ['local','cross_present','cross_absent']:
@@ -73,7 +87,7 @@ def main():
                 values=dict(Dice=float(np.mean([r['metrics']['dice'] for r in g])),spatial_std=float(np.mean([r['valid_spatial_std'] for r in g])),median_swap_mean=float(np.median([r['swap_valid_mean'] for r in g])))
                 ok=values['Dice']>=BOUNDS['present_group_Dice_min'] and values['spatial_std']>=BOUNDS['present_group_mean_std_min'] and values['median_swap_mean']>=BOUNDS['present_group_median_swap_mean_min']
             groups[d+'|'+kind]=dict(n=len(g),values=values,passed=ok);passed=passed and ok
-    (a.output/'report.json').write_text(json.dumps(dict(status='accepted_repaired_functional_gate' if passed else 'failed_repaired_functional_gate',groups=groups,rows=rows,bounds=BOUNDS,exact_optimizer_continuation=True,fresh_final_predictions_exact=True,train_only=True,source_sha256=sha(__file__)),indent=2))
+    (a.output/'report.json').write_text(json.dumps(dict(status='accepted_repaired_functional_gate' if passed else 'failed_repaired_functional_gate',arm=a.arm,seed=a.seed,groups=groups,rows=rows,bounds=BOUNDS,exact_optimizer_continuation=True,fresh_final_predictions_exact=True,train_only=True,source_sha256=sha(__file__),seconds=time.monotonic()-started,checkpoint_sha256=sha(a.output/'checkpoint.pt')),indent=2))
     if not passed:raise RuntimeError('Repaired learning gate failed; stop without recipe/threshold retries')
 
 

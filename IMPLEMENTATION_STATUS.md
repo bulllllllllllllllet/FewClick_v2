@@ -3999,3 +3999,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_control_gate_1103_002821
 - Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
 - Commit: accompanying six-control implementation commit.
+
+## 11-03 00:33:22
+
+- Purpose: Queue fixed-budget learning and fresh optimizer checks for all six P3 controls.
+- Changed: functional_repaired.py optional spatial arm/seed and telemetry/mask export; accept_spatial_learning.py mask/subgroup replay; continuity records.
+- Validation: Actual S11 GPU3 model/optimizer disk continuation exact, worker1175116 alive in fixed256 learning. Remaining arm learning and independent mask acceptance pending; queued serial with fixed sources and stop-on-failure.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148
+- Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
+- Commit: accompanying spatial learning gate commit.

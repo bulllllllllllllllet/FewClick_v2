@@ -170,3 +170,5 @@ P2整体复核（2026-11-02T17:59:52.980410+08:00）：发现first-ID cap在既�
 P3规划里程碑：首轮6臂、每臂2000×4、条件复验一对；条件cell-neighbor对照与独立local/mixed配方比较，总上限14正式run。输入修复接受不再重做；所有模型从公共初始化开始，32任务功能权重不可作为正式起点。
 
 P3控制工程接受（2026-11-03T00:30:20.865477）：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_control_gate_1103_002821/gate/report.json，6臂×6真实train任务预测有限，真实loss/backward有效；S11基线精确一致、I全部cell证据扰动不变、uniformmass密度、MLPxy与真实mass分离、固定H11与emptycell检查通过，六臂公共初始SHA一致，seed20261104确实改变初始化。进程1158200已exit0。尚无optimizer继续/六臂功能学习或正式训练接受。下一步仅推进这些剩余启动门控。
+
+六臂学习队列running（2026-11-03T00:33:22.409109）：GPU3 S11真实worker1175116存活，磁盘fresh optimizer继续精确已接受，固定256更新运行；后续I/S00/H11/S10/S01及每臂32mask独立接受已登记串行。产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148，功能/正式结果尚未完成。
