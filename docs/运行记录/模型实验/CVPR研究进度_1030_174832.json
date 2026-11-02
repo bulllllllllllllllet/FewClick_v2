@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T12:25:08.520775+08:00",
+  "updated_at": "2026-11-02T12:29:13.870935+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -954,20 +954,19 @@
       "acceptance": null,
       "quality_outcome": "not_evaluated",
       "runs": [],
-      "candidate_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_selection_close_1101_123321/selection.json",
+      "candidate_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_selected_vocabulary_1102_121546/synthesis/summary.json",
       "training_started": false,
       "matched_sample_inventory": {
         "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352",
         "stage": {
-          "status": "running",
-          "stage": "full_accept",
-          "worker_pid": 3057660
+          "status": "complete",
+          "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352/full/independent_acceptance.json"
         },
         "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352/gate/independent_acceptance.json",
         "validation_samples": 0,
         "encoder_choice_frozen": true,
-        "codebook_fit_started": false,
+        "codebook_fit_started": true,
         "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_samples_1102_014352/full/independent_acceptance.json"
       },
       "contract_draft": "docs/建议/模型与训练/方案_P2连续固定词表与可学习词表受控合同草案_1102_014819.md",
@@ -1007,23 +1006,33 @@
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100",
         "stage": {
           "status": "running",
-          "stage": "continuous_functional",
-          "worker_pid": 1768605,
+          "stage": "fixed_functional",
+          "worker_pid": 1791359,
           "command": [
             "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
             "-u",
             "-m",
             "benchmarks.v5.architecture_bridge.functional_vocabulary",
             "--mode",
-            "continuous",
+            "fixed",
             "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous_functional"
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/fixed_functional"
           ]
         },
         "worker_alive": true,
         "formal_training_started": false,
         "budget_per_arm": "2000x4 after fixed gates and smoke",
-        "quality_outcome": "not_evaluated"
+        "quality_outcome": "not_evaluated",
+        "last_observed_at": "2026-11-02T12:29:13.870935+08:00",
+        "functional_reports": {
+          "continuous": {
+            "status": "accepted_train_only_functional_gate",
+            "train_mean_Dice": 0.5206669600998648,
+            "mean_spatial_std": 0.2564902910962701,
+            "max_prompt_swap_change": 0.890372097492218,
+            "worker_pid": 1768605
+          }
+        }
       }
     },
     "P3": {

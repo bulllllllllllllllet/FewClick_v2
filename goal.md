@@ -10,7 +10,7 @@
 
 依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
-当前：**P0 complete；P1 bounded encoder screening complete；P2 preparing**。P1最终接受p1_selection_close_1101_123321/data/acceptance.json：图像冻结Phikon、细胞LEMON10µm为机制研究候选，native XCell对照保留；没有可靠组织替换或WSI晋升。原细胞残差两配方和limited joint阴性/原80守门保持。颜色稳定性和native分环节成本已接受，成本范围不可混用。
+当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 running_functional_gate**。双seed桥接接受后，P2固定图像Phikon、细胞XCell标准化64；LEMON保留对照。本阶段尚无正式组织质量或WSI结论。
 
 桥接双seed已接受，P2固定Phikon+XCell64、train-only K128/30000观察/val0接受。P2三表示已接入原三视野共同模型，三臂8任务工程门控全部通过：共同参数/初始core、24mask复算、fresh model/optimizer/EMA继续精确、eval冻结。p2_vocabulary_pilot_1102_122100正在GPU3串行功能门控，通过后自动smoke+各2000×4/3711mask接受。当前未出P2正式质量，禁止重复启动/改活跃源码或调阈值；码使用/稳定性/效率和下游质量证据齐备后才P2接受，P3–P6未完成。
 
@@ -20,7 +20,7 @@
 |---|---|---|
 | P0 | 数据、尺度、空间隔离与公平合同 | complete，限定接受 |
 | P1I / P1C | 图像与细胞 encoder 受控筛选 | complete，限定筛选接受；无组织升级 |
-| P2 | 连续特征 / 固定聚类 / 可学习词汇 | preparing，合同待固定 |
+| P2 | 连续特征 / 固定聚类 / 可学习词汇 | running_functional_gate；三臂工程门控通过，正式质量待验收 |
 | P3 | 空间组合与支持查询迁移 | planned |
 | P4 | WSI 质量、误报、缓存与交互效率 | planned |
 | P5 | 三 seed 与独立确认 | planned |

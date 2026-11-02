@@ -3774,3 +3774,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100; sources/commands/source snapshots/PID/history/logs.
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md.
 - Commit: this commit; no live source changes permitted during queue.
+
+## 2026-11-02T12:29:13.870935+08:00
+
+- Purpose: 用户授权继续当前CVPR Goal，核实真实P2 worker并消除入口中的过时状态。
+- Changed: goal.md、当前CVPR registry与P2运行记录；没有修改活跃训练源码。
+- Validation: 原生Goal active、stage/进程现场核对、匹配样本独立接受读取通过；工程通过与功能训练/正式质量分开记录。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
+- Commit: 本次连续性状态提交（见git log）。
