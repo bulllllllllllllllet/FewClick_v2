@@ -4161,3 +4161,5 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_knn_geometry_1103_043329
 - Docs record: docs/运行记录/模型实验/审计_P3训练近邻物理尺度与解释边界_1103_043655.md; docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md
 - Commit: accompanying physical-neighborhood audit commit.
+
+P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）：S00更新1501/2000，控制器1333314及worker2212192实际存活，65冻结源SHA一致；S11/I独立接受。观察证据/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_verified_wait_1103_044246/observation.json。修正goal阶段表和registry next_action中的过时启动描述，明确继续现有六臂队列、全部接受后统一比较；未改运行源/配方/阈值，未启动新实验。上一轮及本轮运行分类均verified_wait；整体Goal active，P3–P6未完成。

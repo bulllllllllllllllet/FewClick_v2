@@ -12,7 +12,7 @@
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3 running**。三臂各2000×4/3711mask及全部后处理接受；fixed/EMA的Dice增益伴随超界FPA，EMA另有small代价，均不晋升。按合同保留Phikon+XCell64连续表示，P3首seed六臂正式运行；S11/I已接受，S00训练中。
 
-**当前执行（2026-11-03T04:36:55.082779）**：首seed正式六臂运行，S11/I已接受、S00训练中，其余排队。P3-C真实local4000数据已验收、P3-B train几何已验收，但均未开始模型对照训练。执行规划仍为原P3合同，65正式源冻结，完成后统一比较。
+**当前执行（2026-11-03T04:42:46.308116+08:00）**：首seed S11/I已接受，S00实际更新1501/2000，其余排队；控制器1333314与worker2212192现场存活。65冻结源码一致。P3-B/C仅前置准备接受，待A比较和分支判定后执行；不重复启动已有队列。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
@@ -23,7 +23,7 @@ P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_resea
 | P0 | 数据、尺度、空间隔离与公平合同 | complete，限定接受 |
 | P1I / P1C | 图像与细胞 encoder 受控筛选 | complete，限定筛选接受；无组织升级 |
 | P2 | 连续特征 / 固定聚类 / 可学习词汇 | complete，有界阴性接受；保留continuous，词表不晋升 |
-| P3 | 空间组合与支持查询迁移 | running；六臂启动门控全部接受，首seed S11正式更新中 |
+| P3 | 空间组合与支持查询迁移 | running；首seed S11/I已接受，S00训练中，其余排队 |
 | P4 | WSI 质量、误报、缓存与交互效率 | planned |
 | P5 | 三 seed 与独立确认 | planned |
 | P6 | 方法、可复现材料与论文证据包 | planned |

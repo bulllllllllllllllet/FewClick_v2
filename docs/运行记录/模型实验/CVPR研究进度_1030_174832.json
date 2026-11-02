@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T04:36:55.082779",
+  "updated_at": "2026-11-03T04:42:46.308116+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1599,7 +1599,7 @@
       "training_started": true,
       "selected_representation": "continuous",
       "representation_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json",
-      "next_action": "Keep source frozen; monitor learning/inventory/monitor/probe/integrated smoke chain; formal controller starts only on complete evidence",
+      "next_action": "Keep formal sources frozen; finish and independently accept all six first-seed arms, then compare once and apply preregistered replication/branch rules. Do not restart startup dependencies.",
       "input_readiness": {
         "status": "accepted_repair_and_functional_gate",
         "issues": [
@@ -1984,7 +1984,17 @@
           "S11",
           "I"
         ],
-        "partial_budget_audit": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_partial_formal_audit_1103_042531/acceptance.json"
+        "partial_budget_audit": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_partial_formal_audit_1103_042531/acceptance.json",
+        "last_verified_observation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_verified_wait_1103_044246/observation.json",
+        "training_status": {
+          "stage": "training",
+          "updates": 1501,
+          "total_updates": 2000,
+          "loss": 1.5877904444932938,
+          "worker_pid": 2212192,
+          "arm": "S00",
+          "seconds": 2308.0852662995458
+        }
       },
       "partial_learning_state_audit": {
         "status": "complete_for_four_accepted_arms",
