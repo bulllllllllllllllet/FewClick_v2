@@ -3792,3 +3792,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_code_audit_1102_123200；/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_ema_gate_code_audit_1102_123440
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
 - Commit: 本次词表诊断实现提交（见git log）。
+
+## 2026-11-02T12:36:51.444371+08:00
+
+- Purpose: 补足P2所有保留细胞观察的train/val分层码本审计，保持当前训练配方。
+- Changed: audit_vocabulary_census.py、goal.md、CVPR registry与P2当前记录。
+- Validation: 实际4frame/12view/2975观察74维与BridgeData逐位相同、独立float64距离重放通过；初次缺输出父目录失败留档后新目录修复接受；全量CPU扫描真实PID存活，未标完成。fixed功能门控通过、EMA功能训练存活。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_census_pathfix_1102_124050
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
+- Commit: 本次全保留观察诊断实现提交（见git log）。
