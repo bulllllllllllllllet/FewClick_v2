@@ -4026,3 +4026,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729
 - Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
 - Commit: accompanying spatial protocol/guard commit.
+
+## 11-03 00:44:16
+
+- Purpose: Integrate fixed-budget P3 trainer while other startup gates run.
+- Changed: train_spatial.py work in progress; continuity records.
+- Validation: Existing S11 learning+32-mask independent acceptance passed; new trainer actual CPU smoke worker1226037 alive. End-to-end trainer smoke is pending, code is not accepted for formal training.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_trainer_smoke_1103_004220
+- Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
+- Commit: accompanying pending-integration commit.
