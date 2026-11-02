@@ -184,3 +184,5 @@ S11学习接受与trainer集成运行（2026-11-03T00:44:16.809785）：S11全�
 环境/凭证预检与I接受（2026-11-03T00:49:57.989734）：preflight_spatial真实读取修复cache/task/学习SHA，vendor4.49.0本地dinov2配置检查通过；默认旧环境4.25.1与无效可见设备测试被标invalid。/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_preflight_1103_004828/correct、wrong_environment/report.json均training_allowed=false；缺少6组学习/smoke、全量库存与正式监控/测速/执行合同仍明确pending。S11/I独立学习接受已生成，当前S00真实worker1253782运行。预检不启动训练。CPU smoke评分进度不足（100项才写日志）已登记，需等当前run终态后版本化修复，禁止运行中改变源码SHA。
 
 训练监控组件进展（2026-11-03T00:53:32.923178）：真实32mask helper指标与固定task名单接受；实际S11 checkpoint的CPU32task正常/提示交换检查worker1276421存活，产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125/model_gate。检查权重/RNG/模式不变，非新的学习质量比较。模型组件整体验收、正式trainer接入均pending。前一goal turn完成环境预检并产出证据，分类progress；本轮新增真实指标验证与组件运行，亦为progress，整体Goal保持active。
+
+依赖队列现场核验（2026-11-03T00:56:58.260154）：watcher1292045存活，实际六臂controller1175114仍live，/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_throughput_queue_1103_005618/stage.json明确waiting；没有新GPU训练启动。新增benchmark_spatial待真实20update/100inference门控，不能以源码存在标接受。CPU trainer smoke/monitor尚未终态，相关源码未改。

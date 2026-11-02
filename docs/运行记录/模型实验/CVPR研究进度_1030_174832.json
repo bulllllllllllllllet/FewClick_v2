@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T00:53:32.923178",
+  "updated_at": "2026-11-03T00:56:58.260154",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1874,6 +1874,36 @@
         "threads": 2,
         "metric_helpers_accepted": true,
         "trainer_integrated": false
+      },
+      "throughput_queue": {
+        "status": "waiting_verified_live_controller",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_throughput_queue_1103_005618",
+        "watcher_pid": 1292045,
+        "dependency_controller": 1175114,
+        "stage": {
+          "status": "waiting_verified_live_controller",
+          "controller": 1175114,
+          "dependency": {
+            "status": "running",
+            "stage": "H11_learn",
+            "worker_pid": 1291797,
+            "command": [
+              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+              "-u",
+              "-m",
+              "benchmarks.v5.architecture_bridge.functional_repaired",
+              "--arm",
+              "H11",
+              "--cache",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+              "--output",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/H11"
+            ]
+          }
+        },
+        "GPU": 3,
+        "source_implementation": "pending_real_probe_execution",
+        "formal_training_started": false
       }
     },
     "P4": {
@@ -2001,6 +2031,36 @@
       "threads": 2,
       "metric_helpers_accepted": true,
       "trainer_integrated": false
+    },
+    {
+      "status": "waiting_verified_live_controller",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_throughput_queue_1103_005618",
+      "watcher_pid": 1292045,
+      "dependency_controller": 1175114,
+      "stage": {
+        "status": "waiting_verified_live_controller",
+        "controller": 1175114,
+        "dependency": {
+          "status": "running",
+          "stage": "H11_learn",
+          "worker_pid": 1291797,
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.architecture_bridge.functional_repaired",
+            "--arm",
+            "H11",
+            "--cache",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+            "--output",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148/H11"
+          ]
+        }
+      },
+      "GPU": 3,
+      "source_implementation": "pending_real_probe_execution",
+      "formal_training_started": false
     }
   ],
   "completed_jobs": [
@@ -2158,9 +2218,9 @@
     }
   ],
   "next_actions": [
-    "监控六臂学习S00/后续、库存、CPU trainer smoke及独立monitor实际worker，保持源码冻结",
-    "CPU trainer smoke终态后接入固定0/250/500/1000/2000 train-only monitor与持续评分/重载进度，重新版本化smoke",
-    "全部门控后同GPU串行完成GPU smoke/吞吐测试与正式合同，再执行六臂2000更新"
+    "学习六组通过后同GPU3自动测速；CPU smoke/monitor/库存现有任务继续，不重复启动",
+    "CPU smoke终态后才能改train_spatial接入监控/进度；GPU probe目前只排队未运行",
+    "所有阶段实际接受与完整执行合同冻结后再正式六臂训练，当前不得宣称ready"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
