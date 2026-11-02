@@ -3900,3 +3900,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_mask_coverage_1102_140700/report.json；/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_mask_coverage_after_training_1102_141000
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
 - Commit: 本次完整mask覆盖诊断提交（见git log）。
+
+## 2026-11-02T14:54:14.399922+08:00
+
+- Purpose: 通用化P2末步预算与表示状态核验，并接受fixed训练完成与码本不变证据。
+- Changed: audit_vocabulary_training.py、goal.md、CVPR registry及P2运行记录。
+- Validation: aligner/no GPU真实continuous与fixed末步CLI分别exit0，2000更新/8000顺序、152个active optimizer step、finite state/mapper变化通过；fixed中心逐位等于初始K128。EMA实际分支未测试。fixed评分至少1000/3711，worker存活。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_training_state_audit_1102_144800
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
+- Commit: 本次通用训练状态审计提交（见git log）。
