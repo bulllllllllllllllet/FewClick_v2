@@ -10,7 +10,7 @@
 
 依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
-当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3 running**。三臂各2000×4/3711mask及全部后处理接受；fixed/EMA的Dice增益伴随超界FPA，EMA另有small代价，均不晋升。按合同保留Phikon+XCell64连续表示，P3首seed六臂正式队列已启动，S11实际更新中。
+当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3 running**。三臂各2000×4/3711mask及全部后处理接受；fixed/EMA的Dice增益伴随超界FPA，EMA另有small代价，均不晋升。按合同保留Phikon+XCell64连续表示，P3首seed六臂正式运行；S11/I已接受，S00训练中。
 
 **当前执行（2026-11-03T01:48:20.826553）**：P3六臂门控/库存/测速/新版smoke全部通过，首seed正式S11运行中，其余五臂与完整评分已串行排队。设计见[执行规划](docs/建议/模型与训练/方案_P3空间机制对照与防返工执行合同_1103_001657.md)。所有运行源已冻结，启动不等于完成；P3-C只做账本/未解析清单准备，未开始训练。
 
@@ -203,3 +203,5 @@ P3-C离线准备：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_mix_prepa
 
 首两臂正式接受与P3-C点击准备（2026-11-03T04:26:42.570531）：S11/I各2000×4/3711mask已独立接受，本轮checkpoint全有限、optimizer所有active state=2000、5监控节点SHA和fresh12预测绑定复核通过；证据/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_partial_formal_audit_1103_042531/acceptance.json，不提前比较质量。S00实际worker2212192已更新851/2000。全部65冻结源SHA一致。
 local-only原政策真实点击gate4任务（CRC0/10、TIGER1/3）通过逐点train GT正负核对与独立resolve_clicks重放；CPU2 full4000解析实际worker2318669存活，命令/快照/log/EXIT_CODE在/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_clicks_1103_042442。解析结果待全量接受；P3-C不训练，不改当前A。source在v5/spatial_task_mix/realize.py，正式冻结源未改。
+
+P3-C数据准备接受（2026-11-03T04:31:04.601112）：local4000实际点击和全量独立符号/配额/GT审计、16真实loader任务通过，见/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_loader_accept_1103_042845/data/acceptance.json。最终结构与模型门控/监督范围合同未定，P3-C未训练；当前S00正式队列继续。
