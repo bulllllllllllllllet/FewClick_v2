@@ -172,3 +172,5 @@ P3规划里程碑：首轮6臂、每臂2000×4、条件复验一对；条件cell
 P3控制工程接受（2026-11-03T00:30:20.865477）：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_control_gate_1103_002821/gate/report.json，6臂×6真实train任务预测有限，真实loss/backward有效；S11基线精确一致、I全部cell证据扰动不变、uniformmass密度、MLPxy与真实mass分离、固定H11与emptycell检查通过，六臂公共初始SHA一致，seed20261104确实改变初始化。进程1158200已exit0。尚无optimizer继续/六臂功能学习或正式训练接受。下一步仅推进这些剩余启动门控。
 
 六臂学习队列running（2026-11-03T00:33:22.409109）：GPU3 S11真实worker1175116存活，磁盘fresh optimizer继续精确已接受，固定256更新运行；后续I/S00/H11/S10/S01及每臂32mask独立接受已登记串行。产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148，功能/正式结果尚未完成。
+
+库存gate接受与全量运行（2026-11-03T00:35:43.902764）：4场12尺度的图像逐像素/物理范围、检测与保留统计门控通过；CPU全1737×3扫描worker1191413已实际存活，持续写status/frames.jsonl，产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438。六臂学习原worker1175116仍存活，未重启。全库存接受尚未生成。

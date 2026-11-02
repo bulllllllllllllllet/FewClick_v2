@@ -4008,3 +4008,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148
 - Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
 - Commit: accompanying spatial learning gate commit.
+
+## 11-03 00:35:43
+
+- Purpose: Audit all-scale repaired cell coverage and exact image/physical view alignment before P3.
+- Changed: audit_spatial_inventory.py and continuity records.
+- Validation: Real four-field/12-view CPU gate accepted; full1737 inventory worker1191413 alive, six-arm learning worker1175116 alive. Whole inventory acceptance remains pending. No tissue-GT read.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438
+- Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
+- Commit: accompanying inventory audit commit.
