@@ -3801,3 +3801,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_census_pathfix_1102_124050
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
 - Commit: 本次全保留观察诊断实现提交（见git log）。
+
+## 2026-11-02T12:37:42.492856+08:00
+
+- Purpose: 接受P2 initial全1737视野词表冻结诊断，保留train/val来源分布差异。
+- Changed: goal.md、CVPR registry与当前P2运行记录。
+- Validation: full+full_accept exit0，1160545观察逐个float64距离重放、文件SHA/输入/eval冻结通过；TIGER val集中现象如实记录，不据此调参。正式GPU worker仍运行。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_census_pathfix_1102_124050/full/independent_acceptance.json
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
+- Commit: 本次全量census接受提交（见git log）。

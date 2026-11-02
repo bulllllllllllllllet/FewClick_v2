@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T12:36:51.444371+08:00",
+  "updated_at": "2026-11-02T12:37:42.492856+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1023,7 +1023,7 @@
         "formal_training_started": false,
         "budget_per_arm": "2000x4 after fixed gates and smoke",
         "quality_outcome": "not_evaluated",
-        "last_observed_at": "2026-11-02T12:36:51.444371+08:00",
+        "last_observed_at": "2026-11-02T12:37:42.492856+08:00",
         "functional_reports": {
           "continuous": {
             "status": "accepted_train_only_functional_gate",
@@ -1091,22 +1091,12 @@
         "efficiency_accepted": false
       },
       "retained_cell_census": {
-        "status": "running",
+        "status": "complete_initial_only",
         "stage": {
-          "status": "running",
-          "stage": "full_accept",
-          "worker_pid": 1828838,
-          "command": [
-            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-            "-u",
-            "-m",
-            "benchmarks.v5.architecture_bridge.audit_vocabulary_census",
-            "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_census_pathfix_1102_124050/full",
-            "--accept"
-          ]
+          "status": "complete",
+          "exit_code": 0
         },
-        "observed_at": "2026-11-02T12:36:51.444371+08:00",
+        "observed_at": "2026-11-02T12:37:42.492856+08:00",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_census_pathfix_1102_124050",
         "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_census_pathfix_1102_124050/gate/independent_acceptance.json",
         "loader_equivalence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_census_pathfix_1102_124050/loader_equivalence.json",
@@ -1115,7 +1105,117 @@
         "final_checkpoint_coverage": false,
         "earlier_failure": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_census_1102_123900/failure.json",
         "GPU": false,
-        "CPU_threads": 2
+        "CPU_threads": 2,
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_census_pathfix_1102_124050/full/independent_acceptance.json",
+        "train_observations": 901192,
+        "val_observations": 259353,
+        "metrics": {
+          "all": {
+            "observations": 1160545,
+            "occupied_codes": 128,
+            "effective_codes": 100.94053233989597,
+            "largest_code_fraction": 0.03739966998263747,
+            "per_dimension_mse": 0.21458708406420574
+          },
+          "train": {
+            "observations": 901192,
+            "occupied_codes": 128,
+            "effective_codes": 101.44491180651275,
+            "largest_code_fraction": 0.0335500093209882,
+            "per_dimension_mse": 0.20705866276346865
+          },
+          "crc|train|0": {
+            "observations": 198821,
+            "occupied_codes": 128,
+            "effective_codes": 90.85557832123709,
+            "largest_code_fraction": 0.06972603497618461,
+            "per_dimension_mse": 0.2526249678625206
+          },
+          "crc|train|1": {
+            "observations": 283069,
+            "occupied_codes": 128,
+            "effective_codes": 78.81032062524135,
+            "largest_code_fraction": 0.04994541966799614,
+            "per_dimension_mse": 0.21126174943149809
+          },
+          "crc|train|2": {
+            "observations": 304507,
+            "occupied_codes": 128,
+            "effective_codes": 76.77263600404375,
+            "largest_code_fraction": 0.04532900721494087,
+            "per_dimension_mse": 0.21415926480924777
+          },
+          "tiger|train|0": {
+            "observations": 35235,
+            "occupied_codes": 96,
+            "effective_codes": 42.076904539097754,
+            "largest_code_fraction": 0.07838796651057188,
+            "per_dimension_mse": 0.10651689588960316
+          },
+          "tiger|train|1": {
+            "observations": 39780,
+            "occupied_codes": 90,
+            "effective_codes": 43.71741048431821,
+            "largest_code_fraction": 0.06920563097033686,
+            "per_dimension_mse": 0.09743185193011099
+          },
+          "tiger|train|2": {
+            "observations": 39780,
+            "occupied_codes": 90,
+            "effective_codes": 42.930070801571574,
+            "largest_code_fraction": 0.06166415284062343,
+            "per_dimension_mse": 0.09373686229756614
+          },
+          "val": {
+            "observations": 259353,
+            "occupied_codes": 128,
+            "effective_codes": 87.81796344328872,
+            "largest_code_fraction": 0.08275207921250188,
+            "per_dimension_mse": 0.24074661585621643
+          },
+          "crc|val|0": {
+            "observations": 51561,
+            "occupied_codes": 128,
+            "effective_codes": 86.00230711538698,
+            "largest_code_fraction": 0.06634859680766471,
+            "per_dimension_mse": 0.2855674673312526
+          },
+          "crc|val|1": {
+            "observations": 71504,
+            "occupied_codes": 128,
+            "effective_codes": 79.76197190736477,
+            "largest_code_fraction": 0.050752405459834414,
+            "per_dimension_mse": 0.24560508169622464
+          },
+          "crc|val|2": {
+            "observations": 75848,
+            "occupied_codes": 121,
+            "effective_codes": 75.6664998237746,
+            "largest_code_fraction": 0.04088440037970678,
+            "per_dimension_mse": 0.2411335483043802
+          },
+          "tiger|val|0": {
+            "observations": 19130,
+            "occupied_codes": 92,
+            "effective_codes": 23.291295325393808,
+            "largest_code_fraction": 0.21453214845791949,
+            "per_dimension_mse": 0.19781251241239847
+          },
+          "tiger|val|1": {
+            "observations": 20655,
+            "occupied_codes": 85,
+            "effective_codes": 19.47829463582815,
+            "largest_code_fraction": 0.2402323892519971,
+            "per_dimension_mse": 0.19871415345016402
+          },
+          "tiger|val|2": {
+            "observations": 20655,
+            "occupied_codes": 76,
+            "effective_codes": 18.63170749626192,
+            "largest_code_fraction": 0.2476397966594045,
+            "per_dimension_mse": 0.19241711661732472
+          }
+        }
       }
     },
     "P3": {
