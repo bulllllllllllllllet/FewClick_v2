@@ -3981,3 +3981,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_closeout_1103_000021/acceptance.json
 - Docs record: docs/运行记录/模型实验/运行记录_细胞缓存尾部分片再平衡_1102_210552.md
 - Commit: accompanying input-repair acceptance commit.
+
+## 11-03 00:18:24
+
+- Purpose: Register bounded P3 spatial controls and prevent implementation/environment/seed rework before training.
+- Changed: P3 recommendation and current record, goal/registry/AGENTS pointers; preserve stale repair observations as history.
+- Validation: Five input asset hashes and plan/design consistency checked, six unique arms, separate seeds,14-run ceiling, execution explicitly not ready. Source paths and actual spatial channels reviewed; no training launched.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_planning_1103_001657/design.json and validation.json
+- Docs record: docs/建议/模型与训练/方案_P3空间机制对照与防返工执行合同_1103_001657.md; docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
+- Commit: accompanying P3 planning commit.

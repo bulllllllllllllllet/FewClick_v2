@@ -8,11 +8,11 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_细胞缓存尾部分片再平衡_1102_210552.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3 preparing**。三臂各2000×4/3711mask及全部后处理接受；fixed/EMA的Dice增益伴随超界FPA，EMA另有small代价，均不晋升。按合同保留Phikon+XCell64连续表示，P3训练尚未启动。
 
-**最新输入复核要求（11-02 17:59）**：first-ID cap存在实测空间偏采样，另有像素中心约定与remote功能/守门覆盖缺口。P3先完成全尺度几何审计、匹配输入修复及真实门控，再允许训练。详见[整体复核](docs/运行记录/模型实验/审计_P2整体复核与P3输入缺陷_1102_175952.md)。P2结论仅适用原输入与固定配方，不能否定修复后全部离散表示方案。
+**最新规划（2026-11-03T00:18:24.769941+08:00）**：细胞采样/坐标/标准化与分组学习门控已完整接受。P3首轮六臂、主比较S11−S00、条件复验及总预算见[执行规划](docs/建议/模型与训练/方案_P3空间机制对照与防返工执行合同_1103_001657.md)。设计已登记，六臂实现/seed参数化/环境预检/遥测/执行合同仍待验收；本轮仅规划，未启动正式训练。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
@@ -166,3 +166,5 @@ P2整体复核（2026-11-02T17:59:52.980410+08:00）：发现first-ID cap在既�
 缓存与标准化接受（2026-11-02T22:46:21.217126）：1737场三尺度与fine train234056统计复算通过。学习门控因启动遗漏vendor transformers路径在初始化前失败（未更新），已登记并恢复原4.49.0/CUBLAS环境，新目录/nfs-medical3/zyh/fewclick_v2/cvpr_research/repaired_functional_envfix_1102_224548，实际worker684502运行；学习未接受，P3不训练。
 
 输入修复完整接受（2026-11-03T00:00:21.006586）：全1737三尺度、train-only标准化和32train任务local/remote/absent六组学习门控全部接受，fresh optimizer/末步预测一致。证据/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_closeout_1103_000021/acceptance.json；无本组活动worker，P3准备冻结空间对照合同，未正式训练。门控Dice不是泛化结果。
+
+P3规划里程碑：首轮6臂、每臂2000×4、条件复验一对；条件cell-neighbor对照与独立local/mixed配方比较，总上限14正式run。输入修复接受不再重做；所有模型从公共初始化开始，32任务功能权重不可作为正式起点。

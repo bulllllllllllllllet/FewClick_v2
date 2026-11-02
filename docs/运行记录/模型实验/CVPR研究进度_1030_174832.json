@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T00:00:21.006586",
+  "updated_at": "2026-11-03T00:18:24.769941+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -10,7 +10,7 @@
     "current_record": "docs/运行记录/模型实验/运行记录_P2收尾与P3空间对照准备_1102_174800.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_细胞缓存尾部分片再平衡_1102_210552.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
@@ -1599,7 +1599,7 @@
       "training_started": false,
       "selected_representation": "continuous",
       "representation_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json",
-      "next_action": "Freeze P3 matched spatial-control contract, implement and validate controls before formal training",
+      "next_action": "Implement and validate six controls, seed parameterization, environment preflight and telemetry before freezing executable run contract",
       "input_readiness": {
         "status": "accepted_repair_and_functional_gate",
         "issues": [
@@ -1616,115 +1616,127 @@
         "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552",
         "record": "docs/运行记录/模型实验/运行记录_细胞缓存尾部分片再平衡_1102_210552.md",
-        "workers": [
-          {
-            "status": "running",
-            "stage": "extraction",
-            "shard": 0,
-            "GPU": 1,
-            "worker_pid": 193654,
-            "command": [
-              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-              "-u",
-              "-m",
-              "benchmarks.v5.architecture_bridge.sharded_repair",
-              "--manifest",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/manifest.json",
-              "--shard",
-              "0",
-              "--output",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/shard0",
-              "--gate-receipt",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314/gate/acceptance.json"
-            ],
-            "time": 1793624753.0633144
-          },
-          {
-            "status": "running",
-            "stage": "extraction",
-            "shard": 1,
-            "GPU": 4,
-            "worker_pid": 193655,
-            "command": [
-              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-              "-u",
-              "-m",
-              "benchmarks.v5.architecture_bridge.sharded_repair",
-              "--manifest",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/manifest.json",
-              "--shard",
-              "1",
-              "--output",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/shard1",
-              "--gate-receipt",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314/gate/acceptance.json"
-            ],
-            "time": 1793624753.068834
-          },
-          {
-            "status": "running",
-            "stage": "extraction",
-            "shard": 2,
-            "GPU": 5,
-            "worker_pid": 193656,
-            "command": [
-              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-              "-u",
-              "-m",
-              "benchmarks.v5.architecture_bridge.sharded_repair",
-              "--manifest",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/manifest.json",
-              "--shard",
-              "2",
-              "--output",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/shard2",
-              "--gate-receipt",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314/gate/acceptance.json"
-            ],
-            "time": 1793624753.0761833
-          }
-        ],
-        "adopted_prefix": 1472,
-        "remaining": 265,
-        "GPUs": [
-          1,
-          4,
-          5
-        ],
-        "acceptance_pending": true,
-        "stage": {
-          "status": "running",
-          "stage": "merged_geometry_accept",
-          "worker_pid": 193653
-        },
         "extraction_complete": true,
         "extracted_frames": 1737,
         "merged_acceptance_complete": true,
         "normalization_complete": true,
         "functional_learning_complete": true,
         "observed_at": "2026-11-02T22:03:56.809569",
-        "functional_run": {
-          "status": "running",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_closeout_1103_000021/acceptance.json",
+        "historical_observations_before_closeout": {
+          "workers": [
+            {
+              "status": "running",
+              "stage": "extraction",
+              "shard": 0,
+              "GPU": 1,
+              "worker_pid": 193654,
+              "command": [
+                "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+                "-u",
+                "-m",
+                "benchmarks.v5.architecture_bridge.sharded_repair",
+                "--manifest",
+                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/manifest.json",
+                "--shard",
+                "0",
+                "--output",
+                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/shard0",
+                "--gate-receipt",
+                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314/gate/acceptance.json"
+              ],
+              "time": 1793624753.0633144
+            },
+            {
+              "status": "running",
+              "stage": "extraction",
+              "shard": 1,
+              "GPU": 4,
+              "worker_pid": 193655,
+              "command": [
+                "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+                "-u",
+                "-m",
+                "benchmarks.v5.architecture_bridge.sharded_repair",
+                "--manifest",
+                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/manifest.json",
+                "--shard",
+                "1",
+                "--output",
+                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/shard1",
+                "--gate-receipt",
+                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314/gate/acceptance.json"
+              ],
+              "time": 1793624753.068834
+            },
+            {
+              "status": "running",
+              "stage": "extraction",
+              "shard": 2,
+              "GPU": 5,
+              "worker_pid": 193656,
+              "command": [
+                "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+                "-u",
+                "-m",
+                "benchmarks.v5.architecture_bridge.sharded_repair",
+                "--manifest",
+                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/manifest.json",
+                "--shard",
+                "2",
+                "--output",
+                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/shard2",
+                "--gate-receipt",
+                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_input_repair_1102_192314/gate/acceptance.json"
+              ],
+              "time": 1793624753.0761833
+            }
+          ],
           "stage": {
             "status": "running",
-            "worker_pid": 684502,
-            "command": [
-              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-              "-u",
-              "-m",
-              "benchmarks.v5.architecture_bridge.functional_repaired",
-              "--cache",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-              "--output",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/repaired_functional_envfix_1102_224548/gate"
-            ]
+            "stage": "merged_geometry_accept",
+            "worker_pid": 193653
           },
-          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/repaired_functional_envfix_1102_224548",
-          "cache_output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-          "environment_fix": "restored original vendor transformers4.49.0 and CUBLAS config",
-          "formal_P3_training_started": false
+          "adopted_prefix": 1472,
+          "remaining": 265,
+          "GPUs": [
+            1,
+            4,
+            5
+          ],
+          "acceptance_pending": true,
+          "functional_run": {
+            "status": "running",
+            "stage": {
+              "status": "running",
+              "worker_pid": 684502,
+              "command": [
+                "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+                "-u",
+                "-m",
+                "benchmarks.v5.architecture_bridge.functional_repaired",
+                "--cache",
+                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+                "--output",
+                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/repaired_functional_envfix_1102_224548/gate"
+              ]
+            },
+            "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/repaired_functional_envfix_1102_224548",
+            "cache_output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+            "environment_fix": "restored original vendor transformers4.49.0 and CUBLAS config",
+            "formal_P3_training_started": false
+          }
         },
-        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_closeout_1103_000021/acceptance.json"
+        "active_workers": [],
+        "acceptance_pending": false
+      },
+      "planning": {
+        "status": "complete_design_only",
+        "plan": "docs/建议/模型与训练/方案_P3空间机制对照与防返工执行合同_1103_001657.md",
+        "design": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_planning_1103_001657/design.json",
+        "validation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_planning_1103_001657/validation.json",
+        "execution_ready": false,
+        "formal_training_started": false
       }
     },
     "P4": {
@@ -1930,8 +1942,9 @@
     }
   ],
   "next_actions": [
-    "输入修复与32train任务学习门控已接受，冻结P3空间对照合同及公平基线/远端安全守门",
-    "实现并验证P3 image-only/形态重排/空间对照，之后正式训练；不将门控Dice当验证泛化"
+    "按P3规划先完成六臂不变量/seed参数化/环境与进度预检；本轮仅规划未开训",
+    "首轮6臂固定主对照S11-S00、条件复验一对；其后邻域条件执行、local/mixed独立比较",
+    "全部启动门控接受后才生成机器执行合同；不把design.json当训练配置"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
