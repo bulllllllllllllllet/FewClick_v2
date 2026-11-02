@@ -3783,3 +3783,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
 - Commit: 本次连续性状态提交（见git log）。
+
+## 2026-11-02T12:32:39.802798+08:00
+
+- Purpose: P2训练并行准备码占用和量化误差审计，禁止仅凭Dice判断词汇机制。
+- Changed: audit_vocabulary_samples.py、goal.md、CVPR registry和当前P2运行记录。
+- Validation: aligner真实30000train initial及EMA工程checkpoint两次diag/--accept exit0；独立float64广播最近邻与组统计复算、eval状态不变通过。GPU训练源未变，worker现场存活。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_code_audit_1102_123200；/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_ema_gate_code_audit_1102_123440
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
+- Commit: 本次词表诊断实现提交（见git log）。

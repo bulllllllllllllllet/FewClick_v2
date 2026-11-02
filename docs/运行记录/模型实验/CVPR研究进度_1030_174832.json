@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T12:29:13.870935+08:00",
+  "updated_at": "2026-11-02T12:32:39.802798+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1023,7 +1023,7 @@
         "formal_training_started": false,
         "budget_per_arm": "2000x4 after fixed gates and smoke",
         "quality_outcome": "not_evaluated",
-        "last_observed_at": "2026-11-02T12:29:13.870935+08:00",
+        "last_observed_at": "2026-11-02T12:32:39.802798+08:00",
         "functional_reports": {
           "continuous": {
             "status": "accepted_train_only_functional_gate",
@@ -1033,6 +1033,55 @@
             "worker_pid": 1768605
           }
         }
+      },
+      "code_inventory_diagnostics": {
+        "status": "complete_initial_and_engineering_checkpoint_only",
+        "outputs": {
+          "initial": {
+            "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_code_audit_1102_123200/independent_acceptance.json",
+            "identity": {
+              "samples_sha256": "d5636aef03bdd6340f83ae869e12646b9733e17deed62d431e6a1f314274fb11",
+              "index_sha256": "571b4ce79d088826c8ad2af4dbc352351a223c194b6ef46e4753a6da84c968e8",
+              "vocabulary_sha256": "7824ea3eb9358b6f1fb3d81bdd5431089240c1d22aaf860b0f104eea351ce12e",
+              "checkpoint_sha256": null,
+              "source_sha256": "fff28a838cf6c6133422ccfbc4151c13871f930adfa24dc21a11c588990f7f89",
+              "mode": "fixed"
+            },
+            "metrics": {
+              "observations": 30000,
+              "occupied_codes": 128,
+              "entropy_nats": 4.601682802656004,
+              "effective_codes": 99.65186905264895,
+              "largest_code_fraction": 0.03763333333333333,
+              "mean_squared_distance": 10.071696870550756,
+              "per_dimension_mse": 0.15737026360235556
+            }
+          },
+          "ema_engineering_checkpoint": {
+            "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_ema_gate_code_audit_1102_123440/independent_acceptance.json",
+            "identity": {
+              "samples_sha256": "d5636aef03bdd6340f83ae869e12646b9733e17deed62d431e6a1f314274fb11",
+              "index_sha256": "571b4ce79d088826c8ad2af4dbc352351a223c194b6ef46e4753a6da84c968e8",
+              "vocabulary_sha256": "7824ea3eb9358b6f1fb3d81bdd5431089240c1d22aaf860b0f104eea351ce12e",
+              "checkpoint_sha256": "04ffadfa8f3d651f3c7ca4caf9651b4a9e549da9ced838dbe0e4d094fd36d3e2",
+              "source_sha256": "fff28a838cf6c6133422ccfbc4151c13871f930adfa24dc21a11c588990f7f89",
+              "mode": "ema"
+            },
+            "metrics": {
+              "observations": 30000,
+              "occupied_codes": 128,
+              "entropy_nats": 4.591628682738625,
+              "effective_codes": 98.65497704468112,
+              "largest_code_fraction": 0.03793333333333333,
+              "mean_squared_distance": 10.42156351762684,
+              "per_dimension_mse": 0.16283692996291937
+            }
+          }
+        },
+        "full_train_val_coverage": false,
+        "final_checkpoint_coverage": false,
+        "color_stability_accepted": false,
+        "efficiency_accepted": false
       }
     },
     "P3": {
