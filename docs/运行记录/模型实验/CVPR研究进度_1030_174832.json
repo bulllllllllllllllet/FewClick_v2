@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T17:47:34.596403+08:00",
+  "updated_at": "2026-11-02T17:59:52.980410+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1566,6 +1566,13 @@
         "efficiency_quality_eligible": [],
         "second_recipe_run": false,
         "measured_efficiency_run": false
+      },
+      "followup_audit": {
+        "status": "complete_bounded_audit",
+        "record": "docs/运行记录/模型实验/审计_P2整体复核与P3输入缺陷_1102_175952.md",
+        "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_followup_audit_1102_175633/audit.json",
+        "historical_decision_unchanged": true,
+        "conclusion_scope": "original biased-cap inputs and single fixed recipe only; not a universal rejection of quantization"
       }
     },
     "P3": {
@@ -1591,7 +1598,17 @@
       "training_started": false,
       "selected_representation": "continuous",
       "representation_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json",
-      "next_action": "Freeze spatial-control contract and validate v5 variants before training"
+      "next_action": "Audit all-scale cap geometry; freeze and validate matched input repair before P3 spatial training",
+      "input_readiness": {
+        "status": "requires_repair_and_acceptance_before_training",
+        "issues": [
+          "ascending-instance-ID cap creates observed spatial sampling bias",
+          "pixel-center convention mismatch",
+          "remote functional and subgroup guard coverage"
+        ],
+        "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_followup_audit_1102_175633/audit.json",
+        "training_allowed": false
+      }
     },
     "P4": {
       "title": "WSI质量与效率",
@@ -1796,9 +1813,8 @@
     }
   ],
   "next_actions": [
-    "Monitor existing p2_vocabulary_pilot_1102_122100 serial functional/gated formal queue; no duplicate job/live source edits",
-    "After three full3711 acceptances compare original guards and paired contrasts; retain failed functionality/negative results",
-    "Audit code usage/quantization/source-color stability and actual storage/cost before P2 acceptance; quality or efficiency or retain-continuous branch; P3–P6 remain"
+    "先完成P2复核发现的全尺度cap/坐标输入审计与匹配修复门控，见docs/运行记录/模型实验/审计_P2整体复核与P3输入缺陷_1102_175952.md",
+    "输入验收后冻结P3空间对照与remote分层功能门控；不恢复旧AAAI队列"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

@@ -3918,3 +3918,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json；verification.json
 - Docs record: docs/运行记录/模型实验/运行记录_P2收尾与P3空间对照准备_1102_174800.md（运行记录）。
 - Commit: 本次P2阶段收尾提交（见git log）。
+
+## 11-02 17:59:52
+
+- Purpose: Audit P2 validity and prevent biased cell geometry from entering P3 spatial comparisons.
+- Changed: audit_p2_followup.py; scoped audit record; goal/registry/current-record readiness requirements.
+- Validation: aligner python -m benchmarks.v5.architecture_bridge.audit_p2_followup --output /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_followup_audit_1102_175633 — passed (22 evidence hashes, bound arm artifacts, aggregate metrics, 16 real geometry masks).
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_followup_audit_1102_175633/audit.json
+- Docs record: docs/运行记录/模型实验/审计_P2整体复核与P3输入缺陷_1102_175952.md
+- Commit: accompanying scoped audit commit.
