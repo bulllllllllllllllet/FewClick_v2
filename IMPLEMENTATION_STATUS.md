@@ -3819,3 +3819,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100；/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_functional_code_audit_1102_124600
 - Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
 - Commit: 本次正式训练状态提交（见git log）。
+
+## 2026-11-02T12:47:04.681717+08:00
+
+- Purpose: 将P2完整三臂比较与末步词表全量审计接入训练后的依赖队列，保持固定预算。
+- Changed: compare_vocabulary.py、goal.md、CVPR registry及P2当前运行记录。
+- Validation: 历史14844真实rows汇总和5contrast原六守门/主区间精确重放；当前P2未完成被拒绝；后处理watcher与GPU worker现场PID/命令核对存活。正式比较尚未执行。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_comparison_engineering_1102_124500；/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_post_training_audit_1102_124900
+- Docs record: docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md
+- Commit: 本次三臂比较工具提交（见git log）。
