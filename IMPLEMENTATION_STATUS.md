@@ -3945,3 +3945,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_parallel_1102_193912
 - Docs record: docs/运行记录/模型实验/运行记录_细胞缓存并行加速_1102_194118.md
 - Commit: accompanying parallel-preparation commit.
+
+## 11-02 21:06:18
+
+- Purpose: Record three completed repair shards and explicitly rebalance the slow tail.
+- Changed: Continuity records only; same accepted extraction code.
+- Validation: Three completed shard reports/exit0 checked; remaining worker alive but about50s/field, explicitly stopped own controller/worker;1472 adopted identity/SHA bindings,265 remaining disjoint manifest; three new actual workers alive. Acceptance still pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552
+- Docs record: docs/运行记录/模型实验/运行记录_细胞缓存尾部分片再平衡_1102_210552.md
+- Commit: accompanying tail-scheduling record commit.
