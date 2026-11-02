@@ -41,9 +41,9 @@ class RepairedData(BridgeData):
 
 
 class RepairedContinuous(nn.Module):
-    def __init__(self):
-        super().__init__();self.core,self.identity=build_bridge_image('phikon','cuda:0',20261103)
-        self.representation=CellVocabulary('continuous',torch.zeros(128,64)).cuda()
+    def __init__(self,seed=20261103,device='cuda:0'):
+        super().__init__();self.core,self.identity=build_bridge_image('phikon',device,seed)
+        self.representation=CellVocabulary('continuous',torch.zeros(128,64)).to(device)
 
     def train(self,mode=True):
         super().train(mode);self.core.eval();return self

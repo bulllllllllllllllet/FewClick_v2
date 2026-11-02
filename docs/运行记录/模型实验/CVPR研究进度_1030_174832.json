@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T00:18:24.769941+08:00",
+  "updated_at": "2026-11-03T00:30:20.865477",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -1737,6 +1737,17 @@
         "validation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_planning_1103_001657/validation.json",
         "execution_ready": false,
         "formal_training_started": false
+      },
+      "control_implementation": {
+        "status": "complete_forward_invariants_only",
+        "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_control_gate_1103_002821/gate/report.json",
+        "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_control_gate_1103_002821/contract.json",
+        "arm_count": 6,
+        "real_tasks_per_arm": 6,
+        "seed_parameterized": true,
+        "formal_training_started": false,
+        "functional_learning_accepted": false,
+        "optimizer_continuation_accepted": false
       }
     },
     "P4": {
@@ -1942,9 +1953,8 @@
     }
   ],
   "next_actions": [
-    "按P3规划先完成六臂不变量/seed参数化/环境与进度预检；本轮仅规划未开训",
-    "首轮6臂固定主对照S11-S00、条件复验一对；其后邻域条件执行、local/mixed独立比较",
-    "全部启动门控接受后才生成机器执行合同；不把design.json当训练配置"
+    "按固定32train任务实现并运行六臂optimizer继续/功能门控，不复用旧功能checkpoint",
+    "补全全尺度cap汇总/环境预检/带进度正式trainer与3711mask比较器；全部接受后启动固定六臂"
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

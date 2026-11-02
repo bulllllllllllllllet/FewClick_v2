@@ -3990,3 +3990,12 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_planning_1103_001657/design.json and validation.json
 - Docs record: docs/建议/模型与训练/方案_P3空间机制对照与防返工执行合同_1103_001657.md; docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
 - Commit: accompanying P3 planning commit.
+
+## 11-03 00:30:20
+
+- Purpose: Implement P3 six spatial controls with explicit seeds.
+- Changed: repaired_model.py seed/device parameters, spatial_controls.py and gate_spatial_controls.py; continuity records.
+- Validation: GPU3 real6 tasks/arm forward and loss/backward, same initial SHA, S11 exact baseline, I perturbation invariance, uniform density, MLPxy/mass separation, shuffle/empty fields and seed2 difference accepted; exit0. Functional and optimizer continuation gates remain pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_control_gate_1103_002821
+- Docs record: docs/运行记录/模型实验/运行记录_P3规划冻结与启动前待办_1103_001657.md
+- Commit: accompanying six-control implementation commit.
