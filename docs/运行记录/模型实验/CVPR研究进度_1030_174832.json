@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T14:54:14.399922+08:00",
+  "updated_at": "2026-11-02T17:47:34.596403+08:00",
   "goal_status": "active",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_P2收尾与P3空间对照准备_1102_174800.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
-  "current_phase": "P2",
-  "current_status": "P2_running_formal_training_and_evaluation",
+  "current_phase": "P3",
+  "current_status": "P3_preparing",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -945,14 +945,14 @@
     },
     "P2": {
       "title": "连续/固定词表/可学习词汇",
-      "status": "running_formal_training_and_evaluation",
+      "status": "complete",
       "required_evidence": [
         "三臂匹配与码本诊断",
         "下游mask收益或压缩证据",
         "保留词汇/保留连续的显式决定"
       ],
-      "acceptance": null,
-      "quality_outcome": "continuous_reference_complete_other_arms_pending",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json",
+      "quality_outcome": "bounded_negative_quantization_gains_with_unacceptable_false_positives",
       "runs": [
         {
           "kind": "P2_vocabulary_formal_arm",
@@ -967,9 +967,9 @@
           "scored_masks_observed": 3711,
           "expected_scored_masks": 3711,
           "mask_replay_accepted": true,
-          "quality_outcome": "accepted_reference_only_not_compared",
+          "quality_outcome": "accepted_measurement_no_promotion",
           "worker_pid": 1847973,
-          "observed_at": "2026-11-02T14:02:23.729150+08:00",
+          "observed_at": "2026-11-02T17:47:34.596403+08:00",
           "independent_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous/independent_acceptance.json",
           "summary": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_summary_1102_135700/summary.json",
           "values": {
@@ -982,12 +982,13 @@
             "small_Dice": 0.13931744484922828,
             "fat_Dice": 0.3923479313461324
           },
-          "mask_coverage_diagnostics": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_mask_coverage_1102_140700/report.json"
+          "mask_coverage_diagnostics": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_mask_coverage_1102_140700/report.json",
+          "training_budget_and_state_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_training_state_audit_1102_144800/continuous/report.json"
         },
         {
           "kind": "P2_vocabulary_formal_arm",
           "arm": "fixed",
-          "status": "running_evaluation",
+          "status": "complete",
           "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/fixed",
           "training_updates": 2000,
           "consumed_tasks": 8000,
@@ -995,12 +996,47 @@
           "checkpoint_sha256": "9dc1334d8dcc2b1b0b32265137e326216fd798a8af136e2a2a0dd0a4a8b4a930",
           "training_sha256": "97d2941fe9197ba6146c26db1752a1f6a76f26eeae26f913eff44adae5b467bb",
           "fixed_centers_bit_exact": true,
-          "scored_masks_observed": 1000,
+          "scored_masks_observed": 3711,
           "expected_scored_masks": 3711,
-          "mask_replay_accepted": false,
-          "quality_outcome": "not_evaluated",
+          "mask_replay_accepted": true,
+          "quality_outcome": "accepted_measurement_no_promotion",
           "worker_pid": 2220343,
-          "observed_at": "2026-11-02T14:54:14.399922+08:00"
+          "observed_at": "2026-11-02T17:47:34.596403+08:00",
+          "independent_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/fixed/independent_acceptance.json",
+          "values": {
+            "remote_macro_Dice": 0.30036328100145554,
+            "remote_Dice": 0.27989543612995643,
+            "remote_BF1": 0.03865914325104453,
+            "absent_FPA": 0.05586905806869855,
+            "local_Dice": 0.46501686204267356,
+            "local_BF1": 0.05865859316945263,
+            "small_Dice": 0.12839124168593216,
+            "fat_Dice": 0.43228621599956324
+          }
+        },
+        {
+          "kind": "P2_vocabulary_formal_arm",
+          "arm": "ema",
+          "status": "complete",
+          "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/ema",
+          "training_updates": 2000,
+          "consumed_tasks": 8000,
+          "scored_masks_observed": 3711,
+          "mask_replay_accepted": true,
+          "independent_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/ema/independent_acceptance.json",
+          "training_budget_and_state_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_training_state_audit_1102_144800/ema/report.json",
+          "values": {
+            "remote_macro_Dice": 0.30443024056170537,
+            "remote_Dice": 0.2839767968242235,
+            "remote_BF1": 0.0440799341453658,
+            "absent_FPA": 0.08330088181774821,
+            "local_Dice": 0.4578641391033538,
+            "local_BF1": 0.057690610294431656,
+            "small_Dice": 0.11632356965375805,
+            "fat_Dice": 0.4081447261451673
+          },
+          "quality_outcome": "accepted_measurement_no_promotion",
+          "observed_at": "2026-11-02T17:47:34.596403+08:00"
         }
       ],
       "candidate_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_selected_vocabulary_1102_121546/synthesis/summary.json",
@@ -1051,30 +1087,17 @@
         "mask_rows_replayed": 24
       },
       "pilot": {
-        "status": "running_formal_evaluation",
+        "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100",
         "stage": {
-          "status": "running",
-          "stage": "fixed_train",
-          "worker_pid": 2220343,
-          "command": [
-            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-            "-u",
-            "-m",
-            "benchmarks.v5.architecture_bridge.train_vocabulary",
-            "--arm",
-            "fixed",
-            "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/fixed",
-            "--gate",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates"
-          ]
+          "status": "complete",
+          "exit_code": 0
         },
-        "worker_alive": true,
+        "worker_alive": false,
         "formal_training_started": true,
         "budget_per_arm": "2000x4 after fixed gates and smoke",
-        "quality_outcome": "continuous_reference_only_not_compared",
-        "last_observed_at": "2026-11-02T14:54:14.399922+08:00",
+        "quality_outcome": "all_three_accepted_no_candidate_passes_guards",
+        "last_observed_at": "2026-11-02T17:47:34.596403+08:00",
         "functional_reports": {
           "continuous": {
             "status": "accepted_train_only_functional_gate",
@@ -1111,19 +1134,15 @@
           "continuous": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous_smoke/independent_acceptance.json",
           "fixed": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/fixed_smoke/independent_acceptance.json"
         },
-        "current_activity": "fixed_scoring",
+        "current_activity": "complete_no_workers",
         "scored_masks_observed": 1000,
         "continuous_summary": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_summary_1102_135700/summary.json",
         "arm_progress": {
           "continuous": "complete_2000_updates_3711_mask_replay",
-          "fixed": {
-            "status": "running_evaluation",
-            "last_observed_updates": 2000,
-            "worker_pid": 2220343,
-            "scored_masks_observed": 1000
-          },
-          "ema": "queued_after_fixed"
-        }
+          "fixed": "complete_2000_updates_3711_mask_replay",
+          "ema": "complete_2000_updates_3711_mask_replay"
+        },
+        "comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_post_training_audit_1102_124900/comparison/comparison.json"
       },
       "code_inventory_diagnostics": {
         "status": "complete_initial_and_engineering_checkpoint_only",
@@ -1335,40 +1354,23 @@
         "final_checkpoint_coverage": false
       },
       "comparison_tool": {
-        "status": "engineering_accepted_formal_pending",
+        "status": "complete_formal_comparison",
         "source": "benchmarks/v5/architecture_bridge/compare_vocabulary.py",
         "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_comparison_engineering_1102_124500/report.json",
         "historical_real_rows_replayed": 14844,
-        "quality_accepted": false
+        "quality_accepted": false,
+        "formal_comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_post_training_audit_1102_124900/comparison/comparison.json"
       },
       "post_training_audit": {
-        "status": "waiting_for_training",
+        "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_post_training_audit_1102_124900",
         "stage": {
-          "status": "waiting",
-          "stage": "waiting_for_training",
-          "worker_pid": 1879118,
-          "dependency_controller_pid": 1754183,
-          "dependency_stage": {
-            "status": "running",
-            "stage": "continuous_train",
-            "worker_pid": 1847973,
-            "command": [
-              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-              "-u",
-              "-m",
-              "benchmarks.v5.architecture_bridge.train_vocabulary",
-              "--arm",
-              "continuous",
-              "--output",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous",
-              "--gate",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates"
-            ]
-          }
+          "status": "complete",
+          "exit_code": 0,
+          "P2_accepted": false
         },
-        "watcher_alive": true,
-        "observed_at": "2026-11-02T12:54:23.335017+08:00",
+        "watcher_alive": false,
+        "observed_at": "2026-11-02T17:47:34.596403+08:00",
         "steps": [
           "three_arm_quality_comparison",
           "fixed_final_all_cell_census",
@@ -1376,7 +1378,11 @@
           "ema_final_all_cell_census",
           "ema_census_accept"
         ],
-        "P2_automatic_acceptance": false
+        "P2_automatic_acceptance": false,
+        "final_census_acceptances": {
+          "fixed": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_post_training_audit_1102_124900/fixed_census/independent_acceptance.json",
+          "ema": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_post_training_audit_1102_124900/ema_census/independent_acceptance.json"
+        }
       },
       "native_color_inputs": {
         "status": "complete_inputs_only",
@@ -1402,35 +1408,19 @@
         "GPU_feature_job_started": false
       },
       "native_color_features": {
-        "status": "waiting_for_training",
+        "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_features_1102_130000",
         "stage": {
-          "status": "waiting",
-          "stage": "waiting_for_training",
-          "worker_pid": 1933899,
-          "dependency_stage": {
-            "status": "running",
-            "stage": "continuous_train",
-            "worker_pid": 1847973,
-            "command": [
-              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-              "-u",
-              "-m",
-              "benchmarks.v5.architecture_bridge.train_vocabulary",
-              "--arm",
-              "continuous",
-              "--output",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous",
-              "--gate",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates"
-            ]
-          }
+          "status": "complete",
+          "exit_code": 0,
+          "code_stability_accepted": false,
+          "P2_accepted": false
         },
-        "watcher_alive": true,
-        "observed_at": "2026-11-02T12:58:26.536314+08:00",
+        "watcher_alive": false,
+        "observed_at": "2026-11-02T17:47:34.596403+08:00",
         "CPU_preflight": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_features_1102_130000/CPU_preflight.json",
-        "GPU_feature_identity_accepted": false,
-        "GPU_feature_job_started": false,
+        "GPU_feature_identity_accepted": true,
+        "GPU_feature_job_started": true,
         "GPU_extraction_queued": true,
         "GPU": 3,
         "exclusive_compute_required": true,
@@ -1445,51 +1435,33 @@
           "full_CPU_accept"
         ],
         "color_code_stability_accepted": false,
-        "next_after_features": "offline final fixed/EMA mapper and codebook color-flip/distance diagnostics"
+        "next_after_features": "offline final fixed/EMA mapper and codebook color-flip/distance diagnostics",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_native_color_features_1102_130000/full/independent_acceptance.json"
       },
       "native_color_code_analysis": {
-        "status": "waiting_for_native_color_features",
+        "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_color_code_analysis_1102_131000",
         "stage": {
-          "status": "waiting",
-          "stage": "waiting_for_native_color_features",
-          "worker_pid": 1970862,
-          "dependency_stage": {
-            "status": "waiting",
-            "stage": "waiting_for_training",
-            "worker_pid": 1933899,
-            "dependency_stage": {
-              "status": "running",
-              "stage": "continuous_train",
-              "worker_pid": 1847973,
-              "command": [
-                "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-                "-u",
-                "-m",
-                "benchmarks.v5.architecture_bridge.train_vocabulary",
-                "--arm",
-                "continuous",
-                "--output",
-                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous",
-                "--gate",
-                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates"
-              ]
-            }
-          }
+          "status": "complete",
+          "exit_code": 0,
+          "diagnostics_complete": true,
+          "P2_accepted": false
         },
-        "watcher_alive": true,
-        "observed_at": "2026-11-02T13:06:50.427802+08:00",
+        "watcher_alive": false,
+        "observed_at": "2026-11-02T17:47:34.596403+08:00",
         "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_color_analysis_engineering_1102_130600/report.json",
         "incomplete_run_rejection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_color_analysis_engineering_1102_130600/incomplete_run_rejection.json",
-        "formal_final_checkpoints_tested": false,
-        "color_features_tested": false,
+        "formal_final_checkpoints_tested": true,
+        "color_features_tested": true,
         "diagnostic_only": true,
         "CPU_threads": 2,
         "GPU": false,
-        "P2_automatic_acceptance": false
+        "P2_automatic_acceptance": false,
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_color_code_analysis_1102_131000/full/independent_acceptance.json",
+        "robustness_claim": false
       },
       "tissue_context_diagnostics": {
-        "status": "complete_initial_only_waiting_final_censuses",
+        "status": "complete",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_tissue_context_1102_131600",
         "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_tissue_context_1102_131600/gate/independent_acceptance.json",
         "initial_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_tissue_context_1102_131600/full/independent_acceptance.json",
@@ -1498,43 +1470,24 @@
         "ignored_context_cells": 1007,
         "half_pixel_context_label_changes": 928,
         "stage": {
-          "status": "waiting",
-          "stage": "waiting_for_final_censuses",
-          "worker_pid": 2019442,
-          "initial_diagnostics_complete": true,
-          "dependency_stage": {
-            "status": "waiting",
-            "stage": "waiting_for_training",
-            "worker_pid": 1879118,
-            "dependency_controller_pid": 1754183,
-            "dependency_stage": {
-              "status": "running",
-              "stage": "continuous_train",
-              "worker_pid": 1847973,
-              "command": [
-                "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-                "-u",
-                "-m",
-                "benchmarks.v5.architecture_bridge.train_vocabulary",
-                "--arm",
-                "continuous",
-                "--output",
-                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/continuous",
-                "--gate",
-                "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates"
-              ]
-            }
-          }
+          "status": "complete",
+          "exit_code": 0,
+          "diagnostic_only": true,
+          "P2_accepted": false
         },
-        "watcher_alive": true,
-        "observed_at": "2026-11-02T13:20:47.304328+08:00",
+        "watcher_alive": false,
+        "observed_at": "2026-11-02T17:47:34.596403+08:00",
         "diagnostic_GT_only": true,
         "inference_or_fit_changed": false,
-        "final_checkpoint_coverage": false,
-        "P2_accepted": false
+        "final_checkpoint_coverage": true,
+        "P2_accepted": false,
+        "final_acceptances": {
+          "fixed": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_tissue_context_1102_131600/fixed_final/independent_acceptance.json",
+          "ema": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_initial_tissue_context_1102_131600/ema_final/independent_acceptance.json"
+        }
       },
       "mask_coverage_diagnostics": {
-        "status": "complete_continuous_waiting_other_arms",
+        "status": "complete_all_three",
         "source": "benchmarks/v5/architecture_bridge/audit_mask_coverage.py",
         "continuous_report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_continuous_mask_coverage_1102_140700/report.json",
         "main_budget": {
@@ -1575,49 +1528,49 @@
         },
         "other_arm_queue": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_mask_coverage_after_training_1102_141000",
         "stage": {
-          "status": "waiting",
-          "stage": "waiting_for_training",
-          "worker_pid": 2306649,
-          "dependency_stage": {
-            "status": "running",
-            "stage": "fixed_train",
-            "worker_pid": 2220343,
-            "command": [
-              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-              "-u",
-              "-m",
-              "benchmarks.v5.architecture_bridge.train_vocabulary",
-              "--arm",
-              "fixed",
-              "--output",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/fixed",
-              "--gate",
-              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_vocabulary_pilot_1102_122100/gates"
-            ]
-          }
+          "status": "complete",
+          "exit_code": 0,
+          "P2_accepted": false
         },
-        "watcher_alive": true,
-        "observed_at": "2026-11-02T14:18:30.035326+08:00",
+        "watcher_alive": false,
+        "observed_at": "2026-11-02T17:47:34.596403+08:00",
         "inference_or_threshold_changed": false,
-        "P2_accepted": false
+        "P2_accepted": false,
+        "other_reports": {
+          "fixed": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_mask_coverage_after_training_1102_141000/fixed/report.json",
+          "ema": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_mask_coverage_after_training_1102_141000/ema/report.json"
+        }
       },
       "training_state_audit_tool": {
         "source": "benchmarks/v5/architecture_bridge/audit_vocabulary_training.py",
-        "status": "accepted_actual_continuous_and_fixed_only",
+        "status": "accepted_actual_all_three",
         "validated_arms": [
           "continuous",
-          "fixed"
+          "fixed",
+          "ema"
         ],
-        "EMA_branch_actual_checkpoint_tested": false,
+        "EMA_branch_actual_checkpoint_tested": true,
         "acceptances": {
           "continuous": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_training_state_audit_1102_144800/continuous/report.json",
-          "fixed": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_training_state_audit_1102_144800/fixed/report.json"
+          "fixed": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_training_state_audit_1102_144800/fixed/report.json",
+          "ema": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_training_state_audit_1102_144800/ema/report.json"
         }
+      },
+      "selected_representation": "continuous",
+      "candidate_promoted": false,
+      "closure_verification": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/verification.json",
+      "decision": {
+        "representation": "continuous",
+        "reason": "Both quantized arms fail absent-FPA guard; EMA also fails small-target guard",
+        "seed2_eligible": [],
+        "efficiency_quality_eligible": [],
+        "second_recipe_run": false,
+        "measured_efficiency_run": false
       }
     },
     "P3": {
       "title": "空间组合与提示迁移",
-      "status": "planned",
+      "status": "preparing",
       "required_evidence": [
         "单变量空间和任务训练对照",
         "训练image-only与形态置乱控制",
@@ -1634,7 +1587,11 @@
         "numerical_gate_run": false,
         "four_arm_contract_frozen": false,
         "new_GPU_jobs": 0
-      }
+      },
+      "training_started": false,
+      "selected_representation": "continuous",
+      "representation_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json",
+      "next_action": "Freeze spatial-control contract and validate v5 variants before training"
     },
     "P4": {
       "title": "WSI质量与效率",

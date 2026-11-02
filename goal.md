@@ -1,6 +1,6 @@
 # FewClick CVPR 当前 Goal
 
-更新：2026-11-02T14:54:14.399922+08:00。原生 Goal：**active**（本轮get_goal核对active）。用户已废弃旧 AAAI rebuttal 目标；旧目标未完成，不标为 complete，不再执行其待办队列。数据、权重、缓存和报告保留。
+更新：2026-11-02T17:47:34.596403+08:00。原生 Goal：**active**（本轮get_goal核对active）。用户已废弃旧 AAAI rebuttal 目标；旧目标未完成，不标为 complete，不再执行其待办队列。数据、权重、缓存和报告保留。
 
 ## 目标
 
@@ -8,11 +8,11 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_P2词表接受与组织下游门控准备_1102_121546.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_P2收尾与P3空间对照准备_1102_174800.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
-当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 running_formal_training_and_evaluation**。双seed桥接接受后，P2固定图像Phikon、细胞XCell标准化64；LEMON保留对照。P2 continuous首臂正式参考质量已接受；fixed/EMA效应与WSI结论尚未验证。
+当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3 preparing**。三臂各2000×4/3711mask及全部后处理接受；fixed/EMA的Dice增益伴随超界FPA，EMA另有small代价，均不晋升。按合同保留Phikon+XCell64连续表示，P3训练尚未启动。
 
-桥接双seed已接受，P2固定Phikon+XCell64、train-only K128/30000观察/val0接受。P2三表示已接入原三视野共同模型，三臂8任务工程门控全部通过：共同参数/初始core、24mask复算、fresh model/optimizer/EMA继续精确、eval冻结。p2_vocabulary_pilot_1102_122100的三臂功能门控全部通过，fixed/EMA功能checkpoint在30000train观察均使用128码；continuous已完成2000×4/3711mask独立接受，fixed已完成2000更新及固定码本/optimizer独立核对、在GPU3评分3711mask，EMA按原队列等待。当前仅首臂正式参考，尚无三臂收益结论，禁止重复启动/改活跃源码或调阈值；码使用/稳定性/效率和下游质量证据齐备后才P2接受，P3–P6未完成。
+P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
 ## 执行顺序
 
@@ -20,8 +20,8 @@
 |---|---|---|
 | P0 | 数据、尺度、空间隔离与公平合同 | complete，限定接受 |
 | P1I / P1C | 图像与细胞 encoder 受控筛选 | complete，限定筛选接受；无组织升级 |
-| P2 | 连续特征 / 固定聚类 / 可学习词汇 | running_formal_training_and_evaluation；continuous 2000×4/3711mask接受，fixed已完成2000更新/状态接受、评分中；三臂比较待完成 |
-| P3 | 空间组合与支持查询迁移 | planned |
+| P2 | 连续特征 / 固定聚类 / 可学习词汇 | complete，有界阴性接受；保留continuous，词表不晋升 |
+| P3 | 空间组合与支持查询迁移 | preparing；continuous固定，合同/实现/门控待完成，未训练 |
 | P4 | WSI 质量、误报、缓存与交互效率 | planned |
 | P5 | 三 seed 与独立确认 | planned |
 | P6 | 方法、可复现材料与论文证据包 | planned |
@@ -148,3 +148,5 @@ P2首臂完整接受（2026-11-02T14:02:23.729150+08:00）：continuous 2000更�
 P2正式mask覆盖（2026-11-02T14:18:30.035326+08:00）：continuous全部3711mask独立byte计数与统计检查通过；主3+2 local17/302、remote137/470有目标任务valid预测全空，present BF1均可评/NA0。保留全预算逐类表，不改阈值；p2_mask_coverage_after_training_1102_141000真实CPU watcher等待主队列结束后同法审计fixed/EMA。此诊断不完成P2。
 
 P2 fixed训练里程碑（2026-11-02T14:54:14.399922+08:00）：2000更新/8000消费/152个active optimizer step全部2000，固定中心逐位未改，通用v5审计在continuous/fixed真实末步通过；fixed至少1000/3711mask评分。EMA状态分支和full质量仍未接受，Goal active。
+
+P2收尾（2026-11-02T17:47:34.596403+08:00）：三臂全部终态与诊断接受；fixed宏Dice+7.99pp/FPA+2.69pp、EMA宏Dice+8.40pp/FPA+5.43pp且small−2.30pp，未过原守门。保留连续，跳过不合格第二seed与效率宣称，进入P3准备；完整结果见当前记录，Goal active。
