@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T18:10:50+08:00",
+  "updated_at": "2026-11-03T18:52:16.885168+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_P3像素细节解码匹配对照_1103_132046.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_P3正负支持直接空间匹配_1103_184618.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_P3像素细节解码匹配对照_1103_132046.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_P3正负支持直接空间匹配_1103_184618.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "P3_pixel_decoder_complete_not_promoted",
+  "current_status": "P3_support_match_learning_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2116,7 +2116,17 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [],
+  "active_jobs": [
+    {
+      "id": "p3_support_match_1103_184618",
+      "status": "running",
+      "controller_pid": 1672231,
+      "worker_pid_at_observation": 1691421,
+      "stage_at_observation": "control_learning",
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_1103_184618",
+      "observed_at": "2026-11-03T18:52:16.885168+08:00"
+    }
+  ],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -2294,7 +2304,7 @@
     }
   ],
   "next_actions": [
-    "Report completed decoder comparison; no candidate promotion or automatic next experiment. P3-C/P4-P6 still incomplete."
+    "Execute gated support-match two-arm pilot and report full remote/local safety results; stop on failure."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -2793,5 +2803,51 @@
     "preserve_existing_guards": true,
     "automatic_query_prompts": "Allowed only from permitted support inputs and query images; record provenance/cost; never query GT.",
     "execution": "Objective documentation only; no new training; native goal remains paused."
+  },
+  "support_match_study": {
+    "status": "running",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_1103_184618",
+    "contract": "docs/建议/模型与训练/方案_P3正负支持直接空间匹配对照_1103_184618.md",
+    "record": "docs/运行记录/模型实验/运行记录_P3正负支持直接空间匹配_1103_184618.md",
+    "arms": [
+      "control",
+      "match"
+    ],
+    "updates": 1000,
+    "batch": 4,
+    "native_goal": "paused",
+    "authorization": "User explicitly approved this bounded two-arm experiment; not an old-queue resume.",
+    "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_1103_184618/engineering/acceptance.json",
+    "stage_observed": {
+      "status": "running",
+      "stage": "control_learning",
+      "worker_pid": 1691421,
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.support_match_study.functional",
+        "--cache",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_1103_184618/learning/control",
+        "--arm",
+        "control"
+      ],
+      "observed_at": 1793703062.77539,
+      "controller_pid": 1672231
+    },
+    "engineering_benchmarks": {
+      "control": {
+        "warm_train_seconds": 2.151117786176895,
+        "inference_seconds": 0.32092993140220644,
+        "extra_parameters": 0
+      },
+      "match": {
+        "warm_train_seconds": 1.6523460737968747,
+        "inference_seconds": 0.32893929574638603,
+        "extra_parameters": 16737
+      }
+    }
   }
 }

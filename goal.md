@@ -1,6 +1,6 @@
 # FewClick CVPR 当前 Goal
 
-更新：2026-11-03T17:49:01.583720+08:00。原生Goal仍paused；本轮用户授权的像素解码对照已完成、未晋升，后续等待用户决定，不恢复旧AAAI队列。
+更新：2026-11-03T17:49:01.583720+08:00。原生Goal仍paused；用户新授权支持直接匹配两臂试验，依门控连续执行，不恢复旧AAAI队列。
 
 ## 目标
 
@@ -21,11 +21,11 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_P3像素细节解码匹配对照_1103_132046.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_P3正负支持直接空间匹配_1103_184618.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
-**当前执行（2026-11-03T17:49:01.583720+08:00）**：两臂像素解码研究complete_accepted，各2000×4/3711mask与独立closeout通过。边界改善但本图small几乎无增益、脂肪退化，未过晋升门槛；无本组活动worker。结果/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_closeout_1103_174801/report.md；P3-C/P4–P6未完成，不自动执行。
+**当前执行（2026-11-03 18:46）**：用户授权的正负支持直接空间匹配试验已启动，GPU3工程worker1672303/controller1672231；两臂各1000×4，工程→256功能学习→smoke→训练→3711mask/臂→独立比较。产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_1103_184618。按stage/history核查真实状态；未产生质量结果。旧pixel研究已完成且未晋升，P3整体未完成。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
@@ -224,3 +224,7 @@ P3-B训练几何准备接受（2026-11-03T04:36:55.082779）：/nfs-medical3/zyh
 最新资源授权（2026-11-03T13:41:20.162219+08:00）：显存充足即可与其他用户共享GPU；无需因存在他人进程而等待。当前GPU3需free>=12288MiB，仍仅一个本组GPU训练任务、GPU0/2禁用、不终止他人进程。旧空卡等待规则被用户覆盖。
 
 后续路线建议（2026-11-03 17:55）：已核对新旧Dense与SAM历史三seed，新增建议[建议_P3像素解码复盘与SAM底座分支路线_1103_175538.md](docs/建议/模型与训练/建议_P3像素解码复盘与SAM底座分支路线_1103_175538.md)。建议先对齐SAM评估、有限local/mixed配方对照，再选择SAM支持记忆或独立Phikon直接匹配路线；全部proposed，未启动、不恢复paused Goal、不改变现有质量结论。
+
+最新授权（2026-11-03T18:46:18.421208+08:00）：支持直接匹配试验preparing，见docs/建议/模型与训练/方案_P3正负支持直接空间匹配对照_1103_184618.md；产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_1103_184618。用户授权本次两臂1000×4、门控/完整评分，失败停止。
+
+工程门控接受（2026-11-03T18:52:16.885168+08:00）：两臂六组初始输出、control旧I两次更新/optimizer精确复现、fresh继续训练、match有效梯度/支持敏感/顺序不变/bypass、细胞扰动无效及remote query无点击检查通过，20update/100inference测速接受，engineering worker1672303 exit0。149冻结源SHA一致。测速{"control": {"warm_train_seconds": 2.151117786176895, "inference_seconds": 0.32092993140220644, "extra_parameters": 0}, "match": {"warm_train_seconds": 1.6523460737968747, "inference_seconds": 0.32893929574638603, "extra_parameters": 16737}}，含重编码episode，不是WSI缓存后在线时延。当前control_learning真实worker1691421/controller1672231存活。两臂256学习、smoke、1000正式小试和3711mask接受/比较仍待完成；队列依赖自动继续，失败即停。

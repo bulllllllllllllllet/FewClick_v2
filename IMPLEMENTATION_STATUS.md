@@ -4211,3 +4211,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation: registry JSON解析、关键目标和各文档一致性检查；既有实验状态/守门保留，无新增训练。
 - Docs record: docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md；docs/建议/模型与训练/建议_P3像素解码复盘与SAM底座分支路线_1103_175538.md。
 - Commit: 本条所属目标合同提交。
+
+## 11-03 18:52:16
+
+- Purpose: 实现并启动用户授权的正负支持直接空间匹配两臂试验。
+- Changed: benchmarks/v5/support_match_study六模块、阶段合同/运行记录、AGENTS指针、goal和registry。
+- Validation: 真实GPU3六分组初始等价、两步更新/fresh optimizer、匹配梯度/支持敏感/顺序不变及20update/100inference工程门控全部接受；149source SHA一致；control256学习实际running。正式训练和质量未完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_1103_184618
+- Docs record: docs/建议/模型与训练/方案_P3正负支持直接空间匹配对照_1103_184618.md；docs/运行记录/模型实验/运行记录_P3正负支持直接空间匹配_1103_184618.md
+- Commit: 本条所属实现提交。
