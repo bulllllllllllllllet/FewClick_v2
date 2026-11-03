@@ -4195,3 +4195,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Result: 边界BF1明显提升；本图small仅+0.04pp、localFat−2.97pp、remoteFat−10.92pp，remote宏Dice+0.90pp的区间跨0，未晋升。无本组活动worker，不自动后续实验。
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_closeout_1103_174801/acceptance.json、report.md，/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951/comparison/comparison.json。
 - Docs: docs/运行记录/模型实验/运行记录_P3像素细节解码匹配对照_1103_132046.md及goal/registry已同步，P3整体未complete。
+
+## 11-03 17:55:38
+
+- Purpose: 核对历史Dense、新pixel与SAM对照，记录有限后续路线。
+- Changed: 新建议文档及goal/registry/当前运行记录的proposed链接；无模型或实验状态改变。
+- Validation: 直接核查两种forward、历史三seed接受和当前closeout；registry JSON解析通过。没有新增训练或质量结果。
+- Docs record: docs/建议/模型与训练/建议_P3像素解码复盘与SAM底座分支路线_1103_175538.md
+- Commit: 本条所属文档提交。

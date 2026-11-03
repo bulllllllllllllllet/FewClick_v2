@@ -2768,5 +2768,12 @@
       "P2_image": "frozen_phikon",
       "P2_cell": "xcell_standardized64"
     }
+  },
+  "post_pixel_route_recommendation": {
+    "status": "proposed_not_launched",
+    "document": "docs/建议/模型与训练/建议_P3像素解码复盘与SAM底座分支路线_1103_175538.md",
+    "native_goal": "paused",
+    "new_training_started": false,
+    "decision": "Align SAM evaluation first; consider bounded local/mixed control, then select one of SAM support memory or independent Phikon direct matching. No automatic execution."
   }
 }
