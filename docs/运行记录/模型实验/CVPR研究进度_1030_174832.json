@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T21:11:51.272871+08:00",
+  "updated_at": "2026-11-03T21:41:07.231063+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_P3正负支持直接空间匹配_1103_184618.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_SAM同监督远端桥对比_1103_213704.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_P3正负支持直接空间匹配_1103_184618.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_SAM同监督远端桥对比_1103_213704.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "P3_support_match_complete_first_seed_candidate",
+  "current_status": "SAM_matched_learning_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2116,7 +2116,17 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [],
+  "active_jobs": [
+    {
+      "id": "sam_matched_1103_213704",
+      "status": "running",
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_1103_213704",
+      "controller_pid": 2315283,
+      "worker_pid_at_observation": 2324009,
+      "stage_at_observation": "sam_native_learning",
+      "observed_at": "2026-11-03T21:41:07.231063+08:00"
+    }
+  ],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -2300,7 +2310,7 @@
     }
   ],
   "next_actions": [
-    "Report accepted first-seed support-match gains; replication and mechanism controls are proposed only, no automatic next training."
+    "Execute gated native SAM support bridge with matched episode supervision; compare complete local and zero-query-click remote results."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -2860,5 +2870,39 @@
     },
     "formal_complete": true,
     "replication_complete": false
+  },
+  "sam_matched_study": {
+    "status": "running",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_1103_213704",
+    "contract": "docs/建议/模型与训练/方案_SAM原生解码远端桥同监督对比_1103_213704.md",
+    "record": "docs/运行记录/模型实验/运行记录_SAM同监督远端桥对比_1103_213704.md",
+    "reference": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_1103_184618/match",
+    "updates": 1000,
+    "new_training_runs": 1,
+    "seed": 20261103,
+    "stage_observed": {
+      "status": "running",
+      "stage": "sam_native_learning",
+      "worker_pid": 2324009,
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.sam_matched_study.functional",
+        "--cache",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_1103_213704/learning/sam_native",
+        "--arm",
+        "sam_native"
+      ],
+      "observed_at": 1793713162.9973965,
+      "controller_pid": 2315283
+    },
+    "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_1103_213704/engineering/acceptance.json",
+    "benchmarks": {
+      "warm_update_s": 2.040295791861258,
+      "mean_episode_inference_s": 0.4427752183377743
+    }
   }
 }

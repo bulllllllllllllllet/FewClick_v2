@@ -4229,3 +4229,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_closeout_1103_211151
 - Docs record: docs/运行记录/模型实验/运行记录_P3正负支持直接空间匹配_1103_184618.md
 - Commit: 本条所属收尾提交。
+
+## 11-03 21:41:07
+
+- Purpose: 实施并启动SAM原生解码支持桥的同监督预算对比。
+- Changed: sam_matched_study六模块、实验合同/运行记录、AGENTS/goal/registry。
+- Validation: GPU3六真实任务、remote无点hook、梯度/参数更新、fresh optimizer继续、冻结encoder及20update/100inference工程门控通过；171source SHA核对一致。32任务256功能学习实际running，正式质量未完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_1103_213704
+- Docs record: docs/建议/模型与训练/方案_SAM原生解码远端桥同监督对比_1103_213704.md；docs/运行记录/模型实验/运行记录_SAM同监督远端桥对比_1103_213704.md
+- Commit: 本条所属实现提交。
