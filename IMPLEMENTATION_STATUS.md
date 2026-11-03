@@ -4274,3 +4274,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153
 - Docs record: docs/运行记录/模型实验/运行记录_SAM非零支持提示修复_1104_020153.md
 - Commit: 本条所属进度提交。
+
+## 2026-11-04T05:26:27.980165+08:00
+
+- Purpose: 收尾SAM修订公平预算对比。
+- Changed: goal/registry/当前record。
+- Validation: 冻结source/全部比较证据SHA核对、指标/守门复算一致，单SAM3711及FewClick3711独立接受绑定。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_closeout_1104_052627
+- Docs record: docs/运行记录/模型实验/运行记录_SAM非零支持提示修复_1104_020153.md
+- Commit: 本条所属收尾提交。

@@ -25,7 +25,7 @@
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
-**当前执行（2026-11-04T02:37:06.042749+08:00）**：SAM修订工程/学习及smoke已接受，1000步正式训练running，worker3414047，尚无完整评分和胜负结论。
+**当前执行（2026-11-04T05:26:27.980165+08:00）**：SAM修订同监督对比已complete_accepted。FewClick远端宏Dice35.57% vs SAM桥12.83%，本图54.71% vs56.77%；无全面胜出，单seed/特定适配桥边界。报告/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_closeout_1104_052627/report.md。本组已结束，无自动新任务。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
@@ -242,3 +242,5 @@ P3-B训练几何准备接受（2026-11-03T04:36:55.082779）：/nfs-medical3/zyh
 最新授权：2026-11-04T02:01:53.064731+08:00 非零支持prior修复，/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153，成功门控后自动同预算训练/比较。旧失败不覆盖。
 
 2026-11-04T02:37:06.042749+08:00 修订版256学习门控六组全部通过及32mask独立接受。CRC/TIGER远端swap响应0.06223/0.07903，高于0.001，阈值未改。smoke通过后已自动进入1000步正式训练，实际worker3414047（最近51/1000）。仅接受功能学习，不代表验证质量/公平胜负。
+
+2026-11-04T05:26:27.980165+08:00 SAM修订研究complete_accepted，1000×4/3711mask/fresh12/独立接受及比较完成。SAM/FewClick remote宏Dice12.83/35.57，absentFPA5.82/6.38，localDice56.77/54.71（%）。FewClick核心远端较强，本图/small/fat与CRC误报代价未全过；非全面胜出或SAM上限。收尾/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_closeout_1104_052627/report.md。无自动新训练。

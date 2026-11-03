@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T02:37:06.042749+08:00",
+  "updated_at": "2026-11-04T05:26:27.980165+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "SAM_prior_repair_formal_running",
+  "current_status": "SAM_prior_repair_comparison_complete",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Run authorized nonzero support-prior repair through unchanged gates, then matched training and comparison; stop on failure."
+    "Report bounded matched comparison; remote advantage and local/CRC-FPA costs; no automatic new experiment."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -2906,7 +2906,7 @@
     }
   },
   "sam_prior_repair": {
-    "status": "running",
+    "status": "complete_accepted",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153",
     "contract": "docs/建议/模型与训练/方案_SAM非零支持提示修复_1104_020153.md",
     "record": "docs/运行记录/模型实验/运行记录_SAM非零支持提示修复_1104_020153.md",
@@ -2942,6 +2942,30 @@
       "observed_at": 1793730636.4979513,
       "controller_pid": 3304745
     },
-    "learning_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153/learning/sam_native/independent_acceptance.json"
+    "learning_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153/learning/sam_native/independent_acceptance.json",
+    "closeout": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_closeout_1104_052627/acceptance.json",
+    "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_closeout_1104_052627/report.md",
+    "values": {
+      "sam_native": {
+        "remote_macro_Dice": 0.12832263919305523,
+        "remote_Dice": 0.12888820231683928,
+        "remote_BF1": 0.0992578639910703,
+        "absent_FPA": 0.05817077378496634,
+        "local_Dice": 0.5676569894669049,
+        "local_BF1": 0.20882823840199852,
+        "small_Dice": 0.28900765260683936,
+        "fat_Dice": 0.6036612877709079
+      },
+      "fewclick": {
+        "remote_macro_Dice": 0.35574281685619286,
+        "remote_Dice": 0.3363446565767136,
+        "remote_BF1": 0.1307047462427594,
+        "absent_FPA": 0.06382752953184435,
+        "local_Dice": 0.5471344921636714,
+        "local_BF1": 0.19180307235161734,
+        "small_Dice": 0.25480057050099975,
+        "fat_Dice": 0.5509996454137639
+      }
+    }
   }
 }
