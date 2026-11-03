@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T13:41:20.162219+08:00",
+  "updated_at": "2026-11-03T17:49:01.583720+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "P3_pixel_decoder_learning_running_shared_GPU",
+  "current_status": "P3_pixel_decoder_complete_not_promoted",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -1599,7 +1599,7 @@
       "training_started": true,
       "selected_representation": "continuous",
       "representation_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json",
-      "next_action": "Continue authorized engineering/functional/smoke -> two-arm matched decoder training queue; stop failure, report complete comparison, no automatic later roadmap.",
+      "next_action": "Report completed decoder comparison; no candidate promotion or automatic next experiment. P3-C/P4-P6 still incomplete.",
       "input_readiness": {
         "status": "accepted_repair_and_functional_gate",
         "issues": [
@@ -2020,32 +2020,19 @@
         ]
       },
       "pixel_decoder_study": {
-        "status": "learning_running",
+        "status": "complete_accepted",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951",
         "record": "docs/运行记录/模型实验/运行记录_P3像素细节解码匹配对照_1103_132046.md",
         "contract_design": "docs/建议/模型与训练/方案_P3像素细节解码匹配对照_1103_132046.md",
         "settings": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951/settings.json",
-        "controller_pid": 518115,
         "stage": {
-          "status": "running",
-          "stage": "region_learning",
-          "worker_pid": 518179,
-          "command": [
-            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-            "-u",
-            "-m",
-            "benchmarks.v5.pixel_decoder_study.functional",
-            "--cache",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-            "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951/learning/region",
-            "--arm",
-            "region"
-          ],
-          "observed_at": 1793684404.2036746,
+          "status": "complete_accepted",
+          "P3_complete": false,
+          "next_action": "report to user; no automatic next experiment",
+          "observed_at": 1793696373.6764913,
           "controller_pid": 518115
         },
-        "formal_training_started": false,
+        "formal_training_started": true,
         "new_formal_run_budget": 2,
         "frozen_sources": 143,
         "user_authorized": true,
@@ -2069,10 +2056,17 @@
             "initial_probability_max_error": 2.9802322387695312e-08
           }
         },
-        "functional_learning_accepted": false,
+        "functional_learning_accepted": true,
         "engineering_reused_from": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_decoder_1103_132046",
         "GPU_sharing_authorized": true,
-        "minimum_free_memory_MiB": 12288
+        "minimum_free_memory_MiB": 12288,
+        "formal_training_complete": true,
+        "comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951/comparison/comparison.json",
+        "closeout": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_closeout_1103_174801/acceptance.json",
+        "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_closeout_1103_174801/report.md",
+        "candidate_promoted": false,
+        "quality_outcome": "boundary_gain; small-target endpoint and fat safety fail",
+        "historical_controller_pid": 518115
       }
     },
     "P4": {
@@ -2122,35 +2116,7 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [
-    {
-      "kind": "P3_pixel_decoder_controller",
-      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951",
-      "controller_pid": 518115,
-      "worker_pid": 518179,
-      "stage": {
-        "status": "running",
-        "stage": "region_learning",
-        "worker_pid": 518179,
-        "command": [
-          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-          "-u",
-          "-m",
-          "benchmarks.v5.pixel_decoder_study.functional",
-          "--cache",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-          "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951/learning/region",
-          "--arm",
-          "region"
-        ],
-        "observed_at": 1793684404.2036746,
-        "controller_pid": 518115
-      },
-      "GPU": 3,
-      "shared_GPU": true
-    }
-  ],
+  "active_jobs": [],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -2309,6 +2275,14 @@
       "status": "complete_accepted",
       "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_bottleneck_deterministic_1103_125620/acceptance.json",
       "training_updates": 0
+    },
+    {
+      "kind": "P3_matched_pixel_decoder",
+      "status": "complete_accepted_not_promoted",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_closeout_1103_174801/acceptance.json",
+      "formal_runs": 2,
+      "masks": 7422
     }
   ],
   "completed_milestones": [
@@ -2320,7 +2294,7 @@
     }
   ],
   "next_actions": [
-    "Continue authorized engineering/functional/smoke -> two-arm matched decoder training queue; stop failure, report complete comparison, no automatic later roadmap."
+    "Report completed decoder comparison; no candidate promotion or automatic next experiment. P3-C/P4-P6 still incomplete."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

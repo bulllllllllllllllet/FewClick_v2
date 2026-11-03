@@ -4187,3 +4187,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation: 旧controller462119在waiting且无训练子进程时显式停止并留interruption；新root逐项核对除pipeline外全部源/权重/输入，成功复用工程接受；143源SHA一致，新controller518115/真实region学习worker518179在GPU3运行。不是正式训练或学习质量接受。
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951/settings.json、stage.json、history.jsonl、region_learning.log；旧p3_pixel_decoder_1103_132046全部保留。
 - Policy: 启动前free>=12288MiB，不因其他进程存在而拒绝运行；不杀他人，不并行两个本组训练，模型/任务/损失/预算不变。
+
+## 2026-11-03T17:49:01.583720+08:00
+
+- Purpose: 收尾用户授权的两臂像素细节解码匹配训练并给出预登记判定。
+- Validation: 双2000×4/7422mask独立接受，旧I末步权重/optimizer/全部mask精确复现；closeout重算指标/guard、143源及checkpoint/消费/5节点monitor SHA通过。
+- Result: 边界BF1明显提升；本图small仅+0.04pp、localFat−2.97pp、remoteFat−10.92pp，remote宏Dice+0.90pp的区间跨0，未晋升。无本组活动worker，不自动后续实验。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_closeout_1103_174801/acceptance.json、report.md，/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951/comparison/comparison.json。
+- Docs: docs/运行记录/模型实验/运行记录_P3像素细节解码匹配对照_1103_132046.md及goal/registry已同步，P3整体未complete。

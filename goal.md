@@ -1,6 +1,6 @@
 # FewClick CVPR 当前 Goal
 
-更新：2026-11-03T13:27:31.365823+08:00。原生 Goal 状态仍paused；用户最新明确授权本轮两臂像素/细节解码对照的准备与匹配训练，不自动执行其余路线。旧AAAI队列不恢复。
+更新：2026-11-03T17:49:01.583720+08:00。原生Goal仍paused；本轮用户授权的像素解码对照已完成、未晋升，后续等待用户决定，不恢复旧AAAI队列。
 
 ## 目标
 
@@ -12,7 +12,7 @@
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
-**当前执行（2026-11-03T13:41:20.162219+08:00）**：用户明确允许显存充足时共享GPU；新root /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951，controller518115/真实学习worker518179在GPU3 running。复用原工程接受，模型/数据/预算不变；256功能门控及smoke后自动正式两组2000×4。
+**当前执行（2026-11-03T17:49:01.583720+08:00）**：两臂像素解码研究complete_accepted，各2000×4/3711mask与独立closeout通过。边界改善但本图small几乎无增益、脂肪退化，未过晋升门槛；无本组活动worker。结果/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_closeout_1103_174801/report.md；P3-C/P4–P6未完成，不自动执行。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
@@ -23,7 +23,7 @@ P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_resea
 | P0 | 数据、尺度、空间隔离与公平合同 | complete，限定接受 |
 | P1I / P1C | 图像与细胞 encoder 受控筛选 | complete，限定筛选接受；无组织升级 |
 | P2 | 连续特征 / 固定聚类 / 可学习词汇 | complete，有界阴性接受；保留continuous，词表不晋升 |
-| P3 | 空间组合与支持查询迁移 | A/基础诊断 complete；像素解码工程接受、region功能学习running；C未训练 |
+| P3 | 空间组合与支持查询迁移 | A/基础诊断/像素解码对照complete；新像素头未晋升；C未训练，阶段未complete |
 | P4 | WSI 质量、误报、缓存与交互效率 | planned |
 | P5 | 三 seed 与独立确认 | planned |
 | P6 | 方法、可复现材料与论文证据包 | planned |
