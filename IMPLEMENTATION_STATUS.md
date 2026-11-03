@@ -4238,3 +4238,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_1103_213704
 - Docs record: docs/建议/模型与训练/方案_SAM原生解码远端桥同监督对比_1103_213704.md；docs/运行记录/模型实验/运行记录_SAM同监督远端桥对比_1103_213704.md
 - Commit: 本条所属实现提交。
+
+## 11-04 01:01:28
+
+- Purpose: 核对并登记SAM学习门控失败，撤销连续running摘要。
+- Changed: goal/registry/当前运行记录。
+- Validation: 独立重算32保存mask指标、171source、checkpoint有限/optimizer256与失败门槛一致；未新增训练或降低门槛。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_failure_audit_1104_010128
+- Docs record: docs/运行记录/模型实验/运行记录_SAM同监督远端桥对比_1103_213704.md
+- Commit: 本条所属失败审计提交。

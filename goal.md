@@ -25,7 +25,7 @@
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
-**当前执行（2026-11-03T21:41:07.231063+08:00）**：用户授权SAM同监督对比running，工程门控已接受，GPU3学习worker2324009。相同4000真实任务/1000更新/三视野/冻结encoder；native SAM加支持匹配dense prompt，query人工零点；FewClick复用已验收结果。产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_1103_213704，完整结果待功能→smoke→训练→3711mask接受→比较。
+**当前执行（2026-11-04T01:01:28.324344+08:00）**：SAM同监督桥在256步train-only学习gate失败，远端提示交换响应不足；正式1000训练/3711val评分/最终对比未启动。报告/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_failure_audit_1104_010128/report.md。本组已停止，无公平胜负结论，不自动重跑。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
@@ -234,3 +234,5 @@ P3-B训练几何准备接受（2026-11-03T04:36:55.082779）：/nfs-medical3/zyh
 最新授权（2026-11-03T21:37:04.021838+08:00）：SAM公平对比preparing，docs/建议/模型与训练/方案_SAM原生解码远端桥同监督对比_1103_213704.md；/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_1103_213704。保持远端人工零点/同实际4000task/1000更新/三视野，公共权重冻结encoder、新增匹配桥/原生decoder训练；复用已接受FewClick，非等计算/总预训练。
 
 工程接受（2026-11-03T21:41:07.231063+08:00）：native SAM六真实任务、remote query prompt hook无点、真实loss/梯度、matcher及mask decoder有效更新、fresh optimizer继续精确、encoder state未变及20update/100inference测速通过，工程worker2316138 exit0。171冻结源SHA一致。测速{'warm_update_s': 2.040295791861258, 'mean_episode_inference_s': 0.4427752183377743}，含重编码episode非WSI在线时延。controller2315283、当前sam_native_learning真实worker2324009现场存活。功能学习/正式训练/评分和比较未完成，不提前声称公平胜负。
+
+失败收尾（2026-11-04T01:01:28.324344+08:00）：SAM工程通过，256更新train-only学习gate失败：CRC远端正负交换均值中位数0.00014115、TIGER0.00082357，均低于0.001；各组Dice/空间变化与absentFPA通过。不是进程崩溃/NaN，也不证明SAM整体无能力；当前匹配dense prompt桥的远端条件化未达到预登记要求。正式1000训练、3711val评分、FewClick比较均未启动，不能宣布胜负。32保存mask独立计数/指标、171source和有限checkpoint/optimizer256步已核对。保留失败，不降低门槛、不自动重跑。 独立审计/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_failure_audit_1104_010128/audit.json。原失败发生在2026-11-03约21:49（Asia/Shanghai），controller exit1，无存活本组worker。

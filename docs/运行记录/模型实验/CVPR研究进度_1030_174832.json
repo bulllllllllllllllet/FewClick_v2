@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T21:41:07.231063+08:00",
+  "updated_at": "2026-11-04T01:01:28.324344+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "SAM_matched_learning_running",
+  "current_status": "SAM_matched_failed_learning_gate",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2116,17 +2116,7 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [
-    {
-      "id": "sam_matched_1103_213704",
-      "status": "running",
-      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_1103_213704",
-      "controller_pid": 2315283,
-      "worker_pid_at_observation": 2324009,
-      "stage_at_observation": "sam_native_learning",
-      "observed_at": "2026-11-03T21:41:07.231063+08:00"
-    }
-  ],
+  "active_jobs": [],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -2310,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Execute gated native SAM support bridge with matched episode supervision; compare complete local and zero-query-click remote results."
+    "Report failed gate without claiming FewClick beats SAM; diagnose remote conditioning on fixed train tasks before any registered repair."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -2418,6 +2408,12 @@
       "worker_pid": 1021398,
       "exit_code": 1,
       "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/image_decoder_gate_deterministic_1031_014114"
+    },
+    {
+      "id": "sam_matched_1103_213704",
+      "status": "failed_learning_gate",
+      "audit": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_failure_audit_1104_010128/audit.json",
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_1103_213704"
     }
   ],
   "known_gaps_history_before_P0_acceptance": [
@@ -2872,7 +2868,7 @@
     "replication_complete": false
   },
   "sam_matched_study": {
-    "status": "running",
+    "status": "failed",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_1103_213704",
     "contract": "docs/建议/模型与训练/方案_SAM原生解码远端桥同监督对比_1103_213704.md",
     "record": "docs/运行记录/模型实验/运行记录_SAM同监督远端桥对比_1103_213704.md",
@@ -2881,28 +2877,24 @@
     "new_training_runs": 1,
     "seed": 20261103,
     "stage_observed": {
-      "status": "running",
-      "stage": "sam_native_learning",
-      "worker_pid": 2324009,
-      "command": [
-        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-        "-u",
-        "-m",
-        "benchmarks.v5.sam_matched_study.functional",
-        "--cache",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_1103_213704/learning/sam_native",
-        "--arm",
-        "sam_native"
-      ],
-      "observed_at": 1793713162.9973965,
+      "status": "failed",
+      "error": "AssertionError(('sam_native_learning', 1))",
+      "retry": false,
+      "observed_at": 1793713760.8666723,
       "controller_pid": 2315283
     },
     "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_1103_213704/engineering/acceptance.json",
     "benchmarks": {
       "warm_update_s": 2.040295791861258,
       "mean_episode_inference_s": 0.4427752183377743
-    }
+    },
+    "failure_audit": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_failure_audit_1104_010128/audit.json",
+    "failure_report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_failure_audit_1104_010128/report.md",
+    "formal_training_started": false,
+    "comparison_available": false,
+    "failed_groups": [
+      "crc|cross_present",
+      "tiger|cross_present"
+    ]
   }
 }
