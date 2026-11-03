@@ -13,3 +13,5 @@ The active CVPR roadmap is `docs/建议/模型与训练/路线_CVPR细胞词汇�
 - After each milestone, update the registry, `goal.md`, the current run record and `IMPLEMENTATION_STATUS.md`. Record commands, code/data/weight hashes, real worker PIDs, logs, results and remaining gaps so another session can continue.
 
 For FewClick model training, retraining or collapse diagnosis, consult `/home/zhaoyh/.codex/skills/fewclick-training-quality/SKILL.md` (versioned source: `benchmarks/v5/architecture_bridge/training_quality_skill/SKILL.md`). Follow the active experiment contract for concrete budgets and functional gates; finite loss/checkpoint replay alone is not functional learning acceptance.
+
+Latest user GPU policy (2026-11-03T13:41:20.162219+08:00): sharing an allowed GPU is authorized when free memory is sufficient; do not wait solely because another process exists. Current pixel study uses GPU3 with at least 12288 MiB free before launching each GPU stage. Keep one own GPU training job, exclude GPU0/2, and never terminate other users' processes. This overrides older exclusive-GPU waiting notes.

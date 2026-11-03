@@ -12,7 +12,7 @@
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
-**当前执行（2026-11-03T13:36:06.730784+08:00）**：P3像素解码两臂工程/CPU门控已接受，controller462119现场live，当前waiting_GPU3/region_learning；两组256功能门控及smoke后才自动两组fresh2000×4。功能/正式结果尚未接受，不自动P3-C/P4；143执行源冻结。
+**当前执行（2026-11-03T13:41:20.162219+08:00）**：用户明确允许显存充足时共享GPU；新root /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951，controller518115/真实学习worker518179在GPU3 running。复用原工程接受，模型/数据/预算不变；256功能门控及smoke后自动正式两组2000×4。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
@@ -23,7 +23,7 @@ P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_resea
 | P0 | 数据、尺度、空间隔离与公平合同 | complete，限定接受 |
 | P1I / P1C | 图像与细胞 encoder 受控筛选 | complete，限定筛选接受；无组织升级 |
 | P2 | 连续特征 / 固定聚类 / 可学习词汇 | complete，有界阴性接受；保留continuous，词表不晋升 |
-| P3 | 空间组合与支持查询迁移 | A/基础诊断 complete；像素解码工程接受、学习门控排队；C未训练，阶段未complete |
+| P3 | 空间组合与支持查询迁移 | A/基础诊断 complete；像素解码工程接受、region功能学习running；C未训练 |
 | P4 | WSI 质量、误报、缓存与交互效率 | planned |
 | P5 | 三 seed 与独立确认 | planned |
 | P6 | 方法、可复现材料与论文证据包 | planned |
@@ -207,3 +207,5 @@ local-only原政策真实点击gate4任务（CRC0/10、TIGER1/3）通过逐点tr
 P3-C数据准备接受（2026-11-03T04:31:04.601112）：local4000实际点击和全量独立符号/配额/GT审计、16真实loader任务通过，见/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_local_loader_accept_1103_042845/data/acceptance.json。最终结构与模型门控/监督范围合同未定，P3-C未训练；当前S00正式队列继续。
 
 P3-B训练几何准备接受（2026-11-03T04:36:55.082779）：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_knn_geometry_1103_043329/full/acceptance.json覆盖1356train/4068views，k8真实物理排序/单位/同距/边界完整接受，无val/GT/模型训练。fine边中位17–19µm，4×59–67µm，不能声称等物理半径或完整细胞邻接；解释记录docs/运行记录/模型实验/审计_P3训练近邻物理尺度与解释边界_1103_043655.md。未改变k或原预注册方案。S00仍实际worker2212192运行，状态{"stage": "training", "updates": 1251, "total_updates": 2000, "loss": 1.400077372789383, "worker_pid": 2212192, "arm": "S00", "seconds": 1934.9668383672833}；全部65冻结源SHA一致。
+
+最新资源授权（2026-11-03T13:41:20.162219+08:00）：显存充足即可与其他用户共享GPU；无需因存在他人进程而等待。当前GPU3需free>=12288MiB，仍仅一个本组GPU训练任务、GPU0/2禁用、不终止他人进程。旧空卡等待规则被用户覆盖。

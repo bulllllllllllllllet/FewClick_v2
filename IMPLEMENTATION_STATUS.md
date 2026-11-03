@@ -4179,3 +4179,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation: py_compile通过；CRC/TIGER真实CPU像素头/原loss梯度、初始logit等价与state不变接受；GPU六分组输出/原I更新等价、fresh optimizer精确继续、像素支路有效梯度与bypass、I细胞扰动无效、remote无query点、每臂20update/100infer实测均接受。正式trainer端到端smoke、256功能学习和2000正式结果仍pending，不能以工程接受声称学习有效。
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_decoder_1103_132046/engineering/acceptance.json、cpu_gate/acceptance.json、settings.json、source snapshots、stage/history及log。controller462119实际live，当前waiting_GPU3/region_learning；GPU3单卡/CPU2，依赖失败即停，无静默重试。
 - Scope: 相同I底座/损失/任务/预算，仅加任务条件RGB细节/像素残差路径；参数容量和信息访问变化披露，未新增query提示或权重。正式两组从公共初始化重新训练，非旧checkpoint续训；不自动后续路线。
+
+## 2026-11-03T13:41:20.162219+08:00
+
+- Purpose: 落实用户最新GPU共享授权，显存充足即运行，解除仅因他人进程而等待。
+- Changed: pixel_decoder_study/pipeline.py、goal/AGENTS/registry及当前run记录；单本组训练、GPU0/2禁用保持。
+- Validation: 旧controller462119在waiting且无训练子进程时显式停止并留interruption；新root逐项核对除pipeline外全部源/权重/输入，成功复用工程接受；143源SHA一致，新controller518115/真实region学习worker518179在GPU3运行。不是正式训练或学习质量接受。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951/settings.json、stage.json、history.jsonl、region_learning.log；旧p3_pixel_decoder_1103_132046全部保留。
+- Policy: 启动前free>=12288MiB，不因其他进程存在而拒绝运行；不杀他人，不并行两个本组训练，模型/任务/损失/预算不变。

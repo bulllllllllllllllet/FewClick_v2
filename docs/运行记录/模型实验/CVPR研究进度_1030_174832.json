@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T13:36:06.730784+08:00",
+  "updated_at": "2026-11-03T13:41:20.162219+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "P3_pixel_decoder_learning_preparing",
+  "current_status": "P3_pixel_decoder_learning_running_shared_GPU",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2020,20 +2020,30 @@
         ]
       },
       "pixel_decoder_study": {
-        "status": "engineering_accepted_learning_queued",
-        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_decoder_1103_132046",
+        "status": "learning_running",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951",
         "record": "docs/运行记录/模型实验/运行记录_P3像素细节解码匹配对照_1103_132046.md",
         "contract_design": "docs/建议/模型与训练/方案_P3像素细节解码匹配对照_1103_132046.md",
-        "settings": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_decoder_1103_132046/settings.json",
-        "controller_pid": 462119,
+        "settings": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951/settings.json",
+        "controller_pid": 518115,
         "stage": {
-          "status": "waiting_GPU3",
+          "status": "running",
           "stage": "region_learning",
-          "processes": [
-            "GPU-a629ede5-3d48-1671-96a1-f6a539d5390f, 476687"
+          "worker_pid": 518179,
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.pixel_decoder_study.functional",
+            "--cache",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+            "--output",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951/learning/region",
+            "--arm",
+            "region"
           ],
-          "observed_at": 1793684165.3291752,
-          "controller_pid": 462119
+          "observed_at": 1793684404.2036746,
+          "controller_pid": 518115
         },
         "formal_training_started": false,
         "new_formal_run_budget": 2,
@@ -2042,7 +2052,7 @@
         "CPU_gate": "accepted_real_CPU_pixel_head_gate",
         "CPU_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_decoder_1103_132046/cpu_gate/acceptance.json",
         "preparation_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_decoder_1103_132046/preparation_receipt.json",
-        "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_decoder_1103_132046/engineering/acceptance.json",
+        "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951/engineering/acceptance.json",
         "benchmark": {
           "region": {
             "warm_train_seconds": 1.548684210899998,
@@ -2059,7 +2069,10 @@
             "initial_probability_max_error": 2.9802322387695312e-08
           }
         },
-        "functional_learning_accepted": false
+        "functional_learning_accepted": false,
+        "engineering_reused_from": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_decoder_1103_132046",
+        "GPU_sharing_authorized": true,
+        "minimum_free_memory_MiB": 12288
       }
     },
     "P4": {
@@ -2112,19 +2125,30 @@
   "active_jobs": [
     {
       "kind": "P3_pixel_decoder_controller",
-      "controller_pid": 462119,
-      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_decoder_1103_132046",
-      "status": "waiting_GPU3",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951",
+      "controller_pid": 518115,
+      "worker_pid": 518179,
       "stage": {
-        "status": "waiting_GPU3",
+        "status": "running",
         "stage": "region_learning",
-        "processes": [
-          "GPU-a629ede5-3d48-1671-96a1-f6a539d5390f, 476687"
+        "worker_pid": 518179,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.pixel_decoder_study.functional",
+          "--cache",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_shared_1103_133951/learning/region",
+          "--arm",
+          "region"
         ],
-        "observed_at": 1793684165.3291752,
-        "controller_pid": 462119
+        "observed_at": 1793684404.2036746,
+        "controller_pid": 518115
       },
-      "formal_training_started": false
+      "GPU": 3,
+      "shared_GPU": true
     }
   ],
   "completed_jobs": [

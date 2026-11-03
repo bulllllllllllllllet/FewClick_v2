@@ -19,12 +19,10 @@ def main():
     def command(label,module,args,gpu=True):
         for path,h in s['sources'].items():assert sha(path)==h,path
         if gpu:
-            uuid=subprocess.check_output(['nvidia-smi','--id=3','--query-gpu=uuid','--format=csv,noheader'],text=True).strip()
             while True:
-                apps=subprocess.check_output(['nvidia-smi','--query-compute-apps=gpu_uuid,pid','--format=csv,noheader'],text=True).splitlines()
-                busy=[x for x in apps if x.split(',')[0].strip()==uuid]
-                if not busy:break
-                status(status='waiting_GPU3',stage=label,processes=busy);time.sleep(10)
+                free=int(subprocess.check_output(['nvidia-smi','--id=3','--query-gpu=memory.free','--format=csv,noheader,nounits'],text=True).strip())
+                if free>=s['minimum_free_memory_MiB']:break
+                status(status='waiting_GPU_memory',stage=label,free_MiB=free,required_MiB=s['minimum_free_memory_MiB']);time.sleep(10)
         cmd=[sys.executable,'-u','-m',module,*map(str,args)]
         with (root/(label+'.log')).open('w') as log:
             worker=subprocess.Popen(cmd,stdout=log,stderr=subprocess.STDOUT)
@@ -40,7 +38,18 @@ def main():
         assert sha(Path(s['protocol'])/'evaluation.jsonl')==protocol['evaluation_sha256']
         assert sha(Path(s['cache'])/'index.jsonl')==cache['index_sha256']
         assert sha(Path(s['cache'])/'transforms.npz')==cache['transforms_sha256']
-        command('engineering','benchmarks.v5.pixel_decoder_study.gate',['--root',root])
+        if s.get('engineering_reuse'):
+            previous=Path(s['engineering_reuse']);old=read(previous/'settings.json')
+            for key in ['cache','protocol','seed','arms','weights']:assert s[key]==old[key],key
+            for path,h in old['sources'].items():
+                if path!='benchmarks/v5/pixel_decoder_study/pipeline.py':assert s['sources'][path]==h,path
+            proof=read(previous/'engineering/acceptance.json')
+            assert proof['status']=='accepted_pixel_decoder_engineering'
+            assert proof['source_sha256']==sha('benchmarks/v5/pixel_decoder_study/gate.py')
+            (root/'engineering').symlink_to(previous/'engineering',target_is_directory=True)
+            status(status='accepted_engineering_reuse',source=str(previous/'engineering'))
+        else:
+            command('engineering','benchmarks.v5.pixel_decoder_study.gate',['--root',root])
         engineering=read(root/'engineering/acceptance.json');assert engineering['status']=='accepted_pixel_decoder_engineering'
         (root/'learning').mkdir()
         for arm in s['arms']:
