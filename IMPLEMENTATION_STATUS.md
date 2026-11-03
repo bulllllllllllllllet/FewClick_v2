@@ -4171,3 +4171,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation: 真实12计划/模型gate与384计划/模型full、1536mask独立重算、384val精确复现、2474既有mask计数、解析容量单元检查、source/checkpoint/state SHA全部接受；初始确定性计数失败保留后新目录修复，最终EXIT_CODE=0。
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_bottleneck_deterministic_1103_125620/acceptance.json、verification.json、report.md、fixed_examples.png；P3-A独立收尾p3_six_arm_closeout_1103_123517。
 - Result: 小目标过度扩张、远端匹配损失及有限train拟合；不以此证明单一修复或细胞普遍无用。Goal保持paused，诊断完成后仅简报。
+
+## 2026-11-03T13:36:06.730784+08:00
+
+- Purpose: 按用户授权实现P3像素/细节解码两臂匹配对照，自动串行门控后训练。
+- Changed: benchmarks/v5/pixel_decoder_study/{model,gate,functional,train,pipeline,compare}.py及pixel_decoder_cpu_gate.py；docs/建议/模型与训练/方案_P3像素细节解码匹配对照_1103_132046.md、docs/运行记录/模型实验/运行记录_P3像素细节解码匹配对照_1103_132046.md、goal/registry/AGENTS接续指针。
+- Validation: py_compile通过；CRC/TIGER真实CPU像素头/原loss梯度、初始logit等价与state不变接受；GPU六分组输出/原I更新等价、fresh optimizer精确继续、像素支路有效梯度与bypass、I细胞扰动无效、remote无query点、每臂20update/100infer实测均接受。正式trainer端到端smoke、256功能学习和2000正式结果仍pending，不能以工程接受声称学习有效。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_pixel_decoder_1103_132046/engineering/acceptance.json、cpu_gate/acceptance.json、settings.json、source snapshots、stage/history及log。controller462119实际live，当前waiting_GPU3/region_learning；GPU3单卡/CPU2，依赖失败即停，无静默重试。
+- Scope: 相同I底座/损失/任务/预算，仅加任务条件RGB细节/像素残差路径；参数容量和信息访问变化披露，未新增query提示或权重。正式两组从公共初始化重新训练，非旧checkpoint续训；不自动后续路线。
