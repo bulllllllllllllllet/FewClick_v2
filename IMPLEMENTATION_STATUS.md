@@ -4256,3 +4256,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_conditioning_diagnostic_1104_010402
 - Docs record: docs/运行记录/模型实验/运行记录_SAM同监督远端桥对比_1103_213704.md
 - Commit: 本条所属诊断提交。
+
+## 11-04 02:03
+
+- Purpose: 用户授权修复SAM弱支持提示，采用非零raw有符号余弦差×4加可学习残差。
+- Changed: 独立sam_prior_repair六模块、合同/record、goal/registry/AGENTS。
+- Validation: 六真实train输入/远端无点检查通过，实际optimizer更新/重载工程门控running；学习/正式质量未接受。旧失败与源码保留。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153
+- Docs record: docs/建议/模型与训练/方案_SAM非零支持提示修复_1104_020153.md；docs/运行记录/模型实验/运行记录_SAM非零支持提示修复_1104_020153.md
+- Commit: 本条所属修复实现提交。

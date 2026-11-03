@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T01:07:30.056354+08:00",
+  "updated_at": "2026-11-04T02:01:53.064731+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_SAM同监督远端桥对比_1103_213704.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_SAM非零支持提示修复_1104_020153.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_SAM同监督远端桥对比_1103_213704.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_SAM非零支持提示修复_1104_020153.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "SAM_conditioning_diagnostic_complete_adapter_weak",
+  "current_status": "SAM_prior_repair_engineering_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Report weak dense-prior conditioning diagnosis; a nonzero signed similarity prior repair is proposed, not trained; no fair SAM winner claim."
+    "Run authorized nonzero support-prior repair through unchanged gates, then matched training and comparison; stop on failure."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -2903,6 +2903,28 @@
       "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_conditioning_diagnostic_1104_010402/report.md",
       "optimizer_updates": 0,
       "new_formal_training": false
+    }
+  },
+  "sam_prior_repair": {
+    "status": "running",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153",
+    "contract": "docs/建议/模型与训练/方案_SAM非零支持提示修复_1104_020153.md",
+    "record": "docs/运行记录/模型实验/运行记录_SAM非零支持提示修复_1104_020153.md",
+    "repair_attempt": 1,
+    "stage_observed": {
+      "status": "running",
+      "stage": "engineering",
+      "worker_pid": 3304783,
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.sam_prior_repair.gate",
+        "--root",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153"
+      ],
+      "observed_at": 1793728915.1622865,
+      "controller_pid": 3304745
     }
   }
 }
