@@ -25,7 +25,7 @@
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
-**当前执行（2026-11-03 18:46）**：用户授权的正负支持直接空间匹配试验已启动，GPU3工程worker1672303/controller1672231；两臂各1000×4，工程→256功能学习→smoke→训练→3711mask/臂→独立比较。产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_1103_184618。按stage/history核查真实状态；未产生质量结果。旧pixel研究已完成且未晋升，P3整体未完成。
+**当前执行（2026-11-03T21:11:51.272871+08:00）**：支持直接匹配两臂已complete_accepted，各1000×4/3711mask。远端宏Dice+6.42pp且10项守门通过，首seed候选成立，未复验/未WSI晋升。报告/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_closeout_1103_211151/report.md；无本组活动worker，不自动启动下一实验。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
@@ -228,3 +228,5 @@ P3-B训练几何准备接受（2026-11-03T04:36:55.082779）：/nfs-medical3/zyh
 最新授权（2026-11-03T18:46:18.421208+08:00）：支持直接匹配试验preparing，见docs/建议/模型与训练/方案_P3正负支持直接空间匹配对照_1103_184618.md；产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_1103_184618。用户授权本次两臂1000×4、门控/完整评分，失败停止。
 
 工程门控接受（2026-11-03T18:52:16.885168+08:00）：两臂六组初始输出、control旧I两次更新/optimizer精确复现、fresh继续训练、match有效梯度/支持敏感/顺序不变/bypass、细胞扰动无效及remote query无点击检查通过，20update/100inference测速接受，engineering worker1672303 exit0。149冻结源SHA一致。测速{"control": {"warm_train_seconds": 2.151117786176895, "inference_seconds": 0.32092993140220644, "extra_parameters": 0}, "match": {"warm_train_seconds": 1.6523460737968747, "inference_seconds": 0.32893929574638603, "extra_parameters": 16737}}，含重编码episode，不是WSI缓存后在线时延。当前control_learning真实worker1691421/controller1672231存活。两臂256学习、smoke、1000正式小试和3711mask接受/比较仍待完成；队列依赖自动继续，失败即停。
+
+完整接受（2026-11-03T21:11:51.272871+08:00）：control/match各1000×4和3711mask、fresh12与独立接受全部完成，controller exit0。closeout /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_closeout_1103_211151/acceptance.json复核149source/权重/消费/monitor/完整指标守门。remote宏Dice29.16→35.57、absent FPA12.64→6.38、localDice43.61→54.71、localSmall11.45→25.48、localFat41.49→55.10（%）。完整10项守门通过，首seed候选成立；单seed/已暴露开发集，P3未完成、不自动复验或WSI。报告/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_support_match_closeout_1103_211151/report.md。
