@@ -1,6 +1,6 @@
 # FewClick CVPR 当前 Goal
 
-更新：2026-11-02T17:47:34.596403+08:00。原生 Goal：**active**（本轮get_goal核对active）。用户已废弃旧 AAAI rebuttal 目标；旧目标未完成，不标为 complete，不再执行其待办队列。数据、权重、缓存和报告保留。
+更新：2026-11-03T13:09:29.577651+08:00。原生 Goal：**paused**（用户暂停；已按新指令完成基础瓶颈诊断，等待简报后决定）。旧AAAI目标已废弃，不恢复旧队列；历史数据/权重保留。
 
 ## 目标
 
@@ -10,9 +10,9 @@
 
 依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_P3首seed六臂受控准备与依赖执行_1103_010612.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
-当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3 running**。三臂各2000×4/3711mask及全部后处理接受；fixed/EMA的Dice增益伴随超界FPA，EMA另有small代价，均不晋升。按合同保留Phikon+XCell64连续表示，P3首seed六臂正式运行；S11/I已接受，S00训练中。
+当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
-**当前执行（2026-11-03T04:42:46.308116+08:00）**：首seed S11/I已接受，S00实际更新1501/2000，其余排队；控制器1333314与worker2212192现场存活。65冻结源码一致。P3-B/C仅前置准备接受，待A比较和分支判定后执行；不重复启动已有队列。
+**当前执行（2026-11-03T13:09:29.577651+08:00）**：本轮基础分割瓶颈诊断已完成并独立接受，所有本组worker终态exit0；[诊断记录](docs/运行记录/模型实验/诊断_P3基础分割瓶颈_1103_125357.md)、报告/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_bottleneck_deterministic_1103_125620/report.md。发现小目标范围扩张与远端匹配损失，不能仅归为过拟合；尚未证明某个单一修复有效。先向用户简报，再决定后续。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
@@ -23,7 +23,7 @@ P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_resea
 | P0 | 数据、尺度、空间隔离与公平合同 | complete，限定接受 |
 | P1I / P1C | 图像与细胞 encoder 受控筛选 | complete，限定筛选接受；无组织升级 |
 | P2 | 连续特征 / 固定聚类 / 可学习词汇 | complete，有界阴性接受；保留continuous，词表不晋升 |
-| P3 | 空间组合与支持查询迁移 | running；首seed S11/I已接受，S00训练中，其余排队 |
+| P3 | 空间组合与支持查询迁移 | A/基础瓶颈诊断 complete；B条件未触发；C未训练，阶段未complete |
 | P4 | WSI 质量、误报、缓存与交互效率 | planned |
 | P5 | 三 seed 与独立确认 | planned |
 | P6 | 方法、可复现材料与论文证据包 | planned |

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T04:42:46.308116+08:00",
-  "goal_status": "active",
+  "updated_at": "2026-11-03T13:09:29.577651+08:00",
+  "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "P3_running",
+  "current_status": "P3_basic_diagnostic_complete_awaiting_user",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -1585,7 +1585,7 @@
         "效果复验或简单融合备选"
       ],
       "acceptance": null,
-      "quality_outcome": "not_evaluated",
+      "quality_outcome": "spatial_signal_without_accepted_net_cell_gain; bottleneck_diagnosed",
       "runs": [],
       "source_preparation": {
         "status": "complete_source_audit_only",
@@ -1599,7 +1599,7 @@
       "training_started": true,
       "selected_representation": "continuous",
       "representation_selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json",
-      "next_action": "Keep formal sources frozen; finish and independently accept all six first-seed arms, then compare once and apply preregistered replication/branch rules. Do not restart startup dependencies.",
+      "next_action": "Report completed basic diagnosis to user; hold cell-information diagnosis, architecture/training changes and P3-C/P4 until user direction.",
       "input_readiness": {
         "status": "accepted_repair_and_functional_gate",
         "issues": [
@@ -1945,56 +1945,28 @@
         }
       },
       "formal_study_queue": {
-        "status": "running",
+        "status": "complete_accepted",
         "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403",
         "watcher_pid": 1333314,
         "stage": {
-          "status": "running",
-          "stage": "S00_train",
-          "worker_pid": 2212192,
-          "command": [
-            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-            "-u",
-            "-m",
-            "benchmarks.v5.architecture_bridge.train_spatial",
-            "--arm",
-            "S00",
-            "--cache",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-            "--protocol",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729",
-            "--learning",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148",
-            "--inventory",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/full/acceptance.json",
-            "--output",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/S00",
-            "--execution-contract",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/contract.json",
-            "--benchmark-receipt",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_throughput_queue_1103_005618/probe/report.json",
-            "--monitor-receipt",
-            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125/model_gate/acceptance.json"
-          ],
-          "observed_at": 1793649840.5863984
+          "status": "complete",
+          "comparison_pending": false,
+          "P3_complete": false,
+          "observed_at": 1793668120.5039687
         },
         "formal_training_started": true,
         "startup_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/startup_acceptance.json",
         "accepted_arms": [
           "S11",
-          "I"
+          "I",
+          "S00",
+          "H11",
+          "S10",
+          "S01"
         ],
         "partial_budget_audit": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_partial_formal_audit_1103_042531/acceptance.json",
         "last_verified_observation": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_verified_wait_1103_044246/observation.json",
-        "training_status": {
-          "stage": "training",
-          "updates": 1501,
-          "total_updates": 2000,
-          "loss": 1.5877904444932938,
-          "worker_pid": 2212192,
-          "arm": "S00",
-          "seconds": 2308.0852662995458
-        }
+        "closeout": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_six_arm_closeout_1103_123517/acceptance.json"
       },
       "partial_learning_state_audit": {
         "status": "complete_for_four_accepted_arms",
@@ -2020,6 +1992,32 @@
         "k": 8,
         "model_training_started": false,
         "conditional_B_not_triggered": true
+      },
+      "first_seed_decision": {
+        "status": "complete_bounded_negative",
+        "comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/comparison/comparison.json",
+        "replication_pair": null,
+        "cell_neighbor_training": "skipped_condition_not_triggered",
+        "cell_net_benefit_proven": false,
+        "P3_complete": false
+      },
+      "basic_bottleneck_diagnostic": {
+        "status": "complete_accepted",
+        "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_bottleneck_deterministic_1103_125620",
+        "training_performed": false,
+        "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_bottleneck_deterministic_1103_125620/gate/acceptance.json",
+        "saved_mask_report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_bottleneck_deterministic_1103_125620/saved_masks/report.json",
+        "record": "docs/运行记录/模型实验/诊断_P3基础分割瓶颈_1103_125357.md",
+        "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_bottleneck_deterministic_1103_125620/acceptance.json",
+        "verification": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_bottleneck_deterministic_1103_125620/verification.json",
+        "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_bottleneck_deterministic_1103_125620/report.md",
+        "worker_status": "all_terminal_exit0",
+        "findings": [
+          "not explained solely by typical train-good/val-bad overfitting",
+          "small-target foreground localization/overexpansion in both arms",
+          "paired support-query transfer loss",
+          "64 fine-region probability projection, dense disabled; no single causal decoder claim"
+        ]
       }
     },
     "P4": {
@@ -2069,52 +2067,7 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [
-    {
-      "kind": "P3_formal_study",
-      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403",
-      "stage": {
-        "status": "running",
-        "stage": "S00_train",
-        "worker_pid": 2212192,
-        "command": [
-          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-          "-u",
-          "-m",
-          "benchmarks.v5.architecture_bridge.train_spatial",
-          "--arm",
-          "S00",
-          "--cache",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-          "--protocol",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729",
-          "--learning",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_learning_gates_1103_003148",
-          "--inventory",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/full/acceptance.json",
-          "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/S00",
-          "--execution-contract",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403/contract.json",
-          "--benchmark-receipt",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_throughput_queue_1103_005618/probe/report.json",
-          "--monitor-receipt",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125/model_gate/acceptance.json"
-        ],
-        "observed_at": 1793649840.5863984
-      },
-      "worker_status": {
-        "stage": "training",
-        "updates": 1251,
-        "total_updates": 2000,
-        "loss": 1.400077372789383,
-        "worker_pid": 2212192,
-        "arm": "S00",
-        "seconds": 1934.9668383672833
-      },
-      "GPU": 3
-    }
-  ],
+  "active_jobs": [],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -2259,6 +2212,20 @@
       "first": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/task_diagnostic_comparison_verified_1031_023222/comparison.json",
       "second": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/task_seed2_run_1031_023222/comparison/comparison.json",
       "quality_outcome": "FPA direction replicated with localDice cost; secondseed remoteBF1 guard fails slightly, no fullscale"
+    },
+    {
+      "kind": "P3_formal_six_arm",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_formal_study_1103_010403",
+      "status": "complete_accepted",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_six_arm_closeout_1103_123517/acceptance.json",
+      "quality_outcome": "no eligible replication pair"
+    },
+    {
+      "kind": "P3_basic_bottleneck_diagnostic",
+      "output": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_bottleneck_deterministic_1103_125620",
+      "status": "complete_accepted",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_bottleneck_deterministic_1103_125620/acceptance.json",
+      "training_updates": 0
     }
   ],
   "completed_milestones": [
@@ -2270,9 +2237,7 @@
     }
   ],
   "next_actions": [
-    "原S00正式worker继续，全部六臂独立接受后按预定对照比较",
-    "P3-B训练几何审计已完成但条件未触发，不改k/radius或启动新模块；P3-C数据已准备但结构未定不训练",
-    "65正式冻结源保持一致；禁止读取部分dev结果后调参"
+    "Report completed basic diagnosis to user; hold cell-information diagnosis, architecture/training changes and P3-C/P4 until user direction."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,

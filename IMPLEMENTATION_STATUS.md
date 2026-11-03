@@ -4163,3 +4163,11 @@ registry退役3990149/530230/3681174；当前12协调live、138原源码绑定�
 - Commit: accompanying physical-neighborhood audit commit.
 
 P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）：S00更新1501/2000，控制器1333314及worker2212192实际存活，65冻结源SHA一致；S11/I独立接受。观察证据/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_verified_wait_1103_044246/observation.json。修正goal阶段表和registry next_action中的过时启动描述，明确继续现有六臂队列、全部接受后统一比较；未改运行源/配方/阈值，未启动新实验。上一轮及本轮运行分类均verified_wait；整体Goal active，P3–P6未完成。
+
+## 2026-11-03T13:09:29.577651+08:00
+
+- Purpose: 完成用户限定的P3基础分割瓶颈诊断并补齐六臂收尾接续状态；训练更新0。
+- Changed: benchmarks/v5/bottleneck_diagnostic/{run,saved,summarize}.py、goal/registry、当前记录及诊断记录docs/运行记录/模型实验/诊断_P3基础分割瓶颈_1103_125357.md；P3-C草案注明暂缓。
+- Validation: 真实12计划/模型gate与384计划/模型full、1536mask独立重算、384val精确复现、2474既有mask计数、解析容量单元检查、source/checkpoint/state SHA全部接受；初始确定性计数失败保留后新目录修复，最终EXIT_CODE=0。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_bottleneck_deterministic_1103_125620/acceptance.json、verification.json、report.md、fixed_examples.png；P3-A独立收尾p3_six_arm_closeout_1103_123517。
+- Result: 小目标过度扩张、远端匹配损失及有限train拟合；不以此证明单一修复或细胞普遍无用。Goal保持paused，诊断完成后仅简报。
