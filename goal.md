@@ -25,7 +25,7 @@
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
-**当前执行（2026-11-04T02:03:07.602407+08:00）**：用户授权非零支持提示修订running，GPU3工程worker3304783；先原门控，成功后自动1000×4和3711评分/比较。产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153，无质量结果。
+**当前执行（2026-11-04T02:37:06.042749+08:00）**：SAM修订工程/学习及smoke已接受，1000步正式训练running，worker3414047，尚无完整评分和胜负结论。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
@@ -240,3 +240,5 @@ P3-B训练几何准备接受（2026-11-03T04:36:55.082779）：/nfs-medical3/zyh
 诊断完成（2026-11-04T01:07:30.056354+08:00）：原32train任务无更新，原mask/交换响应精确重放。直接相似度有差异，但学到prior std约0.002–0.003，置零预测几乎不变；同学到prior固定放大100后remote交换响应CRC0.000141→0.01606、TIGER0.000824→0.05610。梯度未断，提示幅度/接口适配问题得到干预支持；未证明质量提升或唯一训练根因。报告/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_conditioning_diagnostic_1104_010402/report.md；独立接受/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_conditioning_diagnostic_1104_010402/acceptance.json。不改原门槛，无新正式训练。
 
 最新授权：2026-11-04T02:01:53.064731+08:00 非零支持prior修复，/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153，成功门控后自动同预算训练/比较。旧失败不覆盖。
+
+2026-11-04T02:37:06.042749+08:00 修订版256学习门控六组全部通过及32mask独立接受。CRC/TIGER远端swap响应0.06223/0.07903，高于0.001，阈值未改。smoke通过后已自动进入1000步正式训练，实际worker3414047（最近51/1000）。仅接受功能学习，不代表验证质量/公平胜负。

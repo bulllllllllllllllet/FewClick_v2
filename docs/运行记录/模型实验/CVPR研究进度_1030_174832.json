@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T02:01:53.064731+08:00",
+  "updated_at": "2026-11-04T02:37:06.042749+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "SAM_prior_repair_engineering_running",
+  "current_status": "SAM_prior_repair_formal_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2913,18 +2913,35 @@
     "repair_attempt": 1,
     "stage_observed": {
       "status": "running",
-      "stage": "engineering",
-      "worker_pid": 3304783,
+      "stage": "sam_native_formal",
+      "worker_pid": 3414047,
       "command": [
         "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
         "-u",
         "-m",
-        "benchmarks.v5.sam_prior_repair.gate",
-        "--root",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153"
+        "benchmarks.v5.sam_prior_repair.train",
+        "--arm",
+        "sam_native",
+        "--cache",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+        "--protocol",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729",
+        "--learning",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153/learning",
+        "--inventory",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/full/acceptance.json",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153/sam_native",
+        "--execution-contract",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153/contract.json",
+        "--benchmark-receipt",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153/engineering/sam_native_benchmark.json",
+        "--monitor-receipt",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125/model_gate/acceptance.json"
       ],
-      "observed_at": 1793728915.1622865,
+      "observed_at": 1793730636.4979513,
       "controller_pid": 3304745
-    }
+    },
+    "learning_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153/learning/sam_native/independent_acceptance.json"
   }
 }

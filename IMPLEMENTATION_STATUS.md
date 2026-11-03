@@ -4265,3 +4265,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153
 - Docs record: docs/建议/模型与训练/方案_SAM非零支持提示修复_1104_020153.md；docs/运行记录/模型实验/运行记录_SAM非零支持提示修复_1104_020153.md
 - Commit: 本条所属修复实现提交。
+
+## 2026-11-04T02:37:06.042749+08:00
+
+- Purpose: 登记修订SAM学习门控通过并自动正式训练。
+- Changed: goal/registry/当前record。
+- Validation: 六组功能学习、32mask独立接受SHA绑定通过；正式worker3414047 running，未作质量结论。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_1104_020153
+- Docs record: docs/运行记录/模型实验/运行记录_SAM非零支持提示修复_1104_020153.md
+- Commit: 本条所属进度提交。
