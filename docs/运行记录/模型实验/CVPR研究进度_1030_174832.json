@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T17:49:01.583720+08:00",
+  "updated_at": "2026-11-03T18:10:50+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -2774,6 +2774,24 @@
     "document": "docs/建议/模型与训练/建议_P3像素解码复盘与SAM底座分支路线_1103_175538.md",
     "native_goal": "paused",
     "new_training_started": false,
-    "decision": "Align SAM evaluation first; consider bounded local/mixed control, then select one of SAM support memory or independent Phikon direct matching. No automatic execution."
+    "decision": "Superseded priority: choose SAM or Phikon by zero-human-query-click remote evidence; local SAM superiority alone does not prioritize a backbone. Prior proposed experiments remain unlaunched."
+  },
+  "core_objective_contract": {
+    "confirmed_at": "2026-11-03T18:10:50+08:00",
+    "primary": "Few positive/negative support clicks; zero additional human query clicks; remote user-specified tissue retrieval and pixel segmentation, scaling to WSI.",
+    "paper_secondary": "Exceed fully adapted SAM on local Dice under a fair matched protocol, while preserving remote quality and safety.",
+    "acceptance_basis": [
+      "remote matching and segmentation",
+      "absent-target false positives",
+      "WSI quality and preparation/cache/interaction costs"
+    ],
+    "reject_as_primary": [
+      "requires per-query human prompts",
+      "query-GT-driven localization or selection",
+      "local-only improvement without remote relevance or validation"
+    ],
+    "preserve_existing_guards": true,
+    "automatic_query_prompts": "Allowed only from permitted support inputs and query images; record provenance/cost; never query GT.",
+    "execution": "Objective documentation only; no new training; native goal remains paused."
   }
 }
