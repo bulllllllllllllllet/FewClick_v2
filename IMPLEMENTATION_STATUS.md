@@ -4247,3 +4247,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_failure_audit_1104_010128
 - Docs record: docs/运行记录/模型实验/运行记录_SAM同监督远端桥对比_1103_213704.md
 - Commit: 本条所属失败审计提交。
+
+## 11-04 01:07:30
+
+- Purpose: 定位SAM远端支持条件化弱响应。
+- Changed: 两个独立诊断脚本、goal/registry/当前record；原训练源未改。
+- Validation: GPU真实32train原mask/逐例响应精确重放，模型state不变，gain100单干预、有限非零prior梯度；独立汇总/数组/SHA接受，零optimizer更新。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_conditioning_diagnostic_1104_010402
+- Docs record: docs/运行记录/模型实验/运行记录_SAM同监督远端桥对比_1103_213704.md
+- Commit: 本条所属诊断提交。

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T01:01:28.324344+08:00",
+  "updated_at": "2026-11-04T01:07:30.056354+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "SAM_matched_failed_learning_gate",
+  "current_status": "SAM_conditioning_diagnostic_complete_adapter_weak",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Report failed gate without claiming FewClick beats SAM; diagnose remote conditioning on fixed train tasks before any registered repair."
+    "Report weak dense-prior conditioning diagnosis; a nonzero signed similarity prior repair is proposed, not trained; no fair SAM winner claim."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -2895,6 +2895,14 @@
     "failed_groups": [
       "crc|cross_present",
       "tiger|cross_present"
-    ]
+    ],
+    "conditioning_diagnostic": {
+      "status": "complete_accepted",
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_conditioning_diagnostic_1104_010402",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_conditioning_diagnostic_1104_010402/acceptance.json",
+      "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_conditioning_diagnostic_1104_010402/report.md",
+      "optimizer_updates": 0,
+      "new_formal_training": false
+    }
   }
 }
