@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05T00:43:51.882286+08:00",
+  "updated_at": "2026-11-05T00:54:36.281308+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -3683,5 +3683,22 @@
       "P3 and WSI/independent confirmation incomplete"
     ],
     "active_workers": []
+  },
+  "post_size_recommendation": {
+    "status": "recommendation_complete_not_started",
+    "document": "docs/建议/模型与训练/建议_三方案后训练充分性与支持组织匹配路线_1105_005436.md",
+    "artifact": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/post_size_recommendation_1105_005436",
+    "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/post_size_recommendation_1105_005436/evidence.json",
+    "new_training": false,
+    "priority": [
+      "bounded_1000_to_2000_budget_probe_on_current_matching_baseline",
+      "conditional_support_region_matching_pair",
+      "bounded_WSI_pilot_and_modern_baseline_protocol_audit"
+    ],
+    "limitations": [
+      "32 monitor tasks, only 4 CRC remote present",
+      "not proof of undertraining cause",
+      "no automatic restart or goal resume"
+    ]
   }
 }
