@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05T00:19:28.394701+08:00",
+  "updated_at": "2026-11-05T00:43:51.882286+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "size_aware_single_model_running",
+  "current_status": "size_aware_complete_no_promotion",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Existing precision continues onGPU3. Additional scheduler waits for >=12288MiB onGPU1/4/5 and adopts detail once without duplicates; original serial flow continues if no opportunity."
+    "Report bounded negative result; retain signed-support-matching baseline; no automatic new training or next phase."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -3080,7 +3080,7 @@
     "new_training": false
   },
   "size_aware_single_model": {
-    "status": "running",
+    "status": "complete_accepted",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436",
     "contract": "docs/建议/模型与训练/方案_单模型大小组织诊断精度约束与细化_1104_150436.md",
     "record": "docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md",
@@ -3100,34 +3100,10 @@
     ],
     "old_seed2_still_paused": true,
     "stage_observed": {
-      "status": "running",
-      "stage": "detail_formal",
-      "worker_pid": 3840165,
-      "command": [
-        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-        "-u",
-        "-m",
-        "benchmarks.v5.size_aware_study.train",
-        "--arm",
-        "detail",
-        "--cache",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-        "--protocol",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729",
-        "--learning",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/learning",
-        "--inventory",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/full/acceptance.json",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/detail",
-        "--execution-contract",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/contract.json",
-        "--benchmark-receipt",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/engineering/detail_benchmark.json",
-        "--monitor-receipt",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125/model_gate/acceptance.json"
-      ],
-      "observed_at": 1793800277.771827,
+      "status": "complete_accepted",
+      "P3_complete": false,
+      "next_action": "report to user; no automatic next experiment",
+      "observed_at": 1793809746.3419878,
       "controller_pid": 2215361
     },
     "diagnostic": {
@@ -3151,26 +3127,16 @@
     },
     "formal_progress": {
       "control": {
-        "stage": "complete_unaccepted",
-        "rows": 3711,
-        "worker_pid": 2411437,
-        "arm": "control",
-        "seconds": 5108.886361815035
+        "status": "complete_accepted",
+        "receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/control/independent_acceptance.json"
       },
       "precision": {
-        "stage": "complete_unaccepted",
-        "rows": 3711,
-        "worker_pid": 2794307,
-        "arm": "precision",
-        "seconds": 10187.938211239874
+        "status": "complete_accepted",
+        "receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/precision/independent_acceptance.json"
       },
       "detail": {
-        "stage": "scoring",
-        "rows": 3425,
-        "total_rows": 3711,
-        "worker_pid": 3840165,
-        "arm": "detail",
-        "seconds": 8855.070659022778
+        "status": "complete_accepted",
+        "receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/detail/independent_acceptance.json"
       }
     },
     "control_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/control/independent_acceptance.json",
@@ -3199,6 +3165,523 @@
       "maximum_own_training_workers": 2,
       "original_training_worker_preserved": 2794307
     },
-    "partial_precision_comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_precision_partial_1104_230327/comparison.json"
+    "partial_precision_comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_precision_partial_1104_230327/comparison.json",
+    "quality_outcome": "no_candidate_promoted",
+    "closeout": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_closeout_1105_004351/acceptance.json",
+    "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_closeout_1105_004351/report.md",
+    "values": {
+      "control": {
+        "remote_macro_Dice": 0.35574281685619286,
+        "remote_Dice": 0.3363446565767136,
+        "remote_BF1": 0.1307047462427594,
+        "absent_FPA": 0.06382752953184435,
+        "local_Dice": 0.5471344921636714,
+        "local_BF1": 0.19180307235161734,
+        "small_Dice": 0.25480057050099975,
+        "fat_Dice": 0.5509996454137639
+      },
+      "precision": {
+        "remote_macro_Dice": 0.33183130934467286,
+        "remote_Dice": 0.3117005536851581,
+        "remote_BF1": 0.12285432603634809,
+        "absent_FPA": 0.048650862583116884,
+        "local_Dice": 0.5507594866182839,
+        "local_BF1": 0.197986365058618,
+        "small_Dice": 0.27389550861854056,
+        "fat_Dice": 0.5693876764236329
+      },
+      "detail": {
+        "remote_macro_Dice": 0.36531367696502337,
+        "remote_Dice": 0.34602675682387957,
+        "remote_BF1": 0.15279905638102226,
+        "absent_FPA": 0.06576871243858491,
+        "local_Dice": 0.556004737160116,
+        "local_BF1": 0.22424518076035102,
+        "small_Dice": 0.2463364063321173,
+        "fat_Dice": 0.5260700947019645
+      }
+    },
+    "comparisons": {
+      "precision": {
+        "safety_guards": {
+          "original_six": {
+            "tests": {
+              "primary_Dice_gain": false,
+              "remote_BF1": true,
+              "absent_FPA": true,
+              "local_Dice": true,
+              "small_Dice": true,
+              "fat_Dice": true
+            },
+            "pass_all": false,
+            "candidate_minus_reference": {
+              "remote_macro_Dice": -0.02391150751151999,
+              "remote_Dice": -0.024644102891555497,
+              "remote_BF1": -0.007850420206411315,
+              "absent_FPA": -0.01517666694872747,
+              "local_Dice": 0.003624994454612507,
+              "local_BF1": 0.006183292707000659,
+              "small_Dice": 0.019094938117540816,
+              "fat_Dice": 0.018388031009868966
+            }
+          },
+          "remote_safety_tests": {
+            "remote_small": true,
+            "remote_fat": false,
+            "crc_absent_FPA": true,
+            "tiger_absent_FPA": true
+          },
+          "remote_changes": {
+            "remote_small": -0.000785257796092606,
+            "remote_fat": -0.06272698466936,
+            "crc_absent_FPA": -0.019343203488830736,
+            "tiger_absent_FPA": -0.001065472440264545
+          },
+          "pass_all": false,
+          "reference_remote": {
+            "small": {
+              "n": 222,
+              "mean": 0.12199534372386661
+            },
+            "fat": {
+              "n": 34,
+              "mean": 0.4268782746432511
+            },
+            "per_domain": {
+              "crc": {
+                "n": 359,
+                "mean": 0.06300114921208544
+              },
+              "tiger": {
+                "n": 106,
+                "mean": 0.06662630816197125
+              }
+            },
+            "per_target": {
+              "crc|0": {
+                "n": 29,
+                "mean": 0.06440524397225215
+              },
+              "crc|1": {
+                "n": 28,
+                "mean": 0.0712202617100307
+              },
+              "crc|3": {
+                "n": 31,
+                "mean": 0.0181000001968876
+              },
+              "crc|4": {
+                "n": 37,
+                "mean": 0.07834336564347551
+              },
+              "crc|5": {
+                "n": 33,
+                "mean": 0.035545695911754265
+              },
+              "crc|6": {
+                "n": 33,
+                "mean": 0.1593186349579782
+              },
+              "crc|7": {
+                "n": 31,
+                "mean": 0.13447693855531753
+              },
+              "crc|8": {
+                "n": 38,
+                "mean": 0.03955088163677015
+              },
+              "crc|9": {
+                "n": 34,
+                "mean": 0.015292672549977022
+              },
+              "crc|10": {
+                "n": 31,
+                "mean": 0.054420963410408266
+              },
+              "crc|11": {
+                "n": 34,
+                "mean": 0.02901312884162454
+              },
+              "tiger|1": {
+                "n": 27,
+                "mean": 0.051629068509258934
+              },
+              "tiger|2": {
+                "n": 20,
+                "mean": 0.061440467834472656
+              },
+              "tiger|3": {
+                "n": 2,
+                "mean": 0.34390935187433197
+              },
+              "tiger|5": {
+                "n": 29,
+                "mean": 0.05315946313492806
+              },
+              "tiger|6": {
+                "n": 28,
+                "mean": 0.07893397585956896
+              }
+            },
+            "absent_tail": {
+              "n": 465,
+              "quantiles95_99": [
+                0.4153533935546873,
+                0.6674822870604566
+              ],
+              "fraction_tasks_above_1pct": 0.3720430107526882,
+              "fraction_tasks_above_10pct": 0.16129032258064516
+            }
+          },
+          "candidate_remote": {
+            "small": {
+              "n": 222,
+              "mean": 0.121210085927774
+            },
+            "fat": {
+              "n": 34,
+              "mean": 0.3641512899738911
+            },
+            "per_domain": {
+              "crc": {
+                "n": 359,
+                "mean": 0.0436579457232547
+              },
+              "tiger": {
+                "n": 106,
+                "mean": 0.0655608357217067
+              }
+            },
+            "per_target": {
+              "crc|0": {
+                "n": 29,
+                "mean": 0.05119218497440733
+              },
+              "crc|1": {
+                "n": 28,
+                "mean": 0.0817117691040039
+              },
+              "crc|3": {
+                "n": 31,
+                "mean": 0.011839712819745463
+              },
+              "crc|4": {
+                "n": 37,
+                "mean": 0.046246090450802364
+              },
+              "crc|5": {
+                "n": 33,
+                "mean": 0.028886506051728218
+              },
+              "crc|6": {
+                "n": 33,
+                "mean": 0.14495398781516336
+              },
+              "crc|7": {
+                "n": 31,
+                "mean": 0.03214657691217238
+              },
+              "crc|8": {
+                "n": 38,
+                "mean": 0.028696461727744656
+              },
+              "crc|9": {
+                "n": 34,
+                "mean": 0.00405435001148897
+              },
+              "crc|10": {
+                "n": 31,
+                "mean": 0.05535310314547631
+              },
+              "crc|11": {
+                "n": 34,
+                "mean": 0.004265392527860754
+              },
+              "tiger|1": {
+                "n": 27,
+                "mean": 0.07401284365781387
+              },
+              "tiger|2": {
+                "n": 20,
+                "mean": 0.04503173828125
+              },
+              "tiger|3": {
+                "n": 2,
+                "mean": 0.34037350018121815
+              },
+              "tiger|5": {
+                "n": 29,
+                "mean": 0.008993977333953995
+              },
+              "tiger|6": {
+                "n": 28,
+                "mean": 0.11103195353813697
+              }
+            },
+            "absent_tail": {
+              "n": 465,
+              "quantiles95_99": [
+                0.34643018695752836,
+                0.6209797668457042
+              ],
+              "fraction_tasks_above_1pct": 0.2903225806451613,
+              "fraction_tasks_above_10pct": 0.13548387096774195
+            }
+          },
+          "limitation": "point guards only; formal run bindings, uncertainty and seed replication required separately"
+        },
+        "small_Dice_gain": 0.019094938117540816,
+        "small_mechanism_gain_ge5pp": false,
+        "large_Dice_delta": {
+          "local": -0.015199781120200484,
+          "remote": -0.05268808649781309
+        },
+        "large_guard": false,
+        "candidate": false
+      },
+      "detail": {
+        "safety_guards": {
+          "original_six": {
+            "tests": {
+              "primary_Dice_gain": false,
+              "remote_BF1": true,
+              "absent_FPA": true,
+              "local_Dice": true,
+              "small_Dice": true,
+              "fat_Dice": false
+            },
+            "pass_all": false,
+            "candidate_minus_reference": {
+              "remote_macro_Dice": 0.009570860108830515,
+              "remote_Dice": 0.009682100247165981,
+              "remote_BF1": 0.02209431013826285,
+              "absent_FPA": 0.0019411829067405573,
+              "local_Dice": 0.00887024499644462,
+              "local_BF1": 0.03244210840873368,
+              "small_Dice": -0.008464164168882432,
+              "fat_Dice": -0.024929550711799364
+            }
+          },
+          "remote_safety_tests": {
+            "remote_small": true,
+            "remote_fat": false,
+            "crc_absent_FPA": true,
+            "tiger_absent_FPA": false
+          },
+          "remote_changes": {
+            "remote_small": 0.016196189361033897,
+            "remote_fat": -0.0403416140036969,
+            "crc_absent_FPA": -0.003452269147697598,
+            "tiger_absent_FPA": 0.020207685619413177
+          },
+          "pass_all": false,
+          "reference_remote": {
+            "small": {
+              "n": 222,
+              "mean": 0.12199534372386661
+            },
+            "fat": {
+              "n": 34,
+              "mean": 0.4268782746432511
+            },
+            "per_domain": {
+              "crc": {
+                "n": 359,
+                "mean": 0.06300114921208544
+              },
+              "tiger": {
+                "n": 106,
+                "mean": 0.06662630816197125
+              }
+            },
+            "per_target": {
+              "crc|0": {
+                "n": 29,
+                "mean": 0.06440524397225215
+              },
+              "crc|1": {
+                "n": 28,
+                "mean": 0.0712202617100307
+              },
+              "crc|3": {
+                "n": 31,
+                "mean": 0.0181000001968876
+              },
+              "crc|4": {
+                "n": 37,
+                "mean": 0.07834336564347551
+              },
+              "crc|5": {
+                "n": 33,
+                "mean": 0.035545695911754265
+              },
+              "crc|6": {
+                "n": 33,
+                "mean": 0.1593186349579782
+              },
+              "crc|7": {
+                "n": 31,
+                "mean": 0.13447693855531753
+              },
+              "crc|8": {
+                "n": 38,
+                "mean": 0.03955088163677015
+              },
+              "crc|9": {
+                "n": 34,
+                "mean": 0.015292672549977022
+              },
+              "crc|10": {
+                "n": 31,
+                "mean": 0.054420963410408266
+              },
+              "crc|11": {
+                "n": 34,
+                "mean": 0.02901312884162454
+              },
+              "tiger|1": {
+                "n": 27,
+                "mean": 0.051629068509258934
+              },
+              "tiger|2": {
+                "n": 20,
+                "mean": 0.061440467834472656
+              },
+              "tiger|3": {
+                "n": 2,
+                "mean": 0.34390935187433197
+              },
+              "tiger|5": {
+                "n": 29,
+                "mean": 0.05315946313492806
+              },
+              "tiger|6": {
+                "n": 28,
+                "mean": 0.07893397585956896
+              }
+            },
+            "absent_tail": {
+              "n": 465,
+              "quantiles95_99": [
+                0.4153533935546873,
+                0.6674822870604566
+              ],
+              "fraction_tasks_above_1pct": 0.3720430107526882,
+              "fraction_tasks_above_10pct": 0.16129032258064516
+            }
+          },
+          "candidate_remote": {
+            "small": {
+              "n": 222,
+              "mean": 0.1381915330849005
+            },
+            "fat": {
+              "n": 34,
+              "mean": 0.3865366606395542
+            },
+            "per_domain": {
+              "crc": {
+                "n": 359,
+                "mean": 0.05954888006438784
+              },
+              "tiger": {
+                "n": 106,
+                "mean": 0.08683399378138443
+              }
+            },
+            "per_target": {
+              "crc|0": {
+                "n": 29,
+                "mean": 0.05573246396821121
+              },
+              "crc|1": {
+                "n": 28,
+                "mean": 0.09055600847516741
+              },
+              "crc|3": {
+                "n": 31,
+                "mean": 0.005662487399193549
+              },
+              "crc|4": {
+                "n": 37,
+                "mean": 0.09129580935916386
+              },
+              "crc|5": {
+                "n": 33,
+                "mean": 0.041432698567708336
+              },
+              "crc|6": {
+                "n": 33,
+                "mean": 0.1603976162997159
+              },
+              "crc|7": {
+                "n": 31,
+                "mean": 0.08217263990832914
+              },
+              "crc|8": {
+                "n": 38,
+                "mean": 0.040681236668636926
+              },
+              "crc|9": {
+                "n": 34,
+                "mean": 0.01995389601763557
+              },
+              "crc|10": {
+                "n": 31,
+                "mean": 0.04476473408360635
+              },
+              "crc|11": {
+                "n": 34,
+                "mean": 0.025087580961339614
+              },
+              "tiger|1": {
+                "n": 27,
+                "mean": 0.05084058973524305
+              },
+              "tiger|2": {
+                "n": 20,
+                "mean": 0.11779193878173828
+              },
+              "tiger|3": {
+                "n": 2,
+                "mean": 0.3688486932541635
+              },
+              "tiger|5": {
+                "n": 29,
+                "mean": 0.03983853546120093
+              },
+              "tiger|6": {
+                "n": 28,
+                "mean": 0.1279590616949024
+              }
+            },
+            "absent_tail": {
+              "n": 465,
+              "quantiles95_99": [
+                0.36669387817382776,
+                0.6060881042480469
+              ],
+              "fraction_tasks_above_1pct": 0.4559139784946237,
+              "fraction_tasks_above_10pct": 0.18924731182795698
+            }
+          },
+          "limitation": "point guards only; formal run bindings, uncertainty and seed replication required separately"
+        },
+        "small_Dice_gain": -0.008464164168882432,
+        "small_mechanism_gain_ge5pp": false,
+        "large_Dice_delta": {
+          "local": 0.015159866096291608,
+          "remote": -0.0012304575311911092
+        },
+        "large_guard": true,
+        "candidate": false
+      }
+    },
+    "remaining_gaps": [
+      "one development seed",
+      "no successful small-target remedy",
+      "P3 and WSI/independent confirmation incomplete"
+    ],
+    "active_workers": []
   }
 }

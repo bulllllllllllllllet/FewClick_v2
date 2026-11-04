@@ -4436,3 +4436,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436.
 - Docs record: docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md.
 - Commit: this scoped commit.
+
+## 11-05 00:43:51
+
+- Purpose: Close size-aware single-model study with bounded negative promotion results.
+- Changed: goal/registry/current record.
+- Validation: all3x3711 independent masks accepted, receipts/rows/masks/report SHA bound, all8 aggregate values independently recounted, exact original matching control confirmed; controllerEXIT0. Neither candidate passes original guards and added mechanism targets.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_closeout_1105_004351/acceptance.json and report.md.
+- Docs record: docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md.
+- Commit: this scoped commit.
