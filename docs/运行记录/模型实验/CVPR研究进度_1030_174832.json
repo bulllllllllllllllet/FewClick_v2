@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T15:06:57.127948+08:00",
+  "updated_at": "2026-11-04T15:40:25.613337+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -3101,17 +3101,21 @@
     "old_seed2_still_paused": true,
     "stage_observed": {
       "status": "running",
-      "stage": "engineering",
-      "worker_pid": 2216590,
+      "stage": "detail_learning",
+      "worker_pid": 2310463,
       "command": [
         "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
         "-u",
         "-m",
-        "benchmarks.v5.size_aware_study.gate",
-        "--root",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436"
+        "benchmarks.v5.size_aware_study.functional",
+        "--cache",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/learning/detail",
+        "--arm",
+        "detail"
       ],
-      "observed_at": 1793775915.4940991,
+      "observed_at": 1793777458.3430266,
       "controller_pid": 2215361
     },
     "diagnostic": {
@@ -3120,6 +3124,12 @@
       "rows": 1237,
       "worker_pid": 2215410
     },
-    "detail_CPU_probe": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/detail_CPU_probe.json"
+    "detail_CPU_probe": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/detail_CPU_probe.json",
+    "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/engineering/acceptance.json",
+    "learning_acceptance": {
+      "control": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/learning/control/independent_acceptance.json",
+      "precision": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/learning/precision/independent_acceptance.json"
+    },
+    "formal_training_started": false
   }
 }

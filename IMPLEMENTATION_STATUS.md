@@ -4373,3 +4373,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436; controller2215361/engineering2216590; stage/history/logs.
 - Docs record: docs/建议/模型与训练/方案_单模型大小组织诊断精度约束与细化_1104_150436.md; docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md.
 - Commit: this scoped commit.
+
+## 11-04 15:40:25
+
+- Purpose: Record accepted engineering and first two functional-learning milestones.
+- Changed: goal/registry/current record.
+- Validation: engineering acceptance plus control/precision independent32mask receipts checked; detail worker2310463 at113/256, no formal validation.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436.
+- Docs record: docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md.
+- Commit: this scoped commit.
