@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T13:04:13.301199+08:00",
+  "updated_at": "2026-11-04T13:12:59.247963+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "support_match_seed2_running",
+  "current_status": "paused_by_user_pending_dataset_review",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Monitor current stage/history and actual workers; accept second-seed paired comparison and frozen SAM diagnostic before new roadmap decisions."
+    "User paused experiment; no automatic training, retries or new phases."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -2969,7 +2969,7 @@
     }
   },
   "support_match_seed2": {
-    "status": "running",
+    "status": "paused_by_user",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113",
     "contract": "docs/建议/模型与训练/方案_支持匹配第二seed与SAM训练诊断_1104_124113.md",
     "record": "docs/运行记录/模型实验/运行记录_支持匹配第二seed与SAM诊断_1104_124113.md",
@@ -2982,25 +2982,35 @@
     "batch": 4,
     "new_formal_runs": 2,
     "stage_observed": {
-      "status": "running",
-      "stage": "control_learning",
-      "worker_pid": 1687984,
-      "command": [
-        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-        "-u",
-        "-m",
-        "benchmarks.v5.support_match_replication.functional",
-        "--cache",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113/learning/control",
-        "--arm",
-        "control",
-        "--seed",
-        "20261104"
+      "status": "paused_by_user",
+      "paused_at": "2026-11-04T13:11:20.211445+08:00",
+      "previous_stage": {
+        "status": "running",
+        "stage": "match_learning",
+        "worker_pid": 1784181,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.support_match_replication.functional",
+          "--cache",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113/learning/match",
+          "--arm",
+          "match",
+          "--seed",
+          "20261104"
+        ],
+        "observed_at": 1793769022.7967038,
+        "controller_pid": 1646904
+      },
+      "terminated_own_pids": [
+        1784181,
+        1646904
       ],
-      "observed_at": 1793767900.7926137,
-      "controller_pid": 1646904
+      "automatic_resume": false,
+      "qualification": "disk artifacts retained; interrupted in-memory learning updates have no guaranteed resumable checkpoint; formal training not started"
     },
     "SAM_diagnostic": {
       "status": "complete_accepted",
@@ -3008,7 +3018,7 @@
       "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113/sam_diagnostic/report.json",
       "optimizer_updates": 0
     },
-    "next_action": "automatic gates -> two-arm formal -> independent acceptance -> comparison; stop on failure; no automatic seed3 or WSI",
+    "next_action": "Do not launch/resume experiments without user continuation; review dataset lineage first",
     "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113/engineering/acceptance.json",
     "estimated_remaining_hours": [
       4,
@@ -3024,5 +3034,11 @@
     "remote_predictions": 10,
     "seed": 20261104,
     "training_unchanged": true
+  },
+  "dataset_lineage_correction": {
+    "status": "complete_readonly_audit",
+    "record": "docs/运行记录/数据审计/运行记录_原主队列与CRC同源纠正及实验暂停_1104_131220.md",
+    "artifact": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_lineage_pause_1104_131220/audit.json",
+    "conclusion": "重要纠正：此前将原200WSI主队列和当前CRC描述成两个独立数据集、称主数据未用，表述错误。实际原主队列为广东省人民医院结直肠癌；CRC候选170个WSI路径全部在原200内，组成原train140+val30，未含原test30；当前1500CRC视野来自原队列167张（原train138+val29），不是独立第三数据集。当前使用空间块split，不据历史WSI split推断患者独立。TIGER为乳腺癌公开ROI数据，7类源标签；当前实际ROI子集，不冒充完整WSI下载。不能把原CRC与新CRC直接拼接重复计数；统一source/坐标去重并核验最大上下文，保留域本体和分域评价。原label来源审核仍待确认，不冒称人工GT。用户明确暂停当前所有实验，不恢复队列。"
   }
 }

@@ -4319,3 +4319,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_gallery_http_1104_130514.
 - Docs record: docs/运行记录/数据审计/运行记录_当前CRC与TIGER随机可视化_1104_130305.md.
 - Commit: this scoped commit.
+
+## 11-04 13:12:59
+
+- Purpose: Honor explicit experiment pause and correct original-cohort/CRC lineage.
+- Changed: goal/registry/current record; lineage audit record.
+- Validation: own controller/worker terminated, exit verified;170/170 CRC candidate source paths in original200, current167/167 CRC WSI IDs in cohort; no originaltest30 candidates.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_lineage_pause_1104_131220/audit.json; support_match_seed2_1104_124113/pause_receipt.json.
+- Docs record: docs/运行记录/数据审计/运行记录_原主队列与CRC同源纠正及实验暂停_1104_131220.md.
+- Commit: this scoped commit.

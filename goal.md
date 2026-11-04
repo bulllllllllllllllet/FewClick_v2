@@ -1,6 +1,6 @@
 # FewClick CVPR 当前 Goal
 
-更新：2026-11-04T12:41:47.389691+08:00。用户授权第二seed成对复验及现有SAM只读诊断，按门控连续执行；原生Goal保持paused，不恢复旧队列。
+更新：2026-11-04T13:12:59.247963+08:00。用户明确暂停当前实验，原生Goal与实验队列保持暂停；先检查数据来源，不自动训练。
 
 ## 目标
 
@@ -25,7 +25,7 @@
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
-**当前执行（2026-11-04T12:59:55.061080+08:00）**：第二seed两臂工程已接受；SAM只读32train/96mask诊断complete_accepted；control功能学习running（worker1687984），正式1000×4训练待功能门控及smoke通过后自动执行。尚无第二seed正式质量结果；完整守门和停止规则不变。实时状态/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113/stage.json。
+**当前执行（2026-11-04T13:12:59.247963+08:00）**：paused_by_user。第二seed在match功能学习阶段停止，controller/worker已退出，正式训练未开始，已有工件保留。原主队列与CRC同源关系已完成只读核对，见docs/运行记录/数据审计/运行记录_原主队列与CRC同源纠正及实验暂停_1104_131220.md。等待用户后续指令，不自动恢复。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 
@@ -246,3 +246,5 @@ P3-B训练几何准备接受（2026-11-03T04:36:55.082779）：/nfs-medical3/zyh
 2026-11-04T05:26:27.980165+08:00 SAM修订研究complete_accepted，1000×4/3711mask/fresh12/独立接受及比较完成。SAM/FewClick remote宏Dice12.83/35.57，absentFPA5.82/6.38，localDice56.77/54.71（%）。FewClick核心远端较强，本图/small/fat与CRC误报代价未全过；非全面胜出或SAM上限。收尾/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_closeout_1104_052627/report.md。无自动新训练。
 
 数据检查（2026-11-04T13:04:13.301199+08:00）：用户授权CRC/TIGER各随机10张HTML已生成，附10随机远端预测；页面/nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_gallery_1104_130305/index.html，selection/audit绑定身份与真实输入检查。仅可视审阅交付，不代表全量标签质量通过；第二seed队列继续。记录docs/运行记录/数据审计/运行记录_当前CRC与TIGER随机可视化_1104_130305.md。
+
+数据来源纠正（2026-11-04T13:12:59.247963+08:00）：重要纠正：此前将原200WSI主队列和当前CRC描述成两个独立数据集、称主数据未用，表述错误。实际原主队列为广东省人民医院结直肠癌；CRC候选170个WSI路径全部在原200内，组成原train140+val30，未含原test30；当前1500CRC视野来自原队列167张（原train138+val29），不是独立第三数据集。当前使用空间块split，不据历史WSI split推断患者独立。TIGER为乳腺癌公开ROI数据，7类源标签；当前实际ROI子集，不冒充完整WSI下载。不能把原CRC与新CRC直接拼接重复计数；统一source/坐标去重并核验最大上下文，保留域本体和分域评价。原label来源审核仍待确认，不冒称人工GT。用户明确暂停当前所有实验，不恢复队列。 证据/nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_lineage_pause_1104_131220/audit.json。
