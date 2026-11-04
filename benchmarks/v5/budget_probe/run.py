@@ -28,6 +28,9 @@ def main():
         d=dict(stage=stage,worker_pid=os.getpid(),seconds=time.monotonic()-started,**kw);(r/'status.json').write_text(json.dumps(d));print(json.dumps(d),flush=True)
     def save(name,obj): (r/name).write_text(json.dumps(obj,indent=2)+'\n')
     plans=json.loads((r/'monitor_plans.json').read_text())
+    assert len(plans)==192
+    expected_groups={(d,k) for d in ['crc','tiger'] for k in ['local','cross_present','cross_absent']}
+    for offset in range(0,192,32):assert {(p['dataset'],p['kind']) for p in plans[offset:offset+32]}==expected_groups
     if a.accept:
         checkpoint=torch.load(r/'checkpoint.pt',map_location='cpu',weights_only=True)
         assert checkpoint['updates']==2000 and all(int(v['step'])==2000 for v in checkpoint['optimizer']['state'].values())
@@ -40,6 +43,12 @@ def main():
                 gt,mpp=data.labels(item['plan']['query_id']);mask=np.unpackbits(packed,count=512*512).reshape(512,512).astype(bool)
                 assert score(mask,gt==item['plan']['target'],gt!=255,mpp)==row['metrics']
         report=json.loads((r/'report.json').read_text());assert report['fresh_replay']==12
+        for node in [1000,2000]:
+            actual=[]
+            for k in range(6):
+                monitor=json.loads((r/f'monitor_{node}_{k}.json').read_text());assert monitor['step']==node and len(monitor['rows'])==32
+                actual.extend(x['plan'] for x in monitor['rows'])
+            assert actual==plans
         guards=compare_rows(json.loads((ref/'rows.json').read_text()),rows)
         result=dict(status='complete_accepted',values={'1000':summarize_arm(json.loads((ref/'rows.json').read_text()))[2],'2000':summarize_arm(rows)[2]},guards=guards,budget_candidate=guards['pass_all'],limitation='one exposed development seed; unequal compute budget diagnosis, not algorithm superiority; no automatic next run',sha256={str(p):sha(p) for p in [r/'checkpoint.pt',r/'rows.json',r/'masks.npz',r/'report.json',r/'contract.json']})
         save('comparison.json',result);status('complete_accepted',budget_candidate=guards['pass_all']);return
@@ -78,7 +87,9 @@ def main():
     def monitor(node):
         status('train_monitor',updates=node)
         # Six groups of 32 tasks, scoring GT accessed after inference only.
-        for k in range(6):evaluate_train_monitor(m,data,plans[k*32:(k+1)*32],'cuda:0',node,r/f'monitor_{node}_{k}.json')
+        for k in range(6):
+            evaluate_train_monitor(m,data,plans[k*32:(k+1)*32],'cuda:0',node,r/f'monitor_{node}_{k}.json')
+            status('train_monitor',updates=node,completed_tasks=(k+1)*32,total_tasks=192)
         source=Path(c['training_source']);evaluate_train_monitor(m,data,fixed_train_plans(source),'cuda:0',node,r/f'legacy_monitor_{node}.json')
     monitor(1000);m.train()
     backbone=tree_sha({k:v for k,v in m.state_dict().items() if '.backbone.' in k})

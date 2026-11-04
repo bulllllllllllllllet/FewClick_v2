@@ -262,3 +262,5 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 2026-11-05T01:19:43.231624+08:00 用户授权第一优先预算实验，当前恢复门控running；新目录/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_envfix_1105_011927。匹配基线1000→2000，门控后自动训练/评分/验收，其它方案不自动启动。原生Goal paused保留，不恢复旧seed2。当前record：docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md。
 
 恢复测试状态共享问题已定位并验证修复；原失败保留，新恢复门控目录/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_statefix_1105_012057。尚无正式追加训练或质量结果。
+
+2026-11-05T02:12:17.196821+08:00 监控分批故障已定位修复：旧恢复gate已通过但正式追加训练0，失败保留。新目录/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_monitorfix_1105_021200，同192项交织成每批六组，重新门控后自动追加1000步/完整评分/验收。当前状态preparing/running gate，尚无2000步结果。

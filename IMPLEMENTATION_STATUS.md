@@ -4472,3 +4472,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_statefix_1105_012057; previous gate failure preserved separately, no formal extension yet.
 - Docs record: docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md.
 - Commit: this scoped commit.
+
+## 11-05 02:12:36
+
+- Purpose: Repair six-group coverage in expanded train monitoring after observed pre-training failure.
+- Changed: budget_probe chunk validation/progress/terminal monitor identity checks and continuity records.
+- Validation: same192 task identities preserved; each32 chunk covers all6 groups; py_compile passed. Previous exact continuation passed; monitor aggregation failed before any formal extension. New actual worker660578 reruns gates on GPU3.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_monitorfix_1105_021200; prior failure.json preserved.
+- Docs record: docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md.
+- Commit: this scoped commit.
