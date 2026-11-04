@@ -25,7 +25,7 @@
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
-**当前执行（2026-11-04T12:41:47.389691+08:00）**：支持直接匹配第二seed20261104两臂running（工程阶段），另排队现有SAM固定32train只读诊断。每臂1000×4/3711评估，完整守门不变；尚无复验质量结果。产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113，实时PID/阶段见stage.json和history.jsonl。依门控自动串行至比较，失败停止；无自动seed3/WSI。
+**当前执行（2026-11-04T12:59:55.061080+08:00）**：第二seed两臂工程已接受；SAM只读32train/96mask诊断complete_accepted；control功能学习running（worker1687984），正式1000×4训练待功能门控及smoke通过后自动执行。尚无第二seed正式质量结果；完整守门和停止规则不变。实时状态/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113/stage.json。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 

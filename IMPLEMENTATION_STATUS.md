@@ -4292,3 +4292,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113; stage/history record actual worker PID1647441/controller1646904; GPU3/CPU2.
 - Docs record: docs/建议/模型与训练/方案_支持匹配第二seed与SAM训练诊断_1104_124113.md; docs/运行记录/模型实验/运行记录_支持匹配第二seed与SAM诊断_1104_124113.md.
 - Commit: this scoped commit.
+
+## 11-04 12:59:55
+
+- Purpose: Record completed seed2 engineering and frozen SAM diagnostic milestones.
+- Changed: goal, active registry and current record.
+- Validation: two-arm engineering accepted; SAM native monitor exact and96mask independent replay accepted; control learning113/256 running, no formal quality claim.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113.
+- Docs record: docs/运行记录/模型实验/运行记录_支持匹配第二seed与SAM诊断_1104_124113.md.
+- Commit: this scoped milestone commit.

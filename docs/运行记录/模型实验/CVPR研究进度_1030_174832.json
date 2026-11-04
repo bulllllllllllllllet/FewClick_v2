@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T12:41:47.389691+08:00",
+  "updated_at": "2026-11-04T12:59:55.061080+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -2983,20 +2983,36 @@
     "new_formal_runs": 2,
     "stage_observed": {
       "status": "running",
-      "stage": "engineering",
-      "worker_pid": 1647441,
+      "stage": "control_learning",
+      "worker_pid": 1687984,
       "command": [
         "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
         "-u",
         "-m",
-        "benchmarks.v5.support_match_replication.gate",
-        "--root",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113"
+        "benchmarks.v5.support_match_replication.functional",
+        "--cache",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113/learning/control",
+        "--arm",
+        "control",
+        "--seed",
+        "20261104"
       ],
-      "observed_at": 1793767292.00805,
+      "observed_at": 1793767900.7926137,
       "controller_pid": 1646904
     },
-    "SAM_diagnostic": "queued_after_engineering_no_updates",
-    "next_action": "automatic gates -> two-arm formal -> independent acceptance -> comparison; stop on failure; no automatic seed3 or WSI"
+    "SAM_diagnostic": {
+      "status": "complete_accepted",
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113/sam_diagnostic/acceptance.json",
+      "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113/sam_diagnostic/report.json",
+      "optimizer_updates": 0
+    },
+    "next_action": "automatic gates -> two-arm formal -> independent acceptance -> comparison; stop on failure; no automatic seed3 or WSI",
+    "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113/engineering/acceptance.json",
+    "estimated_remaining_hours": [
+      4,
+      5
+    ]
   }
 }
