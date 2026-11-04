@@ -4337,3 +4337,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_review_v2_1104_131956; http://10.214.242.155:8770/.
 - Docs record: docs/运行记录/数据审计/运行记录_统一来源空间与标签检查网页_1104_131525.md.
 - Commit: this scoped commit.
+
+## 11-04 13:26:54
+
+- Purpose: Add matched local/remote predictions to dataset inspection dashboard.
+- Changed: benchmarks/v5/data_review/add_predictions.py; run record; goal/registry/AGENTS continuity.
+- Validation: 35 real cases/105 masks independently rescored exactly; all source receipt SHA bound;480PNG HTTP SHA equal; page exact; remote error image visually checked. No new training/inference, explicit user pause retained.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_predictions_1104_132349; http://10.214.242.155:8770/#predictions.
+- Docs record: docs/运行记录/数据审计/运行记录_数据网页本图远端预测对照_1104_132349.md.
+- Commit: this scoped commit.
