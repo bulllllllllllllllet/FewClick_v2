@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T13:12:59.247963+08:00",
+  "updated_at": "2026-11-04T13:21:31.406120+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_支持匹配第二seed与SAM诊断_1104_124113.md",
+    "current_record": "docs/运行记录/数据审计/运行记录_统一来源空间与标签检查网页_1104_131525.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_支持匹配第二seed与SAM诊断_1104_124113.md"
+    "current_run_record": "docs/运行记录/数据审计/运行记录_统一来源空间与标签检查网页_1104_131525.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "paused_by_user_pending_dataset_review",
+  "current_status": "data_review_complete_training_paused",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "User paused experiment; no automatic training, retries or new phases."
+    "Training remains explicitly paused; user reviews source/label/spatial dashboard before any dataset recipe changes."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -3040,5 +3040,16 @@
     "record": "docs/运行记录/数据审计/运行记录_原主队列与CRC同源纠正及实验暂停_1104_131220.md",
     "artifact": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_lineage_pause_1104_131220/audit.json",
     "conclusion": "重要纠正：此前将原200WSI主队列和当前CRC描述成两个独立数据集、称主数据未用，表述错误。实际原主队列为广东省人民医院结直肠癌；CRC候选170个WSI路径全部在原200内，组成原train140+val30，未含原test30；当前1500CRC视野来自原队列167张（原train138+val29），不是独立第三数据集。当前使用空间块split，不据历史WSI split推断患者独立。TIGER为乳腺癌公开ROI数据，7类源标签；当前实际ROI子集，不冒充完整WSI下载。不能把原CRC与新CRC直接拼接重复计数；统一source/坐标去重并核验最大上下文，保留域本体和分域评价。原label来源审核仍待确认，不冒称人工GT。用户明确暂停当前所有实验，不恢复队列。"
+  },
+  "unified_dataset_review": {
+    "status": "complete_readonly_review",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_review_v2_1104_131956",
+    "record": "docs/运行记录/数据审计/运行记录_统一来源空间与标签检查网页_1104_131525.md",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_review_v2_1104_131956/acceptance.json",
+    "http_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_review_v2_1104_131956/http_acceptance.json",
+    "url": "http://10.214.242.155:8770/",
+    "training_approved": false,
+    "all_current_label_files_checked": 1737,
+    "visual_samples": 30
   }
 }

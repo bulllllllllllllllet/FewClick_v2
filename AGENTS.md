@@ -2,7 +2,7 @@
 
 For FewClick experiments, read `goal.md` first, then the linked experiment registry and current run record. The user's latest instructions take precedence over these records.
 
-The active CVPR roadmap is `docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md`; its registry is `docs/运行记录/模型实验/CVPR研究进度_1030_174832.json` and current record is `docs/运行记录/模型实验/运行记录_支持匹配第二seed与SAM诊断_1104_124113.md`. The previous AAAI goal/registry is archived historical evidence only: do not resume its pending queues. Follow the current phase and acceptance gates; update this pointer if the active registry changes.
+The active CVPR roadmap is `docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md`; its registry is `docs/运行记录/模型实验/CVPR研究进度_1030_174832.json` and current record is `docs/运行记录/数据审计/运行记录_统一来源空间与标签检查网页_1104_131525.md`. The previous AAAI goal/registry is archived historical evidence only: do not resume its pending queues. Follow the current phase and acceptance gates; update this pointer if the active registry changes.
 
 - Keep `benchmarks/v4/` and `/home/zhaoyh/FewClick/` read-only. Develop new experiments in `benchmarks/v5/` and use the `aligner` environment.
 - Preserve existing data, checkpoints, caches and reports. New artifacts go in timestamped directories under `/nfs-medical3/zyh/fewclick_v2/`.
