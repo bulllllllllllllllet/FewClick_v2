@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T19:42:39.750516+08:00",
+  "updated_at": "2026-11-04T23:03:27.577085+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -3101,15 +3101,15 @@
     "old_seed2_still_paused": true,
     "stage_observed": {
       "status": "running",
-      "stage": "precision_formal",
-      "worker_pid": 2794307,
+      "stage": "detail_formal",
+      "worker_pid": 3840165,
       "command": [
         "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
         "-u",
         "-m",
         "benchmarks.v5.size_aware_study.train",
         "--arm",
-        "precision",
+        "detail",
         "--cache",
         "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
         "--protocol",
@@ -3119,15 +3119,15 @@
         "--inventory",
         "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/full/acceptance.json",
         "--output",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/precision",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/detail",
         "--execution-contract",
         "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/contract.json",
         "--benchmark-receipt",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/engineering/precision_benchmark.json",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/engineering/detail_benchmark.json",
         "--monitor-receipt",
         "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125/model_gate/acceptance.json"
       ],
-      "observed_at": 1793784261.4654586,
+      "observed_at": 1793800277.771827,
       "controller_pid": 2215361
     },
     "diagnostic": {
@@ -3158,14 +3158,21 @@
         "seconds": 5108.886361815035
       },
       "precision": {
-        "stage": "scoring",
-        "rows": 2050,
-        "total_rows": 3711,
+        "stage": "complete_unaccepted",
+        "rows": 3711,
         "worker_pid": 2794307,
         "arm": "precision",
-        "seconds": 8263.814639460295
+        "seconds": 10187.938211239874
       },
-      "detail": "queued"
+      "detail": {
+        "stage": "training",
+        "updates": 726,
+        "total_updates": 1000,
+        "loss": 0.9304383173584938,
+        "worker_pid": 3840165,
+        "arm": "detail",
+        "seconds": 4160.199834749103
+      }
     },
     "control_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/control/independent_acceptance.json",
     "estimated_remaining_hours": [
@@ -3176,20 +3183,23 @@
       "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_parallel_1104_184916",
       "contract": "docs/建议/模型与训练/方案_单模型三方案双卡并行调度_1104_184916.md",
       "stage_observed": {
-        "status": "waiting_GPU_memory",
-        "free_MiB": {
-          "1": 6254,
-          "4": 3762,
-          "5": 10327
+        "status": "not_activated",
+        "reason": "original controller advanced before another allowed GPU became available",
+        "original_stage": {
+          "status": "waiting_GPU_memory",
+          "stage": "detail_formal",
+          "free_MiB": 6814,
+          "required_MiB": 12288,
+          "observed_at": 1793794581.8649743,
+          "controller_pid": 2215361
         },
-        "minimum_free_MiB": 12288,
-        "existing_worker_pid": 2794307,
-        "observed_at": 1793792550.1407745,
+        "observed_at": 1793794585.4855533,
         "controller_pid": 3140844
       },
       "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_parallel_1104_184916/scheduling_acceptance.json",
       "maximum_own_training_workers": 2,
       "original_training_worker_preserved": 2794307
-    }
+    },
+    "partial_precision_comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_precision_partial_1104_230327/comparison.json"
   }
 }

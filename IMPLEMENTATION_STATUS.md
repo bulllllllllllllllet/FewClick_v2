@@ -4418,3 +4418,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436; /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_parallel_1104_184916.
 - Docs record: docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md.
 - Commit: this scoped commit.
+
+## 11-04 23:03:27
+
+- Purpose: Record completed precision comparison and live detail training.
+- Changed: goal/registry/current record.
+- Validation: both3711row/mask/report SHA and independent receipts verified; guards show precision remote primary and remote-fat failed; detail726/1000 running; parallel sidecar exited0 without activation.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_precision_partial_1104_230327/comparison.json.
+- Docs record: docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md.
+- Commit: this scoped commit.
