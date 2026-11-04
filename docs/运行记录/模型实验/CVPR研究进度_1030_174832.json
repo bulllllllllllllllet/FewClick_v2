@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T15:40:25.613337+08:00",
+  "updated_at": "2026-11-04T16:34:16.336424+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -3101,21 +3101,33 @@
     "old_seed2_still_paused": true,
     "stage_observed": {
       "status": "running",
-      "stage": "detail_learning",
-      "worker_pid": 2310463,
+      "stage": "control_formal",
+      "worker_pid": 2411437,
       "command": [
         "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
         "-u",
         "-m",
-        "benchmarks.v5.size_aware_study.functional",
+        "benchmarks.v5.size_aware_study.train",
+        "--arm",
+        "control",
         "--cache",
         "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+        "--protocol",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729",
+        "--learning",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/learning",
+        "--inventory",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_inventory_1103_003438/full/acceptance.json",
         "--output",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/learning/detail",
-        "--arm",
-        "detail"
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/control",
+        "--execution-contract",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/contract.json",
+        "--benchmark-receipt",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/engineering/control_benchmark.json",
+        "--monitor-receipt",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_train_monitor_gate_1103_005125/model_gate/acceptance.json"
       ],
-      "observed_at": 1793777458.3430266,
+      "observed_at": 1793779060.6017544,
       "controller_pid": 2215361
     },
     "diagnostic": {
@@ -3128,8 +3140,27 @@
     "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/engineering/acceptance.json",
     "learning_acceptance": {
       "control": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/learning/control/independent_acceptance.json",
-      "precision": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/learning/precision/independent_acceptance.json"
+      "precision": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/learning/precision/independent_acceptance.json",
+      "detail": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/learning/detail/independent_acceptance.json"
     },
-    "formal_training_started": false
+    "formal_training_started": true,
+    "smoke_acceptance": {
+      "control": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/control_smoke/independent_acceptance.json",
+      "precision": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/precision_smoke/independent_acceptance.json",
+      "detail": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436/detail_smoke/independent_acceptance.json"
+    },
+    "formal_progress": {
+      "control": {
+        "stage": "training",
+        "updates": 851,
+        "total_updates": 1000,
+        "loss": 1.6058136820793152,
+        "worker_pid": 2411437,
+        "arm": "control",
+        "seconds": 2132.6181714348495
+      },
+      "precision": "queued",
+      "detail": "queued"
+    }
   }
 }
