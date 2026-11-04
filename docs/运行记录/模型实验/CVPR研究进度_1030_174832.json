@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05T02:12:17.196821+08:00",
+  "updated_at": "2026-11-05T02:59:30.948051+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "matching_budget_monitorfix_gate_running",
+  "current_status": "matching_budget_training_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -3702,7 +3702,7 @@
     ]
   },
   "matching_budget_probe": {
-    "status": "running_repaired_monitor_gate",
+    "status": "running_training",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_monitorfix_1105_021200",
     "record": "docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md",
     "start_updates": 1000,
@@ -3716,6 +3716,16 @@
     "worker_pid": 660578,
     "previous_failure": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_statefix_1105_012057/failure.json",
     "formal_additional_updates_before_repair": 0,
-    "monitor_repair": "same192 tasks interleaved; all6 groups in every32 chunk"
+    "monitor_repair": "same192 tasks interleaved; all6 groups in every32 chunk",
+    "last_observed": {
+      "stage": "training",
+      "worker_pid": 660578,
+      "seconds": 2713.5542538538575,
+      "updates": 1776,
+      "total_updates": 2000,
+      "loss": 1.3097804933786392
+    },
+    "exact_resume_accepted": true,
+    "baseline192_monitor_complete": true
   }
 }

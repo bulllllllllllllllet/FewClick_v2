@@ -4481,3 +4481,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_monitorfix_1105_021200; prior failure.json preserved.
 - Docs record: docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md.
 - Commit: this scoped commit.
+
+## 11-05 02:59:30
+
+- Purpose: Record repaired continuation accepted and formal extension running.
+- Changed: goal, registry and active record.
+- Validation: exact-continuation receipt accepted; all192 baseline monitor identities match frozen plans; actual worker660578 alive at1776/2000, no quality comparison yet.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_monitorfix_1105_021200.
+- Docs record: docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md.
+- Commit: this scoped commit.
