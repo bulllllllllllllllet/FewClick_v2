@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T18:50:08.879038+08:00",
+  "updated_at": "2026-11-04T19:42:39.750516+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -3158,13 +3158,12 @@
         "seconds": 5108.886361815035
       },
       "precision": {
-        "stage": "training",
-        "updates": 276,
-        "total_updates": 1000,
-        "loss": 2.173668086528778,
+        "stage": "scoring",
+        "rows": 2050,
+        "total_rows": 3711,
         "worker_pid": 2794307,
         "arm": "precision",
-        "seconds": 1613.4950473308563
+        "seconds": 8263.814639460295
       },
       "detail": "queued"
     },
@@ -3179,13 +3178,13 @@
       "stage_observed": {
         "status": "waiting_GPU_memory",
         "free_MiB": {
-          "1": 6332,
+          "1": 6254,
           "4": 3762,
-          "5": 10519
+          "5": 10327
         },
         "minimum_free_MiB": 12288,
         "existing_worker_pid": 2794307,
-        "observed_at": 1793789399.9833813,
+        "observed_at": 1793792550.1407745,
         "controller_pid": 3140844
       },
       "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_parallel_1104_184916/scheduling_acceptance.json",

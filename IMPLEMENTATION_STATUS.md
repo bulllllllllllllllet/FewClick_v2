@@ -4409,3 +4409,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_parallel_1104_184916.
 - Docs record: docs/建议/模型与训练/方案_单模型三方案双卡并行调度_1104_184916.md; docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md.
 - Commit: this scoped commit.
+
+## 11-04 19:42:39
+
+- Purpose: Record precision training complete and evaluation progress; preserve honest multi-GPU waiting state.
+- Changed: goal/registry/current record.
+- Validation: live worker2794307 scoring1750/3711; sidecar3140844 waiting below12288MiB; no detail formal process exists.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436; /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_parallel_1104_184916.
+- Docs record: docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md.
+- Commit: this scoped commit.
