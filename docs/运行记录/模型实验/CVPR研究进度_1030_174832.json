@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T12:59:55.061080+08:00",
+  "updated_at": "2026-11-04T13:04:13.301199+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -3014,5 +3014,15 @@
       4,
       5
     ]
+  },
+  "dataset_gallery": {
+    "status": "complete",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_gallery_1104_130305",
+    "record": "docs/运行记录/数据审计/运行记录_当前CRC与TIGER随机可视化_1104_130305.md",
+    "html": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_gallery_1104_130305/index.html",
+    "samples": 20,
+    "remote_predictions": 10,
+    "seed": 20261104,
+    "training_unchanged": true
   }
 }

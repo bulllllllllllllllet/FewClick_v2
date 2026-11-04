@@ -4301,3 +4301,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113.
 - Docs record: docs/运行记录/模型实验/运行记录_支持匹配第二seed与SAM诊断_1104_124113.md.
 - Commit: this scoped milestone commit.
+
+## 11-04 13:04:13
+
+- Purpose: Deliver reproducible current-dataset HTML review without GPU work.
+- Changed: benchmarks/v5/data_review/gallery.py; dataset review record; goal/registry.
+- Validation: real gallery execution passed,20 stratified random samples/10 remote tasks, all20 fine RGB exactly match model cache, label SHA/shape/ID checks passed; visual inspection first GT overlay.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_gallery_1104_130305/index.html (self-contained PNG); selection.json/audit.json.
+- Docs record: docs/运行记录/数据审计/运行记录_当前CRC与TIGER随机可视化_1104_130305.md.
+- Commit: this scoped commit.

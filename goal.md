@@ -244,3 +244,5 @@ P3-B训练几何准备接受（2026-11-03T04:36:55.082779）：/nfs-medical3/zyh
 2026-11-04T02:37:06.042749+08:00 修订版256学习门控六组全部通过及32mask独立接受。CRC/TIGER远端swap响应0.06223/0.07903，高于0.001，阈值未改。smoke通过后已自动进入1000步正式训练，实际worker3414047（最近51/1000）。仅接受功能学习，不代表验证质量/公平胜负。
 
 2026-11-04T05:26:27.980165+08:00 SAM修订研究complete_accepted，1000×4/3711mask/fresh12/独立接受及比较完成。SAM/FewClick remote宏Dice12.83/35.57，absentFPA5.82/6.38，localDice56.77/54.71（%）。FewClick核心远端较强，本图/small/fat与CRC误报代价未全过；非全面胜出或SAM上限。收尾/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_closeout_1104_052627/report.md。无自动新训练。
+
+数据检查（2026-11-04T13:04:13.301199+08:00）：用户授权CRC/TIGER各随机10张HTML已生成，附10随机远端预测；页面/nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_gallery_1104_130305/index.html，selection/audit绑定身份与真实输入检查。仅可视审阅交付，不代表全量标签质量通过；第二seed队列继续。记录docs/运行记录/数据审计/运行记录_当前CRC与TIGER随机可视化_1104_130305.md。
