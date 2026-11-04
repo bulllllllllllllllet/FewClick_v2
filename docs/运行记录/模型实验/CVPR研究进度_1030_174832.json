@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T17:52:15.614621+08:00",
+  "updated_at": "2026-11-04T18:50:08.879038+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Follow authorized new size-aware pipeline through diagnostic/engineering/functional/smoke/formal/mask acceptance/comparison; stop on failure; do not resume old seed2."
+    "Existing precision continues onGPU3. Additional scheduler waits for >=12288MiB onGPU1/4/5 and adopts detail once without duplicates; original serial flow continues if no opportunity."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -3172,6 +3172,25 @@
     "estimated_remaining_hours": [
       4,
       6
-    ]
+    ],
+    "parallel_scheduler": {
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_parallel_1104_184916",
+      "contract": "docs/建议/模型与训练/方案_单模型三方案双卡并行调度_1104_184916.md",
+      "stage_observed": {
+        "status": "waiting_GPU_memory",
+        "free_MiB": {
+          "1": 6332,
+          "4": 3762,
+          "5": 10519
+        },
+        "minimum_free_MiB": 12288,
+        "existing_worker_pid": 2794307,
+        "observed_at": 1793789399.9833813,
+        "controller_pid": 3140844
+      },
+      "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_parallel_1104_184916/scheduling_acceptance.json",
+      "maximum_own_training_workers": 2,
+      "original_training_worker_preserved": 2794307
+    }
   }
 }

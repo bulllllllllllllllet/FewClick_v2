@@ -4400,3 +4400,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436.
 - Docs record: docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md.
 - Commit: this scoped commit.
+
+## 11-04 18:50:08
+
+- Purpose: Honor multi-GPU authorization with opportunistic independent-arm execution, preserving the live precision worker.
+- Changed: new parallel_handoff coordinator; resource supplement; goal/registry/AGENTS/current record.
+- Validation: actual live scheduler3140844 waiting correctly at<12GiB, precision2794307/controller2215361 untouched; kernel zombie exit-code capture tested; no duplicate detail or frozen source changes. GPU activation/parallel completion pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_parallel_1104_184916.
+- Docs record: docs/建议/模型与训练/方案_单模型三方案双卡并行调度_1104_184916.md; docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md.
+- Commit: this scoped commit.
