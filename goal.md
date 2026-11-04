@@ -260,3 +260,5 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 下一步复盘建议（2026-11-05T00:54:36.281308+08:00）：[训练充分性与支持组织匹配路线](docs/建议/模型与训练/建议_三方案后训练充分性与支持组织匹配路线_1105_005436.md)已完成；先建议匹配基线1000→2000有界预算对照，再按证据做支持组织区域匹配与小规模WSI。现有monitor与门控32项身份/实际消费核对，CRC remote仅4例，不能代表全训练集。当前研究状态不变，新增训练0、不自动恢复旧队列。证据/nfs-medical3/zyh/fewclick_v2/cvpr_research/post_size_recommendation_1105_005436/evidence.json。
 
 2026-11-05T01:19:43.231624+08:00 用户授权第一优先预算实验，当前恢复门控running；新目录/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_envfix_1105_011927。匹配基线1000→2000，门控后自动训练/评分/验收，其它方案不自动启动。原生Goal paused保留，不恢复旧seed2。当前record：docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md。
+
+恢复测试状态共享问题已定位并验证修复；原失败保留，新恢复门控目录/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_statefix_1105_012057。尚无正式追加训练或质量结果。

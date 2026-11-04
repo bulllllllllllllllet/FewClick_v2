@@ -4463,3 +4463,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_envfix_1105_011927; worker460086, GPU3/CPU2.
 - Docs record: docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md.
 - Commit: this scoped commit.
+
+## 11-05 01:22:10
+
+- Purpose: Isolate loaded optimizer state across exact-continuation gate branches.
+- Changed: budget_probe load helper and continuity records.
+- Validation: small AdamW probe reproduces input-state alias and verifies deepcopy isolation; corrected real worker466942 has saved1001-step checkpoint, full continuation gate running.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_statefix_1105_012057; previous gate failure preserved separately, no formal extension yet.
+- Docs record: docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md.
+- Commit: this scoped commit.

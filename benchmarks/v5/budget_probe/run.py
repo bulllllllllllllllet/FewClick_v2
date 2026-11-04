@@ -48,7 +48,7 @@ def main():
     status('resume_gate')
     def build():
         m=DecoderModel('control',20261103,'cuda:0');m.train();o=torch.optim.AdamW([p for p in m.parameters() if p.requires_grad],lr=1e-4,weight_decay=1e-4);return m,o
-    def load(m,o,state):m.load_state_dict(state['model']);o.load_state_dict(state['optimizer']);m.train()
+    def load(m,o,state):m.load_state_dict(state['model']);o.load_state_dict(copy.deepcopy(state['optimizer']));m.train()
     def update(m,o,batch):
         o.zero_grad(set_to_none=True);total=0.
         for task in batch:
