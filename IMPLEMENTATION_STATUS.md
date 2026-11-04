@@ -4355,3 +4355,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/dice_gap_audit_1104_143532/audit.json.
 - Docs record: docs/运行记录/数据审计/运行记录_原0点8与当前Dice差距分解_1104_143532.md.
 - Commit: this scoped commit.
+
+## 11-04 14:40:44
+
+- Purpose: Review size-specific tissue segmentation literature and align future experiments with actual FP/FN failures.
+- Changed: recommendation, registry/goal/current record.
+- Validation: primary HookNet/DMMN/DFA/SUA/FocalTversky sources browsed; train4000 size counts and saved validation error algebra checked; actual balancedBCE/Dice/boundary objective traced. No new training/GPU use.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_strategy_review_1104_144044.
+- Docs record: docs/建议/模型与训练/方案_大小组织分治与文献核查_1104_144044.md.
+- Commit: this scoped commit.
