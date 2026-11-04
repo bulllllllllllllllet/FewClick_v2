@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T13:26:54.764565+08:00",
+  "updated_at": "2026-11-04T14:35:32.469528+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -3065,6 +3065,12 @@
       "FewClick match",
       "SAM prior repair bridge"
     ],
+    "training_paused": true
+  },
+  "dice_gap_audit": {
+    "status": "complete_readonly",
+    "record": "docs/运行记录/数据审计/运行记录_原0点8与当前Dice差距分解_1104_143532.md",
+    "audit": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/dice_gap_audit_1104_143532/audit.json",
     "training_paused": true
   }
 }

@@ -4346,3 +4346,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_predictions_1104_132349; http://10.214.242.155:8770/#predictions.
 - Docs record: docs/运行记录/数据审计/运行记录_数据网页本图远端预测对照_1104_132349.md.
 - Commit: this scoped commit.
+
+## 11-04 14:35:32
+
+- Purpose: Decompose low current Dice against historical manuscript claims without retraining.
+- Changed: audit record and continuity.
+- Validation: full current present-task Dice independently recomputed from TP/FP/FN; domain/area/class and pooled vs task means recorded; original .8425global/.8406macro verified in local TeX.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/dice_gap_audit_1104_143532/audit.json.
+- Docs record: docs/运行记录/数据审计/运行记录_原0点8与当前Dice差距分解_1104_143532.md.
+- Commit: this scoped commit.
