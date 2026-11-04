@@ -4310,3 +4310,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_gallery_1104_130305/index.html (self-contained PNG); selection.json/audit.json.
 - Docs record: docs/运行记录/数据审计/运行记录_当前CRC与TIGER随机可视化_1104_130305.md.
 - Commit: this scoped commit.
+
+## 11-04 13:05:37
+
+- Purpose: Serve authorized dataset review on port8770.
+- Changed: dataset review service record.
+- Validation: HEAD200; full GET SHA equals HTML; unrelated paths404; actual serverPID1763883.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/dataset_gallery_http_1104_130514.
+- Docs record: docs/运行记录/数据审计/运行记录_当前CRC与TIGER随机可视化_1104_130305.md.
+- Commit: this scoped commit.
