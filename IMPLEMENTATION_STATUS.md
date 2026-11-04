@@ -4364,3 +4364,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_strategy_review_1104_144044.
 - Docs record: docs/建议/模型与训练/方案_大小组织分治与文献核查_1104_144044.md.
 - Commit: this scoped commit.
+
+## 11-04 15:06:57
+
+- Purpose: Execute authorized size diagnostics, precision-only training change and support-conditioned RGB refinement as single-model arms.
+- Changed: benchmarks/v5/size_aware_study; contract/run record; goal/registry/AGENTS pointer.
+- Validation: actual1237mask TP/FP/FN diagnostic accepted; real remote train RGB probe passed zero-residual, nonzero gradients, exact optimizer continuation and support response/order checks; GPU full-model gate running, no formal quality claim.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436; controller2215361/engineering2216590; stage/history/logs.
+- Docs record: docs/建议/模型与训练/方案_单模型大小组织诊断精度约束与细化_1104_150436.md; docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md.
+- Commit: this scoped commit.
