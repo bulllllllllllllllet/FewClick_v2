@@ -25,7 +25,7 @@
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
-**当前执行（2026-11-04T23:03:27.577085+08:00）**：control/precision正式完整接受，precision降低absent误报但remote宏Dice35.57→33.18%，未通过晋升守门；detail正式726/1000（worker3840165）running，整体比较未完成。额外GPU未及时满足显存，机会并行未激活、无重复训练。
+**当前执行（2026-11-05T00:19:28.394701+08:00）**：三臂1000训练均完成，control/precision完整接受；detail评分3400/3711（worker3840165）running，fresh重载/独立验收/最终比较待完成，尚无整体结论。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 

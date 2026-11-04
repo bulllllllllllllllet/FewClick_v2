@@ -4427,3 +4427,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_precision_partial_1104_230327/comparison.json.
 - Docs record: docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md.
 - Commit: this scoped commit.
+
+## 11-05 00:19:28
+
+- Purpose: Record final-arm training complete and near-final evaluation.
+- Changed: goal/registry/current record.
+- Validation: live detail worker3840165 scoring3400/3711, recent0.832s/row; final acceptance/comparison pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/size_aware_single_model_1104_150436.
+- Docs record: docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md.
+- Commit: this scoped commit.
