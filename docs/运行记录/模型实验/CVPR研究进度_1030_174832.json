@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05T00:54:36.281308+08:00",
+  "updated_at": "2026-11-05T01:19:43.231624+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "size_aware_complete_no_promotion",
+  "current_status": "matching_budget_resume_gate_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Report bounded negative result; retain signed-support-matching baseline; no automatic new training or next phase."
+    "Exact continuation gate -> 1000 additional updates -> 192 train monitor and full3711 evaluation -> independent acceptance and original10 guards."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -3700,5 +3700,18 @@
       "not proof of undertraining cause",
       "no automatic restart or goal resume"
     ]
+  },
+  "matching_budget_probe": {
+    "status": "running_resume_gate",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_envfix_1105_011927",
+    "record": "docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md",
+    "start_updates": 1000,
+    "target_updates": 2000,
+    "GPU": 3,
+    "CPU": 2,
+    "authorization": "user approved first next-step experiment",
+    "failure_preserved": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_1105_011842",
+    "no_automatic_other_study": true,
+    "worker_pid": 460086
   }
 }

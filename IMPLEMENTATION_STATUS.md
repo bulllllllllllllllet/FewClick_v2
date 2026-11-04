@@ -4454,3 +4454,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/post_size_recommendation_1105_005436/evidence.json.
 - Docs record: docs/建议/模型与训练/建议_三方案后训练充分性与支持组织匹配路线_1105_005436.md.
 - Commit: this scoped documentation commit.
+
+## 11-05 01:20:33
+
+- Purpose: Implement bounded matching-baseline 1000-to-2000 update experiment.
+- Changed: budget_probe runner, active record, goal, registry and AGENTS pointer.
+- Validation: py_compile passed; real loader/model/loss/optimizer1001 update and checkpoint saved; fresh continuation gate running, not yet accepted. Original launch missing vendor PYTHONPATH failed before updates, preserved; corrected environment in new root.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_envfix_1105_011927; worker460086, GPU3/CPU2.
+- Docs record: docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md.
+- Commit: this scoped commit.
