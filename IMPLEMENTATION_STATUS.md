@@ -4283,3 +4283,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_closeout_1104_052627
 - Docs record: docs/运行记录/模型实验/运行记录_SAM非零支持提示修复_1104_020153.md
 - Commit: 本条所属收尾提交。
+
+## 11-04 12:44:23
+
+- Purpose: Launch paired second-seed direct support matching replication and frozen final-SAM train diagnostic under explicit user authorization.
+- Changed: benchmarks/v5/support_match_replication (seed propagated through engineering/data/model/learning/smoke/formal/comparison; same model and recipe); goal/registry/current record/AGENTS continuity.
+- Validation: static seed/recipe/source audit passed; actual GPU control initialization equivalence, two-update legacy parity and fresh optimizer continuation passed (reached throughput stage). Full two-arm engineering/functional/formal acceptance remains pending; no quality claim.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113; stage/history record actual worker PID1647441/controller1646904; GPU3/CPU2.
+- Docs record: docs/建议/模型与训练/方案_支持匹配第二seed与SAM训练诊断_1104_124113.md; docs/运行记录/模型实验/运行记录_支持匹配第二seed与SAM诊断_1104_124113.md.
+- Commit: this scoped commit.

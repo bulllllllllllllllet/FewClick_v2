@@ -1,6 +1,6 @@
 # FewClick CVPR 当前 Goal
 
-更新：2026-11-03T17:49:01.583720+08:00。原生Goal仍paused；用户新授权支持直接匹配两臂试验，依门控连续执行，不恢复旧AAAI队列。
+更新：2026-11-04T12:41:47.389691+08:00。用户授权第二seed成对复验及现有SAM只读诊断，按门控连续执行；原生Goal保持paused，不恢复旧队列。
 
 ## 目标
 
@@ -21,11 +21,11 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_SAM非零支持提示修复_1104_020153.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_支持匹配第二seed与SAM诊断_1104_124113.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
-**当前执行（2026-11-04T05:26:27.980165+08:00）**：SAM修订同监督对比已complete_accepted。FewClick远端宏Dice35.57% vs SAM桥12.83%，本图54.71% vs56.77%；无全面胜出，单seed/特定适配桥边界。报告/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_prior_repair_closeout_1104_052627/report.md。本组已结束，无自动新任务。
+**当前执行（2026-11-04T12:41:47.389691+08:00）**：支持直接匹配第二seed20261104两臂running（工程阶段），另排队现有SAM固定32train只读诊断。每臂1000×4/3711评估，完整守门不变；尚无复验质量结果。产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113，实时PID/阶段见stage.json和history.jsonl。依门控自动串行至比较，失败停止；无自动seed3/WSI。
 
 P2完整收尾与22份证据SHA核对：/nfs-medical3/zyh/fewclick_v2/cvpr_research/p2_closeout_1102_174122/acceptance.json、verification.json。全部队列complete，无本组活动worker；不重启或为词表成功放宽门槛。颜色/组织上下文/census已完成限定诊断，不能当生物类型/染色鲁棒性/WSI胜负。P3须先冻结空间对照合同和真实门控；P4–P6未完成。
 

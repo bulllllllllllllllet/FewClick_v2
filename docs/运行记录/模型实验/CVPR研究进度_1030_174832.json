@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T05:26:27.980165+08:00",
+  "updated_at": "2026-11-04T12:41:47.389691+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_SAM非零支持提示修复_1104_020153.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_支持匹配第二seed与SAM诊断_1104_124113.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_SAM非零支持提示修复_1104_020153.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_支持匹配第二seed与SAM诊断_1104_124113.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "SAM_prior_repair_comparison_complete",
+  "current_status": "support_match_seed2_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Report bounded matched comparison; remote advantage and local/CRC-FPA costs; no automatic new experiment."
+    "Monitor current stage/history and actual workers; accept second-seed paired comparison and frozen SAM diagnostic before new roadmap decisions."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -2967,5 +2967,36 @@
         "fat_Dice": 0.5509996454137639
       }
     }
+  },
+  "support_match_seed2": {
+    "status": "running",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113",
+    "contract": "docs/建议/模型与训练/方案_支持匹配第二seed与SAM训练诊断_1104_124113.md",
+    "record": "docs/运行记录/模型实验/运行记录_支持匹配第二seed与SAM诊断_1104_124113.md",
+    "seed": 20261104,
+    "arms": [
+      "control",
+      "match"
+    ],
+    "updates": 1000,
+    "batch": 4,
+    "new_formal_runs": 2,
+    "stage_observed": {
+      "status": "running",
+      "stage": "engineering",
+      "worker_pid": 1647441,
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.support_match_replication.gate",
+        "--root",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_match_seed2_1104_124113"
+      ],
+      "observed_at": 1793767292.00805,
+      "controller_pid": 1646904
+    },
+    "SAM_diagnostic": "queued_after_engineering_no_updates",
+    "next_action": "automatic gates -> two-arm formal -> independent acceptance -> comparison; stop on failure; no automatic seed3 or WSI"
   }
 }
