@@ -4508,3 +4508,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_seed2_2000_1105_114636.
 - Docs record: docs/运行记录/模型实验/运行记录_匹配模型第二seed2000步预算确认_1105_114636.md.
 - Commit: this scoped commit.
+
+## 11-05 11:50:54
+
+- Purpose: Persist explicit authorization for all six GPUs.
+- Changed: AGENTS, goal, registry and active record.
+- Validation: registry parses; eligible GPU IDs0–5 and no exclusions; active workers/recipes unchanged.
+- Docs record: docs/运行记录/模型实验/运行记录_匹配模型第二seed2000步预算确认_1105_114636.md.
+- Commit: this scoped commit.
