@@ -4490,3 +4490,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_monitorfix_1105_021200.
 - Docs record: docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md.
 - Commit: this scoped commit.
+
+## 11-05 11:36:45
+
+- Purpose: Close accepted 2000-update budget diagnosis with all10 guards passed.
+- Changed: goal, registry, current record.
+- Validation: EXIT0, full3711 independent masks and fresh12 accepted; bound hashes reverified; both endpoints all8 metrics reaggregated with math.fsum; 192 monitor identities verified.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_closeout_1105_113645/acceptance.json.
+- Docs record: docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md.
+- Commit: this scoped commit.

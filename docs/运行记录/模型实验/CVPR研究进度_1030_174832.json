@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05T02:59:30.948051+08:00",
+  "updated_at": "2026-11-05T11:36:45.460047+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "matching_budget_training_running",
+  "current_status": "matching_budget_complete_candidate_pending_replication",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Exact continuation gate -> 1000 additional updates -> 192 train monitor and full3711 evaluation -> independent acceptance and original10 guards."
+    "Report accepted budget gain; recommend second-seed confirmation and matched2000 protocol before support-region matcher; no automatic launch."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -3702,7 +3702,7 @@
     ]
   },
   "matching_budget_probe": {
-    "status": "running_training",
+    "status": "complete_accepted",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_monitorfix_1105_021200",
     "record": "docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md",
     "start_updates": 1000,
@@ -3726,6 +3726,263 @@
       "loss": 1.3097804933786392
     },
     "exact_resume_accepted": true,
-    "baseline192_monitor_complete": true
+    "baseline192_monitor_complete": true,
+    "budget_candidate": true,
+    "values": {
+      "1000": {
+        "remote_macro_Dice": 0.35574281685619286,
+        "remote_Dice": 0.3363446565767136,
+        "remote_BF1": 0.1307047462427594,
+        "absent_FPA": 0.06382752953184435,
+        "local_Dice": 0.5471344921636714,
+        "local_BF1": 0.19180307235161734,
+        "small_Dice": 0.25480057050099975,
+        "fat_Dice": 0.5509996454137639
+      },
+      "2000": {
+        "remote_macro_Dice": 0.37759363948987495,
+        "remote_Dice": 0.3580893665518721,
+        "remote_BF1": 0.16074189217577547,
+        "absent_FPA": 0.03016602935349942,
+        "local_Dice": 0.592830043070896,
+        "local_BF1": 0.23993657187379988,
+        "small_Dice": 0.3288598443013143,
+        "fat_Dice": 0.6060346280418903
+      }
+    },
+    "guards": {
+      "original_six": {
+        "tests": {
+          "primary_Dice_gain": true,
+          "remote_BF1": true,
+          "absent_FPA": true,
+          "local_Dice": true,
+          "small_Dice": true,
+          "fat_Dice": true
+        },
+        "pass_all": true,
+        "candidate_minus_reference": {
+          "remote_macro_Dice": 0.0218508226336821,
+          "remote_Dice": 0.021744709975158538,
+          "remote_BF1": 0.03003714593301607,
+          "absent_FPA": -0.03366150017834493,
+          "local_Dice": 0.04569555090722466,
+          "local_BF1": 0.04813349952218254,
+          "small_Dice": 0.07405927380031457,
+          "fat_Dice": 0.05503498262812645
+        }
+      },
+      "remote_safety_tests": {
+        "remote_small": true,
+        "remote_fat": true,
+        "crc_absent_FPA": true,
+        "tiger_absent_FPA": true
+      },
+      "remote_changes": {
+        "remote_small": 0.037697282035531215,
+        "remote_fat": -0.010503010815303582,
+        "crc_absent_FPA": -0.037056553662653424,
+        "tiger_absent_FPA": -0.02216315866073411
+      },
+      "pass_all": true,
+      "reference_remote": {
+        "small": {
+          "n": 222,
+          "mean": 0.12199534372386661
+        },
+        "fat": {
+          "n": 34,
+          "mean": 0.4268782746432511
+        },
+        "per_domain": {
+          "crc": {
+            "n": 359,
+            "mean": 0.06300114921208544
+          },
+          "tiger": {
+            "n": 106,
+            "mean": 0.06662630816197125
+          }
+        },
+        "per_target": {
+          "crc|0": {
+            "n": 29,
+            "mean": 0.06440524397225215
+          },
+          "crc|1": {
+            "n": 28,
+            "mean": 0.0712202617100307
+          },
+          "crc|3": {
+            "n": 31,
+            "mean": 0.0181000001968876
+          },
+          "crc|4": {
+            "n": 37,
+            "mean": 0.07834336564347551
+          },
+          "crc|5": {
+            "n": 33,
+            "mean": 0.035545695911754265
+          },
+          "crc|6": {
+            "n": 33,
+            "mean": 0.1593186349579782
+          },
+          "crc|7": {
+            "n": 31,
+            "mean": 0.13447693855531753
+          },
+          "crc|8": {
+            "n": 38,
+            "mean": 0.03955088163677015
+          },
+          "crc|9": {
+            "n": 34,
+            "mean": 0.015292672549977022
+          },
+          "crc|10": {
+            "n": 31,
+            "mean": 0.054420963410408266
+          },
+          "crc|11": {
+            "n": 34,
+            "mean": 0.02901312884162454
+          },
+          "tiger|1": {
+            "n": 27,
+            "mean": 0.051629068509258934
+          },
+          "tiger|2": {
+            "n": 20,
+            "mean": 0.061440467834472656
+          },
+          "tiger|3": {
+            "n": 2,
+            "mean": 0.34390935187433197
+          },
+          "tiger|5": {
+            "n": 29,
+            "mean": 0.05315946313492806
+          },
+          "tiger|6": {
+            "n": 28,
+            "mean": 0.07893397585956896
+          }
+        },
+        "absent_tail": {
+          "n": 465,
+          "quantiles95_99": [
+            0.4153533935546873,
+            0.6674822870604566
+          ],
+          "fraction_tasks_above_1pct": 0.3720430107526882,
+          "fraction_tasks_above_10pct": 0.16129032258064516
+        }
+      },
+      "candidate_remote": {
+        "small": {
+          "n": 222,
+          "mean": 0.15969262575939783
+        },
+        "fat": {
+          "n": 34,
+          "mean": 0.41637526382794754
+        },
+        "per_domain": {
+          "crc": {
+            "n": 359,
+            "mean": 0.025944595549432015
+          },
+          "tiger": {
+            "n": 106,
+            "mean": 0.04446314950123714
+          }
+        },
+        "per_target": {
+          "crc|0": {
+            "n": 29,
+            "mean": 0.05497083992793642
+          },
+          "crc|1": {
+            "n": 28,
+            "mean": 0.043725831168038506
+          },
+          "crc|3": {
+            "n": 31,
+            "mean": 0.008907441169984879
+          },
+          "crc|4": {
+            "n": 37,
+            "mean": 0.06850959159232475
+          },
+          "crc|5": {
+            "n": 33,
+            "mean": 0.023532520640980114
+          },
+          "crc|6": {
+            "n": 33,
+            "mean": 0.030589363791725853
+          },
+          "crc|7": {
+            "n": 31,
+            "mean": 0.014089891987462197
+          },
+          "crc|8": {
+            "n": 38,
+            "mean": 0.024554102044356495
+          },
+          "crc|9": {
+            "n": 34,
+            "mean": 0.001529693603515625
+          },
+          "crc|10": {
+            "n": 31,
+            "mean": 0.008877908029863912
+          },
+          "crc|11": {
+            "n": 34,
+            "mean": 0.005928151747759651
+          },
+          "tiger|1": {
+            "n": 27,
+            "mean": 0.06250365098259451
+          },
+          "tiger|2": {
+            "n": 20,
+            "mean": 0.05563774108886719
+          },
+          "tiger|3": {
+            "n": 2,
+            "mean": 0.41068593194701514
+          },
+          "tiger|5": {
+            "n": 29,
+            "mean": 0.008819908338905348
+          },
+          "tiger|6": {
+            "n": 28,
+            "mean": 0.029842544396480594
+          }
+        },
+        "absent_tail": {
+          "n": 465,
+          "quantiles95_99": [
+            0.19813144015952572,
+            0.5182112121582044
+          ],
+          "fraction_tasks_above_1pct": 0.210752688172043,
+          "fraction_tasks_above_10pct": 0.08817204301075268
+        }
+      },
+      "limitation": "point guards only; formal run bindings, uncertainty and seed replication required separately"
+    },
+    "closeout": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_closeout_1105_113645",
+    "active_workers": [],
+    "remaining_gaps": [
+      "one seed only",
+      "equal2000 budgets needed for method comparisons",
+      "independent confirmation and WSI incomplete"
+    ]
   }
 }
