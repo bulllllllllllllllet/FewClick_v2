@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05T15:17:51.967638+08:00",
+  "updated_at": "2026-11-05T16:03:23.302288+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -3986,7 +3986,7 @@
     ]
   },
   "matching_budget_seed2": {
-    "status": "running_formal_evaluation",
+    "status": "running_2000_endpoint_independent_acceptance",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_seed2_2000_1105_114636",
     "seed": 20261105,
     "updates": 2000,
@@ -3999,14 +3999,34 @@
     ],
     "evaluation_masks": 7422,
     "no_automatic_next_study": true,
-    "worker_pid": 2956816,
+    "worker_pid": 3908439,
     "last_observed": {
-      "stage": "scoring",
-      "rows": 1350,
-      "total_rows": 3711,
-      "worker_pid": 2956816,
-      "arm": "control",
-      "seconds": 10931.498426076025
+      "controller_pid": 2833935,
+      "timestamp": 1793865739.279611,
+      "status": "running",
+      "stage": "formal_accept",
+      "worker_pid": 3908439,
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.budget_replication.train",
+        "--arm",
+        "control",
+        "--cache",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+        "--protocol",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729",
+        "--learning",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_seed2_2000_1105_114636/learning",
+        "--seed",
+        "20261105",
+        "--execution-contract",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_seed2_2000_1105_114636/contract.json",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_seed2_2000_1105_114636/control",
+        "--accept"
+      ]
     }
   },
   "resource_policy_override": {

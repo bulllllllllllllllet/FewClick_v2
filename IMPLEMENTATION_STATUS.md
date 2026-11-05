@@ -4551,3 +4551,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_budget2000_closeout_1105_151751/acceptance.json and report.md.
 - Docs record: docs/运行记录/模型实验/运行记录_SAM同2000步预算补充_1105_120404.md.
 - Commit: this scoped commit.
+
+## 11-05 16:03:23
+
+- Purpose: Update second-seed full2000 evaluation complete, independent acceptance running.
+- Changed: goal, registry, seed2 record.
+- Validation: formal3711/fresh replay EXIT0; controller launched formal_accept worker3908439;1000 endpoint scoring still pending.
+- Docs record: docs/运行记录/模型实验/运行记录_匹配模型第二seed2000步预算确认_1105_114636.md.
+- Commit: this scoped commit.
