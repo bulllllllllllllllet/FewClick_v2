@@ -4542,3 +4542,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_budget2000_1105_120404; code/input/weight SHA and source snapshot frozen.
 - Docs record: docs/运行记录/模型实验/运行记录_SAM同2000步预算补充_1105_120404.md.
 - Commit: this scoped commit.
+
+## 11-05 15:17:51
+
+- Purpose: Close matched2000 SAM comparison and record live second-seed evaluation.
+- Changed: goal, registry and both current records.
+- Validation: SAM EXIT0,3711 independent masks/fresh12 accepted; bound artifacts hashes and exact8000 consumption equality verified; both8metrics independently reaggregated. FewClick all10 guards pass; SAM own budget FPA guards fail. Seed2 actual worker alive scoring1350/3711.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_budget2000_closeout_1105_151751/acceptance.json and report.md.
+- Docs record: docs/运行记录/模型实验/运行记录_SAM同2000步预算补充_1105_120404.md.
+- Commit: this scoped commit.

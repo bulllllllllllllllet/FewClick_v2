@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05T12:04:48.459563+08:00",
+  "updated_at": "2026-11-05T15:17:51.967638+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "parallel_seed2_and_sam_budget_running",
+  "current_status": "sam_budget_complete_seed2_evaluation_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -3986,7 +3986,7 @@
     ]
   },
   "matching_budget_seed2": {
-    "status": "running_functional_gate",
+    "status": "running_formal_evaluation",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_seed2_2000_1105_114636",
     "seed": 20261105,
     "updates": 2000,
@@ -3999,7 +3999,15 @@
     ],
     "evaluation_masks": 7422,
     "no_automatic_next_study": true,
-    "worker_pid": 2835089
+    "worker_pid": 2956816,
+    "last_observed": {
+      "stage": "scoring",
+      "rows": 1350,
+      "total_rows": 3711,
+      "worker_pid": 2956816,
+      "arm": "control",
+      "seconds": 10931.498426076025
+    }
   },
   "resource_policy_override": {
     "updated_at": "2026-11-05T11:50:54.212850+08:00",
@@ -4157,7 +4165,7 @@
     "claim": "2000step FewClick numerically exceeds old1000step SAM bridge, not yet equal-budget superiority"
   },
   "sam_budget2000": {
-    "status": "running_resume_gate",
+    "status": "complete_accepted",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_budget2000_1105_120404",
     "record": "docs/运行记录/模型实验/运行记录_SAM同2000步预算补充_1105_120404.md",
     "GPU": 2,
@@ -4171,6 +4179,32 @@
       "stage": "resume_gate",
       "worker_pid": 2911188,
       "seconds": 1.774077869951725
-    }
+    },
+    "closeout": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_budget2000_closeout_1105_151751",
+    "values": {
+      "SAM": {
+        "remote_macro_Dice": 0.18892885754559266,
+        "remote_Dice": 0.18856286230234232,
+        "remote_BF1": 0.12584015053311262,
+        "absent_FPA": 0.10305457159585683,
+        "local_Dice": 0.5683671828376982,
+        "local_BF1": 0.21375952386195016,
+        "small_Dice": 0.2843406818823185,
+        "fat_Dice": 0.6150651394883894
+      },
+      "FewClick": {
+        "remote_macro_Dice": 0.37759363948987495,
+        "remote_Dice": 0.3580893665518721,
+        "remote_BF1": 0.16074189217577547,
+        "absent_FPA": 0.03016602935349942,
+        "local_Dice": 0.592830043070896,
+        "local_BF1": 0.23993657187379988,
+        "small_Dice": 0.3288598443013143,
+        "fat_Dice": 0.6060346280418903
+      }
+    },
+    "all10guards": true,
+    "active_workers": [],
+    "sam_own_budget_promotion": false
   }
 }
