@@ -4516,3 +4516,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation: registry parses; eligible GPU IDs0–5 and no exclusions; active workers/recipes unchanged.
 - Docs record: docs/运行记录/模型实验/运行记录_匹配模型第二seed2000步预算确认_1105_114636.md.
 - Commit: this scoped commit.
+
+## 11-05 11:55:53
+
+- Purpose: Complete authorized GPU2 read-only support/query diagnosis.
+- Changed: support_query_probe implementation, dedicated and active records, goal and registry.
+- Validation: real two-checkpoint forward with sign swap on24 fixed train episodes; model state unchanged; all96 support/query masks independently rescored, hashes bound and EXIT0; no training updates.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_query_probe_1105_115259/acceptance.json and report.md.
+- Docs record: docs/运行记录/模型实验/运行记录_GPU2支持查询只读小诊断_1105_115259.md.
+- Commit: this scoped commit.

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05T11:50:54.212850+08:00",
+  "updated_at": "2026-11-05T11:55:53.426615+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -4016,5 +4016,133 @@
     "source": "user: 这台机子六张卡都可以用",
     "preserve_active_workers_and_recipes": true,
     "does_not_expand_experiment_or_worker_count_budgets": true
+  },
+  "support_query_probe": {
+    "status": "complete_accepted",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_query_probe_1105_115259",
+    "record": "docs/运行记录/模型实验/运行记录_GPU2支持查询只读小诊断_1105_115259.md",
+    "GPU": 2,
+    "CPU": 2,
+    "worker_pid": 2864349,
+    "plans": 24,
+    "checkpoints": [
+      1000,
+      2000
+    ],
+    "train_updates": 0,
+    "no_automatic_training": true,
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_query_probe_1105_115259/acceptance.json",
+    "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_query_probe_1105_115259/report.md",
+    "active_workers": [],
+    "summary": {
+      "1000|crc|local": {
+        "n": 4,
+        "query_Dice": 0.5259009647809144,
+        "support_Dice": 0.5259009647809144,
+        "absent_FPA": null,
+        "query_precision": 0.4719204955106381,
+        "query_recall": 0.8840161809934632,
+        "swap_mean": 0.40610115230083466
+      },
+      "1000|crc|cross_present": {
+        "n": 4,
+        "query_Dice": 0.2896200889744629,
+        "support_Dice": 0.7184588404708949,
+        "absent_FPA": null,
+        "query_precision": 0.21019568071058342,
+        "query_recall": 0.616121921445125,
+        "swap_mean": 0.4147859625518322
+      },
+      "1000|crc|cross_absent": {
+        "n": 4,
+        "query_Dice": null,
+        "support_Dice": 0.4069341025524177,
+        "absent_FPA": 0.016132354736328125,
+        "query_precision": null,
+        "query_recall": null,
+        "swap_mean": 0.3290709853172302
+      },
+      "1000|tiger|local": {
+        "n": 4,
+        "query_Dice": 0.8392183752800089,
+        "support_Dice": 0.8392183752800089,
+        "absent_FPA": null,
+        "query_precision": 0.887856081522153,
+        "query_recall": 0.837069763622964,
+        "swap_mean": 0.6633494049310684
+      },
+      "1000|tiger|cross_present": {
+        "n": 4,
+        "query_Dice": 0.41603472690010235,
+        "support_Dice": 0.8260854541017053,
+        "absent_FPA": null,
+        "query_precision": 0.38395597968473716,
+        "query_recall": 0.5998827762732752,
+        "swap_mean": 0.3630896918475628
+      },
+      "1000|tiger|cross_absent": {
+        "n": 4,
+        "query_Dice": null,
+        "support_Dice": 0.7217383410377504,
+        "absent_FPA": 0.061637678174208635,
+        "query_precision": null,
+        "query_recall": null,
+        "swap_mean": 0.5343789234757423
+      },
+      "2000|crc|local": {
+        "n": 4,
+        "query_Dice": 0.5021818978825344,
+        "support_Dice": 0.5021818978825344,
+        "absent_FPA": null,
+        "query_precision": 0.4912680786870919,
+        "query_recall": 0.8474063109022644,
+        "swap_mean": 0.48389782756567
+      },
+      "2000|crc|cross_present": {
+        "n": 4,
+        "query_Dice": 0.5549542402079549,
+        "support_Dice": 0.787477771172853,
+        "absent_FPA": null,
+        "query_precision": 0.5351925896877838,
+        "query_recall": 0.7438924532459447,
+        "swap_mean": 0.4452664777636528
+      },
+      "2000|crc|cross_absent": {
+        "n": 4,
+        "query_Dice": null,
+        "support_Dice": 0.49707837902251134,
+        "absent_FPA": 0.01621246337890625,
+        "query_precision": null,
+        "query_recall": null,
+        "swap_mean": 0.32567859441041946
+      },
+      "2000|tiger|local": {
+        "n": 4,
+        "query_Dice": 0.9139573655963481,
+        "support_Dice": 0.9139573655963481,
+        "absent_FPA": null,
+        "query_precision": 0.9599808802886527,
+        "query_recall": 0.8766311358065724,
+        "swap_mean": 0.7762080132961273
+      },
+      "2000|tiger|cross_present": {
+        "n": 4,
+        "query_Dice": 0.5664363903710041,
+        "support_Dice": 0.8889395648485445,
+        "absent_FPA": null,
+        "query_precision": 0.49508744901085655,
+        "query_recall": 0.9266847532599095,
+        "swap_mean": 0.5180914402008057
+      },
+      "2000|tiger|cross_absent": {
+        "n": 4,
+        "query_Dice": null,
+        "support_Dice": 0.7859645133589519,
+        "absent_FPA": 0.055579185485839844,
+        "query_precision": null,
+        "query_recall": null,
+        "swap_mean": 0.6152080520987511
+      }
+    }
   }
 }
