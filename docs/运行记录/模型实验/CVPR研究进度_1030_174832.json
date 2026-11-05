@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05T11:55:53.426615+08:00",
+  "updated_at": "2026-11-05T11:59:58.816754+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -4144,5 +4144,16 @@
         "swap_mean": 0.6152080520987511
       }
     }
+  },
+  "post_budget_fair_sam_recommendation": {
+    "status": "recommendation_complete_not_started",
+    "document": "docs/建议/模型与训练/建议_2000步后SAM公平对照与匹配机制优先级_1105_115958.md",
+    "priority": [
+      "finish_existing_seed2",
+      "SAM_same2000_budget",
+      "conditional_support_region_matching",
+      "WSI_pilot_preparation"
+    ],
+    "claim": "2000step FewClick numerically exceeds old1000step SAM bridge, not yet equal-budget superiority"
   }
 }

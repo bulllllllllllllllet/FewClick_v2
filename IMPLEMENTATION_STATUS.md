@@ -4525,3 +4525,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_query_probe_1105_115259/acceptance.json and report.md.
 - Docs record: docs/运行记录/模型实验/运行记录_GPU2支持查询只读小诊断_1105_115259.md.
 - Commit: this scoped commit.
+
+## 11-05 11:59:58
+
+- Purpose: Clarify SAM comparison limits and prioritize matched-budget baseline before new architecture.
+- Changed: recommendation, goal, registry and active record.
+- Validation: inspected accepted FewClick/SAM reports and actual SAM training budget; new seed still running functional gate, no final quality results.
+- Docs record: docs/建议/模型与训练/建议_2000步后SAM公平对照与匹配机制优先级_1105_115958.md.
+- Commit: this scoped commit.
