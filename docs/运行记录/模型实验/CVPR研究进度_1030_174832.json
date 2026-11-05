@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05T11:36:45.460047+08:00",
+  "updated_at": "2026-11-05T11:47:04.607203+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "matching_budget_complete_candidate_pending_replication",
+  "current_status": "matching_second_seed_functional_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Report accepted budget gain; recommend second-seed confirmation and matched2000 protocol before support-region matcher; no automatic launch."
+    "Second-seed functional gate -> smoke -> fresh2000 training -> two-endpoint evaluation/independent acceptance -> report."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -3984,5 +3984,21 @@
       "equal2000 budgets needed for method comparisons",
       "independent confirmation and WSI incomplete"
     ]
+  },
+  "matching_budget_seed2": {
+    "status": "running_functional_gate",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_seed2_2000_1105_114636",
+    "seed": 20261105,
+    "updates": 2000,
+    "record": "docs/运行记录/模型实验/运行记录_匹配模型第二seed2000步预算确认_1105_114636.md",
+    "controller_pid": 2833935,
+    "GPU": 3,
+    "endpoints": [
+      1000,
+      2000
+    ],
+    "evaluation_masks": 7422,
+    "no_automatic_next_study": true,
+    "worker_pid": 2835089
   }
 }

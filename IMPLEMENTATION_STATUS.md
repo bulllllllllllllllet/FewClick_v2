@@ -4499,3 +4499,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_closeout_1105_113645/acceptance.json.
 - Docs record: docs/运行记录/模型实验/运行记录_匹配基线1000至2000步训练充分性_1105_011842.md.
 - Commit: this scoped commit.
+
+## 11-05 11:47:36
+
+- Purpose: Launch authorized second initialization seed for fixed matching training budget.
+- Changed: budget_replication workflow and active continuity pointers.
+- Validation: compileall passed; actual pipeline launches functional worker2835089; learning, new trainer smoke, formal training and quality acceptance pending. Frozen source/data/weights SHA and snapshots registered before launch.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_seed2_2000_1105_114636.
+- Docs record: docs/运行记录/模型实验/运行记录_匹配模型第二seed2000步预算确认_1105_114636.md.
+- Commit: this scoped commit.
