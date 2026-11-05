@@ -4533,3 +4533,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation: inspected accepted FewClick/SAM reports and actual SAM training budget; new seed still running functional gate, no final quality results.
 - Docs record: docs/建议/模型与训练/建议_2000步后SAM公平对照与匹配机制优先级_1105_115958.md.
 - Commit: this scoped commit.
+
+## 11-05 12:05:47
+
+- Purpose: Launch authorized SAM continuation to matched2000 task/update budget.
+- Changed: sam_budget_probe, dedicated/active records, goal/registry and AGENTS current pointer.
+- Validation: compileall passed; real SAM loader/model/loss/optimizer step1001 completed and checkpoint saved; exact resume gate running with worker2911188, GPU2. Formal/final comparison not yet accepted.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_budget2000_1105_120404; code/input/weight SHA and source snapshot frozen.
+- Docs record: docs/运行记录/模型实验/运行记录_SAM同2000步预算补充_1105_120404.md.
+- Commit: this scoped commit.

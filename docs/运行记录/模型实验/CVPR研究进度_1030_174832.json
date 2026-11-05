@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05T11:59:58.816754+08:00",
+  "updated_at": "2026-11-05T12:04:48.459563+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "matching_second_seed_functional_running",
+  "current_status": "parallel_seed2_and_sam_budget_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -4155,5 +4155,22 @@
       "WSI_pilot_preparation"
     ],
     "claim": "2000step FewClick numerically exceeds old1000step SAM bridge, not yet equal-budget superiority"
+  },
+  "sam_budget2000": {
+    "status": "running_resume_gate",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_budget2000_1105_120404",
+    "record": "docs/运行记录/模型实验/运行记录_SAM同2000步预算补充_1105_120404.md",
+    "GPU": 2,
+    "seed": 20261103,
+    "start_updates": 1000,
+    "target_updates": 2000,
+    "fair_reference": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_budget_monitorfix_1105_021200",
+    "no_automatic_next_trial": true,
+    "worker_pid": 2911188,
+    "last_observed": {
+      "stage": "resume_gate",
+      "worker_pid": 2911188,
+      "seconds": 1.774077869951725
+    }
   }
 }
