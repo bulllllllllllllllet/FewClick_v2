@@ -4559,3 +4559,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation: formal3711/fresh replay EXIT0; controller launched formal_accept worker3908439;1000 endpoint scoring still pending.
 - Docs record: docs/运行记录/模型实验/运行记录_匹配模型第二seed2000步预算确认_1105_114636.md.
 - Commit: this scoped commit.
+
+## 11-06 16:09:39
+
+- Purpose: Close two-seed bounded training-budget confirmation.
+- Changed: goal, registry, seed2 and SAM records.
+- Validation: seed2 both3711 evaluations accepted/EXIT0; source consumption/bound hashes verified; both checkpoint finite/optimizer steps confirmed; both8metrics independently reaggregated. Original10 guards pass in both seeds.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_seed2_closeout_1106_160939/acceptance.json and report.md.
+- Docs record: docs/运行记录/模型实验/运行记录_匹配模型第二seed2000步预算确认_1105_114636.md.
+- Commit: this scoped commit.
