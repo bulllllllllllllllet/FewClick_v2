@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-07T00:52:57.935708+08:00",
+  "updated_at": "2026-11-07T00:59:23.586150+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3_cell_reassessment",
-  "current_status": "gated_cell_residual_integration_running",
+  "current_status": "gated_cell_and_resumed_no_match_parallel_WSI_annotation_audit",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Gated cell integration -> functional256/independent acceptance -> smoke -> formal2000/3711 independent acceptance and matched comparison; failure stops; old supplements paused."
+    "Continue gated-cell independent gates/training; no-match resumed then full matched comparison and conditional negative-arm resume; CPU source WSI GT registration audit, do not claim accepted ROI accuracy before coordinate consistency."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -4374,7 +4374,7 @@
     "final_evidence_complete": false
   },
   "paper_completion": {
-    "status": "user_paused_for_cell_branch_audit",
+    "status": "no_match_resumed_no_negative_conditionally_queued",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345",
     "record": "docs/运行记录/模型实验/运行记录_WSI消融及类别泛化_1106_193230.md",
     "contract": "docs/建议/模型与训练/方案_WSI消融及非脂肪类别泛化_1106_193230.md",
@@ -4546,5 +4546,54 @@
     "GPU": 2,
     "no_new_seed": true,
     "additional_parameters": 1
+  },
+  "parallel_ablation_wsi": {
+    "status": "running",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_ablation_wsi_1107_005846",
+    "record": "docs/运行记录/模型实验/运行记录_恢复匹配消融并行WSI标签审计_1107_005846.md",
+    "resume": {
+      "time": "2026-11-07T00:58:46.032116+08:00",
+      "no_match_resumed": [
+        1756970,
+        1716207
+      ],
+      "negative_pending": [
+        1753449,
+        1716208
+      ],
+      "source_hashes_checked": true,
+      "no_match_GPU": 2,
+      "negative_GPU": 0
+    },
+    "no_match_stage": {
+      "controller_pid": 1716207,
+      "timestamp": 1793984340.3597615,
+      "status": "running",
+      "stage": "formal",
+      "worker_pid": 2917286,
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.paper_completion.train",
+        "--arm",
+        "no_match",
+        "--cache",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+        "--protocol",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729",
+        "--learning",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345/no_match/learning",
+        "--seed",
+        "20261103",
+        "--execution-contract",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345/no_match/contract.json",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345/no_match/control"
+      ]
+    },
+    "followup_pid": 2915901,
+    "negative_resume_condition": "no_match complete accepted and bound comparison; stop on failure",
+    "WSI_annotation_status": "running_coordinate_audit_acceptance_pending"
   }
 }

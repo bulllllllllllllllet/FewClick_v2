@@ -314,3 +314,5 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 2026-11-07T00:49:28.544278+08:00 细胞只读诊断完成，6train×4推理干预、state不变。未找到明确全局硬bug；确认matcher特征取自cell融合前、255采样与计数外推、region缺少细胞拒收及无显式图像残差门控等设计风险；干预有正有负，不作新候选评分。见docs/运行记录/模型实验/诊断_当前细胞输入融合与误报_1107_004727.md。
 
 2026-11-07T00:52:57.935708+08:00 用户授权单一细胞软覆盖门控残差配方。GPU2 controller2891459/实际worker2891939 integration运行中；新增1标量，初始alpha0，q=保留细胞soft assignment数量，非真实面积覆盖。CPU实际0/1/17细胞前向精确无cell起点/空集/有限有界检查通过；工程/功能/质量尚未接受。产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/gated_cell_1107_005210；合同docs/建议/模型与训练/方案_细胞软覆盖门控残差单因素试验_1107_005210.md，当前记录docs/运行记录/模型实验/运行记录_细胞门控残差融合_1107_005210.md。后续自动256学习门控/smoke/2000/3711独立评分；旧暂停队列不恢复，不新增seed。
+
+2026-11-07T00:59:23.586150+08:00 用户授权并行补充：已验证原no_match冻结源码SHA并SIGCONT现有worker1756970/controller1716207，不重复训练；GPU2保留原设备与cell残差共享、free约28GiB。CPU followup2915901等待no_match接受/绑定比较，成功后自动恢复no_negative原worker1753449/controller1716208（GPU0），最多两训练。WSI annotation CPU审计运行，首ROI中心标签一致99.7536%，全ROI坐标接受待核查。产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_ablation_wsi_1107_005846，记录docs/运行记录/模型实验/运行记录_恢复匹配消融并行WSI标签审计_1107_005846.md；不新增seed。

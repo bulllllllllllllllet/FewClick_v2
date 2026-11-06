@@ -4667,3 +4667,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/gated_cell_1107_005210
 - Docs record: docs/运行记录/模型实验/运行记录_细胞门控残差融合_1107_005210.md
 - Commit: 本次提交。
+
+## 11-07 00:59:23
+
+- Purpose: 恢复同预算无matcher消融，条件串联负点消融，CPU并行WSI源标签注册审计。
+- Changed: paper_completion/parallel_followup.py、wsi_annotation_audit.py；goal/registry/两运行记录。
+- Validation: 冻结源SHA全部一致/原PID身份确认后解冻；新CPU真实首ROI读取、标签映射与中心比较完成，正式接受待核查；未启动重复worker。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_ablation_wsi_1107_005846
+- Docs record: docs/运行记录/模型实验/运行记录_恢复匹配消融并行WSI标签审计_1107_005846.md
+- Commit: 本次提交。
