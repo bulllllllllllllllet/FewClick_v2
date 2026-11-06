@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-06T16:27:08.240487+08:00",
+  "updated_at": "2026-11-06T19:24:59.482903+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "support_region_parallel_functional_running_wsi_indexed_pilot_accepted",
+  "current_status": "support_region_complete_accepted_not_promoted_point_match_retained",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Matched initialization preflight -> parallel arm learning gates/smoke/formal2000/full3711/independent comparison; independent indexed3WSI engineering pilot."
+    "No automatic experiment launch. Retain accepted point matcher; paper evidence audit recommends matched ablations, seed/independent spatial confirmation and continuous WSI quality/cost before final claims."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -4286,7 +4286,7 @@
     "independent_confirmation": false
   },
   "support_region_study": {
-    "status": "running_parallel_functional_gates",
+    "status": "complete_accepted_not_promoted",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117",
     "record": "docs/运行记录/模型实验/运行记录_支持组织区域匹配与WSI并行_1106_162117.md",
     "seed": 20261103,
@@ -4302,54 +4302,48 @@
     ],
     "no_automatic_next_study": true,
     "preflight": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117/preflight.json",
-    "active_workers": {
-      "control": 902553,
-      "region": 902580
-    },
+    "active_workers": {},
     "last_observed": {
       "control": {
         "controller_pid": 902491,
-        "timestamp": 1793953367.680973,
-        "status": "running",
-        "stage": "functional",
-        "worker_pid": 902553,
-        "command": [
-          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-          "-u",
-          "-m",
-          "benchmarks.v5.support_region_study.functional",
-          "--cache",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-          "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117/control/learning/control",
-          "--arm",
-          "control",
-          "--seed",
-          "20261103"
-        ]
+        "timestamp": 1793959525.8316624,
+        "status": "complete_accepted",
+        "next_action": "report, no automatic next study"
       },
       "region": {
         "controller_pid": 902492,
-        "timestamp": 1793953367.915873,
-        "status": "running",
-        "stage": "functional",
-        "worker_pid": 902580,
-        "command": [
-          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-          "-u",
-          "-m",
-          "benchmarks.v5.support_region_study.functional",
-          "--cache",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-          "--output",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117/region/learning/region",
-          "--arm",
-          "region",
-          "--seed",
-          "20261103"
-        ]
+        "timestamp": 1793959532.6739054,
+        "status": "complete_accepted",
+        "next_action": "report, no automatic next study"
       }
-    }
+    },
+    "comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117/comparison.json",
+    "comparison_sha256": "2db56357f85cbb23b39d9f1556502126bf83fc79078f4e4718953966f62fb6c1",
+    "values": {
+      "control": {
+        "remote_macro_Dice": 0.37759363948987495,
+        "remote_Dice": 0.3580893665518721,
+        "remote_BF1": 0.16074189217577547,
+        "absent_FPA": 0.03016602935349942,
+        "local_Dice": 0.592830043070896,
+        "local_BF1": 0.23993657187379988,
+        "small_Dice": 0.3288598443013143,
+        "fat_Dice": 0.6060346280418903
+      },
+      "region": {
+        "remote_macro_Dice": 0.36789489404335635,
+        "remote_Dice": 0.34766773856649946,
+        "remote_BF1": 0.15622782848397057,
+        "absent_FPA": 0.029650256659704565,
+        "local_Dice": 0.5750564562689616,
+        "local_BF1": 0.23065120049406723,
+        "small_Dice": 0.29253027745067967,
+        "fat_Dice": 0.5897462781115607
+      }
+    },
+    "candidate": false,
+    "baseline_reproduction_exact": true,
+    "closeout_observed_at": "2026-11-06T19:24:59.482903+08:00"
   },
   "spatial_wsi_pilot": {
     "status": "complete_accepted_indexed_pilot",
@@ -4367,5 +4361,12 @@
     "active_workers": [],
     "gallery": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/spatial_wsi_displayfix_1106_162355/index.html",
     "P4_complete": false
+  },
+  "paper_readiness_audit": {
+    "timestamp": "2026-11-06T19:24:59.482903+08:00",
+    "record": "docs/建议/数据与评估/审计_AAAI质疑闭合与CVPR写作缺口_1106_192459.md",
+    "all_AAAI_challenges_resolved": false,
+    "can_start_draft": true,
+    "final_evidence_complete": false
   }
 }

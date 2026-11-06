@@ -4577,3 +4577,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: model /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117; WSI /nfs-medical3/zyh/fewclick_v2/cvpr_research/spatial_wsi_displayfix_1106_162355/acceptance.json and index.html.
 - Docs record: docs/运行记录/模型实验/运行记录_支持组织区域匹配与WSI并行_1106_162117.md; contract docs/建议/模型与训练/方案_支持组织区域匹配2000步与WSI空间块并行_1106_162117.md.
 - Commit: this scoped commit.
+
+## 11-06 19:24:59
+
+- Purpose: 关闭区域匹配阴性对照，核查原AAAI质疑与当前论文准备缺口。
+- Changed: docs/建议/数据与评估/审计_AAAI质疑闭合与CVPR写作缺口_1106_192459.md；goal.md、CVPR registry、当前运行记录。
+- Validation: 两臂checkpoint/rows/masks/report共8SHA与独立接受记录一致；各3711 rows；comparison EXIT0及控制精确重现；controller/正式worker已退出。原论文只读，未启动训练。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117/comparison.json
+- Docs record: docs/建议/数据与评估/审计_AAAI质疑闭合与CVPR写作缺口_1106_192459.md
+- Commit: 本次文档提交。
