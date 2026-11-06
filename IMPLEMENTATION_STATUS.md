@@ -4604,3 +4604,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345/user_pause.json
 - Docs record: docs/运行记录/模型实验/审计_细胞分支收益与当前匹配模型证据边界_1106_194507.md
 - Commit: 本次文档提交。
+
+## 11-06 19:47:46
+
+- Purpose: 启动当前显式matcher的原XCell完整细胞融合受控对照。
+- Changed: benchmarks/v5/matcher_cell_study；docs/建议/模型与训练/方案_当前匹配模型XCell同预算开关对照_1106_194712.md；docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md；goal/registry/AGENTS。
+- Validation: py_compile通过；真实cell integration worker1768316运行中，工程/学习/正式接受待完成；cell-off复用相同seed/预算接受结果。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_1106_194712；source_snapshot、contract包含来源/输入/权重SHA，阶段/真实PID见history。
+- Docs record: docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md
+- Commit: 本次提交。

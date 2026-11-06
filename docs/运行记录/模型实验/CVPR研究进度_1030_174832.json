@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-06T19:45:07.252265+08:00",
+  "updated_at": "2026-11-06T19:47:46.658321+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,8 +13,8 @@
     "current_run_record": "docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
-  "current_phase": "P3_P4_supplements",
-  "current_status": "user_paused_paper_supplements_for_cell_branch_audit",
+  "current_phase": "P3_cell_reassessment",
+  "current_status": "matcher_cell_integration_running_old_supplements_paused",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Await user steering on current matcher cell on/off controlled comparison before architecture freeze; no automatic resume or new training."
+    "Cell integration gate -> functional learning and independent acceptance -> smoke -> formal2000/full3711/independent acceptance -> matched cell on/off comparison. Stop on failure; no automatic seed or old supplement resume."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -4456,5 +4456,32 @@
     "status": "positive_gains_with_costs_current_matcher_combination_untested",
     "permanently_abandoned": false,
     "current_matcher_cell_ablation_complete": false
+  },
+  "matcher_cell_study": {
+    "status": "running_integration_gate",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_1106_194712",
+    "record": "docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md",
+    "contract": "docs/建议/模型与训练/方案_当前匹配模型XCell同预算开关对照_1106_194712.md",
+    "stage": {
+      "controller_pid": 1768199,
+      "timestamp": 1793965636.3335578,
+      "status": "running",
+      "stage": "cell_integration",
+      "worker_pid": 1768316,
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.matcher_cell_study.integration",
+        "--root",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_1106_194712"
+      ]
+    },
+    "GPU": 3,
+    "seed": 20261103,
+    "updates": 2000,
+    "reuse_control": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117/control/control",
+    "no_additional_seeds": true,
+    "old_supplements_remain_paused": true
   }
 }

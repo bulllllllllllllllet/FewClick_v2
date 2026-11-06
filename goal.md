@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_WSI消融及类别泛化_1106_193230.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -300,3 +300,5 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 2026-11-06T19:35:04.064234+08:00 用户明确取消新增seed，优先WSI/消融，泛化选非脂肪类别。新合同docs/建议/模型与训练/方案_WSI消融及非脂肪类别泛化_1106_193230.md，当前记录docs/运行记录/模型实验/运行记录_WSI消融及类别泛化_1106_193230.md。GPU2 no_match worker1716811、GPU0 no_negative worker1716818执行256步功能门控，随后自动smoke/2000/3711独立接受；保留首次缺learning父目录失败/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_1106_193230，新root/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345修复未改配方。GPU3连续3片×9重叠窗口工程gate：原细缓存和源native重采样不一致触发旧gate失败，独立新模块wsi_native_gate改为与canonical native_context三尺度逐像素核对，历史细缓存差异如实记录，禁止称原patch路径逐位复现；完整区域GT映射/质量仍preparing。类别库存坏死/肌肉/黏液val合格视野159/150/51，选择先于成绩，严格留出训练尚未开始。
 
 2026-11-06T19:45:07.252265+08:00 用户要求先核对细胞，已暂停当前补充消融controller/worker（SIGSTOP，/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345/user_pause.json），不自动恢复。WSI已退出0，限3片连续ROI工程门控。细胞并非零收益：P1 remote两seed+2.29/+2.32pp但代价未过；P3 remote+0.47pp/local+1.19pp且误报增加。当前matcher2000下细胞开关对照尚缺，暂未采用不等于永久废弃。审计docs/运行记录/模型实验/审计_细胞分支收益与当前匹配模型证据边界_1106_194507.md。
+
+2026-11-06T19:47:46.658321+08:00 用户授权优先补当前matcher细胞开关同预算对照。合同docs/建议/模型与训练/方案_当前匹配模型XCell同预算开关对照_1106_194712.md；记录docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md；产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_1106_194712。GPU3 controller1768199、实际工程worker1768316，integration运行中；只开cell融合/输入，matcher/Phikon/seed20261103/2000×4及3711协议保持，无细胞复用接受结果。工程/功能接受后自动正式与比较，失败停止。旧消融SIGSTOP保留，不增加seed。
