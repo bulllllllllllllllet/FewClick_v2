@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-07T00:49:28.544278+08:00",
+  "updated_at": "2026-11-07T00:52:57.935708+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3_cell_reassessment",
-  "current_status": "matcher_cell_complete_accepted_not_promoted_old_supplements_paused",
+  "current_status": "gated_cell_residual_integration_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Report completed cell comparison; retain image-only matcher candidate. Old supplements remain user-paused; no automatic resume or new seed."
+    "Gated cell integration -> functional256/independent acceptance -> smoke -> formal2000/3711 independent acceptance and matched comparison; failure stops; old supplements paused."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -4520,5 +4520,31 @@
     "report_sha256": "bc9d48b735c1c9cddafac6cf885e895a8fc9d0e44dd84cc9a58e88d6e1494eb1",
     "hard_bug_established": false,
     "training_updates": 0
+  },
+  "gated_cell_study": {
+    "status": "running_integration_gate",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/gated_cell_1107_005210",
+    "record": "docs/运行记录/模型实验/运行记录_细胞门控残差融合_1107_005210.md",
+    "contract": "docs/建议/模型与训练/方案_细胞软覆盖门控残差单因素试验_1107_005210.md",
+    "stage": {
+      "controller_pid": 2891459,
+      "timestamp": 1793983934.9480608,
+      "status": "running",
+      "stage": "cell_integration",
+      "worker_pid": 2891939,
+      "command": [
+        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+        "-u",
+        "-m",
+        "benchmarks.v5.gated_cell_study.integration",
+        "--root",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/gated_cell_1107_005210"
+      ]
+    },
+    "seed": 20261103,
+    "updates": 2000,
+    "GPU": 2,
+    "no_new_seed": true,
+    "additional_parameters": 1
   }
 }

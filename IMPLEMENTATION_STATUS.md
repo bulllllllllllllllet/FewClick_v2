@@ -4658,3 +4658,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_diagnostic_1107_004727/report.json
 - Docs record: docs/运行记录/模型实验/诊断_当前细胞输入融合与误报_1107_004727.md
 - Commit: 本次提交。
+
+## 11-07 00:52:57
+
+- Purpose: 启动单配方软细胞支持门控残差融合。
+- Changed: gated_cell_study、合同/运行记录、goal/registry/AGENTS。
+- Validation: CPU真实融合0/1/17细胞有限/精确无cell初值/空集回退通过；真实integration worker2891939运行中；质量未接受。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/gated_cell_1107_005210
+- Docs record: docs/运行记录/模型实验/运行记录_细胞门控残差融合_1107_005210.md
+- Commit: 本次提交。
