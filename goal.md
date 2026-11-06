@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_支持组织区域匹配与WSI并行_1106_162117.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_WSI消融及类别泛化_1106_193230.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -294,3 +294,7 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 2026-11-06T16:27:08.240487+08:00 WSI索引pilot独立7mask指标复算与绑定SHA通过，展示修复及accept EXIT0；入口/nfs-medical3/zyh/fewclick_v2/cvpr_research/spatial_wsi_displayfix_1106_162355/index.html，真实3片源缩略图、支持点/查询RGB/GT/预测同范围可视化已生成并检查首图。仅7个query（3present/4absent），presentDice34.66%、absentFPA25.26%，样本极小且任务重组，不能与3711主表直接比或作WSI质量结论；没有掩盖误报问题。只接受工程流程和库存空间块，连续全片/缓存交互性能、接缝及更多WSI未完成。GPU0/2两臂functional仍运行，前向/梯度/学习接受待完成，不提前称正式已训练。
 
 2026-11-06T19:24:59.482903+08:00 支持区域匹配两臂完成接受：各2000更新/3711独立评分，8产物SHA复核通过、控制精确重现；region远端37.76→36.79%、本图59.28→57.51%、small32.89→29.25%，原提升/small守门失败，不晋升且不排第二seed。相关worker均退出，保留点匹配候选。WSI仍限3片7索引位置，不标P4完成。原AAAI质疑及写作缺口审计见docs/建议/数据与评估/审计_AAAI质疑闭合与CVPR写作缺口_1106_192459.md，可以写草稿但不能称质疑全部解决；本轮不启动训练。
+
+## 最新用户优先级（覆盖旧多seed计划）
+
+2026-11-06T19:35:04.064234+08:00 用户明确取消新增seed，优先WSI/消融，泛化选非脂肪类别。新合同docs/建议/模型与训练/方案_WSI消融及非脂肪类别泛化_1106_193230.md，当前记录docs/运行记录/模型实验/运行记录_WSI消融及类别泛化_1106_193230.md。GPU2 no_match worker1716811、GPU0 no_negative worker1716818执行256步功能门控，随后自动smoke/2000/3711独立接受；保留首次缺learning父目录失败/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_1106_193230，新root/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345修复未改配方。GPU3连续3片×9重叠窗口工程gate：原细缓存和源native重采样不一致触发旧gate失败，独立新模块wsi_native_gate改为与canonical native_context三尺度逐像素核对，历史细缓存差异如实记录，禁止称原patch路径逐位复现；完整区域GT映射/质量仍preparing。类别库存坏死/肌肉/黏液val合格视野159/150/51，选择先于成绩，严格留出训练尚未开始。

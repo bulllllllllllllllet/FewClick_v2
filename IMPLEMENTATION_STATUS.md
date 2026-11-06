@@ -4586,3 +4586,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117/comparison.json
 - Docs record: docs/建议/数据与评估/审计_AAAI质疑闭合与CVPR写作缺口_1106_192459.md
 - Commit: 本次文档提交。
+
+## 11-06 19:35:05
+
+- Purpose: 按用户要求停止新增seed，启动同预算匹配消融、连续WSI门控和非脂肪类别覆盖审计。
+- Changed: benchmarks/v5/paper_completion；docs/建议/模型与训练/方案_WSI消融及非脂肪类别泛化_1106_193230.md；docs/运行记录/模型实验/运行记录_WSI消融及类别泛化_1106_193230.md；goal/registry/AGENTS接续入口。
+- Validation: py_compile通过；真实两臂功能门控运行中，optimizer/学习接受待完成；3片27网格footprint与类别库存审计通过；WSI原细缓存一致检查失败保留，native canonical逐像素门控运行中；不称正式/WSI质量完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345，首次失败/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_1106_193230。
+- Docs record: docs/运行记录/模型实验/运行记录_WSI消融及类别泛化_1106_193230.md
+- Commit: 本次提交。

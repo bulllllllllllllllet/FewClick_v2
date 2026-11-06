@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-06T19:24:59.482903+08:00",
+  "updated_at": "2026-11-06T19:35:04.064234+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -13,8 +13,8 @@
     "current_run_record": "docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
-  "current_phase": "P3",
-  "current_status": "support_region_complete_accepted_not_promoted_point_match_retained",
+  "current_phase": "P3_P4_supplements",
+  "current_status": "paper_completion_ablation_learning_gates_running_WSI_native_gate_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,9 @@
     }
   ],
   "next_actions": [
-    "No automatic experiment launch. Retain accepted point matcher; paper evidence audit recommends matched ablations, seed/independent spatial confirmation and continuous WSI quality/cost before final claims."
+    "After accepted functional gates automatically smoke/formal2000/3711 independent acceptance for two ablations; stop failures.",
+    "Continuous WSI source native loader gate, then annotation registration and expanded prespecified WSI quality/cost.",
+    "Prepare strict heldout necrosis/muscle/mucus with all loss-path supervision masking; no extra seeds; do not queue training before protocol/gates accepted."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -2455,7 +2457,11 @@
     "Audit entire P1 acceptance before P2; no promotion based on engineering gates"
   ],
   "native_goal_observed_at": "2026-10-31T22:36:21.094929+08:00",
-  "execution_authorization": "user resumed native goal; observed active",
+  "execution_authorization": {
+    "timestamp": "2026-11-06T19:35:04.064234+08:00",
+    "user": "不再多跑seed，主要补WSI和消融，泛化再找几个组织类别",
+    "no_additional_seeds": true
+  },
   "P1_acceptance_audit": {
     "status": "complete",
     "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p1_selection_close_1101_123321/data/acceptance.json",
@@ -4368,5 +4374,73 @@
     "all_AAAI_challenges_resolved": false,
     "can_start_draft": true,
     "final_evidence_complete": false
+  },
+  "paper_completion": {
+    "status": "running_functional_gates_WSI_preparing",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345",
+    "record": "docs/运行记录/模型实验/运行记录_WSI消融及类别泛化_1106_193230.md",
+    "contract": "docs/建议/模型与训练/方案_WSI消融及非脂肪类别泛化_1106_193230.md",
+    "failed_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_1106_193230",
+    "seed": 20261103,
+    "arms": {
+      "no_match": {
+        "controller_pid": 1716207,
+        "timestamp": 1793964828.9849634,
+        "status": "running",
+        "stage": "functional",
+        "worker_pid": 1716811,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.paper_completion.functional",
+          "--cache",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345/no_match/learning/no_match",
+          "--arm",
+          "no_match",
+          "--seed",
+          "20261103"
+        ]
+      },
+      "no_negative": {
+        "controller_pid": 1716208,
+        "timestamp": 1793964829.0705755,
+        "status": "running",
+        "stage": "functional",
+        "worker_pid": 1716818,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.paper_completion.functional",
+          "--cache",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345/no_negative/learning/no_negative",
+          "--arm",
+          "no_negative",
+          "--seed",
+          "20261103"
+        ]
+      }
+    },
+    "WSI": {
+      "status": "running_native_loader_continuous_ROI_gate",
+      "GPU": 3,
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345",
+      "previous_failure": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_1106_193230/wsi.log"
+    },
+    "generalization": {
+      "status": "coverage_audit_complete_strict_holdout_preparing",
+      "candidates": {
+        "3": "necrosis",
+        "7": "muscle",
+        "9": "mucus"
+      },
+      "fat_supervised": true
+    },
+    "no_new_seed": true
   }
 }
