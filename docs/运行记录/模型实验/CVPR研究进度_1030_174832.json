@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-06T20:13:00.041650+08:00",
+  "updated_at": "2026-11-07T00:18:33.445768+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3_cell_reassessment",
-  "current_status": "matcher_cell_learning_smoke_accepted_formal_running",
+  "current_status": "matcher_cell_complete_accepted_not_promoted_old_supplements_paused",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Cell integration gate -> functional learning and independent acceptance -> smoke -> formal2000/full3711/independent acceptance -> matched cell on/off comparison. Stop on failure; no automatic seed or old supplement resume."
+    "Report completed cell comparison; retain image-only matcher candidate. Old supplements remain user-paused; no automatic resume or new seed."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -4453,41 +4453,20 @@
   },
   "cell_branch_reassessment": {
     "record": "docs/运行记录/模型实验/审计_细胞分支收益与当前匹配模型证据边界_1106_194507.md",
-    "status": "positive_gains_with_costs_current_matcher_combination_untested",
+    "status": "current_matcher_cell_small_remote_gain_with_costs_not_promoted",
     "permanently_abandoned": false,
-    "current_matcher_cell_ablation_complete": false
+    "current_matcher_cell_ablation_complete": true
   },
   "matcher_cell_study": {
-    "status": "functional_smoke_accepted_formal_running",
+    "status": "complete_accepted_not_promoted",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114",
     "record": "docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md",
     "contract": "docs/建议/模型与训练/方案_当前匹配模型XCell同预算开关对照_1106_194712.md",
     "stage": {
       "controller_pid": 1783113,
-      "timestamp": 1793967067.3874168,
-      "status": "running",
-      "stage": "formal",
-      "worker_pid": 1856613,
-      "command": [
-        "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-        "-u",
-        "-m",
-        "benchmarks.v5.matcher_cell_study.train",
-        "--arm",
-        "cell_on",
-        "--cache",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-        "--protocol",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729",
-        "--learning",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/learning",
-        "--seed",
-        "20261103",
-        "--execution-contract",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/contract.json",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/control"
-      ]
+      "timestamp": 1793975256.8784053,
+      "status": "complete_accepted",
+      "next_action": "report, no automatic next study"
     },
     "GPU": 3,
     "seed": 20261103,
@@ -4506,6 +4485,32 @@
       "seconds": 264.625210236758
     },
     "learning_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/learning/cell_on/independent_acceptance.json",
-    "smoke_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/smoke/independent_acceptance.json"
+    "smoke_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/smoke/independent_acceptance.json",
+    "comparison": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/comparison.json",
+    "values": {
+      "cell_off": {
+        "remote_macro_Dice": 0.37759363948987495,
+        "remote_Dice": 0.3580893665518721,
+        "remote_BF1": 0.16074189217577547,
+        "absent_FPA": 0.03016602935349942,
+        "local_Dice": 0.592830043070896,
+        "local_BF1": 0.23993657187379988,
+        "small_Dice": 0.3288598443013143,
+        "fat_Dice": 0.6060346280418903
+      },
+      "cell_on": {
+        "remote_macro_Dice": 0.3810019728926619,
+        "remote_Dice": 0.35995625420219574,
+        "remote_BF1": 0.1566665968124702,
+        "absent_FPA": 0.043816511986098705,
+        "local_Dice": 0.5791333884001004,
+        "local_BF1": 0.22728486746796653,
+        "small_Dice": 0.2880147491669766,
+        "fat_Dice": 0.5633225199662821
+      }
+    },
+    "candidate": false,
+    "active_workers": [],
+    "closeout_observed_at": "2026-11-07T00:18:33.445768+08:00"
   }
 }

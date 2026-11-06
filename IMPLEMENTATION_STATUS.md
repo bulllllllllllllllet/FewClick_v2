@@ -4640,3 +4640,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114
 - Docs record: docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md
 - Commit: 本次提交。
+
+## 11-07 00:18:33
+
+- Purpose: 收尾当前matcher细胞同预算对照，报告有限收益及质量代价。
+- Changed: goal、CVPR registry、当前运行记录。
+- Validation: 四产物SHA、3711独立接受、8000消费字节一致；各阶段EXIT0；候选未过原守门；旧PID仍T。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/comparison.json
+- Docs record: docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md
+- Commit: 本次提交。
