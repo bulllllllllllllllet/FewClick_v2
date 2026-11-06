@@ -304,3 +304,5 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 2026-11-06T19:47:46.658321+08:00 用户授权优先补当前matcher细胞开关同预算对照。合同docs/建议/模型与训练/方案_当前匹配模型XCell同预算开关对照_1106_194712.md；记录docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md；产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_1106_194712。GPU3 controller1768199、实际工程worker1768316，integration运行中；只开cell融合/输入，matcher/Phikon/seed20261103/2000×4及3711协议保持，无细胞复用接受结果。工程/功能接受后自动正式与比较，失败停止。旧消融SIGSTOP保留，不增加seed。
 
 2026-11-06T19:51:14.181895+08:00 工程门控原目录/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_1106_194712因每一步cell梯度断言失败，正式未训练；新目录/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114仅修正检查为4步内存在有效梯度、参数变化及embedding依赖，保留256步学习门控和全部配方。pipeline_v2/integration_v2运行，旧失败保留。预计通过后训练/评分约3–5小时，修复失败则停止。
+
+2026-11-06T19:57:36.912047+08:00 cell integration EXIT0 accepted：初始参数一致、cell_off精确重现原matcher；4步内细胞梯度/参数变化及embedding扰动影响通过（平均logit影响0.00147965），不代表质量提升。实际GPU3 worker1787148 functional学习65/256（264.6s），完整学习门控未接受、正式2000尚未开始；旧暂停队列保持。

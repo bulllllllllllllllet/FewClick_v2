@@ -4622,3 +4622,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114，旧/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_1106_194712
 - Docs record: docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md
 - Commit: 本次提交。
+
+## 11-06 19:57:36
+
+- Purpose: 登记细胞接入门控接受和实际学习进度。
+- Changed: goal、registry、当前运行记录。
+- Validation: cell_integration.json及EXIT0核对；worker1787148存活，65/256；非质量结果。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114
+- Docs record: docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md
+- Commit: 本次进度提交。
