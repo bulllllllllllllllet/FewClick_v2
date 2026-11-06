@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-06T19:57:36.912047+08:00",
+  "updated_at": "2026-11-06T20:13:00.041650+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3_cell_reassessment",
-  "current_status": "matcher_cell_integration_accepted_learning_running",
+  "current_status": "matcher_cell_learning_smoke_accepted_formal_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -4458,29 +4458,35 @@
     "current_matcher_cell_ablation_complete": false
   },
   "matcher_cell_study": {
-    "status": "integration_accepted_functional_learning_running",
+    "status": "functional_smoke_accepted_formal_running",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114",
     "record": "docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md",
     "contract": "docs/建议/模型与训练/方案_当前匹配模型XCell同预算开关对照_1106_194712.md",
     "stage": {
       "controller_pid": 1783113,
-      "timestamp": 1793965938.6299255,
+      "timestamp": 1793967067.3874168,
       "status": "running",
-      "stage": "functional",
-      "worker_pid": 1787148,
+      "stage": "formal",
+      "worker_pid": 1856613,
       "command": [
         "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
         "-u",
         "-m",
-        "benchmarks.v5.matcher_cell_study.functional",
-        "--cache",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
-        "--output",
-        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/learning/cell_on",
+        "benchmarks.v5.matcher_cell_study.train",
         "--arm",
         "cell_on",
+        "--cache",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+        "--protocol",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/p3_task_protocol_1103_003729",
+        "--learning",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/learning",
         "--seed",
-        "20261103"
+        "20261103",
+        "--execution-contract",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/contract.json",
+        "--output",
+        "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/control"
       ]
     },
     "GPU": 3,
@@ -4498,6 +4504,8 @@
       "total_updates": 256,
       "worker_pid": 1787148,
       "seconds": 264.625210236758
-    }
+    },
+    "learning_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/learning/cell_on/independent_acceptance.json",
+    "smoke_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/smoke/independent_acceptance.json"
   }
 }
