@@ -302,3 +302,5 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 2026-11-06T19:45:07.252265+08:00 用户要求先核对细胞，已暂停当前补充消融controller/worker（SIGSTOP，/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345/user_pause.json），不自动恢复。WSI已退出0，限3片连续ROI工程门控。细胞并非零收益：P1 remote两seed+2.29/+2.32pp但代价未过；P3 remote+0.47pp/local+1.19pp且误报增加。当前matcher2000下细胞开关对照尚缺，暂未采用不等于永久废弃。审计docs/运行记录/模型实验/审计_细胞分支收益与当前匹配模型证据边界_1106_194507.md。
 
 2026-11-06T19:47:46.658321+08:00 用户授权优先补当前matcher细胞开关同预算对照。合同docs/建议/模型与训练/方案_当前匹配模型XCell同预算开关对照_1106_194712.md；记录docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md；产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_1106_194712。GPU3 controller1768199、实际工程worker1768316，integration运行中；只开cell融合/输入，matcher/Phikon/seed20261103/2000×4及3711协议保持，无细胞复用接受结果。工程/功能接受后自动正式与比较，失败停止。旧消融SIGSTOP保留，不增加seed。
+
+2026-11-06T19:51:14.181895+08:00 工程门控原目录/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_1106_194712因每一步cell梯度断言失败，正式未训练；新目录/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114仅修正检查为4步内存在有效梯度、参数变化及embedding依赖，保留256步学习门控和全部配方。pipeline_v2/integration_v2运行，旧失败保留。预计通过后训练/评分约3–5小时，修复失败则停止。

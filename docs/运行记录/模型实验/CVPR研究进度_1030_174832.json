@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-06T19:47:46.658321+08:00",
+  "updated_at": "2026-11-06T19:51:14.181895+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3_cell_reassessment",
-  "current_status": "matcher_cell_integration_running_old_supplements_paused",
+  "current_status": "matcher_cell_repaired_integration_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -4458,8 +4458,8 @@
     "current_matcher_cell_ablation_complete": false
   },
   "matcher_cell_study": {
-    "status": "running_integration_gate",
-    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_1106_194712",
+    "status": "running_repaired_integration_gate",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114",
     "record": "docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md",
     "contract": "docs/建议/模型与训练/方案_当前匹配模型XCell同预算开关对照_1106_194712.md",
     "stage": {
@@ -4482,6 +4482,7 @@
     "updates": 2000,
     "reuse_control": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117/control/control",
     "no_additional_seeds": true,
-    "old_supplements_remain_paused": true
+    "old_supplements_remain_paused": true,
+    "failed_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_1106_194712"
   }
 }

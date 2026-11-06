@@ -4613,3 +4613,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_1106_194712；source_snapshot、contract包含来源/输入/权重SHA，阶段/真实PID见history。
 - Docs record: docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md
 - Commit: 本次提交。
+
+## 11-06 19:51:14
+
+- Purpose: 修正零初始化导致首步cell梯度为零的门控检查。
+- Changed: integration_v2/pipeline_v2及当前goal/registry/record。
+- Validation: 原失败日志保留；新真实门控运行中，必须4步内梯度/更新/扰动依赖；正式训练未开始。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114，旧/nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_1106_194712
+- Docs record: docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md
+- Commit: 本次提交。
