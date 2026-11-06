@@ -4649,3 +4649,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matcher_cell_gatefix_1106_195114/comparison.json
 - Docs record: docs/运行记录/模型实验/运行记录_当前匹配模型细胞分支补充_1106_194712.md
 - Commit: 本次提交。
+
+## 11-07 00:49:28
+
+- Purpose: 排查细胞输入/融合/误报，保留有界因果解释。
+- Changed: matcher_cell_study/diagnose.py、诊断记录、goal/registry/current record。
+- Validation: 实际GPU6任务24前向、模型state不变、EXIT0；无训练。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_diagnostic_1107_004727/report.json
+- Docs record: docs/运行记录/模型实验/诊断_当前细胞输入融合与误报_1107_004727.md
+- Commit: 本次提交。
