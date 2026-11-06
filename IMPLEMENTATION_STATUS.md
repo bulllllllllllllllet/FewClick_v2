@@ -4595,3 +4595,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345，首次失败/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_1106_193230。
 - Docs record: docs/运行记录/模型实验/运行记录_WSI消融及类别泛化_1106_193230.md
 - Commit: 本次提交。
+
+## 11-06 19:45:07
+
+- Purpose: 纠正细胞分支零收益/永久废弃的过度外推，按用户要求暂停补充队列。
+- Changed: docs/运行记录/模型实验/审计_细胞分支收益与当前匹配模型证据边界_1106_194507.md；goal、registry及当前记录。
+- Validation: 原稿381行、P1两seed/P3六臂接受JSON核对；仅SIGSTOP匹配自身controller/worker，状态保留；WSI EXIT0工程范围限定。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345/user_pause.json
+- Docs record: docs/运行记录/模型实验/审计_细胞分支收益与当前匹配模型证据边界_1106_194507.md
+- Commit: 本次文档提交。

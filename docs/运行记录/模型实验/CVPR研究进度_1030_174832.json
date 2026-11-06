@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-06T19:35:04.064234+08:00",
+  "updated_at": "2026-11-06T19:45:07.252265+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3_P4_supplements",
-  "current_status": "paper_completion_ablation_learning_gates_running_WSI_native_gate_running",
+  "current_status": "user_paused_paper_supplements_for_cell_branch_audit",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,9 +2300,7 @@
     }
   ],
   "next_actions": [
-    "After accepted functional gates automatically smoke/formal2000/3711 independent acceptance for two ablations; stop failures.",
-    "Continuous WSI source native loader gate, then annotation registration and expanded prespecified WSI quality/cost.",
-    "Prepare strict heldout necrosis/muscle/mucus with all loss-path supervision masking; no extra seeds; do not queue training before protocol/gates accepted."
+    "Await user steering on current matcher cell on/off controlled comparison before architecture freeze; no automatic resume or new training."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -4376,7 +4374,7 @@
     "final_evidence_complete": false
   },
   "paper_completion": {
-    "status": "running_functional_gates_WSI_preparing",
+    "status": "user_paused_for_cell_branch_audit",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345",
     "record": "docs/运行记录/模型实验/运行记录_WSI消融及类别泛化_1106_193230.md",
     "contract": "docs/建议/模型与训练/方案_WSI消融及非脂肪类别泛化_1106_193230.md",
@@ -4427,7 +4425,7 @@
       }
     },
     "WSI": {
-      "status": "running_native_loader_continuous_ROI_gate",
+      "status": "complete_continuous_ROI_engineering_only",
       "GPU": 3,
       "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345",
       "previous_failure": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_1106_193230/wsi.log"
@@ -4441,6 +4439,22 @@
       },
       "fat_supervised": true
     },
-    "no_new_seed": true
+    "no_new_seed": true,
+    "pause": {
+      "status": "user_paused_for_cell_evidence_audit",
+      "pids": [
+        1716207,
+        1716208,
+        1753449,
+        1756970
+      ],
+      "method": "SIGSTOP preserves worker state; GPU allocations retained; no automatic resume"
+    }
+  },
+  "cell_branch_reassessment": {
+    "record": "docs/运行记录/模型实验/审计_细胞分支收益与当前匹配模型证据边界_1106_194507.md",
+    "status": "positive_gains_with_costs_current_matcher_combination_untested",
+    "permanently_abandoned": false,
+    "current_matcher_cell_ablation_complete": false
   }
 }

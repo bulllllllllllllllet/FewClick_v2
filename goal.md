@@ -298,3 +298,5 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 ## 最新用户优先级（覆盖旧多seed计划）
 
 2026-11-06T19:35:04.064234+08:00 用户明确取消新增seed，优先WSI/消融，泛化选非脂肪类别。新合同docs/建议/模型与训练/方案_WSI消融及非脂肪类别泛化_1106_193230.md，当前记录docs/运行记录/模型实验/运行记录_WSI消融及类别泛化_1106_193230.md。GPU2 no_match worker1716811、GPU0 no_negative worker1716818执行256步功能门控，随后自动smoke/2000/3711独立接受；保留首次缺learning父目录失败/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_1106_193230，新root/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345修复未改配方。GPU3连续3片×9重叠窗口工程gate：原细缓存和源native重采样不一致触发旧gate失败，独立新模块wsi_native_gate改为与canonical native_context三尺度逐像素核对，历史细缓存差异如实记录，禁止称原patch路径逐位复现；完整区域GT映射/质量仍preparing。类别库存坏死/肌肉/黏液val合格视野159/150/51，选择先于成绩，严格留出训练尚未开始。
+
+2026-11-06T19:45:07.252265+08:00 用户要求先核对细胞，已暂停当前补充消融controller/worker（SIGSTOP，/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_completion_dirfix_1106_193345/user_pause.json），不自动恢复。WSI已退出0，限3片连续ROI工程门控。细胞并非零收益：P1 remote两seed+2.29/+2.32pp但代价未过；P3 remote+0.47pp/local+1.19pp且误报增加。当前matcher2000下细胞开关对照尚缺，暂未采用不等于永久废弃。审计docs/运行记录/模型实验/审计_细胞分支收益与当前匹配模型证据边界_1106_194507.md。
