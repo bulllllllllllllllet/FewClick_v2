@@ -4594,6 +4594,6 @@
     },
     "followup_pid": 2915901,
     "negative_resume_condition": "no_match complete accepted and bound comparison; stop on failure",
-    "WSI_annotation_status": "running_coordinate_audit_acceptance_pending"
+    "WSI_annotation_status": "complete_registration_audit_acceptance_pending"
   }
 }
