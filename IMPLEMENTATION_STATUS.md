@@ -4568,3 +4568,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_seed2_closeout_1106_160939/acceptance.json and report.md.
 - Docs record: docs/运行记录/模型实验/运行记录_匹配模型第二seed2000步预算确认_1105_114636.md.
 - Commit: this scoped commit.
+
+## 11-06 16:27:08
+
+- Purpose: Launch authorized parallel support-region controls and accept bounded indexed3WSI engineering pilot.
+- Changed: support_region_study, spatial_wsi_pilot, contract/current record, goal/registry/AGENTS pointer.
+- Validation: compileall passed; real6task initial fullstate/parameter/logit equivalence accepted; actual functional workers control902553/region902580 running on GPUs0/2. GPU1 real3WSI source reads, footprint isolation,7predictions and independent masks accepted; None Dice HTML error retained and display-only repair accepted in new directory. WSI remains sparse indexed coverage, P4 incomplete.
+- Artifacts: model /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117; WSI /nfs-medical3/zyh/fewclick_v2/cvpr_research/spatial_wsi_displayfix_1106_162355/acceptance.json and index.html.
+- Docs record: docs/运行记录/模型实验/运行记录_支持组织区域匹配与WSI并行_1106_162117.md; contract docs/建议/模型与训练/方案_支持组织区域匹配2000步与WSI空间块并行_1106_162117.md.
+- Commit: this scoped commit.

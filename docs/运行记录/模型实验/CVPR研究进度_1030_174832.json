@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-06T16:09:39.180230+08:00",
+  "updated_at": "2026-11-06T16:27:08.240487+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P3",
-  "current_status": "budget_replication_and_SAM_comparison_complete",
+  "current_status": "support_region_parallel_functional_running_wsi_indexed_pilot_accepted",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Report two-seed bounded budget confirmation and single-seed SAM comparison; support-region matching and WSI remain proposed, no automatic new run."
+    "Matched initialization preflight -> parallel arm learning gates/smoke/formal2000/full3711/independent comparison; independent indexed3WSI engineering pilot."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -4284,5 +4284,88 @@
       }
     },
     "independent_confirmation": false
+  },
+  "support_region_study": {
+    "status": "running_parallel_functional_gates",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117",
+    "record": "docs/运行记录/模型实验/运行记录_支持组织区域匹配与WSI并行_1106_162117.md",
+    "seed": 20261103,
+    "updates": 2000,
+    "GPU_assignments": {
+      "control": 0,
+      "region": 2
+    },
+    "preflight_pid": 897612,
+    "arms": [
+      "control",
+      "region"
+    ],
+    "no_automatic_next_study": true,
+    "preflight": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117/preflight.json",
+    "active_workers": {
+      "control": 902553,
+      "region": 902580
+    },
+    "last_observed": {
+      "control": {
+        "controller_pid": 902491,
+        "timestamp": 1793953367.680973,
+        "status": "running",
+        "stage": "functional",
+        "worker_pid": 902553,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.support_region_study.functional",
+          "--cache",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117/control/learning/control",
+          "--arm",
+          "control",
+          "--seed",
+          "20261103"
+        ]
+      },
+      "region": {
+        "controller_pid": 902492,
+        "timestamp": 1793953367.915873,
+        "status": "running",
+        "stage": "functional",
+        "worker_pid": 902580,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.support_region_study.functional",
+          "--cache",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117/region/learning/region",
+          "--arm",
+          "region",
+          "--seed",
+          "20261103"
+        ]
+      }
+    }
+  },
+  "spatial_wsi_pilot": {
+    "status": "complete_accepted_indexed_pilot",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/spatial_wsi_displayfix_1106_162355",
+    "record": "docs/运行记录/模型实验/运行记录_支持组织区域匹配与WSI并行_1106_162117.md",
+    "GPU": 1,
+    "worker_pid": 897618,
+    "scope": "three real WSI thumbnails and indexed validation blocks, not dense whole-slide scan",
+    "original_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/spatial_wsi_pilot_1106_162117",
+    "queries": 7,
+    "slides": 3,
+    "training_updates": 0,
+    "display_repair": "None Dice shown as absent/FPA; no repeated inference",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/spatial_wsi_displayfix_1106_162355/acceptance.json",
+    "active_workers": [],
+    "gallery": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/spatial_wsi_displayfix_1106_162355/index.html",
+    "P4_complete": false
   }
 }

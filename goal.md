@@ -1,6 +1,6 @@
 # FewClick CVPR 当前 Goal
 
-更新：2026-11-06T16:09:39.180230+08:00。FewClick2000步预算两初始化seed确认通过，SAM同预算补充完成；无本组活动任务，后续结构与WSI尚未启动。
+更新：2026-11-06T16:23:04.788215+08:00。用户授权支持组织区域匹配与小WSI试验并行，GPU0/2模型门控、GPU1空间块WSI准备；质量尚未接受。
 
 ## 目标
 
@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_SAM同2000步预算补充_1105_120404.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_支持组织区域匹配与WSI并行_1106_162117.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -286,3 +286,9 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 2026-11-05T16:03:23.302288+08:00 更新：第二seed2000步3711评分及fresh重载已完成，formal worker EXIT0；当前真实独立接受worker3908439 running，随后仍需已保存1000步模型3711评分/接受与本seed预算比较。尚无第二seed完整验收结论，预计余1–1.5小时，按负载变化。SAM同预算结果已完整接受，见前述收尾。
 
 2026-11-06T16:09:39.180230+08:00 第二seedcomplete_accepted/EXIT0：1000/2000各3711mask/独立接受与fresh12完成；两个checkpoint有限/optimizer1000和2000步、完整绑定SHA、8000消费与源一致，8指标独立聚合核对。seed2 remote宏34.86→39.24、本图53.17→57.95、small22.73→29.92、fat52.75→60.34、FPA5.82→3.59（%），原10守门全过。两seed预算收益复现，固定2000作为后续比较预算。收尾/nfs-medical3/zyh/fewclick_v2/cvpr_research/matching_seed2_closeout_1106_160939/report.md。两组无活动worker，无自动新训练；SAM只有单seed，独立确认/WSI仍缺。
+
+2026-11-06T16:23:04.788215+08:00 用户授权两方向并行。结构控制/region同参数同2000预算，GPU0/2，真实初始化前向gate897612运行中；GPU1 WSI worker897618准备3片真实WSI及索引验证空间块。非全片连续扫描，不标P4完成。合同docs/建议/模型与训练/方案_支持组织区域匹配2000步与WSI空间块并行_1106_162117.md；产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_study_1106_162117、/nfs-medical3/zyh/fewclick_v2/cvpr_research/spatial_wsi_pilot_1106_162117。进程启动不等于接受，门控成功自动串联正式/独立评分。当前record：docs/运行记录/模型实验/运行记录_支持组织区域匹配与WSI并行_1106_162117.md。
+
+2026-11-06T16:25:28.220808+08:00 初始化gate已接受：两臂完整state/参数相同，6任务query/support初始logits逐位相同。GPU0 control真实worker902553、GPU2 region真实worker902580正在独立功能学习门控；门控接受后自动smoke和2000正式。WSI原GPU1推理已完成，3片7个独立索引位置（3present/4absent），空间隔离通过；仅覆盖非常有限，不能作WSI质量结论或P4完成。网页None Dice展示错误已在/nfs-medical3/zyh/fewclick_v2/cvpr_research/spatial_wsi_displayfix_1106_162355修复，保留/nfs-medical3/zyh/fewclick_v2/cvpr_research/spatial_wsi_pilot_1106_162117/failure.json，不重复推理；独立mask接受状态complete_accepted_indexed_pilot。plan.kind沿用支持episode字段，不作为新query存在性；present/absent只由评分metrics.positive确定。
+
+2026-11-06T16:27:08.240487+08:00 WSI索引pilot独立7mask指标复算与绑定SHA通过，展示修复及accept EXIT0；入口/nfs-medical3/zyh/fewclick_v2/cvpr_research/spatial_wsi_displayfix_1106_162355/index.html，真实3片源缩略图、支持点/查询RGB/GT/预测同范围可视化已生成并检查首图。仅7个query（3present/4absent），presentDice34.66%、absentFPA25.26%，样本极小且任务重组，不能与3711主表直接比或作WSI质量结论；没有掩盖误报问题。只接受工程流程和库存空间块，连续全片/缓存交互性能、接缝及更多WSI未完成。GPU0/2两臂functional仍运行，前向/梯度/学习接受待完成，不提前称正式已训练。
