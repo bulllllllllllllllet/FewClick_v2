@@ -4730,3 +4730,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_diagnostic_1108_005817
 - Docs record: docs/运行记录/模型实验/诊断_WSI类别覆盖与低分_1108_005817.md
 - Commit: see commit containing this entry.
+
+## 11-08 01:07:24
+
+- Purpose: Launch >=10000 distinct remote tasks on six GPUs with class-balanced coverage.
+- Changed: benchmarks/v5/wsi_taskscale and active continuity records.
+- Validation: unique11000triple/300query/75slide manifest; support click labels and4x overlap audit; three methods ×6 real cached/full exact forwards and disk-mask scoring accepted; six formal workers alive, final quality pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128
+- Docs record: docs/运行记录/模型实验/运行记录_WSI一万任务六卡评估_1108_010128.md
+- Commit: see commit containing this entry.

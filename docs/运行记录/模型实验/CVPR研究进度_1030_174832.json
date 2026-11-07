@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T01:00:03.837378+08:00",
+  "updated_at": "2026-11-08T01:07:24.355046+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_WSI扩展空间范围_1107_221801.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_WSI一万任务六卡评估_1108_010128.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_WSI扩展空间范围_1107_221801.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_WSI一万任务六卡评估_1108_010128.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "expanded_wsi_ROI_complete_accepted",
+  "current_status": "11000_tasks_six_gpu_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Prepare balanced per-class spatial WSI task coverage before new scores; preserve tiny-target strata and all prior failures. Separate support representativeness from prompt label validity."
+    "Freeze11000unique class balanced support-query tasks, pass three real cached/full forward gates, sixGPU inference and independent disk-mask acceptance; no training or new seeds."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -4746,5 +4746,141 @@
     "record": "docs/运行记录/模型实验/诊断_WSI类别覆盖与低分_1108_005817.md",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_diagnostic_1108_005817",
     "result": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_diagnostic_1108_005817/diagnosis.json"
+  },
+  "wsi_taskscale_1108_010128": {
+    "status": "running",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128",
+    "record": "docs/运行记录/模型实验/运行记录_WSI一万任务六卡评估_1108_010128.md",
+    "preparation_pid": 3874254,
+    "tmux": "wsi_11000_1108_010128",
+    "planned_tasks_per_method": 11000,
+    "planned_total_method_tasks": 33000,
+    "workers": [
+      {
+        "pid": 3886527,
+        "method": "full",
+        "shard": 0,
+        "gpu": 0,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_taskscale.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128",
+          "--method",
+          "full",
+          "--shard",
+          "0"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128/full_0.log",
+        "status": "running"
+      },
+      {
+        "pid": 3886529,
+        "method": "full",
+        "shard": 1,
+        "gpu": 1,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_taskscale.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128",
+          "--method",
+          "full",
+          "--shard",
+          "1"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128/full_1.log",
+        "status": "running"
+      },
+      {
+        "pid": 3886532,
+        "method": "no_match",
+        "shard": 0,
+        "gpu": 2,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_taskscale.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128",
+          "--method",
+          "no_match",
+          "--shard",
+          "0"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128/no_match_0.log",
+        "status": "running"
+      },
+      {
+        "pid": 3886535,
+        "method": "no_match",
+        "shard": 1,
+        "gpu": 3,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_taskscale.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128",
+          "--method",
+          "no_match",
+          "--shard",
+          "1"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128/no_match_1.log",
+        "status": "running"
+      },
+      {
+        "pid": 3886538,
+        "method": "sam",
+        "shard": 0,
+        "gpu": 4,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_taskscale.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128",
+          "--method",
+          "sam",
+          "--shard",
+          "0"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128/sam_0.log",
+        "status": "running"
+      },
+      {
+        "pid": 3886541,
+        "method": "sam",
+        "shard": 1,
+        "gpu": 5,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_taskscale.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128",
+          "--method",
+          "sam",
+          "--shard",
+          "1"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128/sam_1.log",
+        "status": "running"
+      }
+    ],
+    "controller_pid": 3884582,
+    "tasks_sha256": "c5fbba21931700dbf0a0b642800623e80beec123a80b740806d7e765fa988eb3",
+    "query_regions": 300,
+    "query_slides": 75,
+    "gates": "three methods six real tasks each cached-full exact plus independent disk mask scoring"
   }
 }
