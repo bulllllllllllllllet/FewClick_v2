@@ -4748,3 +4748,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913
 - Docs record: docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md
 - Commit: see commit containing this entry.
+
+## 11-08 02:08:58
+
+- Purpose: Record accepted SAME-WSI manifest/gates and actual six-GPU inference progress.
+- Changed: goal/registry/current run record.
+- Validation: 11000same-slide,0cross-slide/4xoverlap; three gates accepted; six formal workers running. Final scoring pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913
+- Docs record: docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md
+- Commit: see commit containing this entry.

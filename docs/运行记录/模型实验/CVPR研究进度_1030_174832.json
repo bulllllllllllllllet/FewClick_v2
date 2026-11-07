@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T01:45:16.118281+08:00",
+  "updated_at": "2026-11-08T02:08:58.584432+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "same_slide_only_11000_preparing",
+  "current_status": "same_slide_11000_six_gpu_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -4886,7 +4886,7 @@
     "reason": "User restricts task to SAME-WSI remote only; do not resume"
   },
   "wsi_same_slide_1108_013913": {
-    "status": "preparing",
+    "status": "running",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913",
     "record": "docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md",
     "preparation_pid": 4010532,
@@ -4895,6 +4895,133 @@
     "geometric_min_pairs_per_class": 2320,
     "smoke_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_smoke_1108_013913/gate_full/acceptance.json",
     "smoke": "accepted_6real_same_slide_fresh_cached_exact_and_disk_scores",
-    "formal_workers_started": false
+    "formal_workers_started": true,
+    "workers": [
+      {
+        "pid": 4087021,
+        "method": "full",
+        "shard": 0,
+        "gpu": 0,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_same_slide.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913",
+          "--method",
+          "full",
+          "--shard",
+          "0"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913/full_0.log",
+        "status": "running"
+      },
+      {
+        "pid": 4087024,
+        "method": "full",
+        "shard": 1,
+        "gpu": 1,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_same_slide.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913",
+          "--method",
+          "full",
+          "--shard",
+          "1"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913/full_1.log",
+        "status": "running"
+      },
+      {
+        "pid": 4087026,
+        "method": "no_match",
+        "shard": 0,
+        "gpu": 2,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_same_slide.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913",
+          "--method",
+          "no_match",
+          "--shard",
+          "0"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913/no_match_0.log",
+        "status": "running"
+      },
+      {
+        "pid": 4087029,
+        "method": "no_match",
+        "shard": 1,
+        "gpu": 3,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_same_slide.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913",
+          "--method",
+          "no_match",
+          "--shard",
+          "1"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913/no_match_1.log",
+        "status": "running"
+      },
+      {
+        "pid": 4087033,
+        "method": "sam",
+        "shard": 0,
+        "gpu": 4,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_same_slide.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913",
+          "--method",
+          "sam",
+          "--shard",
+          "0"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913/sam_0.log",
+        "status": "running"
+      },
+      {
+        "pid": 4087035,
+        "method": "sam",
+        "shard": 1,
+        "gpu": 5,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_same_slide.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913",
+          "--method",
+          "sam",
+          "--shard",
+          "1"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913/sam_1.log",
+        "status": "running"
+      }
+    ],
+    "controller_pid": 4085163,
+    "coverage": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913/coverage.json",
+    "same_slide": 11000,
+    "cross_slide": 0,
+    "overlapping_4x": 0
   }
 }
