@@ -4721,3 +4721,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_extent_1107_221801
 - Docs record: docs/运行记录/模型实验/运行记录_WSI扩展空间范围_1107_221801.md
 - Commit: see commit containing this entry.
+
+## 11-08 01:00:03
+
+- Purpose: Diagnose sparse WSI class coverage and low tumor/muscle/fat scores.
+- Changed: diagnose.py and continuity records.
+- Validation: real8ROI×3model disk probabilities, support sign labels all correct; inventory counts and precision/recall/GT-class false positives completed;0training.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_diagnostic_1108_005817
+- Docs record: docs/运行记录/模型实验/诊断_WSI类别覆盖与低分_1108_005817.md
+- Commit: see commit containing this entry.

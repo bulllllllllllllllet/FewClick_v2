@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T00:35:51.430885+08:00",
+  "updated_at": "2026-11-08T01:00:03.837378+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Audit enlarged-ROI component recall and class failures, then define complete-slide cache/interaction measurement separately; only one absent ROI so retain earlier absent evaluation. Strict heldout training not started. No extra seeds."
+    "Prepare balanced per-class spatial WSI task coverage before new scores; preserve tiny-target strata and all prior failures. Separate support representativeness from prompt label validity."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -4740,5 +4740,11 @@
     "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_extent_1107_221801/acceptance_v2.json",
     "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_extent_1107_221801/report_v2.json",
     "html": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_extent_1107_221801/index_v2.html"
+  },
+  "wsi_lowclass_diagnostic_1108_005817": {
+    "status": "complete_readonly",
+    "record": "docs/运行记录/模型实验/诊断_WSI类别覆盖与低分_1108_005817.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_diagnostic_1108_005817",
+    "result": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_diagnostic_1108_005817/diagnosis.json"
   }
 }
