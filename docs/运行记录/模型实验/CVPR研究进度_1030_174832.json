@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T01:07:24.355046+08:00",
+  "updated_at": "2026-11-08T01:45:16.118281+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_WSI一万任务六卡评估_1108_010128.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_WSI一万任务六卡评估_1108_010128.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "11000_tasks_six_gpu_running",
+  "current_status": "same_slide_only_11000_preparing",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Freeze11000unique class balanced support-query tasks, pass three real cached/full forward gates, sixGPU inference and independent disk-mask acceptance; no training or new seeds."
+    "Freeze sufficient SAME-WSI unique support-query tasks under full4x nonoverlap, pass real gates then sixGPU inference. Do not resume terminated cross-slide study."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -4748,7 +4748,7 @@
     "result": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_diagnostic_1108_005817/diagnosis.json"
   },
   "wsi_taskscale_1108_010128": {
-    "status": "running",
+    "status": "user_terminated",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128",
     "record": "docs/运行记录/模型实验/运行记录_WSI一万任务六卡评估_1108_010128.md",
     "preparation_pid": 3874254,
@@ -4881,6 +4881,20 @@
     "tasks_sha256": "c5fbba21931700dbf0a0b642800623e80beec123a80b740806d7e765fa988eb3",
     "query_regions": 300,
     "query_slides": 75,
-    "gates": "three methods six real tasks each cached-full exact plus independent disk mask scoring"
+    "gates": "three methods six real tasks each cached-full exact plus independent disk mask scoring",
+    "termination_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128/user_termination.json",
+    "reason": "User restricts task to SAME-WSI remote only; do not resume"
+  },
+  "wsi_same_slide_1108_013913": {
+    "status": "preparing",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913",
+    "record": "docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md",
+    "preparation_pid": 4010532,
+    "tmux": "wsi_same_1108_013913",
+    "candidate_queries": 6581,
+    "geometric_min_pairs_per_class": 2320,
+    "smoke_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_smoke_1108_013913/gate_full/acceptance.json",
+    "smoke": "accepted_6real_same_slide_fresh_cached_exact_and_disk_scores",
+    "formal_workers_started": false
   }
 }

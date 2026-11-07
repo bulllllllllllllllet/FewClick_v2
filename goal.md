@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_WSI一万任务六卡评估_1108_010128.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -339,3 +339,7 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 2026-11-08T01:04:13.033106+08:00 用户明确>=10000任务并行，预登记11000唯一三元组（11类×700present+300absent），三模型×2分片六GPU。当前CPU准备真实PID3874254，tmux wsi_11000_1108_010128。原WSI扩展已接受，不重跑。当前输出/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128，当前recorddocs/运行记录/模型实验/运行记录_WSI一万任务六卡评估_1108_010128.md；任务清单/真实门控未完成，不称正式运行。
 
 2026-11-08T01:07:24.355046+08:00 任务清单accepted：11000唯一(target,support,query)，11类×700present/300absent，300查询视野/75来源WSI；支持label/实际点击和最大4x空间隔离核对通过。三模型各6真实任务cached/full逐位一致及磁盘mask评分重放accepted，非质量晋升。六GPU正式评估已启动，controller3884582；workers [(0, 'full', 0, 3886527), (1, 'full', 1, 3886529), (2, 'no_match', 0, 3886532), (3, 'no_match', 1, 3886535), (4, 'sam', 0, 3886538), (5, 'sam', 1, 3886541)]。每分片5500任务，完成后自动逐mask复算/跨模型输入指纹核对/逐类聚合；当前running未接受最终质量。详见/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128/launch.json、coverage.json。
+
+2026-11-08T01:42:01.005637+08:00 用户要求只做同片远端，已核对cmdline终止旧controller及全部6worker，user_termination.json保留；旧cross主导研究标记user_terminated，不作为完成证据、不恢复。新轮/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913，记录docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md，预登记11000唯一同片任务；真实CPU准备PID4010532，tmux wsi_same_1108_013913；严格same WSI、不同patch、完整4x不重叠且与train隔离，先核库存，不复制任务；三方法门控成功后自动六卡正式。当前preparing非正式完成。
+
+2026-11-08T01:45:16.118281+08:00 旧7进程已再次确认不在运行。新geometry清单固定6581查询位置，类别几何配对容量2320–19649，满足每类1000的数量条件（支持实际点击合法性仍需完成）。新增query数据路径GPU3真实worker4019870 smoke完成：6不同同片配对fresh/cache逐位相同、保存mask独立GT复算全部accepted，验收/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_smoke_1108_013913/gate_full/acceptance.json。主CPU准备4010532仍running，约1000/6581标签已处理，正式11000任务尚未冻结、未启动六正式worker；tmux wsi_same_1108_013913自动继续三方法gate→六卡正式→独立评分。未新增训练或seed。

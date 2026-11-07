@@ -4739,3 +4739,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128
 - Docs record: docs/运行记录/模型实验/运行记录_WSI一万任务六卡评估_1108_010128.md
 - Commit: see commit containing this entry.
+
+## 11-08 01:45:16
+
+- Purpose: User-terminate cross-slide run and replace with strict same-WSI remote tasks.
+- Changed: benchmarks/v5/wsi_same_slide; active goal/registry/AGENTS/run pointers and old termination record.
+- Validation: own7oldPIDs terminated and absent;6581query geometry candidates audited; six real same-slide new-query GPU fresh/cached and disk-mask scores accepted. Main label/task preparation running; final gates and quality pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913
+- Docs record: docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md
+- Commit: see commit containing this entry.
