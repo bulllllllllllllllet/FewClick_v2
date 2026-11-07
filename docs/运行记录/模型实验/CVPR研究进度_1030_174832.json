@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-07T17:34:51.966164+08:00",
+  "updated_at": "2026-11-07T19:14:32.191779+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_单模型大小组织三方案_1104_150436.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
-  "current_phase": "P3_cell_reassessment",
-  "current_status": "parallel_cell_and_matcher_ablations_complete_accepted_full_matcher_retained",
+  "current_phase": "P4_WSI_ROI_quality",
+  "current_status": "wsi_six_gpu_inference_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Report completed controlled trials; retain full signed image matcher. WSI coordinate difference audit/full ROI quality and strict non-fat class holdouts remain preparing; no extra seeds or automatic new architecture runs."
+    "Finish 30-slide continuous ROI six-shard inference, independently replay fusion/score, inspect comparative HTML; WSI full-slide coverage and cold/cached complete-slide costs remain incomplete."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -4588,5 +4588,138 @@
       "no_negative": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_ablation_wsi_1107_005846/no_negative_comparison.json"
     },
     "closeout": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_closeout_1107_173451"
+  },
+  "wsi_quality_1107_190254": {
+    "status": "running",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix",
+    "record": "docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md",
+    "slides": 30,
+    "tiles_per_method": 718,
+    "tmux": "wsi_quality_1107_190254",
+    "coordinate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix/coordinate_acceptance.json",
+    "workers": [
+      {
+        "pid": 2632685,
+        "method": "full",
+        "shard": 0,
+        "gpu": 0,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_quality_study.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix",
+          "--method",
+          "full",
+          "--shard",
+          "0"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix/full_0.log",
+        "status": "running"
+      },
+      {
+        "pid": 2632687,
+        "method": "full",
+        "shard": 1,
+        "gpu": 1,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_quality_study.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix",
+          "--method",
+          "full",
+          "--shard",
+          "1"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix/full_1.log",
+        "status": "running"
+      },
+      {
+        "pid": 2632691,
+        "method": "no_match",
+        "shard": 0,
+        "gpu": 2,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_quality_study.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix",
+          "--method",
+          "no_match",
+          "--shard",
+          "0"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix/no_match_0.log",
+        "status": "running"
+      },
+      {
+        "pid": 2632694,
+        "method": "no_match",
+        "shard": 1,
+        "gpu": 3,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_quality_study.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix",
+          "--method",
+          "no_match",
+          "--shard",
+          "1"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix/no_match_1.log",
+        "status": "running"
+      },
+      {
+        "pid": 2632696,
+        "method": "sam",
+        "shard": 0,
+        "gpu": 4,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_quality_study.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix",
+          "--method",
+          "sam",
+          "--shard",
+          "0"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix/sam_0.log",
+        "status": "running"
+      },
+      {
+        "pid": 2632699,
+        "method": "sam",
+        "shard": 1,
+        "gpu": 5,
+        "gate": false,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.wsi_quality_study.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix",
+          "--method",
+          "sam",
+          "--shard",
+          "1"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix/sam_1.log",
+        "status": "running"
+      }
+    ],
+    "controller_pid": 2627154,
+    "gates": "all_three_accepted_exact_cached_forward_and_support_prefix_update"
   }
 }

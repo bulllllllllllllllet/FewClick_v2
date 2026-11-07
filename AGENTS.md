@@ -2,7 +2,7 @@
 
 For FewClick experiments, read `goal.md` first, then the linked experiment registry and current run record. The user's latest instructions take precedence over these records.
 
-The active CVPR roadmap is `docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md`; its registry is `docs/运行记录/模型实验/CVPR研究进度_1030_174832.json` and current record is `docs/运行记录/模型实验/运行记录_细胞门控残差融合_1107_005210.md`. The previous AAAI goal/registry is archived historical evidence only: do not resume its pending queues. Follow the current phase and acceptance gates; update this pointer if the active registry changes.
+The active CVPR roadmap is `docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md`; its registry is `docs/运行记录/模型实验/CVPR研究进度_1030_174832.json` and current record is `docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md`. The previous AAAI goal/registry is archived historical evidence only: do not resume its pending queues. Follow the current phase and acceptance gates; update this pointer if the active registry changes.
 
 - Keep `benchmarks/v4/` and `/home/zhaoyh/FewClick/` read-only. Develop new experiments in `benchmarks/v5/` and use the `aligner` environment.
 - Preserve existing data, checkpoints, caches and reports. New artifacts go in timestamped directories under `/nfs-medical3/zyh/fewclick_v2/`.
@@ -19,3 +19,5 @@ Latest user GPU policy (2026-11-03T13:41:20.162219+08:00): sharing an allowed GP
 Latest resource override (2026-11-04T18:50:08.879038+08:00): user authorized multi-GPU execution. For the active size-aware study, allow at most two own independent-arm training workers: preserve precision on GPU3 and opportunistically run detail on GPU1/4/5 when free memory is at least12288MiB. GPU0/2 remain excluded. Do not alter the frozen training recipe or duplicate/restart an active arm. Resource contract: `docs/建议/模型与训练/方案_单模型三方案双卡并行调度_1104_184916.md`; additional scheduler `/nfs-medical3/zyh/fewclick_v2/cvpr_research/size_parallel_1104_184916`. This overrides the earlier one-own-training-worker restriction for this study.
 
 Latest resource override (2026-11-05T11:50:54.212850+08:00): user explicitly authorizes all six physical GPUs 0/1/2/3/4/5. Previous GPU0/2 exclusions are revoked. Sharing is allowed when free memory is sufficient; choose by actual free memory and compute load, without requiring an idle GPU. Preserve running workers and frozen recipes; do not terminate other users or duplicate active arms. This expands eligible devices, not experiment scope or worker-count budgets.
+
+Latest WSI resource override (2026-11-07): user authorizes all available GPUs for WSI. Active WSI quality study permits up to six read-only inference workers, one per physical GPU0–5 with >=12288MiB free, no new training or additional seeds. Three frozen methods × two disjoint shards, gated before fan-out; record docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md.

@@ -4685,3 +4685,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_closeout_1107_173451/verification.json、report.md
 - Docs record: docs/运行记录/模型实验/运行记录_细胞门控残差融合_1107_005210.md
 - Commit: 本次提交。
+
+## 11-07 19:14:32
+
+- Purpose: Launch frozen three-method WSI continuous ROI comparison on all six GPUs.
+- Changed: benchmarks/v5/wsi_quality_study; active goal/registry/AGENTS pointers and run record.
+- Validation: 30 exact historical center-label replays; original index geometry rounding replay; three real cached/full-forward and support-prefix-update gates passed exactly. Six workers running, final quality acceptance pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix
+- Docs record: docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md
+- Commit: see commit containing this entry.
