@@ -325,3 +325,5 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 当前输出 /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix；持久调度等待权重SHA完成后自动三前向门控→六GPU分片→独立复算。
 
 2026-11-07T19:14:32.191779+08:00 三方法真实缓存前向/支持点前缀更新门控全部通过（max delta=0），六GPU正式推理已启动，controller2627154。[(0, 'full', 0, 2632685), (1, 'full', 1, 2632687), (2, 'no_match', 0, 2632691), (3, 'no_match', 1, 2632694), (4, 'sam', 0, 2632696), (5, 'sam', 1, 2632699)]。状态 running，不是质量完成；结束自动逐窗口磁盘融合重放、独立评分及HTML。
+
+2026-11-07T22:06:00.689137+08:00 complete_accepted：六正式分片各EXIT0，共2154窗口；collect初版仅空目标组件dtype失败，保留原failure，collect_v2/finalizer EXIT0、90个ROI×方法独立融合/标签重放/评分接受。现场报告/行SHA及类别宏均独立复核。full/no_match/SAM remote类别macro Dice31.6649/18.5885/12.6666%，任务均值27.6607/17.3469/10.2281%，BF1 11.8014/2.2916/6.0437%，absentFPA0.2480/0.6691/11.1218%（25present、5absent）。所有GPUworker已退出；全局Goal未完成，P4仍缺完整全片覆盖/冷启动和全片缓存交互成本。可视化 /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix/index_v2.html；权威验收 /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix/acceptance_v2.json。

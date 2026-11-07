@@ -4694,3 +4694,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix
 - Docs record: docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md
 - Commit: see commit containing this entry.
+
+## 11-07 22:06:00
+
+- Purpose: Close six-GPU WSI ROI evaluation and explicit absent-component scoring fix.
+- Changed: collect_v2.py, finalize_v2.py and continuity records. Original frozen collector retained.
+- Validation: all six workers EXIT0; 2154 windows; independent90ROI/method fusion, GT replay, scoring accepted; receipt SHA and macro aggregation rechecked.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix
+- Docs record: docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md
+- Commit: see commit containing this entry.
