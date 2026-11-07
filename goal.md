@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_WSI扩展空间范围_1107_221801.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -327,3 +327,7 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 2026-11-07T19:14:32.191779+08:00 三方法真实缓存前向/支持点前缀更新门控全部通过（max delta=0），六GPU正式推理已启动，controller2627154。[(0, 'full', 0, 2632685), (1, 'full', 1, 2632687), (2, 'no_match', 0, 2632691), (3, 'no_match', 1, 2632694), (4, 'sam', 0, 2632696), (5, 'sam', 1, 2632699)]。状态 running，不是质量完成；结束自动逐窗口磁盘融合重放、独立评分及HTML。
 
 2026-11-07T22:06:00.689137+08:00 complete_accepted：六正式分片各EXIT0，共2154窗口；collect初版仅空目标组件dtype失败，保留原failure，collect_v2/finalizer EXIT0、90个ROI×方法独立融合/标签重放/评分接受。现场报告/行SHA及类别宏均独立复核。full/no_match/SAM remote类别macro Dice31.6649/18.5885/12.6666%，任务均值27.6607/17.3469/10.2281%，BF1 11.8014/2.2916/6.0437%，absentFPA0.2480/0.6691/11.1218%（25present、5absent）。所有GPUworker已退出；全局Goal未完成，P4仍缺完整全片覆盖/冷启动和全片缓存交互成本。可视化 /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix/index_v2.html；权威验收 /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix/acceptance_v2.json。
+
+2026-11-07T22:19:35.653721+08:00 用户授权继续WSI：同30任务扩展空间范围，prepare_extent运行，tmux wsi_extent_1107_221801；旧窗口SHA绑定复用，新增范围三方法×两分片，真实fresh/cache/reuse一致性门控后执行。输出/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_extent_1107_221801，当前记录docs/运行记录/模型实验/运行记录_WSI扩展空间范围_1107_221801.md。状态preparing，不启动训练或额外seed。复用窗口的零编码耗时不能当作完整新编码性能，效率成本仅记录新增工作。
+
+2026-11-07T22:21:25.856766+08:00 清单已冻结：30片，25片扩展，半径8/6/4/2/1分别15/7/3/3/2片，每方法5854窗口，三方法17562窗口。旧718窗口/方法可复用（每片首个门控窗口允许重算）；新增约5136窗口/方法。真实准备PID3291961。复用真实GPU smoke PID3295458 EXIT0：2原始窗口、fresh/cache/prompt-update/prior-probability复用逐位一致maxdelta0。smoke产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_extent_smoke_1107_221801/gate_full/acceptance.json。主研究仍preparing，标签核验尚未全完，正式三模型门控后自动六卡推理。命令见 /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_extent_1107_221801/launch.sh；最终acceptance_v2.json才算完整接受。

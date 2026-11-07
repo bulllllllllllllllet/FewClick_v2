@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-07T22:06:00.689137+08:00",
+  "updated_at": "2026-11-07T22:21:25.856766+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_WSI扩展空间范围_1107_221801.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_WSI扩展空间范围_1107_221801.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "wsi_30slide_ROI_comparison_complete_accepted",
+  "current_status": "wsi_extent_preparing",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Inspect 30-slide WSI ROI gallery and per-class failures; freeze next WSI coverage/complete-slide cached cost protocol. Strict class holdouts not started; no new seeds."
+    "Prepare larger safe extents for same30tasks, pass fresh/cache/prior-probability reuse gate, six inference shards then independent scoring. Fullslide feature-cache cost remains separately pending."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -4725,5 +4725,17 @@
     "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix/report_v2.json",
     "html": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix/index_v2.html",
     "limitation": "Continuous spatial ROIs on30CRCslides, not fullslide coverage. Native goal paused retained."
+  },
+  "wsi_extent_1107_221801": {
+    "status": "preparing",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_extent_1107_221801",
+    "record": "docs/运行记录/模型实验/运行记录_WSI扩展空间范围_1107_221801.md",
+    "tmux": "wsi_extent_1107_221801",
+    "preparation_pid": 3291961,
+    "slides": 30,
+    "tiles_per_method": 5854,
+    "expanded_slides": 25,
+    "reuse_smoke": "accepted_exact_fresh_cached_prompt_update_prior_probability",
+    "smoke_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_extent_smoke_1107_221801/gate_full/acceptance.json"
   }
 }

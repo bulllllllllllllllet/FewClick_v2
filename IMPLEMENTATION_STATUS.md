@@ -4703,3 +4703,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix
 - Docs record: docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md
 - Commit: see commit containing this entry.
+
+## 11-07 22:21:25
+
+- Purpose: Expand same30 WSI tasks to larger spatially isolated extents; reuse accepted old probabilities.
+- Changed: prepare_extent.py, worker_extent.py, launch_extent.py; active continuity pointers.
+- Validation: real two-window fresh/cache/prompt-update/prior-probability GPU smoke passed exactly (maxdelta0); extended geometry prepared30slides/5854tiles per method. Full coordinate preparation still running; formal quality pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_extent_1107_221801
+- Docs record: docs/运行记录/模型实验/运行记录_WSI扩展空间范围_1107_221801.md
+- Commit: see commit containing this entry.
