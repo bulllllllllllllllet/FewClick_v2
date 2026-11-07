@@ -4676,3 +4676,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_ablation_wsi_1107_005846
 - Docs record: docs/运行记录/模型实验/运行记录_恢复匹配消融并行WSI标签审计_1107_005846.md
 - Commit: 本次提交。
+
+## 11-07 17:34:51
+
+- Purpose: 收尾门控细胞及匹配/负点两消融，保留全部收益与代价。
+- Changed: goal/registry/两当前记录。
+- Validation: 3×3711独立评分、12产物SHA/8000消费字节一致，真实worker全退出；候选未盲晋升。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_closeout_1107_173451/verification.json、report.md
+- Docs record: docs/运行记录/模型实验/运行记录_细胞门控残差融合_1107_005210.md
+- Commit: 本次提交。
