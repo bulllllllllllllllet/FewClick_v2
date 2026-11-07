@@ -4712,3 +4712,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_extent_1107_221801
 - Docs record: docs/运行记录/模型实验/运行记录_WSI扩展空间范围_1107_221801.md
 - Commit: see commit containing this entry.
+
+## 11-08 00:35:51
+
+- Purpose: Close expanded WSI ROI evaluation with verified results and limits.
+- Changed: active goal/registry/run record.
+- Validation: all workers EXIT0; acceptance report/rows SHA checked; class macro independently recomputed;90ROI-method outputs accepted.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_extent_1107_221801
+- Docs record: docs/运行记录/模型实验/运行记录_WSI扩展空间范围_1107_221801.md
+- Commit: see commit containing this entry.
