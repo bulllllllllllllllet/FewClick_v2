@@ -4867,3 +4867,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150
 - Docs record: docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md
 - Commit: see commit containing this entry.
+
+## 11-08 21:38:52
+
+- Purpose: Record accepted author-decoder-freeze training and actual evaluation progress.
+- Validation:256gate/smoke/2000formal accepted;8000consumption exact; image/decoder frozen hashes preserved; fresh6 predictions replayed. Evaluation1950of11000running, quality pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150
+- Docs record: docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md
+- Commit: see commit containing this entry.
