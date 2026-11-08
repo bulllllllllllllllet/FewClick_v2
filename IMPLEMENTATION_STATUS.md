@@ -4919,3 +4919,13 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/运行记录_近期参考引导分割检索与SANSA试跑_1109_040918.md
 - Results: SANSA present37.47/large54.20/FPA64.42pct, paired Few45.23/58.84/FPA1.59pct;110 stratified development tasks, zero target adaptation, no population/superiority claim.
 - Commit: see commit containing this entry.
+
+## 11-09 04:27:22
+
+- Purpose: Audit SANSA high absent-target false positives against official inference.
+- Changed: benchmarks/v5/reference_baseline/diagnose.py and continuity records.
+- Validation: official hub + original GPU inputs110masks exact;892base tensors equal public weights;330saved masks independently rescored;unchanged state;CPU preprocess differs by32pixels total/max4;positive-only FPA67.43pct vs64.42pct. EXIT0. Preserved startup import-order failure and CPU/GPU exact-check failure.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_integrity_1109_042435
+- Docs record: docs/运行记录/模型实验/诊断_SANSA无目标误报与官方路径核验_1109_042039.md
+- Conclusion: no confirmed loading/inference/metric bug; official object-presence suppression disabled, no target adaptation. Not an isolated causal attribution or fully optimized baseline.
+- Commit: see commit containing this entry.

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-09T04:18:34.888356+08:00",
+  "updated_at": "2026-11-09T04:27:22.031011+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -5603,5 +5603,31 @@
       }
     },
     "limitations": "Stratified110 development tasks, not full population or independent generalization. Universal promptable adapter differs from mask-only paper benchmark. Public pretraining and target update budgets differ from adapted baselines. All strata retained."
+  },
+  "sansa_integrity_1109_042039": {
+    "status": "complete_accepted_readonly",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_integrity_1109_042435",
+    "record": "docs/运行记录/模型实验/诊断_SANSA无目标误报与官方路径核验_1109_042039.md",
+    "worker_pid": 2533271,
+    "gpu": 3,
+    "scope": "readonly110tasks x3 pipelines, no training",
+    "failed_startups": [
+      "042039_libvips_import_order",
+      "042210_CPU_GPU_exact_mask_check"
+    ],
+    "controls": [
+      "official hub GPU original preprocessing exact replay",
+      "official hub CPU preprocessing differences",
+      "official hub CPU3positive_only"
+    ],
+    "weights": "all892nonadapter_equal_publicbase_240adapter_loaded",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_integrity_1109_042435/acceptance.json",
+    "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_integrity_1109_042435/report.json",
+    "official_gpu_exact_replay": 110,
+    "CPU_GPU_max_input_difference": 7.152557373046875e-07,
+    "CPU_changed_pixels_total": 32,
+    "positive_only_FPA": 0.674336982495857,
+    "hard_interface_bug": "not_found",
+    "conclusion": "official presence head disabled; zero target adaptation; positive-only worsens FPA; not causally isolated absence explanation"
   }
 }
