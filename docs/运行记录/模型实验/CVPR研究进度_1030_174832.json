@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T13:00:07.728204+08:00",
+  "updated_at": "2026-11-08T13:02:46.447963+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Same-slide only: inspect per-class/target-area/distance strata and spatial-source uncertainty from accepted11000 tasks; full-slide caching costs remain pending. Do not resume terminated cross-slide queue or add seeds."
+    "First same-slide class/area/distance and slide-cluster uncertainty from existing outputs, then full-slide cache/interaction costs and prompt robustness. Strict non-fat holdouts/independent spatial confirmation remain pending separate contracts. No cross-slide or extra seeds."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -5027,5 +5027,10 @@
     "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913/report.json",
     "unique_queries": 3200,
     "query_slides": 75
+  },
+  "same_slide_post_acceptance_review": {
+    "status": "complete_readonly",
+    "record": "docs/建议/模型与训练/建议_同片一万任务复核与后续优先级_1108_130136.md",
+    "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_review_1108_130136/review.json"
   }
 }
