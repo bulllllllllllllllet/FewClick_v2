@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T02:08:58.584432+08:00",
+  "updated_at": "2026-11-08T13:00:07.728204+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "same_slide_11000_six_gpu_running",
+  "current_status": "same_slide_11000_complete_accepted",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Freeze sufficient SAME-WSI unique support-query tasks under full4x nonoverlap, pass real gates then sixGPU inference. Do not resume terminated cross-slide study."
+    "Same-slide only: inspect per-class/target-area/distance strata and spatial-source uncertainty from accepted11000 tasks; full-slide caching costs remain pending. Do not resume terminated cross-slide queue or add seeds."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -4886,7 +4886,7 @@
     "reason": "User restricts task to SAME-WSI remote only; do not resume"
   },
   "wsi_same_slide_1108_013913": {
-    "status": "running",
+    "status": "complete_accepted",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913",
     "record": "docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md",
     "preparation_pid": 4010532,
@@ -5022,6 +5022,10 @@
     "coverage": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913/coverage.json",
     "same_slide": 11000,
     "cross_slide": 0,
-    "overlapping_4x": 0
+    "overlapping_4x": 0,
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913/acceptance.json",
+    "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913/report.json",
+    "unique_queries": 3200,
+    "query_slides": 75
   }
 }
