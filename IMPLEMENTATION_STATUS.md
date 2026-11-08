@@ -4841,3 +4841,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_adaptation_1108_142826
 - Docs record: docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md
 - Commit: see commit containing this entry.
+
+## 11-08 19:04:31
+
+- Purpose: Close matched adapted SAM2/WSI-SAM references.
+- Validation: pipeline EXIT0;2×2000updates/8000tasks;2×11000mask evaluations independently accepted; report/tasks/fourrows hashes and macro recomputed; Few/SAM1/SAM2/WSI training consumption hashes identical.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_adaptation_1108_142826
+- Docs record: docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md
+- Commit: see commit containing this entry.
