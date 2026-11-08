@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T19:09:35.694351+08:00",
+  "updated_at": "2026-11-08T20:45:55.544207+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "matched_SAM2_WSISAM_adaptation_and_same_slide_eval_complete_accepted",
+  "current_status": "WSISAM_author_freeze_integration_accepted_functional_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Review WSI-SAM author freeze-policy discrepancy using a bounded train-only controlled probe if authorized; retain current12.52 as specific adaptation result, not model upper bound. Continue previously authorized WSI cache/prompt/independent-confirmation supplements; no cross-slide eval, extra seeds, SAM3 or unseen-class training."
+    "Run user-authorized single-factor author decoder freezing integration and train-only functional control; pass original gates before same2000budget retraining and11000same-slide evaluation. Preserve previous baseline and failures. Other three paper supplements still pending."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -5191,5 +5191,16 @@
     "risk": "full decoder unfreezing differs from author constructor freeze; remote adaptation weak already in fixed train monitor",
     "next": "train-only author-freeze controlled probe before any revised formal baseline",
     "new_training_updates": 0
+  },
+  "wsi_author_freeze_1108_204150": {
+    "status": "functional_running",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150",
+    "record": "docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md",
+    "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150/contract.json",
+    "tmux": "wsi_author_freeze_1108_204150",
+    "integration": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150/integration_acceptance.json",
+    "functional_worker_pid": 833487,
+    "controller_pid": 833395,
+    "initial_state_and6predictions_exact": true
   }
 }

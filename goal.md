@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -372,3 +372,7 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 
 2026-11-08T19:09:35.694351+08:00 complete_accepted_readonly：12train任务×7解码干预=84，normal路径与已冻结decode逐位一致，权重前后state SHA不变，结果report.json/parameter_changes.json。未发现权重加载漏项、双尺度坐标/融合公式或全头不学习的硬bug；prompt13/16、high121/145、low91/145、matcher6/6参数张量实际变化，341其它张量无变化。正式32train CRC local49.37/cross-present9.34，迁移在训练监控已弱，非仅val染色/泛化。CRC诊断2remote例正常Dice13.48%、无dense14.79%但absent FPA3.18→15.76%；仅raw prior15.10%、high-only14.08%、SAM-residual-only0.95%、WSI-fused-only11.23%，均无普遍大幅恢复，不能用这些2例选新候选。fine检索特征13.58近正常，暂不支持尺度融合单点错误。原作者constructor明确冻结SAM已有decoder层，仅新增WSI分支可训练，而本次适配解冻全部high/low decoder，这是训练策略偏离风险（已披露头部适配），未因果证明低分由此造成。下一步应做原作者冻结策略的train-only受控功能对照，若接受再独立同2000budget重训，不能仅把12.52作为原方法充分适配上限；本轮不改正式结果或重训。
 诊断记录docs/运行记录/模型实验/诊断_WSISAM低分与原生路径核查_1108_190545.md。
+
+2026-11-08T20:44:31.689477+08:00 用户授权原作者decoder冻结单因素对照，新/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150；同public初始化/seed20261103/8000任务/2000×4和损失，只冻结原有SAM decoder层。先完整初始state和6输出逐位一致、256train功能gate/frozen-decoder SHA验证；通过自动smoke→fresh-public正式2000→同片11000两分片；失败停止无调阈值。原full-decoder gate/12.52%成绩只读保留。GPU3单训练，后推理3/5，无新seed/跨片/SAM3。当前记录docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md，状态initialization_integration_running，未接受质量。
+
+2026-11-08T20:45:55.544207+08:00 integration complete_accepted/EXIT0：新/旧完整初始state SHA相同1690e73aa34226679259fdc1c8c784d277eaef6456c2793cd31e4f798cfb417e，6组代表任务初始输出逐位一致；只移除240个旧decoder张量训练资格，trainable919981参数。真实GPU3 functional worker833487/controller833395 running；门控/正式/评价质量尚未接受。源代码在contract/snapshot冻结，正式数据和原权重未变。

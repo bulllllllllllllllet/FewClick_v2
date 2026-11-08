@@ -4858,3 +4858,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_sam_diagnostic_1108_190545
 - Docs record: docs/运行记录/模型实验/诊断_WSISAM低分与原生路径核查_1108_190545.md
 - Commit: see commit containing this entry.
+
+## 11-08 20:45:55
+
+- Purpose: Run authorized single-factor original WSI decoder freezing control.
+- Changed: wsi_author_freeze model/integration/functional/train/evaluate/workflow/pipeline plus records and active pointers.
+- Validation: full initial state and six real predictions exactly equal prior public starting model; only240decoder parameter trainable flags differ. GPU3 train-only256 gate running; formal quality pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150
+- Docs record: docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md
+- Commit: see commit containing this entry.
