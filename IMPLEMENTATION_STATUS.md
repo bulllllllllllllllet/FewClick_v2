@@ -4808,3 +4808,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227
 - Docs record: docs/运行记录/模型实验/运行记录_新增SAM2SAM3与WSISAM_1108_135227.md
 - Commit: see commit containing this entry.
+
+## 11-08 14:07:51
+
+- Purpose: Record SAM2 downloaded checkpoint identity and accepted real gate; audit possible older copy.
+- Validation:6real same-slide native bridge cached/full and disk-mask scoring accepted;2formal workers running; common model/cache directories lack prior complete copy, bounded broader search pending.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227
+- Docs record: docs/运行记录/模型实验/运行记录_新增SAM2SAM3与WSISAM_1108_135227.md
+- Commit: see commit containing this entry.

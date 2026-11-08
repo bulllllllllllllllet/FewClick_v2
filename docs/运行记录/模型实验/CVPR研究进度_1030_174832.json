@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T13:58:00.548906+08:00",
+  "updated_at": "2026-11-08T14:07:51.773868+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "four_supplements_preparing_WSISAM_public_running_SAM2_download",
+  "current_status": "four_supplements_preparing_SAM2_and_WSISAM_public_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -5059,7 +5059,54 @@
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227",
     "record": "docs/运行记录/模型实验/运行记录_新增SAM2SAM3与WSISAM_1108_135227.md",
     "SAM3": "cancelled_by_user",
-    "SAM2": "preparing_download_then_real_gate",
+    "SAM2": {
+      "status": "running",
+      "workers": [
+        {
+          "pid": 3549448,
+          "method": "sam2_public",
+          "gpu": 1,
+          "shard": 0,
+          "gate": false,
+          "cmd": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-m",
+            "benchmarks.v5.additional_sam.worker",
+            "--root",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227/sam2_public",
+            "--method",
+            "sam2_public",
+            "--shard",
+            "0"
+          ],
+          "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227/sam2_public/shard0.log",
+          "status": "running"
+        },
+        {
+          "pid": 3549451,
+          "method": "sam2_public",
+          "gpu": 5,
+          "shard": 1,
+          "gate": false,
+          "cmd": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-m",
+            "benchmarks.v5.additional_sam.worker",
+            "--root",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227/sam2_public",
+            "--method",
+            "sam2_public",
+            "--shard",
+            "1"
+          ],
+          "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227/sam2_public/shard1.log",
+          "status": "running"
+        }
+      ],
+      "gate": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227/sam2_public/gate_sam2_public/acceptance.json",
+      "checkpoint": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227/sam2.1_hiera_large.pt",
+      "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318"
+    },
     "WSISAM": {
       "status": "running",
       "gate": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227/wsi_sam_public/gate_wsi_sam_public/acceptance.json",
