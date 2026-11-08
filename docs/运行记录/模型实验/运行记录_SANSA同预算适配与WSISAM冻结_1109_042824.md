@@ -1,0 +1,16 @@
+# SANSA同预算适配与WSI-SAM冻结
+
+用户授权SANSA补适配训练；最新要求WSI-SAM当前自动点桥整轮验收后冻结，不再探索桥/冻结比例/seed。WSI两旧臂已验收，当前自动点桥正式2000进行中，原controller继续，不重复/中断。冻结指当前正式+同片11000评估完成后保留所有版本结果与SHA，无自动后续新WSI训练。SANSA单独执行本合同。
+
+输入/初始化：官方SANSA Universal adapter+SAM2.0 Large，原源码commit f562b5642940e08a57e3da2608b804b99af3763b和public pilot权重不变。保留原3正2负支持提示与零query人工点；不使用支持GT mask/类别名称/queryGT生成提示。原生fine单视野、PIL640+官方internal1024编码，已适配SAM2三视野和WSI双视野差异明报。保持官方存在性头关闭，不添加新存在性模块/自建matcher，不能声称隔离某个缺陷因果。
+
+训练：仅240个原adapter参数张量可训练，公共encoder非adapter及全部native decoder/prompt/memory冻结。所有随机dropout/drop-path设eval但adapter梯度开启（与已冻结底座头部适配的确定性规则一致，不冒充完整作者训练复现）。同seed20261103、同8000实际任务消费/2000更新×4；AdamW lr1e-4 wd1e-4，原balancedBCE+Dice/absent+boundary+supportmask.25+sourcepoints.1，assignmentreg0无该模块。无监督/数据/更新预算新增；pretraining/adapter先验/训练参数量不同明报，不称equal-total-supervision。训练原混合local/cross任务保持，评估仅sameWSI。
+
+门控：初始6真实train任务与官方模型/显式point路径逐位一致；trainable mask240adapter/no-other proof；实际loss/backprop/fresh model+optimizer精确继续。固定32train（CRC/TIGER各8local4remote-present4remote-absent），256×4，present Dice>=.2/std>=.02/swap>=.001、absentFPA<=.1，非adapterencoder/native decoder state不变/adapter真实改变、fresh32输出精确。失败停止无阈值/预算/模块重试。通过后4步smoke、从public重新正式2000，train-only monitor0/250/500/1000/2000、末步固定，不按val选checkpoint。正式消费字节SHA必须与Few/SAM1/SAM2/WSI一致。
+
+评估：同11000原sameWSI任务，两分片，在query/native HE fine输入推理，无GT输入。先6真实sameWSI前向cache/full精确门控，然后5500×2；所有mask独立磁盘重读评分/类别与>=20%分层/absentFPA，公开110pilot保留且不当全量对照。SANSA encode缓存只缓存预处理frame，不是encoder feature；本轮不宣称WSI效率，训练adapter进入编码器与其他冻结encoder头部训练不同，成本明报。
+
+资源：GPU3训练/CPU2，和现有GPU1 WSI训练合计两worker；free>=12288MiB共享，不停止其它用户。推理GPU3/5，最多6总worker，按实际free gate，不抢占已有WSI workers。输出/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250，代码benchmarks/v5/sansa_adaptation，aligner，tmux持久integration→functional→smoke→formal→eval。记录真实PID/log/EXIT_CODE/source/data/weightSHA。当前preparing，启动不算功能接受。其它WSI效率/稳健性/独立确认仍待执行。
+
+2026-11-09T04:35:00.427305+08:00 用户授权SANSA适配并要求WSI当前轮结束冻结。SANSA当前root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250，tmux=sansa_adaptation_1109_043250，controller2570539/workflow2572141/GPU3真实functional worker2572244。初始6任务与显式官方native路径逐位一致，240adapter-only mask/初始化state SHA2a2ecf7007db5eb2f2b305beb3c1e0924bb6cb66d57c4b476a1f706b4e9b773b已接受；真实前3更新fresh model+optimizer精确继续通过，256学习门控running，尚非功能学习/正式训练接受。正式2000/8000及11000同片推理已串联，gate失败停止，无新存在性模块/自建桥/seed。最初042824控制器资源修订时tmux会话结束向子进程发送SIGHUP，误中断了前2步功能门控；旧1.2GB engineering checkpoint、日志、初始/修订合同全部保留engineering_failure.json，确认旧worker死亡后同配方新root重新门控，不重复活动worker/不改变任何质量阈值。当前推理GPU3/5，原3/0安排因GPU0仅5GiB修正；新root源码已冻结，不再替换控制器。
+WSI三版本保留：旧full-decoder12.5193%、author-freeze12.3501%已验收；auto-sparse当前formal2000 running，实际2479418未受上述事件影响。已排只读freeze receipt watcher PID2575347/tmux wsi_freeze_receipt_1109_043250，等待WSI pipeline complete_accepted或failure终态后写/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250/wsi_freeze_manifest.json，对各formal权重/报告/验收/合同保存SHA；成功/失败分别标记，不称未验收结果成功。不再启动额外WSI桥/冻结比例/seed/训练。所有budget/input/预训练/可训练参数差异及后续缺口见本记录。

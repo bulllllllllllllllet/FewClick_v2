@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-09T04:27:22.031011+08:00",
+  "updated_at": "2026-11-09T04:35:00.427305+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_WSISAM自动稀疏提示迁移桥_1109_035845.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_SANSA同预算适配与WSISAM冻结_1109_042824.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
     "current_run_record": "docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "WSISAM_sparse_bridge_formal_running_SANSA110_pilot_complete_accepted",
+  "current_status": "SANSA_functional_running_WSISAM_final_arm_running_then_freeze",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2122,6 +2122,17 @@
       "status": "formal_running",
       "worker_pid": 2479418,
       "gpu": 1
+    },
+    {
+      "study": "sansa_adaptation_1109_042824",
+      "status": "functional_running",
+      "worker_pid": 2572244,
+      "gpu": 3
+    },
+    {
+      "study": "wsi_freeze_receipt",
+      "status": "waiting_readonly",
+      "pid": 2575347
     }
   ],
   "completed_jobs": [
@@ -5629,5 +5640,31 @@
     "positive_only_FPA": 0.674336982495857,
     "hard_interface_bug": "not_found",
     "conclusion": "official presence head disabled; zero target adaptation; positive-only worsens FPA; not causally isolated absence explanation"
+  },
+  "sansa_adaptation_1109_042824": {
+    "status": "functional_running",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250",
+    "record": "docs/运行记录/模型实验/运行记录_SANSA同预算适配与WSISAM冻结_1109_042824.md",
+    "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250/contract.json",
+    "controller_pid": 2570539,
+    "workflow_pid": 2572141,
+    "functional_worker_pid": 2572244,
+    "gpu": 3,
+    "seed": 20261103,
+    "formal_updates": 2000,
+    "formal_task_consumption": 8000,
+    "eval_tasks": 11000,
+    "trainable": "240 official Universal adapter tensors only",
+    "engineering": "6native predictions exact and fresh optimizer continuation accepted",
+    "failed_previous_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_042824",
+    "failure_reason": "own controller tmux session interruption; preserve checkpoint and identical recipe restart",
+    "quality": "pending"
+  },
+  "wsi_freeze_decision": {
+    "status": "pending_current_final_arm_completion",
+    "no_further_exploration": true,
+    "receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250/wsi_freeze_manifest.json",
+    "watcher_pid": 2575347,
+    "all_variants_retained": true
   }
 }

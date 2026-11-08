@@ -4929,3 +4929,13 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/诊断_SANSA无目标误报与官方路径核验_1109_042039.md
 - Conclusion: no confirmed loading/inference/metric bug; official object-presence suppression disabled, no target adaptation. Not an isolated causal attribution or fully optimized baseline.
 - Commit: see commit containing this entry.
+
+## 11-09 04:35:00
+
+- Purpose: Launch matched native SANSA adapter training and honor final WSI-SAM freeze decision.
+- Changed: benchmarks/v5/sansa_adaptation, active continuity pointers and run contract.
+- Validation: compileall;real six-group native outputs exact;240adapter-only mask;real backward and exact fresh optimizer continuation accepted. Learning256 gate running;no formal/quality success claim.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250;failed prior042824 preserved after accidental tmux controller interruption, identical recipe fresh restart.
+- Docs record: docs/运行记录/模型实验/运行记录_SANSA同预算适配与WSISAM冻结_1109_042824.md
+- WSI: existing formal worker2479418 preserved;readonly receipt watcher2575347 freezes hashes after final current arm terminates;no further WSI candidates.
+- Commit: see commit containing this entry.
