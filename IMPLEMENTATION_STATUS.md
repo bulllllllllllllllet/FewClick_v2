@@ -4799,3 +4799,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_four_studies_1108_134925
 - Docs record: docs/运行记录/模型实验/运行记录_大面积组织四项补充_1108_134925.md
 - Commit: see commit containing this entry.
+
+## 11-08 13:58:00
+
+- Purpose: Add SAM2/WSI-SAM public remote references and cancel SAM3 at user request.
+- Changed: additional_sam model/prepare/worker/launch/aggregate, baseline run record and main continuity.
+- Validation: actual WSI-SAM native automatic-dense-mask6task cached/full exact and disk-mask score gate accepted; two real workers running. SAM2 code compiled/source and isolated deps prepared, official checkpoint download ongoing; SAM2 functional acceptance pending. SAM3 not launched.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227
+- Docs record: docs/运行记录/模型实验/运行记录_新增SAM2SAM3与WSISAM_1108_135227.md
+- Commit: see commit containing this entry.

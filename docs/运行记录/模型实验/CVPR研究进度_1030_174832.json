@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T13:49:53.448435+08:00",
+  "updated_at": "2026-11-08T13:58:00.548906+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "large_area_four_studies_preparing_SAM_identity_pending",
+  "current_status": "four_supplements_preparing_WSISAM_public_running_SAM2_download",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -5052,7 +5052,60 @@
     "stamp": "1108_134925",
     "status": "preparing",
     "unseen_tissue": "deferred_limitations_future_work",
-    "added_SAM_models": "identity_pending_user_reply",
+    "added_SAM_models": "SAM2_and_WSISAM_authorized_SAM3_cancelled_by_user",
     "confirmation_pool": "30current_catalog_disjoint_slides_historical_exposure_audit_pending"
+  },
+  "additional_sam_1108_135227": {
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227",
+    "record": "docs/运行记录/模型实验/运行记录_新增SAM2SAM3与WSISAM_1108_135227.md",
+    "SAM3": "cancelled_by_user",
+    "SAM2": "preparing_download_then_real_gate",
+    "WSISAM": {
+      "status": "running",
+      "gate": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227/wsi_sam_public/gate_wsi_sam_public/acceptance.json",
+      "workers": [
+        {
+          "pid": 3518627,
+          "method": "wsi_sam_public",
+          "gpu": 0,
+          "shard": 0,
+          "gate": false,
+          "cmd": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-m",
+            "benchmarks.v5.additional_sam.worker",
+            "--root",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227/wsi_sam_public",
+            "--method",
+            "wsi_sam_public",
+            "--shard",
+            "0"
+          ],
+          "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227/wsi_sam_public/shard0.log",
+          "status": "running"
+        },
+        {
+          "pid": 3518629,
+          "method": "wsi_sam_public",
+          "gpu": 2,
+          "shard": 1,
+          "gate": false,
+          "cmd": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-m",
+            "benchmarks.v5.additional_sam.worker",
+            "--root",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227/wsi_sam_public",
+            "--method",
+            "wsi_sam_public",
+            "--shard",
+            "1"
+          ],
+          "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227/wsi_sam_public/shard1.log",
+          "status": "running"
+        }
+      ]
+    },
+    "track": "public weights zero target updates + explicit automatic native dense-mask query bridge"
   }
 }
