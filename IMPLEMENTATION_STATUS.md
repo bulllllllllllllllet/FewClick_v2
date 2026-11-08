@@ -4900,3 +4900,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_native_prompt_control_1109_034133
 - Docs record: docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md
 - Commit: see commit containing this entry.
+
+## 11-09 04:03:41
+
+- Purpose: Add a controlled automatic sparse prompt bridge to WSI-SAM remote transfer.
+- Changed: benchmarks/v5/wsi_sparse_bridge and continuity pointers; original dense bridge preserved.
+- Validation: aligner compileall and real GPU six-task integration accepted; full initial state/local outputs and disabled-auto remote exact; selector rejection/replay checks passed. Functional32/256 running, no gain claim.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_sparse_bridge_1109_035845
+- Docs record: docs/运行记录/模型实验/运行记录_WSISAM自动稀疏提示迁移桥_1109_035845.md
+- Commit: see commit containing this entry.

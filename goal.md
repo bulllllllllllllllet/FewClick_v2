@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_WSISAM自动稀疏提示迁移桥_1109_035845.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -384,3 +384,5 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 2026-11-09T03:44:33.912736+08:00 用户授权原生本图query点/框诊断，新增GT提示仅local oracle轨，不改变主remote零query点合同。110任务/11类/每类10不同query-target，3权重×点/全类框/最大组件框/原support远端共至多1320mask，未按成绩选例。实际GPU5 worker2380793在public_init阶段已21/110，首个本图point与WSISAMFineTune.forward逐位一致检查通过；三状态最终mask独立接受尚待完成。tmux wsi_native_control_1109_034133，输出/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_native_prompt_control_1109_034133，记录docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md。其它三项补充仍待执行，不称本图提示是remote公平主结果。
 
 2026-11-09T03:57:42.705439+08:00 原生提示对照全部complete_accepted/EXIT0：3权重×110案例，17例/状态因代表性正负点不可采样记NA，三状态相同93例point，全部框/remote仍110，实际1269mask逐个磁盘复算，state前后不变、原生point与既有forward各2例逐位一致。现场report/三rowsSHA核对并重算相同93例macro：public local58.3639/remote0.0012%；full-adapt local59.3862/remote16.5512%；freeze-adapt local58.3959/remote17.1922%。native单最大组件框110例macro public67.7435/full42.0922/freeze66.3124%；全类bbox110例45.2124/24.3306/45.0899%。本图GT模拟提示及组件目标不能混入remote主表。证据支持原生能力可用、当前dense-mask迁移适配仍弱；全部decoder解冻确有损伤框能力的迹象，但恢复冻结未挽救远端，故不能据低remote宣称WSISAM本身差。仍受诊断抽样/目标任务不同/单seed限制，非原论文复现，不选择主表checkpoint。无训练或阈值改动；本组worker已退出。验收/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_native_prompt_control_1109_034133/acceptance.json。其它WSI缓存效率/点击稳健性/独立确认仍待补。
+
+2026-11-09T04:03:41.557549+08:00 新桥代码实现及真实integration接受/EXIT0：旧完整初始state SHA相同1690e73aa34226679259fdc1c8c784d277eaef6456c2793cd31e4f798cfb417e，关闭auto后6任务逐位重现旧桥，开启auto不改变local输出，remote实际选点有限合法/固定可重放；synthetic低置信拒收通过。初始CRC无目标例也可能产生高置信正点，因此不能把置信阈值称可靠存在性判断，须由原absentFPA门控判定风险。GPU1真实功能worker2453976，controller2452305，tmux wsi_sparse_bridge_1109_035845；状态functional_running，非功能接受或提升。固定32train/256gate通过后自动smoke→fresh-public2000→同片11000，失败停止。contract/source_snapshot记录源SHA，launch.json/stage.json及各stage log记录命令/PID/退出。未改旧权重/结果或本图主协议，其它WSI效率/点击稳健性/独立确认仍待执行。

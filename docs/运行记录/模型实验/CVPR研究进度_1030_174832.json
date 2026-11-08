@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-09T03:57:42.705439+08:00",
+  "updated_at": "2026-11-09T04:03:41.557549+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_WSISAM自动稀疏提示迁移桥_1109_035845.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
     "current_run_record": "docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "WSISAM_native_prompt_control_complete_accepted_remote_bridge_gap",
+  "current_status": "WSISAM_sparse_bridge_functional_running_integration_accepted",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -5229,5 +5229,24 @@
     "local_point_cases": 93,
     "box_and_remote_cases": 110,
     "outcome": "native local point58-59pct, matched93 remote adapted16.55/17.19pct; full decoder adaptation degrades box ability, author freeze protects box but not remote gap"
+  },
+  "wsi_sparse_bridge_1109_035845": {
+    "status": "functional_running",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_sparse_bridge_1109_035845",
+    "record": "docs/运行记录/模型实验/运行记录_WSISAM自动稀疏提示迁移桥_1109_035845.md",
+    "controller_pid": 2452305,
+    "functional_worker_pid": 2453976,
+    "gpu": 1,
+    "tmux": "wsi_sparse_bridge_1109_035845",
+    "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_sparse_bridge_1109_035845/contract.json",
+    "integration": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_sparse_bridge_1109_035845/integration_acceptance.json",
+    "factor": "dense prior plus model-generated sparse query points, author-freeze control",
+    "query_human_prompts": 0,
+    "query_GT_selection": false,
+    "formal_updates": 2000,
+    "train_consumption": 8000,
+    "evaluation_tasks": 11000,
+    "quality": "pending",
+    "remaining_paper_studies": "full WSI cache efficiency / click robustness / independent spatial confirmation pending"
   }
 }
