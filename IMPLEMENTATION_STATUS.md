@@ -4774,3 +4774,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_review_1108_130136
 - Docs record: docs/建议/模型与训练/建议_同片一万任务复核与后续优先级_1108_130136.md
 - Commit: see commit containing this entry.
+
+## 11-08 13:07:30
+
+- Purpose: Complete same-slide clustered uncertainty/error gallery and prepare whole-slide efficiency inventory.
+- Changed: analyze.py, run record and active continuity pointers.
+- Validation: actual33000 rows and mask receipts;75slide cluster bootstrap2000;164strata;24visual cases/72mask-score replays; report/strata/HTML SHA checked and first montage visually inspected. Three-slide inventory prepared only, no new GPU or training.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_analysis_1108_130423
+- Docs record: docs/运行记录/模型实验/运行记录_同片分层统计与WSI效率准备_1108_130423.md
+- Commit: see commit containing this entry.

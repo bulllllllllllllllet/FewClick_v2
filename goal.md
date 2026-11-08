@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_同片分层统计与WSI效率准备_1108_130423.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -349,3 +349,5 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 2026-11-08T13:00:07.728204+08:00 同片远端11000任务complete_accepted：六正式worker、controller、collect全部EXIT0，33000method-task逐mask磁盘重读评分/跨模型输入指纹一致接受。现场报告/tasks/六rows SHA、逐类macro独立复核通过。全部11000同片，cross=0、4x重叠=0；实际3200查询区域/75来源WSI，空间相关与重复支持配对仍需披露。full/no_match/SAM类别宏Dice32.4547/23.0816/19.5083%，absentFPA2.3912/5.9301/7.5963%。上皮Dice53.7617%，但不能将与先前4.10差异单独归因染色或修复，任务/样本量均改变。肌肉完整20.9602低于去匹配21.6624，其余10类完整Dice更高；非全部组织/边界指标均最优。淋巴聚集334present/666absent，其余每类700/300。仍为同队列空间区域迁移，不是独立患者/完整全片；无新训练/seed。权威验收/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913/acceptance.json，结果report.json。下一步以同片任务为唯一主线，做类别/目标面积/距离和空间来源不确定性分析，保留全部失败，不恢复cross队列。
 
 2026-11-08T13:02:46.447963+08:00 只读复核完成，任务/输入几何cross/support-query4x/train4x重叠均0；按目标面积任务均值发现<1% n2715 Dice5.71%，>=20% n2130 Dice59.80%。非类宏，不作因果解释。后续建议docs/建议/模型与训练/建议_同片一万任务复核与后续优先级_1108_130136.md；先分层/按片统计与小目标诊断，再全WSI缓存交互成本/同片提示稳健性，严格非脂肪留出和独立空间确认待专项合同；无新训练/seed/跨片队列。
+
+2026-11-08T13:07:30.794375+08:00 只读分析complete_accepted，真实worker3288453结束：75WSI聚类配对bootstrap2000次，164类别×面积×距离分层、每片表、24例同范围网页、72mask重读指标核对通过；现场report/strata/html SHA通过，首个拼图实际查看。Full类别宏Dice32.45% CI29.87–35.26；相对no_match+9.37pp CI8.11–10.77，相对SAM+12.95pp CI11.46–14.56。非独立患者确认。<1%目标2715任务中空预测34.84%，平均precision5.30/recall24.25%，漏检与误检并存；>=20% precision71.56/recall59.34%。本轮预测为单窗口，未进行概率拼接因果干预，不能将小目标问题归因拼接。WSI效率清单仅preparing/prepared inventory：SHA选3片，共14553安全4x源内网格，9932个train/support隔离可评分位置，其余仅工程；完整边界和实际持久cache/整域点击尚未执行，不标P4完成。结果/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_analysis_1108_130423/report.json，网页/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_analysis_1108_130423/index.html。无新GPU/训练/seed。

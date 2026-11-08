@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T13:02:46.447963+08:00",
+  "updated_at": "2026-11-08T13:07:30.794375+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_同片分层统计与WSI效率准备_1108_130423.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_同片分层统计与WSI效率准备_1108_130423.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "same_slide_11000_complete_accepted",
+  "current_status": "same_slide_stratified_analysis_complete_WSI_efficiency_inventory_prepared",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "First same-slide class/area/distance and slide-cluster uncertainty from existing outputs, then full-slide cache/interaction costs and prompt robustness. Strict non-fat holdouts/independent spatial confirmation remain pending separate contracts. No cross-slide or extra seeds."
+    "Use accepted failure gallery/strata to define bounded tiny-target diagnosis without threshold/model selection; implement persistent full-domain WSI cache/interaction benchmark on SHA-fixed3slide inventory, including source boundary/quality footprint rules. No cross-slide or added seeds."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -5032,5 +5032,13 @@
     "status": "complete_readonly",
     "record": "docs/建议/模型与训练/建议_同片一万任务复核与后续优先级_1108_130136.md",
     "evidence": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_review_1108_130136/review.json"
+  },
+  "same_slide_analysis_1108_130423": {
+    "status": "complete_accepted_readonly",
+    "record": "docs/运行记录/模型实验/运行记录_同片分层统计与WSI效率准备_1108_130423.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_analysis_1108_130423",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_analysis_1108_130423/acceptance.json",
+    "html": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_analysis_1108_130423/index.html",
+    "WSI_efficiency": "inventory_prepared_not_executed"
   }
 }
