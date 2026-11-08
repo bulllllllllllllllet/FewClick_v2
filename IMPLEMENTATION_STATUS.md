@@ -4849,3 +4849,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_adaptation_1108_142826
 - Docs record: docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md
 - Commit: see commit containing this entry.
+
+## 11-08 19:09:35
+
+- Purpose: Diagnose low WSI-SAM score without changing trained weights.
+- Changed: diagnose.py and diagnostic/continuity records.
+- Validation: real12train×7modes, normal decoding exact, state hash unchanged,84metric rows; native source formula/freeze policy traced. No confirmed hard bug; author/full-decoder freeze discrepancy and weak train remote learning identified.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_sam_diagnostic_1108_190545
+- Docs record: docs/运行记录/模型实验/诊断_WSISAM低分与原生路径核查_1108_190545.md
+- Commit: see commit containing this entry.

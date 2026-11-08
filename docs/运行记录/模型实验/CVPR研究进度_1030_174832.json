@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T19:04:31.698457+08:00",
+  "updated_at": "2026-11-08T19:09:35.694351+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Matched additional SAM2/WSI-SAM references complete; preserve fixed-budget scope and differing public pretraining/views. Continue authorized WSI persistent-cache/whole-domain interaction benchmark, prompt robustness and audited spatial confirmation. No unseen-tissue training/new seeds/SAM3/cross-slide evaluation."
+    "Review WSI-SAM author freeze-policy discrepancy using a bounded train-only controlled probe if authorized; retain current12.52 as specific adaptation result, not model upper bound. Continue previously authorized WSI cache/prompt/independent-confirmation supplements; no cross-slide eval, extra seeds, SAM3 or unseen-class training."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -5182,5 +5182,14 @@
     "SAM2_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_adaptation_1108_142826/sam2_ft/evaluation/acceptance.json",
     "WSISAM_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_adaptation_1108_142826/wsi_sam_ft/evaluation/acceptance.json",
     "training_consumption_four_methods_byte_identical": true
+  },
+  "wsi_sam_integrity_diagnostic_1108_190545": {
+    "status": "complete_readonly_accepted",
+    "record": "docs/运行记录/模型实验/诊断_WSISAM低分与原生路径核查_1108_190545.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_sam_diagnostic_1108_190545",
+    "hard_bug": "not_confirmed",
+    "risk": "full decoder unfreezing differs from author constructor freeze; remote adaptation weak already in fixed train monitor",
+    "next": "train-only author-freeze controlled probe before any revised formal baseline",
+    "new_training_updates": 0
   }
 }
