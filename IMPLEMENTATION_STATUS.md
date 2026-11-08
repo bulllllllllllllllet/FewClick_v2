@@ -4875,3 +4875,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150
 - Docs record: docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md
 - Commit: see commit containing this entry.
+
+## 11-09 03:37:33
+
+- Purpose: Close original-decoder-freeze WSI-SAM control without quality promotion.
+- Validation: pipeline EXIT0;2000updates/8000same tasks;11000same-slide masks independently accepted; report/tasks/tworows SHA and macro recomputed; frozen decoder unchanged.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150
+- Docs record: docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md
+- Commit: see commit containing this entry.

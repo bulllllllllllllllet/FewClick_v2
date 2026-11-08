@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T21:38:52.271689+08:00",
+  "updated_at": "2026-11-09T03:37:33.588442+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "WSISAM_author_freeze_training_accepted_same_slide_eval_running",
+  "current_status": "WSISAM_author_freeze_control_complete_accepted_no_improvement",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Run user-authorized single-factor author decoder freezing integration and train-only functional control; pass original gates before same2000budget retraining and11000same-slide evaluation. Preserve previous baseline and failures. Other three paper supplements still pending."
+    "Author-freeze control complete with no gain; preserve both WSI-SAM adaptation outcomes and do not expand freeze sweeps. Continue previously authorized WSI cache/interaction, same-slide prompt robustness and audited spatial confirmation; remote-bridge adequacy remains a limitation."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -5193,7 +5193,7 @@
     "new_training_updates": 0
   },
   "wsi_author_freeze_1108_204150": {
-    "status": "training_accepted_evaluation_running",
+    "status": "complete_accepted",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150",
     "record": "docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md",
     "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150/contract.json",
@@ -5209,6 +5209,8 @@
     ],
     "last_eval_rows": 1950,
     "total_eval_rows": 11000,
-    "quality_outcome": "pending_final_evaluation"
+    "quality_outcome": "macro12.3501pct_vs12.5193pct_no_improvement_FPA_worse",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150/wsi_sam_ft/evaluation/acceptance.json",
+    "hypothesis": "author decoder freezing difference not supported as main explanation of low score"
   }
 }
