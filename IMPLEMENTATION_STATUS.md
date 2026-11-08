@@ -4833,3 +4833,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_adaptation_1108_142826
 - Docs record: docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md
 - Commit: see commit containing this entry.
+
+## 11-08 17:45:08
+
+- Purpose: Record two matched adaptations accepted and actual same-slide evaluation progress.
+- Validation:2000updates/8000exact tasks per arm; both training accepted. WSI11000disk-mask scoring accepted and row hashes checked; SAM26850of11000running.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_adaptation_1108_142826
+- Docs record: docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md
+- Commit: see commit containing this entry.

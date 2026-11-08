@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T14:47:13.657792+08:00",
+  "updated_at": "2026-11-08T17:45:08.644042+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "matched_adaptation_both_functional_accepted_WSI_formal_SAM2_smoke",
+  "current_status": "matched_adaptation_both_training_accepted_WSI_eval_shards_accepted_SAM2_eval_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -5158,7 +5158,7 @@
   "sam_matched_adaptation_1108_142826": {
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_adaptation_1108_142826",
     "record": "docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md",
-    "status": "both_functional_accepted_WSI_formal_SAM2_smoke",
+    "status": "both_training_accepted_evaluation_running",
     "pipeline_pid": 3650740,
     "functional_workers": {
       "WSI_GPU0": 3651253,
@@ -5169,6 +5169,15 @@
     "wsi_formal_pid": 3671267,
     "wsi_formal_last_step": 351,
     "sam2_smoke_pid": 3704814,
-    "quality_outcome": "pending_formal_and_eval"
+    "quality_outcome": "WSI_fixed_budget_macro12.5193percent_SAM2_pending",
+    "WSI_evaluation": "11000_two_shards_independently_accepted_aggregate_pending",
+    "SAM2_evaluation": {
+      "last_rows": 6850,
+      "total": 11000,
+      "workers": [
+        4092599,
+        4092601
+      ]
+    }
   }
 }
