@@ -4909,3 +4909,13 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_sparse_bridge_1109_035845
 - Docs record: docs/运行记录/模型实验/运行记录_WSISAM自动稀疏提示迁移桥_1109_035845.md
 - Commit: see commit containing this entry.
+
+## 11-09 04:18:34
+
+- Purpose: Add a published sparse-support remote segmentation reference after recent literature verification.
+- Changed: benchmarks/v5/reference_baseline and continuity records; pinned SANSA Universal source/weights, readonly same-slide110 pilot, no extra training.
+- Validation: official positive/negative coordinate scaling;240adapter keys loaded;first2 real prompt/memory replays exact;weights unchanged;110 saved masks independently rescored;reference10row-file hashes and report/rows/plans verified;macro independently recomputed. EXIT0.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/reference_baseline_1109_040918
+- Docs record: docs/运行记录/模型实验/运行记录_近期参考引导分割检索与SANSA试跑_1109_040918.md
+- Results: SANSA present37.47/large54.20/FPA64.42pct, paired Few45.23/58.84/FPA1.59pct;110 stratified development tasks, zero target adaptation, no population/superiority claim.
+- Commit: see commit containing this entry.

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-09T04:03:41.557549+08:00",
+  "updated_at": "2026-11-09T04:18:34.888356+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "WSISAM_sparse_bridge_functional_running_integration_accepted",
+  "current_status": "WSISAM_sparse_bridge_formal_running_SANSA110_pilot_complete_accepted",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2116,7 +2116,14 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [],
+  "active_jobs": [
+    {
+      "study": "wsi_sparse_bridge_1109_035845",
+      "status": "formal_running",
+      "worker_pid": 2479418,
+      "gpu": 1
+    }
+  ],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -5231,7 +5238,7 @@
     "outcome": "native local point58-59pct, matched93 remote adapted16.55/17.19pct; full decoder adaptation degrades box ability, author freeze protects box but not remote gap"
   },
   "wsi_sparse_bridge_1109_035845": {
-    "status": "functional_running",
+    "status": "formal_running",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_sparse_bridge_1109_035845",
     "record": "docs/运行记录/模型实验/运行记录_WSISAM自动稀疏提示迁移桥_1109_035845.md",
     "controller_pid": 2452305,
@@ -5247,6 +5254,354 @@
     "train_consumption": 8000,
     "evaluation_tasks": 11000,
     "quality": "pending",
-    "remaining_paper_studies": "full WSI cache efficiency / click robustness / independent spatial confirmation pending"
+    "remaining_paper_studies": "full WSI cache efficiency / click robustness / independent spatial confirmation pending",
+    "functional_acceptance": "accepted_repaired_functional_gate",
+    "formal_worker_pid": 2479418
+  },
+  "reference_baseline_1109_040918": {
+    "status": "complete_accepted_readonly_pilot",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reference_baseline_1109_040918",
+    "record": "docs/运行记录/模型实验/运行记录_近期参考引导分割检索与SANSA试跑_1109_040918.md",
+    "source_commit": "f562b5642940e08a57e3da2608b804b99af3763b",
+    "controller_pid": 2493242,
+    "prepare_pid": 2483604,
+    "planned_gpu": 3,
+    "tasks": 110,
+    "model": "SANSA Universal",
+    "target_updates": 0,
+    "query_human_prompts": 0,
+    "weights": "official SAM2.0 Large + official Universal adapter accepted",
+    "no_automatic_full_expansion": true,
+    "worker_pid": 2506194,
+    "exit_code": 0,
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reference_baseline_1109_040918/acceptance.json",
+    "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reference_baseline_1109_040918/report.json",
+    "results": {
+      "SANSA_Universal_public": {
+        "present_class_macro_Dice": 0.3747195190911043,
+        "large20_class_macro_Dice": 0.5419531323091701,
+        "absent_class_macro_FPA": 0.6441739400227864,
+        "present_n": 77,
+        "large_n": 44,
+        "absent_n": 33,
+        "classes": {
+          "0": {
+            "present_Dice": 0.34139589796650177,
+            "n": 7
+          },
+          "1": {
+            "present_Dice": 0.4432857419906972,
+            "n": 7
+          },
+          "3": {
+            "present_Dice": 0.40910587362333567,
+            "n": 7
+          },
+          "4": {
+            "present_Dice": 0.4989064631734824,
+            "n": 7
+          },
+          "5": {
+            "present_Dice": 0.4110514262452348,
+            "n": 7
+          },
+          "6": {
+            "present_Dice": 0.3354724929013771,
+            "n": 7
+          },
+          "7": {
+            "present_Dice": 0.4779185206293567,
+            "n": 7
+          },
+          "8": {
+            "present_Dice": 0.27105659020923994,
+            "n": 7
+          },
+          "9": {
+            "present_Dice": 0.19537231217016654,
+            "n": 7
+          },
+          "10": {
+            "present_Dice": 0.4196973139823878,
+            "n": 7
+          },
+          "11": {
+            "present_Dice": 0.3186520771103674,
+            "n": 7
+          }
+        }
+      },
+      "full": {
+        "present_class_macro_Dice": 0.45232386008254905,
+        "large20_class_macro_Dice": 0.5883764512420387,
+        "absent_class_macro_FPA": 0.015930638168797348,
+        "present_n": 77,
+        "large_n": 44,
+        "absent_n": 33,
+        "classes": {
+          "0": {
+            "present_Dice": 0.6175483700562363,
+            "n": 7
+          },
+          "1": {
+            "present_Dice": 0.39974696329627696,
+            "n": 7
+          },
+          "3": {
+            "present_Dice": 0.35945975695912574,
+            "n": 7
+          },
+          "4": {
+            "present_Dice": 0.41695221170735447,
+            "n": 7
+          },
+          "5": {
+            "present_Dice": 0.681687859856612,
+            "n": 7
+          },
+          "6": {
+            "present_Dice": 0.20140708234538732,
+            "n": 7
+          },
+          "7": {
+            "present_Dice": 0.28991308244870806,
+            "n": 7
+          },
+          "8": {
+            "present_Dice": 0.48651196173008737,
+            "n": 7
+          },
+          "9": {
+            "present_Dice": 0.49434614967803897,
+            "n": 7
+          },
+          "10": {
+            "present_Dice": 0.7299240694672301,
+            "n": 7
+          },
+          "11": {
+            "present_Dice": 0.29806495336298283,
+            "n": 7
+          }
+        }
+      },
+      "sam": {
+        "present_class_macro_Dice": 0.2822652979731749,
+        "large20_class_macro_Dice": 0.3758309524094226,
+        "absent_class_macro_FPA": 0.07643370194868608,
+        "present_n": 77,
+        "large_n": 44,
+        "absent_n": 33,
+        "classes": {
+          "0": {
+            "present_Dice": 0.4335527717548529,
+            "n": 7
+          },
+          "1": {
+            "present_Dice": 0.29788688493764465,
+            "n": 7
+          },
+          "3": {
+            "present_Dice": 0.11902436567477895,
+            "n": 7
+          },
+          "4": {
+            "present_Dice": 0.3800846937630554,
+            "n": 7
+          },
+          "5": {
+            "present_Dice": 0.4134033666509939,
+            "n": 7
+          },
+          "6": {
+            "present_Dice": 0.15362601353679892,
+            "n": 7
+          },
+          "7": {
+            "present_Dice": 0.2369948099137787,
+            "n": 7
+          },
+          "8": {
+            "present_Dice": 0.2951546029094521,
+            "n": 7
+          },
+          "9": {
+            "present_Dice": 0.0742404410863773,
+            "n": 7
+          },
+          "10": {
+            "present_Dice": 0.3617217223053553,
+            "n": 7
+          },
+          "11": {
+            "present_Dice": 0.33922860517183556,
+            "n": 7
+          }
+        }
+      },
+      "no_match": {
+        "present_class_macro_Dice": 0.3157570776178796,
+        "large20_class_macro_Dice": 0.40824677941984616,
+        "absent_class_macro_FPA": 0.046220374829841385,
+        "present_n": 77,
+        "large_n": 44,
+        "absent_n": 33,
+        "classes": {
+          "0": {
+            "present_Dice": 0.3212003784095134,
+            "n": 7
+          },
+          "1": {
+            "present_Dice": 0.28108624964151024,
+            "n": 7
+          },
+          "3": {
+            "present_Dice": 0.25120086577887085,
+            "n": 7
+          },
+          "4": {
+            "present_Dice": 0.243890221140318,
+            "n": 7
+          },
+          "5": {
+            "present_Dice": 0.35381251099262406,
+            "n": 7
+          },
+          "6": {
+            "present_Dice": 0.19092841961146403,
+            "n": 7
+          },
+          "7": {
+            "present_Dice": 0.29045225895824966,
+            "n": 7
+          },
+          "8": {
+            "present_Dice": 0.48672580938223203,
+            "n": 7
+          },
+          "9": {
+            "present_Dice": 0.295882800541099,
+            "n": 7
+          },
+          "10": {
+            "present_Dice": 0.5567277482194181,
+            "n": 7
+          },
+          "11": {
+            "present_Dice": 0.20142059112137595,
+            "n": 7
+          }
+        }
+      },
+      "sam2_ft": {
+        "present_class_macro_Dice": 0.3698329259677161,
+        "large20_class_macro_Dice": 0.46060278629874213,
+        "absent_class_macro_FPA": 0.09614135279799951,
+        "present_n": 77,
+        "large_n": 44,
+        "absent_n": 33,
+        "classes": {
+          "0": {
+            "present_Dice": 0.6667368198588814,
+            "n": 7
+          },
+          "1": {
+            "present_Dice": 0.3661755369443186,
+            "n": 7
+          },
+          "3": {
+            "present_Dice": 0.25189723303930983,
+            "n": 7
+          },
+          "4": {
+            "present_Dice": 0.40332803554208196,
+            "n": 7
+          },
+          "5": {
+            "present_Dice": 0.5656415443962718,
+            "n": 7
+          },
+          "6": {
+            "present_Dice": 0.33684239164383395,
+            "n": 7
+          },
+          "7": {
+            "present_Dice": 0.26341621895225675,
+            "n": 7
+          },
+          "8": {
+            "present_Dice": 0.35966737284131195,
+            "n": 7
+          },
+          "9": {
+            "present_Dice": 0.1442027856375568,
+            "n": 7
+          },
+          "10": {
+            "present_Dice": 0.4575137754486055,
+            "n": 7
+          },
+          "11": {
+            "present_Dice": 0.2527404713404491,
+            "n": 7
+          }
+        }
+      },
+      "wsi_sam_ft": {
+        "present_class_macro_Dice": 0.14701377638158086,
+        "large20_class_macro_Dice": 0.1735182415703567,
+        "absent_class_macro_FPA": 0.03983815511067708,
+        "present_n": 77,
+        "large_n": 44,
+        "absent_n": 33,
+        "classes": {
+          "0": {
+            "present_Dice": 0.18022026474060435,
+            "n": 7
+          },
+          "1": {
+            "present_Dice": 0.15624376420501038,
+            "n": 7
+          },
+          "3": {
+            "present_Dice": 0.2137989310489981,
+            "n": 7
+          },
+          "4": {
+            "present_Dice": 0.19814343045386837,
+            "n": 7
+          },
+          "5": {
+            "present_Dice": 0.25530051149803634,
+            "n": 7
+          },
+          "6": {
+            "present_Dice": 0.24406110800031752,
+            "n": 7
+          },
+          "7": {
+            "present_Dice": 0.1191358681839961,
+            "n": 7
+          },
+          "8": {
+            "present_Dice": 0.17546008223207712,
+            "n": 7
+          },
+          "9": {
+            "present_Dice": 0.024100052198415878,
+            "n": 7
+          },
+          "10": {
+            "present_Dice": 0.018213197549630404,
+            "n": 7
+          },
+          "11": {
+            "present_Dice": 0.032474330086435,
+            "n": 7
+          }
+        }
+      }
+    },
+    "limitations": "Stratified110 development tasks, not full population or independent generalization. Universal promptable adapter differs from mask-only paper benchmark. Public pretraining and target update budgets differ from adapted baselines. All strata retained."
   }
 }
