@@ -4816,3 +4816,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227
 - Docs record: docs/运行记录/模型实验/运行记录_新增SAM2SAM3与WSISAM_1108_135227.md
 - Commit: see commit containing this entry.
+
+## 11-08 14:34:19
+
+- Purpose: Train native SAM2/WSI-SAM under matched8000task/2000update contract before same-slide inference.
+- Changed: sam_matched_adaptation model/functional/train/workflow/pipeline/evaluate/aggregate and active records.
+- Validation: both actual backward/optimizer-update paths and fresh model/optimizer exact continuation accepted; functional256 running, smoke/formal/evaluation quality still pending. Public inference stopped at user request; no other users affected.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_adaptation_1108_142826
+- Docs record: docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md
+- Commit: see commit containing this entry.

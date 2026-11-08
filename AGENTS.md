@@ -2,7 +2,7 @@
 
 For FewClick experiments, read `goal.md` first, then the linked experiment registry and current run record. The user's latest instructions take precedence over these records.
 
-The active CVPR roadmap is `docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md`; its registry is `docs/运行记录/模型实验/CVPR研究进度_1030_174832.json` and current record is `docs/运行记录/模型实验/运行记录_大面积组织四项补充_1108_134925.md`. The previous AAAI goal/registry is archived historical evidence only: do not resume its pending queues. Follow the current phase and acceptance gates; update this pointer if the active registry changes.
+The active CVPR roadmap is `docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md`; its registry is `docs/运行记录/模型实验/CVPR研究进度_1030_174832.json` and current record is `docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md`. The previous AAAI goal/registry is archived historical evidence only: do not resume its pending queues. Follow the current phase and acceptance gates; update this pointer if the active registry changes.
 
 - Keep `benchmarks/v4/` and `/home/zhaoyh/FewClick/` read-only. Develop new experiments in `benchmarks/v5/` and use the `aligner` environment.
 - Preserve existing data, checkpoints, caches and reports. New artifacts go in timestamped directories under `/nfs-medical3/zyh/fewclick_v2/`.
@@ -20,6 +20,8 @@ Latest resource override (2026-11-04T18:50:08.879038+08:00): user authorized mul
 
 Latest resource override (2026-11-05T11:50:54.212850+08:00): user explicitly authorizes all six physical GPUs 0/1/2/3/4/5. Previous GPU0/2 exclusions are revoked. Sharing is allowed when free memory is sufficient; choose by actual free memory and compute load, without requiring an idle GPU. Preserve running workers and frozen recipes; do not terminate other users or duplicate active arms. This expands eligible devices, not experiment scope or worker-count budgets.
 
-Latest WSI resource override (2026-11-07): user authorizes all available GPUs for WSI. Active WSI quality study permits up to six read-only inference workers, one per physical GPU0–5 with >=12288MiB free, no new training or additional seeds. Three frozen methods × two disjoint shards, gated before fan-out; record docs/运行记录/模型实验/运行记录_大面积组织四项补充_1108_134925.md.
+Latest WSI resource override (2026-11-07): user authorizes all available GPUs for WSI. Active WSI quality study permits up to six read-only inference workers, one per physical GPU0–5 with >=12288MiB free, no new training or additional seeds. Three frozen methods × two disjoint shards, gated before fan-out; record docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md.
 
 Latest task scope override (2026-11-08): SAME-WSI remote transfer only. The prior cross-slide-dominated11000task study is user-terminated; never resume. New same-slide tasks require different physical patches and disjoint full4x footprints, six read-only GPUworkers authorized after gates; no new training/seeds.
+
+Latest adaptation override (2026-11-08): User explicitly authorizes matched SAM2/WSI-SAM adaptation before inference. Up to two own training workers, frozen8000task/2000update recipe, seed20261103, public initialization, train-only functional gates. This overrides no-new-training for these two baseline arms only; no additional training seeds or SAM3, no cross-slide evaluation.

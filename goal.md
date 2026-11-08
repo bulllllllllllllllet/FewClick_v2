@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_大面积组织四项补充_1108_134925.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -359,3 +359,7 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 2026-11-08T13:58:00.548906+08:00 用户明确取消SAM3：状态cancelled_by_user，不再等待HF授权或Python3.12。SAM2官方权重下载/源码隔离依赖preparing，tmux sam2_setup_1108_135227，sam2_eval_1108_135227等待权重SHA后自动门控→GPU1/5正式→聚合。WSI-SAM公共权重native自动dense-query-mask桥真实6任务gate accepted，cache/full逐位一致、磁盘mask评分重放通过；GPU0/2正式workers3518627/3518629 running，每分片5500，完成自动聚合。不是全部SAM能力上限/不与2000步已适配SAM混称等训练预算。四项其它主体工作仍preparing未闭合。
 
 2026-11-08T14:07:51.773868+08:00 SAM2.1 Hiera Large官方权重下载完成（约857MiB），SHA2562647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318。sam2_source git版本/隔离deps保留；真实6同片任务native自动dense-mask桥cache/full逐位相同及磁盘mask评分accepted。GPU1/5正式worker3549448/3549451 running，每分片5500；WSI-SAM原GPU0/2继续，无SAM3。用户提示可能曾有权重，已复查常用模型/cache/vendor及旧文档，暂无此前完整checkpoint证据，补查其它目录中；不重复下载已完成本份。其它四项主体尚未完成。
+
+2026-11-08T14:33:17.183752+08:00 用户明确先同预算适配再推理，覆盖此前只读限制。已核对终止public SAM2/WSI原controller及4workers并停止后继聚合队列，保留旧产物；SAM3仍取消。新/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_adaptation_1108_142826，当前记录docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md；pipeline3650740，GPU0 WSI功能worker3651253、GPU1 SAM2功能worker3651254正在训练门控。固定8000消费/2000×4、原loss/AdamW/public初始化/seed20261103；图像encoder冻结、native prompt+decoder+SignedMatcher可训练，WSI2视野/SAM2三视野差异明报。256学习门控→独立fresh replay→4步smoke→从public重训正式2000→相同11000同片推理已串联，失败停止。当前functional_running，未完成正式训练或质量接受；不是已充分适配结论。
+
+2026-11-08T14:34:19.437418+08:00 两臂工程接受：实际前3更新与完整fresh model/optimizer精确继续已通过（optimizer_acceptance.json），证明可微native训练路径可执行，不等于功能学习接受。WSI功能学习进度已33/256，SAM2学习流程继续。正式2000及11000评价未开始；所有新代码冻结SHA/执行命令/实际PID见root contract和arm stage。

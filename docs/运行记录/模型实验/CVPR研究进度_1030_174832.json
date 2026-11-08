@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T14:07:51.773868+08:00",
+  "updated_at": "2026-11-08T14:34:19.437418+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_大面积组织四项补充_1108_134925.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_大面积组织四项补充_1108_134925.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "four_supplements_preparing_SAM2_and_WSISAM_public_running",
+  "current_status": "matched_SAM2_WSISAM_train_functional_gates_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Continue four authorized studies: full-domain WSI cache efficiency, same-slide prompt robustness, matched ablations/references, frozen confirmation. Clarify two additional SAM versions before their dependent implementation. Unseen-tissue training deferred."
+    "Finish train-only256 learning gates and optimizer replay for native SAM2/WSI decoder adaptation; if accepted fresh smoke then public-init2000x4 exact consumption, then frozen same-slide11000 inference/independent masks. Stop failures without lowering gates. Other four supplements still pending, not superseded."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -5060,7 +5060,7 @@
     "record": "docs/运行记录/模型实验/运行记录_新增SAM2SAM3与WSISAM_1108_135227.md",
     "SAM3": "cancelled_by_user",
     "SAM2": {
-      "status": "running",
+      "status": "user_stopped_adapt_first",
       "workers": [
         {
           "pid": 3549448,
@@ -5108,7 +5108,7 @@
       "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318"
     },
     "WSISAM": {
-      "status": "running",
+      "status": "user_stopped_adapt_first",
       "gate": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/additional_sam_1108_135227/wsi_sam_public/gate_wsi_sam_public/acceptance.json",
       "workers": [
         {
@@ -5154,5 +5154,17 @@
       ]
     },
     "track": "public weights zero target updates + explicit automatic native dense-mask query bridge"
+  },
+  "sam_matched_adaptation_1108_142826": {
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_adaptation_1108_142826",
+    "record": "docs/运行记录/模型实验/运行记录_SAM2与WSISAM同预算适配_1108_142826.md",
+    "status": "functional_gates_running",
+    "pipeline_pid": 3650740,
+    "functional_workers": {
+      "WSI_GPU0": 3651253,
+      "SAM2_GPU1": 3651254
+    },
+    "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_matched_adaptation_1108_142826/contract.json",
+    "engineering": "both_real_backward_exact_fresh_optimizer_continuation_accepted"
   }
 }
