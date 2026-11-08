@@ -4791,3 +4791,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation: checked accepted area-stratum/task-macro distinction and WSI evidence gaps; no new experiments.
 - Docs record: docs/建议/模型与训练/建议_大面积组织论文主线与最小实验闭环_1108_134200.md
 - Commit: see commit containing this entry.
+
+## 11-08 13:49:53
+
+- Purpose: Track four authorized supplements, defer unseen-tissue training, audit confirmation pool and clarify additional SAM identities.
+- Validation: originaltest30/current1737 catalog identity intersection0; historical evaluation exposure explicitly unresolved. Existing area-filter class/task means independently recomputed. No new GPU job launched.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_four_studies_1108_134925
+- Docs record: docs/运行记录/模型实验/运行记录_大面积组织四项补充_1108_134925.md
+- Commit: see commit containing this entry.

@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T13:42:00.172465+08:00",
+  "updated_at": "2026-11-08T13:49:53.448435+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_同片分层统计与WSI效率准备_1108_130423.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_大面积组织四项补充_1108_134925.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_同片分层统计与WSI效率准备_1108_130423.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_大面积组织四项补充_1108_134925.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "same_slide_stratified_analysis_complete_WSI_efficiency_inventory_prepared",
+  "current_status": "large_area_four_studies_preparing_SAM_identity_pending",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Prioritize whole-domain WSI caching/interaction cost and same-slide prompt robustness; preserve full-task/area strata evidence and independently confirm frozen large-area claims. Strict unseen-class training only if claiming unseen classes. No cross-slide or extra seeds."
+    "Continue four authorized studies: full-domain WSI cache efficiency, same-slide prompt robustness, matched ablations/references, frozen confirmation. Clarify two additional SAM versions before their dependent implementation. Unseen-tissue training deferred."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -5045,5 +5045,14 @@
     "record": "docs/建议/模型与训练/建议_大面积组织论文主线与最小实验闭环_1108_134200.md",
     "user_direction": "large-area same-WSI tissue transfer primary narrative; tiny-target research deferred; retain full results",
     "new_experiments_started": false
+  },
+  "paper_four_studies": {
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_four_studies_1108_134925",
+    "record": "docs/运行记录/模型实验/运行记录_大面积组织四项补充_1108_134925.md",
+    "stamp": "1108_134925",
+    "status": "preparing",
+    "unseen_tissue": "deferred_limitations_future_work",
+    "added_SAM_models": "identity_pending_user_reply",
+    "confirmation_pool": "30current_catalog_disjoint_slides_historical_exposure_audit_pending"
   }
 }
