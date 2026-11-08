@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-08T13:07:30.794375+08:00",
+  "updated_at": "2026-11-08T13:42:00.172465+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Use accepted failure gallery/strata to define bounded tiny-target diagnosis without threshold/model selection; implement persistent full-domain WSI cache/interaction benchmark on SHA-fixed3slide inventory, including source boundary/quality footprint rules. No cross-slide or added seeds."
+    "Prioritize whole-domain WSI caching/interaction cost and same-slide prompt robustness; preserve full-task/area strata evidence and independently confirm frozen large-area claims. Strict unseen-class training only if claiming unseen classes. No cross-slide or extra seeds."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -5040,5 +5040,10 @@
     "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_analysis_1108_130423/acceptance.json",
     "html": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_analysis_1108_130423/index.html",
     "WSI_efficiency": "inventory_prepared_not_executed"
+  },
+  "large_area_paper_focus": {
+    "record": "docs/建议/模型与训练/建议_大面积组织论文主线与最小实验闭环_1108_134200.md",
+    "user_direction": "large-area same-WSI tissue transfer primary narrative; tiny-target research deferred; retain full results",
+    "new_experiments_started": false
   }
 }

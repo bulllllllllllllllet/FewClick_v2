@@ -4783,3 +4783,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_analysis_1108_130423
 - Docs record: docs/运行记录/模型实验/运行记录_同片分层统计与WSI效率准备_1108_130423.md
 - Commit: see commit containing this entry.
+
+## 11-08 13:42:00
+
+- Purpose: Record user large-area paper focus and minimal remaining evidence plan.
+- Changed: recommendation and continuity records.
+- Validation: checked accepted area-stratum/task-macro distinction and WSI evidence gaps; no new experiments.
+- Docs record: docs/建议/模型与训练/建议_大面积组织论文主线与最小实验闭环_1108_134200.md
+- Commit: see commit containing this entry.
