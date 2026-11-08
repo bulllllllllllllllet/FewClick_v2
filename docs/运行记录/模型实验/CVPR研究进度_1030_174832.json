@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-09T03:37:33.588442+08:00",
+  "updated_at": "2026-11-09T03:44:33.912736+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "WSISAM_author_freeze_control_complete_accepted_no_improvement",
+  "current_status": "WSISAM_native_local_oracle_control_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Author-freeze control complete with no gain; preserve both WSI-SAM adaptation outcomes and do not expand freeze sweeps. Continue previously authorized WSI cache/interaction, same-slide prompt robustness and audited spatial confirmation; remote-bridge adequacy remains a limitation."
+    "Complete110case WSI native local-prompt versus remote paired diagnostic for public/full-adapt/author-freeze weights; independently replay saved masks. Interpret local object/class targets separately. No training, threshold tuning or replacement of remote primary table. Other WSI cache/prompt-robustness/spatial-confirmation work still pending."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -5212,5 +5212,17 @@
     "quality_outcome": "macro12.3501pct_vs12.5193pct_no_improvement_FPA_worse",
     "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150/wsi_sam_ft/evaluation/acceptance.json",
     "hypothesis": "author decoder freezing difference not supported as main explanation of low score"
+  },
+  "wsi_native_prompt_control_1109_034133": {
+    "status": "running",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_native_prompt_control_1109_034133",
+    "record": "docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md",
+    "worker_pid": 2380793,
+    "gpu": 5,
+    "plans_sha256": "f0cd44c4bb99389e53c447bb6a459d404b2a11b363284a74ea80937e11453081",
+    "cases": 110,
+    "states": 3,
+    "local_queryGT_prompts": "explicitly_user_authorized_diagnostic_only",
+    "remote_primary": "zero_query_human_prompts_unchanged"
   }
 }

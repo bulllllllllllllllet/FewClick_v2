@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -380,3 +380,5 @@ Dice差距审计（2026-11-04T14:35:32.469528+08:00）：docs/运行记录/数�
 2026-11-08T21:38:52.271689+08:00 原作者decoder冻结对照256步学习门控、smoke、正式2000训练全部complete_accepted/EXIT0；8000消费与原臂SHA一致，图像encoder及240个冻结decoder张量SHA保持不变，可训练参数实际更新、fresh6重放通过。正式852483已退出。新同片11000推理真实worker978627(GPU3)/978629(GPU5)各975/5500，总1950/11000约17.7%，评估前向gate已通过，尚无最终质量结论。按当前约1.3任务/秒/worker估计余60–75min含逐mask复算，暂估22:40–22:55，负载变化需重算。原12.52%不覆盖，不在验证上改冻结策略或阈值。
 
 2026-11-09T03:37:33.588442+08:00 原作者decoder冻结单因素对照全部complete_accepted/EXIT0：256学习gate/smoke/2000训练、11000同片推理和磁盘mask评分/汇总通过，report/tasks/两rowsSHA现场核对，类别宏独立复算。8000训练消费与原臂一致，冻结decoder SHA未变。全部面积macro Dice12.3501%（原全部decoder适配12.5193%，下降0.1692pp）；absent FPA4.9062%（原3.9481%，增加0.9580pp）；>=20%macro15.8993%（原15.8497%，+0.0496pp）。未见恢复原decoder冻结策略带来实际改善，结果不支持该解冻差异是低分主要原因；仍不能由本适配桥推定原方法能力上限，未证明不存在其它接口问题。所有本组worker退出，不自动增加冻结比例/seed/训练预算。原两结果均保留。后续四项补充仍需完整WSI缓存/点击稳健性/空间确认，不以此次低基线取代应用证据。验收/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150/wsi_sam_ft/evaluation/acceptance.json。
+
+2026-11-09T03:44:33.912736+08:00 用户授权原生本图query点/框诊断，新增GT提示仅local oracle轨，不改变主remote零query点合同。110任务/11类/每类10不同query-target，3权重×点/全类框/最大组件框/原support远端共至多1320mask，未按成绩选例。实际GPU5 worker2380793在public_init阶段已21/110，首个本图point与WSISAMFineTune.forward逐位一致检查通过；三状态最终mask独立接受尚待完成。tmux wsi_native_control_1109_034133，输出/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_native_prompt_control_1109_034133，记录docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md。其它三项补充仍待执行，不称本图提示是remote公平主结果。

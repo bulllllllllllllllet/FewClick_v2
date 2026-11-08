@@ -4883,3 +4883,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_author_freeze_1108_204150
 - Docs record: docs/运行记录/模型实验/运行记录_WSISAM原作者解码器冻结对照_1108_204150.md
 - Commit: see commit containing this entry.
+
+## 11-09 03:44:33
+
+- Purpose: Run user-authorized oracle local points/boxes to diagnose WSI-SAM remote adaptation gap.
+- Changed: native_prompt_control.py, diagnostic contract and active continuity pointers.
+- Validation:110frozen query-target cases; first real public native local-point/direct-forward equality passed; GPU5 running, final3state score acceptance pending. QueryGT prompts confined to local diagnostic track.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_native_prompt_control_1109_034133
+- Docs record: docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md
+- Commit: see commit containing this entry.
