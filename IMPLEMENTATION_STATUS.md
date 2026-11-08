@@ -4892,3 +4892,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_native_prompt_control_1109_034133
 - Docs record: docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md
 - Commit: see commit containing this entry.
+
+## 11-09 03:57:42
+
+- Purpose: Close native local oracle versus fixed-remote WSI-SAM diagnostic.
+- Validation:3states/1269masks independently accepted; report/three row hashes checked; matched93case local/remote macros recomputed and case sets identical; frozen weights preserved. No training.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_native_prompt_control_1109_034133
+- Docs record: docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md
+- Commit: see commit containing this entry.

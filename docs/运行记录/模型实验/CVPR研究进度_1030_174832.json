@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-09T03:44:33.912736+08:00",
+  "updated_at": "2026-11-09T03:57:42.705439+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "WSISAM_native_local_oracle_control_running",
+  "current_status": "WSISAM_native_prompt_control_complete_accepted_remote_bridge_gap",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,7 +2300,7 @@
     }
   ],
   "next_actions": [
-    "Complete110case WSI native local-prompt versus remote paired diagnostic for public/full-adapt/author-freeze weights; independently replay saved masks. Interpret local object/class targets separately. No training, threshold tuning or replacement of remote primary table. Other WSI cache/prompt-robustness/spatial-confirmation work still pending."
+    "Retain WSI-SAM native local oracle diagnostic separately from remote main table; current low remote reflects explicit adaptation pipeline, not native model upper bound. Avoid additional blind WSI tuning; continue authorized WSI cache/whole-domain click costs, support-prompt robustness and audited confirmation."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -5214,7 +5214,7 @@
     "hypothesis": "author decoder freezing difference not supported as main explanation of low score"
   },
   "wsi_native_prompt_control_1109_034133": {
-    "status": "running",
+    "status": "complete_accepted",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_native_prompt_control_1109_034133",
     "record": "docs/运行记录/模型实验/运行记录_WSISAM原生本图提示对照_1109_034133.md",
     "worker_pid": 2380793,
@@ -5223,6 +5223,11 @@
     "cases": 110,
     "states": 3,
     "local_queryGT_prompts": "explicitly_user_authorized_diagnostic_only",
-    "remote_primary": "zero_query_human_prompts_unchanged"
+    "remote_primary": "zero_query_human_prompts_unchanged",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_native_prompt_control_1109_034133/acceptance.json",
+    "actual_masks": 1269,
+    "local_point_cases": 93,
+    "box_and_remote_cases": 110,
+    "outcome": "native local point58-59pct, matched93 remote adapted16.55/17.19pct; full decoder adaptation degrades box ability, author freeze protects box but not remote gap"
   }
 }
