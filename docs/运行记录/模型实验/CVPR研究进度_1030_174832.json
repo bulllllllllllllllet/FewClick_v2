@@ -5780,5 +5780,12 @@
     "consumption": 8000,
     "only_factor": "frozen image encoder and its fixed interface",
     "quality": "pending"
+  },
+  "sansa_leakage_audit": {
+    "status": "accepted_no_detected_target_data_spatial_leakage",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_leakage_audit_1109_165142",
+    "record": "docs/运行记录/数据审计/审计_SANSA训练评估空间泄漏_1109_165142.md",
+    "no_training_evaluation_spatial_overlap": true,
+    "public_pretraining_overlap": "not_exhaustively_verifiable"
   }
 }

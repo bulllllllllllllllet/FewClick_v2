@@ -4980,3 +4980,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation: 真实SAM2模型构建与2048x64x64有限特征通过；GPU3功能worker已启动，学习接受待完成。
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam2_encoder_probe_1109_162523
 - Docs record: docs/运行记录/模型实验/运行记录_SAM2编码器替换FewClick_1109_162523.md
+
+## 2026-11-09T16:52:27.069569+08:00
+
+- Purpose: 独立复核SANSA训练评估空间隔离和GT/选模/记忆路径。
+- Changed: benchmarks/v5/sansa_audit/check.py及接续记录。
+- Validation: aligner python -m benchmarks.v5.sansa_audit.check通过；8000消费、full4x交集0、源码和正式权重SHA一致。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_leakage_audit_1109_165142
+- Docs record: docs/运行记录/数据审计/审计_SANSA训练评估空间泄漏_1109_165142.md
