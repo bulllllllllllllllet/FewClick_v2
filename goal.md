@@ -1,6 +1,6 @@
 # FewClick CVPR 当前 Goal
 
-更新：2026-11-06T19:24:59.482903+08:00。支持区域匹配实验完成但未晋升，保留原点匹配候选；WSI只有索引空间块工程接受，P3/P4仍未完成。
+更新：2026-11-10T00:59:49.714787+08:00。支持小目标瓶颈修复两臂工程检查通过，GPU1/3训练集学习门控运行；通过后自动2000步训练和11000同片远端评估，尚无质量提升结论。
 
 ## 目标
 
@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/诊断_支持小目标区域混杂与正负分离_1110_004609.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_支持点击细节注入双臂修复_1110_005747.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -420,3 +420,9 @@ SANSA256功能门控/smoke/正式2000训练均complete_accepted；8000消费SHA8
 2026-11-10T00:37:31.021497+08:00 两GPU共63任务全部complete_accepted_diagnostic，历史query完整metrics精确重放、前2fresh/cached逐位一致、保存mask独立评分通过。empty_large19：supportDice.24899、query0、hardpartition最优.83279、softattained.81277(13/19>=.8)，support12/19<.2；nonempty_large22：support.56995、query.63243、soft.80692。empty_small11：support.48608、hard.17015、soft.11657，提示小目标确有区域表达局限但不构成认证soft上限。绕开匹配残差，region-only query63/63为空、support62/63为空；这是当前联合权重工作状态的移除诊断，不等同于重新训练no_match消融，不能直接定性整个主分支完全失效或无梯度。full support仅1/63空，支持错误主要为分错而非全空。优先诊断区域logit/残差幅度、训练中主分支与残差共适应；暂不自动改loss/重训。失败旧root region_bottleneck_diagnostic_1110_003433保留：CUDA weighted bincount deterministic不支持；CPU同语义统计替换后新root运行，未放松exact检查。结果/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_bottleneck_diagnostic_1110_003529/report.json，GToracle仅诊断、不选模型/阈值。
 
 2026-11-10T00:47:38.624525+08:00 support诊断63任务complete_accepted：原support完整metrics精确重放、全部正负GT符号正确、oracle masks独立评分通过，reportSHA核验。按实际support面积分：small<5%37例平均目标1.4696%、supportDice24.3483%、正点region assignment纯度9.3754%、负点目标占比.4189%、hard oracle36.6714%、soft attained21.9874%；large>=20%18例supportDice82.4858%、正点纯度74.5591%、hard84.0112/soft82.7997%。查询empty_large19例的support平均目标2.9063%、16/19支持目标<5%，正点纯度15.0949%，softattained27.8916%，而前轮query软表达81.2769%。支持端小目标混杂是有证据的瓶颈，不能把整段差距只归因该机制；纯度只是assignment空间占比，非token语义内容严格分解。正负argmax区域相同配对0，非点错/同一个region问题；small平均归属cos.0468但tokencos.6366，不能仅凭高tokencos判塌缩。两GPU全部退出0，无模型训练/阈值更改，不自动启动修复配方。
+
+2026-11-10T00:56:04.935029+08:00 用户授权支持小目标瓶颈修复。两臂point_detail/local_detail新增零初始化局部细节投影，Phikon及原匹配/损失/任务预算保留；GPU1/3各一worker，真实6任务工程gate→32train/256学习gate→fresh2000/8000→同片11000串联，任一失败停止。当前engineering_running，非学习或质量接受。root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005528；源码/数据/权重SHA见contract；第三方案region辅助监督暂缓，单因素辨别收益。
+
+2026-11-10T00:58:14.557447+08:00 修正工程门控首步梯度错误假设：原delta_head零初始化导致首步上游prompt梯度为0，固定3步检查首步0及后续>0。原两臂失败自动停止并保留；新root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747，两臂GPU1/3重新从fresh工程门控开始，架构/损失/学习阈值/正式预算不变。
+
+2026-11-10T00:59:49.714787+08:00 两臂工程门控complete_accepted/EXIT0：6组完整公共初始state/输出与原FewClick逐位一致，cached/full在更新前后逐位相同。新增投影实际梯度point为0→3.848e-5→1.313e-4，local为0→3.748e-5→1.281e-4，更新后raw prompt确实变化。已进入256步train-only学习gate；GPU1真实PID2831574、GPU3 PID2831557存活，非功能学习或质量接受。gate通过自动4smoke→fresh2000/8000→同片11000，失败停止。原失败root保留；记录工程首步梯度假设修订，不改学习bounds。

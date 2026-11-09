@@ -5024,3 +5024,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation:63support旧指标精确重放/全部点GT符号/磁盘oracle评分/reportSHA通过。
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_diagnostic_1110_004609
 - Docs record: docs/运行记录/模型实验/诊断_支持小目标区域混杂与正负分离_1110_004609.md
+
+## 11-10 00:59:50
+
+- Purpose: Test point/local detail injection into support region tokens under the unchanged Phikon FewClick recipe.
+- Changed: benchmarks/v5/support_token_repair/; goal.md; active registry; AGENTS.md current pointer.
+- Validation: integration.py on two domains × local/present/absent — both arms initial state and outputs exact, cached/full exact, actual projection gradients and prompt changes accepted. First failed gate retained: zero-init graph head correctly delays upstream gradient until update2; corrected bounded3-update engineering check, unchanged learning thresholds. compileall and diff checks passed.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747; functional GPU1 PID2831574, GPU3 PID2831557 running, full functional/quality acceptance pending.
+- Docs record: docs/运行记录/模型实验/运行记录_支持点击细节注入双臂修复_1110_005747.md; prior failed 1110_005528 record preserved.
+- Commit: this scoped implementation commit; hash recorded in run record after commit.
