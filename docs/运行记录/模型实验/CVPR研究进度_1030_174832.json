@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-09T20:18:56.905335+08:00",
+  "updated_at": "2026-11-09T23:28:55.653893+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "SAM2_encoder_training_accepted_eval_running",
+  "current_status": "SAM2_encoder_only_complete_not_promoted",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2148,18 +2148,6 @@
         "total": 3070,
         "seconds": 75.05036491900682
       }
-    },
-    {
-      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam2_encoder_probe_1109_162523",
-      "record": "docs/运行记录/模型实验/运行记录_SAM2编码器替换FewClick_1109_162523.md",
-      "status": "functional_running",
-      "gpu": 3,
-      "worker_pid": 959040,
-      "seed": 20261103,
-      "updates": 2000,
-      "consumption": 8000,
-      "only_factor": "frozen image encoder and its fixed interface",
-      "quality": "pending"
     }
   ],
   "completed_jobs": [
@@ -5772,17 +5760,23 @@
   "sam2_encoder_probe": {
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam2_encoder_probe_1109_162523",
     "record": "docs/运行记录/模型实验/运行记录_SAM2编码器替换FewClick_1109_162523.md",
-    "status": "evaluation_running",
+    "status": "complete_accepted_not_promoted",
     "gpu": 3,
     "worker_pid": 1403024,
     "seed": 20261103,
     "updates": 2000,
     "consumption": 8000,
     "only_factor": "frozen image encoder and its fixed interface",
-    "quality": "pending",
-    "eval_progress": 4500,
+    "quality": {
+      "macro_Dice": 0.2620281926680741,
+      "large_Dice": 0.4883685076159907,
+      "FPA": 0.1177479336504529
+    },
+    "eval_progress": 11000,
     "formal_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam2_encoder_probe_1109_162523/sam2_encoder/formal/acceptance.json",
-    "checkpoint_sha256": "1917924514b66d5ca0876dfdad573413b4d3661624927bd16ae75883c1b8416a"
+    "checkpoint_sha256": "1917924514b66d5ca0876dfdad573413b4d3661624927bd16ae75883c1b8416a",
+    "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam2_encoder_probe_1109_162523/sam2_encoder/evaluation/report.json",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam2_encoder_probe_1109_162523/sam2_encoder/evaluation/acceptance.json"
   },
   "sansa_leakage_audit": {
     "status": "accepted_no_detected_target_data_spatial_leakage",

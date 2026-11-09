@@ -4994,3 +4994,10 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Purpose: 记录SAM2 encoder正式训练接受与真实评估进度。
 - Validation: formal验收与6task gate读取，真实worker /proc存活；尚无完整质量接受。
 - Docs record: docs/运行记录/模型实验/运行记录_SAM2编码器替换FewClick_1109_162523.md
+
+## 2026-11-09T23:28:55.653893+08:00
+
+- Purpose: 接受SAM2 encoder-only完整阴性结果，不晋升。
+- Validation: report/two rows SHA及11类宏复算通过；pipeline EXIT0。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam2_encoder_probe_1109_162523/sam2_encoder/evaluation
+- Docs record: docs/运行记录/模型实验/运行记录_SAM2编码器替换FewClick_1109_162523.md
