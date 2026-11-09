@@ -5009,3 +5009,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation: 三方法33000row/6SHA/完整身份和GT计数核验；1000slide bootstrap；严格区分错误分解与模块因果。
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_gap_diagnostic_1109_235607
 - Docs record: docs/运行记录/模型实验/诊断_SANSA与FewClick配对差距分解_1109_235607.md
+
+## 2026-11-10T00:37:31.021497+08:00
+
+- Purpose: 完成support分割与query区域表达诊断。
+- Validation: 63真实任务历史完整metrics重放/fresh前向/mask磁盘评分通过；reportSHA核验。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_bottleneck_diagnostic_1110_003529
+- Docs record: docs/运行记录/模型实验/诊断_支持分割与查询区域表达_1110_003529.md
+- Remaining: region logits与matcher residual共适应原因未分离；无新训练。

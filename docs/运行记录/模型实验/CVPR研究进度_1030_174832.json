@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-09T23:57:09.367106+08:00",
+  "updated_at": "2026-11-10T00:37:31.021497+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "SAM2_encoder_only_complete_not_promoted",
+  "current_status": "support_and_region_expression_diagnostic_complete",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -5791,5 +5791,71 @@
     "record": "docs/运行记录/模型实验/诊断_SANSA与FewClick配对差距分解_1109_235607.md",
     "key_result": "Most Dice gap attributable arithmetically to FewClick empty predictions on present targets, not causal module attribution",
     "no_new_training": true
+  },
+  "region_bottleneck_diagnostic": {
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_bottleneck_diagnostic_1110_003529",
+    "record": "docs/运行记录/模型实验/诊断_支持分割与查询区域表达_1110_003529.md",
+    "status": "complete_accepted_diagnostic",
+    "tasks": 63,
+    "no_model_training": true,
+    "findings": {
+      "empty_large": {
+        "n": 19,
+        "mean_Dice": {
+          "support_metrics": 0.2489871053267634,
+          "support_region_only": 0.0,
+          "query_metrics": 0.0,
+          "query_region_only": 0.0,
+          "hard_partition_oracle": 0.8327924985381123,
+          "attained_soft_oracle": 0.8127694837122871
+        },
+        "support_Dice_ge_half": 4,
+        "soft_oracle_Dice_ge_08": 13,
+        "max_probability_mean": 0.382901920201747
+      },
+      "empty_small": {
+        "n": 11,
+        "mean_Dice": {
+          "support_metrics": 0.4860760827669636,
+          "support_region_only": 0.07647155250171798,
+          "query_metrics": 0.0,
+          "query_region_only": 0.0,
+          "hard_partition_oracle": 0.17015177926726036,
+          "attained_soft_oracle": 0.11656851020273643
+        },
+        "support_Dice_ge_half": 4,
+        "soft_oracle_Dice_ge_08": 0,
+        "max_probability_mean": 0.28503619269891217
+      },
+      "nonempty_large": {
+        "n": 22,
+        "mean_Dice": {
+          "support_metrics": 0.5699462786656364,
+          "support_region_only": 0.0,
+          "query_metrics": 0.6324268019701201,
+          "query_region_only": 0.0,
+          "hard_partition_oracle": 0.8161189202333848,
+          "attained_soft_oracle": 0.8069152305588164
+        },
+        "support_Dice_ge_half": 14,
+        "soft_oracle_Dice_ge_08": 15,
+        "max_probability_mean": 0.7765234248204664
+      },
+      "nonempty_small": {
+        "n": 11,
+        "mean_Dice": {
+          "support_metrics": 0.6128398517240629,
+          "support_region_only": 0.0,
+          "query_metrics": 0.3002164404275316,
+          "query_region_only": 0.0,
+          "hard_partition_oracle": 0.4481041048786612,
+          "attained_soft_oracle": 0.44895686532847184
+        },
+        "support_Dice_ge_half": 8,
+        "soft_oracle_Dice_ge_08": 1,
+        "max_probability_mean": 0.7634110775860873
+      }
+    },
+    "key_risk": "region-only query63/63 empty when matcher bypassed; joint coadaptation not retrained no-match ablation"
   }
 }

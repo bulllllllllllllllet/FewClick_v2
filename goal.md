@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_SAM2编码器替换FewClick_1109_162523.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/诊断_支持分割与查询区域表达_1110_003529.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -416,3 +416,5 @@ SANSA256功能门控/smoke/正式2000训练均complete_accepted；8000消费SHA8
 2026-11-09T23:28:55.653893+08:00 SAM2 encoder-only整轮complete_accepted/EXIT0：256功能门控、fresh恢复、smoke、2000/8000正式训练、11000同片mask及磁盘评分聚合接受。现场report及两rowsSHA和11类宏复算核对。macroDice26.2028%、>=20%48.8369%、absentFPA11.7748%；原Phikon Few32.4547/59.4305/FPA2.3912。下降6.2518/10.5936pp、误报增加9.3836pp，未晋升。仅否定本冻结encoder+固定接口+预算替换方案，不否定SAM2所有接法；不能据此分离encoder语义/尺度/接口/后端原因。无自动新配方训练。reportSHA5405c858d90481ee84e155a09c0cab681d3016a55df61fc21e4686b148c5be57。聚合report limitations沿用SAM模板(native decoder字样)与本FewClick后端不符，正文以合同/代码为准、保留原报告。
 
 2026-11-09T23:57:09.367106+08:00 只读诊断complete_accepted：三方法33000row完整身份和6rowsSHA通过，共享GT正像素/有效计数一致。SANSA-Few类别宏Dice差4.9451pp，75片配对cluster bootstrap95%CI[3.9395,5.9958]pp，仅开发评估不作独立确认。原Few在7334present中1569空预测，大面积2130中254空预测；按原classmacro分母加法分解，空预测子集贡献3.2798pp/总4.9451pp(66.3%)，大面积贡献4.6957pp/总6.3516pp(73.9%)。此为结果误差分解，不能把空预测原因直接归于某模块。大面积Recall Few58.4888/SANSA66.4990%、precision70.5566/74.9196%、BF1物理2µm26.1412/39.8533%。预测面积/GT比.7439/.9117，说明原模型平均欠覆盖。两者预测面积均处于GT的.5–2倍诊断子集1269例：FewDice82.5010/SANSA80.6441%，BF135.4120/45.7671%；该子集按预测/GT选择，不能代替主结果或宣称整体反超。原Few误报2.3912%仍优SANSA9.5687%。支持阶段/跨图匹配/像素投影原因尚未因果分离；推荐下一步固定病例的支持分割及query区域表示oracle审计，不自动训练。证据/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_gap_diagnostic_1109_235607/report.json与delta_decomposition.json。
+
+2026-11-10T00:37:31.021497+08:00 两GPU共63任务全部complete_accepted_diagnostic，历史query完整metrics精确重放、前2fresh/cached逐位一致、保存mask独立评分通过。empty_large19：supportDice.24899、query0、hardpartition最优.83279、softattained.81277(13/19>=.8)，support12/19<.2；nonempty_large22：support.56995、query.63243、soft.80692。empty_small11：support.48608、hard.17015、soft.11657，提示小目标确有区域表达局限但不构成认证soft上限。绕开匹配残差，region-only query63/63为空、support62/63为空；这是当前联合权重工作状态的移除诊断，不等同于重新训练no_match消融，不能直接定性整个主分支完全失效或无梯度。full support仅1/63空，支持错误主要为分错而非全空。优先诊断区域logit/残差幅度、训练中主分支与残差共适应；暂不自动改loss/重训。失败旧root region_bottleneck_diagnostic_1110_003433保留：CUDA weighted bincount deterministic不支持；CPU同语义统计替换后新root运行，未放松exact检查。结果/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_bottleneck_diagnostic_1110_003529/report.json，GToracle仅诊断、不选模型/阈值。
