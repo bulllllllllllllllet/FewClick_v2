@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-09T08:47:58.881184+08:00",
+  "updated_at": "2026-11-09T09:10:56.264932+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "SANSA_formal_accepted_eval6150of11000_WSISAM_frozen",
+  "current_status": "paper_closeout_three_studies_running_SANSA_evaluation_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2117,6 +2117,48 @@
     "P6"
   ],
   "active_jobs": [
+    {
+      "mode": "efficiency",
+      "gpu": 0,
+      "session": "paper_efficiency_1109_090821",
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/efficiency",
+      "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=0 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.paper_closeout.run --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/efficiency --mode efficiency > /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/efficiency/stdout.log 2>&1; code=$?; echo EXIT_CODE=$code >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/efficiency/stdout.log",
+      "status": "running",
+      "pid": 3560528,
+      "progress": {
+        "pid": 3560528,
+        "stage": "persistent_cache_first_prediction",
+        "slide": 0,
+        "windows": 221,
+        "total": 6391,
+        "seconds": 135.9885627105832
+      }
+    },
+    {
+      "mode": "robustness",
+      "gpu": 1,
+      "session": "paper_robustness_1109_090821",
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/robustness",
+      "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=1 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.paper_closeout.run --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/robustness --mode robustness > /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/robustness/stdout.log 2>&1; code=$?; echo EXIT_CODE=$code >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/robustness/stdout.log",
+      "status": "running",
+      "pid": 3560532,
+      "progress": {
+        "pid": 3560532,
+        "tasks": 61,
+        "total": 660,
+        "seconds": 59.93189200013876
+      }
+    },
+    {
+      "mode": "confirmation",
+      "gpu": 2,
+      "session": "paper_confirm_native_1109_090821",
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/confirmation_native_metadata",
+      "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=2 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.paper_closeout.run --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/confirmation_native_metadata --mode confirmation > /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/confirmation_native_metadata/stdout.log 2>&1; code=$?; echo EXIT_CODE=$code >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/confirmation_native_metadata/stdout.log",
+      "status": "running",
+      "pid": 3568134,
+      "progress": null
+    },
     {
       "study": "SANSA_evaluation",
       "worker_pid": 3318670,
@@ -5671,5 +5713,59 @@
     "receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250/wsi_freeze_manifest.json",
     "watcher_pid": 2575347,
     "all_variants_retained": true
+  },
+  "paper_closeout": {
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821",
+    "record": "docs/运行记录/模型实验/运行记录_WSI效率点击稳健性与空间确认_1109_090821.md",
+    "status": "running_preparation_and_gated_inference",
+    "jobs": [
+      {
+        "mode": "efficiency",
+        "gpu": 0,
+        "session": "paper_efficiency_1109_090821",
+        "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/efficiency",
+        "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=0 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.paper_closeout.run --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/efficiency --mode efficiency > /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/efficiency/stdout.log 2>&1; code=$?; echo EXIT_CODE=$code >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/efficiency/stdout.log",
+        "status": "running",
+        "pid": 3560528,
+        "progress": {
+          "pid": 3560528,
+          "stage": "persistent_cache_first_prediction",
+          "slide": 0,
+          "windows": 221,
+          "total": 6391,
+          "seconds": 135.9885627105832
+        }
+      },
+      {
+        "mode": "robustness",
+        "gpu": 1,
+        "session": "paper_robustness_1109_090821",
+        "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/robustness",
+        "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=1 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.paper_closeout.run --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/robustness --mode robustness > /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/robustness/stdout.log 2>&1; code=$?; echo EXIT_CODE=$code >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/robustness/stdout.log",
+        "status": "running",
+        "pid": 3560532,
+        "progress": {
+          "pid": 3560532,
+          "tasks": 61,
+          "total": 660,
+          "seconds": 59.93189200013876
+        }
+      },
+      {
+        "mode": "confirmation",
+        "gpu": 2,
+        "session": "paper_confirm_native_1109_090821",
+        "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/confirmation_native_metadata",
+        "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=2 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.paper_closeout.run --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/confirmation_native_metadata --mode confirmation > /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/confirmation_native_metadata/stdout.log 2>&1; code=$?; echo EXIT_CODE=$code >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821/confirmation_native_metadata/stdout.log",
+        "status": "running",
+        "pid": 3568134,
+        "progress": null
+      }
+    ],
+    "remaining": [
+      "efficiency spatial fusion and quality acceptance",
+      "matched baseline robustness/confirmation replay",
+      "per-slide intervals and final aggregation"
+    ]
   }
 }

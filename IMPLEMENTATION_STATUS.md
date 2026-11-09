@@ -4947,3 +4947,21 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250; WSI frozen manifest retained, no new training.
 - Docs record: docs/运行记录/模型实验/运行记录_SANSA同预算适配与WSISAM冻结_1109_042824.md
 - Commit: see commit containing this entry.
+
+## 2026-11-09T09:09:50.784669+08:00
+
+- Purpose: 启动已授权WSI效率、点击稳健性和独立空间确认收尾。
+- Changed: benchmarks/v5/paper_closeout; goal/registry/current record。
+- Validation: py_compile passed; efficiency真实fresh/cached及持久cache重载一致，其他两臂准备运行，未完成最终接受。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821
+- Docs record: docs/运行记录/模型实验/运行记录_WSI效率点击稳健性与空间确认_1109_090821.md
+- Remaining: 三项验收/融合/参考配对，历史AAAI确认暴露明报。
+
+## 2026-11-09T09:10:56.264932+08:00
+
+- Purpose: 启动已授权WSI效率、点击稳健性和独立空间确认收尾。
+- Changed: benchmarks/v5/paper_closeout; goal/registry/current record。
+- Validation: py_compile passed; efficiency真实fresh/cached及持久cache重载一致，其他两臂准备运行，未完成最终接受。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821
+- Docs record: docs/运行记录/模型实验/运行记录_WSI效率点击稳健性与空间确认_1109_090821.md
+- Remaining: 三项验收/融合/参考配对，历史AAAI确认暴露明报。

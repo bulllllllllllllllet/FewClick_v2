@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_SANSA同预算适配与WSISAM冻结_1109_042824.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_WSI效率点击稳健性与空间确认_1109_090821.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -400,3 +400,7 @@ WSI三版本保留：旧full-decoder12.5193%、author-freeze12.3501%已验收；
 
 2026-11-09T08:47:58.881184+08:00 WSI-SAM自动点桥整轮complete_accepted：formal2000/8000、11000同片mask独立评分/聚合全部接受；reportSHA及11类宏独立复算核对，冻结receipt=frozen_accepted，其非checkpoint报告/合同/验收SHA现场核对（权重SHA由收尾watcher生成，本次不重复读大文件）。最新macro Dice16.5569%、>=20%macro30.1756%、absentFPA10.3953%；较author-freeze12.3501/15.8993/FPA4.9062分割改善但误报增加，不能称无代价晋升。全部三WSI版本按用户要求冻结，不再新候选/seed/训练。
 SANSA256功能门控/smoke/正式2000训练均complete_accepted；8000消费SHA833a6ce3c806bb83e4941bcf0f4934a93969fc74a7cceb5e2264d90b5c2b4456与所有对照相同，240adapter实际改变、非adapterencoder/native decoder不变、fresh6精确恢复。checkpoint SHAc5dfb12e3773b6098b0d3d2fa73153336735bbb1a7c368af75a6a663463652fb。6同片evalgate接受；GPU3/5真实3318670/3318672现场存活，进度3050+3100=6150/11000（55.9%）；最终评估尚未接受，不提供部分任务Dice冒充全量。按各分片约2690秒/3100行估计余40–55min含独立复算（负载可变），预计09:30–09:45左右。所有旧worker运行字段作为历史，不重启。
+
+2026-11-09T09:09:50.784669+08:00 三项收尾已启动。真实worker/GPU：efficiency PID3560528 GPU0 running, robustness PID3560532 GPU1 running, confirmation PID3563400 GPU2 failed。输出/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821。效率首窗fresh/cached及磁盘cache重载逐位门控通过，已开始全固定内部域；稳健性正在生成固定点计划；确认原highres catalog无test行，旧失败保留，改为原固定test30每片6x6几何网格(读GT/预测前固定)，新confirmation_geometry审计运行。所有工程失败不算质量失败，依赖路径修正不改权重。首次090725缺vendor PYTHONPATH全退出；090821确认无test geometry退出；记录原目录，未杀他人/重复活动worker。确认SHA字段已明确重算。效率空间融合及质量接受、参考方法配对确认/点击对比与汇总仍待补齐，不以单臂测量宣称领先。
+
+2026-11-09T09:10:56.264932+08:00 三项收尾已启动。真实worker/GPU：efficiency PID3560528 GPU0 running, robustness PID3560532 GPU1 running, confirmation PID3568134 GPU2 running。输出/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821。效率首窗fresh/cached及磁盘cache重载逐位门控通过，已开始全固定内部域；稳健性正在生成固定点计划；确认原highres catalog无test行，旧失败保留，改为原固定test30每片6x6几何网格(读GT/预测前固定)，新confirmation_geometry审计运行。所有工程失败不算质量失败，依赖路径修正不改权重。首次090725缺vendor PYTHONPATH全退出；090821确认无test geometry退出；记录原目录，未杀他人/重复活动worker。确认SHA字段已明确重算。效率空间融合及质量接受、参考方法配对确认/点击对比与汇总仍待补齐，不以单臂测量宣称领先。
