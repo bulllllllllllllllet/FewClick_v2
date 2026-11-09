@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-09T04:35:00.427305+08:00",
+  "updated_at": "2026-11-09T08:47:58.881184+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "SANSA_functional_running_WSISAM_final_arm_running_then_freeze",
+  "current_status": "SANSA_formal_accepted_eval6150of11000_WSISAM_frozen",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2118,21 +2118,16 @@
   ],
   "active_jobs": [
     {
-      "study": "wsi_sparse_bridge_1109_035845",
-      "status": "formal_running",
-      "worker_pid": 2479418,
-      "gpu": 1
+      "study": "SANSA_evaluation",
+      "worker_pid": 3318670,
+      "gpu": 3,
+      "status": "running"
     },
     {
-      "study": "sansa_adaptation_1109_042824",
-      "status": "functional_running",
-      "worker_pid": 2572244,
-      "gpu": 3
-    },
-    {
-      "study": "wsi_freeze_receipt",
-      "status": "waiting_readonly",
-      "pid": 2575347
+      "study": "SANSA_evaluation",
+      "worker_pid": 3318672,
+      "gpu": 5,
+      "status": "running"
     }
   ],
   "completed_jobs": [
@@ -5249,7 +5244,7 @@
     "outcome": "native local point58-59pct, matched93 remote adapted16.55/17.19pct; full decoder adaptation degrades box ability, author freeze protects box but not remote gap"
   },
   "wsi_sparse_bridge_1109_035845": {
-    "status": "formal_running",
+    "status": "complete_accepted_frozen",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_sparse_bridge_1109_035845",
     "record": "docs/运行记录/模型实验/运行记录_WSISAM自动稀疏提示迁移桥_1109_035845.md",
     "controller_pid": 2452305,
@@ -5267,7 +5262,10 @@
     "quality": "pending",
     "remaining_paper_studies": "full WSI cache efficiency / click robustness / independent spatial confirmation pending",
     "functional_acceptance": "accepted_repaired_functional_gate",
-    "formal_worker_pid": 2479418
+    "formal_worker_pid": 2479418,
+    "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_sparse_bridge_1109_035845/wsi_sam_ft/evaluation/report.json",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_sparse_bridge_1109_035845/wsi_sam_ft/evaluation/acceptance.json",
+    "quality_outcome": "macro16.5569pct_large30.1756pct_FPA10.3953pct"
   },
   "reference_baseline_1109_040918": {
     "status": "complete_accepted_readonly_pilot",
@@ -5642,7 +5640,7 @@
     "conclusion": "official presence head disabled; zero target adaptation; positive-only worsens FPA; not causally isolated absence explanation"
   },
   "sansa_adaptation_1109_042824": {
-    "status": "functional_running",
+    "status": "evaluation_running",
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250",
     "record": "docs/运行记录/模型实验/运行记录_SANSA同预算适配与WSISAM冻结_1109_042824.md",
     "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250/contract.json",
@@ -5658,10 +5656,17 @@
     "engineering": "6native predictions exact and fresh optimizer continuation accepted",
     "failed_previous_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_042824",
     "failure_reason": "own controller tmux session interruption; preserve checkpoint and identical recipe restart",
-    "quality": "pending"
+    "quality": "pending",
+    "formal_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250/sansa_ft/formal/acceptance.json",
+    "evaluation_workers": [
+      3318670,
+      3318672
+    ],
+    "eval_progress": 6150,
+    "checkpoint_sha256": "c5dfb12e3773b6098b0d3d2fa73153336735bbb1a7c368af75a6a663463652fb"
   },
   "wsi_freeze_decision": {
-    "status": "pending_current_final_arm_completion",
+    "status": "frozen_accepted",
     "no_further_exploration": true,
     "receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250/wsi_freeze_manifest.json",
     "watcher_pid": 2575347,

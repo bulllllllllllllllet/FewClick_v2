@@ -4939,3 +4939,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/运行记录_SANSA同预算适配与WSISAM冻结_1109_042824.md
 - WSI: existing formal worker2479418 preserved;readonly receipt watcher2575347 freezes hashes after final current arm terminates;no further WSI candidates.
 - Commit: see commit containing this entry.
+
+## 11-09 08:47:58
+
+- Purpose: Close/freeze WSI-SAM and reconcile SANSA evaluation progress.
+- Validation: WSI report/receipt metadata hashes and class macro checked;SANSA2000/8000 training acceptance and live eval PIDs checked;6150/11000.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250; WSI frozen manifest retained, no new training.
+- Docs record: docs/运行记录/模型实验/运行记录_SANSA同预算适配与WSISAM冻结_1109_042824.md
+- Commit: see commit containing this entry.
