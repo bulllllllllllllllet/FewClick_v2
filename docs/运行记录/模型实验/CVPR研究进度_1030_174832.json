@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-09T16:26:05.446443+08:00",
+  "updated_at": "2026-11-09T20:18:56.905335+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "SAM2_encoder_only_functional_gate_running",
+  "current_status": "SAM2_encoder_training_accepted_eval_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -5772,14 +5772,17 @@
   "sam2_encoder_probe": {
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam2_encoder_probe_1109_162523",
     "record": "docs/运行记录/模型实验/运行记录_SAM2编码器替换FewClick_1109_162523.md",
-    "status": "functional_running",
+    "status": "evaluation_running",
     "gpu": 3,
-    "worker_pid": 959040,
+    "worker_pid": 1403024,
     "seed": 20261103,
     "updates": 2000,
     "consumption": 8000,
     "only_factor": "frozen image encoder and its fixed interface",
-    "quality": "pending"
+    "quality": "pending",
+    "eval_progress": 4500,
+    "formal_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam2_encoder_probe_1109_162523/sam2_encoder/formal/acceptance.json",
+    "checkpoint_sha256": "1917924514b66d5ca0876dfdad573413b4d3661624927bd16ae75883c1b8416a"
   },
   "sansa_leakage_audit": {
     "status": "accepted_no_detected_target_data_spatial_leakage",

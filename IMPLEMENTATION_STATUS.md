@@ -4988,3 +4988,9 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation: aligner python -m benchmarks.v5.sansa_audit.check通过；8000消费、full4x交集0、源码和正式权重SHA一致。
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_leakage_audit_1109_165142
 - Docs record: docs/运行记录/数据审计/审计_SANSA训练评估空间泄漏_1109_165142.md
+
+## 2026-11-09T20:18:56.905335+08:00
+
+- Purpose: 记录SAM2 encoder正式训练接受与真实评估进度。
+- Validation: formal验收与6task gate读取，真实worker /proc存活；尚无完整质量接受。
+- Docs record: docs/运行记录/模型实验/运行记录_SAM2编码器替换FewClick_1109_162523.md
