@@ -4965,3 +4965,10 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821
 - Docs record: docs/运行记录/模型实验/运行记录_WSI效率点击稳健性与空间确认_1109_090821.md
 - Remaining: 三项验收/融合/参考配对，历史AAAI确认暴露明报。
+
+## 2026-11-09T10:55:33.614218+08:00
+
+- Purpose: 核验SANSA及点击实验完整接受，记录效率/确认真实进度。
+- Validation: SANSA report SHA/11class macro和robustness rows SHA核对通过；两running PID存在。
+- Docs record: docs/运行记录/模型实验/运行记录_WSI效率点击稳健性与空间确认_1109_090821.md
+- Remaining: 效率/确认收尾、参考配对与区间、SANSA模板metadata纠正。
