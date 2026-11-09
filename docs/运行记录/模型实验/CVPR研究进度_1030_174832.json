@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-09T23:28:55.653893+08:00",
+  "updated_at": "2026-11-09T23:57:09.367106+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -5784,5 +5784,12 @@
     "record": "docs/运行记录/数据审计/审计_SANSA训练评估空间泄漏_1109_165142.md",
     "no_training_evaluation_spatial_overlap": true,
     "public_pretraining_overlap": "not_exhaustively_verifiable"
+  },
+  "sansa_gap_diagnostic": {
+    "status": "complete_accepted_readonly",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_gap_diagnostic_1109_235607",
+    "record": "docs/运行记录/模型实验/诊断_SANSA与FewClick配对差距分解_1109_235607.md",
+    "key_result": "Most Dice gap attributable arithmetically to FewClick empty predictions on present targets, not causal module attribution",
+    "no_new_training": true
   }
 }

@@ -5001,3 +5001,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation: report/two rows SHA及11类宏复算通过；pipeline EXIT0。
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam2_encoder_probe_1109_162523/sam2_encoder/evaluation
 - Docs record: docs/运行记录/模型实验/运行记录_SAM2编码器替换FewClick_1109_162523.md
+
+## 2026-11-09T23:57:09.367106+08:00
+
+- Purpose: 完成SANSA/FewClick同任务误差分解。
+- Changed: benchmarks/v5/sansa_gap_diagnostic/analyze.py。
+- Validation: 三方法33000row/6SHA/完整身份和GT计数核验；1000slide bootstrap；严格区分错误分解与模块因果。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_gap_diagnostic_1109_235607
+- Docs record: docs/运行记录/模型实验/诊断_SANSA与FewClick配对差距分解_1109_235607.md
