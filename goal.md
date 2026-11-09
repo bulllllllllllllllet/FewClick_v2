@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_WSI效率点击稳健性与空间确认_1109_090821.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_SAM2编码器替换FewClick_1109_162523.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -406,3 +406,5 @@ SANSA256功能门控/smoke/正式2000训练均complete_accepted；8000消费SHA8
 2026-11-09T09:10:56.264932+08:00 三项收尾已启动。真实worker/GPU：efficiency PID3560528 GPU0 running, robustness PID3560532 GPU1 running, confirmation PID3568134 GPU2 running。输出/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_closeout_1109_090821。效率首窗fresh/cached及磁盘cache重载逐位门控通过，已开始全固定内部域；稳健性正在生成固定点计划；确认原highres catalog无test行，旧失败保留，改为原固定test30每片6x6几何网格(读GT/预测前固定)，新confirmation_geometry审计运行。所有工程失败不算质量失败，依赖路径修正不改权重。首次090725缺vendor PYTHONPATH全退出；090821确认无test geometry退出；记录原目录，未杀他人/重复活动worker。确认SHA字段已明确重算。效率空间融合及质量接受、参考方法配对确认/点击对比与汇总仍待补齐，不以单臂测量宣称领先。
 
 2026-11-09T10:55:33.614218+08:00 状态核查：SANSA全11000/独立评分聚合complete_accepted，报告SHA现场一致，11类宏复算通过。macro Dice37.3998%、>=20%65.7820%、absentFPA9.5687%，Few32.4547/59.4305/FPA2.3912；SANSA质量更高、误报更多，禁止称Few全面领先。SANSA报告limitations沿用通用SAM模板文字(含SignedMatcher/decoder训练)与实际adapter-only合同不符，正文必须以正式训练验收为准，报告元数据需另出纠正副本，原报告保留。稳健性660任务/1980mask独立接受且rowsSHA核对，1/3/5正+2负宏Dice30.5544/31.5722/30.6870%，大面积52.1598/56.0427/55.5478%，FPA2.1305/2.9535/2.9282%；仅220原任务三点组开发子集，不与11000混比，尚无区间，不声称统计显著。效率GPU0 PID3560528第一片6391缓存/首轮结束、缓存点击更新约2020窗，仍running；GPU2 PID3568134确认原1080几何窗准备完成，3070同片任务正式推理已31，仍running。无需因历史AAAI评估另找数据(最新用户确认)。
+
+2026-11-09T16:26:05.446443+08:00 用户授权SAM2 encoder-only替换；真实构建3视野接口2048x64x64/finite通过。GPU3 functional PID959040，workflow959007，root/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam2_encoder_probe_1109_162523；原FewClick后端/匹配及损失保留，无SANSA adapter。256train-onlygate→4smoke→fresh2000/8000→同片11000已串联；失败停止。尚无功能学习/质量接受。代码/权重/任务SHA在contract，当前记录docs/运行记录/模型实验/运行记录_SAM2编码器替换FewClick_1109_162523.md。

@@ -4972,3 +4972,11 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Validation: SANSA report SHA/11class macro和robustness rows SHA核对通过；两running PID存在。
 - Docs record: docs/运行记录/模型实验/运行记录_WSI效率点击稳健性与空间确认_1109_090821.md
 - Remaining: 效率/确认收尾、参考配对与区间、SANSA模板metadata纠正。
+
+## 2026-11-09T16:26:05.446443+08:00
+
+- Purpose: 启动SAM2 encoder-only FewClick受控实验。
+- Changed: benchmarks/v5/sam2_encoder_probe; goal/registry/AGENTS。
+- Validation: 真实SAM2模型构建与2048x64x64有限特征通过；GPU3功能worker已启动，学习接受待完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam2_encoder_probe_1109_162523
+- Docs record: docs/运行记录/模型实验/运行记录_SAM2编码器替换FewClick_1109_162523.md
