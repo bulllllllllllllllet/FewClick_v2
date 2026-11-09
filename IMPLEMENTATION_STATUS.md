@@ -5017,3 +5017,10 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_bottleneck_diagnostic_1110_003529
 - Docs record: docs/运行记录/模型实验/诊断_支持分割与查询区域表达_1110_003529.md
 - Remaining: region logits与matcher residual共适应原因未分离；无新训练。
+
+## 2026-11-10T00:47:38.624525+08:00
+
+- Purpose: 核查支持小目标区域混杂与正负提示分离。
+- Validation:63support旧指标精确重放/全部点GT符号/磁盘oracle评分/reportSHA通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_diagnostic_1110_004609
+- Docs record: docs/运行记录/模型实验/诊断_支持小目标区域混杂与正负分离_1110_004609.md

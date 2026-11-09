@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-10T00:37:31.021497+08:00",
+  "updated_at": "2026-11-10T00:47:38.624525+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
@@ -14,7 +14,7 @@
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "support_and_region_expression_diagnostic_complete",
+  "current_status": "support_small_target_region_mixing_diagnostic_complete",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -5857,5 +5857,14 @@
       }
     },
     "key_risk": "region-only query63/63 empty when matcher bypassed; joint coadaptation not retrained no-match ablation"
+  },
+  "support_region_diagnostic": {
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_diagnostic_1110_004609",
+    "record": "docs/运行记录/模型实验/诊断_支持小目标区域混杂与正负分离_1110_004609.md",
+    "status": "complete_accepted_diagnostic",
+    "tasks": 63,
+    "key_result": "Support small-target point-linked regions strongly mixed; query-large failures often use tiny support targets",
+    "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_region_diagnostic_1110_004609/report.json",
+    "no_training": true
   }
 }
