@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-10T19:01:49.464497+08:00",
+  "updated_at": "2026-11-10T19:16:41.582419+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/诊断_细节与辅助监督配对误差及任务分布_1110_190005.md",
+    "current_record": "docs/运行记录/数据审计/运行记录_同片远端训练9500任务_1110_191022.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/诊断_细节与辅助监督配对误差及任务分布_1110_190005.md"
+    "current_run_record": "docs/运行记录/数据审计/运行记录_同片远端训练9500任务_1110_191022.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "repair_error_and_training_distribution_review_complete",
+  "current_status": "same_slide_9500_queue_complete_training_pending",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2300,8 +2300,8 @@
     }
   ],
   "next_actions": [
-    "Monitor region_auxiliary two engineering gates, then queued learning gates/fresh training/sameWSI evaluation; stop on any failure.",
-    "No automatic new candidates, coefficients, seeds or threshold changes."
+    "Use accepted9500 queue for future matched FewClick/SANSA retraining:2375updates/batch4. Implement trainer bindings to new source, gate32 and monitor32; historical hardcoded4000/8000/cross gates forbidden.",
+    "Do not claim old8000 checkpoints were trained on new queue; all historical comparisons preserved."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -6306,5 +6306,116 @@
     "record": "docs/运行记录/模型实验/诊断_细节与辅助监督配对误差及任务分布_1110_190005.md",
     "report_sha256": "f2cb9a1ee39aacad156dd8d3e178785a6400506e103884248925a059d685a7c0",
     "next_action": "Audit legal sameWSI training pairs before proposing a matched training-distribution experiment; no new training launched."
-  }
+  },
+  "same_slide_training_queue": {
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022",
+    "record": "docs/运行记录/数据审计/运行记录_同片远端训练9500任务_1110_191022.md",
+    "status": "complete_accepted_preparation",
+    "counts": {
+      "local": 4000,
+      "same_present": 5000,
+      "same_absent": 500
+    },
+    "updates": 2375,
+    "training_started": false,
+    "acceptance": {
+      "status": "accepted_same_slide_training_queue",
+      "training9500_sha256": "5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6",
+      "training_consumption_sha256": "5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6",
+      "source_sha256": "97d2941fe9197ba6146c26db1752a1f6a76f26eeae26f913eff44adae5b467bb",
+      "source_code_sha256": "00624c1c61dc2243d7d5f875a21d24deec528474ce30b2cbe9ae4a6219a898e8",
+      "source_tasks": 9500,
+      "consumption": 9500,
+      "unique_remote_pairs_target": 5500,
+      "remote_cross_slide": 0,
+      "local_lines_exact": true,
+      "all_remote_full4x_disjoint": true,
+      "train_eval_full4x_disjoint": true,
+      "local_prompt_budgets_exact": true,
+      "remote_prompt_budget_templates_preserved": true,
+      "all_remote_GT_signs_checked": true,
+      "independent_prompt_replay": 5,
+      "actual_consumption_domain_kind_counts": {
+        "('crc', 'local')": 2240,
+        "('crc', 'same_present')": 5000,
+        "('tiger', 'local')": 1760,
+        "('crc', 'same_absent')": 500
+      },
+      "classes": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "training_started": false,
+      "required_before_training": "Use this source for functional gates and monitors too; never keep historical cross-slide gate tasks. Fresh matched FewClick/SANSA recipe must consume the identical new hash."
+    },
+    "independent_acceptance": {
+      "status": "complete_accepted_manifest_audit",
+      "training_consumption_sha256": "5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6",
+      "functional_tasks_sha256": "5e640ab2a91b9b206ae1a72316b195139c3cd6ef3e7dd4ff510da7ee656f6b4b",
+      "monitor_tasks_sha256": "5e640ab2a91b9b206ae1a72316b195139c3cd6ef3e7dd4ff510da7ee656f6b4b",
+      "tasks": 9500,
+      "local": 4000,
+      "remote_present": 5000,
+      "remote_absent": 500,
+      "remote_unique_slide_count": 156,
+      "unique_input_patches": 1309,
+      "remote_class_counts": {
+        "(10, 'same_present')": 581,
+        "(5, 'same_absent')": 46,
+        "(8, 'same_absent')": 45,
+        "(0, 'same_present')": 582,
+        "(3, 'same_present')": 582,
+        "(9, 'same_present')": 528,
+        "(6, 'same_present')": 582,
+        "(4, 'same_absent')": 46,
+        "(1, 'same_present')": 582,
+        "(11, 'same_present')": 312,
+        "(4, 'same_present')": 278,
+        "(7, 'same_present')": 581,
+        "(8, 'same_present')": 72,
+        "(11, 'same_absent')": 45,
+        "(5, 'same_present')": 320,
+        "(6, 'same_absent')": 45,
+        "(0, 'same_absent')": 46,
+        "(3, 'same_absent')": 46,
+        "(9, 'same_absent')": 45,
+        "(7, 'same_absent')": 45,
+        "(10, 'same_absent')": 45,
+        "(1, 'same_absent')": 46
+      },
+      "training_updates": 2375,
+      "batch": 4,
+      "training_started": false,
+      "source_code_sha256": "b96d0781c507e1fe50b54d2af349ab1a195faa8895bc3b2673567ceff507728f"
+    },
+    "loader_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022/loader_acceptance.json",
+    "training_source": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022/training9500.jsonl",
+    "functional_source": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022/functional_tasks.json",
+    "monitor_source": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022/monitor_tasks.json"
+  },
+  "same_slide_queue_history": [
+    {
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_190702",
+      "record": "docs/运行记录/数据审计/运行记录_同片远端训练队列替换_1110_190702.md",
+      "status": "superseded_by_user_counts",
+      "worker_pid": 2540133,
+      "progress": {
+        "pid": 2540133,
+        "resolved": 700,
+        "total": 2000,
+        "seconds": 51.77102541923523
+      },
+      "assumption": "No answer yet to optional preference; proceed with recommended CRC-only remote candidate, TIGER local retained.",
+      "training_started": false
+    }
+  ]
 }

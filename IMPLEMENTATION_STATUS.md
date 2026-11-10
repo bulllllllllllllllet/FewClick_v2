@@ -5061,3 +5061,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/诊断_细节与辅助监督配对误差及任务分布_1110_190005.md.
 - Outcome: no promotion; sameWSI training-pair availability audit recommended; no training launched.
 - Commit: scoped diagnostic implementation commit.
+
+## 11-10 19:16:41
+
+- Purpose: Replace cross-slide training tasks with user-specified5000present/500absent same-slide tasks while preserving4000local occurrences.
+- Changed: benchmarks/v5/same_slide_training/{prepare.py,prepare_9500.py,audit.py}; continuity records.
+- Validation: full9500 manifest independent audit; full4x support/query and train/eval checks; all remote label/click signs;5independent prompt replays;4real CPU loader groups passed. Superseded8000 preparation preserved.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022; consumptionSHA 5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6. No model training launched.
+- Docs record: docs/运行记录/数据审计/运行记录_同片远端训练9500任务_1110_191022.md.
+- Commit: scoped task protocol implementation.
