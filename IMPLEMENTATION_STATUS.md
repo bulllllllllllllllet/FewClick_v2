@@ -5033,3 +5033,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747; functional GPU1 PID2831574, GPU3 PID2831557 running, full functional/quality acceptance pending.
 - Docs record: docs/运行记录/模型实验/运行记录_支持点击细节注入双臂修复_1110_005747.md; prior failed 1110_005528 record preserved.
 - Commit: this scoped implementation commit; hash recorded in run record after commit.
+
+## 11-10 13:37:25
+
+- Purpose: Test direct supervision of pre-matcher region predictions, alone and with point detail.
+- Changed: benchmarks/v5/region_auxiliary_study/; goal.md; registry; AGENTS.md pointer; run records.
+- Validation: two arms real six-group initialization/full-cache checks and isolated auxiliary gradient accepted;3actual updates; compileall/diff checks passed. Preserved failed engineering root: loss-graph subtraction left8.1857e-9 cancellation gradient; directly isolated true auxiliary term, exact total objective sum verified.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606; fixed0.5auxiliary episode loss, no inference parameters added vs corresponding control. Functional workers 1366212/1366263 running; learning/quality pending.
+- Docs record: docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_133606.md.
+- Commit: scoped implementation commit; receipt written after commit.

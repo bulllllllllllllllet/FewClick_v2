@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-10T00:59:49.714787+08:00",
+  "updated_at": "2026-11-10T13:37:25.399636+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_支持点击细节注入双臂修复_1110_005747.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_133606.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_支持点击细节注入双臂修复_1110_005747.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_133606.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "support_token_repair_functional_running",
+  "current_status": "region_auxiliary_functional_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2118,62 +2118,28 @@
   ],
   "active_jobs": [
     {
-      "arm": "point_detail",
-      "gpu": 1,
-      "session": "support_point_detail_1110_005747",
-      "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=1 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.support_token_repair.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747 --arm point_detail --gpu 1 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/point_detail/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/point_detail/controller.log",
+      "arm": "aux_original",
+      "gpu": 4,
+      "session": "region_aux_original_1110_133606",
+      "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=4 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.region_auxiliary_study.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606 --arm aux_original --gpu 4 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_original/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_original/controller.log",
       "status": "functional_running",
-      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/point_detail",
-      "worker_pid": 2831574,
-      "workflow_pid": 2831131,
-      "pipeline": {
-        "status": "running",
-        "stage": "workflow",
-        "worker_pid": 2831131,
-        "controller_pid": 2828854,
-        "command": [
-          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-          "-u",
-          "-m",
-          "benchmarks.v5.support_token_repair.workflow",
-          "--root",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747",
-          "--arm",
-          "point_detail"
-        ],
-        "gpu": 1
-      },
-      "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/point_detail/integration.json",
-      "engineering_sha256": "036b6939de698009694664d47c727f3c7fcb6fad43b0b42d7496a754b0bbd33b"
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_original",
+      "worker_pid": 1366212,
+      "workflow_pid": 1365557,
+      "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_original/integration.json",
+      "engineering_sha256": "499b7f291c4f2fa4c05dc16fdce67e08e54c7aac952c12946c98157832d7cb51"
     },
     {
-      "arm": "local_detail",
-      "gpu": 3,
-      "session": "support_local_detail_1110_005747",
-      "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=3 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.support_token_repair.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747 --arm local_detail --gpu 3 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/local_detail/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/local_detail/controller.log",
+      "arm": "aux_detail",
+      "gpu": 1,
+      "session": "region_aux_detail_1110_133606",
+      "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=1 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.region_auxiliary_study.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606 --arm aux_detail --gpu 1 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_detail/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_detail/controller.log",
       "status": "functional_running",
-      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/local_detail",
-      "worker_pid": 2831557,
-      "workflow_pid": 2831129,
-      "pipeline": {
-        "status": "running",
-        "stage": "workflow",
-        "worker_pid": 2831129,
-        "controller_pid": 2828858,
-        "command": [
-          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
-          "-u",
-          "-m",
-          "benchmarks.v5.support_token_repair.workflow",
-          "--root",
-          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747",
-          "--arm",
-          "local_detail"
-        ],
-        "gpu": 3
-      },
-      "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/local_detail/integration.json",
-      "engineering_sha256": "18d8b76b92b21e442e275bdc88f8e15f70d2f63917e4b227ed089c24e58eb1d6"
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_detail",
+      "worker_pid": 1366263,
+      "workflow_pid": 1366202,
+      "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_detail/integration.json",
+      "engineering_sha256": "ba3f655c8a142a4c5d6a232732208889ae22a629cb3098922b9cfb6c529aebe8"
     }
   ],
   "completed_jobs": [
@@ -2359,9 +2325,8 @@
     }
   ],
   "next_actions": [
-    "Monitor both support_token_repair train-only gates; on acceptance continue queued fresh2000/8000 then sameWSI11000; on failure preserve and stop.",
-    "After full evaluation compare paired large/all-target Dice, FPA, BF1, small/fat, support mechanism and costs; no automatic promotion or extra seed.",
-    "Region auxiliary loss remains deferred, not running."
+    "Monitor region_auxiliary two engineering gates, then queued learning gates/fresh training/sameWSI evaluation; stop on any failure.",
+    "No automatic new candidates, coefficients, seeds or threshold changes."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -5898,14 +5863,14 @@
   "support_token_repair": {
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747",
     "record": "docs/运行记录/模型实验/运行记录_支持点击细节注入双臂修复_1110_005747.md",
-    "status": "functional_running",
+    "status": "complete_accepted_not_promoted",
     "jobs": [
       {
         "arm": "point_detail",
         "gpu": 1,
         "session": "support_point_detail_1110_005747",
         "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=1 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.support_token_repair.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747 --arm point_detail --gpu 1 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/point_detail/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/point_detail/controller.log",
-        "status": "functional_running",
+        "status": "complete_accepted",
         "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/point_detail",
         "worker_pid": 2831574,
         "workflow_pid": 2831131,
@@ -5927,14 +5892,15 @@
           "gpu": 1
         },
         "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/point_detail/integration.json",
-        "engineering_sha256": "036b6939de698009694664d47c727f3c7fcb6fad43b0b42d7496a754b0bbd33b"
+        "engineering_sha256": "036b6939de698009694664d47c727f3c7fcb6fad43b0b42d7496a754b0bbd33b",
+        "worker_running": false
       },
       {
         "arm": "local_detail",
         "gpu": 3,
         "session": "support_local_detail_1110_005747",
         "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=3 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.support_token_repair.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747 --arm local_detail --gpu 3 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/local_detail/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/local_detail/controller.log",
-        "status": "functional_running",
+        "status": "complete_accepted",
         "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/local_detail",
         "worker_pid": 2831557,
         "workflow_pid": 2831129,
@@ -5956,13 +5922,139 @@
           "gpu": 3
         },
         "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/local_detail/integration.json",
-        "engineering_sha256": "18d8b76b92b21e442e275bdc88f8e15f70d2f63917e4b227ed089c24e58eb1d6"
+        "engineering_sha256": "18d8b76b92b21e442e275bdc88f8e15f70d2f63917e4b227ed089c24e58eb1d6",
+        "worker_running": false
       }
     ],
     "deferred": "region_auxiliary_supervision",
     "user_authorization": "2026-11-10 想几个方案 尝试解决一下",
     "prior_failed_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005528",
-    "engineering": "complete_accepted"
+    "engineering": "complete_accepted",
+    "functional": "both_accepted",
+    "smoke": "both_accepted",
+    "formal_progress": {
+      "point_detail": {
+        "pid": 2880508,
+        "seconds": 2156.535656772554,
+        "stage": "training",
+        "step": 1276,
+        "total": 2000,
+        "loss": 1.5334213376045227
+      },
+      "local_detail": {
+        "pid": 2880621,
+        "seconds": 2162.614503353834,
+        "stage": "training",
+        "step": 1276,
+        "total": 2000,
+        "loss": 1.4746701568365097
+      }
+    },
+    "training": "both_complete_accepted",
+    "evaluation_evidence": {
+      "point_detail": {
+        "training_acceptance": {
+          "status": "complete_accepted_training",
+          "updates": 2000,
+          "consumed": 8000,
+          "training_consumed_sha256": "833a6ce3c806bb83e4941bcf0f4934a93969fc74a7cceb5e2264d90b5c2b4456",
+          "checkpoint_sha256": "9350c75279830a4bc02542bd7d3bcf671c078473b08f20eee94983bcc21a5a4c",
+          "frozen_encoder_sha256": "1a6362c095d11d8264fc556feef2b6e0fb01e96fa4dc4da43713817ef9fb99a9",
+          "frozen_decoder_applicable": false,
+          "actual_trainable_parameters_changed": true,
+          "fresh6_predictions_exact": true,
+          "monitor_sha256": {
+            "0": "21fa29778e32e68f4fec0f0b6ee9af6830845bdb9f073c4f21b187cab5210d48",
+            "250": "d3c59439d5f26debd0cafb7e34aa33aa41fd221a49a549955dc8dd2f83cdd1f9",
+            "500": "bc0b75d8d12fbbf135bb1051d0b951c0ae0682bf44f8048e3ca50d4401e5329b",
+            "1000": "75116a01b865ff07e6d77322182626067812df96314b7ca762a84bf55a243986",
+            "2000": "adaab8fb3169e234c607b661486f2f61fb5fbf4d0312910a40f4f94a48245dcf"
+          },
+          "arm": "point_detail",
+          "seed": 20261103
+        },
+        "evaluation_gate": {
+          "status": "complete_accepted",
+          "rows": 6,
+          "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976",
+          "checkpoint_sha256": "9350c75279830a4bc02542bd7d3bcf671c078473b08f20eee94983bcc21a5a4c",
+          "rows_sha256": "6ad272e4d9fd9d5e0e31982ec4d0197ecf05d5da54511adb034916ef5d14881d",
+          "masks_sha256": "62245ed85c269a26ed60fcc448b67ef107eda83492680a4fbd1b3077f9db94ef",
+          "input_sha256": "c8d09c17c940655b69c5f41ea96841cdb5cd4d158c3ba02fb94b7e6ee7d8f502",
+          "cached_full_exact_count": 6,
+          "seconds": 6.8459932915866375
+        },
+        "worker_pid": 3090420,
+        "progress": {
+          "pid": 3090420,
+          "rows": 75,
+          "total": 5500,
+          "seconds": 83.437639657408
+        }
+      },
+      "local_detail": {
+        "training_acceptance": {
+          "status": "complete_accepted_training",
+          "updates": 2000,
+          "consumed": 8000,
+          "training_consumed_sha256": "833a6ce3c806bb83e4941bcf0f4934a93969fc74a7cceb5e2264d90b5c2b4456",
+          "checkpoint_sha256": "8db80e97302ff945e18376ab335ae456ab572c2b1852d23ac0c4d53e94adc981",
+          "frozen_encoder_sha256": "1a6362c095d11d8264fc556feef2b6e0fb01e96fa4dc4da43713817ef9fb99a9",
+          "frozen_decoder_applicable": false,
+          "actual_trainable_parameters_changed": true,
+          "fresh6_predictions_exact": true,
+          "monitor_sha256": {
+            "0": "21fa29778e32e68f4fec0f0b6ee9af6830845bdb9f073c4f21b187cab5210d48",
+            "250": "78d0cd8e3f53a21998ad17592c7cee038f814315299ce70ef7f3c3210a4778e0",
+            "500": "52495345c57870684c6708140a76ae8c333ab702e3f1ab27e2d896e713bb9873",
+            "1000": "d36c9e3a2fe1700fe5c3c6f94264890c870335aa6a9edec28abd5f70ee931417",
+            "2000": "1de75193a040c96f6c153133dc13eb5ef3e38d5650112d2c6257e181d97f6b22"
+          },
+          "arm": "local_detail",
+          "seed": 20261103
+        },
+        "evaluation_gate": {
+          "status": "complete_accepted",
+          "rows": 6,
+          "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976",
+          "checkpoint_sha256": "8db80e97302ff945e18376ab335ae456ab572c2b1852d23ac0c4d53e94adc981",
+          "rows_sha256": "3dcf70560a21f3ae70c2ccc1647a8d6de775f35accb3c9283e71e15205455a5a",
+          "masks_sha256": "3c50b051306e06b8aefe0cec66c0b35d955e2d63368a806df6c3853308342e17",
+          "input_sha256": "c8d09c17c940655b69c5f41ea96841cdb5cd4d158c3ba02fb94b7e6ee7d8f502",
+          "cached_full_exact_count": 6,
+          "seconds": 6.27112914994359
+        },
+        "worker_pid": 3091459,
+        "progress": {
+          "pid": 3091459,
+          "rows": 75,
+          "total": 5500,
+          "seconds": 85.04062087461352
+        }
+      }
+    },
+    "verified_comparison": {
+      "baseline": {
+        "macro_Dice": 0.324546665351027,
+        "large_Dice": 0.5943045581683328,
+        "macro_FPA": 0.02391196059035109,
+        "task_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976"
+      },
+      "point_detail": {
+        "macro_Dice": 0.3324122061878189,
+        "large_Dice": 0.6123535090065927,
+        "macro_FPA": 0.03513956074632649,
+        "task_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976"
+      },
+      "local_detail": {
+        "macro_Dice": 0.3307213629330319,
+        "large_Dice": 0.6088872490059275,
+        "macro_FPA": 0.03814051763236181,
+        "task_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976"
+      }
+    },
+    "comparison_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/verified_comparison.json",
+    "quality_decision": "Both improve large Dice >=1pp, but absent FPA rises >1pp vs matched baseline, failing preregistered guard. No automatic promotion; BF1/small/fat/CI/mechanism review still pending. Region auxiliary loss remains deferred."
   },
   "support_token_repair_history": [
     {
@@ -6026,6 +6118,66 @@
         "seconds": 75.05036491900682
       },
       "observed_at": "2026-11-10T00:59:49.714787+08:00"
+    }
+  ],
+  "region_auxiliary_study": {
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606",
+    "record": "docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_133606.md",
+    "status": "functional_running",
+    "jobs": [
+      {
+        "arm": "aux_original",
+        "gpu": 4,
+        "session": "region_aux_original_1110_133606",
+        "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=4 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.region_auxiliary_study.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606 --arm aux_original --gpu 4 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_original/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_original/controller.log",
+        "status": "functional_running",
+        "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_original",
+        "worker_pid": 1366212,
+        "workflow_pid": 1365557,
+        "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_original/integration.json",
+        "engineering_sha256": "499b7f291c4f2fa4c05dc16fdce67e08e54c7aac952c12946c98157832d7cb51"
+      },
+      {
+        "arm": "aux_detail",
+        "gpu": 1,
+        "session": "region_aux_detail_1110_133606",
+        "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=1 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.region_auxiliary_study.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606 --arm aux_detail --gpu 1 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_detail/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_detail/controller.log",
+        "status": "functional_running",
+        "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_detail",
+        "worker_pid": 1366263,
+        "workflow_pid": 1366202,
+        "engineering_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606/aux_detail/integration.json",
+        "engineering_sha256": "ba3f655c8a142a4c5d6a232732208889ae22a629cb3098922b9cfb6c529aebe8"
+      }
+    ],
+    "user_authorization": "可以尝试辅助监督，尽力超越SANSA",
+    "prior_failed_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133405",
+    "engineering": "both_complete_accepted"
+  },
+  "region_auxiliary_history": [
+    {
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133405",
+      "record": "docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_133405.md",
+      "status": "failed_engineering_gradient_isolation",
+      "jobs": [
+        {
+          "arm": "aux_original",
+          "gpu": 4,
+          "session": "region_aux_original_1110_133405",
+          "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=4 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.region_auxiliary_study.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133405 --arm aux_original --gpu 4 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133405/aux_original/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133405/aux_original/controller.log",
+          "status": "engineering_running",
+          "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133405/aux_original"
+        },
+        {
+          "arm": "aux_detail",
+          "gpu": 1,
+          "session": "region_aux_detail_1110_133405",
+          "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=1 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.region_auxiliary_study.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133405 --arm aux_detail --gpu 1 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133405/aux_detail/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133405/aux_detail/controller.log",
+          "status": "engineering_running",
+          "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133405/aux_detail"
+        }
+      ],
+      "user_authorization": "可以尝试辅助监督，尽力超越SANSA"
     }
   ]
 }

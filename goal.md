@@ -1,6 +1,6 @@
 # FewClick CVPR 当前 Goal
 
-更新：2026-11-10T00:59:49.714787+08:00。支持小目标瓶颈修复两臂工程检查通过，GPU1/3训练集学习门控运行；通过后自动2000步训练和11000同片远端评估，尚无质量提升结论。
+更新：2026-11-10T13:37:25.399636+08:00。区域主分支辅助监督双臂工程接受，GPU4/1学习门控运行，通过后自动正式训练和同片评估；尚无质量结论。
 
 ## 目标
 
@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_支持点击细节注入双臂修复_1110_005747.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_133606.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -426,3 +426,13 @@ SANSA256功能门控/smoke/正式2000训练均complete_accepted；8000消费SHA8
 2026-11-10T00:58:14.557447+08:00 修正工程门控首步梯度错误假设：原delta_head零初始化导致首步上游prompt梯度为0，固定3步检查首步0及后续>0。原两臂失败自动停止并保留；新root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747，两臂GPU1/3重新从fresh工程门控开始，架构/损失/学习阈值/正式预算不变。
 
 2026-11-10T00:59:49.714787+08:00 两臂工程门控complete_accepted/EXIT0：6组完整公共初始state/输出与原FewClick逐位一致，cached/full在更新前后逐位相同。新增投影实际梯度point为0→3.848e-5→1.313e-4，local为0→3.748e-5→1.281e-4，更新后raw prompt确实变化。已进入256步train-only学习gate；GPU1真实PID2831574、GPU3 PID2831557存活，非功能学习或质量接受。gate通过自动4smoke→fresh2000/8000→同片11000，失败停止。原失败root保留；记录工程首步梯度假设修订，不改学习bounds。
+
+2026-11-10T01:48:08.234771+08:00 两臂256学习gate及4步smoke均accepted；GPU1正式PID2880508 1276/2000，GPU3 PID2880621 1276/2000，现场存活。近期约1.6秒/更新，余训练含末步监控/恢复约25–35min；两臂并行但各自两eval分片串行，历史Phikon11000评分合计约3.1h，暂估完整结果余3–4h（约05:00–06:00，随负载变动）；正式训练与质量尚未验收。
+
+2026-11-10T02:10:28.296094+08:00 两臂正式2000/8000训练complete_accepted：实际消费SHA现场核验匹配，冻结encoder未变、训练参数实际改变、fresh6重放接受；同片6任务eval gate均accepted。GPU1实际worker3090420、GPU3 worker3091459存活，分别75/11000、75/11000，双臂并行、每臂两分片串行。早期约1.1秒/任务，预计完整质量和独立评分余3–4h，约05:30–06:00（负载变化）。无最终Dice、不使用部分结果宣称改善。
+
+2026-11-10T13:29:40.769228+08:00 两臂全流程complete_accepted/EXIT0：各2000/8000正式训练及11000同片预测、磁盘mask评分/聚合接受。现场report/4rows/tasks SHA核对，11000任务类别宏独立复算。baseline 全体Dice32.4547/大目标59.4305/FPA2.3912%；point_detail33.2412/61.2354/FPA3.5140%；local_detail33.0721/60.8887/FPA3.8141%。大目标分别+1.8049/+1.4583pp，全体+.7866/+.6175pp；FPA增加1.1228/1.4229pp，均超过预登记+1pp守门，complete_accepted_not_promoted，保留原主模型。不能仅据单seed开发评估声称显著；BF1/小目标/脂肪及机制复核仍可补，但不挽回当前FPA门槛。第三辅助监督方案尚未启动，不自动新训练。比较复核/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/verified_comparison.json。
+
+2026-11-10T13:34:49.522266+08:00 用户授权区域主分支辅助监督，aux_original/aux_detail双臂GPU4/1工程检查运行；固定0.5辅助原episode目标，无新增分支或推理参数，区域辅助监督只用相同train标注。工程→256train学习gate（新增region-only Dice/FPA门槛）→fresh2000/8000→11000同片自动串联，失败停止。目标追赶SANSA但保持FPA等原守门，不保证提升。root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133405
+
+2026-11-10T13:37:25.399636+08:00 两臂工程complete_accepted/EXIT0：完整初始state及6组真实输出与对应控制逐位一致，cached/full更新前后精确；辅助项对region输出头梯度norm1.215286且对SignedMatcher梯度严格0。相减图的残差实际为8.1857e-9，确认前轮为工程检查数值问题；实际loss函数/门槛未变。GPU4真实functional PID1366212，GPU1 PID1366263现场存活。256学习门控running，尚非学习或质量接受；通过自动smoke→fresh2000/8000→11000同片。
