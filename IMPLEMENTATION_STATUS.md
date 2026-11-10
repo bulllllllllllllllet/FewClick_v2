@@ -5042,3 +5042,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606; fixed0.5auxiliary episode loss, no inference parameters added vs corresponding control. Functional workers 1366212/1366263 running; learning/quality pending.
 - Docs record: docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_133606.md.
 - Commit: scoped implementation commit; receipt written after commit.
+
+## 11-10 13:52:24
+
+- Purpose: Fix region auxiliary gate report handling of absent-task NA Dice.
+- Changed: functional.py statistics and continuity records.
+- Validation: executed six-group aggregation including NA Dice; success and failed-region stop both verified; compileall/diff checks passed. No objective/bounds change.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144; fresh gated pipeline launched; prior completed256 checkpoints/report failure preserved.
+- Docs record: docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_135144.md.
+- Commit: this scoped reporting fix.

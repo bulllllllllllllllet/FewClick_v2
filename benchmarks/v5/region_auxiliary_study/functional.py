@@ -107,7 +107,8 @@ def main():
                 ok=values['Dice']>=BOUNDS['present_group_Dice_min'] and values['spatial_std']>=BOUNDS['present_group_mean_std_min'] and values['median_swap_mean']>=BOUNDS['present_group_median_swap_mean_min']
             region_values=[v['mechanism']['region_only_query_metrics'] for v in g]
             region_ok=(float(np.mean([v['false_positive_fraction'] for v in region_values]))<=BOUNDS['region_absent_group_FPA_max']) if kind=='cross_absent' else (float(np.mean([v['dice'] for v in region_values]))>=BOUNDS['region_present_group_Dice_min'])
-            values['region_mean_Dice']=float(np.mean([v['dice'] for v in region_values]))
+            values['region_mean_Dice']=float(np.mean([v['dice'] for v in region_values])) if kind!='cross_absent' else None
+            values['region_mean_FPA']=float(np.mean([v['false_positive_fraction'] for v in region_values])) if kind=='cross_absent' else None
             values['region_functional_passed']=region_ok;ok=ok and region_ok
             groups[d+'|'+kind]=dict(n=len(g),values=values,passed=ok);passed=passed and ok
     (a.output/'report.json').write_text(json.dumps(dict(status='accepted_repaired_functional_gate' if passed else 'failed_repaired_functional_gate',arm=a.arm,seed=a.seed,groups=groups,rows=rows,bounds=BOUNDS,exact_optimizer_continuation=True,fresh_final_predictions_exact=True,train_only=True,source_sha256=sha(__file__),seconds=time.monotonic()-started,checkpoint_sha256=sha(a.output/'checkpoint.pt')),indent=2))
