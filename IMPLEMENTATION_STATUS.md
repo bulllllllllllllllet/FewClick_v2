@@ -5051,3 +5051,13 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144; fresh gated pipeline launched; prior completed256 checkpoints/report failure preserved.
 - Docs record: docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_135144.md.
 - Commit: this scoped reporting fix.
+
+## 11-10 19:01:49
+
+- Purpose: Paired repair error, slide bootstrap and train/eval task distribution review.
+- Changed: benchmarks/v5/repair_review/analyze.py and continuity/report records.
+- Validation: five11000-task identities/GT counts/rows SHA and32train monitor identity verified; read-only analysis complete.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/repair_review_1110_190005; report SHA f2cb9a1ee39aacad156dd8d3e178785a6400506e103884248925a059d685a7c0.
+- Docs record: docs/运行记录/模型实验/诊断_细节与辅助监督配对误差及任务分布_1110_190005.md.
+- Outcome: no promotion; sameWSI training-pair availability audit recommended; no training launched.
+- Commit: scoped diagnostic implementation commit.

@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-10T13:51:45.982370+08:00",
+  "updated_at": "2026-11-10T19:01:49.464497+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_135144.md",
+    "current_record": "docs/运行记录/模型实验/诊断_细节与辅助监督配对误差及任务分布_1110_190005.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_135144.md"
+    "current_run_record": "docs/运行记录/模型实验/诊断_细节与辅助监督配对误差及任务分布_1110_190005.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "region_auxiliary_report_fix_engineering_running",
+  "current_status": "repair_error_and_training_distribution_review_complete",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2116,24 +2116,7 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [
-    {
-      "arm": "aux_original",
-      "gpu": 4,
-      "session": "region_aux_original_1110_135144",
-      "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=4 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.region_auxiliary_study.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144 --arm aux_original --gpu 4 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/aux_original/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/aux_original/controller.log",
-      "status": "engineering_running",
-      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/aux_original"
-    },
-    {
-      "arm": "aux_detail",
-      "gpu": 1,
-      "session": "region_aux_detail_1110_135144",
-      "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=1 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.region_auxiliary_study.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144 --arm aux_detail --gpu 1 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/aux_detail/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/aux_detail/controller.log",
-      "status": "engineering_running",
-      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/aux_detail"
-    }
-  ],
+  "active_jobs": [],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -6115,14 +6098,14 @@
   "region_auxiliary_study": {
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144",
     "record": "docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_135144.md",
-    "status": "engineering_running",
+    "status": "complete_accepted_not_promoted",
     "jobs": [
       {
         "arm": "aux_original",
         "gpu": 4,
         "session": "region_aux_original_1110_135144",
         "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=4 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.region_auxiliary_study.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144 --arm aux_original --gpu 4 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/aux_original/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/aux_original/controller.log",
-        "status": "engineering_running",
+        "status": "complete_accepted",
         "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/aux_original"
       },
       {
@@ -6130,11 +6113,132 @@
         "gpu": 1,
         "session": "region_aux_detail_1110_135144",
         "command": "PYTHONPATH=/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2 CUBLAS_WORKSPACE_CONFIG=:4096:8 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VIPS_CONCURRENCY=2 CUDA_VISIBLE_DEVICES=1 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.region_auxiliary_study.pipeline --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144 --arm aux_detail --gpu 1 > /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/aux_detail/controller.log 2>&1; rc=$?; echo EXIT_CODE=$rc >> /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/aux_detail/controller.log",
-        "status": "engineering_running",
+        "status": "complete_accepted",
         "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/aux_detail"
       }
     ],
-    "prior_failed_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606"
+    "prior_failed_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133606",
+    "aux_original_report": {
+      "status": "complete_accepted",
+      "method": "aux_original",
+      "track": "Same Phikon public initialization/views/prompts/seed/8000tasks/2000updates; added0.5auxiliary original episode supervision before SignedMatcher; detail projection only aux_detail",
+      "target_updates": 2000,
+      "classes": {
+        "0": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.5227871733173008,
+          "FPA": 0.06305318196614583
+        },
+        "1": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.35460564212982487,
+          "FPA": 0.04125965118408203
+        },
+        "3": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.20836696694963616,
+          "FPA": 0.0328866704305013
+        },
+        "4": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.4209913955879781,
+          "FPA": 0.06502140045166016
+        },
+        "5": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.3417620159056009,
+          "FPA": 0.034979057312011716
+        },
+        "6": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.2517422527176835,
+          "FPA": 0.04558409372965495
+        },
+        "7": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.24588110499475843,
+          "FPA": 0.024526646931966146
+        },
+        "8": {
+          "present": 334,
+          "absent": 666,
+          "dice": 0.3213019731622075,
+          "FPA": 0.017289685773419904
+        },
+        "9": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.24543083501306667,
+          "FPA": 0.04348682403564453
+        },
+        "10": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.48709031203596764,
+          "FPA": 0.019085731506347656
+        },
+        "11": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.1586395617828941,
+          "FPA": 0.01612224578857422
+        }
+      },
+      "macro_Dice": 0.3235090212360835,
+      "macro_absent_FPA": 0.03666319901000077,
+      "area_strata": {
+        "0.01": {
+          "n": 4619,
+          "task_mean_Dice": 0.4825776277915189,
+          "class_macro_Dice": 0.48450097806401793
+        },
+        "0.05": {
+          "n": 3453,
+          "task_mean_Dice": 0.555231225633196,
+          "class_macro_Dice": 0.5596417734558613
+        },
+        "0.2": {
+          "n": 2130,
+          "task_mean_Dice": 0.6084079654765397,
+          "class_macro_Dice": 0.6015289443251588
+        }
+      },
+      "limitations": "Same frozen Phikon encoder and three views, original FewClick heads/SignedMatcher plus0.5auxiliary region episode supervision; point detail only aux_detail. Same8000tasks/2000updates and seed; fixed final checkpoint and0.5 threshold. Exposed spatial-development evaluation, not independent test. Query annotations scoring only. No automatic candidate promotion."
+    },
+    "aux_original_acceptance": {
+      "status": "complete_accepted",
+      "report_sha256": "15805b47f93761761ebe2df2e21f06187c3dcbe805b80a657f1118c5cd88da50",
+      "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976",
+      "rows": 11000
+    },
+    "aux_detail_progress": {
+      "pid": 2055897,
+      "rows": 5025,
+      "total": 5500,
+      "seconds": 5006.641447659582
+    },
+    "verified_comparison": {
+      "aux_original": {
+        "macro_Dice": 0.3235090212360835,
+        "large_Dice": 0.6015289443251588,
+        "FPA": 0.03666319901000077,
+        "report_sha256": "15805b47f93761761ebe2df2e21f06187c3dcbe805b80a657f1118c5cd88da50"
+      },
+      "aux_detail": {
+        "macro_Dice": 0.3328822454203888,
+        "large_Dice": 0.6106766193074297,
+        "FPA": 0.049384927981348276,
+        "report_sha256": "a21a2b97f4e62d836f0adb63b2dc6b10d1ebcc401c52d261cc233ea93b6eee84"
+      }
+    },
+    "quality_decision": "Neither meets preregistered guards. Aux_original fails large improvement/all-target/FPA; aux_detail FPA exceeds guard and large Dice slightly below point_detail control. No additional training automatically. Mechanism/CI/BF1/strata review remains possible."
   },
   "region_auxiliary_history": [
     {
@@ -6195,5 +6299,12 @@
       "prior_failed_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_133405",
       "engineering": "both_complete_accepted"
     }
-  ]
+  ],
+  "repair_review": {
+    "status": "complete_accepted_readonly",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/repair_review_1110_190005",
+    "record": "docs/运行记录/模型实验/诊断_细节与辅助监督配对误差及任务分布_1110_190005.md",
+    "report_sha256": "f2cb9a1ee39aacad156dd8d3e178785a6400506e103884248925a059d685a7c0",
+    "next_action": "Audit legal sameWSI training pairs before proposing a matched training-distribution experiment; no new training launched."
+  }
 }
