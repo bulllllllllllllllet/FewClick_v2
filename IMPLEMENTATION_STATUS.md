@@ -5070,3 +5070,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022; consumptionSHA 5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6. No model training launched.
 - Docs record: docs/运行记录/数据审计/运行记录_同片远端训练9500任务_1110_191022.md.
 - Commit: scoped task protocol implementation.
+
+## 11-10 20:51:34
+
+- Purpose: Fresh matched9500sameWSI retraining of original FewClick, point detail and SANSA with user-authorized3GPU concurrency.
+- Changed: benchmarks/v5/same_slide_retrain/; goal/registry/AGENTS resource override and run record.
+- Validation: compileall/diff checks; four-group NA/success/failure statistics executed; all3models real4train-group forward/original loss/shape accepted. Fresh optimizer learning gates running, not yet accepted.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945; frozen source/data/weight hashes; worker PIDs2913820/2913819/2913821 GPU1/3/4. No duplicate/restarted jobs; no aux loss or extra seeds.
+- Docs record: docs/运行记录/模型实验/运行记录_同片9500三模型匹配重训_1110_204945.md.
+- Commit: this scoped retraining implementation.

@@ -2,7 +2,7 @@
 
 For FewClick experiments, read `goal.md` first, then the linked experiment registry and current run record. The user's latest instructions take precedence over these records.
 
-The active CVPR roadmap is `docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md`; its registry is `docs/运行记录/模型实验/CVPR研究进度_1030_174832.json` and current record is `docs/运行记录/数据审计/运行记录_同片远端训练9500任务_1110_191022.md`. The previous AAAI goal/registry is archived historical evidence only: do not resume its pending queues. Follow the current phase and acceptance gates; update this pointer if the active registry changes.
+The active CVPR roadmap is `docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md`; its registry is `docs/运行记录/模型实验/CVPR研究进度_1030_174832.json` and current record is `docs/运行记录/模型实验/运行记录_同片9500三模型匹配重训_1110_204945.md`. The previous AAAI goal/registry is archived historical evidence only: do not resume its pending queues. Follow the current phase and acceptance gates; update this pointer if the active registry changes.
 
 - Keep `benchmarks/v4/` and `/home/zhaoyh/FewClick/` read-only. Develop new experiments in `benchmarks/v5/` and use the `aligner` environment.
 - Preserve existing data, checkpoints, caches and reports. New artifacts go in timestamped directories under `/nfs-medical3/zyh/fewclick_v2/`.
@@ -29,3 +29,5 @@ Latest adaptation override (2026-11-08): User explicitly authorizes matched SAM2
 Latest diagnostic override (2026-11-09): User authorizes WSI-SAM native local queryGT-simulated point/box diagnostic only. Keep it separate from SAME-WSI remote zero-query-human-prompt primary tables; no queryGT-based remote prompt/model/threshold selection. No training authorized by this diagnostic.
 
 Latest SANSA adaptation authorization (2026-11-09): SANSA Universal adapter-only matched8000tasks/2000updates seed20261103; functional gate before fresh formal training; same-slide evaluation only. Up to two own training workers including the ongoing WSI arm. Current root /nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_adaptation_1109_043250. Finish the already-running WSI-SAM sparse bridge and freeze all WSI-SAM variants with hashes; no additional WSI-SAM candidate/recipe/seed training.
+
+Latest resource override (2026-11-10): user explicitly authorizes concurrent GPU1/3/4 training for original FewClick, point-detail FewClick and SANSA on the new9500 same-slide queue. Permit up to3 own training workers, one per assigned GPU with>=12288MiB free; sharing allowed. Previous2worker caps belonged to older studies and do not restrict this run. Preserve active workers and all prior recipes/artifacts.

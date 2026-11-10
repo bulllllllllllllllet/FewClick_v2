@@ -1,6 +1,6 @@
 # FewClick CVPR 当前 Goal
 
-更新：2026-11-10T19:16:41.582419+08:00。同片训练9500队列制备及独立审计通过：本图4000、远端存在5000/不存在500；门控监控已同片化，模型重训尚未开始。
+更新：2026-11-10T20:51:34.472190+08:00。新9500三模型匹配重训已启动，GPU1/3/4四组真实输入门控通过，256学习门控运行；尚无正式训练/质量结论。
 
 ## 目标
 
@@ -21,7 +21,7 @@
 
 ## 唯一接续入口
 
-依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/数据审计/运行记录_同片远端训练9500任务_1110_191022.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
+依次读取：[阶段路线与预算](docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md) → [当前 registry](docs/运行记录/模型实验/CVPR研究进度_1030_174832.json) → [当前运行记录](docs/运行记录/模型实验/运行记录_同片9500三模型匹配重训_1110_204945.md)。比较前读取[公平合同](benchmarks/v5/fair_comparison/README.md)，新任务差异在 P0 明确修订。研究动机见[文献大纲](docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md)。
 
 当前：**P0 complete；P1受控筛选及桥接双seed complete；P2 complete（有界阴性接受）；P3部分完成**。P3-A六组及22266mask/完整比较已接受；无合格seed2对，B模型条件未触发。基础瓶颈诊断已complete_accepted，额外训练0；P3-C/P4–P6未完成，不自动执行。
 
@@ -443,10 +443,14 @@ SANSA256功能门控/smoke/正式2000训练均complete_accepted；8000消费SHA8
 
 2026-11-10T18:57:44.304014+08:00 区域辅助监督两臂全流程complete_accepted/EXIT0：各2000/8000及11000同片mask/独立评分汇总接受。现场两个report/四rows/tasks SHA核对，整体/大面积Dice/FPA独立复算。aux_original32.3509/60.1529/FPA3.6663%；aux_detail33.2882/61.0677/FPA4.9385%。point_detail无辅助33.2412/61.2354/FPA3.5140，故叠加辅助后全体仅+.0470pp、大目标-.1677pp、误报+1.4245pp；不能证明实际收益。两臂未满足原守门、未超过SANSA，complete_accepted_not_promoted，保留原基线及细节候选原状态。不自动扫描系数/加seed/增加训练；本组已退出。收尾复核见 /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/verified_comparison.json。
 
-2026-11-10T19:01:49.464497+08:00 五模型配对复核完成：辅助监督使大目标空预测178→122，但90个新增非空任务平均Dice仅14.90%；细节+1.80pp大目标CI[-.53,+4.04]跨0；SANSA领先细节4.55pp CI[1.53,10.20]。8000训练实际4000local/3988跨片/12同片，11000评估全CRC同片；任务分布错位为下一优先审计，未证明因果/不指对照不公平。正式CRC固定4个remote训练监控仍弱，不能仅说测试过拟合。未启动新训练；详见docs/运行记录/数据审计/运行记录_同片远端训练9500任务_1110_191022.md
+2026-11-10T19:01:49.464497+08:00 五模型配对复核完成：辅助监督使大目标空预测178→122，但90个新增非空任务平均Dice仅14.90%；细节+1.80pp大目标CI[-.53,+4.04]跨0；SANSA领先细节4.55pp CI[1.53,10.20]。8000训练实际4000local/3988跨片/12同片，11000评估全CRC同片；任务分布错位为下一优先审计，未证明因果/不指对照不公平。正式CRC固定4个remote训练监控仍弱，不能仅说测试过拟合。未启动新训练；详见docs/运行记录/模型实验/运行记录_同片9500三模型匹配重训_1110_204945.md
 
 2026-11-10T19:08:50.820714+08:00 按用户要求移除跨片训练。CRC合法配对充足；TIGER同片部分任务无合法配对，已提可选偏好，暂按推荐生成4000原本图+4000CRC同片远端候选。完整4x train/eval与support/query隔离检查通过；CPU2worker生成代表性支持点，真实主PID2540133，未训练模型；新root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_190702
 
 2026-11-10T19:10:59.906551+08:00 用户将remote配额改为present5000/absent500，local4000保留，总9500、2375更新；旧8000候选制备worker按用户变更终止并保留，现新目录生成5500唯一CRC同片配对/固定点击；TIGER local保留。新训练/门控/监控均须引用新队列，禁止旧跨片任务混入。root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022
 
 2026-11-10T19:16:41.582419+08:00 新同片训练队列complete_accepted_preparation/EXIT0：原本图4000消费逐字保持(CRC2240/TIGER1760)，CRC同片present5000/absent500，总9500/2375更新，5500唯一有向support/query/target组合，156训练切片/全部输入1309patch。source+query完整4x不重叠，所用训练输入与catalog val及既有sameWSI query评估footprint不重叠；全部新支持点符号核验、5条独立resolver重放、四组真实loader形状/有限性通过。固定32gate/monitor同步同片化，含CRC local8/present8/absent8及TIGER local8。新消费SHA 5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6；模型尚未重训，后续trainer需从旧硬编码4000/8000/跨片gate切换为新9500/2375/同片任务；所有方法按同新队列比较，不与旧8000混称等预算。
+
+2026-11-10T20:50:16.131773+08:00 用户授权新9500匹配重训，并明确GPU1/3/4可同时训练。original3/detail4/SANSA1三臂已在tmux same_slide_retrain_1110_204945 启动；四组新同片真实输入检查→256学习gate→4smoke→fresh2375/9500→原11000同片评估串联，失败停止不自动改门槛/重试。当前等待真实worker输入gate，尚非学习接受；所有源码/权重/消费SHA冻结。root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945
+
+2026-11-10T20:51:34.472190+08:00 三臂真实四组GPUforward/原loss/输出形状finite检查均accepted。当前SANSA GPU1 PID2913820、original GPU3 PID2913819、detail GPU4 PID2913821均存活，正在256功能学习gate，非学习/正式训练接受。三个功能源均为新同片32任务SHA，不含旧跨片门控；工程fresh optimizer精确继续仍在执行。通过自动smoke→public fresh2375/9500→11000同片评分，失败停止。用户最新3卡并行明确覆盖旧适配研究2worker限制。

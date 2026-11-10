@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-10T19:16:41.582419+08:00",
+  "updated_at": "2026-11-10T20:51:34.472190+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
   "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/数据审计/运行记录_同片远端训练9500任务_1110_191022.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_同片9500三模型匹配重训_1110_204945.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/数据审计/运行记录_同片远端训练9500任务_1110_191022.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_同片9500三模型匹配重训_1110_204945.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "same_slide_9500_queue_complete_training_pending",
+  "current_status": "same_slide_9500_three_functional_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2116,7 +2116,32 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [],
+  "active_jobs": [
+    {
+      "arm": "sansa",
+      "gpu": 1,
+      "status": "functional_running",
+      "worker_pid": 2913820,
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/sansa",
+      "input_gate": "four_real_groups_accepted"
+    },
+    {
+      "arm": "original",
+      "gpu": 3,
+      "status": "functional_running",
+      "worker_pid": 2913819,
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/original",
+      "input_gate": "four_real_groups_accepted"
+    },
+    {
+      "arm": "detail",
+      "gpu": 4,
+      "status": "functional_running",
+      "worker_pid": 2913821,
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/detail",
+      "input_gate": "four_real_groups_accepted"
+    }
+  ],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -2300,8 +2325,8 @@
     }
   ],
   "next_actions": [
-    "Use accepted9500 queue for future matched FewClick/SANSA retraining:2375updates/batch4. Implement trainer bindings to new source, gate32 and monitor32; historical hardcoded4000/8000/cross gates forbidden.",
-    "Do not claim old8000 checkpoints were trained on new queue; all historical comparisons preserved."
+    "Monitor3functional train-only gates; accepted arms auto smoke then fresh2375/9500 and original11000sameWSI evaluation. Stop failed arms without retries.",
+    "No auxiliary loss/SAM3/WSISAM/new seeds; no validation model/threshold choice."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -6417,5 +6442,51 @@
       "assumption": "No answer yet to optional preference; proceed with recommended CRC-only remote candidate, TIGER local retained.",
       "training_started": false
     }
-  ]
+  ],
+  "same_slide_retraining": {
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945",
+    "record": "docs/运行记录/模型实验/运行记录_同片9500三模型匹配重训_1110_204945.md",
+    "status": "functional_running",
+    "session": "same_slide_retrain_1110_204945",
+    "arms": [
+      "original",
+      "detail",
+      "sansa"
+    ],
+    "gpus": {
+      "original": 3,
+      "detail": 4,
+      "sansa": 1
+    },
+    "max_training_workers": 3,
+    "resource_authorization": "Latest user explicitly requests concurrent GPU1/3/4, old2worker limit applied only to old experiments.",
+    "training_consumption_sha256": "5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6",
+    "input_gate": "all3accepted_four_real_groups",
+    "jobs": [
+      {
+        "arm": "sansa",
+        "gpu": 1,
+        "status": "functional_running",
+        "worker_pid": 2913820,
+        "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/sansa",
+        "input_gate": "four_real_groups_accepted"
+      },
+      {
+        "arm": "original",
+        "gpu": 3,
+        "status": "functional_running",
+        "worker_pid": 2913819,
+        "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/original",
+        "input_gate": "four_real_groups_accepted"
+      },
+      {
+        "arm": "detail",
+        "gpu": 4,
+        "status": "functional_running",
+        "worker_pid": 2913821,
+        "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/detail",
+        "input_gate": "four_real_groups_accepted"
+      }
+    ]
+  }
 }
