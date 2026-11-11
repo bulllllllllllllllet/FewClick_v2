@@ -5079,3 +5079,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945; frozen source/data/weight hashes; worker PIDs2913820/2913819/2913821 GPU1/3/4. No duplicate/restarted jobs; no aux loss or extra seeds.
 - Docs record: docs/运行记录/模型实验/运行记录_同片9500三模型匹配重训_1110_204945.md.
 - Commit: this scoped retraining implementation.
+
+## 2026-11-11T11:20:50.862101+08:00
+
+- Purpose: 实现支持区域证据A及受控串联诊断、门控、训练、同片评估。
+- Changed: benchmarks/v5/region_evidence_study/，当前run记录及AGENTS接续指针；goal/registry追加状态。
+- Validation: 真实四组初始state/forward/loss与原Few精确，cached/full精确；区域证据依赖及梯度通过；确定性池化前后向等价通过。首次工程失败保留，fresh root工程accepted。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_evidence_1111_111943
+- Docs record: docs/运行记录/模型实验/运行记录_支持区域证据A同片实验_1111_111735.md
+- Commit: 本条随实现提交；训练与质量待验收。
