@@ -5124,3 +5124,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/native_sam2_1111_213802; failed/superseded startup preserved at native_sam2_1111_213350 (receipt metadata revision only).
 - Docs record: docs/运行记录/模型实验/运行记录_SAM2原生解码FewClickF_1111_213350.md
 - Commit: recorded after isolated commit; no baseline or dataset artifacts staged.
+
+## 2026-11-12T02:11:35.977123+08:00 Parallel Phikon E/H/G candidates
+
+- Purpose: independently test support-anchored query self-support, hierarchical dense matching and true tiled fine features while preserving F evaluation.
+- Changed: benchmarks/v5/parallel_phikon_study/ model, real input/gradient checks, functional usage gates, matched training/evaluation pipeline.
+- Validation: three parallel_phikon_study.engineering runs accepted/EXIT0; four real groups each, E/H parent state/output exact at init, G six real encoder calls with unchanged context and64 native fine grid; real three-step gradients, frozen weights, cached/full replay, E no-evidence zero-residual numerical check passed. Aligner compileall and diff-check passed. Functional learning remains running.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_phikon_EHG_1112_020535.
+- Docs record: docs/运行记录/模型实验/运行记录_Phikon三路线EHG并行_1112_020535.md
+- Commit: recorded after isolated source/status commit. No unrelated artifacts staged.
