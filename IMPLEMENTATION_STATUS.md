@@ -5097,3 +5097,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_support_diagnostics_1111_113538
 - Docs record: docs/运行记录/模型实验/运行记录_四卡支持匹配并行诊断_1111_113315.md
 - Commit: 本条随实现提交；全量诊断接受待完成。
+
+## 2026-11-11T16:37:48.662395+08:00
+
+- Purpose: 用户授权B/C并行，实现带符号空间记忆及查询细化，沿用9500训练与11000同片评价。
+- Changed: benchmarks/v5/region_attention_study/、run记录和AGENTS接续指针；goal/registry追加状态。
+- Validation: GPU3/4四组工程全部accepted，初始parent逐位一致、cached/full前后精确，三步训练后memory/refiner真实梯度及支持依赖通过；学习gate运行中。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_attention_1111_163607
+- Docs record: docs/运行记录/模型实验/运行记录_区域注意力B与查询细化C并行_1111_163607.md
+- Commit: 本条随实现提交，正式训练及质量待验收。
