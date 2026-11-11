@@ -5088,3 +5088,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_evidence_1111_111943
 - Docs record: docs/运行记录/模型实验/运行记录_支持区域证据A同片实验_1111_111735.md
 - Commit: 本条随实现提交；训练与质量待验收。
+
+## 2026-11-11T11:36:17.601752+08:00
+
+- Purpose: 用户授权四卡128train只读诊断，GPU1取消未启动，GPU3 A训练保留。
+- Changed: benchmarks/v5/parallel_support_diagnostics，run记录及连续状态。
+- Validation: 四GPU真实worker各多例完整forward/cached基线指标精确回放通过，正在128任务诊断；CPU边界报告完成。历史跨脚本精确比较失败保留，新root逐项记录历史差异，不用作收益。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_support_diagnostics_1111_113538
+- Docs record: docs/运行记录/模型实验/运行记录_四卡支持匹配并行诊断_1111_113315.md
+- Commit: 本条随实现提交；全量诊断接受待完成。
