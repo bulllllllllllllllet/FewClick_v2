@@ -5115,3 +5115,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/discriminative_match_1111_164839
 - Docs record: docs/运行记录/模型实验/运行记录_判别匹配D并行训练_1111_164839.md
 - Commit: 本条随实现提交，功能学习/正式/质量尚未接受。
+
+## 2026-11-11T21:40:29.097658+08:00 Native SAM2 FewClick F implementation
+
+- Purpose: preserve public SAM2.0 native high-resolution decoding while training FewClick signed multiscale dense conditions; no query human prompts or GT inference.
+- Changed: benchmarks/v5/native_sam2_study/ model, real engineering checks, fixed train gates, matched training and complete same-slide evaluation pipeline.
+- Validation: native_sam2_study.engineering --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/native_sam2_1111_213802 --arm F — accepted/EXIT0, official predictor native feature/logit equality for four real groups, gradient-through-frozen-decoder, three actual updates, frozen-state and cached/full replay; compileall and diff-check passed. Functional learning is still running, not accepted.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/native_sam2_1111_213802; failed/superseded startup preserved at native_sam2_1111_213350 (receipt metadata revision only).
+- Docs record: docs/运行记录/模型实验/运行记录_SAM2原生解码FewClickF_1111_213350.md
+- Commit: recorded after isolated commit; no baseline or dataset artifacts staged.
