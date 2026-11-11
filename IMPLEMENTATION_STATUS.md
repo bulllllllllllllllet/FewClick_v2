@@ -5106,3 +5106,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_attention_1111_163607
 - Docs record: docs/运行记录/模型实验/运行记录_区域注意力B与查询细化C并行_1111_163607.md
 - Commit: 本条随实现提交，正式训练及质量待验收。
+
+## 2026-11-11T16:50:41.864523+08:00
+
+- Purpose: 并行独立原FewClick判别匹配训练D，额外梯度只用于64维projection，原推理保持。
+- Changed: benchmarks/v5/discriminative_match_study、run记录与AGENTS接续指针；连续状态追加。
+- Validation: GPU5四组真实forward/loss/gradient门控accepted，初始state/prediction精确、附加梯度隔离及loss组合精确。功能gate运行中。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/discriminative_match_1111_164839
+- Docs record: docs/运行记录/模型实验/运行记录_判别匹配D并行训练_1111_164839.md
+- Commit: 本条随实现提交，功能学习/正式/质量尚未接受。
