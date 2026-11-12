@@ -5133,3 +5133,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_phikon_EHG_1112_020535.
 - Docs record: docs/运行记录/模型实验/运行记录_Phikon三路线EHG并行_1112_020535.md
 - Commit: recorded after isolated source/status commit. No unrelated artifacts staged.
+
+## 11-12 12:00:44
+
+- Purpose: Implement single-model HG and fixed whole-fine/tiled-fine fusion control HG_mix with parallel disjoint evaluation shards.
+- Changed: benchmarks/v5/hg_combination_study/*.py.
+- Validation: aligner compileall passed; both real engineering runs accepted (four task groups, three gradient updates, exact cache/full replay, frozen weights, support dependence); functional gates running, no quality claim.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539.
+- Docs record: docs/运行记录/模型实验/运行记录_HG组合与全图细节融合并行_1112_115539.md.
+- Commit: recorded after commit below.
