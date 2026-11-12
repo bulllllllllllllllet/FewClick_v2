@@ -117,7 +117,10 @@ def main():
                 log = (a.root/f"{job['phase']}_{job['method']}_{job['case']:02}.log").open('x')
                 proc = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT, start_new_session=True,
                        env=dict(os.environ, CUDA_VISIBLE_DEVICES=str(gpu), CUBLAS_WORKSPACE_CONFIG=':4096:8',
-                                TMPDIR=c['temporary_directory'], VIPS_DISC_THRESHOLD='100m'))
+                                TMPDIR=c['temporary_directory'], VIPS_DISC_THRESHOLD='100m',
+                                OMP_NUM_THREADS='2', OPENBLAS_NUM_THREADS='2', VIPS_CONCURRENCY='2',
+                                **({'PYTHONPATH': '/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2'}
+                                   if job['method'] == 'HG_mix+sansa' else {})))
                 job.update(status='running', gpu=gpu, pid=proc.pid, command=cmd)
                 active.append((proc, log, job))
                 blocked.add(gpu)

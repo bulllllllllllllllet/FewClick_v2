@@ -5205,3 +5205,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_six_gpu_tmpfix_1112_215500，旧失败根与归档保留。
 - Docs record: docs/运行记录/模型实验/运行记录_WSI六卡优先与实验编号_1112_214500.md
 - Commit: 本次修复提交。
+
+## 11-12 23:22:20
+
+- Purpose: 核对完成实验并恢复HG原生vendor启动环境。
+- Changed: priority.py只为HG/SANSA恢复原PYTHONPATH及线程预算，goal/registry/current record同步。
+- Validation: E01–03各11000报告SHA、七个新WSI pilot工单接受核对；真实新controller2687742启动，保留2旧worker。HG正式模型路径修复待实际工程验收，旧失败不覆盖。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_six_gpu_envrestore_1112_232200/status_verified.json
+- Docs record: docs/运行记录/模型实验/运行记录_WSI六卡优先与实验编号_1112_214500.md
+- Commit: 本次启动环境修复提交。
