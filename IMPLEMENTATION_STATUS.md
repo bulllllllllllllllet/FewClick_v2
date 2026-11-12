@@ -5178,3 +5178,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010; /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_current_1112_171010; /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_med2d_current_1112_173751; CPUprobe /nfs-medical3/zyh/fewclick_v2/cvpr_research/med2d_probe_1112_173751/acceptance.json.
 - Docs record: docs/运行记录/模型实验/运行记录_SAM当前9500公平适配与WSI并行_1112_171010.md; docs/运行记录/模型实验/运行记录_未见trainval整片WSI试跑_1112_171010.md.
 - Commit: recorded after commit below. Formal baseline/evaluation and paired WSI pilot acceptance remain outstanding.
+
+## 11-12 18:52:19
+
+- Purpose: 增补整片WSI四SAM对照，patch与WSI均只用最终当前公平适配权重。
+- Changed: 新benchmarks/v5/whole_slide_sam worker/run，复用冻结WSI输入融合评分；新六方法执行记录，goal/registry接续。
+- Validation: py_compile；真实三WSI支持输入/提示/投影核对（input_validation.json）；真实控制器PID1623284等待四组接受。原生CUDA-only使CPU模型probe失败，保留；GPU工程PID1620767等待资源，尚未接受，正式每项仍强制GPU门控。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_sam_final_1112_184727
+- Docs record: docs/运行记录/模型实验/运行记录_整片WSI六方法最终公平权重对照_1112_184727.md
+- Commit: 见本次提交；状态为queued/preparing，不代表WSI模型工程或质量接受。
