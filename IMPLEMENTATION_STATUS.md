@@ -5169,3 +5169,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_once_click_inputfix_1112_170106/inventory.json and planning_acceptance.json; previous failed input root retained.
 - Docs record: docs/运行记录/数据审计/运行记录_HGmix整片WSI候选与标注预审_1112_165407.md.
 - Commit: recorded after commit below.
+
+## 11-12 17:57:36
+
+- Purpose: Execute current9500 matched SAM baselines and full-WSI paired pilots on audited train/val-unseen original test slides; queue native SAM-Med2D.
+- Changed: benchmarks/v5/sam_current_fair, sam_med2d_current and whole_slide_once Python modules; three-training/six-total GPU lease pool, exact native bridges, full coverage/white padding/streamed probability fusion and unique-pixel disk mask scoring.
+- Validation: aligner compileall passed; SAM/SAM2/WSI real4group forward/backward/cache/full/frozen engineering,256train functional gates, fresh optimizer continuation and4smoke accepted; three formal2375 workers running. Three real HG-mix WSI edge/corner/local/remote, input RGB/GT, cache/full, fusion/packing and frozen-state gates accepted, hundreds of actual whole-slide windows running per GPU. SAM-Med2D actual official CPU native route/binary replay and remote backward passed, queued GPU gate/training pending. All three source snapshots match current files. No completed full-WSI Dice/generalization claim.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010; /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_current_1112_171010; /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_med2d_current_1112_173751; CPUprobe /nfs-medical3/zyh/fewclick_v2/cvpr_research/med2d_probe_1112_173751/acceptance.json.
+- Docs record: docs/运行记录/模型实验/运行记录_SAM当前9500公平适配与WSI并行_1112_171010.md; docs/运行记录/模型实验/运行记录_未见trainval整片WSI试跑_1112_171010.md.
+- Commit: recorded after commit below. Formal baseline/evaluation and paired WSI pilot acceptance remain outstanding.
