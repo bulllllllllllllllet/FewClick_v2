@@ -5187,3 +5187,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_sam_final_1112_184727
 - Docs record: docs/运行记录/模型实验/运行记录_整片WSI六方法最终公平权重对照_1112_184727.md
 - Commit: 见本次提交；状态为queued/preparing，不代表WSI模型工程或质量接受。
+
+## 11-12 21:45:40
+
+- Purpose: 按用户优先级启用六物理卡WSI调度并固定E01–E10编号。
+- Changed: 新priority.py、编号/运行记录、goal/registry；原模型与运行worker源码不改。
+- Validation: 新控制器真实启动4WSI，SAM与WSI-SAM真实工程通过并窗推理；旧2patchworker保留。总6卡，原配方/每方法3pilot门控保留；完整结果待验收。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_six_gpu_1112_214500/verified_launch.json，code_sha256.json，jobs.json及逐worker日志。
+- Docs record: docs/运行记录/模型实验/运行记录_WSI六卡优先与实验编号_1112_214500.md
+- Commit: 见本次调度提交。
