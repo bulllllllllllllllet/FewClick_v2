@@ -5160,3 +5160,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_mix_frozen_1112_163751/method_freeze.json, paper_migration_manifest.json and planning_acceptance.json.
 - Docs record: docs/运行记录/模型实验/运行记录_HGmix固定方法与三线规划_1112_163751.md.
 - Commit: recorded after commit below. Baseline/ablation compute and new manuscript正文 remain planned.
+
+## 11-12 17:04:13
+
+- Purpose: Add mandatory same-WSI single-support whole-slide evaluation to all three plans; clarify no cross-slide propagation.
+- Changed: WSI experiment plan, three linked plans, paper README and input-audit record.
+- Validation:30 WSI/GT headers read, fixed15/first3 selected before predictions, current training/development slide overlap0; sparse GT-color checks on3 only, not full registration acceptance; relative links checked. Initial sequential PNG subsample failure preserved, random/NFS-temp input-only correction exited0. No training or long GPU inference.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_once_click_inputfix_1112_170106/inventory.json and planning_acceptance.json; previous failed input root retained.
+- Docs record: docs/运行记录/数据审计/运行记录_HGmix整片WSI候选与标注预审_1112_165407.md.
+- Commit: recorded after commit below.
