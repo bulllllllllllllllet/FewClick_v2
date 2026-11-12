@@ -5151,3 +5151,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_diagnostic_1112_122744; failed environment-only root h_component_diagnostic_1112_122321 preserved.
 - Docs record: docs/运行记录/模型实验/运行记录_H固定权重点击锚定与粗层先验拆解_1112_122321.md.
 - Commit: recorded after commit below. No retraining or quality claim.
+
+## 11-12 16:48:04
+
+- Purpose: Fix user-selected HG-mix and prepare three bounded plans for matched SAM comparison, final-model attribution and paper migration/rewrite.
+- Changed: Three recommendation documents, new continuity run record, paper entry/workspace README; original paper assets copied separately without source edits.
+- Validation: All41 copied manuscript/supplement files match source SHA; fixed checkpoint/source/task evidence verified; Markdown entry links and registry authority validated; planning_acceptance.json accepted. No model code or new training/inference execution in this turn.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_mix_frozen_1112_163751/method_freeze.json, paper_migration_manifest.json and planning_acceptance.json.
+- Docs record: docs/运行记录/模型实验/运行记录_HGmix固定方法与三线规划_1112_163751.md.
+- Commit: recorded after commit below. Baseline/ablation compute and new manuscript正文 remain planned.
