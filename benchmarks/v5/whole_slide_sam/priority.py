@@ -46,6 +46,26 @@ def main():
             jobs.append(dict(method=arm, case=i, root=str(baseline), phase='formal',
                              module='benchmarks.v5.whole_slide_sam.worker', status='pending'))
     active = []
+    if 'resume_jobs' in c:
+        jobs = json.loads(Path(c['resume_jobs']).read_text())
+        class Existing:
+            def __init__(self, job):
+                self.job = job
+
+            def poll(self):
+                pid = self.job['pid']
+                path = Path(f'/proc/{pid}/stat')
+                if path.exists() and path.read_text().split()[2] != 'Z':
+                    return None
+                job = self.job
+                out = Path(job['root'])
+                if job['method'] != 'HG_mix+sansa':
+                    out /= job['method']
+                out = out/job['phase']/f"case_{job['case']:02}"/'acceptance.json'
+                return 0 if out.exists() else 1
+        for job in jobs:
+            if job['status'] == 'running':
+                active.append((Existing(job), (a.root/f"carried_{job['pid']}.log").open('x'), job))
     dump(a.root/'stage.json', dict(status='six_GPU_WSI_priority_running', controller_pid=os.getpid()))
     try:
         while any(j['status'] == 'pending' for j in jobs) or active:
@@ -95,8 +115,9 @@ def main():
                 if job['method'] != 'HG_mix+sansa':
                     cmd += ['--arm', job['method']]
                 log = (a.root/f"{job['phase']}_{job['method']}_{job['case']:02}.log").open('x')
-                proc = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT,
-                       env=dict(os.environ, CUDA_VISIBLE_DEVICES=str(gpu), CUBLAS_WORKSPACE_CONFIG=':4096:8'))
+                proc = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT, start_new_session=True,
+                       env=dict(os.environ, CUDA_VISIBLE_DEVICES=str(gpu), CUBLAS_WORKSPACE_CONFIG=':4096:8',
+                                TMPDIR=c['temporary_directory'], VIPS_DISC_THRESHOLD='100m'))
                 job.update(status='running', gpu=gpu, pid=proc.pid, command=cmd)
                 active.append((proc, log, job))
                 blocked.add(gpu)

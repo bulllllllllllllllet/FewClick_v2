@@ -5196,3 +5196,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_six_gpu_1112_214500/verified_launch.json，code_sha256.json，jobs.json及逐worker日志。
 - Docs record: docs/运行记录/模型实验/运行记录_WSI六卡优先与实验编号_1112_214500.md
 - Commit: 见本次调度提交。
+
+## 11-12 21:47:41
+
+- Purpose: 修复WSI并行系统临时盘ENOSPC与dispatcher退出连带子进程退出。
+- Changed: priority.py增加NFS TMPDIR与独立子进程会话；全部失败/partial归档、明确新执行根与registry。
+- Validation: 真实新四pilot已启动，CUDA门控/GT流式推理继续验收；旧patch不终止，模型/配方/阈值不变。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_six_gpu_tmpfix_1112_215500，旧失败根与归档保留。
+- Docs record: docs/运行记录/模型实验/运行记录_WSI六卡优先与实验编号_1112_214500.md
+- Commit: 本次修复提交。
