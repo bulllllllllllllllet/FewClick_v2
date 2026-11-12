@@ -5142,3 +5142,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539.
 - Docs record: docs/运行记录/模型实验/运行记录_HG组合与全图细节融合并行_1112_115539.md.
 - Commit: recorded after commit below.
+
+## 11-12 12:29:29
+
+- Purpose: Diagnose H click anchoring and coarse-to-fine prior using one frozen checkpoint and four fixed inference conditions.
+- Changed: benchmarks/v5/h_component_diagnostic/*.py; independent shared-encoding two-shard inference, exact historical control and disk mask replay.
+- Validation: aligner compileall passed; real four-group engineering accepted/EXIT0 (original H exact, all four cached/full exact, intended channel interventions, unchanged weights and local predictions); six-task historical gate running. Initial launch lacked vendor PYTHONPATH and failed before loading weights; failed root preserved, corrected launch explicitly uses existing transformers4.49.0 and deterministic environment.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_diagnostic_1112_122744; failed environment-only root h_component_diagnostic_1112_122321 preserved.
+- Docs record: docs/运行记录/模型实验/运行记录_H固定权重点击锚定与粗层先验拆解_1112_122321.md.
+- Commit: recorded after commit below. No retraining or quality claim.
