@@ -5214,3 +5214,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_six_gpu_envrestore_1112_232200/status_verified.json
 - Docs record: docs/运行记录/模型实验/运行记录_WSI六卡优先与实验编号_1112_214500.md
 - Commit: 本次启动环境修复提交。
+
+## 11-13 00:50:35
+
+- Purpose: SANSA等价缓存与门控后自动接入未来WSI任务。
+- Changed: 新v5/sansa_cache model/gate/worker/activate，独立缓存图像和支持memory、query不累积，严格概率/mask等价门控；新运行记录/goal/registry。
+- Validation: py_compile；真实gate进程3020503等待全局六槽；已准备3WSI实际输入12remote/6local/6swap测试和冻结权重SHA。尚未执行模型门控，不宣称学习/质量/加速接受。门控失败保留原队列，成功才切换pending任务。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_cache_1113_004500（source_hashes/source_snapshot/gate.log/activation.log）。
+- Docs record: docs/运行记录/模型实验/运行记录_SANSA缓存等价优化_1113_004500.md
+- Commit: 本次实现提交；结果门控pending。
