@@ -5223,3 +5223,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_cache_1113_004500（source_hashes/source_snapshot/gate.log/activation.log）。
 - Docs record: docs/运行记录/模型实验/运行记录_SANSA缓存等价优化_1113_004500.md
 - Commit: 本次实现提交；结果门控pending。
+
+## 2026-11-13T23:20:35.264288+08:00 HG-mix核心消融实现与真实工程接受
+
+- Purpose: 执行用户授权的M/no_cross_scale两组固定9500/2375消融。
+- Changed: benchmarks/v5/hg_paper_ablation；新增两组model、真实工程门控及匹配训练/评价流水线，旧v4/HGmix实现只读。
+- Validation: 两arm真实engineering通过，4组输入、7次encoder、初始共享state、3步梯度、cache/full精确、冻结状态不变；no_cross_scale identity及decoder跨尺度边0；compileall及git diff --check通过。功能门控running，正式结果未完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_paper_ablation_envcomplete_1113_231852；早期三次环境启动失败保留，0正式更新，最终恢复原Phikon vendor/CuBLAS环境。
+- Docs record: docs/运行记录/模型实验/运行记录_HGmix两组核心消融_1113_230552.md
+- Commit: 本条与实现一起隔离提交；hash见后续记录。
