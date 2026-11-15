@@ -5232,3 +5232,13 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_paper_ablation_envcomplete_1113_231852；早期三次环境启动失败保留，0正式更新，最终恢复原Phikon vendor/CuBLAS环境。
 - Docs record: docs/运行记录/模型实验/运行记录_HGmix两组核心消融_1113_230552.md
 - Commit: 本条与实现一起隔离提交；hash见后续记录。
+
+
+### 2026-11-16T02:57:03.254584+08:00 抽样归因训练与WSI流水线实现
+
+- Purpose: 新增同七次Phikon编码的Proto-MS和fixed-grid两臂，保持9500/2375，冻结1087分层评价任务与首3完整WSI；自动门控、训练、抽样评分及已有权重WSI三读出。
+- Changed: `benchmarks/v5/reviewer_sample/`；本条状态记录。旧源码、数据、权重及用户其他改动保持未暂存。
+- Validation: compileall及diff --check通过；两臂四组真实输入、7编码、原始特征/共享初始参数、cache/full、梯度和冻结状态工程门控通过；两臂fresh optimizer继续精确通过。WSI owner/fused数值对照及remote裁剪检查通过，HG_mix/M/no_cross_scale真实WSI工程通过；功能学习和完整评价仍running，不冒称完成。canonical method全部642源文件hash一致。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000`；stage.json记录真实PID，tmux日志保存EXIT_CODE。
+- Docs record: `docs/运行记录/模型实验/运行记录_抽样归因双臂与三片WSI_1116_024330.md`（运行记录）。
+- Commit: 本条随本次实现提交；提交hash写入运行root/source_commit.json及运行记录。
