@@ -5242,3 +5242,13 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000`；stage.json记录真实PID，tmux日志保存EXIT_CODE。
 - Docs record: `docs/运行记录/模型实验/运行记录_抽样归因双臂与三片WSI_1116_024330.md`（运行记录）。
 - Commit: 本条随本次实现提交；提交hash写入运行root/source_commit.json及运行记录。
+
+
+## 2026-11-16T21:55:03.705126+08:00
+
+- Purpose: Extend frozen Proto-MS and two core controls from first3 to original formal15 WSIs; no training.
+- Changed: `benchmarks/v5/reviewer_sample/full15.py` adds bounded six-GPU scheduling, explicit engineering gates, reuse of first3 results, frozen scoring, and automatic full15 paired aggregation.
+- Validation: `python -m py_compile benchmarks/v5/reviewer_sample/full15.py` passed; all three real case03 loader/model/cache/geometry gates accepted, unchanged weights; 677 source hashes and three checkpoints verified; 96 reused tissue-method scoring domains matched.
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full15_1116_214757`; 36 pending/running model-slide jobs, six active GPU workers; experiment not complete.
+- Docs record: `docs/运行记录/模型实验/运行记录_ProtoMS核心消融完整15WSI_1116_214757.md` (run record).
+- Commit: source_commit.json in the artifact root records the isolated implementation commit.
