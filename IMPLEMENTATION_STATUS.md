@@ -5252,3 +5252,13 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full15_1116_214757`; 36 pending/running model-slide jobs, six active GPU workers; experiment not complete.
 - Docs record: `docs/运行记录/模型实验/运行记录_ProtoMS核心消融完整15WSI_1116_214757.md` (run record).
 - Commit: source_commit.json in the artifact root records the isolated implementation commit.
+
+
+## 2026-11-17T19:24:15.414400+08:00 扩充四方法冻结消融至30张WSI
+
+- Purpose: 复用前15张四方法结果，新增15张60方法切片只读推理，并估算耗时。
+- Changed: benchmarks/v5/reviewer_sample/full30.py、prepare_full30.py；新增受限六GPU队列、历史复算和30片汇总；原模型及评分路径不变。
+- Validation: py_compile与diff --check通过；687源SHA/四权重/30病例核验，旧15张608任务方法行及bootstrap逐项精确重现；四真实GPU工程门控accepted，六正式worker存活且已有滑窗进度。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543；60新增任务running，非实验完成。
+- Docs record: docs/运行记录/模型实验/运行记录_四方法消融完整30WSI_1117_173543.md（run record）。
+- Commit: 隔离提交记录见产物source_commit.json。
