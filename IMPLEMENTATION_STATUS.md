@@ -5882,3 +5882,12 @@ XeLaTeX+xeCJK+Noto CJK编译通过：正文8页、总10页；无缺字、未定�
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/repository_cleanup_1120_172853`；manifest SHA-256 `7ebd8bf65b84459ab34620a2a76fe7c0b8e40b95d94d38bbbb72768a57fa140a`。
 - Docs record: `docs/仓库维护.md`。
 - Commit: 本条随仓库整理提交，提交号由 Git 历史查询。
+
+
+## 2026-11-20T17:37:09.028656+08:00 更新 FewClick_v2 项目首页
+
+- Purpose: 将迁移遗留的 XCellAligner 首页更新为当前 FewClick_v2 的任务、HG-mix 方法及研究复现入口。
+- Changed: `README.md`、`benchmarks/v5/README.md`；移除不存在的旧脚本入口和无对应 LICENSE 文件的 MIT 声明，保留组件来源说明。
+- Validation: 两份 README 的 51 个本地链接逐项存在性检查通过；`git diff --check` 通过；命令与代码/现有构建脚本核对。仅文档变更，未运行训练或推理。
+- Docs record: `README.md`。
+- Commit: 随本次文档更新提交，提交号由 Git 历史查询。
