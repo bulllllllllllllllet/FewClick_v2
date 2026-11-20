@@ -1,0 +1,40 @@
+{
+  "time": "2026-11-15T03:51:11.173976+08:00",
+  "status": "english_review_manuscript_complete_with_requested_placeholders",
+  "main_content_pages": 8,
+  "main_pdf_pages": 9,
+  "supplementary_pdf_pages": 4,
+  "cited_references": 9,
+  "main_experimental_table_slots": 5,
+  "main_experimental_figure_slots": 2,
+  "supplementary_table_slots": 9,
+  "source_table_blocks_preserved": 14,
+  "official_style_unchanged": true,
+  "compile_issues": {
+    "main": [],
+    "supplementary": []
+  },
+  "remaining_author_fields": [
+    "CRC/TIGER provenance and formal citations",
+    "annotation approval and usage permissions",
+    "LLM usage statement"
+  ],
+  "sources": {
+    "论文/CVPR_HG_mix/中文初稿_1114.md": "72f8d25839dd0cb7c77ad0204f31fdd5b6ddddcc772d7b39bb2d1d642a274f2e",
+    "论文/CVPR_HG_mix/中文初稿_证据索引_1114.json": "4d3756fcb63216ecbed53382f8507d7cc645aad3f8effb4a00adf279657898d9",
+    "论文/AAAI27_FewClick_paper/FewClick_AAAI27.tex": "292f8683cf18be6846e004587f62092ec382ccd288905fa3f86a92135a1d492e"
+  },
+  "outputs": {
+    "main.pdf": "b3706045d35736265bc8fc99a3cf3a0475a116a4778aa945d03d1c4bb6013f04",
+    "supplementary.pdf": "1b29f7c45b4e35529a2e598ea71ccf8ded12867ec1a5ea0271e42205a880f0b0",
+    "figures/method.pdf": "ba21db548c977b6b4d41f5a50215925b4d2f7986aca49a8f6104f0a57167c03d"
+  },
+  "notes": [
+    "AAAI style used; historical cell pathway/results not transferred",
+    "Development queue and historical WSI exposure stated",
+    "No new experiment executed",
+    "Method illustration retained; experimental visuals reserved"
+  ],
+  "method_figure_updated_at": "2026-11-15T04:37:51.056797+08:00",
+  "method_figure_source": "/home/zhaoyh/.codex/attachments/1f43b5ca-4259-4e11-8430-3d40440b331c/最终方法图.pptx"
+}

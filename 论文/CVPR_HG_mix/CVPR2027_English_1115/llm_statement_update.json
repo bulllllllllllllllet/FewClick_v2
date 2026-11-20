@@ -1,0 +1,33 @@
+{
+  "status": "complete",
+  "timestamp": "2026-11-16T23:46:14.205023+08:00",
+  "summary": "依用户要求查询CVPR2027官方LLM Policy，并补全中英文LLM Usage Statement。明确工具ChatGPT/Codex、方法/实验规划、代码实现调试运行、结果分析、文献核查、图表制作及写作翻译的迭代辅助范围，保留作者责任，不虚构逐项人工验收。纠正此前审查遗漏的位置要求：声明须在正文后、参考文献前，已移至第9页。补充对应空白改为主文声明的位置说明。正文前8页提取文本完全不变；两版总10页、补充6页，无编译警告，25引用目标有效。其它数据来源/权限占位与字体/书目问题未在本次LLM声明任务中修改。",
+  "official_url": "https://cvpr.thecvf.com/Conferences/2027/AuthorGuidelines",
+  "english_statement": "OpenAI ChatGPT/Codex was used iteratively to assist with method and experiment planning; implementing, debugging, and running training and evaluation scripts; analyzing results and checking references; preparing figures and tables; and drafting, revising, and translating the manuscript between English and Chinese. Assistance included generating and revising code and text under the authors' direction. The authors take responsibility for the scientific claims, experimental results, references, and final content.",
+  "chinese_statement": "本研究迭代使用OpenAI ChatGPT/Codex辅助方法与实验规划，训练及评估脚本的实现、调试和运行，结果分析与文献核查，图表制作，以及论文起草、修改和中英文翻译。辅助工作包括在作者指导下生成和修改代码与文本。作者对科学论断、实验结果、参考文献及最终内容负责。",
+  "checks": {
+    "main": {
+      "pages": 10,
+      "no_compilation_warnings": true,
+      "body_pages": 8,
+      "body_text_unchanged": true,
+      "statement_before_references": true,
+      "reference_destinations": 25
+    },
+    "main_ch": {
+      "pages": 10,
+      "no_compilation_warnings": true,
+      "body_pages": 8,
+      "body_text_unchanged": true,
+      "statement_before_references": true,
+      "reference_destinations": 25
+    },
+    "supplementary": {
+      "pages": 6,
+      "no_compilation_warnings": true
+    }
+  },
+  "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/llm_statement_1116_234442",
+  "whole_submission_ready_not_certified": true,
+  "no_new_training_or_inference": true
+}

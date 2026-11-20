@@ -1,0 +1,20 @@
+{
+  "status": "complete_accepted",
+  "updated_at": "2026-11-16T12:56:46.464814+08:00",
+  "scope": "One bilingual abstract closing sentence",
+  "history": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/abstract_accuracy_1116_125611",
+  "basis": "Original 11000-task present Dice: FewClick 42.11%, SANSA 41.54%; no new accuracy metric or equivalence test claimed",
+  "English": "Meanwhile, FewClick maintains segmentation accuracy comparable to SANSA on target-present queries.",
+  "Chinese": "同时，FewClick在包含目标的查询区域上保持了与SANSA相当的分割精度。",
+  "output_sha256": {
+    "sec/0_abstract.tex": "ad4be712e06516542c441ca89bf2206c0b6fdfa5e05c6d1cca073e42ecb8db96",
+    "sec_ch/0_abstract.tex": "2da0b259b99b1945823133d95dc10184d413365c7bb485484258ac8ff97a22cc",
+    "main.pdf": "020f0ce69593c141606cde9f4db472d0f353d5698c3cbe3ed5387374997893dc",
+    "main_ch.pdf": "fd721bf849c8f10757658d44c3080d622e644e5d7ea35440c8a6cead136b9d5c",
+    "MANUSCRIPT-CONTEXT.md": "65835a319650200973f4d3ec3666223b348a5eec1f4e5a64870b118dc1a75891"
+  },
+  "main_text_pages": 8,
+  "pdf_pages_each": 10,
+  "compile_warnings": [],
+  "evidence_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_abstract_accuracy_1116_125646"
+}

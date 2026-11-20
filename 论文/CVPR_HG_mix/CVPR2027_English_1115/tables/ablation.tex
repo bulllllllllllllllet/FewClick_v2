@@ -1,0 +1,31 @@
+\begin{table}[t]
+\centering
+\caption{Matched structural ablations: (a) fine representation and dense transfer; (b) components of the fused model. P/L/S denote present-, large-, and small-target Dice; all values are percentages. Higher Dice and lower FPA are better.}
+\label{tab:ablation}
+\small
+\setlength{\tabcolsep}{4pt}
+\textbf{(a) Fine representation $\times$ dense transfer}\\[2pt]
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Fine view & Transfer & P & L & FPA \\
+\midrule
+Whole & No & 39.19 & 73.81 & 6.71 \\
+Whole & Yes & 39.97 & 76.51 & 8.10 \\
+Tiled & No & 40.16 & 74.63 & 5.74 \\
+Tiled & Yes & 40.87 & 76.84 & 7.04 \\
+Fused & No & 40.92 & 75.37 & 5.61 \\
+Fused & Yes & 42.11 & 78.49 & 7.75 \\
+\bottomrule
+\end{tabular}
+\par\vspace{4pt}
+\textbf{(b) Fused-model components}\\[2pt]
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Variant & P & L & S & FPA \\
+\midrule
+Full FewClick & 42.11 & 78.49 & 28.19 & 7.75 \\
+No dense transfer & 40.92 & 75.37 & 28.04 & 5.61 \\
+No region messages & 41.66 & 77.66 & 28.09 & 6.90 \\
+\bottomrule
+\end{tabular}
+\end{table}

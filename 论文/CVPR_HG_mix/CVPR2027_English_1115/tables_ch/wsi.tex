@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{在15张切片、152个组织任务上的整片类别宏平均Dice（\%）。每个“切片—目标”组合使用一个支持图像块以及三个正点击和两个负点击。严格远端评价排除输入覆盖范围与支持区域相交的相关输出。}
+\label{tab:wsi}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+方法 & 整片 $\uparrow$ & 严格远端 $\uparrow$ \\
+\midrule
+SAM & 18.86 & 16.63 \\
+SAM2 & 23.58 & 21.01 \\
+WSI-SAM & 15.85 & 14.25 \\
+SAM-Med2D & 13.59 & 11.97 \\
+SANSA & 33.23 & 30.12 \\
+FewClick & \textbf{43.75} & \textbf{40.98} \\
+\bottomrule
+\end{tabular}
+\end{table}

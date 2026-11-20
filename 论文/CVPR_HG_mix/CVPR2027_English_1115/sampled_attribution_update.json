@@ -1,0 +1,53 @@
+{
+  "status": "complete_accepted",
+  "updated_at": "2026-11-16T11:08:59.065467+08:00",
+  "scope": "Completed experimental findings incorporated into English paper; no training or inference",
+  "history": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/sampled_attribution_1116_110409",
+  "evidence_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_attribution_1116_110859",
+  "source_sha256": {
+    "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/wsi_summary.json": "1fbc93f0800f94217e34d827f89a3003bf94a0b1325a01461af5fffc3c57aa8d",
+    "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/references/paired_original15.json": "1a479a0f42c5b6b7e9681a6e1f5d6d584a2e2f44af75af8407c7450dfde0ab67",
+    "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/closeout_verified_1116_105309.json": "e20371e22801792de1690ed4155e77d8b2b9edcf56ec500c8a1e4fa2b4800a45",
+    "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/sample/sampling.json": "c508421596e4f0279102a82065b62021b6fd5837d1be5b13cd46bc83eff78101",
+    "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/proto_ms/evaluation/report.json": "7a7a83bcdab8eb1472420a456bfdc3538c5fbae8ff78eac0d9edab82307225b6",
+    "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/fixed_grid/evaluation/report.json": "d670e43e084bea950a08a2248957274e9cc55ae5ca50ef65481ab6b44151f0ce",
+    "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/references/HG_mix.json": "2a710bcd6436a2cd8d736d0d6b27b2bb9898bbda07f9e8bd924e2ef1d1acb434",
+    "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/references/sansa.json": "7a63f9aa31873b3d74cf1d89263c5590ba50cc59dba30c3561d3775a2e4feb97",
+    "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/references/M.json": "5820aacf158ca66616226f2fd10142c8bb68793ac3a58263b3bc0c13a68b4476",
+    "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/references/no_cross_scale.json": "c49ffae77a2bad311304434e4829c7780ed2c4a08150cde739e4abe8b0c11e96"
+  },
+  "output_sha256": {
+    "sec/4_experiments.tex": "1072d66100bcbec5bb43cbbfc8613c245bd812d5e5a452d6c3547d6bb06ee703",
+    "sec/supplement.tex": "e297119fabf5ad2620641154a62b6db113c3c76a6aa2c6da27d76dbf560ad04e",
+    "tables/sampled_controls.tex": "66985e82629ebbd59e63af36b34ae039d76aa2129c5746ddce14a4fed29a6569",
+    "tables/wsi_readouts.tex": "819205bea22db25d424b66f972833fffe01ae613f2bfc439e66e5614763fa628",
+    "tables/wsi_paired_slides.tex": "35bf90926d6bf91cb2c9635344c0e824b06ebe656c64d57b99319e6999d02124",
+    "main.pdf": "6c4789ee04913dff26a3bb08dc15e5917a51b67f730761bbabb968859dc8460f",
+    "supplementary.pdf": "d8a1d8dc0fbe3127aa83a6f7ffb48b168f6104c8d6e6c25868f067e3616a3e23",
+    "sampled_attribution_data.json": "36a0124d19e060996f5700abcb60fb0a5a6fc80d8e9892b0d19fec877bde4c63",
+    "README_中文.md": "9989617569775b036e4e33cfd9536ca61d42f6757219334efd0e7b15879238a0",
+    "图表完成清单_1115.md": "95cb0fa644462deb6d8fc057bd0ce74b0fc5ee2125a8c15f0ed7561572f5e0c0"
+  },
+  "validation": {
+    "main_text_pages": 8,
+    "main_pdf_pages": 10,
+    "supplementary_pages": 6,
+    "latex_warnings": [],
+    "visual_review": [
+      "main page 7",
+      "main page 8",
+      "supplement page 3",
+      "supplement page 4"
+    ],
+    "tables_generated_from_accepted_json": true,
+    "absent_window_FPA_independently_recomputed": {
+      "HG_mix": 0.03261590965040744,
+      "sansa": 0.08306704882904782
+    },
+    "patient_test_exclusion_sentence_preserved": true
+  },
+  "build_commands": [
+    "PATH=/home/zhaoyh/TinyTeX/bin/x86_64-linux:$PATH bash build.sh",
+    "TEXMFHOME=\"$PWD/texmf\" /home/zhaoyh/TinyTeX/bin/x86_64-linux/pdflatex -interaction=nonstopmode -halt-on-error supplementary.tex (twice after final supplement wording edit)"
+  ]
+}

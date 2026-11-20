@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{在单张RTX 5880 Ada GPU上测量100个任务得到的平均延迟和缓存大小。首次预测包含读取与编码；改变提示后的预测复用图像特征。缓存大小包括一对支持—查询特征及提示记忆。}
+\label{tab:efficiency}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+方法 & 首次（ms） & 更新后（ms） & 缓存（MiB） \\
+\midrule
+FewClick & 1539.2 & 43.0 & 16.39 \\
+SANSA & 1226.3 & 39.1 & 212.38 \\
+SAM & 1191.8 & 18.0 & 16.00 \\
+SAM2 & 1297.9 & 16.3 & 40.00 \\
+WSI-SAM & 767.9 & 36.3 & 34.00 \\
+SAM-Med2D & 863.9 & 17.7 & 1.00 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,25 @@
+{
+  "sources": [
+    {
+      "case": "4A_25-007613_1__ER",
+      "marker": "ER",
+      "pair_dir": "/nfs-medical6/test1/align10/epithelial_training_expansion_20260725/outputs/global/4A_25-007613_1__ER",
+      "mapping_csv": "/nfs-medical6/test1/align10/epithelial_training_expansion_20260725/outputs/sparse_epithelial_expansion_v1/4A_25-007613_1__ER/accepted_micro_patches_gold.csv",
+      "clean_ini": "/nfs-medical6/test1/align10/epithelial_training_expansion_20260725/configs/cleaned_ini/4A_25-007613_1_Slidedat.clean.ini"
+    },
+    {
+      "case": "4C_25-001323_1__PR",
+      "marker": "PR",
+      "pair_dir": "/nfs-medical6/test1/align10/epithelial_training_expansion_20260725/outputs/global_pr_1323_constrained/4C_25-001323_1__PR",
+      "mapping_csv": "/nfs-medical6/test1/align10/epithelial_training_expansion_20260725/outputs/sparse_epithelial_expansion_v1/4C_25-001323_1__PR/accepted_micro_patches_gold.csv",
+      "clean_ini": "/nfs-medical6/test1/align10/epithelial_training_expansion_20260725/configs/cleaned_ini/4C_25-001323_1_Slidedat.clean.ini"
+    },
+    {
+      "case": "4C_25-003270_1__KI67",
+      "marker": "KI67",
+      "pair_dir": "/nfs-medical6/test1/align10/epithelial_training_expansion_20260725/outputs/global_ki67_3270_fresh/4C_25-003270_1__KI67",
+      "mapping_csv": "/nfs-medical6/test1/align10/epithelial_training_expansion_20260725/outputs/sparse_epithelial_expansion_v1/4C_25-003270_1__KI67/accepted_micro_patches_gold.csv",
+      "clean_ini": "/nfs-medical6/test1/align10/epithelial_training_expansion_20260725/configs/cleaned_ini/4C_25-003270_1_Slidedat.clean.ini"
+    }
+  ]
+}

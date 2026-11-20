@@ -1,0 +1,105 @@
+{
+  "version": "tumor_epithelial_6train_5test_v1",
+  "training_policy": "two slides per marker",
+  "cases": [
+    {
+      "case": "4A_25-003745_1__ER",
+      "marker": "ER",
+      "role": "train",
+      "ihc_slide": "/nfs-medical6/data/BNK-26-1258-4/ER/4A 25-003745 1IHC(ER).svs",
+      "annotation_json": "/nfs-medical6/gkw_data1/json/ER/4A25-003745_ER_dr235_4A25-0037451IHC_ER.json",
+      "cell_table": "/nfs-medical6/test1/align10/ihc_nuclear_segmentation_refresh_20260723/outputs/epithelial_multiclass_v1_20260724/features/cases/4A_25-003745_1__ER/tables/cell_features_mpp_corrected.csv",
+      "epithelial_table": "/nfs-medical6/test1/align10/epithelial_11slide_silver_evaluation_20260725/outputs/training_six_slide_stable_inference/cases/4A_25-003745_1__ER/tables/epithelial_predictions.csv"
+    },
+    {
+      "case": "4A_25-007613_1__ER",
+      "marker": "ER",
+      "role": "train",
+      "ihc_slide": "/nfs-medical6/data/BNK-26-1258-4/ER/4A 25-007613 1IHC(ER).svs",
+      "annotation_json": "/nfs-medical6/gkw_data1/json/ER/4A25-007613_ER_dr228_4A25-0076131IHC_ER.json",
+      "cell_table": "/nfs-medical6/test1/align10/ihc_nuclear_segmentation_refresh_20260723/outputs/epithelial_multiclass_v1_20260724/features/cases/4A_25-007613_1__ER/tables/cell_features_mpp_corrected.csv",
+      "epithelial_table": "/nfs-medical6/test1/align10/epithelial_11slide_silver_evaluation_20260725/outputs/training_six_slide_stable_inference/cases/4A_25-007613_1__ER/tables/epithelial_predictions.csv"
+    },
+    {
+      "case": "4C_25-001323_6__ER",
+      "marker": "ER",
+      "role": "test",
+      "ihc_slide": "/nfs-medical6/data/BNK-26-1258-4/ER/4C 25-001323 6IHC(ER).svs",
+      "annotation_json": "/nfs-medical6/gkw_data1/json/ER/4C25-001323_ER_dr229_4C25-0013236IHC_ER.json",
+      "cell_table": "/nfs-medical6/test1/align10/ihc_nuclear_segmentation_refresh_20260723/outputs/epithelial_multiclass_v1_20260724/features/cases/4C_25-001323_6__ER/tables/cell_features_mpp_corrected.csv",
+      "epithelial_table": "/nfs-medical6/test1/align10/epithelial_11slide_silver_evaluation_20260725/outputs/marker_conditional_acinar_exact_final_unseen_v19/cases/4C_25-001323_6__ER/tables/marker_conditional_acinar_predictions.csv"
+    },
+    {
+      "case": "4C_25-003270_6__ER",
+      "marker": "ER",
+      "role": "test",
+      "ihc_slide": "/nfs-medical6/data/BNK-26-1258-4/ER/4C 25-003270 6IHC(ER).svs",
+      "annotation_json": "/nfs-medical6/gkw_data1/json/ER/4C25-003270_ER_dr230_4C25-0032706IHC_ER.json",
+      "cell_table": "/nfs-medical6/test1/align10/ihc_nuclear_segmentation_refresh_20260723/outputs/epithelial_multiclass_v1_20260724/features/cases/4C_25-003270_6__ER/tables/cell_features_mpp_corrected.csv",
+      "epithelial_table": "/nfs-medical6/test1/align10/epithelial_11slide_silver_evaluation_20260725/outputs/marker_conditional_acinar_exact_final_unseen_v19/cases/4C_25-003270_6__ER/tables/marker_conditional_acinar_predictions.csv"
+    },
+    {
+      "case": "4B_25-003297_6__PR",
+      "marker": "PR",
+      "role": "train",
+      "ihc_slide": "/nfs-medical6/data/BNK-26-1258-4/PR/4B 25-003297 6IHC(PR).svs",
+      "annotation_json": "/nfs-medical6/gkw_data1/json/PR/4B25-003297_PR_dr236_4B25-0032976IHC_PR.json",
+      "cell_table": "/nfs-medical6/test1/align10/ihc_nuclear_segmentation_refresh_20260723/outputs/epithelial_multiclass_v1_20260724/features/cases/4B_25-003297_6__PR/tables/cell_features_mpp_corrected.csv",
+      "epithelial_table": "/nfs-medical6/test1/align10/epithelial_11slide_silver_evaluation_20260725/outputs/training_six_slide_marker_aware_inference/cases/4B_25-003297_6__PR/tables/marker_aware_epithelial_predictions.csv"
+    },
+    {
+      "case": "4C_25-001323_1__PR",
+      "marker": "PR",
+      "role": "train",
+      "ihc_slide": "/nfs-medical6/data/BNK-26-1258-4/PR/4C 25-001323 1IHC(PR).svs",
+      "annotation_json": "/nfs-medical6/gkw_data1/json/PR/4C25-001323_PR_dr238_4C25-0013231IHC_PR.json",
+      "cell_table": "/nfs-medical6/test1/align10/ihc_nuclear_segmentation_refresh_20260723/outputs/epithelial_multiclass_v1_20260724/features/cases/4C_25-001323_1__PR/tables/cell_features_mpp_corrected.csv",
+      "epithelial_table": "/nfs-medical6/test1/align10/epithelial_11slide_silver_evaluation_20260725/outputs/training_six_slide_marker_aware_inference/cases/4C_25-001323_1__PR/tables/marker_aware_epithelial_predictions.csv"
+    },
+    {
+      "case": "4A_25-003745_6__PR",
+      "marker": "PR",
+      "role": "test",
+      "ihc_slide": "/nfs-medical6/data/BNK-26-1258-4/PR/4A 25-003745 6IHC(PR).svs",
+      "annotation_json": "/nfs-medical6/gkw_data1/json/PR/4A25-003745_PR_dr233_4A25-0037456IHC_PR.json",
+      "cell_table": "/nfs-medical6/test1/align10/ihc_nuclear_segmentation_refresh_20260723/outputs/epithelial_multiclass_v1_20260724/features/cases/4A_25-003745_6__PR/tables/cell_features_mpp_corrected.csv",
+      "epithelial_table": "/nfs-medical6/test1/align10/epithelial_11slide_silver_evaluation_20260725/outputs/cell_graph_guarded_inference_v34_minimal_isolate_pr/cases/4A_25-003745_6__PR/tables/cell_graph_guarded_epithelial_predictions.csv"
+    },
+    {
+      "case": "4B_25-001333_1__PR",
+      "marker": "PR",
+      "role": "test",
+      "ihc_slide": "/nfs-medical6/data/BNK-26-1258-4/PR/4B 25-001333 1IHC(PR).svs",
+      "annotation_json": "/nfs-medical6/gkw_data1/json/PR/4B25-001333_PR_dr239_4B25-0013331IHC_PR.json",
+      "cell_table": "/nfs-medical6/test1/align10/ihc_nuclear_segmentation_refresh_20260723/outputs/epithelial_multiclass_v1_20260724/features/cases/4B_25-001333_1__PR/tables/cell_features_mpp_corrected.csv",
+      "epithelial_table": "/nfs-medical6/test1/align10/epithelial_11slide_silver_evaluation_20260725/outputs/cell_graph_guarded_inference_v34_minimal_isolate_pr/cases/4B_25-001333_1__PR/tables/cell_graph_guarded_epithelial_predictions.csv"
+    },
+    {
+      "case": "4B_25-003297_1__KI67",
+      "marker": "KI67",
+      "role": "train",
+      "ihc_slide": "/nfs-medical6/data/BNK-26-1258-4/ki67/4B 25-003297 1IHC(ki67).svs",
+      "annotation_json": "/nfs-medical6/gkw_data1/json/Ki67/4B25-003297_Ki67_dr237_4B25-0032971IHC_ki67.json",
+      "cell_table": "/nfs-medical6/test1/align10/ihc_nuclear_segmentation_refresh_20260723/outputs/epithelial_multiclass_v1_20260724/features/cases/4B_25-003297_1__KI67/tables/cell_features_mpp_corrected.csv",
+      "epithelial_table": "/nfs-medical6/test1/align10/epithelial_11slide_silver_evaluation_20260725/outputs/training_six_slide_stable_inference/cases/4B_25-003297_1__KI67/tables/epithelial_predictions.csv"
+    },
+    {
+      "case": "4C_25-003270_1__KI67",
+      "marker": "KI67",
+      "role": "train",
+      "ihc_slide": "/nfs-medical6/data/BNK-26-1258-4/ki67/4C 25-003270 1IHC(ki67).svs",
+      "annotation_json": "/nfs-medical6/gkw_data1/json/Ki67/4C25-003270_Ki67_dr231_4C25-0032701IHC_ki67.json",
+      "cell_table": "/nfs-medical6/test1/align10/ihc_nuclear_segmentation_refresh_20260723/outputs/epithelial_multiclass_v1_20260724/features/cases/4C_25-003270_1__KI67/tables/cell_features_mpp_corrected.csv",
+      "epithelial_table": "/nfs-medical6/test1/align10/epithelial_11slide_silver_evaluation_20260725/outputs/training_six_slide_stable_inference/cases/4C_25-003270_1__KI67/tables/epithelial_predictions.csv"
+    },
+    {
+      "case": "4B_25-001333_6__KI67",
+      "marker": "KI67",
+      "role": "test",
+      "ihc_slide": "/nfs-medical6/data/BNK-26-1258-4/ki67/4B 25-001333 6IHC(ki67).svs",
+      "annotation_json": "/nfs-medical6/gkw_data1/json/Ki67/4B25-001333_Ki67_dr232_4B25-0013336IHC_ki67.json",
+      "cell_table": "/nfs-medical6/test1/align10/ihc_nuclear_segmentation_refresh_20260723/outputs/epithelial_multiclass_v1_20260724/features/cases/4B_25-001333_6__KI67/tables/cell_features_mpp_corrected.csv",
+      "epithelial_table": "/nfs-medical6/test1/align10/epithelial_11slide_silver_evaluation_20260725/outputs/marker_conditional_acinar_exact_fourth_unseen_v24/cases/4B_25-001333_6__KI67/tables/marker_conditional_acinar_predictions.csv"
+    }
+  ]
+}

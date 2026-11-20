@@ -1,0 +1,33 @@
+{
+  "updated_at": "2026-11-15T21:24:55.307973+08:00",
+  "status": "first_batch_complete",
+  "main_tables": 5,
+  "main_figures_added": 2,
+  "supplement_tables": 2,
+  "remaining_supplement_tables": [
+    "S2：完整本图交互（与正文表2重复，可直接填入或合并）",
+    "S3：整片逐组织结果",
+    "S4：整片流程耗时",
+    "S6：点击预算与位置扰动",
+    "S7：小目标面积分层",
+    "S8：精确率、召回率与边界F1",
+    "S9：按查询切片配对bootstrap区间"
+  ],
+  "main_pages": 8,
+  "total_pages": 9,
+  "gpu_used": false,
+  "selection_and_scores_unchanged": true,
+  "sha256": {
+    "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/ablation.tex": "df5083ff3c236b9adf75aab334b4d1c6a4b843b82c1187472eda65831f92672a",
+    "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/efficiency.tex": "95f20f59394e9934a77ef1c95a5e597e9cf08eaa47b992f8f916cb7d7ab940be",
+    "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/local.tex": "e1e270a95ebf64eb2f1d9ee1fc056806013dd53b94bc345c22249cffee45a68d",
+    "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/patchtime.tex": "ffa3f52181b3bbe9d55ca3d5e89c09bd0abd9afd47adb53d72e15448c6d7fcfb",
+    "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/protocol.tex": "ee64ec42fc24f7ede1ba4a4a5815278e24e88d90e17c9f7c91a6d1ee3233110d",
+    "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/remote.tex": "b15a3276410d4eaf30202cafc8ce8a838a97f8b0bccc372dec2bffefd97f4349",
+    "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/wsi.tex": "e2330d4bc03a99e426faf4da6602e4ac2a38a4dbc98fa3c7986e3ddebeb9737c",
+    "论文/CVPR_HG_mix/CVPR2027_English_1115/figures/figure2.pdf": "25466a0721e1d3ead12d76d72ccf4869958d859b08847e7340c80067a54f32dc",
+    "论文/CVPR_HG_mix/CVPR2027_English_1115/figures/figure3.pdf": "b0b5212063de5cdfcf300a55ecda3fb387f041f69384a8bce009eb5e4cb9e0c8",
+    "论文/CVPR_HG_mix/CVPR2027_English_1115/experimental_table_data.json": "f61fbd3738675711cfb4920b410f82a576caa09be9823ceb3891c2a2007fe7e6"
+  },
+  "inventory": "论文/CVPR_HG_mix/CVPR2027_English_1115/图表完成清单_1115.md"
+}

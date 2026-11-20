@@ -1,0 +1,20 @@
+{
+  "updated_at": "2026-11-15T23:13:11.933508+08:00",
+  "main_table": "Table 3: six-method per-tissue full-slide Dice",
+  "supplement_table": "Table S2: six-method per-tissue strict-remote Dice",
+  "source": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_final15_closeout_1113_224245/report.json",
+  "source_sha256": "db0d1f6efd1ed7f647cfba89b253735b7c54ec0a730523e922c2b4594ceae91b",
+  "validation": "132/132 unique cells; macro means match report within 1e-12",
+  "supplement_tables": 8,
+  "remaining_experimental_placeholders": 0,
+  "main_pages": 8,
+  "main_total_pages": 10,
+  "supplement_pages": 4,
+  "gpu_used": false,
+  "script": "benchmarks/v5/paper_figures/complete_supplement.py",
+  "retained_blanks": [
+    "dataset provenance/references",
+    "annotation approval/data permissions",
+    "LLM usage confirmation"
+  ]
+}

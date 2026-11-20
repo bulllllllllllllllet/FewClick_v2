@@ -1,0 +1,11 @@
+{
+  "sources": [
+    {
+      "case": "CASE_ER_TRAIN_1__ER",
+      "marker": "ER",
+      "pair_dir": "/cache/alignment/global/CASE_ER_TRAIN_1__ER",
+      "mapping_csv": "/cache/alignment/micro/CASE_ER_TRAIN_1__ER/accepted_micro_patches_gold.csv",
+      "clean_ini": "/data/mIF/case_er_train_1/Slidedat.clean.ini"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\captionsetup{type=table}
+\centering
+\caption{Recorded end-to-end WSI workflow times under shared-GPU execution. Model loading and support preparation precede the timed interval. Target counts and concurrent GPU load vary.}
+\label{tab:runtime}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Method/path & Slides & Min./slide \\
+\midrule
+FewClick & 15 & 98.0 \\
+SANSA (native) & 2 & 336.7 \\
+SANSA (cached) & 13 & 66.2 \\
+SAM & 15 & 71.9 \\
+SAM2 & 15 & 75.8 \\
+WSI-SAM & 15 & 69.8 \\
+SAM-Med2D & 15 & 63.6 \\
+\bottomrule
+\end{tabular}
+\end{minipage}\par\medskip

@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Same-slide remote segmentation on 11,000 tasks, with three positive and two negative support clicks and no query clicks. All metrics are percentages; bold marks the best value.}
+\label{tab:remote}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Method & Dice $\uparrow$ & Large $\uparrow$ & FPA $\downarrow$ \\
+\midrule
+SAM & 30.31 & 64.40 & 27.01 \\
+SAM2 & 33.60 & 66.50 & 18.91 \\
+WSI-SAM & 23.81 & 50.02 & 23.43 \\
+SAM-Med2D & 24.28 & 54.80 & 39.87 \\
+SANSA & 41.54 & 77.22 & 14.79 \\
+FewClick & \textbf{42.11} & \textbf{78.49} & \textbf{7.75} \\
+\bottomrule
+\end{tabular}
+\end{table}

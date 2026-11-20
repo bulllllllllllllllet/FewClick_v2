@@ -1,0 +1,12 @@
+\section{相关工作}
+\paragraph{组织分割与多尺度表征。}
+HistoSegNet从图像块级标签生成组织掩码，CAMEL则通过多实例标签扩充完成组织病理分割~\cite{chan2019histosegnet,xu2019camel}。AWMF-CNN对不同视野进行自适应加权，HookNet连接同心的不同分辨率分支，DMMN融合多个放大倍率进行组织分割~\cite{tokunaga2019awmf,vanrijthoven2021hooknet,ho2021dmmn}。这些方法表明，组织形态及其周围结构均具有重要作用。HIPT为吉像素切片级任务学习层级表征~\cite{chen2022hipt}。CTransPath和UNI通过自监督预训练提供可迁移的病理编码器~\cite{wang2022ctranspath,chen2024uni}；Phikon-v2采用基于DINOv2的训练~\cite{filiot2024phikon,oquab2024dinov2}。FewClick冻结Phikon-v2，将整块／分块精细特征与更大的上下文视野结合，实现由提示定义的组织迁移。
+
+\paragraph{交互式与可提示分割。}
+RITM将先前的掩码纳入基于点击的预测，SimpleClick则使用普通Vision Transformer进行交互式分割~\cite{sofiiuk2022ritm,liu2023simpleclick}。SAM增强了可提示掩码预测的泛化能力~\cite{kirillov2023sam}；SAM~2加入基于记忆的跨图像与视频帧传播~\cite{ravi2024sam2}。MedSAM与SAM-Med2D将这一范式适配至医学图像~\cite{ma2024medsam,cheng2023sammed2d}，WSI-SAM则针对组织病理融合不同分辨率~\cite{liu2024wsisam}。本文使用一个支持图像块上的点击，在同一切片中空间分离的查询图像块内识别目标组织。因此，参与评价的SAM系列模型均配备由支持信息调节的迁移桥。
+
+\paragraph{小样本分割与支持—查询匹配。}
+PANet使用原型表示支持类别，并对齐支持与查询预测~\cite{wang2019panet}。PFENet采用由支持信息生成的先验和特征增强~\cite{tian2022pfenet}；HSNet聚合多层特征相关性~\cite{min2021hsnet}。CyCTR通过循环一致的交叉注意力迁移像素级支持特征~\cite{zhang2021cyctr}。这些方法启发了超越单一池化表征的显式对应建模。SANSA将SAM2适配至使用稀疏支持标注的小样本分割~\cite{cuttano2025sansa}。FewClick通过由粗到细的对应关系迁移预测且经点击锚定的支持概率场，并将其与基于区域的初始预测结合。正负支持证据同时进入任务表征与像素修正。
+
+\paragraph{可学习区域与提示集合。}
+Superpixel Sampling Networks通过可微分组学习面向任务的图像划分~\cite{jampani2018ssn}。Deep Sets与Set Transformer使用置换不变聚合对无序输入进行建模~\cite{zaheer2017deepsets,lee2019settransformer}。FewClick使用软分配构建组织区域token，在不同尺度间交换上下文，并分别编码正负提示集合。这些区域与密集概率迁移共同提供上下文预测；匹配消融用于评价这两条路径。

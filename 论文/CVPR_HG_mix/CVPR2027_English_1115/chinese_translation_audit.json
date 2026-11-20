@@ -1,0 +1,146 @@
+{
+  "status": "complete_accepted",
+  "updated_at": "2026-11-16T12:14:53.606139+08:00",
+  "scope": "Complete Chinese translation of main.tex; proper names, mathematics and bibliography retained",
+  "skill": "scientific-manuscript-editor",
+  "translated_blocks": 103,
+  "translated_tables": 5,
+  "translated_figure_captions": 3,
+  "source_sha256": {
+    "main.tex": "39811c212437068edbf09f944e2381d503b338105fccf80c7c9fd3871e7836ba",
+    "preamble.tex": "c4f3e42d6ce38c58e07ee7e9c471da41ebb13253b81b6eb876685ef8d3f8e072",
+    "references.bib": "f3f6db2c44ff08acda4ab54faec904871344a8ccd6ed0830a69a11dc0e2001fe",
+    "cvpr.sty": "1cd7f434b13d41c475df4a1901a5d82d9ca8b80b8cf6205dc4602a5c164286b4",
+    "sec/0_abstract.tex": "fdabaab2ce55043006c0bd478977cba1174c3bb3228c611f4b98be86ba8eda6d",
+    "sec/1_introduction.tex": "885f903da788e2409a1a2069d3eb673fb519325d8177da02181077e2e3ffbef1",
+    "sec/2_related.tex": "99a8ab9ad1023fa1bed3aa05bc83a344edcfb80229671a4046246aea374a8b59",
+    "sec/3_method.tex": "0a5b2c44f6dc189315d230ed0956e50be8e318a687cf36f3c94f5b40fc836d4c",
+    "sec/4_experiments.tex": "5fb5caf3cd96e9e63b2893ef31242817beb627cef8ed1d6216ad05fa74d805b2",
+    "sec/5_conclusion.tex": "8d2409a9955c3d14d02bd6a753929f59ad50fe2f77d92eafcfb5bfd051e685c4",
+    "tables/remote.tex": "b15a3276410d4eaf30202cafc8ce8a838a97f8b0bccc372dec2bffefd97f4349",
+    "tables/wsi.tex": "e2330d4bc03a99e426faf4da6602e4ac2a38a4dbc98fa3c7986e3ddebeb9737c",
+    "tables/wsi_tissue.tex": "9411a0a68bad3712f4d775780dfea9ee9c11ba831c3f7a9d5b8d225ba629f0d0",
+    "tables/ablation.tex": "df5083ff3c236b9adf75aab334b4d1c6a4b843b82c1187472eda65831f92672a",
+    "tables/efficiency.tex": "95f20f59394e9934a77ef1c95a5e597e9cf08eaa47b992f8f916cb7d7ab940be",
+    "figures/method.pdf": "df00d68a7206fde13c1a30aa8b4545b4b02c276fa98dbc54b5e190bb606f5c3c",
+    "figures/figure2.pdf": "25466a0721e1d3ead12d76d72ccf4869958d859b08847e7340c80067a54f32dc",
+    "figures/figure3.pdf": "b0b5212063de5cdfcf300a55ecda3fb387f041f69384a8bce009eb5e4cb9e0c8"
+  },
+  "output_sha256": {
+    "main_ch.tex": "598e986e0fd0145c1864e02b11f50588908ee3b55834904d545edec72019e857",
+    "main_ch.pdf": "ec026ab5e984e24a682e970252397a6201d8d0f33cc12204a46a62e5ac458a28",
+    "main_ch.bbl": "f035aec630262764c867e7c7e0ac3ab2ab16109e80f50aeaf349d5183a57bd57",
+    "build_ch.sh": "ab7fb1235b9e965b92869e967ef122f487f97e8ef232e4741742c8ef7d176511",
+    "sec_ch/0_abstract.tex": "44d45baea2b4a2593f50020abb579bb7651d8cb396ab5a47964e1d2da51fae38",
+    "sec_ch/1_introduction.tex": "d1b7d5d3fb691499d20f6f6f31625e92b8a2ea36a6ac993d3e45b71d31dcb975",
+    "sec_ch/2_related.tex": "827f9d3946db2418e2404186f6becd8c31d96c0ee791ed09d30fa0899915cc5e",
+    "sec_ch/3_method.tex": "c051de55ecbb5a8b672e63786b1fdbb6f1bca52c636793fb976eeba7a0d542fd",
+    "sec_ch/4_experiments.tex": "3608c4786f3ceddef5fde01ff50ac01893118be19d357565078cc4e79c9ade36",
+    "sec_ch/5_conclusion.tex": "22ad89538e93278ff4bd4b5959794092fa39c584c2c435313bdb2f73ab148dfa",
+    "tables_ch/remote.tex": "f13f4344889e2d2e7b4350af9d870b95ad65e2aff42e96335ead87b5ce5a3f64",
+    "tables_ch/wsi.tex": "82bcd21b00c5c976d8ab3505b42d49e1b3e94fe1d99c4e2f1f96ce1f63cd70e7",
+    "tables_ch/wsi_tissue.tex": "cbdcb86b96fb6697c6d53378acc1e496686dc51b1e42d538d63f8a4fad04604d",
+    "tables_ch/ablation.tex": "76853858d1444f9ba5b83923b15f68b55a3a1b46fcf34058e83388a176609704",
+    "tables_ch/efficiency.tex": "6e32ec5083ead9736a9ec394bb13854169fa113d3e6224dba72be2850b8e94ba"
+  },
+  "fidelity_checks": {
+    "0_abstract": {
+      "display_equations_exact": true,
+      "inline_math_preserved": true,
+      "numeric_tokens_preserved": true,
+      "citations_preserved": true,
+      "labels_preserved": true,
+      "references_preserved": true
+    },
+    "1_introduction": {
+      "display_equations_exact": true,
+      "inline_math_preserved": true,
+      "numeric_tokens_preserved": true,
+      "citations_preserved": true,
+      "labels_preserved": true,
+      "references_preserved": true
+    },
+    "2_related": {
+      "display_equations_exact": true,
+      "inline_math_preserved": true,
+      "numeric_tokens_preserved": true,
+      "citations_preserved": true,
+      "labels_preserved": true,
+      "references_preserved": true
+    },
+    "3_method": {
+      "display_equations_exact": true,
+      "inline_math_preserved": true,
+      "numeric_tokens_preserved": true,
+      "citations_preserved": true,
+      "labels_preserved": true,
+      "references_preserved": true
+    },
+    "4_experiments": {
+      "display_equations_exact": true,
+      "inline_math_preserved": true,
+      "numeric_tokens_preserved": true,
+      "citations_preserved": true,
+      "labels_preserved": true,
+      "references_preserved": true
+    },
+    "5_conclusion": {
+      "display_equations_exact": true,
+      "inline_math_preserved": true,
+      "numeric_tokens_preserved": true,
+      "citations_preserved": true,
+      "labels_preserved": true,
+      "references_preserved": true
+    },
+    "table_remote": {
+      "numeric_rows_preserved": true,
+      "numeric_tokens_preserved": true
+    },
+    "table_wsi": {
+      "numeric_rows_preserved": true,
+      "numeric_tokens_preserved": true
+    },
+    "table_wsi_tissue": {
+      "numeric_rows_preserved": true,
+      "numeric_tokens_preserved": true
+    },
+    "table_ablation": {
+      "numeric_rows_preserved": true,
+      "numeric_tokens_preserved": true
+    },
+    "table_efficiency": {
+      "numeric_rows_preserved": true,
+      "numeric_tokens_preserved": true
+    }
+  },
+  "bibliography_entries_preserved": true,
+  "english_outputs_verified_unchanged": [
+    "sec/4_experiments.tex",
+    "sec/supplement.tex",
+    "tables/sampled_controls.tex",
+    "tables/wsi_readouts.tex",
+    "main.pdf",
+    "supplementary.pdf"
+  ],
+  "compile": {
+    "engine": "XeLaTeX",
+    "command": "PATH=/home/zhaoyh/TinyTeX/bin/x86_64-linux:$PATH bash build_ch.sh",
+    "main_text_pages": 8,
+    "pdf_pages": 10,
+    "warnings": [],
+    "fonts": [
+      "Noto Serif CJK SC",
+      "Noto Sans CJK SC",
+      "Noto Sans Mono CJK SC"
+    ],
+    "visual_review_pages": [
+      1,
+      3,
+      7,
+      8
+    ]
+  },
+  "author_blank_fields_preserved": true,
+  "supplement_translation_included": false,
+  "evidence_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_ch_translation_1116_121453"
+}

@@ -1,0 +1,105 @@
+\section{Implementation and Comparison Protocol}
+This supplement provides implementation details, same-feature controls, window-to-slide analysis, complete tissue comparisons, efficiency and prompt measurements, and paired slide resampling results.
+
+\paragraph{Data sources and permissions.}
+CRC is a private colorectal cancer histopathology dataset. Informed consent was obtained for the use of these data, and their use in this study was authorized by the data provider. TIGER is a publicly available breast cancer histopathology dataset; we use ROI images and the accompanying tissue annotations from its WSIROIS training subset~\cite{vanrijthoven2022tiger}, downloaded from the official TIGER training repository on AWS. The public TIGER training data are distributed under the CC BY-NC 4.0 license.
+% Author-confirmed on 2026-11-17: CRC is private, informed consent was obtained, and use is authorized.
+% Editorial follow-up: IRB oversight/approval or the reason no review was conducted remains unconfirmed; consent and authorization do not establish it.
+
+\paragraph{Frozen method configuration.}
+The complete model uses equal whole/tiled feature fusion, the hierarchical region pathway, signed point matching, click anchoring, and a coarse correspondence prior. Each location uses seven Phikon-v2 passes and three $64\times64$ projected feature grids. Each view contains 64 region tokens with 256 channels. The point projection has 64 channels; dense correspondences are formed at $16\times16$ and $32\times32$. Similarity temperature is $0.1$, anchor strength is $4$, Gaussian standard deviation is $1/32$, and coarse log-prior weight is $0.5$. Before taking its logarithm, the expanded prior is clamped below at $10^{-8}$. The eight-channel residual head is bounded by $2\tanh$, and the final mask threshold is $0.5$. Auxiliary cellular inputs remain zero; all representations are image-derived. The prompt-scale index is fixed to 1, while its embedding is learned. Prompt tokens used for query cross-attention carry position and sign embeddings; the scale embedding is added in the set encoder. The residual head's final convolution is zero-initialized. Matching certainty is $1+\sum_j C_{32}(i,j)\log\max(C_{32}(i,j),10^{-8})/\log 1024$. Spatial assignments use coordinates spanning $[-1,1]^2$; click fields use pixel centers in $[0,1]^2$. Backbone tokens are lifted from 1024 to 2048 channels by concatenating two copies and dividing by $\sqrt{2}$, before learned projection to 256 channels.
+
+The fixed optimization initialization uses random state 20261103. Training-time functional checks are performed on training data; formal downstream training restarts from fresh initialization. Model selection uses the final update, and no query annotation enters inference, automatic prompt generation, threshold choice, or mask-candidate selection.
+
+\input{tables/protocol}
+\paragraph{Training manifests.}
+The manifests contain $1{,}200/300$ CRC training/validation patches and $156/81$ TIGER patches. The training queue uses $1{,}159$ unique CRC and $150$ unique TIGER training patches. Local tasks comprise $2{,}240$ CRC and $1{,}760$ TIGER examples; all $5{,}500$ remote training tasks come from CRC.
+
+\paragraph{Parameter inventory.}
+We count unique parameters in the evaluated model, including frozen backbones and transfer modules, with shared parameters counted once. Trainability follows the matched adaptation configuration. FewClick has $358{,}764{,}509$ total and $7{,}027{,}129$ trainable parameters. The pairs for SANSA, SAM, SAM2, WSI-SAM, and SAM-Med2D are $250{,}631{,}314/26{,}333{,}537$, $93{,}752{,}209/4{,}081{,}297$, $224{,}463{,}379/4{,}213{,}394$, $19{,}160{,}533/919{,}981$, and $271{,}258{,}513/4{,}081{,}297$, respectively.
+
+FewClick uses public Phikon-v2 weights with a frozen backbone and trains region, prompt, graph, and matching heads. SANSA retains SAM2 Hiera-L and its public Universal adapter, training only the adapter. SAM uses public ViT-B and freezes its image encoder. SAM2 uses SAM2.1 Hiera-L with the frozen high-resolution projections retained. WSI-SAM retains public MobileSAM/WSI-SAM weights and the original decoder parameters, adapting its fixed added modules, prompt encoder, and transfer bridge. SAM-Med2D freezes its medical ViT-B image encoder including the original adapters, and adapts the prompt/mask decoders and bridge. The matched additional adaptation budget does not equalize public pretraining, physical views, native encoding resolution, or trainable capacity.
+
+SANSA uses its public Universal adapter with SAM2 Hiera-L, a fine view resized to $640$, and adapter-only training. SAM and SAM-Med2D use three aligned views at native encoder resolutions $1024$ and $256$, respectively. SAM2 uses three views through its native predictor. Their image encoders are frozen while prompt/mask decoders and transfer bridges are adapted. WSI-SAM uses fine and $2\times$ views at native resolution $1024$, preserving its public backbone and original decoder parameters while adapting the fixed added modules, prompt encoder, and bridge. SAM-family bridges turn support information into automatic dense prompts; WSI-SAM additionally generates sparse points by a fixed rule. SANSA uses support-to-query reference propagation.
+
+\section{Whole-Slide Aggregation and Per-Class Results}
+Every window contributes probabilities only to its true slide extent. White padding is used for out-of-image input context. Pixel-center-aligned bilinear projection maps $512\times512$ probabilities to the annotation grid, and overlapping contributions are averaged equally. Coverage validation requires at least one prediction at each output pixel. Full-slide and strict-remote scores accumulate TP, FP, and FN on unique valid pixels in their respective domains.
+
+The strict-remote exclusion is the union of the fine output rectangles of \emph{all} query windows whose $4\times$ input footprints intersect the support's $4\times$ input footprint. This removes the entire affected output footprint rather than just the prompted patch. Changing the slide or tissue target resets support and clicks.
+
+\input{tables/perclass}
+Table~\ref{tab:perclass} reports strict-remote Dice for all six methods and all 11 tissues. Full-slide tissue comparisons appear in the main paper. Lymphoid aggregates and blood contribute seven and ten slides; each other tissue contributes 15. Both domains retain the same tissue weighting.
+
+\paragraph{Whole-slide illustration selection.}
+The main-paper WSI figure shows four selected tissue examples in an eight-column layout: support clicks, ground truth with the support position, and six-method predictions. The original tumor-epithelium case is retained from the first formal slide, 402638-9-HE-DX1-S02. For necrosis, normal glands, and muscle, we select the slide with the highest FewClick full-slide Dice for that tissue: 436376-16-HE-DX1, 1726467-7-HE-DX1, and 430171-6-HE-DX1, respectively. The four FewClick scores are 86.4, 84.0, 81.4, and 93.3\%. Red plus and sky-blue cross markers denote positive and negative support clicks; green overlays denote target tissue, and cyan boxes locate support patches. Full-resolution predictions are downsampled only for display.
+
+\section{Same-Feature Controls and Sampled Attribution}
+\input{tables/sampled_controls}
+\paragraph{Shared evaluation subset.}
+We select tasks from the original $11{,}000$-task queue by deterministic hashing, round-robin across slide and support identities. For each of the 11 tissues, the allocation is 50 small-target, 25 large-target, and 25 target-absent queries. Blood has only 12 eligible large-target tasks, giving $1{,}087$ tasks in total: 550 small, 262 large, and 275 absent. Strata use the original label images and the 20\% target-area boundary; selection does not use model predictions. All methods share the resulting tasks, support clicks, and original task identities.
+
+Present Dice first combines the small- and large-target means using their proportions within each tissue in the original queue, then averages tissues equally. Small-target Dice, large-target Dice, and absent FPA are class-macro means within the corresponding strata. Table~\ref{tab:sampled_controls} reports this shared subset; the main remote comparison uses all $11{,}000$ tasks.
+
+\paragraph{Prototype baseline.}
+Proto-MS shares FewClick's frozen public Phikon-v2, $1\times/2\times/4\times$ physical views, equal whole/four-tile fine-feature fusion, and seven backbone passes per location. Three fresh $2048\!\to\!256$ projections produce the multiscale grids. At each scale, we average support features separately over positive and negative clicks to form two prototypes. Query features are compared with each prototype by cosine similarity and with individual same-sign clicks by maximum cosine similarity, yielding four maps. The decoder concatenates these maps, the prototypes, physically aligned query features, and mean context features. A $1\times1$ convolution, two $3\times3$ convolutions with GELU, and a final $1\times1$ layer predict the mask. Proto-MS has $3{,}543{,}809$ trainable parameters.
+
+The baseline uses the same $9{,}500$ tasks, $2{,}375$ updates, random state 20261103, AdamW learning rate $10^{-4}$, weight decay $10^{-4}$, and query-mask, support-mask, and click losses. It has no region-assignment regularizer. Evaluation uses the final checkpoint and threshold $0.5$. FewClick improves present/large Dice by 1.49/4.17 points over Proto-MS; Proto-MS has lower absent FPA (5.16 versus 6.32\%).
+
+\paragraph{Fixed spatial regions.}
+We freeze the content-dependent assignment logits at zero, leaving 64 spatial soft-grid regions per scale with assignments proportional to $\exp(-\|x-a_r\|^2/0.08)$ over an $8\times8$ anchor grid. Region messages, dense transfer, feature fusion, other initializations, and the training recipe remain the same. The fixed-grid model has $6{,}977{,}785$ trainable parameters. Learned assignments raise present Dice by 0.28 points and lower FPA by 0.35 points; the fixed grid gives 0.35 points higher large-target Dice.
+
+\paragraph{Cross-scale message ablation.}
+We retain all three views, seven backbone passes, region heads, signed matcher, and coarse-to-fine dense matching, but replace region-encoder cross-scale messages by identity mappings and remove cross-scale decoder edges. Within-scale neighbors are unchanged. After matched retraining, evaluation on all $11{,}000$ remote tasks gives 41.66\% target-present, 77.66\% large-target, and 28.09\% small-target Dice, with 6.90\% FPA. Removing region messages decreases large-target Dice by 0.83 points, compared with 3.13 points when dense transfer is removed. Both components improve overlap while increasing absent-target FPA relative to their respective ablations. Full FewClick, no-transfer, and no-cross-scale variants have $7{,}027{,}129$, $7{,}024{,}760$, and $6{,}239{,}928$ trainable parameters.
+
+\paragraph{Anchoring and coarse-prior diagnostic.}
+On the whole-feature dense-transfer variant, disabling both extra click anchoring and the coarse prior at fixed weights changes present/large Dice from 39.97/76.51 to 39.99/76.72, and FPA from 8.10\% to 8.27\%. This inference diagnostic shows a small joint effect in that variant; the complete model retains both operations.
+
+\section{Window-to-Slide Analysis and WSI Ablations}
+\input{tables/wsi_readouts}
+We evaluate the first three slides of the fixed formal manifest: 402638-9-HE-DX1-S02, 1726467-7-HE-DX1, and 1626589-10-HE-DX1. They contain $5{,}177$, $3{,}253$, and $4{,}164$ inference windows and 11, 11, and 10 tissue targets, respectively. Each method uses the same support patch and three positive/two negative clicks per slide--target pair, the original half-window stride, and complete slide coverage.
+
+\paragraph{Three readouts from the same predictions.}
+Present-window Dice averages target-present windows within each slide--target pair, then averages slides within tissue and tissues equally. Absent-window FPA follows the same hierarchy on target-absent windows. The owner readout assigns each unique output pixel to the covering window with the nearest physical center, breaking ties by fixed coordinate traversal order. The fused readout averages the original overlapping probabilities before applying threshold $0.5$. Owner and fused readouts use identical window sets, coverage, and strict-remote masks. Saved masks are independently rescored; FewClick and SANSA fused masks exactly reproduce their original formal outputs.
+
+Table~\ref{tab:wsi_readouts} gives a FewClick--SANSA gap of 0.42 points for present-window Dice, 11.71 points for owner whole-slide Dice, and 10.80 points for fused whole-slide Dice. Overlap averaging therefore reduces the gap by 0.92 points. The two evaluation levels also weight spatial errors differently: present-window Dice gives equal weight to each retained window and excludes target-absent windows, whereas whole-slide Dice accumulates TP, FP, and FN over unique valid pixels. In target-absent windows, FewClick has 3.26\% FPA and SANSA has 8.31\%. The lower absent-window FPA helps explain FewClick's larger whole-slide gain.
+
+FewClick improves fused whole-slide Dice over Proto-MS by 3.52 points and strict-remote Dice by 3.51 points. Removing dense transfer decreases the full-slide score by 3.95 points, while removing cross-scale region messages decreases it by 1.38 points. The larger loss without dense transfer follows the same pattern as the large-target patch ablations.
+
+\section{Efficiency Protocol and Full Measurements}
+\input{tables/runtime}
+\paragraph{Recorded whole-slide workflows.}
+Timing begins after model loading and support preparation, and includes query-image reading/encoding, decoding for every target, probability fusion, scoring, and disk-mask verification. Under shared-GPU execution, mean time per slide is 98.0 minutes for FewClick (15 slides), 336.7 for native SANSA (two slides), 66.2 for cached SANSA (13 slides), 71.9 for SAM, 75.8 for SAM2, 69.8 for WSI-SAM, and 63.6 for SAM-Med2D (15 slides each). Target counts and concurrent GPU load vary across slides. SANSA's cached implementation reuses query encoding and support memory and passed a prediction-probability equivalence check against its native path.
+
+\input{tables/patchtime}
+\paragraph{Controlled 100-task measurements.}
+All methods run sequentially on the same RTX 5880 Ada GPU, with three warm-up tasks followed by 100 timed tasks (50 target-present and 50 target-absent). Each task starts with new model-side image features. The operating-system file cache remains in use. Input preparation follows the common three-view reading pipeline; each model consumes its configured views. The first prediction includes support/query reading, preprocessing, encoding, and inference with three positive and two negative clicks. The second prediction reuses those image features but changes prompts to one positive and one negative and rebuilds task conditioning/support memory. GPU synchronization brackets measurements; model loading and metric scoring are excluded.
+
+Table~\ref{tab:patchtime} reports all measurements. First-prediction time includes preparation. Cache size counts tensor storage for one support--query feature pair and the first prompt memory. Peak allocated CUDA memory includes model weights and is averaged across tasks.
+
+\section{Support-Click Sensitivity}
+\input{tables/prompts}
+We sort existing remote tasks by a hash of task identity and take ten examples per tissue in each small-target, large-target, and target-absent stratum. The resulting 330 tasks include 220 target-present and 110 target-absent queries. Reduced click budgets use prefixes of the original signed sequences. Radial perturbations of two or five pixels operate in $512\times512$ support coordinates and retain the assigned sign. All queries have zero human clicks.
+
+Table~\ref{tab:prompts} compares the five prompt configurations. Three of 990 positive clicks (0.30\%) cross a tissue-label boundary under five-pixel perturbation and are retained according to the fixed rule.
+
+\section{Target Size and Boundary Measurements}
+\input{tables/size}
+Target size is the \emph{total} target tissue area divided by valid query area. The $<1\%$, $1$--$5\%$, and $5$--$20\%$ groups contain $2{,}715$, $1{,}166$, and $1{,}323$ tasks, respectively. FewClick/SANSA Dice is $7.68/7.59$, $36.98/35.59$, and $59.43/59.05$. Across the 11 small-target tissues, FewClick improves six and decreases five. Gains for lymphoid aggregates, muscle, and blood are 4.72, 3.64, and 3.42 points; adipose and tumor epithelium decrease by 3.22 and 1.93 points.
+
+\input{tables/boundary}
+Precision, recall, and boundary F1 are recomputed from the same saved predictions, averaged within each tissue and then equally across tissues. Empty-prediction precision is zero. The 13 queries with no ground-truth boundary are excluded from BF1, leaving $7{,}321$ overall, $2{,}117$ large-target, and $5{,}204$ small-target BF1 evaluations.
+
+Overall precision/recall/BF1 is $39.67/67.90/25.86$ for FewClick and $38.21/77.75/29.25$ for SANSA. On small targets, the triples are $24.57/61.56/19.67$ and $22.89/75.24/21.67$. On large targets, they are $77.69/83.66/40.35$ and $76.65/82.98/45.51$. FewClick improves precision across these subsets, but its small-target recall and contour F1 remain lower.
+
+\section{Paired Resampling and Qualitative Selection}
+\input{tables/bootstrap}
+We fix both model weights and resample the 75 query slides as paired clusters 4,000 times, recomputing class-macro metrics each time. Replicates without all 11 tissues are excluded. Overall Dice difference is $+0.57$ with interval $[-0.11,+1.31]$; small-target Dice is $+0.54$ with $[-0.18,+1.36]$; large-target Dice is $+1.27$ with $[-0.03,+2.17]$; absent FPA is $-7.04$ with $[-8.37,-5.70]$. The first, second, and fourth analyses retain 4,000 replicates; large-target Dice retains 3,928. These intervals condition on the fitted models and describe query-slide resampling of this development queue. Shared-support dependence across clusters is not separately modeled.
+
+\paragraph{Paired whole-slide gains.}
+\input{tables/wsi_paired_slides}
+For the original 15-WSI cohort, we resample slides as paired clusters $10{,}000$ times with random state 20261116, keeping model predictions fixed and both methods paired. Each replicate recomputes the primary tissue-macro score by averaging sampled slides within tissue and then averaging all 11 tissues equally. We retain $9{,}997$ replicates containing all tissues and take percentile intervals. The full-slide gain is 10.52 points with a 95\% interval of $[7.62,13.56]$; the strict-remote gain is 10.86 points with $[8.02,13.87]$. Table~\ref{tab:wsi_paired_slides} gives the paired per-slide differences.
+
+\paragraph{Failure-case selection.}
+The four qualitative rows are selected from the same remote queue: large targets ($\geq20\%$ valid area), tiny targets ($<1\%$), target-absent queries, and present-target tasks with FewClick Dice below 20\%. Within each group, we choose the task closest to the group's FewClick median Dice, or median FPA for absent targets, with ties broken by task index. The rule was fixed before rendering and is a descriptive selection of existing outcomes. Task indices are 2675, 1651, 7902, and 4046, respectively.
+
+The large-region example has FewClick/SANSA Dice of $88.46/88.21\%$. The absent-target example has FPA of $0.40/10.67\%$. The tiny-target ground truth contains 631 pixels (0.24\% valid area), and FewClick obtains 0.51\% Dice with 89.84\% false-positive area. The low-Dice failure contains 102 target pixels (0.039\% valid area) and obtains 0.53\% Dice. Predictions are evaluated at their original $512\times512$ resolution; the display overlays target pixels in red.

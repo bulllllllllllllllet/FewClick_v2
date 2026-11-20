@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{Remote segmentation on the shared 1,087-task subset. Present, small, and large columns report Dice; small/large targets occupy $<20\%$/$\geq20\%$ of valid query area. Present Dice uses each tissue's original small/large proportions before class-macro averaging. FPA is false-positive area in target-absent queries. All values are percentages; higher Dice and lower FPA are better.}
+\label{tab:sampled_controls}
+\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Method & Present & Small & Large & FPA \\
+\midrule
+FewClick & 42.32 & 29.98 & 75.67 & 6.32 \\
+Proto-MS & 40.83 & 29.49 & 71.50 & 5.16 \\
+Fixed grid & 42.04 & 29.48 & 76.02 & 6.67 \\
+No dense transfer & 41.10 & 29.78 & 72.40 & 5.04 \\
+No region messages & 41.70 & 29.52 & 75.04 & 6.03 \\
+SANSA & 41.58 & 28.71 & 75.16 & 13.04 \\
+\bottomrule
+\end{tabular}
+\end{table}

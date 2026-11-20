@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-10T20:51:34.472190+08:00",
+  "updated_at": "2026-11-14T13:55:06.405511+08:00",
   "goal_status": "paused",
   "native_goal_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832/native_goal_receipt.json",
-  "objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
+  "objective": "固定HG-mix：支持区域少量正负点击、同WSI不同patch零query人工提示的组织检索分割；补齐SAM同预算公平对照、机制消融及当前方法论文证据。小目标/未见概念按已定边界报告。",
   "authority": {
     "goal": "goal.md",
     "roadmap": "docs/建议/模型与训练/路线_CVPR细胞词汇分割阶段合同_1030_174832.md",
-    "current_record": "docs/运行记录/模型实验/运行记录_同片9500三模型匹配重训_1110_204945.md",
+    "current_record": "docs/运行记录/模型实验/运行记录_SAM当前9500公平适配与WSI并行_1112_171010.md",
     "fairness": "benchmarks/v5/fair_comparison/README.md",
     "literature": "docs/建议/模型与训练/方案_CVPR细胞词汇与双分支编码器探索_1030_173241.md",
-    "current_run_record": "docs/运行记录/模型实验/运行记录_同片9500三模型匹配重训_1110_204945.md"
+    "current_run_record": "docs/运行记录/模型实验/运行记录_SAM当前9500公平适配与WSI并行_1112_171010.md"
   },
   "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/goal_reset_1030_174832",
   "current_phase": "P4_WSI_ROI_quality",
-  "current_status": "same_slide_9500_three_functional_running",
+  "current_status": "SAM9500_formal_and_unseen_WSI_pilots_running",
   "phases": {
     "P0": {
       "title": "数据、物理尺度、暴露与公平合同",
@@ -2116,32 +2116,7 @@
     "P5",
     "P6"
   ],
-  "active_jobs": [
-    {
-      "arm": "sansa",
-      "gpu": 1,
-      "status": "functional_running",
-      "worker_pid": 2913820,
-      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/sansa",
-      "input_gate": "four_real_groups_accepted"
-    },
-    {
-      "arm": "original",
-      "gpu": 3,
-      "status": "functional_running",
-      "worker_pid": 2913819,
-      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/original",
-      "input_gate": "four_real_groups_accepted"
-    },
-    {
-      "arm": "detail",
-      "gpu": 4,
-      "status": "functional_running",
-      "worker_pid": 2913821,
-      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/detail",
-      "input_gate": "four_real_groups_accepted"
-    }
-  ],
+  "active_jobs": [],
   "completed_jobs": [
     {
       "kind": "Xenium_historical_coordinate_unit_extent_audit",
@@ -2325,8 +2300,9 @@
     }
   ],
   "next_actions": [
-    "Monitor3functional train-only gates; accepted arms auto smoke then fresh2375/9500 and original11000sameWSI evaluation. Stop failed arms without retries.",
-    "No auxiliary loss/SAM3/WSISAM/new seeds; no validation model/threshold choice."
+    "WSI formal15 six-method quality complete; no auto extra15 or new seeds.",
+    "Prepare final per-class/visualization review and final-model ablation/effect attribution per authorized next contract.",
+    "WSI efficiency/physical boundary study and paper rewrite remain pending; do not mark full research goal complete."
   ],
   "exploration_limits": {
     "image_encoders_including_control": 3,
@@ -6446,7 +6422,7 @@
   "same_slide_retraining": {
     "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945",
     "record": "docs/运行记录/模型实验/运行记录_同片9500三模型匹配重训_1110_204945.md",
-    "status": "functional_running",
+    "status": "complete_accepted_no_automatic_promotion",
     "session": "same_slide_retrain_1110_204945",
     "arms": [
       "original",
@@ -6466,7 +6442,7 @@
       {
         "arm": "sansa",
         "gpu": 1,
-        "status": "functional_running",
+        "status": "complete_accepted",
         "worker_pid": 2913820,
         "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/sansa",
         "input_gate": "four_real_groups_accepted"
@@ -6474,7 +6450,7 @@
       {
         "arm": "original",
         "gpu": 3,
-        "status": "functional_running",
+        "status": "complete_accepted",
         "worker_pid": 2913819,
         "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/original",
         "input_gate": "four_real_groups_accepted"
@@ -6482,11 +6458,4347 @@
       {
         "arm": "detail",
         "gpu": 4,
-        "status": "functional_running",
+        "status": "complete_accepted",
         "worker_pid": 2913821,
         "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/detail",
         "input_gate": "four_real_groups_accepted"
       }
+    ],
+    "evidence": {
+      "original": {
+        "functional": "accepted",
+        "training_acceptance": {
+          "status": "complete_accepted_training",
+          "updates": 2375,
+          "consumed": 9500,
+          "training_consumed_sha256": "5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6",
+          "checkpoint_sha256": "9c8f9de152de5e9988d19af175a6f69c8841aeb74f4ad0e399759366cbf1698c",
+          "all_frozen_state_sha256": "6ad6c4cb3c3cb4c324b26cd7568571496e61c0c29aa154ee0d6fdbf2b5ac0b41",
+          "frozen_decoder_applicable": false,
+          "actual_trainable_parameters_changed": true,
+          "fresh4_predictions_exact": true,
+          "monitor_sha256": {
+            "0": "dedf557b3ccdecc736adffcbd33952dca6d5d398fd9dac7922c5848c69e81bbd",
+            "250": "43f6bb87b7fdf2a2064023de88dc292d83c22232c3d43d261530798af6d760b9",
+            "500": "d8e9a3adb9df41a30504bb35a456e9392262df0f228da612f4a5280fa3c5e3fe",
+            "1000": "fdb1198a4e34074d60c4884017d24b532e24de3c352942264a22748838e37e4e",
+            "2000": "48a90897d75ab311f88cb6f11e7b5dacc84fa47f97b9ef6ab52953e80bda4e3c",
+            "2375": "ba7f0fe27bf16ed84e9b2be79c54d86cbee476eee4dab71da8e8c2ddc28ffaf5"
+          },
+          "arm": "original",
+          "seed": 20261103
+        },
+        "evaluation_stage": {
+          "status": "running",
+          "stage": "eval_1",
+          "pid": 3552502,
+          "gpu": "3",
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.same_slide_retrain.evaluate",
+            "--root",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/original/evaluation",
+            "--method",
+            "original",
+            "--shard",
+            "1"
+          ]
+        }
+      },
+      "detail": {
+        "functional": "accepted",
+        "training_acceptance": {
+          "status": "complete_accepted_training",
+          "updates": 2375,
+          "consumed": 9500,
+          "training_consumed_sha256": "5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6",
+          "checkpoint_sha256": "94f86410d15de7c0560ab79798f3477fb7aad1efb5ce11865f285d528c11715f",
+          "all_frozen_state_sha256": "6ad6c4cb3c3cb4c324b26cd7568571496e61c0c29aa154ee0d6fdbf2b5ac0b41",
+          "frozen_decoder_applicable": false,
+          "actual_trainable_parameters_changed": true,
+          "fresh4_predictions_exact": true,
+          "monitor_sha256": {
+            "0": "dedf557b3ccdecc736adffcbd33952dca6d5d398fd9dac7922c5848c69e81bbd",
+            "250": "e6c68ca7a9b26698c4b949cfa88eb830f3062e826c7340628c8f4ab0c70c096c",
+            "500": "0872463d032a9fa7c45fd89dfaa08523b3dab839cfaa0783c72a996495821fec",
+            "1000": "db6b046881b46347d7fd1c397c550d4bfa70ec6fd161cf9ae1d4ba49d51f4d1f",
+            "2000": "dd8cfa26128590813afb71db82b77553213641866e7522a6a533d31f7200394f",
+            "2375": "a1827b91d5a00827667353141eb3a9d707ddeb725ec483d852b3a59041f73191"
+          },
+          "arm": "detail",
+          "seed": 20261103
+        },
+        "evaluation_stage": {
+          "status": "running",
+          "stage": "eval_1",
+          "pid": 3551383,
+          "gpu": "4",
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.same_slide_retrain.evaluate",
+            "--root",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/detail/evaluation",
+            "--method",
+            "detail",
+            "--shard",
+            "1"
+          ]
+        }
+      },
+      "sansa": {
+        "functional": "accepted",
+        "formal_progress": {
+          "pid": 3016718,
+          "seconds": 10654.78160629049,
+          "stage": "training",
+          "step": 1826,
+          "total": 2375,
+          "loss": 1.0693023651838303
+        }
+      }
+    },
+    "verified_fewclick_results": {
+      "original": {
+        "status": "complete_accepted",
+        "macro_Dice": 0.39193511319579244,
+        "large_Dice": 0.7380847816518035,
+        "FPA": 0.06711500296461234,
+        "report_sha256": "3ed20178f81b06dd0db03fb343f50a04663c4680014c2b35311ac605ab1f4c17"
+      },
+      "detail": {
+        "status": "complete_accepted",
+        "macro_Dice": 0.39087922634866745,
+        "large_Dice": 0.7352555299628499,
+        "FPA": 0.06563261747034788,
+        "report_sha256": "8957def38bbe079fb15b4a579f1a85fe0efc8ce6faab6ff87da7537726c126c2"
+      }
+    },
+    "sansa_progress": {
+      "pid": 3016718,
+      "seconds": 13311.397275321186,
+      "stage": "training",
+      "step": 2276,
+      "total": 2375,
+      "loss": 1.7878225594758987
+    },
+    "sansa_training_acceptance": {
+      "status": "complete_accepted_training",
+      "updates": 2375,
+      "consumed": 9500,
+      "training_consumed_sha256": "5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6",
+      "checkpoint_sha256": "d99c0aba47d551e5d2dbf33c85af2dc76ecb4f54841ac98d142fb07681aeee0b",
+      "all_frozen_state_sha256": "9a71ac03736902eeb874adca96974215e090b57ae863fb6aea67f1b359ed21c7",
+      "frozen_decoder_applicable": false,
+      "actual_trainable_parameters_changed": true,
+      "fresh4_predictions_exact": true,
+      "monitor_sha256": {
+        "0": "2a016f30a8f6291050146d4d754b30a0ec3117901db01602a6610bca01fd64d7",
+        "250": "916d78773a47d8231d21b15a82c8cc69418ca83dd7604350e0c8e81d7a728e65",
+        "500": "67b2a06a17ae9862374d1c7444dc4a54058ec3354c3331f784608ba98757fe52",
+        "1000": "13a37a8b874965561047c9b2fe5049de5bec1f5b64629fc3d1a738f224a84b07",
+        "2000": "d1bb5400c2631468860402e9779029f73b3635089f9a1f547464ef1d51a4d760",
+        "2375": "1e3879a08ee5d5fffc25fb5ebae3574012095d9183b624603216a7c12c0d9d13"
+      },
+      "arm": "sansa",
+      "seed": 20261103
+    },
+    "sansa_evaluation_progress": {
+      "pid": 3571370,
+      "rows": 3325,
+      "total": 5500,
+      "seconds": 3117.295831542462
+    },
+    "verified_results": {
+      "original": {
+        "macro_Dice": 0.39193511319579244,
+        "large_Dice": 0.7380847816518035,
+        "FPA": 0.06711500296461234,
+        "report_sha256": "3ed20178f81b06dd0db03fb343f50a04663c4680014c2b35311ac605ab1f4c17"
+      },
+      "detail": {
+        "macro_Dice": 0.39087922634866745,
+        "large_Dice": 0.7352555299628499,
+        "FPA": 0.06563261747034788,
+        "report_sha256": "8957def38bbe079fb15b4a579f1a85fe0efc8ce6faab6ff87da7537726c126c2"
+      },
+      "sansa": {
+        "macro_Dice": 0.4154289573530029,
+        "large_Dice": 0.772200586247305,
+        "FPA": 0.14786589770117906,
+        "report_sha256": "6b960a69dfb299d73b56ab61d10283b4b3f374a6923b8a988c201e1d5a2515e5"
+      }
+    },
+    "comparison_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_retrain_1110_204945/verified_comparison.json",
+    "quality_outcome": "SANSA higher overall/large Dice; FewClick lower absent FPA. Detail not better than original. Original new-vs-old FPA exceeds prior guard; no automatic promotion. Paired uncertainty/BF1/strata and final checkpoint mechanism review pending."
+  },
+  "same_slide_class_review": {
+    "status": "complete_accepted_readonly",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_class_review_1111_105407",
+    "record": "docs/运行记录/模型实验/分析_同片9500逐类差距与改进空间_1111_105407.md"
+  },
+  "same_slide_weakness_review": {
+    "status": "complete_accepted_readonly",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/weakness_review_1111_110224",
+    "record": "docs/运行记录/模型实验/分析_同片9500剩余瓶颈与点击迁移逻辑_1111_110224.md",
+    "new_training": false,
+    "findings": [
+      "same 3pos2neg support-only prompts; SANSA predicted support-mask memory versus FewClick region tokens plus point similarity residual",
+      "large query Dice<.5 original325/2130; only23 empty",
+      "support-small normal stroma large Dice65.36 versus SANSA85.75; association not causal",
+      "coverage, tissue confusion, boundary refinement remain; no automatic model promotion"
     ]
+  },
+  "region_memory_three_step_plan": {
+    "status": "planned",
+    "record": "docs/建议/模型与训练/方案_区域证据匹配与查询细化三步实验_1111_111031.md",
+    "first_action": "train-only support/query diagnostic, then A region-evidence pilot",
+    "stages": [
+      "A region evidence with unchanged matcher",
+      "B conditional spatial memory attention",
+      "C conditional query refinement"
+    ],
+    "training_started": false,
+    "preserve_training_queue": true
+  },
+  "region_evidence_study": {
+    "status": "complete_accepted_not_promoted",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_evidence_1111_111943",
+    "record": "docs/运行记录/模型实验/运行记录_支持区域证据A同片实验_1111_111735.md",
+    "gpu": 3,
+    "new_training_authorized": true,
+    "conditional_pipeline": "diagnostic -> functional -> smoke -> fresh2375 -> sameWSI11000; stop on failure",
+    "controller_pid": 382042,
+    "tmux": "region_evidence_1111_111943",
+    "previous_engineering_failure": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_evidence_1111_111735",
+    "worker_pid": 426996,
+    "engineering": "accepted",
+    "functional_gate": "accepted",
+    "last_observed_step": 501,
+    "total_updates": 2375,
+    "verified_result": {
+      "status": "complete_accepted_not_promoted",
+      "Dice": 0.3887602621689368,
+      "large_Dice": 0.7341301541292128,
+      "FPA": 0.09052651881520747,
+      "report_sha256": "838d909ca6188daad948d0c0d3dce3a76174fb17464eca87014c6e260ddc3eb0",
+      "original_delta_pp": {
+        "Dice": -0.3174851026855663,
+        "large_Dice": -0.39546275225906813,
+        "FPA": 2.341151585059513
+      }
+    },
+    "quality_outcome": "No overall/large Dice improvement, FPA worse. A not promoted; B/C not launched."
+  },
+  "parallel_support_diagnostics": {
+    "status": "complete_accepted_train_only_diagnostics",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_support_diagnostics_1111_113538",
+    "record": "docs/运行记录/模型实验/运行记录_四卡支持匹配并行诊断_1111_113315.md",
+    "gpu_modes": {
+      "0": "few_region_oracle",
+      "2": "matcher_routes",
+      "4": "prompt_budget",
+      "5": "region_purity"
+    },
+    "cancelled_not_started": [
+      "GPU1 sansa_mask_oracle"
+    ],
+    "training": false,
+    "workers": {
+      "region_purity": {
+        "pid": 443236,
+        "gpu": "5",
+        "mode": "region_purity"
+      },
+      "matcher_routes": {
+        "pid": 443226,
+        "gpu": "2",
+        "mode": "matcher_routes"
+      },
+      "prompt_budget": {
+        "pid": 443231,
+        "gpu": "4",
+        "mode": "prompt_budget"
+      },
+      "few_region_oracle": {
+        "pid": 443221,
+        "gpu": "0",
+        "mode": "few_region_oracle"
+      }
+    },
+    "progress": {
+      "region_purity": {
+        "pid": 443236,
+        "rows": 41,
+        "total": 128,
+        "seconds": 26.458069417625666
+      },
+      "matcher_routes": {
+        "pid": 443226,
+        "rows": 42,
+        "total": 128,
+        "seconds": 26.737026289105415
+      },
+      "prompt_budget": {
+        "pid": 443231,
+        "rows": 36,
+        "total": 128,
+        "seconds": 26.588338065892458
+      },
+      "few_region_oracle": {
+        "pid": 443221,
+        "rows": 37,
+        "total": 128,
+        "seconds": 26.3907984867692
+      }
+    },
+    "previous_failed_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_support_diagnostics_1111_113315",
+    "boundary_report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_support_diagnostics_1111_113315/boundary_report.json",
+    "summary": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_support_diagnostics_1111_113538/summary.json",
+    "limitations": "128train, only30 remote present; checkpoint bypass/inference intervention not retrained ablation. Historical baseline82/128 differs; within-current-forward exact."
+  },
+  "region_attention_study": {
+    "status": "complete_accepted_not_promoted",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_attention_1111_163607",
+    "record": "docs/运行记录/模型实验/运行记录_区域注意力B与查询细化C并行_1111_163607.md",
+    "arms": {
+      "B": {
+        "gpu": 3
+      },
+      "C": {
+        "gpu": 4
+      }
+    },
+    "pipeline": "engineering -> functional256 -> smoke4 -> fresh2375/9500 -> sameWSI11000",
+    "user_authorized": true,
+    "engineering": "both_accepted",
+    "workers": {
+      "B": 1538070,
+      "C": 1538156
+    },
+    "functional": "both_accepted",
+    "progress": {
+      "B": {
+        "status": "evaluation_running",
+        "training": "accepted",
+        "pid": 534158,
+        "completed_tasks": 6125,
+        "total": 11000
+      },
+      "C": {
+        "status": "evaluation_running",
+        "training": "accepted",
+        "pid": 533726,
+        "completed_tasks": 6125,
+        "total": 11000
+      }
+    },
+    "verified_results": {
+      "B": {
+        "status": "complete_accepted_not_promoted",
+        "Dice": 0.38228018951860127,
+        "large_Dice": 0.6901899938675492,
+        "FPA": 0.06657724957956891,
+        "report_sha256": "578191ae39f477951b4307cff0ce6455126f55f42ae199255d868e832ce357bf",
+        "checkpoint_sha256": "bf9c43de81091690d43d35a9275942d575a0b2d5a6a12f2298a0f3def4a75cd0"
+      },
+      "C": {
+        "status": "complete_accepted_not_promoted",
+        "Dice": 0.39152183799142753,
+        "large_Dice": 0.7230061032161876,
+        "FPA": 0.09611091236777884,
+        "report_sha256": "14e55cadd96660ddf0d5bd480743b8551bf97043da4792c68669bb553e85d22f",
+        "checkpoint_sha256": "4c67cf7de31b4e627da5ee0c5e56ba8563d4fcb192568d4f8c1da621b7294db2"
+      }
+    },
+    "quality_outcome": "Neither improves original overall/large Dice. C better than B but FPA higher. No promotion.",
+    "comparison_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/BCD_closeout_1111_210804/verified_comparison.json"
+  },
+  "post_attention_routes": {
+    "status": "planned",
+    "record": "docs/建议/模型与训练/方案_SANSA差距后续四条路线_1111_164035.md",
+    "new_training": false,
+    "routes": [
+      "train-only discriminative matching projection",
+      "support-anchored query self-support",
+      "FewClick with native SAM2 decoder",
+      "conditional multilevel/true-resolution detail"
+    ],
+    "dependencies": "wait for B/C outcomes; no automatic new arms"
+  },
+  "discriminative_match_study": {
+    "status": "complete_accepted_not_promoted",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/discriminative_match_1111_164839",
+    "record": "docs/运行记录/模型实验/运行记录_判别匹配D并行训练_1111_164839.md",
+    "gpu": 5,
+    "worker_pid": 1582586,
+    "controller_pid": 1546381,
+    "tmux": "discriminative_D_1111_164839",
+    "user_authorized_parallel": true,
+    "pipeline": "engineering -> functional256 -> smoke4 -> fresh2375/9500 -> sameWSI11000",
+    "engineering": "accepted",
+    "functional": "accepted",
+    "progress": {
+      "status": "evaluation_running",
+      "training": "accepted",
+      "pid": 515983,
+      "completed_tasks": 6475,
+      "total": 11000
+    },
+    "verified_result": {
+      "status": "complete_accepted_not_promoted",
+      "Dice": 0.38428037478204935,
+      "large_Dice": 0.7191759504896326,
+      "FPA": 0.05075562819997177,
+      "report_sha256": "0270738b0ea176e34151192141a75ad0990858cd326dcff84d0d48245f6f47da",
+      "checkpoint_sha256": "0585baa558c5dd35b25eccbe7a0371ef12a1d1df13584cd2b4ac601687f977c5"
+    },
+    "quality_outcome": "Lower FPA but lower Dice; no promotion.",
+    "comparison_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/BCD_closeout_1111_210804/verified_comparison.json"
+  },
+  "BCD_failure_analysis": {
+    "updated_at": "2026-11-11T21:14:24.797429+08:00",
+    "status": "complete_read_only_analysis",
+    "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/BCD_analysis_1111_211130/report.json",
+    "report_sha256": "6ea52063d93fc4e2191eb27d6020e57cd6e961faa085b9e4004f70bfd6d1c371",
+    "script_sha256": "5e91da2fb66c4542e805e4e270bbfe6ff611f3a118d053a00bf82392da73a338",
+    "record": "docs/运行记录/模型实验/分析_BCD完整逐类失效与下一步决策_1111_211130.md",
+    "new_training_started": false,
+    "decision": "B/D current recipes not promoted; C mixed class evidence, no promotion; optional isolated refinement control, native SAM2 decoder main proposed route; no new execution"
+  },
+  "native_sam2_study": {
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/native_sam2_1111_213802",
+    "record": "docs/运行记录/模型实验/运行记录_SAM2原生解码FewClickF_1111_213350.md",
+    "status": "complete_accepted_not_promoted",
+    "gpu": 3,
+    "arm": "F",
+    "updates": 2375,
+    "consumption": 9500,
+    "seed": 20261103,
+    "training_authorized": true,
+    "automatic_sequence": "engineering -> functional256 -> fresh smoke4 -> fresh formal2375 -> eval11000; stop on failure",
+    "worker_pid": null,
+    "engineering": "accepted",
+    "optimizer_continuation": "accepted",
+    "commit": "60156bf59e2c7f766c34d79c337bb89772c77a2a",
+    "launch_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/native_sam2_1111_213802/launch_verified.json",
+    "quality_targets": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/native_sam2_1111_213802/quality_targets.json",
+    "functional": "accepted",
+    "formal": "complete_accepted_training",
+    "formal_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/native_sam2_1111_213802/F/formal/acceptance.json",
+    "checkpoint_sha256": "77a3f8b930fc6a7a0ad909619fcb583ffacdc993996079aca0820ef302fa3028",
+    "eval_progress": 1550,
+    "eval_gate": "accepted",
+    "quality": {
+      "status": "complete_verified_quality_review_pending",
+      "Dice": 0.2524288840575231,
+      "large_Dice": 0.5306657521428464,
+      "FPA": 0.27318294479324295,
+      "report_sha256": "76575148d4e69887bf6146ee4c1a4bf2f442ff9119b126435872b230b3aa294a",
+      "checkpoint_sha256": "77a3f8b930fc6a7a0ad909619fcb583ffacdc993996079aca0820ef302fa3028",
+      "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976"
+    }
+  },
+  "native_sam2_study_history": [
+    {
+      "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/native_sam2_1111_213350",
+      "record": "docs/运行记录/模型实验/运行记录_SAM2原生解码FewClickF_1111_213350.md",
+      "status": "superseded_metadata_revision",
+      "gpu": 3,
+      "arm": "F",
+      "updates": 2375,
+      "consumption": 9500,
+      "seed": 20261103,
+      "training_authorized": true,
+      "automatic_sequence": "engineering -> functional256 -> fresh smoke4 -> fresh formal2375 -> eval11000; stop on failure",
+      "engineering": "accepted",
+      "formal_started": false
+    }
+  ],
+  "post_native_sam2_contingency": {
+    "status": "user_authorized_parallel_execution",
+    "record": "docs/建议/模型与训练/方案_原生SAM2候选失效后的备选顺序_1112_020315.md",
+    "priority": [
+      "support_anchored_query_self_support",
+      "region_guided_hierarchical_dense_matching",
+      "true_high_resolution_if_boundary_limited"
+    ],
+    "current_F_continues": true,
+    "no_new_training": false
+  },
+  "parallel_phikon_EHG": {
+    "status": "complete_accepted_quality_review_pending",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_phikon_EHG_1112_020535",
+    "record": "docs/运行记录/模型实验/运行记录_Phikon三路线EHG并行_1112_020535.md",
+    "arms": {
+      "E": {
+        "status": "complete_accepted_quality_review_pending",
+        "gpu": 2,
+        "pid": null,
+        "engineering": "accepted",
+        "optimizer_exact_continuation": "pending",
+        "learning_progress": "initializing_and_replay",
+        "command": "/home/zhaoyh/miniconda3/envs/aligner/bin/python -m benchmarks.v5.parallel_phikon_study.functional --cache /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized --output /nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_phikon_EHG_1112_020535/E/functional --arm E --protocol /nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022/functional_tasks.json ",
+        "step": 276,
+        "total": 2375,
+        "recent_seconds_per_update": 4.21,
+        "remaining_train_hours": 2.46,
+        "functional": "accepted",
+        "smoke": "accepted",
+        "quality": {
+          "status": "complete_verified_quality_review_pending",
+          "Dice": 0.39755062376246114,
+          "large_Dice": 0.7362343577721385,
+          "FPA": 0.06611262119177617,
+          "report_sha256": "9fffaa35bba4bee2a97d0b0580282fb3a951f6264da137844ffac17aa1842907",
+          "checkpoint_sha256": "7876c16735528d233f571103ad3af4a8591ac03b8b412e24641f0e4c2acdf295",
+          "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976"
+        }
+      },
+      "H": {
+        "status": "complete_accepted_quality_review_pending",
+        "gpu": 5,
+        "pid": null,
+        "engineering": "accepted",
+        "optimizer_exact_continuation": "pending",
+        "learning_progress": "initializing_and_replay",
+        "command": "/home/zhaoyh/miniconda3/envs/aligner/bin/python -m benchmarks.v5.parallel_phikon_study.functional --cache /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized --output /nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_phikon_EHG_1112_020535/H/functional --arm H --protocol /nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022/functional_tasks.json ",
+        "step": 326,
+        "total": 2375,
+        "recent_seconds_per_update": 4.21,
+        "remaining_train_hours": 2.4,
+        "functional": "accepted",
+        "smoke": "accepted",
+        "quality": {
+          "status": "complete_verified_quality_review_pending",
+          "Dice": 0.3996897387212302,
+          "large_Dice": 0.7651344724090482,
+          "FPA": 0.0809868108930075,
+          "report_sha256": "60ed68234a4913e0a150c8795b4507b41b7ccc1e2bd269ef38f3a853d4e4bf5b",
+          "checkpoint_sha256": "9e17d667c9354f2d0c9736ba61ec888ab2bd76c1728bd663c6e5b42169fe4930",
+          "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976"
+        }
+      },
+      "G": {
+        "status": "complete_accepted_quality_review_pending",
+        "gpu": 0,
+        "pid": null,
+        "engineering": "accepted",
+        "optimizer_exact_continuation": "pending",
+        "learning_progress": "initializing_and_replay",
+        "command": "/home/zhaoyh/miniconda3/envs/aligner/bin/python -m benchmarks.v5.parallel_phikon_study.functional --cache /nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized --output /nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_phikon_EHG_1112_020535/G/functional --arm G --protocol /nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022/functional_tasks.json ",
+        "step": 226,
+        "total": 2375,
+        "recent_seconds_per_update": 5.25,
+        "remaining_train_hours": 3.13,
+        "functional": "accepted",
+        "smoke": "accepted",
+        "quality": {
+          "status": "complete_verified_quality_review_pending",
+          "Dice": 0.401630860246379,
+          "large_Dice": 0.7463124465339743,
+          "FPA": 0.05741354100599401,
+          "report_sha256": "1d4f5a22d5752a063f1ef738d29f41606b0854904df557625c7a35200871783b",
+          "checkpoint_sha256": "91a7ec03a904639f82a63c0fd4693b83d0c8aa3f69a6b918611b5d14ab7c148f",
+          "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976"
+        }
+      }
+    },
+    "updates": 2375,
+    "consumption": 9500,
+    "seed": 20261103,
+    "user_authorized_three_parallel_training": true,
+    "F_preserved_gpu": 3,
+    "commit": "32093c9a87c1a60853b329edd255ff5bf1d7a649",
+    "launch_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_phikon_EHG_1112_020535/launch_verified.json",
+    "verified_closeout": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/FEHG_closeout_1112_114004/verified_comparison.json"
+  },
+  "HG_complementarity_analysis": {
+    "status": "complete_read_only_analysis",
+    "record": "docs/运行记录/模型实验/分析_HG互补与SANSA剩余差距_1112_114518.md",
+    "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/HG_analysis_1112_114500",
+    "report_sha256": "c108f6e3e6a9e85602ad6ff4835d59304e66b95cc3c0b689542b9f853501b183",
+    "paired_sha256": "5e1b090e00599b983223ffc83d6b2720f73a4c2a59a566a9b19b21bb4c9ccedd",
+    "recommendation": "single-model HG factorial cell first; H reject-matching second if needed",
+    "new_training_started": false
+  },
+  "hg_combination_study": {
+    "status": "complete_accepted",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539",
+    "record": "docs/运行记录/模型实验/运行记录_HG组合与全图细节融合并行_1112_115539.md",
+    "arms": {
+      "HG": {
+        "gpu": 3,
+        "status": "complete_accepted",
+        "worker_pid": 126926,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.hg_combination_study.functional",
+          "--cache",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539/HG/functional",
+          "--arm",
+          "HG",
+          "--protocol",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022/functional_tasks.json"
+        ],
+        "engineering": "accepted",
+        "engineering_sha256": "a68ca21c973bbc4f0e9b432418cb2692e0ba0e5a565bb36e162e0c5f8c60367a",
+        "functional": "accepted",
+        "smoke": "accepted",
+        "progress": {
+          "pid": 126926,
+          "seconds": 611.5462104864419,
+          "stage": "training",
+          "step": 226,
+          "total": 2375,
+          "loss": 1.7741231620311737
+        },
+        "training": "complete_accepted",
+        "workers": [
+          {
+            "stage": "eval_0",
+            "pid": 544825,
+            "gpu": 3,
+            "command": [
+              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+              "-u",
+              "-m",
+              "benchmarks.v5.hg_combination_study.evaluate",
+              "--root",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539/HG/evaluation",
+              "--method",
+              "HG",
+              "--shard",
+              "0"
+            ],
+            "progress": {
+              "pid": 544825,
+              "rows": 4050,
+              "total": 5500,
+              "seconds": 4595.622531205416
+            }
+          },
+          {
+            "stage": "eval_1",
+            "pid": 544828,
+            "gpu": 0,
+            "command": [
+              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+              "-u",
+              "-m",
+              "benchmarks.v5.hg_combination_study.evaluate",
+              "--root",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539/HG/evaluation",
+              "--method",
+              "HG",
+              "--shard",
+              "1"
+            ],
+            "progress": {
+              "pid": 544828,
+              "rows": 4375,
+              "total": 5500,
+              "seconds": 4604.6121240109205
+            }
+          }
+        ],
+        "completed_inference_tasks": 8425,
+        "checkpoint_sha256": "e48d9162d93e9a4940d75c2914ed5bec600f3a3beaf13278d28e94616198297b",
+        "results": {
+          "Dice": 0.40868817627464077,
+          "large_Dice": 0.7683579259396914,
+          "FPA": 0.07039443099104965
+        },
+        "verification": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/HG_closeout_1112_155835/verification.json"
+      },
+      "HG_mix": {
+        "gpu": 5,
+        "status": "complete_accepted",
+        "worker_pid": 122735,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.hg_combination_study.functional",
+          "--cache",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539/HG_mix/functional",
+          "--arm",
+          "HG_mix",
+          "--protocol",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022/functional_tasks.json"
+        ],
+        "engineering": "accepted",
+        "engineering_sha256": "a6d194cdd4a3bce38e08316b17e3b96847af2797bbe704e2c4953b9b2f78e0c3",
+        "functional": "accepted",
+        "smoke": "accepted",
+        "progress": {
+          "pid": 122735,
+          "seconds": 625.0977771133184,
+          "stage": "training",
+          "step": 201,
+          "total": 2375,
+          "loss": 1.9614653587341309
+        },
+        "training": "complete_accepted",
+        "workers": [
+          {
+            "stage": "eval_0",
+            "pid": 568602,
+            "gpu": 5,
+            "command": [
+              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+              "-u",
+              "-m",
+              "benchmarks.v5.hg_combination_study.evaluate",
+              "--root",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539/HG_mix/evaluation",
+              "--method",
+              "HG_mix",
+              "--shard",
+              "0"
+            ],
+            "progress": {
+              "pid": 568602,
+              "rows": 5475,
+              "total": 5500,
+              "seconds": 6236.504669465125
+            },
+            "accepted": false,
+            "alive": true
+          },
+          {
+            "stage": "eval_1",
+            "pid": 568610,
+            "gpu": 2,
+            "command": [
+              "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+              "-u",
+              "-m",
+              "benchmarks.v5.hg_combination_study.evaluate",
+              "--root",
+              "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539/HG_mix/evaluation",
+              "--method",
+              "HG_mix",
+              "--shard",
+              "1"
+            ],
+            "progress": {
+              "pid": 568610,
+              "rows": 5500,
+              "total": 5500,
+              "seconds": 6085.608155287802
+            },
+            "accepted": true,
+            "alive": true
+          }
+        ],
+        "completed_inference_tasks": 11000,
+        "checkpoint_sha256": "a95a17335c58eb93332d7bb5210ca34b3448afc5d69b76a11bd3a7e094e5e0c2",
+        "results": {
+          "Dice": 0.421118144398461,
+          "large_Dice": 0.7849368030203313,
+          "FPA": 0.07749378349102164
+        },
+        "verification": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/HG_mix_closeout_1112_162607/verification.json"
+      }
+    },
+    "eval_gpus": {
+      "HG": [
+        3,
+        0
+      ],
+      "HG_mix": [
+        5,
+        2
+      ]
+    },
+    "user_accepts_H_FPA": 0.0809868108930075,
+    "updates": 2375,
+    "consumption": 9500,
+    "seed": 20261103,
+    "updated_at": "2026-11-12T16:26:38.176447+08:00",
+    "code_commit": "afc482a8a40327b0a348b1854e907056e55d9bb7",
+    "launch_verified": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539/launch_verified.json",
+    "quality_promotion": false,
+    "delta_HG_mix_vs_SANSA": {
+      "Dice": 0.005689187045458122,
+      "large_Dice": 0.012736216773026277,
+      "FPA": -0.07037211421015742
+    }
+  },
+  "h_component_diagnostic": {
+    "status": "complete_accepted_inference_diagnostic",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_diagnostic_1112_122744",
+    "record": "docs/运行记录/模型实验/运行记录_H固定权重点击锚定与粗层先验拆解_1112_122321.md",
+    "gpus": [
+      1,
+      4
+    ],
+    "modes": [
+      "control",
+      "no_anchor",
+      "no_coarse_prior",
+      "no_anchor_no_coarse_prior"
+    ],
+    "training_updates": 0,
+    "tasks": 11000,
+    "checkpoint_sha256": "9e17d667c9354f2d0c9736ba61ec888ab2bd76c1728bd663c6e5b42169fe4930",
+    "failed_runs": [
+      {
+        "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_diagnostic_1112_122321",
+        "exit_code": 1,
+        "cause": "Missing frozen vendor PYTHONPATH; installed older transformers cannot resolve dinov2; no weights loaded or inference performed"
+      }
+    ],
+    "launch_environment": {
+      "PYTHONPATH": "/nfs-medical3/zyh/fewclick_v2/vendor/phikon-v2",
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "OMP_NUM_THREADS": "2",
+      "OPENBLAS_NUM_THREADS": "2",
+      "VIPS_CONCURRENCY": "2"
+    },
+    "engineering": "accepted",
+    "engineering_sha256": "a5308a3e907a505227be829b9f0ecdc5969e0200c7a2c27d26cbd857ba3b6855",
+    "current_stage": {
+      "status": "parallel_inference_running",
+      "workers": [
+        {
+          "stage": "shard_0",
+          "pid": 174300,
+          "gpu": 1,
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.h_component_diagnostic.evaluate",
+            "--root",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_diagnostic_1112_122744",
+            "--shard",
+            "0"
+          ]
+        },
+        {
+          "stage": "shard_1",
+          "pid": 174303,
+          "gpu": 4,
+          "command": [
+            "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+            "-u",
+            "-m",
+            "benchmarks.v5.h_component_diagnostic.evaluate",
+            "--root",
+            "/nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_diagnostic_1112_122744",
+            "--shard",
+            "1"
+          ]
+        }
+      ]
+    },
+    "updated_at": "2026-11-12T15:25:17.066432+08:00",
+    "code_commit": "6b77cd331671b10257b97dff9a3bfa9cafdb8d1a",
+    "launch_verified": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_diagnostic_1112_122744/launch_verified.json",
+    "six_task_gate": "accepted",
+    "workers": [
+      {
+        "stage": "shard_0",
+        "pid": 174300,
+        "gpu": 1,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.h_component_diagnostic.evaluate",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_diagnostic_1112_122744",
+          "--shard",
+          "0"
+        ]
+      },
+      {
+        "stage": "shard_1",
+        "pid": 174303,
+        "gpu": 4,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.h_component_diagnostic.evaluate",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_diagnostic_1112_122744",
+          "--shard",
+          "1"
+        ]
+      }
+    ],
+    "verification": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_closeout_1112_152422/verification.json",
+    "results": {
+      "control": {
+        "Dice": 0.3996897387212302,
+        "large_Dice": 0.7651344724090482,
+        "FPA": 0.0809868108930075
+      },
+      "no_anchor": {
+        "Dice": 0.3997622021168193,
+        "large_Dice": 0.7659968656507224,
+        "FPA": 0.08152057351943674
+      },
+      "no_coarse_prior": {
+        "Dice": 0.3998217527251908,
+        "large_Dice": 0.7665226617846383,
+        "FPA": 0.08214865033365554
+      },
+      "no_anchor_no_coarse_prior": {
+        "Dice": 0.3998657331078928,
+        "large_Dice": 0.7672221388982318,
+        "FPA": 0.08265273886432488
+      }
+    },
+    "quality_promotion": false,
+    "conclusion": "Removing either/both terms slightly increases Dice and FPA; no demonstrated positive Dice contribution from these two terms under fixed-weight inference. Not matched retraining evidence."
+  },
+  "objective_history": [
+    {
+      "at": "2026-11-12T16:46:34.400114+08:00",
+      "previous_objective": "双分支encoder、细胞词汇及空间组合的提示条件WSI组织分割研究；完整定义见goal.md与阶段路线",
+      "reason": "User selects HG-mix and requests three plans; old cell-vocabulary objective retained as historical research"
+    }
+  ],
+  "fixed_method": {
+    "method_id": "FewClick_HG_mix_frozen_1112_163751",
+    "name": "HG-mix",
+    "status": "user_selected_fixed_research_method",
+    "selected_at": "2026-11-12T16:46:34.400114+08:00",
+    "manifest": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_mix_frozen_1112_163751/method_freeze.json",
+    "checkpoint": {
+      "path": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539/HG_mix/formal/checkpoint.pt",
+      "sha256": "a95a17335c58eb93332d7bb5210ca34b3448afc5d69b76a11bd3a7e094e5e0c2",
+      "copied": false
+    },
+    "results": {
+      "Dice": 0.421118144398461,
+      "large_Dice": 0.7849368030203313,
+      "FPA": 0.07749378349102164
+    },
+    "recipe_change_allowed": false,
+    "main_architecture_change": "Only with subsequent explicit user selection; ablations do not auto-replace baseline",
+    "remaining_publication_evidence": [
+      "matched current SAM variants",
+      "current-final-model ablations",
+      "per-class and paired uncertainty",
+      "new HG-mix WSI/cache/click evidence"
+    ]
+  },
+  "three_track_plan": {
+    "status": "paper_chinese_draft_awaiting_review_other_tracks_follow_own_acceptance",
+    "record": "docs/运行记录/模型实验/运行记录_HGmix固定方法与三线规划_1112_163751.md",
+    "plans": {
+      "sam": "docs/建议/数据与评估/方案_HGmix固定基线SAM公平对照_1112_163751.md",
+      "ablation": "docs/建议/模型与训练/方案_HGmix收益归因与最小消融_1112_163751.md",
+      "paper": "docs/建议/论文撰写/方案_HGmix论文迁移与重写_1112_163751.md"
+    },
+    "scope": "Planning, fixed-method receipt and paper-source copy only this turn",
+    "resource_proposal": "At most3 training and6 total own GPU workers when execution is separately requested; all6 eligible, sharing with sufficient memory",
+    "tracks": {
+      "sam": {
+        "status": "first_three_training_running_med2d_queued",
+        "fresh_matched_baselines": [
+          "SAM",
+          "SAM2.1",
+          "WSI-SAM frozen sparse bridge",
+          "SAM-Med2D"
+        ],
+        "reuse": [
+          "SANSA9500",
+          "HG-mix9500"
+        ],
+        "training_started": true,
+        "whole_wsi_comparison": "mandatory same-WSI once-click whole-slide inference; HG-mix/SANSA first, other methods after matched adaptation"
+      },
+      "ablation": {
+        "status": "complete_accepted",
+        "priority_new_arms": [
+          "M: whole+tiled fusion without H",
+          "HG-mix without cross-scale region messages"
+        ],
+        "optional_arms": "Only justified by paper claims, no seed/hyperparameter sweep",
+        "training_started": true,
+        "execution_authorized_at": "2026-11-13T23:15:37.944764+08:00",
+        "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_paper_ablation_envcomplete_1113_231852",
+        "record": "docs/运行记录/模型实验/运行记录_HGmix两组核心消融_1113_230552.md",
+        "functional_training_started": true,
+        "formal_training_started": true,
+        "implementation_commit": "c98fab258ace2bd6aee07ca088475e7b9bb6a247",
+        "paper_integrated": true
+      },
+      "paper": {
+        "status": "english_cvpr_review_draft_complete_with_experimental_placeholders",
+        "copied_files": 41,
+        "copied_bytes": 44311815,
+        "manifest": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_mix_frozen_1112_163751/paper_migration_manifest.json",
+        "workspace": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix",
+        "manuscript_rewrite_started": true,
+        "whole_wsi_section": "mandatory; distinguish full-slide aggregation from11000 patch tasks",
+        "chinese_draft": "论文/CVPR_HG_mix/中文初稿_1114.md",
+        "evidence_index": "论文/CVPR_HG_mix/中文初稿_证据索引_1114.json",
+        "draft_sha256": "02f38dbd69e9ca02e5066287d0b9dd4b22f762a3e2bc3e1ca4d969acb76bf268",
+        "updated_at": "2026-11-14T12:34:22.659219+08:00",
+        "latex_conversion": "explicitly_authorized_by_user_2026-11-15",
+        "writing_style": "Follow original AAAI narrative; directly state completed work and findings; calibrate claims with concrete scope, conditions and data; explain material limitations once where needed; avoid habitual defensive endings.",
+        "blank_inventory": {
+          "record": "docs/建议/论文撰写/梳理_HGmix论文剩余空白_1114_134913.md",
+          "time": "2026-11-14T13:49:13.388773+08:00",
+          "draft_sha256": "2e038c2f0ef8976a6d2cc4c4efc8c88a037c6cd606e9f268a8c8eb95871b5a8e",
+          "status": "audit_complete",
+          "explicit_text_placeholders": 4,
+          "explicit_figure_placeholders": 2,
+          "figure1": "existing_mermaid_needs_final_drawing",
+          "new_experiments_started": false,
+          "user_scope": "List current manuscript gaps only; omit discussion of additional seeds."
+        },
+        "supplement_record": "docs/运行记录/模型实验/运行记录_中文论文证据补充_1114_003709.md",
+        "ablation_supplement_record": "docs/运行记录/模型实验/运行记录_核心消融入稿核验_1114_113538.md",
+        "prose_revision_record": "docs/运行记录/模型实验/运行记录_中文稿措辞精简_1114_114618.md",
+        "inference_supplement_record": "docs/运行记录/模型实验/运行记录_论文补充推理_1114_121131.md",
+        "figure_parameter_supplement": {
+          "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figures_1114_140000",
+          "assets": "论文/CVPR_HG_mix/figures/existing_results_1114_135506",
+          "backup": "论文/CVPR_HG_mix/历史版本/中文初稿_1114_图表补齐前_1114_135506.md",
+          "parameters_cpu_strict_load": true,
+          "displayed_patch_masks_independently_verified": 24,
+          "new_inference": false,
+          "selection": "Within each stated band, closest to HG median Dice (absent: FPA); ties ascending task index. Fixed before rendering; retrospective descriptive selection."
+        },
+        "method_figure_draft": {
+          "status": "corrected_editable_vector_complete",
+          "svg": "论文/CVPR_HG_mix/figures/method_v5_vector_1114/FewClick_method_corrected.svg",
+          "sha256": "3aa359f5b9ea15ff1cc8ee2d180f6b0b72f3b4c8039dd526cd49403699321ca0",
+          "time": "2026-11-14T15:49:09.460111+08:00",
+          "manuscript_replaced": false
+        },
+        "figure_element_pack": {
+          "status": "complete",
+          "root": "论文/CVPR_HG_mix/figures/elements_1114_155639",
+          "zip": "论文/CVPR_HG_mix/figures/elements_1114_155639.zip",
+          "components": 119,
+          "time": "2026-11-14T15:57:15.922927+08:00"
+        },
+        "editable_method_ppt": {
+          "status": "complete",
+          "pptx": "论文/CVPR_HG_mix/figures/editable_ppt_1115_005319/FewClick_方法主图_单页可编辑.pptx",
+          "time": "2026-11-15T00:54:02.282216+08:00",
+          "text": 111,
+          "pictures": 11,
+          "vector_shapes": 1582,
+          "groups": 64
+        },
+        "compact_editable_method_ppt": {
+          "status": "complete",
+          "updated_at": "2026-11-15T01:10:30.280001+08:00",
+          "pptx": "论文/CVPR_HG_mix/figures/paper_width_ppt_1115_010746/FewClick_通栏紧凑版_可编辑.pptx",
+          "pdf": "论文/CVPR_HG_mix/figures/paper_width_ppt_1115_010746/FewClick_通栏紧凑版_可编辑.pdf",
+          "preview": "论文/CVPR_HG_mix/figures/paper_width_ppt_1115_010746/通栏紧凑版预览.png",
+          "validation": "论文/CVPR_HG_mix/figures/paper_width_ppt_1115_010746/validation.json",
+          "width_mm": 174.625,
+          "height_mm": 65.57419444444444,
+          "source": "benchmarks/v5/paper_figures/compact_ppt.py"
+        },
+        "readable_method_ppt": {
+          "status": "complete",
+          "updated_at": "2026-11-15T01:22:13.599909+08:00",
+          "pptx": "论文/CVPR_HG_mix/figures/readable_ppt_1115_012119/FewClick_通栏9pt_可编辑.pptx",
+          "pdf": "论文/CVPR_HG_mix/figures/readable_ppt_1115_012119/FewClick_通栏9pt_可编辑.pdf",
+          "preview": "论文/CVPR_HG_mix/figures/readable_ppt_1115_012119/预览.png",
+          "validation": {
+            "slides": 1,
+            "width_mm": 174.625,
+            "height_mm": 128.76388888888889,
+            "font_pt": [
+              9.0,
+              10.0
+            ],
+            "line_pt": [
+              0.75,
+              1.0
+            ],
+            "text_runs": 47,
+            "shapes": 363,
+            "pptx_sha256": "7b71a66768a2a277f2a0f49d1c3ffe811ae6352c12cb8dd54f5ee47f4cf7ea34"
+          },
+          "source": "benchmarks/v5/paper_figures/readable_ppt.py"
+        },
+        "readable_editable_method_ppt": {
+          "status": "complete",
+          "updated_at": "2026-11-15T01:34:18.139381+08:00",
+          "root": "论文/CVPR_HG_mix/figures/readable_ppt_1115_013308",
+          "pptx": "论文/CVPR_HG_mix/figures/readable_ppt_1115_013308/FewClick_AAAI比例大字版_可编辑.pptx",
+          "stats": {
+            "text": 111,
+            "pictures": 11,
+            "vector_shapes": 1582,
+            "groups": 64
+          }
+        },
+        "typography_normalized_method_ppt": {
+          "status": "complete",
+          "updated_at": "2026-11-15T01:41:48.541774+08:00",
+          "pptx": "论文/CVPR_HG_mix/figures/arial9pt_ppt_1115_014119/FewClick_Arial9-10pt_可编辑.pptx",
+          "root": "论文/CVPR_HG_mix/figures/arial9pt_ppt_1115_014119"
+        },
+        "approved_image_editable_reconstruction": {
+          "status": "complete",
+          "updated_at": "2026-11-15T02:15:04.085662+08:00",
+          "root": "论文/CVPR_HG_mix/figures/method_final_generated_1115/editable_reconstruction_1115",
+          "svg": "论文/CVPR_HG_mix/figures/method_final_generated_1115/editable_reconstruction_1115/FewClick_分层可编辑.svg",
+          "pptx": "论文/CVPR_HG_mix/figures/method_final_generated_1115/editable_reconstruction_1115/FewClick_分层可编辑.pptx",
+          "raster_components": 34,
+          "native_text": 98,
+          "native_connectors": 80
+        },
+        "simplified_prediction_refinement_figure": {
+          "status": "complete",
+          "updated_at": "2026-11-15T02:23:10.191065+08:00",
+          "root": "论文/CVPR_HG_mix/figures/method_final_generated_1115/editable_refinement_1115",
+          "unchanged_leading_svg_elements": 333
+        },
+        "english_cvpr_manuscript": {
+          "updated_at": "2026-11-15T03:51:11.173976+08:00",
+          "root": "论文/CVPR_HG_mix/CVPR2027_English_1115",
+          "main_pdf": "论文/CVPR_HG_mix/CVPR2027_English_1115/main.pdf",
+          "supplementary_pdf": "论文/CVPR_HG_mix/CVPR2027_English_1115/supplementary.pdf",
+          "source_zip": "论文/CVPR_HG_mix/FewClick_CVPR2027_English_1115.zip",
+          "audit": "论文/CVPR_HG_mix/CVPR2027_English_1115/translation_audit.json",
+          "method_figure_replacement": {
+            "source": "/home/zhaoyh/.codex/attachments/367254d5-fe93-4467-b1e4-26828a2d5d0d/最终方法图.pptx",
+            "pptx": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/figures/最终方法图.pptx",
+            "out": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/figures/uploaded_method_1115_200420",
+            "sha256": "1e08df035325b626feb2b82e5330f9133b4d3586df6c1d2301ad830d39c45dc1",
+            "stamp": "1115_200420",
+            "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/before_upload_1115_200420",
+            "export_pdf": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/figures/uploaded_method_1115_200420/最终方法图.pdf",
+            "figure_pdf_sha256": "df00d68a7206fde13c1a30aa8b4545b4b02c276fa98dbc54b5e190bb606f5c3c",
+            "latex_trim_bp": [
+              0,
+              72,
+              0,
+              72
+            ],
+            "updated_at": "2026-11-15T20:05:28.346241+08:00",
+            "validation": {
+              "main_pages": 9,
+              "compile": "passed",
+              "method_page": 3
+            }
+          },
+          "method_caption_update": {
+            "updated_at": "2026-11-15T21:17:46.862317+08:00",
+            "caption_file": "论文/CVPR_HG_mix/CVPR2027_English_1115/sec/3_method.tex",
+            "chinese_caption": "论文/CVPR_HG_mix/CVPR2027_English_1115/figures/method_caption_中文.md",
+            "details": [
+              "soft assignment A",
+              "support prompt conditions",
+              "point cues dual path",
+              "coarse/fine grids and certainty",
+              "residual inputs and logit fusion"
+            ],
+            "validation": {
+              "pages": 9,
+              "compile": "passed",
+              "warnings": []
+            }
+          },
+          "results_batch": {
+            "updated_at": "2026-11-15T21:24:55.307973+08:00",
+            "status": "first_batch_complete",
+            "main_tables": 5,
+            "main_figures_added": 2,
+            "supplement_tables": 2,
+            "remaining_supplement_tables": [
+              "S2：完整本图交互（与正文表2重复，可直接填入或合并）",
+              "S3：整片逐组织结果",
+              "S4：整片流程耗时",
+              "S6：点击预算与位置扰动",
+              "S7：小目标面积分层",
+              "S8：精确率、召回率与边界F1",
+              "S9：按查询切片配对bootstrap区间"
+            ],
+            "main_pages": 8,
+            "total_pages": 9,
+            "gpu_used": false,
+            "selection_and_scores_unchanged": true,
+            "sha256": {
+              "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/ablation.tex": "df5083ff3c236b9adf75aab334b4d1c6a4b843b82c1187472eda65831f92672a",
+              "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/efficiency.tex": "95f20f59394e9934a77ef1c95a5e597e9cf08eaa47b992f8f916cb7d7ab940be",
+              "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/local.tex": "e1e270a95ebf64eb2f1d9ee1fc056806013dd53b94bc345c22249cffee45a68d",
+              "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/patchtime.tex": "ffa3f52181b3bbe9d55ca3d5e89c09bd0abd9afd47adb53d72e15448c6d7fcfb",
+              "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/protocol.tex": "ee64ec42fc24f7ede1ba4a4a5815278e24e88d90e17c9f7c91a6d1ee3233110d",
+              "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/remote.tex": "b15a3276410d4eaf30202cafc8ce8a838a97f8b0bccc372dec2bffefd97f4349",
+              "论文/CVPR_HG_mix/CVPR2027_English_1115/tables/wsi.tex": "e2330d4bc03a99e426faf4da6602e4ac2a38a4dbc98fa3c7986e3ddebeb9737c",
+              "论文/CVPR_HG_mix/CVPR2027_English_1115/figures/figure2.pdf": "25466a0721e1d3ead12d76d72ccf4869958d859b08847e7340c80067a54f32dc",
+              "论文/CVPR_HG_mix/CVPR2027_English_1115/figures/figure3.pdf": "b0b5212063de5cdfcf300a55ecda3fb387f041f69384a8bce009eb5e4cb9e0c8",
+              "论文/CVPR_HG_mix/CVPR2027_English_1115/experimental_table_data.json": "f61fbd3738675711cfb4920b410f82a576caa09be9823ceb3891c2a2007fe7e6"
+            },
+            "inventory": "论文/CVPR_HG_mix/CVPR2027_English_1115/图表完成清单_1115.md"
+          },
+          "local_experiment_removal": {
+            "reason": "User focuses paper on same-slide remote transfer and WSI",
+            "backup": "论文/CVPR_HG_mix/CVPR2027_English_1115/history/remove_local_experiment_1115_223624",
+            "removed": [
+              "main local evaluation section and table",
+              "supplement local interfaces and results",
+              "Chinese local results section"
+            ],
+            "retained": [
+              "original raw results and experimental_table_data.json",
+              "local training task counts and method training paths"
+            ],
+            "updated_at": "2026-11-15T22:37:04.264028+08:00",
+            "validation": {
+              "main_pages": 8,
+              "total_pages": 9,
+              "unresolved_references": false,
+              "overfull": false,
+              "layout_note": "Page 6 contains figure/table floats only"
+            },
+            "new_table_numbers": {
+              "remote": 1,
+              "wsi": 2,
+              "ablation": 3,
+              "efficiency": 4
+            }
+          },
+          "reference_expansion": {
+            "updated_at": "2026-11-15T22:41:28.169434+08:00",
+            "original_aaai_entries": 29,
+            "before": 9,
+            "after": 25,
+            "restored": 12,
+            "new": 4,
+            "sources": {
+              "chan2019histosegnet": "https://openaccess.thecvf.com/content_ICCV_2019/papers/Chan_HistoSegNet_Semantic_Segmentation_of_Histological_Tissue_Type_in_Whole_Slide_ICCV_2019_paper.pdf",
+              "xu2019camel": "https://arxiv.org/abs/1908.10555",
+              "chen2022hipt": "https://arxiv.org/abs/2206.02647",
+              "tokunaga2019awmf": "https://openaccess.thecvf.com/content_CVPR_2019/papers/Tokunaga_Adaptive_Weighting_Multi-Field-Of-View_CNN_for_Semantic_Segmentation_in_Pathology_CVPR_2019_paper.pdf",
+              "ho2021dmmn": "https://arxiv.org/abs/1910.13042",
+              "chen2024uni": "https://www.nature.com/articles/s41591-024-02857-3",
+              "wang2022ctranspath": "https://github.com/Xiyue-Wang/TransPath",
+              "liu2023simpleclick": "https://openaccess.thecvf.com/content/ICCV2023/html/Liu_SimpleClick_Interactive_Image_Segmentation_with_Simple_Vision_Transformers_ICCV_2023_paper.html",
+              "sofiiuk2022ritm": "https://arxiv.org/abs/2102.06583",
+              "ma2024medsam": "https://www.nature.com/articles/s41467-024-44824-z",
+              "jampani2018ssn": "https://openaccess.thecvf.com/content_ECCV_2018/html/Varun_Jampani_Superpixel_Sampling_Networks_ECCV_2018_paper.html",
+              "zaheer2017deepsets": "https://proceedings.neurips.cc/paper_files/paper/2017/hash/f22e4747da1aa27e363d86d40ff442fe-Abstract.html",
+              "wang2019panet": "https://openaccess.thecvf.com/content_ICCV_2019/html/Wang_PANet_Few-Shot_Image_Semantic_Segmentation_With_Prototype_Alignment_ICCV_2019_paper.html",
+              "tian2022pfenet": "https://i.cs.hku.hk/~hszhao/paper/tpami20_pfenet.pdf",
+              "zhang2021cyctr": "https://arxiv.org/abs/2106.02320",
+              "oquab2024dinov2": "https://openreview.net/pdf/e00d5b694b7463511c0c840099de47596874ff2d.pdf"
+            },
+            "main_pages": 8,
+            "total_pages": 10,
+            "audit": "论文/CVPR_HG_mix/CVPR2027_English_1115/引用扩充核对_1115.md",
+            "bibliography_sha256": "f3f6db2c44ff08acda4ab54faec904871344a8ccd6ed0830a69a11dc0e2001fe"
+          },
+          "supplement_completion": {
+            "updated_at": "2026-11-15T23:13:11.933508+08:00",
+            "main_table": "Table 3: six-method per-tissue full-slide Dice",
+            "supplement_table": "Table S2: six-method per-tissue strict-remote Dice",
+            "source": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_final15_closeout_1113_224245/report.json",
+            "source_sha256": "db0d1f6efd1ed7f647cfba89b253735b7c54ec0a730523e922c2b4594ceae91b",
+            "validation": "132/132 unique cells; macro means match report within 1e-12",
+            "supplement_tables": 8,
+            "remaining_experimental_placeholders": 0,
+            "main_pages": 8,
+            "main_total_pages": 10,
+            "supplement_pages": 4,
+            "gpu_used": false,
+            "script": "benchmarks/v5/paper_figures/complete_supplement.py",
+            "retained_blanks": [
+              "dataset provenance/references",
+              "annotation approval/data permissions",
+              "LLM usage confirmation"
+            ]
+          }
+        }
+      }
+    },
+    "planning_commit": "61e43d728c37e88eb9bacb74baecaede92c7ab3f",
+    "mandatory_whole_wsi_addendum": "docs/建议/数据与评估/方案_HGmix整片WSI一次点击分割与评价_1112_165407.md"
+  },
+  "whole_wsi_once_click": {
+    "status": "pilot_running",
+    "mandatory": true,
+    "plan": "docs/建议/数据与评估/方案_HGmix整片WSI一次点击分割与评价_1112_165407.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_once_click_inputfix_1112_170106",
+    "record": "docs/运行记录/数据审计/运行记录_HGmix整片WSI候选与标注预审_1112_165407.md",
+    "method": "fixed HG-mix",
+    "scope": "same WSI only; one support patch3positive2negative then all other patches in that SAME WSI; reset support/clicks for every new WSI/target",
+    "pilot_slides": 3,
+    "formal_slides": 15,
+    "estimated_windows": 67451,
+    "inputs_status": "preliminary_inventory_complete_not_inference_or_registration_acceptance",
+    "train_slide_overlap": 0,
+    "current_development_slide_overlap": 0,
+    "primary_metrics": [
+      "whole annotated-valid WSI unique-pixel Dice",
+      "strict remote-only WSI Dice"
+    ],
+    "cross_slide": false,
+    "new_training": false,
+    "long_GPU_inference_started": true,
+    "updated_at": "2026-11-12T17:04:13.187414+08:00",
+    "planning_commit": "42429f97c5e3fcc69d69be9aef8cb0012b145415",
+    "execution_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_current_1112_171010"
+  },
+  "sam_current_fair": {
+    "status": "all_three_complete_accepted",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010",
+    "record": "docs/运行记录/模型实验/运行记录_SAM当前9500公平适配与WSI并行_1112_171010.md",
+    "arms": {
+      "sam": {
+        "status": "complete_accepted",
+        "gpu": 0,
+        "worker_pid": 1299712,
+        "engineering": "accepted",
+        "functional": "accepted",
+        "fresh4_smoke": "accepted",
+        "formal_step": 2375,
+        "total": 2375,
+        "recent_seconds_per_update": 2.233260967284441,
+        "remaining_train_hours": 1.1160101333735304,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.sam_current_fair.train",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010",
+          "--arm",
+          "sam"
+        ],
+        "latest_progress": {
+          "pid": 1299712,
+          "seconds": 5543.124324608594,
+          "stage": "train_monitor",
+          "step": 2375
+        },
+        "eval_progress": {
+          "sam_0": {
+            "pid": 1662123,
+            "rows": 2750,
+            "total": 5500,
+            "seconds": 3971.100330963731
+          },
+          "sam_1": {
+            "pid": 1909958,
+            "rows": 25,
+            "total": 5500,
+            "seconds": 67.97598738595843
+          }
+        },
+        "training_acceptance": {
+          "status": "complete_accepted_training",
+          "updates": 2375,
+          "consumed": 9500,
+          "training_consumed_sha256": "5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6",
+          "checkpoint_sha256": "5de1d1ef08c4dc5fa290590a018d2f827b78a69420fb6d72a3516b913fb365b6",
+          "all_frozen_state_sha256": "44e587d51888d7e13595b8117cc770bf3853d642b902c125f1a111b73604d89f",
+          "frozen_decoder_applicable": false,
+          "actual_trainable_parameters_changed": true,
+          "fresh4_predictions_exact": true,
+          "monitor_sha256": {
+            "0": "160f8b4d6eebc4775179ca4900c1948076a58840da50dcaeef12bf6fe96d509b",
+            "250": "de221a242c4a856bdbedf3408536163d073b67843f109f9dc05df1b9dda92813",
+            "500": "5d49e615bb984de06492e4ae8f22d53338a99bc1e8bdad1bb38585d91975eefe",
+            "1000": "8394aad65381a8ebb4740f07e00d1b97f32fc6c9fc2259ed33af35a54a88fa43",
+            "2000": "d45d092f4d2c35c8da958d7fa5fa5a4df78d693f753ca8d8460cc6fe020fd53e",
+            "2375": "3c692a8b1debdfb3cf7c6587859d8a800315637fd79fc8123595121a0c162c55"
+          },
+          "arm": "sam",
+          "seed": 20261103
+        },
+        "result": {
+          "status": "complete_accepted",
+          "method": "sam",
+          "track": "Matched9500train tasks/2375updates, same new queue; public priors/views/capacity differ; SANSA adapter-only, SAM ViTB/SAM2.1/WSI-SAM frozen sparse bridge; same added labels/updates; native public priors/views/capacity differ",
+          "target_updates": 2375,
+          "classes": {
+            "0": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.5520543820502749,
+              "FPA": 0.21814144134521485
+            },
+            "1": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.40819138391572446,
+              "FPA": 0.31630502065022786
+            },
+            "3": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.16191567484744407,
+              "FPA": 0.24134337107340495
+            },
+            "4": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.3871663131667638,
+              "FPA": 0.20514238993326822
+            },
+            "5": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.2589823689276191,
+              "FPA": 0.3783991622924805
+            },
+            "6": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.32515316960139423,
+              "FPA": 0.37002877553304037
+            },
+            "7": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.3440148884755491,
+              "FPA": 0.36491987864176434
+            },
+            "8": {
+              "present": 334,
+              "absent": 666,
+              "dice": 0.19831071345351897,
+              "FPA": 0.28621718833396387
+            },
+            "9": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.15716087670535356,
+              "FPA": 0.24260908762613934
+            },
+            "10": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.46835748176017644,
+              "FPA": 0.16081368764241535
+            },
+            "11": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.07313824596926874,
+              "FPA": 0.18709980010986327
+            }
+          },
+          "macro_Dice": 0.30313140898846247,
+          "macro_absent_FPA": 0.2700927093801621,
+          "area_strata": {
+            "0.01": {
+              "n": 4619,
+              "task_mean_Dice": 0.4753078370229417,
+              "class_macro_Dice": 0.444155432843238
+            },
+            "0.05": {
+              "n": 3453,
+              "task_mean_Dice": 0.5789390834402197,
+              "class_macro_Dice": 0.5380063261730054
+            },
+            "0.2": {
+              "n": 2130,
+              "task_mean_Dice": 0.6917435492250638,
+              "class_macro_Dice": 0.6439768481339616
+            }
+          },
+          "limitations": "Matched9500new tasks/2375updates, public initialization; SAM ViTB/SAM2.1/WSI-SAM with pre-frozen automatic transfer bridges; SANSA/HG-mix current9500 reference. Different priors/views/capacity; exposed sameWSI development cohort; queryGT scoring only. Fixed final checkpoint/0.5 threshold. No automatic promotion."
+        },
+        "acceptance": {
+          "status": "complete_accepted",
+          "report_sha256": "6d152108bada5a665302a920bd7dcb9bb6a10bc173690157b02572c34366dcef",
+          "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976",
+          "rows": 11000
+        }
+      },
+      "sam2": {
+        "status": "complete_accepted",
+        "gpu": 1,
+        "worker_pid": 1312291,
+        "engineering": "accepted",
+        "functional": "accepted",
+        "fresh4_smoke": "accepted",
+        "formal_step": 2375,
+        "total": 2375,
+        "recent_seconds_per_update": 2.7900233083963393,
+        "remaining_train_hours": 1.5492379426345229,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.sam_current_fair.train",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010",
+          "--arm",
+          "sam2"
+        ],
+        "latest_progress": {
+          "pid": 1312291,
+          "seconds": 6713.0606790483,
+          "stage": "training",
+          "step": 2251,
+          "total": 2375,
+          "loss": 1.825496345758438
+        },
+        "eval_progress": {
+          "sam2_0": {
+            "pid": 1787309,
+            "rows": 1375,
+            "total": 5500,
+            "seconds": 2100.8685934208333
+          },
+          "sam2_1": {
+            "pid": 1818467,
+            "rows": 575,
+            "total": 5500,
+            "seconds": 1537.637327734381
+          }
+        },
+        "training_acceptance": {
+          "status": "complete_accepted_training",
+          "updates": 2375,
+          "consumed": 9500,
+          "training_consumed_sha256": "5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6",
+          "checkpoint_sha256": "7ae09e52ceb8950499d4f6093adbe37da83004f3b30f2ea21e8204bd67e6585e",
+          "all_frozen_state_sha256": "1a85e2fb1658d9b2f7f5c3d3ab1d0ff8c6757a7c981742af16a69d2c2c5ddd3f",
+          "frozen_decoder_applicable": false,
+          "actual_trainable_parameters_changed": true,
+          "fresh4_predictions_exact": true,
+          "monitor_sha256": {
+            "0": "fc3b481464b15eddb6706056c6d83010b5fd5639b152bec911edb66297be6b25",
+            "250": "cb3eef48a2e2c4d91086e9d2c26476baf96315a853068955a67b82f14bfabbc4",
+            "500": "54909f88bedf28693828a2bb6a61a8edf60611c04c79073ddee5d020aca05766",
+            "1000": "f7ea2dad05dbefc5039034fb23412b495aa383f531b24a0a0f88d1579dcb6e6b",
+            "2000": "f0c03fbd0e40cb5b78207c39a69957c4e5a6f9723c5c97d969aed7a9ebef2a71",
+            "2375": "5ce66466639ea7ca233e76c1e3c2376846b5dff245f39b39a591bbf05ddfd2a2"
+          },
+          "arm": "sam2",
+          "seed": 20261103
+        },
+        "result": {
+          "status": "complete_accepted",
+          "method": "sam2",
+          "track": "Matched9500train tasks/2375updates, same new queue; public priors/views/capacity differ; SANSA adapter-only, SAM ViTB/SAM2.1/WSI-SAM frozen sparse bridge; same added labels/updates; native public priors/views/capacity differ",
+          "target_updates": 2375,
+          "classes": {
+            "0": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.595036346551936,
+              "FPA": 0.17263844807942708
+            },
+            "1": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.43050281952988434,
+              "FPA": 0.19613491058349608
+            },
+            "3": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.21743607651108124,
+              "FPA": 0.1891467030843099
+            },
+            "4": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.42320837821562324,
+              "FPA": 0.16638319651285807
+            },
+            "5": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.3233317336863112,
+              "FPA": 0.2738864517211914
+            },
+            "6": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.3277546725353013,
+              "FPA": 0.2466164016723633
+            },
+            "7": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.3264373259848403,
+              "FPA": 0.21430531819661458
+            },
+            "8": {
+              "present": 334,
+              "absent": 666,
+              "dice": 0.2160601349136149,
+              "FPA": 0.2438516760015631
+            },
+            "9": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.19703890532566154,
+              "FPA": 0.14652801513671876
+            },
+            "10": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.502394237714429,
+              "FPA": 0.09826577504475911
+            },
+            "11": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.13729161052711844,
+              "FPA": 0.13247759501139322
+            }
+          },
+          "macro_Dice": 0.33604474922689104,
+          "macro_absent_FPA": 0.1891122264586086,
+          "area_strata": {
+            "0.01": {
+              "n": 4619,
+              "task_mean_Dice": 0.5170224225197306,
+              "class_macro_Dice": 0.49570317744271686
+            },
+            "0.05": {
+              "n": 3453,
+              "task_mean_Dice": 0.6119011934234778,
+              "class_macro_Dice": 0.5829268698902547
+            },
+            "0.2": {
+              "n": 2130,
+              "task_mean_Dice": 0.7058658624745765,
+              "class_macro_Dice": 0.6650213415951105
+            }
+          },
+          "limitations": "Matched9500new tasks/2375updates, public initialization; SAM ViTB/SAM2.1/WSI-SAM with pre-frozen automatic transfer bridges; SANSA/HG-mix current9500 reference. Different priors/views/capacity; exposed sameWSI development cohort; queryGT scoring only. Fixed final checkpoint/0.5 threshold. No automatic promotion."
+        },
+        "acceptance": {
+          "status": "complete_accepted",
+          "report_sha256": "1b92ad39ab40720f381f266cbf74b014eba2ea5d4a960e337fe489e46e6f01e6",
+          "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976",
+          "rows": 11000
+        }
+      },
+      "wsi": {
+        "status": "complete_accepted",
+        "gpu": 4,
+        "worker_pid": 1277638,
+        "engineering": "accepted",
+        "functional": "accepted",
+        "fresh4_smoke": "accepted",
+        "formal_step": 2375,
+        "total": 2375,
+        "recent_seconds_per_update": 1.028030605018139,
+        "remaining_train_hours": 0.2424438843501111,
+        "cmd": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.sam_current_fair.train",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010",
+          "--arm",
+          "wsi"
+        ],
+        "latest_progress": {
+          "pid": 1277638,
+          "seconds": 2656.6409870646894,
+          "stage": "train_monitor",
+          "step": 2375
+        },
+        "eval_progress": {
+          "wsi_0": {
+            "pid": 1450820,
+            "rows": 5500,
+            "total": 5500,
+            "seconds": 4725.162583228201
+          },
+          "wsi_1": {
+            "pid": 1506162,
+            "rows": 5500,
+            "total": 5500,
+            "seconds": 4521.5500433035195
+          }
+        },
+        "training_acceptance": {
+          "status": "complete_accepted_training",
+          "updates": 2375,
+          "consumed": 9500,
+          "training_consumed_sha256": "5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6",
+          "checkpoint_sha256": "5651df7bd3dd4508e20c4c6b2ebfc11a53f217badb738abe1a999b8e98d376da",
+          "all_frozen_state_sha256": "b4912766f87c91143136bd050718e76bc1bdfdd78da80ec88c7a48efd32fcd5e",
+          "frozen_decoder_applicable": true,
+          "actual_trainable_parameters_changed": true,
+          "fresh4_predictions_exact": true,
+          "monitor_sha256": {
+            "0": "4bd3db0ef76d0a2a7c349992d697fb67a25b45b586fcfce21d0dca128051c18f",
+            "250": "1d71b77f345f409224ef81676a219326d6958225938fa630a614af094bf50d7f",
+            "500": "16d25c2df6f087a2e60e80e60f7b4fcac9bb278a209d2c07c03668095c79fb82",
+            "1000": "e0ae7ffc6b7554ddbf0efcfa7a9e0e895f9df3aa9cbadbc0361db814bfe787e2",
+            "2000": "ec32f6145062e8ee1d12d0f5cdd1bd75273062e575d2514e1c911153f3b44421",
+            "2375": "48a11c038aa91d99d434ee6157edc8d0d5050bc140c0e0271a020ebbf762578c"
+          },
+          "arm": "wsi",
+          "seed": 20261103
+        },
+        "result": {
+          "status": "complete_accepted",
+          "method": "wsi",
+          "track": "Matched9500train tasks/2375updates, same new queue; public priors/views/capacity differ; SANSA adapter-only, SAM ViTB/SAM2.1/WSI-SAM frozen sparse bridge; same added labels/updates; native public priors/views/capacity differ",
+          "target_updates": 2375,
+          "classes": {
+            "0": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.39276201859875104,
+              "FPA": 0.20211963653564452
+            },
+            "1": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.2981928098103704,
+              "FPA": 0.22469324747721353
+            },
+            "3": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.14935054588334615,
+              "FPA": 0.21334955851236978
+            },
+            "4": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.3630662728656797,
+              "FPA": 0.18913527170817057
+            },
+            "5": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.20439184010455075,
+              "FPA": 0.33762321472167967
+            },
+            "6": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.28565634499676007,
+              "FPA": 0.2851805623372396
+            },
+            "7": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.27048092738733465,
+              "FPA": 0.2555973561604818
+            },
+            "8": {
+              "present": 334,
+              "absent": 666,
+              "dice": 0.14750716831870092,
+              "FPA": 0.265876529453037
+            },
+            "9": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.09785795541453049,
+              "FPA": 0.23313817342122395
+            },
+            "10": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.33657587127397126,
+              "FPA": 0.17502466837565103
+            },
+            "11": {
+              "present": 700,
+              "absent": 300,
+              "dice": 0.07332686658451348,
+              "FPA": 0.1960105514526367
+            }
+          },
+          "macro_Dice": 0.23810623829440988,
+          "macro_absent_FPA": 0.23434079728684984,
+          "area_strata": {
+            "0.01": {
+              "n": 4619,
+              "task_mean_Dice": 0.3679438279001759,
+              "class_macro_Dice": 0.34605005200095945
+            },
+            "0.05": {
+              "n": 3453,
+              "task_mean_Dice": 0.4426054858034178,
+              "class_macro_Dice": 0.416946306454637
+            },
+            "0.2": {
+              "n": 2130,
+              "task_mean_Dice": 0.5206082991062475,
+              "class_macro_Dice": 0.5002199032412632
+            }
+          },
+          "limitations": "Matched9500new tasks/2375updates, public initialization; SAM ViTB/SAM2.1/WSI-SAM with pre-frozen automatic transfer bridges; SANSA/HG-mix current9500 reference. Different priors/views/capacity; exposed sameWSI development cohort; queryGT scoring only. Fixed final checkpoint/0.5 threshold. No automatic promotion."
+        },
+        "acceptance": {
+          "status": "complete_accepted",
+          "report_sha256": "8e8b4d44c4a6ff4a04e6c72dfa9d7891edf786bd238ddec867f9fa042c9ad008",
+          "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976",
+          "rows": 11000
+        }
+      }
+    },
+    "resource_pool": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010/gpu_leases",
+    "seed": 20261103,
+    "training_tasks": 9500,
+    "updates": 2375,
+    "code_commit": "66fef50966275a5685e248ca24b64ef71f8230af",
+    "checked_at": "2026-11-12T18:45:26.181335+08:00",
+    "final_weight_policy_user_confirmed": "For patch AND WSI use final current matched9500/2375 accepted checkpoint only; fail explicitly rather than substitute old/zero-shot weights."
+  },
+  "latest_execution_override_1112_171010": {
+    "sam_matched": true,
+    "WSI_if_resources": true,
+    "WSI_exclude_train_val": true,
+    "no_new_seeds": true
+  },
+  "whole_wsi_current": {
+    "status": "complete_accepted_formal15_Dice",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_current_1112_171010",
+    "record": "docs/运行记录/模型实验/运行记录_未见trainval整片WSI试跑_1112_171010.md",
+    "gpus": [
+      3,
+      2,
+      5
+    ],
+    "pilot_slides": 3,
+    "formal_slides": 15,
+    "formal_tasks": 152,
+    "unseen_audit": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_current_1112_171010/unseen_audit.json",
+    "eligible_original_test": 30,
+    "scope": "Same slide only; reset support per slide and target; original test30 absent audited train/val and current development; historical AAAI test exposure.",
+    "no_new_training": true,
+    "expansion_rule": "After baseline priority, extra15 paired all-target estimate<=12h plus disk margin; no new training/seeds.",
+    "workers": [
+      {
+        "pid": 1321168,
+        "gpu": 3,
+        "case_index": 0,
+        "phase": "pilot",
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.whole_slide_once.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_current_1112_171010",
+          "--case-index",
+          "0",
+          "--phase",
+          "pilot"
+        ],
+        "status": "running",
+        "HG_engineering": "accepted",
+        "progress": {
+          "status": "inference_running",
+          "pid": 1321168,
+          "method": "HG_mix",
+          "windows": 1000,
+          "total": 5169,
+          "targets": 1,
+          "seconds": 1050.865895140916,
+          "timings": {
+            "query_encoding_seconds": 933.7455075718462,
+            "decode_seconds": 56.809500217437744,
+            "projection_and_score_seconds": 56.462953347712755
+          }
+        },
+        "HG_remaining_hours": 1.2169610880117998,
+        "HG_seconds_per_window": 1.0508658951409162
+      },
+      {
+        "pid": 1321172,
+        "gpu": 2,
+        "case_index": 1,
+        "phase": "pilot",
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.whole_slide_once.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_current_1112_171010",
+          "--case-index",
+          "1",
+          "--phase",
+          "pilot"
+        ],
+        "status": "running",
+        "HG_engineering": "accepted",
+        "progress": {
+          "status": "inference_running",
+          "pid": 1321172,
+          "method": "HG_mix",
+          "windows": 1200,
+          "total": 3246,
+          "targets": 1,
+          "seconds": 1045.629094004631,
+          "timings": {
+            "query_encoding_seconds": 927.4604645520449,
+            "decode_seconds": 61.40348405763507,
+            "projection_and_score_seconds": 54.52813685685396
+          }
+        },
+        "HG_remaining_hours": 0.4952215570216377,
+        "HG_seconds_per_window": 0.8713575783371925
+      },
+      {
+        "pid": 1321178,
+        "gpu": 5,
+        "case_index": 2,
+        "phase": "pilot",
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.whole_slide_once.worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_current_1112_171010",
+          "--case-index",
+          "2",
+          "--phase",
+          "pilot"
+        ],
+        "status": "running",
+        "HG_engineering": "accepted",
+        "progress": {
+          "status": "inference_running",
+          "pid": 1321178,
+          "method": "HG_mix",
+          "windows": 950,
+          "total": 4159,
+          "targets": 1,
+          "seconds": 1051.1325436457992,
+          "timings": {
+            "query_encoding_seconds": 939.5499972291291,
+            "decode_seconds": 57.92735019698739,
+            "projection_and_score_seconds": 51.55581624805927
+          }
+        },
+        "HG_remaining_hours": 0.9862819685846109,
+        "HG_seconds_per_window": 1.1064553091008411
+      }
+    ],
+    "HG_real_engineering": "three_cases_accepted",
+    "unseen_test_slides": 30,
+    "formal_tissue_tasks": 152,
+    "updated_at": "2026-11-12T17:51:03.908438+08:00",
+    "code_commit": "66fef50966275a5685e248ca24b64ef71f8230af",
+    "latest_progress": {
+      "0": {
+        "HG_mix": {
+          "status": "inference_running",
+          "pid": 1321168,
+          "method": "HG_mix",
+          "windows": 4000,
+          "total": 5169,
+          "targets": 1,
+          "seconds": 4310.460412971675,
+          "timings": {
+            "query_encoding_seconds": 3904.880298499018,
+            "decode_seconds": 230.39936788752675,
+            "projection_and_score_seconds": 163.22840510681272
+          }
+        }
+      },
+      "1": {
+        "HG_mix": {
+          "status": "independent_disk_mask_scoring",
+          "pid": 1321172,
+          "windows": 3246,
+          "total": 3246,
+          "targets": 1
+        },
+        "HG_mix_accepted": {
+          "1": {
+            "whole_WSI": {
+              "tp": 12541603,
+              "fp": 21394279,
+              "fn": 741086,
+              "valid": 213394545,
+              "positive": 13282689,
+              "dice": 0.5312148476496673,
+              "precision": 0.36956761577612746,
+              "recall": 0.9442066286427394,
+              "false_positive_area_fraction": 0.100256916126886
+            },
+            "remote_only_WSI": {
+              "tp": 8126394,
+              "fp": 18982065,
+              "fn": 403931,
+              "valid": 194749421,
+              "positive": 8530325,
+              "dice": 0.4560421590141796,
+              "precision": 0.2997733659445563,
+              "recall": 0.952647642381738,
+              "false_positive_area_fraction": 0.09746917296354889
+            }
+          }
+        }
+      },
+      "2": {
+        "HG_mix": {
+          "status": "inference_running",
+          "pid": 1321178,
+          "method": "HG_mix",
+          "windows": 3475,
+          "total": 4159,
+          "targets": 1,
+          "seconds": 4296.219404362142,
+          "timings": {
+            "query_encoding_seconds": 3912.935321494937,
+            "decode_seconds": 233.85865047201514,
+            "projection_and_score_seconds": 140.53615564480424
+          }
+        }
+      }
+    },
+    "checked_at": "2026-11-12T20:07:21.202936+08:00",
+    "latest_accepted_pilots": {
+      "0": {
+        "HG_mix": {
+          "metrics": {
+            "0": {
+              "whole_WSI": {
+                "tp": 11613940,
+                "fp": 1566139,
+                "fn": 2079528,
+                "valid": 337246800,
+                "positive": 13693468,
+                "dice": 0.8643399399416831,
+                "precision": 0.8811737774864628,
+                "recall": 0.8481372286406921,
+                "false_positive_area_fraction": 0.00464389580568296
+              },
+              "remote_only_WSI": {
+                "tp": 7843349,
+                "fp": 1219878,
+                "fn": 1315288,
+                "valid": 318605994,
+                "positive": 9158637,
+                "dice": 0.8608723015384157,
+                "precision": 0.8654035698322463,
+                "recall": 0.8563882376820918,
+                "false_positive_area_fraction": 0.003828798023178434
+              }
+            }
+          },
+          "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_current_1112_171010/pilot/case_00/HG_mix/report.json",
+          "sha256": "f704204614879e11af41e5e588b9c261e143d3a8ebe5202662361c9248193dd2"
+        },
+        "sansa_progress": {
+          "status": "inference_running",
+          "pid": 1321168,
+          "method": "sansa",
+          "windows": 3925,
+          "total": 5169,
+          "targets": 1,
+          "seconds": 3383.00718601048,
+          "timings": {
+            "query_encoding_seconds": 1311.4474047273397,
+            "decode_seconds": 1831.7026058211923,
+            "projection_and_score_seconds": 234.0396624840796
+          }
+        }
+      },
+      "1": {
+        "HG_mix": {
+          "metrics": {
+            "1": {
+              "whole_WSI": {
+                "tp": 12541603,
+                "fp": 21394279,
+                "fn": 741086,
+                "valid": 213394545,
+                "positive": 13282689,
+                "dice": 0.5312148476496673,
+                "precision": 0.36956761577612746,
+                "recall": 0.9442066286427394,
+                "false_positive_area_fraction": 0.100256916126886
+              },
+              "remote_only_WSI": {
+                "tp": 8126394,
+                "fp": 18982065,
+                "fn": 403931,
+                "valid": 194749421,
+                "positive": 8530325,
+                "dice": 0.4560421590141796,
+                "precision": 0.2997733659445563,
+                "recall": 0.952647642381738,
+                "false_positive_area_fraction": 0.09746917296354889
+              }
+            }
+          },
+          "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_current_1112_171010/pilot/case_01/HG_mix/report.json",
+          "sha256": "3e8981a1c4eeaa4e5a0e6aab7a5170e111899340bc5eb96a9929c073a2f48a69"
+        },
+        "sansa": {
+          "metrics": {
+            "1": {
+              "whole_WSI": {
+                "tp": 12594748,
+                "fp": 47698072,
+                "fn": 687941,
+                "valid": 213394545,
+                "positive": 13282689,
+                "dice": 0.34236251087301345,
+                "precision": 0.20889299919957302,
+                "recall": 0.9482077010159614,
+                "false_positive_area_fraction": 0.22352057781045903
+              },
+              "remote_only_WSI": {
+                "tp": 8152981,
+                "fp": 43439663,
+                "fn": 377344,
+                "valid": 194749421,
+                "positive": 8530325,
+                "dice": 0.2712101925638436,
+                "precision": 0.15802603564957826,
+                "recall": 0.9557644052248888,
+                "false_positive_area_fraction": 0.2230541316988049
+              }
+            }
+          },
+          "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_current_1112_171010/pilot/case_01/sansa/report.json",
+          "sha256": "4d43bd487eccf35d30ed44219601308cc1158aed4b7a63478e6df9251b36c47c"
+        },
+        "sansa_progress": {
+          "status": "independent_disk_mask_scoring",
+          "pid": 1321172,
+          "windows": 3246,
+          "total": 3246,
+          "targets": 1
+        }
+      },
+      "2": {
+        "HG_mix": {
+          "metrics": {
+            "10": {
+              "whole_WSI": {
+                "tp": 4969692,
+                "fp": 10327003,
+                "fn": 323650,
+                "valid": 275975693,
+                "positive": 5293342,
+                "dice": 0.4827278357974782,
+                "precision": 0.32488665035159553,
+                "recall": 0.9388571530046613,
+                "false_positive_area_fraction": 0.03741997306987467
+              },
+              "remote_only_WSI": {
+                "tp": 2547492,
+                "fp": 8188658,
+                "fn": 196624,
+                "valid": 257330569,
+                "positive": 2744116,
+                "dice": 0.37795871387107643,
+                "precision": 0.23728170712965077,
+                "recall": 0.9283470523840829,
+                "false_positive_area_fraction": 0.03182155167892237
+              }
+            }
+          },
+          "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_current_1112_171010/pilot/case_02/HG_mix/report.json",
+          "sha256": "7a0c42af7338de2c29dd207d7c995a2c45fb4ff8ebadeb400ba2de6e0d55f95e"
+        },
+        "sansa_progress": {
+          "status": "inference_running",
+          "pid": 1321178,
+          "method": "sansa",
+          "windows": 3700,
+          "total": 4159,
+          "targets": 1,
+          "seconds": 3933.3873840607703,
+          "timings": {
+            "query_encoding_seconds": 1347.4154785983264,
+            "decode_seconds": 2418.7550873607397,
+            "projection_and_score_seconds": 161.9470710940659
+          }
+        }
+      }
+    }
+  },
+  "sam_med2d_current": {
+    "status": "complete_accepted",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_med2d_current_1112_173751",
+    "native_CPU_probe": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/med2d_probe_1112_173751/acceptance.json",
+    "gpu": 0,
+    "eval_gpus": [
+      0,
+      1
+    ],
+    "training_tasks": 9500,
+    "updates": 2375,
+    "seed": 20261103,
+    "code_commit": "66fef50966275a5685e248ca24b64ef71f8230af",
+    "worker_pid": 2695898,
+    "latest_progress": {
+      "pid": 2695898,
+      "seconds": 2406.5307850129902,
+      "stage": "training",
+      "step": 1301,
+      "total": 2375,
+      "loss": 1.517641618847847
+    },
+    "training_acceptance": {
+      "status": "complete_accepted_training",
+      "updates": 2375,
+      "consumed": 9500,
+      "training_consumed_sha256": "5283376820e3843bf4aad72b96f16d6baa82e5facfc81cc9dbe37a92d7e1afb6",
+      "checkpoint_sha256": "d3ce65271ae87d4c8e13dfa1ab639f2312be9bef6dfecc744a4c497ffc49001b",
+      "all_frozen_state_sha256": "105954f19de284dd81e7d8026cd082b85fb8935e9f6092af7c47fe3376e92032",
+      "frozen_decoder_applicable": false,
+      "actual_trainable_parameters_changed": true,
+      "fresh4_predictions_exact": true,
+      "monitor_sha256": {
+        "0": "1fb91295c6219c672c32314160540ecc11872d1e2bdf2d666650c26dc7ba5304",
+        "250": "32228c72ccd2d448a7c596a9e41f0f5c3df0c5aeea611bd527059f951dc08eb9",
+        "500": "9f310111580e2d95b388bd540ed31e1917a74bfb080c971f33be83d15c172544",
+        "1000": "d4f082bb92bda27270512ed90eb9ad286fd28e8cb8a4e5549b52725de1477d2e",
+        "2000": "12b13222780ad73e7e58fa3512f23ce5a2d347e67fd1ee6deffc8a82c92cc311",
+        "2375": "e497ce4bfdc6dd1d02c58ce66fb2e947fa281115cc180b9ef43ad033b974f860"
+      },
+      "arm": "med2d",
+      "seed": 20261103
+    },
+    "checkpoint_sha256": "d3ce65271ae87d4c8e13dfa1ab639f2312be9bef6dfecc744a4c497ffc49001b",
+    "evaluation_report": {
+      "status": "complete_accepted",
+      "method": "med2d",
+      "track": "Matched9500train tasks/2375updates, SAM-Med2D public medical encoder frozen incl adapters, native256 three-view aligned signed transfer bridge and native prompt/mask decoder adapted; public priors/views/capacity differ",
+      "target_updates": 2375,
+      "classes": {
+        "0": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.45496672862625587,
+          "FPA": 0.33440962473551433
+        },
+        "1": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.3210018373149532,
+          "FPA": 0.40692521413167315
+        },
+        "3": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.12032339410312634,
+          "FPA": 0.3746122868855794
+        },
+        "4": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.31940065975983395,
+          "FPA": 0.37381088256835937
+        },
+        "5": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.17130090001286744,
+          "FPA": 0.4364109929402669
+        },
+        "6": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.2898429659786529,
+          "FPA": 0.46831061045328776
+        },
+        "7": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.30134910277805727,
+          "FPA": 0.4553038533528646
+        },
+        "8": {
+          "present": 334,
+          "absent": 666,
+          "dice": 0.1840848781054504,
+          "FPA": 0.3695753515661658
+        },
+        "9": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.09889210819555339,
+          "FPA": 0.41738961537679037
+        },
+        "10": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.367220411271982,
+          "FPA": 0.33664292653401695
+        },
+        "11": {
+          "present": 700,
+          "absent": 300,
+          "dice": 0.042592600227670974,
+          "FPA": 0.4126890691121419
+        }
+      },
+      "macro_Dice": 0.24281596239767309,
+      "macro_absent_FPA": 0.39873458433242365,
+      "area_strata": {
+        "0.01": {
+          "n": 4619,
+          "task_mean_Dice": 0.3836440611615161,
+          "class_macro_Dice": 0.355407467186502
+        },
+        "0.05": {
+          "n": 3453,
+          "task_mean_Dice": 0.4769166768698832,
+          "class_macro_Dice": 0.4403737011206806
+        },
+        "0.2": {
+          "n": 2130,
+          "task_mean_Dice": 0.5865679014558832,
+          "class_macro_Dice": 0.5480161837696387
+        }
+      },
+      "limitations": "Matched9500new tasks/2375updates, public initialization; SAM-Med2D native256 three-view fixed automatic transfer bridge; SANSA/HG-mix current9500 reference. Different priors/views/capacity; exposed sameWSI development cohort; queryGT scoring only. Fixed final checkpoint/0.5 threshold. No automatic promotion."
+    },
+    "evaluation_acceptance": {
+      "status": "complete_accepted",
+      "report_sha256": "d8321209330d7c8d99c3089b16fb7e6300588e48b49aeec3a4ef8c731a85f90b",
+      "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976",
+      "rows": 11000
+    }
+  },
+  "whole_wsi_sam_final": {
+    "status": "complete_accepted_formal15_Dice",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_sam_final_envfix_1112_192400",
+    "record": "docs/运行记录/模型实验/运行记录_整片WSI六方法最终公平权重对照_1112_184727.md",
+    "methods": [
+      "HG_mix",
+      "sansa",
+      "sam",
+      "sam2",
+      "wsi",
+      "med2d"
+    ],
+    "sam_weight_policy": "Only final current9500/2375 accepted formal checkpoint in BOTH patch and WSI tables; no historical or zero-shot substitution.",
+    "adaptations": {
+      "sam": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010/sam",
+      "sam2": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010/sam2",
+      "wsi": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010/wsi",
+      "med2d": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_med2d_current_1112_173751/med2d"
+    },
+    "formal_slides": 15,
+    "formal_targets": 152,
+    "additional_training": 0,
+    "gpus": [
+      0,
+      1,
+      4
+    ],
+    "resource_pool": "shared six total GPU slots",
+    "acceptance": "Engineering -> same3 pilot -> same15 all targets -> paired six-method exact GT-footprint join; conditional common30",
+    "engineering_cpu_probe": "Failed because native builder explicitly CUDA-only; failure preserved, CPU option removed, GPU engineering pending under shared lease. No weight/recipe change.",
+    "controller_pid": 1755289,
+    "engineering_probe_pid": 1620767,
+    "tmux": "whole_wsi_sam_final_1112_184727",
+    "GPU_engineering": "WSI_SAM_real_engineering_accepted_after_environment_fix",
+    "checked_at": "2026-11-12T20:07:21.202936+08:00",
+    "previous_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_sam_final_1112_184727",
+    "execution_environment": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    },
+    "engineering_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_sam_final_envfix_1112_192400/wsi/engineering/case_01/acceptance.json"
+  },
+  "current_total_runtime_estimate": {
+    "checked_at": "2026-11-12T20:17:33.375628+08:00",
+    "scope": "Current queued experiments only: matched4SAM patch comparison + six methods formal15 WSI/152 targets; excludes optional extra15 and unlaunched ablations/paper work.",
+    "remaining_first3_patch_hours": [
+      3,
+      4
+    ],
+    "med2d_after_first3_hours": [
+      2,
+      4
+    ],
+    "HG_SANSA_formal15_measured_three_worker_hours": 38.03124207461904,
+    "HG_SANSA_25pct_margin_hours": 47.539052593273794,
+    "HG_SANSA_planning_hours": [
+      48,
+      72
+    ],
+    "six_method_end_to_end_provisional_days": [
+      3,
+      5
+    ],
+    "six_method_estimate_status": "Planning range only, four SAM full-slide pilot throughput still missing; not a measured upper bound.",
+    "known_windows_formal15": 64931,
+    "targets_per_method": 152,
+    "formal_methods": 6,
+    "total_slide_target_runs": 912,
+    "total_worker_cap": 6,
+    "optional_expansion_excluded": true,
+    "uncertainty": [
+      "Four SAM full-slide native decode/encoding throughput not yet measured",
+      "Shared GPU/IO loads",
+      "Single-target pilots extrapolated to approximately10 target classes per slide; target-dependent decode/scoring",
+      "Independent disk mask replay and queue waits"
+    ],
+    "artifact": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_eta_1112_201733/estimate.json"
+  },
+  "experiment_numbers": {
+    "E01": "SAM最终9500适配及patch评估",
+    "E02": "SAM2最终9500适配及patch评估",
+    "E03": "WSI-SAM最终9500适配及patch评估",
+    "E04": "SAM-Med2D最终9500适配及patch评估",
+    "E05": "HG-mix整片WSI",
+    "E06": "SANSA整片WSI",
+    "E07": "SAM整片WSI",
+    "E08": "SAM2整片WSI",
+    "E09": "WSI-SAM整片WSI",
+    "E10": "SAM-Med2D整片WSI"
+  },
+  "whole_wsi_six_gpu_priority": {
+    "status": "complete_accepted_formal15_six_methods",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_cache_1113_004500/queue_1113_005000",
+    "record": "docs/运行记录/模型实验/结果表_WSI六方法正式15片最终结果_1113_224245.md",
+    "controller_pid": 3090917,
+    "workers": [],
+    "scope": "Formal15 six methods, WSI first, six physical GPUs, final matched weights only; extra15 deferred.",
+    "previous_roots": [
+      "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_six_gpu_1112_214500",
+      "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_six_gpu_tmpfix_1112_215300"
+    ],
+    "repair": "Restore original per-HG vendor transformers PYTHONPATH, no global library upgrade; final15 first HG attempt failed loading before inference, archive kept.",
+    "accepted_pilots": {
+      "sam": {
+        "accepted": 3,
+        "whole_Dice": 0.26460879639247464,
+        "remote_Dice": 0.20638566934035737
+      },
+      "sam2": {
+        "accepted": 3,
+        "whole_Dice": 0.36517973503051965,
+        "remote_Dice": 0.29858381848511395
+      },
+      "wsi": {
+        "accepted": 3,
+        "whole_Dice": 0.19481320692801418,
+        "remote_Dice": 0.15691957842015603
+      }
+    },
+    "previous_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_six_gpu_envrestore_1112_232200",
+    "checked_at": "2026-11-13T22:42:45.340189+08:00",
+    "completed_work_items": 66,
+    "total_work_items": 87,
+    "closeout_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_final15_closeout_1113_224245",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_final15_closeout_1113_224245/acceptance.json"
+  },
+  "latest_consolidated_result_table": {
+    "record": "docs/运行记录/模型实验/结果表_WSI六方法正式15片最终结果_1113_224245.md",
+    "artifact_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_final15_closeout_1113_224245",
+    "time": "2026-11-13T22:42:45.340189+08:00",
+    "policy": "Full formal15 final WSI quality; patch results remain separate in prior matched table."
+  },
+  "latest_runtime_accounting": {
+    "time": "2026-11-13T00:41:03.080908+08:00",
+    "unique_slides": 15,
+    "targets_per_method": 152,
+    "methods": 6,
+    "formal_slide_method_runs": 90,
+    "formal_target_method_runs": 912,
+    "pilot_runs_not_counted": true,
+    "rows": [
+      {
+        "method": "HG_mix",
+        "estimated_formal15_GPU_hours": 29.21358774934306,
+        "amortized_minutes_per_target": 11.531679374740682,
+        "basis": "Partial real formal multi-target streaming; final independent mask replay pending."
+      },
+      {
+        "method": "sansa",
+        "estimated_formal15_GPU_hours": 111.46885998253137,
+        "amortized_minutes_per_target": 44.000865782578174,
+        "basis": "Three completed single-target pilots; full multi-target SANSA not yet measured."
+      },
+      {
+        "method": "sam",
+        "estimated_formal15_GPU_hours": 16.295790414261134,
+        "amortized_minutes_per_target": 6.432548847734657,
+        "basis": "Partial real formal multi-target streaming; final independent mask replay pending."
+      },
+      {
+        "method": "sam2",
+        "estimated_formal15_GPU_hours": 22.08755763066733,
+        "amortized_minutes_per_target": 8.71877274894763,
+        "basis": "Partial real formal multi-target streaming; final independent mask replay pending."
+      },
+      {
+        "method": "wsi",
+        "estimated_formal15_GPU_hours": 16.59893035884348,
+        "amortized_minutes_per_target": 6.552209352175057,
+        "basis": "Partial real formal multi-target streaming; final independent mask replay pending."
+      }
+    ],
+    "known_five_method_GPU_hours": 195.66472613564636,
+    "six_GPU_ideal_known_five_hours": 32.610787689274396,
+    "Med2D_WSI_throughput": "pending measurement",
+    "remaining_planning_days": [
+      2,
+      3
+    ],
+    "limitations": "Remaining 2–3days provisional incl sharing/IO/scoring/Med2D unknown; no guaranteed upper bound. Amortized time reuses features across targets, not independent one-target latency.",
+    "artifact": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_six_gpu_envrestore_1112_232200/time_accounting_1113_004103.json"
+  },
+  "sansa_cache_optimization": {
+    "status": "accepted_exact_cache_in_production",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_cache_1113_004500",
+    "record": "docs/运行记录/模型实验/运行记录_SANSA缓存等价优化_1113_004500.md",
+    "gate_worker_pid": 3020503,
+    "temporarily_stopped_dispatcher": 2687742,
+    "scope": "Only equivalent feature/support-memory caching; current workers preserved; gate launcher SIGCONT dispatcher in finally; no model/weight/precision change.",
+    "acceptance": "12 remote plus6local plus6swapped; bit-exact probabilities/masks, frozen weights unchanged.",
+    "sources": {
+      "benchmarks/v5/sansa_cache/activate.py": "51491c5450d08806ad83aecd6adbc1566c1fe9710911a5a063e6bf8dc9a47c97",
+      "benchmarks/v5/sansa_cache/model.py": "1a9c9c25ec0e3045bc1b3b600359b4e383befab156feee5312a83582cac36216",
+      "benchmarks/v5/sansa_cache/worker.py": "4861fa36ad8c39b341b009dd775536079f65564b380d4ebc74aa2ae13406f6d2",
+      "benchmarks/v5/sansa_cache/__init__.py": "fa7e96e7db721cbbb493ab231a51611e17dc12541ce08006f9054a7d5c5a1e7e",
+      "benchmarks/v5/sansa_cache/gate.py": "55a128e198febf8378a32602a5f3f56ae1f43d0e8c12344c4fde9fc8c9736754"
+    },
+    "activation_processes": [
+      "3037274 /home/zhaoyh/miniconda3/envs/aligner/bin/python -u -m benchmarks.v5.sansa_cache.activate --root /nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_cache_1113_004500"
+    ],
+    "queue": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_cache_1113_004500/queue_1113_005000",
+    "pending_paired_jobs_switched": 13,
+    "gate_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_cache_1113_004500/acceptance.json",
+    "maximum_probability_error": 0.0,
+    "observed_warm_decode_seconds": 0.03150760599722465,
+    "full_WSI_cached_throughput": "pending first future cached worker, do not call warm decode end-to-end speedup",
+    "actual_cached_WSI_complete": 5,
+    "observed_seconds_per_window": [
+      1.0132588341717648,
+      0.9296639715864633,
+      0.9616969486852797,
+      0.8641985396189195,
+      0.9362032377294696
+    ]
+  },
+  "current_WSI_remaining_ETA": {
+    "checked_at": "2026-11-13T19:21:54.352476+08:00",
+    "remaining_hours": [
+      3,
+      5
+    ],
+    "basis": "HG/SANSA last paired WSI HG900/5024 then SANSA; other3SAM last WSI running, Med last pending. Six workers/no failed; include independent scoring and final six-method join.",
+    "indicative_finish": "2026-11-13 22:30 to 2026-11-14 00:30",
+    "provisional": true
+  },
+  "WSI_common_interim": {
+    "status": "common13_accepted_final15_pending",
+    "record": "docs/运行记录/模型实验/结果表_WSI六方法共同前13片阶段结果_1113_193730.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_common13_interim_1113_193730",
+    "summary": [
+      {
+        "method": "HG-mix",
+        "slides": 13,
+        "tasks": 133,
+        "classes": {
+          "0": {
+            "whole_WSI": 0.7829083130798538,
+            "remote_only_WSI": 0.7615574208092498
+          },
+          "1": {
+            "whole_WSI": 0.5453016749660201,
+            "remote_only_WSI": 0.5200151561107854
+          },
+          "3": {
+            "whole_WSI": 0.4490914164836104,
+            "remote_only_WSI": 0.4348735499036591
+          },
+          "4": {
+            "whole_WSI": 0.472702266449719,
+            "remote_only_WSI": 0.40174222778020535
+          },
+          "5": {
+            "whole_WSI": 0.2578743342831701,
+            "remote_only_WSI": 0.20946121506215734
+          },
+          "6": {
+            "whole_WSI": 0.5175069630186452,
+            "remote_only_WSI": 0.5023472280734874
+          },
+          "7": {
+            "whole_WSI": 0.6243197439342271,
+            "remote_only_WSI": 0.6054302842720126
+          },
+          "8": {
+            "whole_WSI": 0.3591459492694608,
+            "remote_only_WSI": 0.3551777301739174
+          },
+          "9": {
+            "whole_WSI": 0.16659704719155982,
+            "remote_only_WSI": 0.13564406882846633
+          },
+          "10": {
+            "whole_WSI": 0.48529646302047946,
+            "remote_only_WSI": 0.43004634184348317
+          },
+          "11": {
+            "whole_WSI": 0.21587180377037604,
+            "remote_only_WSI": 0.20234582221964376
+          }
+        },
+        "whole_WSI": 0.44332872504246557,
+        "remote_only_WSI": 0.4144219131888244
+      },
+      {
+        "method": "SANSA",
+        "slides": 13,
+        "tasks": 133,
+        "classes": {
+          "0": {
+            "whole_WSI": 0.778952792708722,
+            "remote_only_WSI": 0.7475756779202045
+          },
+          "1": {
+            "whole_WSI": 0.4179410896983547,
+            "remote_only_WSI": 0.3934522935884687
+          },
+          "3": {
+            "whole_WSI": 0.3458099074831946,
+            "remote_only_WSI": 0.32069905868915755
+          },
+          "4": {
+            "whole_WSI": 0.28159365787333757,
+            "remote_only_WSI": 0.19857542259098865
+          },
+          "5": {
+            "whole_WSI": 0.21755720107274357,
+            "remote_only_WSI": 0.17287450942571395
+          },
+          "6": {
+            "whole_WSI": 0.3780813448752243,
+            "remote_only_WSI": 0.35916103926559917
+          },
+          "7": {
+            "whole_WSI": 0.5300364304994796,
+            "remote_only_WSI": 0.4958472828463841
+          },
+          "8": {
+            "whole_WSI": 0.05442191202199804,
+            "remote_only_WSI": 0.04554489679362963
+          },
+          "9": {
+            "whole_WSI": 0.10205758242541019,
+            "remote_only_WSI": 0.0751445259671966
+          },
+          "10": {
+            "whole_WSI": 0.47970929785984817,
+            "remote_only_WSI": 0.42732215590170985
+          },
+          "11": {
+            "whole_WSI": 0.12131546746074147,
+            "remote_only_WSI": 0.10746062168608517
+          }
+        },
+        "whole_WSI": 0.33704333490718674,
+        "remote_only_WSI": 0.30396886224319436
+      },
+      {
+        "method": "SAM",
+        "slides": 13,
+        "tasks": 133,
+        "classes": {
+          "0": {
+            "whole_WSI": 0.47526126641390076,
+            "remote_only_WSI": 0.43333057924494633
+          },
+          "1": {
+            "whole_WSI": 0.31799171294906625,
+            "remote_only_WSI": 0.2943888951241603
+          },
+          "3": {
+            "whole_WSI": 0.16159019113845635,
+            "remote_only_WSI": 0.14519619455975397
+          },
+          "4": {
+            "whole_WSI": 0.1979828869425568,
+            "remote_only_WSI": 0.13751928638279295
+          },
+          "5": {
+            "whole_WSI": 0.05943826850937647,
+            "remote_only_WSI": 0.0418789380853953
+          },
+          "6": {
+            "whole_WSI": 0.2293948469719924,
+            "remote_only_WSI": 0.21012321805693904
+          },
+          "7": {
+            "whole_WSI": 0.31771854922126985,
+            "remote_only_WSI": 0.284524941888036
+          },
+          "8": {
+            "whole_WSI": 0.018236759360364396,
+            "remote_only_WSI": 0.015623028117403896
+          },
+          "9": {
+            "whole_WSI": 0.0374503582420567,
+            "remote_only_WSI": 0.030517402974342914
+          },
+          "10": {
+            "whole_WSI": 0.2219861766090306,
+            "remote_only_WSI": 0.19093123697097658
+          },
+          "11": {
+            "whole_WSI": 0.03222495960352605,
+            "remote_only_WSI": 0.027742511590652462
+          }
+        },
+        "whole_WSI": 0.1881159978146906,
+        "remote_only_WSI": 0.16470693027230907
+      },
+      {
+        "method": "SAM2",
+        "slides": 13,
+        "tasks": 133,
+        "classes": {
+          "0": {
+            "whole_WSI": 0.5672673257896168,
+            "remote_only_WSI": 0.5270988916303826
+          },
+          "1": {
+            "whole_WSI": 0.3554882235774385,
+            "remote_only_WSI": 0.331995002992942
+          },
+          "3": {
+            "whole_WSI": 0.212101096290611,
+            "remote_only_WSI": 0.19206073232510407
+          },
+          "4": {
+            "whole_WSI": 0.2630323994996973,
+            "remote_only_WSI": 0.18806013773390823
+          },
+          "5": {
+            "whole_WSI": 0.09686841200015477,
+            "remote_only_WSI": 0.07243278223472877
+          },
+          "6": {
+            "whole_WSI": 0.25747405185287336,
+            "remote_only_WSI": 0.24000079357887308
+          },
+          "7": {
+            "whole_WSI": 0.37456685420201347,
+            "remote_only_WSI": 0.34564188931935763
+          },
+          "8": {
+            "whole_WSI": 0.021092718131568756,
+            "remote_only_WSI": 0.017940987841673018
+          },
+          "9": {
+            "whole_WSI": 0.07414684160691312,
+            "remote_only_WSI": 0.0610339313547649
+          },
+          "10": {
+            "whole_WSI": 0.2906655754695689,
+            "remote_only_WSI": 0.24914178485618665
+          },
+          "11": {
+            "whole_WSI": 0.08102978171048345,
+            "remote_only_WSI": 0.06949209660143052
+          }
+        },
+        "whole_WSI": 0.23579393455735814,
+        "remote_only_WSI": 0.20862718458812288
+      },
+      {
+        "method": "WSI-SAM",
+        "slides": 13,
+        "tasks": 133,
+        "classes": {
+          "0": {
+            "whole_WSI": 0.3257684165346234,
+            "remote_only_WSI": 0.3000687379499579
+          },
+          "1": {
+            "whole_WSI": 0.2837762257188813,
+            "remote_only_WSI": 0.26778564597552557
+          },
+          "3": {
+            "whole_WSI": 0.1566873581302014,
+            "remote_only_WSI": 0.1442811932124097
+          },
+          "4": {
+            "whole_WSI": 0.18283119139997886,
+            "remote_only_WSI": 0.1257848984649819
+          },
+          "5": {
+            "whole_WSI": 0.057892552019844994,
+            "remote_only_WSI": 0.04451290211524928
+          },
+          "6": {
+            "whole_WSI": 0.2025398035827665,
+            "remote_only_WSI": 0.19011284058703762
+          },
+          "7": {
+            "whole_WSI": 0.2978646518532199,
+            "remote_only_WSI": 0.2764024306920437
+          },
+          "8": {
+            "whole_WSI": 0.014556246848355244,
+            "remote_only_WSI": 0.012687160651078104
+          },
+          "9": {
+            "whole_WSI": 0.03014317917606415,
+            "remote_only_WSI": 0.020983706751699457
+          },
+          "10": {
+            "whole_WSI": 0.16284917814122604,
+            "remote_only_WSI": 0.15023697156616095
+          },
+          "11": {
+            "whole_WSI": 0.030092321514583836,
+            "remote_only_WSI": 0.02804123067378638
+          }
+        },
+        "whole_WSI": 0.15863646590179506,
+        "remote_only_WSI": 0.14189979260363006
+      },
+      {
+        "method": "SAM-Med2D",
+        "slides": 13,
+        "tasks": 133,
+        "classes": {
+          "0": {
+            "whole_WSI": 0.34033876283747344,
+            "remote_only_WSI": 0.30374263160004084
+          },
+          "1": {
+            "whole_WSI": 0.2316019823140881,
+            "remote_only_WSI": 0.21478239041936836
+          },
+          "3": {
+            "whole_WSI": 0.13022004742535118,
+            "remote_only_WSI": 0.1200279426357041
+          },
+          "4": {
+            "whole_WSI": 0.08917572799086312,
+            "remote_only_WSI": 0.05819899782313304
+          },
+          "5": {
+            "whole_WSI": 0.05804716475805846,
+            "remote_only_WSI": 0.043609946619358214
+          },
+          "6": {
+            "whole_WSI": 0.2003646076677964,
+            "remote_only_WSI": 0.1855655366607562
+          },
+          "7": {
+            "whole_WSI": 0.237524802380683,
+            "remote_only_WSI": 0.2064013414795437
+          },
+          "8": {
+            "whole_WSI": 0.01767971708965393,
+            "remote_only_WSI": 0.014301318762872087
+          },
+          "9": {
+            "whole_WSI": 0.02210289867566373,
+            "remote_only_WSI": 0.018091634557710366
+          },
+          "10": {
+            "whole_WSI": 0.13298089240898475,
+            "remote_only_WSI": 0.11094964194053983
+          },
+          "11": {
+            "whole_WSI": 0.022546370226949296,
+            "remote_only_WSI": 0.020436023708006533
+          }
+        },
+        "whole_WSI": 0.13478027034323323,
+        "remote_only_WSI": 0.1178279460188212
+      }
+    ]
+  },
+  "HGmix_small_target_analysis": {
+    "status": "complete_readonly_rows_verified",
+    "record": "docs/运行记录/模型实验/分析_HGmix与SANSA小目标面积分层_1113_174308.md",
+    "time": "2026-11-13T17:43:08.804569+08:00",
+    "small_definition": "0<GT_area/valid_area<0.2",
+    "n": 5204,
+    "macro_Dice_HGmix": 0.28191238341671415,
+    "macro_Dice_SANSA": 0.2764773854234425,
+    "delta_pp": 0.5434997993271629,
+    "no_new_inference": true
+  },
+  "optional_extra15_measured_estimate": {
+    "time": "2026-11-13T19:39:57.299460+08:00",
+    "extra_unique_WSI": 15,
+    "extra_targets_per_method": 155,
+    "methods": 6,
+    "extra_method_target_tasks": 930,
+    "approx_query_windows_per_method": 61766,
+    "summary": [
+      {
+        "method": "HG-mix",
+        "accepted_reference_slides": 14,
+        "observed_average_minutes_per_slide": 97.02668900469408,
+        "estimated_extra15_GPU_hours": 23.475403196066097,
+        "average_extra_slide_minutes": 93.90161278426439,
+        "encoding_seconds_per_window": 0.7369129605059033,
+        "amortized_target_seconds_per_window": 0.06164940894345487
+      },
+      {
+        "method": "SANSA",
+        "accepted_reference_slides": 11,
+        "observed_average_minutes_per_slide": 66.4023272892178,
+        "estimated_extra15_GPU_hours": 15.849107154409609,
+        "average_extra_slide_minutes": 63.396428617638435,
+        "encoding_seconds_per_window": 0.49756021969193814,
+        "amortized_target_seconds_per_window": 0.04161756181318972
+      },
+      {
+        "method": "SAM",
+        "accepted_reference_slides": 14,
+        "observed_average_minutes_per_slide": 71.166871935719,
+        "estimated_extra15_GPU_hours": 17.212055098414762,
+        "average_extra_slide_minutes": 68.84822039365905,
+        "encoding_seconds_per_window": 0.6311913011863948,
+        "amortized_target_seconds_per_window": 0.03632575129710905
+      },
+      {
+        "method": "SAM2",
+        "accepted_reference_slides": 14,
+        "observed_average_minutes_per_slide": 74.62628811314879,
+        "estimated_extra15_GPU_hours": 18.046950408133807,
+        "average_extra_slide_minutes": 72.18780163253523,
+        "encoding_seconds_per_window": 0.6985569568910149,
+        "amortized_target_seconds_per_window": 0.03449931066039445
+      },
+      {
+        "method": "WSI-SAM",
+        "accepted_reference_slides": 14,
+        "observed_average_minutes_per_slide": 69.17009279554976,
+        "estimated_extra15_GPU_hours": 16.817514207029326,
+        "average_extra_slide_minutes": 67.2700568281173,
+        "encoding_seconds_per_window": 0.3862688648093582,
+        "amortized_target_seconds_per_window": 0.05799660798960807
+      },
+      {
+        "method": "SAM-Med2D",
+        "accepted_reference_slides": 14,
+        "observed_average_minutes_per_slide": 62.48939012524982,
+        "estimated_extra15_GPU_hours": 15.149155926962683,
+        "average_extra_slide_minutes": 60.59662370785073,
+        "encoding_seconds_per_window": 0.4943785939836848,
+        "amortized_target_seconds_per_window": 0.03794453902178919
+      }
+    ],
+    "total_GPU_hours": 106.55018599101628,
+    "ideal_six_worker_hours": 17.758364331836045,
+    "with25pct_margin_hours": 22.197955414795057,
+    "planning_wall_hours": [
+      20,
+      26
+    ],
+    "status": "estimate_only_not_launched",
+    "assumptions": "All15 already audited eligible train/val-unseen with historical AAAI test exposure; same support and protocol, no retraining; SANSA cached version only. Reports include infer final independent disk score, exclude model loading/engineering gates and full-image identity hashes; add25pct for launch/IO/load/tail balance.",
+    "artifact": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_extra15_measured_ETA_1113_193957/estimate.json",
+    "record": "docs/运行记录/模型实验/估时_追加15张WSI六方法实测外推_1113_193957.md"
+  },
+  "WSI_final_results": {
+    "status": "complete_accepted_formal15_six_method_closeout",
+    "record": "docs/运行记录/模型实验/结果表_WSI六方法正式15片最终结果_1113_224245.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_final15_closeout_1113_224245",
+    "summary": [
+      {
+        "method": "HG-mix",
+        "method_id": "HG_mix",
+        "slides": 15,
+        "targets": 152,
+        "whole_Dice": 0.43751344234799633,
+        "remote_Dice": 0.4098452821314988
+      },
+      {
+        "method": "SANSA",
+        "method_id": "sansa",
+        "slides": 15,
+        "targets": 152,
+        "whole_Dice": 0.3322772113668209,
+        "remote_Dice": 0.3012177196452566
+      },
+      {
+        "method": "SAM",
+        "method_id": "sam",
+        "slides": 15,
+        "targets": 152,
+        "whole_Dice": 0.1885518676742102,
+        "remote_Dice": 0.1663402210766393
+      },
+      {
+        "method": "SAM2",
+        "method_id": "sam2",
+        "slides": 15,
+        "targets": 152,
+        "whole_Dice": 0.23583577284475432,
+        "remote_Dice": 0.21012792999781596
+      },
+      {
+        "method": "WSI-SAM",
+        "method_id": "wsi",
+        "slides": 15,
+        "targets": 152,
+        "whole_Dice": 0.1584927569871182,
+        "remote_Dice": 0.1425120950723557
+      },
+      {
+        "method": "SAM-Med2D",
+        "method_id": "med2d",
+        "slides": 15,
+        "targets": 152,
+        "whole_Dice": 0.1359199182225523,
+        "remote_Dice": 0.119700478825866
+      }
+    ]
+  },
+  "hg_paper_ablation": {
+    "status": "complete_accepted",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_paper_ablation_envcomplete_1113_231852",
+    "record": "docs/运行记录/模型实验/运行记录_HGmix两组核心消融_1113_230552.md",
+    "arms": {
+      "M": {
+        "status": "complete_accepted",
+        "gpu": 3,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.hg_paper_ablation.functional",
+          "--cache",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_paper_ablation_envcomplete_1113_231852/M/functional",
+          "--arm",
+          "M",
+          "--protocol",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022/functional_tasks.json"
+        ],
+        "engineering": "accepted",
+        "engineering_sha256": "2aca0e62f2e1e4571347bb412c0f3e5ea906bcddb970a394481c12bb693ce629",
+        "exact_optimizer_continuation": true,
+        "trainable_parameters": 7024760,
+        "functional": "accepted",
+        "formal_progress": {
+          "pid": 3847690,
+          "seconds": 3711.8928507715464,
+          "stage": "training",
+          "step": 1226,
+          "total": 2375,
+          "loss": 1.0725156515836716
+        },
+        "final_metrics": {
+          "status": "complete_accepted",
+          "evaluation_acceptance": {
+            "status": "complete_accepted",
+            "report_sha256": "9c1098923559d8a91497ef2f2484b425ed5921738ca276e2b7fce0bf225b1bab",
+            "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976",
+            "rows": 11000
+          },
+          "macro_Dice": 0.40915118109566523,
+          "large_Dice": 0.7536859831888217,
+          "FPA": 0.05607502765744037
+        },
+        "historical_worker_pid": 3847690
+      },
+      "no_cross_scale": {
+        "status": "complete_accepted",
+        "gpu": 4,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-m",
+          "benchmarks.v5.hg_paper_ablation.functional",
+          "--cache",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/cell_repair_rebalance_1102_210552/normalized",
+          "--output",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_paper_ablation_envcomplete_1113_231852/no_cross_scale/functional",
+          "--arm",
+          "no_cross_scale",
+          "--protocol",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/same_slide_training_1110_191022/functional_tasks.json"
+        ],
+        "engineering": "accepted",
+        "engineering_sha256": "438cf0c726c3449e4d4fa7e8ffed167d201f3a44b1dd855cf625e164163c5a7b",
+        "exact_optimizer_continuation": true,
+        "trainable_parameters": 6239928,
+        "functional": "accepted",
+        "formal_progress": {
+          "pid": 3846391,
+          "seconds": 3724.7664085179567,
+          "stage": "training",
+          "step": 1226,
+          "total": 2375,
+          "loss": 1.0749008506536484
+        },
+        "final_metrics": {
+          "status": "complete_accepted",
+          "evaluation_acceptance": {
+            "status": "complete_accepted",
+            "report_sha256": "34800c6675b27918b035f18df74d8898f49ba6bcd2442b4f7cf917b0c2727d85",
+            "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976",
+            "rows": 11000
+          },
+          "macro_Dice": 0.41659990745114767,
+          "large_Dice": 0.7766479901702316,
+          "FPA": 0.0690107345685196
+        },
+        "historical_worker_pid": 3846391
+      }
+    },
+    "seed": 20261103,
+    "formal_training_tasks": 9500,
+    "updates": 2375,
+    "evaluation_tasks": 11000,
+    "scope": "M and no_cross_scale only; no auto promotion",
+    "failed_roots": [
+      "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_paper_ablation_1113_230552",
+      "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_paper_ablation_envfix_1113_231608",
+      "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_paper_ablation_vendorfix_1113_231717"
+    ],
+    "checked_at": "2026-11-14T11:30:32.565031+08:00",
+    "implementation_commit": "c98fab258ace2bd6aee07ca088475e7b9bb6a247",
+    "verified_results": {
+      "M": {
+        "status": "complete_accepted",
+        "evaluation_acceptance": {
+          "status": "complete_accepted",
+          "report_sha256": "9c1098923559d8a91497ef2f2484b425ed5921738ca276e2b7fce0bf225b1bab",
+          "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976",
+          "rows": 11000
+        },
+        "macro_Dice": 0.40915118109566523,
+        "large_Dice": 0.7536859831888217,
+        "FPA": 0.05607502765744037
+      },
+      "no_cross_scale": {
+        "status": "complete_accepted",
+        "evaluation_acceptance": {
+          "status": "complete_accepted",
+          "report_sha256": "34800c6675b27918b035f18df74d8898f49ba6bcd2442b4f7cf917b0c2727d85",
+          "tasks_sha256": "e72982d018a9acfcdc0e2fc873b8729576a5588de54ff12d4fccd7a6c8cb4976",
+          "rows": 11000
+        },
+        "macro_Dice": 0.41659990745114767,
+        "large_Dice": 0.7766479901702316,
+        "FPA": 0.0690107345685196
+      }
+    },
+    "active_workers": [],
+    "summary_table": "docs/运行记录/模型实验/结果表_HGmix两组核心消融_1114_113155.md",
+    "interpretation": "H contributes +1.20pp overall/+3.13pp large, crossscale +.45/+.83pp, full model FPA higher; single seed only, patch remote not WSI ablation.",
+    "paper_integrated": true,
+    "paper_verification": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_ablation_writeup_1114_113253/verification.json",
+    "paper_record": "docs/运行记录/模型实验/运行记录_核心消融入稿核验_1114_113538.md"
+  },
+  "paper_inference_supplement": {
+    "status": "complete_accepted",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_inference_1114_121131",
+    "record": "docs/运行记录/模型实验/运行记录_论文补充推理_1114_121131.md",
+    "user_scope": "Frozen-weight inference; runtime exactly100tasks per method mean",
+    "local_tasks_per_method": 302,
+    "robust_base_tasks": 330,
+    "robust_configs": 5,
+    "timing_tasks_per_method": 100,
+    "new_training": false,
+    "lanes": {
+      "quality1": {
+        "status": "complete_accepted",
+        "completed": [
+          [
+            "local",
+            "sansa"
+          ],
+          [
+            "robust",
+            "sansa"
+          ],
+          [
+            "local",
+            "sam2"
+          ]
+        ],
+        "controller_pid": 2443915
+      },
+      "quality0": {
+        "status": "complete_accepted",
+        "completed": [
+          [
+            "local",
+            "HG_mix"
+          ],
+          [
+            "robust",
+            "HG_mix"
+          ],
+          [
+            "local",
+            "sam"
+          ]
+        ],
+        "controller_pid": 2443908
+      },
+      "quality4": {
+        "status": "complete_accepted",
+        "completed": [
+          [
+            "local",
+            "wsi"
+          ],
+          [
+            "local",
+            "med2d"
+          ]
+        ],
+        "controller_pid": 2443922
+      },
+      "timing3": {
+        "status": "complete_accepted",
+        "completed": [
+          [
+            "timing",
+            "HG_mix"
+          ],
+          [
+            "timing",
+            "sansa"
+          ],
+          [
+            "timing",
+            "sam"
+          ],
+          [
+            "timing",
+            "sam2"
+          ],
+          [
+            "timing",
+            "wsi"
+          ],
+          [
+            "timing",
+            "med2d"
+          ]
+        ],
+        "controller_pid": 2443928
+      }
+    },
+    "updated_at": "2026-11-14T12:34:22.659219+08:00",
+    "code_commit": "9985bf975c4fad2eb59790692106628a8bfb5303",
+    "gates": {
+      "timing_HG_mix": "accepted_exact_inference",
+      "local_wsi": "accepted_exact_inference",
+      "local_sansa": "accepted_exact_inference",
+      "local_HG_mix": "accepted_exact_inference"
+    },
+    "completed_jobs": [
+      "timing_HG_mix",
+      "local_wsi",
+      "local_sansa",
+      "local_HG_mix",
+      "local_med2d",
+      "timing_sansa",
+      "robust_HG_mix",
+      "robust_sansa",
+      "timing_sam",
+      "timing_sam2",
+      "timing_wsi",
+      "local_sam",
+      "local_sam2",
+      "timing_med2d"
+    ],
+    "live_workers": [],
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_inference_1114_121131/acceptance.json",
+    "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_inference_1114_121131/report.json",
+    "report_sha256": "f4fa883f04a38e5c634566146be06d0c4b99af962a5e4fe0f659286b593f5c0f",
+    "paper_integrated": true,
+    "paper_sha256": "2e038c2f0ef8976a6d2cc4c4efc8c88a037c6cd606e9f268a8c8eb95871b5a8e"
+  },
+  "reviewer_attribution_plan_1116_022112": {
+    "status": "planned",
+    "created_at": "2026-11-16T02:24:49.240390+08:00",
+    "scope": "Design only; no new training or inference launched; fixed HG-mix preserved",
+    "plan": "docs/建议/模型与训练/方案_HGmix审稿问题归因消融与WSI差距解释_1116_022112.md",
+    "plan_sha256": "1f020faa969c9f3d1e98535419157ff88a99ff1c527ff5eb2e3293ccda39d74b",
+    "new_training_arms": [
+      "Proto-MS",
+      "no-anchor",
+      "no-coarse-prior",
+      "fixed-grid-regions",
+      "no-point-correction",
+      "single-scale-dense"
+    ],
+    "reused_trained_arms": [
+      "HG_mix",
+      "M",
+      "no_cross_scale",
+      "SANSA"
+    ],
+    "formal_updates_proposed": 14250,
+    "formal_plus_functional_fresh4_updates_proposed": 15810,
+    "patch_predictions_proposed": 66000,
+    "new_wsi_method_slide_pairs_proposed": 45,
+    "conditional_full_sansa_window_replay_pairs": 30,
+    "optional_convergence_extension_updates_proposed": 21375,
+    "new_training_seeds": false,
+    "execution_authorized_this_turn": false,
+    "worker_pids": [],
+    "validation": "Plan structure and budget arithmetic checked; no experimental result generated"
+  },
+  "reviewer_sampling_plan_1116": {
+    "status": "planned",
+    "plan": "docs/建议/模型与训练/方案_HGmix审稿问题归因消融与WSI差距解释_1116_022112.md",
+    "plan_sha256": "427c47d9f0662bb1f62ade20dc01c6713a36f170910c435a411823212cbde5fb",
+    "created_at": "2026-11-16T02:37:40.079465+08:00",
+    "patch_target": 1100,
+    "whole_slides": 3,
+    "priority_new_training_arms": [
+      "Proto-MS",
+      "fixed-grid-regions"
+    ],
+    "training_budget_per_arm": {
+      "tasks": 9500,
+      "updates": 2375
+    },
+    "selection": "fixed strata/hash; first3 original formal15 WSI; no model-performance selection",
+    "new_gpu_work_launched": false,
+    "remaining_four_arms": "deferred"
+  },
+  "reviewer_sample_execution_1116_025000": {
+    "status": "complete_accepted",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000",
+    "record": "docs/运行记录/模型实验/运行记录_抽样归因双臂与三片WSI_1116_024330.md",
+    "updated_at": "2026-11-16T10:53:09.560936+08:00",
+    "user_authorized": true,
+    "sample_tasks": 1087,
+    "sample_sha256": "d3d68a7779e3db655516e49155bd7d31cf181935f28234f68cd1fd051183b53a",
+    "cases_sha256": "ec3e1758d8dbd997a39b98cbe53a7c63eb1fa56da793270d638491238534a84c",
+    "training_tasks": 9500,
+    "updates": 2375,
+    "seed": 20261103,
+    "scope": "Proto-MS and fixed-grid training; shared1087patch; first3 fullWSI for Full/SANSA/M/no_cross_scale/Proto-MS",
+    "arms": {
+      "proto_ms": {
+        "status": "complete_accepted_patch",
+        "training_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/proto_ms/formal/acceptance.json",
+        "evaluation_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/proto_ms/evaluation/acceptance.json"
+      },
+      "fixed_grid": {
+        "status": "complete_accepted_patch",
+        "training_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/fixed_grid/formal/acceptance.json",
+        "evaluation_acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/fixed_grid/evaluation/acceptance.json"
+      }
+    },
+    "engineering": {
+      "proto_ms": {
+        "status": "accepted",
+        "pid": 2254063,
+        "arm": "proto_ms",
+        "checks": [
+          {
+            "dataset": "crc",
+            "kind": "local",
+            "encoder_calls": 7,
+            "raw_backbone_matched": true,
+            "cached_full_exact": true
+          },
+          {
+            "dataset": "crc",
+            "kind": "same_absent",
+            "encoder_calls": 7,
+            "raw_backbone_matched": true,
+            "cached_full_exact": true
+          },
+          {
+            "dataset": "crc",
+            "kind": "same_present",
+            "encoder_calls": 7,
+            "raw_backbone_matched": true,
+            "cached_full_exact": true
+          },
+          {
+            "dataset": "tiger",
+            "kind": "local",
+            "encoder_calls": 7,
+            "raw_backbone_matched": true,
+            "cached_full_exact": true
+          }
+        ],
+        "prompt_swap_mean": 0.0006123165367171168,
+        "frozen_state_unchanged": true,
+        "trainable_parameters": 3543809,
+        "seconds": 31.58824386820197
+      },
+      "fixed_grid": {
+        "status": "accepted",
+        "pid": 2254061,
+        "arm": "fixed_grid",
+        "checks": [
+          {
+            "dataset": "crc",
+            "kind": "local",
+            "encoder_calls": 7,
+            "raw_backbone_matched": true,
+            "cached_full_exact": true
+          },
+          {
+            "dataset": "crc",
+            "kind": "same_absent",
+            "encoder_calls": 7,
+            "raw_backbone_matched": true,
+            "cached_full_exact": true
+          },
+          {
+            "dataset": "crc",
+            "kind": "same_present",
+            "encoder_calls": 7,
+            "raw_backbone_matched": true,
+            "cached_full_exact": true
+          },
+          {
+            "dataset": "tiger",
+            "kind": "local",
+            "encoder_calls": 7,
+            "raw_backbone_matched": true,
+            "cached_full_exact": true
+          }
+        ],
+        "prompt_swap_mean": 0.00047806912334635854,
+        "frozen_state_unchanged": true,
+        "trainable_parameters": 6977785,
+        "seconds": 42.02137431874871
+      }
+    },
+    "failures_preserved": [
+      "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_024330",
+      "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_024824"
+    ],
+    "source_commit": "e93fbce0fac6e06c2d70b7743fd2eee9b11384f9",
+    "verified_snapshot": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/closeout_verified_1116_105309.json",
+    "wsi": {
+      "status": "complete_accepted",
+      "methods": 5,
+      "slides": 3,
+      "method_slide_pairs": 15,
+      "slide_target_method_evaluations": 160,
+      "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/wsi_summary.json"
+    },
+    "own_gpu_workers": [],
+    "patch_metrics": {
+      "proto_ms": {
+        "macro_Dice": 0.4082721199261565,
+        "small_macro_Dice": 0.2949363309691211,
+        "large_macro_Dice": 0.7150445114590661,
+        "macro_absent_FPA": 0.051618458140980115
+      },
+      "fixed_grid": {
+        "macro_Dice": 0.4203973743669543,
+        "small_macro_Dice": 0.2947575341146113,
+        "large_macro_Dice": 0.7601787336132201,
+        "macro_absent_FPA": 0.06672762784090909
+      },
+      "HG_mix": {
+        "macro_Dice": 0.4231721443587567,
+        "small_macro_Dice": 0.29981314637935674,
+        "large_macro_Dice": 0.7567064795483076,
+        "macro_absent_FPA": 0.06322162974964489
+      },
+      "sansa": {
+        "macro_Dice": 0.41580556852233636,
+        "small_macro_Dice": 0.28706961880610443,
+        "large_macro_Dice": 0.7516019881210535,
+        "macro_absent_FPA": 0.13039133245294746
+      },
+      "M": {
+        "macro_Dice": 0.4109556939742985,
+        "small_macro_Dice": 0.2977803939391508,
+        "large_macro_Dice": 0.7239550857444068,
+        "macro_absent_FPA": 0.05035214510830966
+      },
+      "no_cross_scale": {
+        "macro_Dice": 0.4170284435867151,
+        "small_macro_Dice": 0.2952060372275396,
+        "large_macro_Dice": 0.7504132086783849,
+        "macro_absent_FPA": 0.06033642855557528
+      }
+    },
+    "wsi_metrics": {
+      "HG_mix": {
+        "fused_all": {
+          "macro_Dice": 0.45652153766369796,
+          "per_tissue": {
+            "0": 0.8531876735129321,
+            "1": 0.5620922373605373,
+            "3": 0.4673530573737623,
+            "4": 0.345500891511863,
+            "5": 0.07221914096165738,
+            "6": 0.667703660790084,
+            "7": 0.7495626938996525,
+            "8": 0.35429873176391957,
+            "9": 0.028944899558706605,
+            "10": 0.6153861322129859,
+            "11": 0.30548779535457693
+          }
+        },
+        "fused_remote": {
+          "macro_Dice": 0.43035560504027154,
+          "per_tissue": {
+            "0": 0.8378291446090801,
+            "1": 0.5148043132467428,
+            "3": 0.4765982608235646,
+            "4": 0.3341431575728147,
+            "5": 0.054922198712983324,
+            "6": 0.6717176093349586,
+            "7": 0.7059068349272933,
+            "8": 0.31083043068276284,
+            "9": 0.025105169670856645,
+            "10": 0.5117712975014569,
+            "11": 0.29028323836047193
+          }
+        },
+        "owner_all": {
+          "macro_Dice": 0.4641080395772166,
+          "per_tissue": {
+            "0": 0.8529170061447967,
+            "1": 0.5587192505290551,
+            "3": 0.4696733278070823,
+            "4": 0.35457393686982536,
+            "5": 0.07796291027668571,
+            "6": 0.6819534482455455,
+            "7": 0.7616543490112995,
+            "8": 0.3711082007919785,
+            "9": 0.027308857562443306,
+            "10": 0.6249241997704764,
+            "11": 0.3243929483401942
+          }
+        },
+        "owner_remote": {
+          "macro_Dice": 0.43783551807625476,
+          "per_tissue": {
+            "0": 0.8373527763334115,
+            "1": 0.5113434230643135,
+            "3": 0.4794028875619665,
+            "4": 0.3427246853550086,
+            "5": 0.05939625172666695,
+            "6": 0.6876203185448052,
+            "7": 0.7212044228658145,
+            "8": 0.32481613721331326,
+            "9": 0.02329473051108133,
+            "10": 0.5219239972032256,
+            "11": 0.3071110684591958
+          }
+        },
+        "window_present_all": {
+          "macro_Dice": 0.3779032241639381,
+          "per_tissue": {
+            "0": 0.7629531347742597,
+            "1": 0.5411155721250943,
+            "3": 0.3432709290732861,
+            "4": 0.23782280390669885,
+            "5": 0.21779432699668955,
+            "6": 0.5115667961794754,
+            "7": 0.4699017773873779,
+            "8": 0.3352509425561493,
+            "9": 0.0753858016408013,
+            "10": 0.37935992220330944,
+            "11": 0.2825134589601777
+          }
+        },
+        "window_present_remote": {
+          "macro_Dice": 0.35124128340465277,
+          "per_tissue": {
+            "0": 0.7453141769612893,
+            "1": 0.502691295239435,
+            "3": 0.34320024837760377,
+            "4": 0.18853556688030246,
+            "5": 0.19740443748016182,
+            "6": 0.5118896201870905,
+            "7": 0.4185453428713606,
+            "8": 0.2852780593310337,
+            "9": 0.06843682955954163,
+            "10": 0.3343539875072798,
+            "11": 0.2680045530560822
+          }
+        }
+      },
+      "sansa": {
+        "fused_all": {
+          "macro_Dice": 0.34854799957953825,
+          "per_tissue": {
+            "0": 0.7988472728742816,
+            "1": 0.32222851742961206,
+            "3": 0.3658941607796677,
+            "4": 0.1806461780791858,
+            "5": 0.19746548601223035,
+            "6": 0.5265549922762419,
+            "7": 0.569823396918828,
+            "8": 0.021450164615014273,
+            "9": 0.012944800082976106,
+            "10": 0.6474489694813713,
+            "11": 0.19072405682551166
+          }
+        },
+        "fused_remote": {
+          "macro_Dice": 0.31213407232620816,
+          "per_tissue": {
+            "0": 0.755777831220914,
+            "1": 0.2763309760587153,
+            "3": 0.3549336235563871,
+            "4": 0.10847194216814525,
+            "5": 0.1712200695965412,
+            "6": 0.5239705558686216,
+            "7": 0.48759076392993655,
+            "8": 0.01675545875409398,
+            "9": 0.009504913713384619,
+            "10": 0.5454347209564032,
+            "11": 0.18348393976514699
+          }
+        },
+        "owner_all": {
+          "macro_Dice": 0.3469818252470191,
+          "per_tissue": {
+            "0": 0.811382137515996,
+            "1": 0.316543462132202,
+            "3": 0.34428636172400884,
+            "4": 0.17889291253818584,
+            "5": 0.20188707679490547,
+            "6": 0.5141380496844472,
+            "7": 0.5777514152734354,
+            "8": 0.022674229400672867,
+            "9": 0.013397395338050013,
+            "10": 0.664672043365288,
+            "11": 0.17117499395001776
+          }
+        },
+        "owner_remote": {
+          "macro_Dice": 0.31114617545968354,
+          "per_tissue": {
+            "0": 0.7719455191646233,
+            "1": 0.2716607811455924,
+            "3": 0.3315335851013039,
+            "4": 0.10699406580940034,
+            "5": 0.1754955507604338,
+            "6": 0.5114669614043773,
+            "7": 0.4962734485582241,
+            "8": 0.01768042029923663,
+            "9": 0.009858390653890547,
+            "10": 0.5662178116771442,
+            "11": 0.16348139548229235
+          }
+        },
+        "window_present_all": {
+          "macro_Dice": 0.3736720921108656,
+          "per_tissue": {
+            "0": 0.770195321873438,
+            "1": 0.42286114469209074,
+            "3": 0.37662537921672423,
+            "4": 0.2358674654866527,
+            "5": 0.23578591934377147,
+            "6": 0.5250747717258774,
+            "7": 0.4355260470176387,
+            "8": 0.314832667494321,
+            "9": 0.08616376667513335,
+            "10": 0.41928753932846785,
+            "11": 0.28817299036540683
+          }
+        },
+        "window_present_remote": {
+          "macro_Dice": 0.3471391909593786,
+          "per_tissue": {
+            "0": 0.7488194973863108,
+            "1": 0.3880649564158574,
+            "3": 0.3625461678320738,
+            "4": 0.18967549994113383,
+            "5": 0.21257258201991705,
+            "6": 0.5288484809613699,
+            "7": 0.3820734215281975,
+            "8": 0.2772002639016258,
+            "9": 0.07583481605040422,
+            "10": 0.3724917016643106,
+            "11": 0.28040371285196447
+          }
+        }
+      },
+      "M": {
+        "fused_all": {
+          "macro_Dice": 0.41700341626063525,
+          "per_tissue": {
+            "0": 0.8492776587323543,
+            "1": 0.5299352081270895,
+            "3": 0.4552020196632625,
+            "4": 0.34386884957700764,
+            "5": 0.07126362125082451,
+            "6": 0.4880742436358359,
+            "7": 0.7447889324020975,
+            "8": 0.1519413270784124,
+            "9": 0.07034555322754547,
+            "10": 0.6098132744614871,
+            "11": 0.2725268907110699
+          }
+        },
+        "fused_remote": {
+          "macro_Dice": 0.39420713025043386,
+          "per_tissue": {
+            "0": 0.8316376962794599,
+            "1": 0.4786639021268148,
+            "3": 0.46411396770116076,
+            "4": 0.35254770778142563,
+            "5": 0.054263171192628544,
+            "6": 0.4823944463597633,
+            "7": 0.7026814076259434,
+            "8": 0.13794861111531126,
+            "9": 0.06658273342774257,
+            "10": 0.5078722798161627,
+            "11": 0.2575725093283596
+          }
+        },
+        "owner_all": {
+          "macro_Dice": 0.4218406647859154,
+          "per_tissue": {
+            "0": 0.8494124707928252,
+            "1": 0.5258665781529247,
+            "3": 0.45262813192903123,
+            "4": 0.3448865004550157,
+            "5": 0.07607370337780366,
+            "6": 0.49907555843754636,
+            "7": 0.7539310098786732,
+            "8": 0.15693473140491537,
+            "9": 0.07212196824385433,
+            "10": 0.6179304286168209,
+            "11": 0.2913862313556587
+          }
+        },
+        "owner_remote": {
+          "macro_Dice": 0.3997511955675583,
+          "per_tissue": {
+            "0": 0.8314523488193452,
+            "1": 0.47293410084231846,
+            "3": 0.46059235606028287,
+            "4": 0.36118267364336915,
+            "5": 0.057987856584319424,
+            "6": 0.4944556398985702,
+            "7": 0.7153604625120411,
+            "8": 0.14157477245021477,
+            "9": 0.06813275516533439,
+            "10": 0.5184289346377581,
+            "11": 0.2751612506295869
+          }
+        },
+        "window_present_all": {
+          "macro_Dice": 0.36796263644782184,
+          "per_tissue": {
+            "0": 0.7642580274570993,
+            "1": 0.5392190883785521,
+            "3": 0.3450716438545425,
+            "4": 0.19715235584103966,
+            "5": 0.21744036279247736,
+            "6": 0.40970390282633584,
+            "7": 0.4697455419856927,
+            "8": 0.3289830978955619,
+            "9": 0.07810739872026885,
+            "10": 0.37180287509100013,
+            "11": 0.32610470608346903
+          }
+        },
+        "window_present_remote": {
+          "macro_Dice": 0.3415271914772451,
+          "per_tissue": {
+            "0": 0.745901614829782,
+            "1": 0.4999613182739246,
+            "3": 0.34085415771160915,
+            "4": 0.1577964434237992,
+            "5": 0.19773191641762886,
+            "6": 0.40542218945249947,
+            "7": 0.4194545679979537,
+            "8": 0.2808993740526181,
+            "9": 0.06975185043800185,
+            "10": 0.3263678677221311,
+            "11": 0.31265780592974807
+          }
+        }
+      },
+      "no_cross_scale": {
+        "fused_all": {
+          "macro_Dice": 0.44272618797639735,
+          "per_tissue": {
+            "0": 0.8572329908073547,
+            "1": 0.5656725232200926,
+            "3": 0.4663869149782068,
+            "4": 0.3189014378426787,
+            "5": 0.07052761182495151,
+            "6": 0.6171879347667463,
+            "7": 0.7699884628905272,
+            "8": 0.17097584055244752,
+            "9": 0.06134717830842282,
+            "10": 0.6572087524834284,
+            "11": 0.3145584200655151
+          }
+        },
+        "fused_remote": {
+          "macro_Dice": 0.4189099358076105,
+          "per_tissue": {
+            "0": 0.841551619781337,
+            "1": 0.5178206349662987,
+            "3": 0.4751761265105121,
+            "4": 0.31019423194762136,
+            "5": 0.05368408602131139,
+            "6": 0.6175372978540787,
+            "7": 0.732798191302579,
+            "8": 0.14509809664408319,
+            "9": 0.05666123285998397,
+            "10": 0.5583880531019315,
+            "11": 0.2990997228939793
+          }
+        },
+        "owner_all": {
+          "macro_Dice": 0.4512610630518688,
+          "per_tissue": {
+            "0": 0.8568355001233151,
+            "1": 0.5485315785897701,
+            "3": 0.47108255270212024,
+            "4": 0.32870555218718434,
+            "5": 0.07575768772669243,
+            "6": 0.6260369167204639,
+            "7": 0.779283297223238,
+            "8": 0.1923042647413702,
+            "9": 0.06169037817008429,
+            "10": 0.6740036261058201,
+            "11": 0.3496403392804981
+          }
+        },
+        "owner_remote": {
+          "macro_Dice": 0.42761971947332306,
+          "per_tissue": {
+            "0": 0.8411049392656821,
+            "1": 0.4995692785659056,
+            "3": 0.4809467976607575,
+            "4": 0.31995308336587763,
+            "5": 0.05780496557936094,
+            "6": 0.6274304311028917,
+            "7": 0.7446745168109504,
+            "8": 0.16318174869487737,
+            "9": 0.056779871857498776,
+            "10": 0.579373955647661,
+            "11": 0.3329973256550915
+          }
+        },
+        "window_present_all": {
+          "macro_Dice": 0.37467601004525297,
+          "per_tissue": {
+            "0": 0.7639849978105423,
+            "1": 0.5340107822222023,
+            "3": 0.34221848080422634,
+            "4": 0.22011300047589136,
+            "5": 0.21431865106775505,
+            "6": 0.5111677021434821,
+            "7": 0.47704627071752387,
+            "8": 0.31031549166988653,
+            "9": 0.07966019202498147,
+            "10": 0.3852261445197436,
+            "11": 0.2833743970415478
+          }
+        },
+        "window_present_remote": {
+          "macro_Dice": 0.3487062486239609,
+          "per_tissue": {
+            "0": 0.7453993968876312,
+            "1": 0.49498941081690456,
+            "3": 0.3415579923097651,
+            "4": 0.17579841247356232,
+            "5": 0.1949980219475896,
+            "6": 0.5111004548600026,
+            "7": 0.4267289948397892,
+            "8": 0.2636316277477822,
+            "9": 0.0723909447059026,
+            "10": 0.3397395430793422,
+            "11": 0.26943393519529785
+          }
+        }
+      },
+      "proto_ms": {
+        "fused_all": {
+          "macro_Dice": 0.4213008115354582,
+          "per_tissue": {
+            "0": 0.8135820747593482,
+            "1": 0.5276286198507831,
+            "3": 0.4479344988527297,
+            "4": 0.3256523726130115,
+            "5": 0.12462874657126506,
+            "6": 0.6570984069233451,
+            "7": 0.664879427272124,
+            "8": 0.09487127248074471,
+            "9": 0.10234577938540558,
+            "10": 0.4397727078102978,
+            "11": 0.43591502037098545
+          }
+        },
+        "fused_remote": {
+          "macro_Dice": 0.3952987580636076,
+          "per_tissue": {
+            "0": 0.7884533143669973,
+            "1": 0.47979408860192935,
+            "3": 0.4491719177068707,
+            "4": 0.31397834282077114,
+            "5": 0.09740801410776824,
+            "6": 0.6634640001246632,
+            "7": 0.6008519791046186,
+            "8": 0.09098107480234505,
+            "9": 0.09609047251727554,
+            "10": 0.35011650840908565,
+            "11": 0.4179766261373589
+          }
+        },
+        "owner_all": {
+          "macro_Dice": 0.41911909212276827,
+          "per_tissue": {
+            "0": 0.8084773805335463,
+            "1": 0.5284743232603358,
+            "3": 0.44805441778857436,
+            "4": 0.3312728083828244,
+            "5": 0.12951129947903411,
+            "6": 0.6579704982607927,
+            "7": 0.6725144568308243,
+            "8": 0.09916878679071064,
+            "9": 0.10551789131283425,
+            "10": 0.3907773304015664,
+            "11": 0.43857082030940714
+          }
+        },
+        "owner_remote": {
+          "macro_Dice": 0.3917255418427411,
+          "per_tissue": {
+            "0": 0.7821594791767607,
+            "1": 0.48078666433554523,
+            "3": 0.4491921661490254,
+            "4": 0.31428795825154,
+            "5": 0.10147999844079653,
+            "6": 0.6641102543260325,
+            "7": 0.608950982422589,
+            "8": 0.09480639543373995,
+            "9": 0.098216084692712,
+            "10": 0.29537554268479366,
+            "11": 0.41961543435661747
+          }
+        },
+        "window_present_all": {
+          "macro_Dice": 0.38317848829652834,
+          "per_tissue": {
+            "0": 0.7363591424293298,
+            "1": 0.5282701516798355,
+            "3": 0.3563729080006926,
+            "4": 0.25815687016032585,
+            "5": 0.2247928833993638,
+            "6": 0.5216102748559183,
+            "7": 0.4506989949477273,
+            "8": 0.3324122081281621,
+            "9": 0.09306836462224603,
+            "10": 0.32575379273836563,
+            "11": 0.3874677802998445
+          }
+        },
+        "window_present_remote": {
+          "macro_Dice": 0.3579397949003227,
+          "per_tissue": {
+            "0": 0.7196833119083518,
+            "1": 0.4906085507765933,
+            "3": 0.35080303503154103,
+            "4": 0.22150103012723266,
+            "5": 0.2027613471132066,
+            "6": 0.5247113922397589,
+            "7": 0.39957723521556915,
+            "8": 0.2946186010053464,
+            "9": 0.08370476720837111,
+            "10": 0.27391206053299993,
+            "11": 0.37545641274457897
+          }
+        }
+      }
+    },
+    "completed_at": "2026-11-16T10:48:40+08:00",
+    "elapsed_hours": 7.9805,
+    "scope_completed": "two matched training arms;1087sample patch;5methods x3fullWSI;old15pairedCPU statistics",
+    "remaining_authorized_work": []
+  },
+  "paper_sampled_attribution_1116_110859": {
+    "status": "complete_accepted",
+    "updated_at": "2026-11-16T11:08:59.065467+08:00",
+    "paper": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115",
+    "receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_attribution_1116_110859/acceptance.json",
+    "receipt_sha256": "ba097b81eabc2ab618fe68ee1b41a23b21ff690aa74bc1232114c338db9069ba",
+    "main_text_pages": 8,
+    "main_pdf_pages": 10,
+    "supplementary_pages": 6,
+    "new_tables": [
+      "S3",
+      "S4",
+      "S11"
+    ],
+    "training_started": false,
+    "inference_started": false,
+    "archive_sha256": "798dba6e64ebc38f7e35ca7286693edf3c6ff5e4a41515c83f6d17734efe4f6a"
+  },
+  "paper_scientific_editor_1116_120217": {
+    "status": "complete_accepted",
+    "updated_at": "2026-11-16T12:02:17.601078+08:00",
+    "skill": "scientific-manuscript-editor 1.9.0",
+    "scope": [
+      "sec/4_experiments.tex",
+      "sec/supplement.tex",
+      "tables/sampled_controls.tex",
+      "tables/wsi_readouts.tex"
+    ],
+    "receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_scientific_editor_1116_120217/acceptance.json",
+    "receipt_sha256": "8e23c9a0d819a3c9dab4fe0bedaa0c09614e1704aa19cb3982771c4a83bc9968",
+    "main_text_pages": 8,
+    "supplementary_pages": 6,
+    "training_started": false,
+    "inference_started": false
+  },
+  "paper_chinese_translation_1116_121453": {
+    "status": "complete_accepted",
+    "updated_at": "2026-11-16T12:14:53.606139+08:00",
+    "pdf": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/main_ch.pdf",
+    "main_text_pages": 8,
+    "pdf_pages": 10,
+    "receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_ch_translation_1116_121453/acceptance.json",
+    "receipt_sha256": "9d2fb2f20aac141b1840a95f5658c732869327c56dab59144af5bb62ab6104b1",
+    "training_started": false,
+    "inference_started": false
+  },
+  "paper_abstract_wsi_1116_124755": {
+    "status": "complete_accepted",
+    "updated_at": "2026-11-16T12:47:55.601629+08:00",
+    "receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_abstract_wsi_1116_124755/acceptance.json",
+    "receipt_sha256": "44003e565444d527031e51f9a3138ef6fd9caf7c2a08b85aa8eea08ac2955cff",
+    "scope": "English and Chinese abstracts: WSI gains first; remote queue absent FPA only",
+    "training_started": false,
+    "inference_started": false
+  },
+  "paper_abstract_accuracy_1116_125646": {
+    "status": "complete_accepted",
+    "updated_at": "2026-11-16T12:56:46.464814+08:00",
+    "receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_abstract_accuracy_1116_125646/acceptance.json",
+    "receipt_sha256": "3345ab510e8af51a7feb9c5493c2354a37c146d658f66350b07e5cc4ca39cb75",
+    "scope": "One bilingual abstract closing sentence"
+  },
+  "paper_intro_comparison_1116_130136": {
+    "status": "complete_accepted",
+    "updated_at": "2026-11-16T13:01:36.880340+08:00",
+    "receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_intro_comparison_1116_130136/acceptance.json",
+    "receipt_sha256": "fe3b16d49c753f188f396ffa6d2203b36f92a1b251f8152949172c0729d94610",
+    "scope": "Bilingual Introduction contribution paragraph final comparison"
+  },
+  "paper_method_audit_1116_131014": {
+    "status": "complete",
+    "completed_at": "2026-11-16T13:14:31.695526+08:00",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_method_audit_1116_131014/acceptance.json",
+    "review": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_method_audit_1116_131014/method_review.json",
+    "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/method_audit_1116_131014",
+    "source_hash_matches": 18,
+    "no_new_training_or_inference": true
+  },
+  "paper_figure2_green_1116_140702": {
+    "status": "complete",
+    "completed_at": "2026-11-16T14:10:32.822405+08:00",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_green_1116_140702/acceptance.json",
+    "no_new_training_or_inference": true
+  },
+  "paper_figure2_contrast_1116_142257": {
+    "status": "complete",
+    "completed_at": "2026-11-16T14:24:04.880985+08:00",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_contrast_1116_142257/acceptance.json",
+    "no_new_training_or_inference": true
+  },
+  "paper_figure2_midgreen_1116_142526": {
+    "status": "complete",
+    "completed_at": "2026-11-16T14:26:30.056603+08:00",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_midgreen_1116_142526/acceptance.json",
+    "no_new_training_or_inference": true
+  },
+  "paper_figure2_multitissue_1116_161205": {
+    "status": "complete",
+    "completed_at": "2026-11-16T16:15:33.445952+08:00",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_multitissue_1116_161205/acceptance.json",
+    "no_new_training_or_inference": true
+  },
+  "paper_figure2_caption_1116_162850": {
+    "status": "complete",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_caption_1116_162850/acceptance.json"
+  },
+  "paper_table3_alignment_1116_164056": {
+    "status": "complete",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_table3_alignment_1116_164056/acceptance.json"
+  },
+  "paper_table3_equalwidth_1116_210542": {
+    "status": "complete",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_table3_equalwidth_1116_210542/acceptance.json"
+  },
+  "paper_table2_order_1116_210819": {
+    "status": "complete",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_table2_order_1116_210819/acceptance.json"
+  },
+  "paper_experiment_summary_1116_211436": {
+    "status": "complete",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_experiment_summary_1116_211436/acceptance.json",
+    "no_new_training_or_inference": true
+  },
+  "wsi_controls_full15_1116_214757": {
+    "status": "complete_accepted_full15",
+    "updated_at": "2026-11-17T11:04:10.647006+08:00",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full15_1116_214757",
+    "record": "docs/运行记录/模型实验/运行记录_ProtoMS核心消融完整15WSI_1116_214757.md",
+    "scope": "Frozen Proto-MS/M/no_cross_scale on original formal15; reuse first3, infer remaining12",
+    "methods": [
+      "proto_ms",
+      "M",
+      "no_cross_scale"
+    ],
+    "slides": 15,
+    "targets_per_method": 152,
+    "new_pairs": 36,
+    "reused_pairs": 9,
+    "new_training": false,
+    "maximum_gpu_workers": 6,
+    "controller_pid": 2175910,
+    "active_workers": [],
+    "eta_hours": [
+      10,
+      13
+    ],
+    "preflight": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full15_1116_214757/preflight.json",
+    "jobs": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full15_1116_214757/jobs.json",
+    "contract": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full15_1116_214757/contract.json",
+    "launch": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full15_1116_214757/launch.json",
+    "engineering_gates_accepted": 3,
+    "new_jobs_complete": 36,
+    "new_jobs_total": 36,
+    "source_commit": "9c32f32986f008264a15a274da1600ad3496d8a6",
+    "finished_at": "2026-11-17T10:45:01.176983+08:00",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full15_1116_214757/acceptance.json",
+    "summary": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full15_1116_214757/summary.json",
+    "closeout_verification": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full15_closeout_1117_110410/verification.json",
+    "paper_updated": false
+  },
+  "paper_propagation_framing_1116_221217": {
+    "status": "complete",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_propagation_framing_1116_221217/acceptance.json",
+    "no_new_training_or_inference": true
+  },
+  "paper_submission_audit_1116_232224": {
+    "status": "complete",
+    "submission_ready": false,
+    "audit_result": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_submission_audit_1116_232224/audit_result.json",
+    "no_new_training_or_inference": true
+  },
+  "paper_llm_statement_1116_234442": {
+    "status": "complete",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_llm_statement_1116_234442/acceptance.json",
+    "no_new_training_or_inference": true
+  },
+  "paper_method_pptx_1117_105922": {
+    "status": "complete",
+    "acceptance": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_method_pptx_1117_105922/acceptance.json",
+    "no_new_training_or_inference": true
+  },
+  "wsi_crossscale_diagnostic_1117_110717": {
+    "status": "complete",
+    "report": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_crossscale_diagnostic_1117_110717/report.md",
+    "diagnostic": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_crossscale_diagnostic_1117_110717/diagnostic.json",
+    "no_new_training_or_inference": true
+  },
+  "paper_references_figure3_1117_163643": {
+    "status": "complete",
+    "updated_at": "2026-11-17T16:40:09.547613+08:00",
+    "acceptance": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/references_figure3_1117_163643/acceptance.json",
+    "summary": "补齐SAM-Med2D可见arXiv来源、PFENet/PANet/SANSA/CyCTR正式页码，PFENet换正式DOI链接、CyCTR换官方论文集链接，TIGER补充文献显示DOI。图3从原CPU绘图脚本以pdf.fonttype=42重绘；4例选择及全部指标、36内嵌图像和PDF文字完全一致，PNG逐字节一致。最终图3字体为CID TrueType，带Unicode映射；三版PDF均无Type3、无编译警告或未定义引用。中英文正文8页/总10页，补充6页，图3及文献页视觉检查通过。无新训练或推理，15WSI新消融结果仍待同步。"
+  },
+  "wsi_controls_full30_1117_173543": {
+    "status": "running",
+    "updated_at": "2026-11-17T19:24:15.414400+08:00",
+    "record": "docs/运行记录/模型实验/运行记录_四方法消融完整30WSI_1117_173543.md",
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543",
+    "methods": [
+      "HG_mix",
+      "proto_ms",
+      "M",
+      "no_cross_scale"
+    ],
+    "slides": 30,
+    "targets": 307,
+    "reused_pairs": 60,
+    "new_pairs": 60,
+    "estimated_wall_hours": [
+      24,
+      30
+    ],
+    "new_training": false,
+    "controller_pid": 2635141,
+    "active_jobs": [
+      {
+        "method": "no_cross_scale",
+        "case": 26,
+        "gate_only": false,
+        "status": "running",
+        "estimated_seconds": 13383.996748476276,
+        "gpu": 5,
+        "worker_pid": 2646250,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.reviewer_sample.full30",
+          "worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543",
+          "--method",
+          "no_cross_scale",
+          "--case-index",
+          "26"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543/logs/no_cross_scale_case_26.log",
+        "started_at": 1794914514.2544878
+      },
+      {
+        "method": "no_cross_scale",
+        "case": 22,
+        "gate_only": false,
+        "status": "running",
+        "estimated_seconds": 13266.628168190886,
+        "gpu": 1,
+        "worker_pid": 2646256,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.reviewer_sample.full30",
+          "worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543",
+          "--method",
+          "no_cross_scale",
+          "--case-index",
+          "22"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543/logs/no_cross_scale_case_22.log",
+        "started_at": 1794914514.331144
+      },
+      {
+        "method": "no_cross_scale",
+        "case": 29,
+        "gate_only": false,
+        "status": "running",
+        "estimated_seconds": 12560.42738850761,
+        "gpu": 3,
+        "worker_pid": 2646258,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.reviewer_sample.full30",
+          "worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543",
+          "--method",
+          "no_cross_scale",
+          "--case-index",
+          "29"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543/logs/no_cross_scale_case_29.log",
+        "started_at": 1794914514.4030554
+      },
+      {
+        "method": "no_cross_scale",
+        "case": 15,
+        "gate_only": false,
+        "status": "running",
+        "estimated_seconds": 11054.528824506935,
+        "gpu": 2,
+        "worker_pid": 2646267,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.reviewer_sample.full30",
+          "worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543",
+          "--method",
+          "no_cross_scale",
+          "--case-index",
+          "15"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543/logs/no_cross_scale_case_15.log",
+        "started_at": 1794914514.4737673
+      },
+      {
+        "method": "M",
+        "case": 26,
+        "gate_only": false,
+        "status": "running",
+        "estimated_seconds": 11002.897555180378,
+        "gpu": 4,
+        "worker_pid": 2646269,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.reviewer_sample.full30",
+          "worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543",
+          "--method",
+          "M",
+          "--case-index",
+          "26"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543/logs/M_case_26.log",
+        "started_at": 1794914514.5466108
+      },
+      {
+        "method": "M",
+        "case": 22,
+        "gate_only": false,
+        "status": "running",
+        "estimated_seconds": 10906.409600995532,
+        "gpu": 0,
+        "worker_pid": 2646274,
+        "command": [
+          "/home/zhaoyh/miniconda3/envs/aligner/bin/python",
+          "-u",
+          "-m",
+          "benchmarks.v5.reviewer_sample.full30",
+          "worker",
+          "--root",
+          "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543",
+          "--method",
+          "M",
+          "--case-index",
+          "22"
+        ],
+        "log": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543/logs/M_case_22.log",
+        "started_at": 1794914514.6206818
+      }
+    ],
+    "engineering_gates_accepted": 4,
+    "status_verified": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543/status_verified.json"
+  },
+  "repository_cleanup_1120_172853": {
+    "status": "cleanup_verified",
+    "updated_at": "2026-11-20T17:30:52.691290+08:00",
+    "record": "docs/仓库维护.md",
+    "archive_root": "/nfs-medical3/zyh/fewclick_v2/repository_cleanup_1120_172853",
+    "manifest_sha256": "7ebd8bf65b84459ab34620a2a76fe7c0b8e40b95d94d38bbbb72768a57fa140a",
+    "archived_files": 954,
+    "removed_rebuildable_files": 36,
+    "experiment_status_changed": false
   }
 }

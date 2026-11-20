@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{在11,000个任务上的同片远端分割结果。各任务使用三个正支持点击和两个负支持点击，查询区域无点击。Dice与大目标列分别报告目标存在Dice和大目标Dice。所有指标均为百分比；粗体表示最优值。}
+\label{tab:remote}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+方法 & Dice $\uparrow$ & 大目标 $\uparrow$ & FPA $\downarrow$ \\
+\midrule
+SAM & 30.31 & 64.40 & 27.01 \\
+SAM2 & 33.60 & 66.50 & 18.91 \\
+WSI-SAM & 23.81 & 50.02 & 23.43 \\
+SAM-Med2D & 24.28 & 54.80 & 39.87 \\
+SANSA & 41.54 & 77.22 & 14.79 \\
+FewClick & \textbf{42.11} & \textbf{78.49} & \textbf{7.75} \\
+\bottomrule
+\end{tabular}
+\end{table}

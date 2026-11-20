@@ -1,0 +1,33 @@
+{
+  "status": "complete_accepted",
+  "updated_at": "2026-11-16T13:01:36.880340+08:00",
+  "scope": "Bilingual Introduction contribution paragraph final comparison",
+  "history": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/intro_comparison_1116_130044",
+  "revisions": {
+    "sec/1_introduction.tex": "FewClick achieves the highest full-slide macro Dice among the compared methods (43.75\\%). On the remote development queue, it also achieves the highest target-present macro Dice (42.11\\%) and the lowest target-absent false-positive area (7.75\\%).",
+    "sec_ch/1_introduction.tex": "FewClick在所比较的方法中取得最高的整片宏平均Dice（43.75\\%）；在远端开发队列上，同时取得最高的目标存在宏平均Dice（42.11\\%）与最低的目标缺失误报面积比例（7.75\\%）。"
+  },
+  "evidence": {
+    "tables": [
+      "tables/remote.tex",
+      "tables/wsi.tex"
+    ],
+    "methods": 6,
+    "full_slide_Dice_highest": 43.75,
+    "present_Dice_highest": 42.11,
+    "absent_FPA_lowest": 7.75,
+    "ranking_checked": true
+  },
+  "numbers_and_citations_preserved": true,
+  "output_sha256": {
+    "sec/1_introduction.tex": "a39085e14390d3f261de944d3226bbc8947e7a49056793ec082c41ce2e65844b",
+    "sec_ch/1_introduction.tex": "7ebb184173f64f5cee5328269b62065fad94fe2050278ef36303bb9dc121e59f",
+    "main.pdf": "9475b60da113405ad016cfe52779abb65b49facfe779f1743f9df8febad756b9",
+    "main_ch.pdf": "384f0ef6dbd933303ebcbd4bf1c77d3345ac47f0d1c67d5ce0b5f917581f2e66",
+    "MANUSCRIPT-CONTEXT.md": "342cc77e49177949f2323f8b0c6aacb94249a5a69972b7e2f2f19f243181a8aa"
+  },
+  "main_text_pages_each": 8,
+  "pdf_pages_each": 10,
+  "compile_warnings": [],
+  "evidence_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_intro_comparison_1116_130136"
+}

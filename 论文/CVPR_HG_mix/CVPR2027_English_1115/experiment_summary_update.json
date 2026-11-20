@@ -1,0 +1,36 @@
+{
+  "status": "complete",
+  "completed_at": "2026-11-16T21:18:15.763536+08:00",
+  "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/experiment_summary_1116_211436",
+  "no_new_training_or_inference": true,
+  "claim_checks": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_experiment_summary_1116_211436/claim_checks.json",
+  "main": {
+    "pages": 10,
+    "warnings": []
+  },
+  "main_ch": {
+    "pages": 10,
+    "warnings": []
+  },
+  "supplementary": {
+    "pages": 6,
+    "warnings": []
+  },
+  "heading_single_line": true,
+  "heading": "125   support probability field through coarse-to-fine correspon-          3.3. Prompt-Conditioned Region Hierarchy                          171",
+  "body_pages": 8,
+  "bilingual_numeric_tokens_identical": true,
+  "supplement_mentions_before": 10,
+  "supplement_mentions_after": 1,
+  "english_experiment_word_delta": 112,
+  "sha256": {
+    "sec/3_method.tex": "c4228afd852bbc03eb4cd15b247b6c4e9c5bb9c9bac3845e7c26545a4eeca1bd",
+    "sec_ch/3_method.tex": "31f2fd5eba3022e7c773b9292d0ecc93888501db7bc576765c5a4c3e3ef182d1",
+    "sec/4_experiments.tex": "a0ae613f6faeb8dcac320e77c1739df10ee245083c2828583fa4a3ad3f7b1b63",
+    "sec_ch/4_experiments.tex": "debbf8ea43602cd66f69493dd7ccc7bcf68b6fcdbdc73f9cad22a6fb69219778",
+    "tables/efficiency.tex": "2f780c1881bb9aee0236a6e35f4c661be20a923984517e30a03ecff444bd7d94",
+    "tables_ch/efficiency.tex": "1cba84d011da35eafc75f89ef12eef714795227df20cd70c5ed8f914a52c8946",
+    "main.pdf": "7a30dd9391c0794df64672c558b6b7b7dd8dcdee334053d9bbcdf5117569bdde",
+    "main_ch.pdf": "a5794c88f67773f1521a04d5b15d7923eda874dc1986b74f7198d5a47d9da499"
+  }
+}

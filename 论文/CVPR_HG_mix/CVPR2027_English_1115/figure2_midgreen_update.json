@@ -1,0 +1,27 @@
+{
+  "status": "complete",
+  "completed_at": "2026-11-16T14:26:30.056603+08:00",
+  "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/figure2_midgreen_1116_142526",
+  "render_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_midgreen_1116_142526/render_receipt.json",
+  "source_masks_and_scores_unchanged": true,
+  "no_model_inference": true,
+  "main": {
+    "pages": 10,
+    "warnings": []
+  },
+  "main_ch": {
+    "pages": 10,
+    "warnings": []
+  },
+  "supplementary": {
+    "pages": 6,
+    "warnings": []
+  },
+  "sha256": {
+    "figures/figure2.pdf": "78be4e12edcba1145e3ecac53200dd968b523d3abb3c2660940bf2be19a849d7",
+    "figures/figure2.png": "c0c6f60495506c063c5a4d2a1be29b1ffbfca9fe21e3f20205e6857886d8da90",
+    "main.pdf": "5ca645ba7edc6af2340d9351e05fd4488ad85c9d733a1370ac6f006e706743fb",
+    "main_ch.pdf": "c5ffda50664b09b4ce0fada5b3f4a68b0ca924a6bb3de64affe00df787a3d397",
+    "supplementary.pdf": "0be53a0cf3b633c50be1f26c5bc788d3280dca6dc9a64cc24f7d34fef171af89"
+  }
+}

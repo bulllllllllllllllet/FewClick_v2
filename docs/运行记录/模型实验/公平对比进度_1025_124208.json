@@ -433,6 +433,7 @@
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/fullcell_inputs_acceptance_1027_222500/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/retrieval_stream_fixture_1027_235900/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/retrieval_stream_acceptance_gate_1028_000200/summary.json",
+        "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/retrieval_stream_acceptance_gate_1028_000200/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_cpu_gate_nocell_1028_000700/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_cpu_gate_sam_ft_1028_000900/summary.json",
         "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/interactive_cpu_gate_wsi_sam_ft_1028_000900/summary.json",
@@ -2844,6 +2845,14 @@
       "summary_sha256": "528d1b031fbe4ef31253497810a84957b632295d5456727325da82c5a6eceef9"
     },
     {
+      "kind": "closed12_retrieval_independent_full_fixture",
+      "worker_pid": 3930483,
+      "status": "accepted_closed12_retrieval_fixture",
+      "exit_code": 0,
+      "output": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/wsi_global_1026_010800/retrieval_stream_acceptance_gate_1028_000200",
+      "summary_sha256": "528d1b031fbe4ef31253497810a84957b632295d5456727325da82c5a6eceef9"
+    },
+    {
       "kind": "interactive_cpu_gate_nocell_1028_000700",
       "worker_pid": 3977319,
       "status": "passed_interactive_native_cache_fixture",
@@ -4270,6 +4279,60 @@
       "acceptance_exit_code": 0,
       "acceptance": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120/formal/independent_acceptance.json",
       "report": "/nfs-medical3/zyh/fewclick_v2/fair_comparison/dense_generalization_1029_190120/formal/report_zh.md"
+    }
+  ],
+  "external_data_downloads": [
+    {
+      "dataset": "MIHIC",
+      "status": "complete",
+      "root": "/nfs-medical3/zyh/MIHIC_1026_133434",
+      "pid": 3944462,
+      "record": "docs/运行记录/数据审计/运行记录_MIHIC公开数据下载与查看_1026_133434.md",
+      "scope": "User-requested download and inspection only; no training integration",
+      "md5": "bd718137f70427d530947862332f4cdd",
+      "sha256": "f99aa6c85dba93b82810ed4c858cd7e6329fdcb9853eb07ffcd7972f5048af40",
+      "preview": "/nfs-medical3/zyh/MIHIC_1026_133434/preview.png",
+      "file_count": 309698,
+      "archive_crc_check": "passed",
+      "exit_code": 0,
+      "completed_at": "2026-10-26T14:22:57.537748"
+    },
+    {
+      "dataset": "CRC_IHC_Epithelium",
+      "status": "running_short_ranges",
+      "root": "/nfs-medical3/zyh/CRC_IHC_Epithelium_1026_170750",
+      "record": "docs/运行记录/数据审计/运行记录_公开CRC多染色IHC下载与区域掩膜检查_1026_170750.md",
+      "pid": 833141,
+      "samples_pid": 792164,
+      "files": 13,
+      "bytes_expected": 227121350446,
+      "source_doi": "10.18710/DIGQGQ",
+      "scope": "IHC-only download and mask inspection; no HE/ISH or training integration",
+      "bytes_downloaded": 4399824896,
+      "initial_sample_pairs": 2,
+      "preview": "/nfs-medical3/zyh/CRC_IHC_Epithelium_1026_170750/inspection/review_1026_171036/initial_Ki67_preview.png",
+      "sample_acceptance": "passed_for_available_samples",
+      "download_log": "/nfs-medical3/zyh/CRC_IHC_Epithelium_1026_170750/download_short_ranges.log"
+    }
+  ],
+  "external_data_audits": [
+    {
+      "status": "complete_with_scope_limits",
+      "timestamp": "2026-10-26T16:46:31.183432",
+      "root": "/nfs-medical3/zyh/fewclick_v2/data_audit/ihc_inventory_1026_164228",
+      "record": "docs/运行记录/数据审计/运行记录_本地IHC逐片标注与补标清单_1026_164228.md",
+      "old_ihc": 11,
+      "new_ihc_scans": 32,
+      "matched_annotation_files": 20,
+      "old_unique_shapes": 335,
+      "old_duplicates": 815,
+      "new_unique_shapes": 96,
+      "necrosis_annotated_slides": 2,
+      "vessel_and_stroma_independent_labels": false,
+      "coordinate_bounds_flagged_slides": 6,
+      "header_errors": 5,
+      "independent_recount": "passed",
+      "no_training_or_annotation_changes": true
     }
   ],
   "user_priority_1027_165114": {

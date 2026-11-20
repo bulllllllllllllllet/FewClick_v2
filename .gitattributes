@@ -1,0 +1,16 @@
+# Paper assets must never be treated as line-oriented text.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pptx binary
+*.zip binary
+
+# Preserve imported historical manuscripts and official vendor files byte-for-byte.
+论文/AAAI27_FewClick_paper/** -whitespace
+论文/CVPR_HG_mix/toolkit/** -whitespace
+论文/CVPR_HG_mix/CVPR2027_English_1115/texmf/** -whitespace
+论文/CVPR_HG_mix/CVPR2027_English_1115/ieeenat_fullname.bst -whitespace
+
+# csv.writer uses CRLF; carriage returns are not trailing whitespace.
+*.csv whitespace=cr-at-eol

@@ -1,0 +1,21 @@
+{
+  "status": "complete",
+  "completed_at": "2026-11-16T21:08:44.193228+08:00",
+  "order": [
+    "SAM",
+    "SAM2",
+    "WSI-SAM",
+    "SAM-Med2D",
+    "SANSA",
+    "FewClick"
+  ],
+  "body_pages": 8,
+  "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/table2_order_1116_210819",
+  "data_rows_unchanged": true,
+  "sha256": {
+    "tables/wsi.tex": "1cd675008c1ecaf7123258d41098aa320ee2f457cb0c60e925aee8d9c3b3b509",
+    "tables_ch/wsi.tex": "dec7a6aa3d3e0d36517cd2cbc13ff2305bfe4dc24ab3c25c21ffd59c248f2060",
+    "main.pdf": "c484d1752c29233dd6db361adc00d23ba683ae56cfc415fb7dba3722301334bd",
+    "main_ch.pdf": "7bdbc893a7bea37bee12e9dc9a8362fa199fdc386921d8476c244c9bcce4fd21"
+  }
+}

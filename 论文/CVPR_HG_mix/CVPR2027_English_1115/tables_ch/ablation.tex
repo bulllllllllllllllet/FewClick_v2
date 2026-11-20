@@ -1,0 +1,31 @@
+\begin{table}[t]
+\centering
+\caption{匹配条件下的结构消融：(a) 精细表征与密集迁移；(b) 融合模型的组件。P/L/S分别表示目标存在、大目标和小目标Dice；所有数值均为百分比。Dice越高越好，FPA越低越好。}
+\label{tab:ablation}
+\small
+\setlength{\tabcolsep}{4pt}
+\textbf{(a) 精细表征 $\times$ 密集迁移}\\[2pt]
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+精细视野 & 迁移 & P & L & FPA \\
+\midrule
+整块 & 否 & 39.19 & 73.81 & 6.71 \\
+整块 & 是 & 39.97 & 76.51 & 8.10 \\
+分块 & 否 & 40.16 & 74.63 & 5.74 \\
+分块 & 是 & 40.87 & 76.84 & 7.04 \\
+融合 & 否 & 40.92 & 75.37 & 5.61 \\
+融合 & 是 & 42.11 & 78.49 & 7.75 \\
+\bottomrule
+\end{tabular}
+\par\vspace{4pt}
+\textbf{(b) 融合模型组件}\\[2pt]
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+变体 & P & L & S & FPA \\
+\midrule
+完整FewClick & 42.11 & 78.49 & 28.19 & 7.75 \\
+无密集迁移 & 40.92 & 75.37 & 28.04 & 5.61 \\
+无区域消息 & 41.66 & 77.66 & 28.09 & 6.90 \\
+\bottomrule
+\end{tabular}
+\end{table}

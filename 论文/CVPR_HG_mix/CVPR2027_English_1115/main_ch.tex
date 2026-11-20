@@ -1,0 +1,34 @@
+% Chinese reading edition; scientific content follows main.tex.
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[review]{cvpr}
+\input{preamble}
+\usepackage{xeCJK}
+\setCJKmainfont{Noto Serif CJK SC}[BoldFont={Noto Sans CJK SC},ItalicFont={Noto Serif CJK SC}]
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans Mono CJK SC}
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\usepackage[pagebackref,breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
+\def\confName{CVPR}
+\def\confYear{2027}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\refname}{参考文献}
+\patchcmd{\abstract}{Abstract}{摘要}{}{\errmessage{Cannot translate abstract heading}}
+\patchcmd{\abstract}{\it\ignorespaces}{\normalfont\ignorespaces}{}{}
+\title{FewClick：面向用户指定病理组织分割的\\少量点击交互框架}
+\author{CVPR匿名投稿}
+\begin{document}
+\maketitle
+\input{sec_ch/0_abstract}
+\input{sec_ch/1_introduction}
+\input{sec_ch/2_related}
+\input{sec_ch/3_method}
+\input{sec_ch/4_experiments}
+\input{sec_ch/5_conclusion}
+\label{page:main-end}
+\clearpage
+\section*{LLM Usage Statement}
+本研究迭代使用OpenAI ChatGPT/Codex辅助方法与实验规划，训练及评估脚本的实现、调试和运行，结果分析与文献核查，图表制作，以及论文起草、修改和中英文翻译。辅助工作包括在作者指导下生成和修改代码与文本。作者对科学论断、实验结果、参考文献及最终内容负责。
+
+{\small\bibliographystyle{ieeenat_fullname}\bibliography{references}}
+\end{document}

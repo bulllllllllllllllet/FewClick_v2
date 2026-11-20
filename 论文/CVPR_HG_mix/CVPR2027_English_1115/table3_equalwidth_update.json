@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "completed_at": "2026-11-16T21:07:02.883822+08:00",
+  "scope": "Widen Table 3 to text width with seven equally sized centered numeric columns",
+  "body_pages": 8,
+  "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/table3_equalwidth_1116_210542",
+  "sha256": {
+    "preamble.tex": "26c8c5297a83d0405c08649e76996cb8ddb24d42db6dee35447ee8e4a0e28bb2",
+    "tables/wsi_tissue.tex": "d096ef5d84a0784b7ac19d27f2e742e15749c4b8ac04fc6c4d383927e0e8a4d9",
+    "tables_ch/wsi_tissue.tex": "be757d2679dead7c71f1b627ad48e3f00d76e7b5557bc6e8a0668874ce2f3d2d",
+    "main.pdf": "87779b184274b07e3633cdea6af3d271e13f1cb422a53b8c6f537a907479ab00",
+    "main_ch.pdf": "35cac9ad558685cd6296adf282dd555f6dda9e43f92a68f8d08e595cf5fc9117",
+    "supplementary.pdf": "3be267497d5d3874257b2fbc18307d6652b73883cc01f0c021d0b226a74ee661"
+  }
+}

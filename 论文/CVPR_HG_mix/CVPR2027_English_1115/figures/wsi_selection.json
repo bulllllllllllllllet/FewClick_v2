@@ -1,0 +1,29 @@
+{
+  "rule": "Retain the original first-formal-slide tumor example; for necrosis, normal glands and muscle select the highest FewClick full-slide Dice among the 15 formal slides. Selected favorable qualitative cases, not an average-performance estimate.",
+  "cases": [
+    {
+      "slide": "402638-9-HE-DX1-S02",
+      "target": 0,
+      "tissue": "Tumor epithelium",
+      "fewclick_dice": 0.8643492867014416
+    },
+    {
+      "slide": "436376-16-HE-DX1",
+      "target": 3,
+      "tissue": "Necrosis",
+      "fewclick_dice": 0.8403220419193332
+    },
+    {
+      "slide": "1726467-7-HE-DX1",
+      "target": 4,
+      "tissue": "Normal glands",
+      "fewclick_dice": 0.814320109762866
+    },
+    {
+      "slide": "430171-6-HE-DX1",
+      "target": 7,
+      "tissue": "Muscle",
+      "fewclick_dice": 0.9327798088086925
+    }
+  ]
+}

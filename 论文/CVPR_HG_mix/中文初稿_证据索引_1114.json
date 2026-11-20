@@ -1,0 +1,219 @@
+{
+  "created_at": "2026-11-13T13:22:53.798792+08:00",
+  "status": "chinese_markdown_draft_awaiting_user_review",
+  "draft": "论文/CVPR_HG_mix/中文初稿_1114.md",
+  "draft_sha256": "72f8d25839dd0cb7c77ad0204f31fdd5b6ddddcc772d7b39bb2d1d642a274f2e",
+  "latex_conversion": "requires_user_content_confirmation",
+  "method_id": "FewClick_HG_mix_frozen_1112_163751",
+  "checkpoint_sha256": "a95a17335c58eb93332d7bb5210ca34b3448afc5d69b76a11bd3a7e094e5e0c2",
+  "evidence_scope": "Read-only source/document review; no new experiments and no independent re-scoring of all predictions in this writing turn. Result tables transcribed from accepted consolidated records.",
+  "sources": [
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_mix_frozen_1112_163751/method_freeze.json",
+      "sha256": "2663406cfc375987d2510c788caaba4badf2d7ce3ccb0f966f0c7afcdd8beb83",
+      "matches_method_freeze": null
+    },
+    {
+      "path": "benchmarks/v5/hg_combination_study/model.py",
+      "sha256": "20f0b05329fba64c365029901a3913dd2678690efa8e16cf6914da6ef038cf1c",
+      "matches_method_freeze": true
+    },
+    {
+      "path": "benchmarks/v5/parallel_phikon_study/model.py",
+      "sha256": "7872d2ae8e4c74e9ca4cb71b660752577863da850a9c40bae1b4c99e196ca2a5",
+      "matches_method_freeze": true
+    },
+    {
+      "path": "benchmarks/v5/support_match_study/model.py",
+      "sha256": "6e945937b20bdc3d381a7496ab80f3159d9631dd111cba546f094ff379d42605",
+      "matches_method_freeze": true
+    },
+    {
+      "path": "benchmarks/v5/hg_combination_study/train.py",
+      "sha256": "c08a46c01f1cc724c2d1bf40052f58e13fadfdb3bbb13ef4cf690f53e1ee6eb5",
+      "matches_method_freeze": true
+    },
+    {
+      "path": "benchmarks/v5/architecture_bridge/restored_loss.py",
+      "sha256": "8a5e437fdf12b7818a45a9650805f0e5c9907f4ca4d3afb69a4bbe34df322049",
+      "matches_method_freeze": true
+    },
+    {
+      "path": "benchmarks/v5/multidomain_training/losses.py",
+      "sha256": "5ecfcd429d1d89024eff243824abbd1c5c4a0d4c2d0458f9ee3dce758494d197",
+      "matches_method_freeze": true
+    },
+    {
+      "path": "docs/运行记录/模型实验/结果表_当前六方法公平对照_1113_021607.md",
+      "sha256": "475563543c772e7d7ed9b19000a99e23c8cf09d3c96aedc36d182372295954f8",
+      "matches_method_freeze": null
+    },
+    {
+      "path": "docs/运行记录/模型实验/结果表_WSI六方法共同前7片阶段结果_1113_114549.md",
+      "sha256": "eabd7615769304fd8a7c2c81a0a6aa8df1e3cdad22ba874dd3af955d988a329e",
+      "matches_method_freeze": null
+    },
+    {
+      "path": "docs/建议/模型与训练/方案_HGmix收益归因与最小消融_1112_163751.md",
+      "sha256": "caf46b1d512bede76e97b629395aac069031fbda524fdcf307d7e7ecbe73c4f5",
+      "matches_method_freeze": null
+    },
+    {
+      "path": "docs/建议/论文撰写/方案_HGmix论文迁移与重写_1112_163751.md",
+      "sha256": "c023860c8f6724cb45132d3ec862d5341805b8b11565ba806bee91d2629bb15b",
+      "matches_method_freeze": null,
+      "previously_recorded_sha256": "08be293c2ed7ce1b33afaf0f8f7d552c6f7f79a019ba1217fea4899ab61a7812"
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_supplement_1114_003157/analysis.json",
+      "sha256": "519b5366c936190be2c14bdd7347050966501b9078d213cd704135bdbd9a1c11"
+    },
+    {
+      "path": "benchmarks/v5/architecture_bridge/deterministic_graph.py",
+      "sha256": "69cc9fab4cfd2e0e098ba606e3f60e9a568597f77ff24b10f3e82c128fc523e0"
+    },
+    {
+      "path": "benchmarks/v5/whole_slide_once/data.py",
+      "sha256": "aada62665d14f65169aec74ebac2f8eb89ca3f890c37524f84eda53c872a1edf"
+    },
+    {
+      "path": "benchmarks/v5/whole_slide_once/worker.py",
+      "sha256": "521ff9724567d716fdb4560e9c088245f67997903ca4de9eaf71111457cdc5f6"
+    },
+    {
+      "path": "benchmarks/v4/phase_2_region_encoder/src/model.py",
+      "sha256": "51443838f1d5297e229c4ca69c1dae9d16f870cbdaf17ece9db074f826dea2b5"
+    },
+    {
+      "path": "benchmarks/v4/phase_5_prompt_encoder/src/model.py",
+      "sha256": "fac072dfc2a2e6eafc68b3c661f8e25bee3fd9687ea18d5a7eebcb4fd65aa70f"
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_supplement_1114_003157/runtime.json",
+      "sha256": "48a2146cf7d8ee350bc82eada9d5006fe8099d825dd7657cb080d5ac25c6bade"
+    },
+    {
+      "path": "docs/运行记录/模型实验/结果表_WSI六方法正式15片最终结果_1113_224245.md",
+      "sha256": "59d3a09a48b651b9e2632e788d369d1d8b7e7f5229732bff0ba13a4b60e03e52"
+    },
+    {
+      "path": "docs/运行记录/模型实验/分析_HGmix与SANSA小目标面积分层_1113_174308.md",
+      "sha256": "76683357f1056b5715c91f0cada0e71b2ad6e248187fc42cebcf1d4724752050"
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_ablation_writeup_1114_113253/verification.json",
+      "sha256": "816ce456ed8d43feeefb893b605c837fd9c0cb97084bc67313eacd8e4241e994"
+    },
+    {
+      "path": "benchmarks/v5/hg_paper_ablation/model.py",
+      "sha256": "87ea1df1fa1fee77b62de983579a22f1fd585736d647dd88138463c684c89c2a"
+    },
+    {
+      "path": "benchmarks/v5/hg_paper_ablation/no_cross_scale.py",
+      "sha256": "30a4d30799b679ef7d7160b82f85336d3727ade0653503513f09032fcbbe6810"
+    },
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_inference_1114_121131/report.json",
+      "sha256": "f4fa883f04a38e5c634566146be06d0c4b99af962a5e4fe0f659286b593f5c0f"
+    }
+  ],
+  "section_map": {
+    "3.2": "MixedFineBackbone / TiledFineBackbone and method_freeze architecture",
+    "3.3": "Current deterministic_graph, phase2 encoder, PromptRegionModel and graph projection",
+    "3.4": "SignedMatcher.forward",
+    "3.5": "DenseHierarchy.forward / clicked_support_probability / cached_decode",
+    "3.6": "train.py, restored_loss.py and multidomain_training/losses.py",
+    "4.4": "结果表_当前六方法公平对照_1113_021607.md section A; fractions converted to percent",
+    "4.6": "Final15 closeout report/acceptance SHA",
+    "4.7": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_ablation_writeup_1114_113253/verification.json; matched fresh9500/2375 and all11000 accepted rows independently reaggregated, six shard mask/row hashes and three checkpoints checked",
+    "2": "Verified primary paper abstracts/official pages; narrow technical claims only",
+    "3.7": "whole_slide_once/data.py and worker.py exact grid/projection/exclusion",
+    "4.1": "Base catalog and actual9500 consumption; evaluation tasks/query_rows",
+    "4.8": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_supplement_1114_003157/analysis.json; /nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_inference_1114_121131/report.json results.robust/results.timing",
+    "4.9": "Final15 closeout per_class",
+    "4.5": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_inference_1114_121131/report.json results.local"
+  },
+  "remaining_blanks": [
+    "Dataset provenance/formal citation and ethics/license details",
+    "Author-approved full LLM statement"
+  ],
+  "style_revision": {
+    "reference": "论文/AAAI27_FewClick_paper/FewClick_AAAI27.tex",
+    "reference_sha256": "292f8683cf18be6846e004587f62092ec382ccd288905fa3f86a92135a1d492e",
+    "previous_draft": "论文/CVPR_HG_mix/历史版本/中文初稿_风格调整前_1113_132618.md",
+    "principles": [
+      "沿用原稿应用背景—具体挑战—关键观察—方法概述—贡献段的引言组织",
+      "方法小节由问题或动机引入，再说明操作与作用",
+      "实验按设置—数值—解释组织，保留证据适用范围",
+      "写作进度与核验说明集中在证据索引，未完成内容继续留白"
+    ],
+    "editorial_notes": [
+      "> 本节的模块存在性已由固定方法清单核对；详细公式在逐层核对底层实现后补齐，暂不沿用旧稿公式。",
+      "> 写作进度说明：已有共同前7张、72个组织任务的中期结果，存于证据索引。该子集不填入表2，也不替代最终结论。",
+      "> 待逐项核验原始论文后填入。旧稿引用不自动视为已核验，也不据此补写“首次”或全面优于既有方法的主张。"
+    ],
+    "latex_conversion": "after_user_confirmation"
+  },
+  "updated_at": "2026-11-14T13:55:06.405511+08:00",
+  "previous_draft": "论文/CVPR_HG_mix/中文初稿_1113.md",
+  "new_analysis": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_supplement_1114_003157",
+  "analysis_scope": "CPU reaggregation of accepted paired rows; query-slide bootstrap; accepted final15 WSI report hash checked; no new model inference.",
+  "verified_reference_urls": {
+    "1": "https://doi.org/10.1016/j.media.2020.101890",
+    "2": "https://arxiv.org/abs/2409.09173",
+    "3": "https://openaccess.thecvf.com/content/ICCV2023/html/Kirillov_Segment_Anything_ICCV_2023_paper.html",
+    "4": "https://arxiv.org/abs/2408.00714",
+    "5": "https://arxiv.org/abs/2308.16184",
+    "6": "https://proceedings.mlr.press/v254/liu24a.html",
+    "7": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/ac6ab84809cef04dbe11e9b80d63c281-Abstract-Conference.html",
+    "8": "https://openaccess.thecvf.com/content/ICCV2021/html/Min_Hypercorrelation_Squeeze_for_Few-Shot_Segmentation_ICCV_2021_paper.html"
+  },
+  "runtime_analysis": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_supplement_1114_003157/runtime.json",
+  "validation": "Final15 table checked against acceptance-bound report; existing macroDice exactly reproduced; bibliography IDs and fences checked; no new GPU inference.",
+  "ablation_analysis": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_ablation_writeup_1114_113253",
+  "previous_version_backup": "论文/CVPR_HG_mix/历史版本/中文初稿_1114_核心消融补充前_1114_113452.md",
+  "ablation_limitations": "single seed exposed patch development cohort; no WSI ablation or new paired uncertainty; positive Dice gains with absent FPA costs; parameters differ",
+  "prose_revision": {
+    "instruction": "围绕本文目的，直接、准确地陈述已完成的工作、成果和依据。通过具体范围、条件和数据控制表述强度。不要惯例性追加“并不代表”“不意味着”“不能说明”等防御性结尾，不要主动引入任务范围之外的评价标准。确有影响正文理解的限制时，在相关句子中简洁说明；一般性的不足讨论，仅在文稿要求时展开。",
+    "record": "docs/运行记录/模型实验/运行记录_中文稿措辞精简_1114_114618.md",
+    "backup": "论文/CVPR_HG_mix/历史版本/中文初稿_1114_措辞精简前_1114_114618.md",
+    "artifact": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_prose_revision_1114_114618",
+    "checks": {
+      "table_cells_unchanged": true,
+      "equations_unchanged": true,
+      "references_and_llm_placeholder_unchanged": true,
+      "markdown_table_separators_repaired": 2
+    },
+    "edited_passages": 42,
+    "scope": "Chinese manuscript wording; retain numeric tables, equations, citations and existing experiment results."
+  },
+  "inference_supplement": {
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_inference_1114_121131",
+    "report_sha256": "f4fa883f04a38e5c634566146be06d0c4b99af962a5e4fe0f659286b593f5c0f",
+    "backup": "论文/CVPR_HG_mix/历史版本/中文初稿_1114_补充推理前_1114_123351.md",
+    "local_tasks_per_method": 302,
+    "timing_tasks_per_method": 100,
+    "robust_tasks_per_config": 330,
+    "code_commit": "9985bf975c4fad2eb59790692106628a8bfb5303"
+  },
+  "blank_inventory": {
+    "record": "docs/建议/论文撰写/梳理_HGmix论文剩余空白_1114_134913.md",
+    "time": "2026-11-14T13:49:13.388773+08:00",
+    "draft_sha256": "2e038c2f0ef8976a6d2cc4c4efc8c88a037c6cd606e9f268a8c8eb95871b5a8e",
+    "status": "audit_complete",
+    "explicit_text_placeholders": 4,
+    "explicit_figure_placeholders": 2,
+    "figure1": "existing_mermaid_needs_final_drawing",
+    "new_experiments_started": false,
+    "user_scope": "List current manuscript gaps only; omit discussion of additional seeds."
+  },
+  "figure_parameter_supplement": {
+    "root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figures_1114_140000",
+    "assets": "论文/CVPR_HG_mix/figures/existing_results_1114_135506",
+    "backup": "论文/CVPR_HG_mix/历史版本/中文初稿_1114_图表补齐前_1114_135506.md",
+    "parameters_cpu_strict_load": true,
+    "displayed_patch_masks_independently_verified": 24,
+    "new_inference": false,
+    "selection": "Within each stated band, closest to HG median Dice (absent: FPA); ties ascending task index. Fixed before rendering; retrospective descriptive selection."
+  }
+}

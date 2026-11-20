@@ -1,0 +1,38 @@
+{
+  "status": "complete_accepted",
+  "updated_at": "2026-11-16T12:47:55.601629+08:00",
+  "scope": "Bilingual abstracts only; WSI-first results and remote absent-target FPA",
+  "history": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/abstract_wsi_1116_124636",
+  "evidence_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_abstract_wsi_1116_124755",
+  "bilingual_numbers_equal": true,
+  "source_metrics": "sec/4_experiments.tex",
+  "source_metrics_sha256": "5fb5caf3cd96e9e63b2893ef31242817beb627cef8ed1d6216ad05fa74d805b2",
+  "compile": {
+    "main": {
+      "warnings": [],
+      "main_text_pages": 8,
+      "pdf_pages": 10,
+      "first_page_visual_check": true
+    },
+    "main_ch": {
+      "warnings": [],
+      "main_text_pages": 8,
+      "pdf_pages": 10,
+      "first_page_visual_check": true
+    }
+  },
+  "output_sha256": {
+    "sec/0_abstract.tex": "96213ff9674fc4abc481d3272c2d893081e1998cb83fff6fd2fffa5ee7692088",
+    "sec_ch/0_abstract.tex": "52cc77227413b22193aa2b73f3c56311a8819bd88a7a20fd658f74dec45dfcbf",
+    "main.pdf": "76e8577a51a76f32ff219aedbf81743dd8d36d4d26d60502d37a29dec325e0df",
+    "main_ch.pdf": "71678bdcbf72ddc799b3cc87e903af3324d52db2b8358bc64d30835b8d7903e1",
+    "MANUSCRIPT-CONTEXT.md": "718ee3e9a266a5b5b512ceb2ca13cef799391cd9d30e3da0681ca671b1b8aa6b",
+    "README_中文.md": "5505d2ece6210e41933b5a6cad8cbb106a2aca62ea08a2a17e9445b10dc10555"
+  },
+  "commands": [
+    "PATH=/home/zhaoyh/TinyTeX/bin/x86_64-linux:$PATH bash build.sh",
+    "PATH=/home/zhaoyh/TinyTeX/bin/x86_64-linux:$PATH bash build_ch.sh"
+  ],
+  "training_started": false,
+  "inference_started": false
+}

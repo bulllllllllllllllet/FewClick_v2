@@ -1,0 +1,36 @@
+{
+  "main": {
+    "pages": 10,
+    "warnings": []
+  },
+  "main_ch": {
+    "pages": 10,
+    "warnings": []
+  },
+  "supplementary": {
+    "pages": 6,
+    "warnings": []
+  },
+  "scores_unchanged": true,
+  "layout": [
+    2,
+    4
+  ],
+  "body_pages": 8,
+  "render_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_green_1116_140702/render_receipt.json",
+  "no_model_inference": true,
+  "status": "complete",
+  "completed_at": "2026-11-16T14:10:32.822405+08:00",
+  "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/figure2_green_1116_140702",
+  "renderer": "benchmarks/v5/paper_figures/render_wsi_comparison.py",
+  "sha256": {
+    "figures/figure2.pdf": "0566fb57454cd5e8876591013a3f8e5d288967e6b96d5362c395f4e1772d77d1",
+    "figures/figure2.png": "caae0985489a9a5afefc35535a5aa735f1cfa024d89d13e347174f4789fc99d7",
+    "sec/4_experiments.tex": "2ec1295ab00fb8f36d648dd4bb2f8e8e16b9e6c348ac3f108a8b17eefc324416",
+    "sec_ch/4_experiments.tex": "5e59c326ca2d15f9895fed35f42541de6b8d723df5536b8610b6320824912ddf",
+    "sec/supplement.tex": "f40f0a451864360986523e6f8525b385e91b7c74ff74a81d776794f2643b110f",
+    "main.pdf": "1990d6c84a3714088f40032006f07035e681b51a64e9e0a5f9fb1ae9adf38132",
+    "main_ch.pdf": "e13d608477637617a775b3a4319e9cfd002471fdab3d3ebea48fe79f62c1ec7d",
+    "supplementary.pdf": "c2edc5cfea755f16a68e9fae10951ae1c902467acc910d4f07e1c091b9e4e144"
+  }
+}

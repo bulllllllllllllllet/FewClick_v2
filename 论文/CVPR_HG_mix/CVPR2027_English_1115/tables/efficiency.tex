@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Mean latency and cache size over 100 tasks on one RTX 5880 Ada GPU. First prediction includes reading and encoding; changed-prompt prediction reuses image features. Cache size includes one support--query feature pair and prompt memory.}
+\label{tab:efficiency}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Method & First (ms) & Changed (ms) & Cache (MiB) \\
+\midrule
+FewClick & 1539.2 & 43.0 & 16.39 \\
+SANSA & 1226.3 & 39.1 & 212.38 \\
+SAM & 1191.8 & 18.0 & 16.00 \\
+SAM2 & 1297.9 & 16.3 & 40.00 \\
+WSI-SAM & 767.9 & 36.3 & 34.00 \\
+SAM-Med2D & 863.9 & 17.7 & 1.00 \\
+\bottomrule
+\end{tabular}
+\end{table}

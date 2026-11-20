@@ -1,0 +1,38 @@
+{
+  "main": {
+    "pages": 10,
+    "warnings": []
+  },
+  "main_ch": {
+    "pages": 10,
+    "warnings": []
+  },
+  "supplementary": {
+    "pages": 6,
+    "warnings": []
+  },
+  "layout": [
+    4,
+    8
+  ],
+  "panel_scores_verified": 24,
+  "body_pages": 8,
+  "no_model_inference": true,
+  "status": "complete",
+  "completed_at": "2026-11-16T16:15:33.445952+08:00",
+  "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/figure2_multitissue_1116_161205",
+  "render_receipt": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_multitissue_1116_161205/render_receipt.json",
+  "selection": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_multitissue_1116_161205/wsi_selection.json",
+  "renderer": "benchmarks/v5/paper_figures/render_wsi_multitissue.py",
+  "sha256": {
+    "figures/figure2.pdf": "34fd863d0b2651c846f2c8bdf43118c741c3ea1a794c0c29d22eb958ff651a7a",
+    "figures/figure2.png": "a3748f33587ddc5a230bbb09e946fca43fc67533c340094d2cd84e04e7b8e8ec",
+    "figures/wsi_selection.json": "e1b87ecab44416ee0dcd50a4bde5cea8b96b7d434bbe450fbffe06469d808c70",
+    "sec/4_experiments.tex": "4052655ec1d6bbd9f2d37bdf713e51ec7a628bc463faea84d47a66dd04041859",
+    "sec_ch/4_experiments.tex": "8f236e85a31a8b892b41fe0bb86bcac2857411898c075c4fd8ac49903a92e4c6",
+    "sec/supplement.tex": "33bc1fdc6b07eae4b045963c7b5fd1ff98897f97e97dedb10884f802bee90e77",
+    "main.pdf": "f11581875a404cad71a866fa5541ed4134b6871c77eb063ce106375a405a6bb7",
+    "main_ch.pdf": "ec80e403b3938a7dbc2d35f7e0987f12efca553849577eca24ba8e57dde8e9d1",
+    "supplementary.pdf": "e29ba6b4d12f48d037d1554a1945176b50e7258eb261f016c4e7e88bb39deccb"
+  }
+}

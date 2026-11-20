@@ -220,6 +220,24 @@ Raw02 PID3914383 and03 PID3914488 bothended full433fields/1299scales EXIT0; pres
 
 Evidence native_first_live_1026_024600.json/native_second_live_1026_031500.json, all_label_independent_1026_024500.json and all_label_wsi_acceptance_1026_030600/summary.json. Record docs/运行记录/模型实验/运行记录_全标签同任务参考提取与WSI迁移补齐_1026_023000.md; snapshot reference_continuity_1026_032000.json. FullCPU WSI646382 stillcachepreparing; fullcell/main30/GT/nativeGPU efficiency and allnew9train/local/R audits/statistics/reviewer closure remain. Overall goal active.
 
+## MIHIC 外部数据下载 1026_133434
+
+用户要求下载公开MIHIC到NFS供查看，单独任务不改变现有实验计划。下载running，worker PID3934475，输出`/nfs-medical3/zyh/MIHIC_1026_133434`；详细记录`docs/运行记录/数据审计/运行记录_MIHIC公开数据下载与查看_1026_133434.md`。完成以官方size/MD5与ZIP CRC及样例检查为准。
+
+MIHIC下载更新 2026-10-26T14:22:59.977045：用户改存至`/nfs-medical3/zyh/MIHIC_1026_133434`；7596524308字节/官方MD5通过，309698PNG目录清单和42张样例预览完成，无WSI/独立mask；全ZIP CRC仍检查中。仅下载查看，无实验集成。
+
+最终验收 2026-10-26T14:23:24.844100：worker3944462结束，COMPLETE / EXIT_CODE=0；官方MD5、字节数和全ZIP CRC均通过；309698张PNG、42原尺寸样例与预览已核实。任务complete，目录`/nfs-medical3/zyh/MIHIC_1026_133434`。
+
+## 本地IHC标注审计 1026_164228
+
+本地IHC清点1026_164228完成：旧11+新32扫描，20份组织JSON；旧1150条精确去重335（815重复），新96。坏死仅旧003270两片共8去重轮廓，无独立血管/间质。6片部分轮廓越界、5MRXS头缺键，不能将计数完成等同全标注可直接训练。完整表/路径见`docs/运行记录/数据审计/运行记录_本地IHC逐片标注与补标清单_1026_164228.md`，CSV `/nfs-medical3/zyh/fewclick_v2/data_audit/ihc_inventory_1026_164228/inventory.csv`。无原图/标签/训练配置修改，整体实验goal状态不变。
+
+## CRC IHC下载 1026_170750
+
+用户要求公开CRC上皮分割IHC全13染色下载到NFS。根`/nfs-medical3/zyh/CRC_IHC_Epithelium_1026_170750`，总227121350446字节，worker785098/tmux crc_ihc_1026_170750真实运行。官方13MD5保存metadata/job；4文件×4段，status字节数是真实进度，.part预分配大小不是完成量。样例首次网络ProxyError失败保留，独立v2 worker792164重新取Ki67/ECAD癌/正常配对，尚未完成。无GPU/HE/ISH/训练集成。记录`docs/运行记录/数据审计/运行记录_公开CRC多染色IHC下载与区域掩膜检查_1026_170750.md`。
+
+CRC IHC下载更新2026-10-26T17:20:56.818873：首版worker785098长连接IncompleteRead，原日志和3.72GB状态保留；短16MiB分段续传worker833141/tmux crc_ihc_short_1026_170750正在运行，当前4399824896字节/227121350446。两Ki67癌/正常原图mask已抽出，8584×8592与9056×7568，PNG模式1/0与1，原图mask同尺寸，成员CRC与独立像素复核通过。预览`/nfs-medical3/zyh/CRC_IHC_Epithelium_1026_170750/inspection/review_1026_171036/initial_Ki67_preview.png`已查看：上皮不规则区域与腺腔，不是细胞轮廓或肿瘤VS正常标签；不代表三组织类别齐全。全13包MD5仍待完成；ECAD样例worker792164继续。
+
 ## Latest heldout acceptance and resumed work
 
 Updated 2026-10-26T18:32:25.074145+08:00. User requested continuation; overall goal active. All previously active experiment workers ended EXIT0 and moved to completed_jobs; do not restart completed runs. New audits3773203/3780561 ended EXIT0: nine formal10k/40k trains,90seen-only selection tables,4800local rows and19360remote rows accepted qualified;240native saved gate masks pixel-recounted. Record docs/运行记录/模型实验/运行记录_留出概念九条件训练与本图独立验收_1026_130200.md. Single seed; paired statistics and same-task all-label descriptive comparisons pending. FewClick is lower on all three local folds; no favorable-result requirement.

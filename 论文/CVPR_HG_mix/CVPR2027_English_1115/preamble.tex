@@ -1,0 +1,11 @@
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{microtype}
+\usepackage{xcolor}
+\newcommand{\method}{FewClick}
+\newcommand{\blankfield}{\rule{0.7\linewidth}{0.4pt}}
+% Only the experimental artwork/tables are reserved; numerical prose is retained.
+\newcommand{\reserved}[2]{\fbox{\begin{minipage}[c][#1][c]{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}\centering\small\color{gray}#2\end{minipage}}}
+\newcommand{\tableplaceholder}[3]{\begin{table}[t]\centering\caption{#2}\label{#1}\reserved{#3}{Experimental table reserved}\end{table}}

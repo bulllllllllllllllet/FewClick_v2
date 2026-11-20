@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Whole-slide class-macro Dice (\%) on 15 slides and 152 tissue tasks. Each slide--target pair uses one support patch with three positive and two negative clicks. Strict remote excludes support-overlapping input footprints.}
+\label{tab:wsi}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Method & Full slide $\uparrow$ & Strict remote $\uparrow$ \\
+\midrule
+SAM & 18.86 & 16.63 \\
+SAM2 & 23.58 & 21.01 \\
+WSI-SAM & 15.85 & 14.25 \\
+SAM-Med2D & 13.59 & 11.97 \\
+SANSA & 33.23 & 30.12 \\
+FewClick & \textbf{43.75} & \textbf{40.98} \\
+\bottomrule
+\end{tabular}
+\end{table}

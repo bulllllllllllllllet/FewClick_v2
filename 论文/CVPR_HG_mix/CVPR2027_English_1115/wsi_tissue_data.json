@@ -1,0 +1,305 @@
+{
+  "source": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_final15_closeout_1113_224245/report.json",
+  "sha256": "db0d1f6efd1ed7f647cfba89b253735b7c54ec0a730523e922c2b4594ceae91b",
+  "method_order": [
+    "SAM",
+    "SAM2",
+    "WSI-SAM",
+    "SAM-Med2D",
+    "SANSA",
+    "HG-mix"
+  ],
+  "validation": "132/132 unique cells; macro means match report within 1e-12",
+  "data": {
+    "whole_WSI": [
+      {
+        "target": 0,
+        "tissue": "Tumor epithelium",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 50.01698183637775,
+          "SAM2": 58.790810068713505,
+          "WSI-SAM": 35.52717967516616,
+          "SAM-Med2D": 36.86610590963462,
+          "SANSA": 78.97248547589044,
+          "HG-mix": 79.1664126802837
+        }
+      },
+      {
+        "target": 1,
+        "tissue": "Tumor stroma",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 31.52641124659119,
+          "SAM2": 36.3916753688866,
+          "WSI-SAM": 27.108918632508672,
+          "SAM-Med2D": 22.860521541372286,
+          "SANSA": 42.97255270052286,
+          "HG-mix": 55.23244865125372
+        }
+      },
+      {
+        "target": 3,
+        "tissue": "Necrosis",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 15.092181849709577,
+          "SAM2": 20.289240379029753,
+          "WSI-SAM": 14.829318544715422,
+          "SAM-Med2D": 11.717868823701307,
+          "SANSA": 32.90509394385264,
+          "HG-mix": 44.10428077959454
+        }
+      },
+      {
+        "target": 4,
+        "tissue": "Normal glands",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 18.349875898313453,
+          "SAM2": 24.274327403265776,
+          "WSI-SAM": 17.414071463250483,
+          "SAM-Med2D": 8.766762906028431,
+          "SANSA": 26.09699549847785,
+          "HG-mix": 43.233392997036475
+        }
+      },
+      {
+        "target": 5,
+        "tissue": "Normal stroma",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 5.684331701307032,
+          "SAM2": 9.008701513881777,
+          "WSI-SAM": 5.611618852599013,
+          "SAM-Med2D": 5.479825372909001,
+          "SANSA": 20.80019706882728,
+          "HG-mix": 25.115375181175185
+        }
+      },
+      {
+        "target": 6,
+        "tissue": "Submucosa/serosa",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 22.7516556541332,
+          "SAM2": 25.177647661876563,
+          "WSI-SAM": 19.937944540591403,
+          "SAM-Med2D": 19.468366265826674,
+          "SANSA": 36.15461683321261,
+          "HG-mix": 49.83025745375016
+        }
+      },
+      {
+        "target": 7,
+        "tissue": "Muscle",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 31.817932813847545,
+          "SAM2": 37.2720386643555,
+          "WSI-SAM": 29.460889558531022,
+          "SAM-Med2D": 23.497195983176947,
+          "SANSA": 51.267952107661294,
+          "HG-mix": 61.32184153715985
+        }
+      },
+      {
+        "target": 8,
+        "tissue": "Lymphoid aggregates",
+        "slides": 7,
+        "dice_percent": {
+          "SAM": 2.167962215461795,
+          "SAM2": 2.6133504187679186,
+          "WSI-SAM": 1.513922251500378,
+          "SAM-Med2D": 1.956132704807077,
+          "SANSA": 5.459755707024475,
+          "HG-mix": 34.23965195865546
+        }
+      },
+      {
+        "target": 9,
+        "tissue": "Mucus",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 3.8190069228942525,
+          "SAM2": 6.916462152359164,
+          "WSI-SAM": 3.791210696160136,
+          "SAM-Med2D": 3.050772925116773,
+          "SANSA": 9.231395043408632,
+          "HG-mix": 18.764024618522562
+        }
+      },
+      {
+        "target": 10,
+        "tissue": "Adipose",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 22.95821834264286,
+          "SAM2": 30.58211832704485,
+          "WSI-SAM": 16.13772631934897,
+          "SAM-Med2D": 13.59372058953951,
+          "SANSA": 49.51234137855078,
+          "HG-mix": 48.66992034832667
+        }
+      },
+      {
+        "target": 11,
+        "tissue": "Blood",
+        "slides": 10,
+        "dice_percent": {
+          "SAM": 3.2224959603526053,
+          "SAM2": 8.102978171048344,
+          "WSI-SAM": 3.0092321514583835,
+          "SAM-Med2D": 2.2546370226949297,
+          "SANSA": 12.131546746074147,
+          "HG-mix": 21.587180377037605
+        }
+      }
+    ],
+    "remote_only_WSI": [
+      {
+        "target": 0,
+        "tissue": "Tumor epithelium",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 45.93225561771677,
+          "SAM2": 54.88529906864189,
+          "WSI-SAM": 32.836679523217434,
+          "SAM-Med2D": 33.212413060443076,
+          "SANSA": 75.97768311736812,
+          "HG-mix": 77.14043252226944
+        }
+      },
+      {
+        "target": 1,
+        "tissue": "Tumor stroma",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 29.362043477133376,
+          "SAM2": 34.125192137443875,
+          "WSI-SAM": 25.71680407220401,
+          "SAM-Med2D": 21.309003254986845,
+          "SANSA": 40.4763865926075,
+          "HG-mix": 52.72596959800884
+        }
+      },
+      {
+        "target": 3,
+        "tissue": "Necrosis",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 13.550984618997076,
+          "SAM2": 18.420871766246297,
+          "WSI-SAM": 13.638483346026925,
+          "SAM-Med2D": 10.793401400039603,
+          "SANSA": 30.65824409814993,
+          "HG-mix": 42.597447246761746
+        }
+      },
+      {
+        "target": 4,
+        "tissue": "Normal glands",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 12.847972920064233,
+          "SAM2": 17.491375500523855,
+          "WSI-SAM": 12.11164862868972,
+          "SAM-Med2D": 5.8375018461027794,
+          "SANSA": 18.51973239876839,
+          "HG-mix": 36.56417143075844
+        }
+      },
+      {
+        "target": 5,
+        "tissue": "Normal stroma",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 4.152452089599816,
+          "SAM2": 6.869439089671133,
+          "WSI-SAM": 4.480697810303549,
+          "SAM-Med2D": 4.250435921897326,
+          "SANSA": 17.040649018337287,
+          "HG-mix": 20.978828654799138
+        }
+      },
+      {
+        "target": 6,
+        "tissue": "Submucosa/serosa",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 20.91859050012449,
+          "SAM2": 23.528880058507575,
+          "WSI-SAM": 18.73485386858355,
+          "SAM-Med2D": 18.074210430445156,
+          "SANSA": 34.38242907953016,
+          "HG-mix": 48.3808899352291
+        }
+      },
+      {
+        "target": 7,
+        "tissue": "Muscle",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 28.590824266944402,
+          "SAM2": 34.31822875666031,
+          "WSI-SAM": 27.24894921561212,
+          "SAM-Med2D": 20.484247714786054,
+          "SANSA": 47.72556060654096,
+          "HG-mix": 58.95346236197791
+        }
+      },
+      {
+        "target": 8,
+        "tissue": "Lymphoid aggregates",
+        "slides": 7,
+        "dice_percent": {
+          "SAM": 1.9138266651478215,
+          "SAM2": 2.303892296524884,
+          "WSI-SAM": 1.3572650998520972,
+          "SAM-Med2D": 1.6434131049759488,
+          "SANSA": 4.6578606917211305,
+          "HG-mix": 33.77334405291041
+        }
+      },
+      {
+        "target": 9,
+        "tissue": "Mucus",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 3.2281898178354815,
+          "SAM2": 5.79120140610162,
+          "WSI-SAM": 3.018865834999689,
+          "SAM-Med2D": 2.729128927725002,
+          "SANSA": 6.912245824141808,
+          "HG-mix": 16.08721575828686
+        }
+      },
+      {
+        "target": 10,
+        "tissue": "Adipose",
+        "slides": 15,
+        "dice_percent": {
+          "SAM": 19.702852051674512,
+          "SAM2": 26.457133257133048,
+          "WSI-SAM": 14.81493411272356,
+          "SAM-Med2D": 11.293168676250163,
+          "SANSA": 44.24263801400846,
+          "HG-mix": 43.39346656168241
+        }
+      },
+      {
+        "target": 11,
+        "tissue": "Blood",
+        "slides": 10,
+        "dice_percent": {
+          "SAM": 2.7742511590652463,
+          "SAM2": 6.949209660143052,
+          "WSI-SAM": 2.804123067378638,
+          "SAM-Med2D": 2.043602370800653,
+          "SANSA": 10.746062168608518,
+          "HG-mix": 20.234582221964377
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "updated_at": "2026-11-15T21:17:46.862317+08:00",
+  "caption_file": "论文/CVPR_HG_mix/CVPR2027_English_1115/sec/3_method.tex",
+  "chinese_caption": "论文/CVPR_HG_mix/CVPR2027_English_1115/figures/method_caption_中文.md",
+  "details": [
+    "soft assignment A",
+    "support prompt conditions",
+    "point cues dual path",
+    "coarse/fine grids and certainty",
+    "residual inputs and logit fusion"
+  ],
+  "validation": {
+    "pages": 9,
+    "compile": "passed",
+    "warnings": []
+  }
+}

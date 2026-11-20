@@ -1,0 +1,19 @@
+\begin{table*}[t]
+\centering
+\caption{Full timing and memory measurements, averaged over the same 100 tasks. Preparation is included in first-prediction latency. Cache and peak allocated CUDA memory are in MiB; peak memory includes weights.}
+\label{tab:patchtime}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Method & Prep. (ms) & First (ms) & Changed (ms) & Cache (MiB) & Peak (MiB) \\
+\midrule
+FewClick & 1491.2 & 1539.2 & 43.0 & 16.39 & 1889.1 \\
+SANSA & 1180.4 & 1226.3 & 39.1 & 212.38 & 2145.9 \\
+SAM & 1171.9 & 1191.8 & 18.0 & 16.00 & 2831.2 \\
+SAM2 & 1278.7 & 1297.9 & 16.3 & 40.00 & 1542.4 \\
+WSI-SAM & 728.7 & 767.9 & 36.3 & 34.00 & 394.2 \\
+SAM-Med2D & 845.2 & 863.9 & 17.7 & 1.00 & 1169.7 \\
+\bottomrule
+\end{tabular}
+\end{table*}

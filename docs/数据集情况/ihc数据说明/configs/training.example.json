@@ -1,0 +1,22 @@
+{
+  "version": "portable_training_config_v2",
+  "cases": [
+    {
+      "case": "CASE_ER_TRAIN_1__ER",
+      "marker": "ER",
+      "role": "train",
+      "pair_id": "CASE ER TRAIN 1",
+      "ihc_slide": "/data/IHC/ER/case_er_train_1.svs",
+      "annotation_json": "/data/annotations/ER/case_er_train_1.json",
+      "segmentation_dir": "/cache/segmentation/CASE_ER_TRAIN_1__ER",
+      "cell_table": "/cache/features/CASE_ER_TRAIN_1__ER/cell_features.csv"
+    },
+    {
+      "case": "CASE_ER_TEST_1__ER",
+      "marker": "ER",
+      "role": "test",
+      "ihc_slide": "/data/IHC/ER/case_er_test_1.svs",
+      "annotation_json": "/data/annotations/ER/case_er_test_1.json"
+    }
+  ]
+}

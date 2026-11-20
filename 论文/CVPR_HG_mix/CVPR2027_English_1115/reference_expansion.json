@@ -1,0 +1,30 @@
+{
+  "updated_at": "2026-11-15T22:41:28.169434+08:00",
+  "original_aaai_entries": 29,
+  "before": 9,
+  "after": 25,
+  "restored": 12,
+  "new": 4,
+  "sources": {
+    "chan2019histosegnet": "https://openaccess.thecvf.com/content_ICCV_2019/papers/Chan_HistoSegNet_Semantic_Segmentation_of_Histological_Tissue_Type_in_Whole_Slide_ICCV_2019_paper.pdf",
+    "xu2019camel": "https://arxiv.org/abs/1908.10555",
+    "chen2022hipt": "https://arxiv.org/abs/2206.02647",
+    "tokunaga2019awmf": "https://openaccess.thecvf.com/content_CVPR_2019/papers/Tokunaga_Adaptive_Weighting_Multi-Field-Of-View_CNN_for_Semantic_Segmentation_in_Pathology_CVPR_2019_paper.pdf",
+    "ho2021dmmn": "https://arxiv.org/abs/1910.13042",
+    "chen2024uni": "https://www.nature.com/articles/s41591-024-02857-3",
+    "wang2022ctranspath": "https://github.com/Xiyue-Wang/TransPath",
+    "liu2023simpleclick": "https://openaccess.thecvf.com/content/ICCV2023/html/Liu_SimpleClick_Interactive_Image_Segmentation_with_Simple_Vision_Transformers_ICCV_2023_paper.html",
+    "sofiiuk2022ritm": "https://arxiv.org/abs/2102.06583",
+    "ma2024medsam": "https://www.nature.com/articles/s41467-024-44824-z",
+    "jampani2018ssn": "https://openaccess.thecvf.com/content_ECCV_2018/html/Varun_Jampani_Superpixel_Sampling_Networks_ECCV_2018_paper.html",
+    "zaheer2017deepsets": "https://proceedings.neurips.cc/paper_files/paper/2017/hash/f22e4747da1aa27e363d86d40ff442fe-Abstract.html",
+    "wang2019panet": "https://openaccess.thecvf.com/content_ICCV_2019/html/Wang_PANet_Few-Shot_Image_Semantic_Segmentation_With_Prototype_Alignment_ICCV_2019_paper.html",
+    "tian2022pfenet": "https://i.cs.hku.hk/~hszhao/paper/tpami20_pfenet.pdf",
+    "zhang2021cyctr": "https://arxiv.org/abs/2106.02320",
+    "oquab2024dinov2": "https://openreview.net/pdf/e00d5b694b7463511c0c840099de47596874ff2d.pdf"
+  },
+  "main_pages": 8,
+  "total_pages": 10,
+  "audit": "论文/CVPR_HG_mix/CVPR2027_English_1115/引用扩充核对_1115.md",
+  "bibliography_sha256": "f3f6db2c44ff08acda4ab54faec904871344a8ccd6ed0830a69a11dc0e2001fe"
+}

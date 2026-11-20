@@ -1,0 +1,19 @@
+\begin{table*}[t]
+\centering
+\caption{Window and whole-slide Dice (\%) on the same three complete WSIs (32 slide--target pairs). Owner assigns each pixel to the covering window with the nearest center; fused averages overlapping probabilities. All and remote denote full-slide and strict-remote scoring. Window scores average target-present windows within each slide--target pair; whole-slide scores use unique pixels. Both average slides within tissue, then tissues equally.}
+\label{tab:wsi_readouts}
+\small\setlength{\tabcolsep}{8pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+& \multicolumn{2}{c}{Present windows} & \multicolumn{2}{c}{Owner whole slide} & \multicolumn{2}{c}{Fused whole slide} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Method & All & Remote & All & Remote & All & Remote \\
+\midrule
+FewClick & 37.79 & 35.12 & 46.41 & 43.78 & 45.65 & 43.04 \\
+SANSA & 37.37 & 34.71 & 34.70 & 31.11 & 34.85 & 31.21 \\
+Proto-MS & 38.32 & 35.79 & 41.91 & 39.17 & 42.13 & 39.53 \\
+No dense transfer & 36.80 & 34.15 & 42.18 & 39.98 & 41.70 & 39.42 \\
+No region messages & 37.47 & 34.87 & 45.13 & 42.76 & 44.27 & 41.89 \\
+\bottomrule
+\end{tabular}
+\end{table*}

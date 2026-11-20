@@ -2197,6 +2197,16 @@
 - Status: 完成；原始J5三源Dice.432318/BF1.201186/误报11.898%/CRC代表性.751189；当前清晰模型相对主Dice+15.66点/CRC+7.37点，点击口径统一、旧0.7274仅回放控制。无训练/部署。
 - Commit: 本次原始基线全量结果独立文档提交。
 
+## 10-25 01:52:43
+
+- Purpose: 按原始FewClick的AAAI-27评审设计完整实验方案，区分原方法证据与Dense扩展。
+- Changed: 新增25项审稿challenge映射、E0–E9实验/审计设计、匹配训练/提示/统计合同及实施优先级；未改模型、原稿或历史结果。
+- Validation: 只读核对OpenReview保存页、本地主文submission PDF/TeX、补充PDF/TeX及v4/v5记录；本地文档链接和25个意见ID覆盖检查通过，`git diff --check`通过。官方规则与近期方法已查一手来源；AAAI-27新增结果专项规则仍待实际回复表单核实。
+- Artifacts: 无新训练、推理或NFS产物。
+- Docs record: docs/建议/数据与评估/方案_原始FewClick与Dense审稿逐条实验_1025_013839.md（实验建议与设计记录）。
+- Status: 方案完成；发现本地主文TLS约0.70 Dice与补充材料0.6968 recall口径不一致，以及多尺度叙述与J5 fine_only记录待追溯。必须核对实际上传版本及逐结果来源，不能以新Dense成绩替代纠错。
+- Commit: 仅文档变更，未创建提交；保留既有用户未提交修改。
+
 ## 10-25 04:06:06
 
 - Purpose: 按用户最新要求，用当前数据重新设计并实现论文式三物理视野模型及配对对照，不追求原文旧分数回放。
@@ -2206,6 +2216,36 @@
 - Docs record: docs/运行记录/模型实验/运行记录_论文三视野模型重新对比_1025_033600.md（运行记录）。
 - Status: 实现和代表门控完成；正式四分片上下文准备及四臂10k配对训练待启动。CRC/TIGER可用，IGNITE无完整大视野验证而排除；结果仅开发评价、无完整WSI验收。
 - Commit: 本次三视野实现独立提交；不包含既有组会修改和审稿方案。
+
+## 10-25 04:08:50
+
+- Purpose: 启动新三物理视野四臂配对实验的正式特征准备与自动训练流水线。
+- Changed: 仅更新运行记录与本状态；算法源码保持e41c060固定。
+- Validation: 四分片真实PID/命令与GPU绑定核对通过，均已产生缓存（13/12/2/2视野），无失败；源码快照、启动核验和各分片状态落盘，`git diff --check`通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600；formal_selection、startup_verified_1025_040737、四分片context和日志。
+- Docs record: docs/运行记录/模型实验/运行记录_论文三视野模型重新对比_1025_033600.md（运行记录追加）。
+- Status: running/prepare_full_contexts；tmux paper_multiscale_formal_1025_040737，coordinator2678845，GPU1/3/4/5计算worker2678901/2678902/2678903/2678904。完成特征与SHA核验后自动进入四臂各10k更新及1+1/3+1/5+1评测，未声称正式训练已完成。
+- Commit: 算法实现e41c060；本条为启动状态记录。
+
+## 10-25 12:24:19
+
+- Purpose: 核验三视野四臂实验完成状态并汇总真实结果。
+- Changed: 仅追加运行记录与状态，生成时间戳NFS报告/CSV/JSON；无模型或训练改动。
+- Validation: 正式流水线12:05:24 formal_complete、总7小时58分；全部4特征/4训练/4预算评测EXIT0。每臂10000步/40000任务，四臂训练任务SHA及验证计划SHA完全一致，checkpoint重载通过；12个预算汇总均120任务/72有目标/48无目标；diff检查通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/paper_multiscale/rerun_1025_033600/report_1025_122419，含report.md、summary.json、primary_3p2n.csv、nested_budgets.csv。
+- Docs record: docs/运行记录/模型实验/运行记录_论文三视野模型重新对比_1025_033600.md（运行记录追加完成结果）。
+- Status: complete；主3+2的单尺度/三尺度/单尺度Dense/三尺度Dense Dice=.5148/.5176/.5399/.5663，FPA=4.81%/4.62%/3.77%/4.78%。仅加尺度改善小；Dense增益伴随不同误报取舍。单seed开发评价，无独立WSI/盲测结论。
+- Commit: 算法实现e41c060；本条为完成结果记录。
+
+## 10-25 12:36:15
+
+- Purpose: 对照原审稿方案与四臂结果，确定后续外部基线、提示迁移、细胞消融及泛化实验的顺序。
+- Changed: 新增后续对比建议，旧方案顶部注明用户新数据/新模型决定和更新入口；无算法改动。
+- Validation: 实读120计划为local24/same_wsi48/cross_wsi48，唯一query88、来源space49/空间group51；核对SAM依赖及SAM/WSI-SAM/SAM-Med2D权重实际存在；检查原生WSI-SAM2倍context和inference接口，核验MultiverSeg官方context合同/代码入口。两文档本地链接与diff检查通过。
+- Artifacts: 无新GPU训练/推理或模型下载。
+- Docs record: docs/建议/数据与评估/方案_三视野完成后的外部基线与泛化对比_1025_123037.md（建议记录）；原审稿方案增加更新入口。
+- Status: 完成后续设计；优先local与transfer分表、SAM/WSI-SAM适配和闭集参考。明确旧J5目标监督暴露、3尺度额外参数量与外部ROI上下文不足；本轮四臂不自动视为全部审稿实验完成。
+- Commit: 文档建议，未新增算法提交。
 
 ## 10-25 12:55:00
 
@@ -2511,6 +2551,53 @@
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/fair_comparison/heldout_1026_003000/all_label_reference_report_1026_030900、all_label_wsi_acceptance_1026_030600、native_first_live_1026_024600.json、native_second_live_1026_031500.json、reference_continuity_1026_032000.json。
 - Docs record: docs/运行记录/模型实验/运行记录_全标签同任务参考提取与WSI迁移补齐_1026_023000.md。
 - Commit: 本条随本次独立提交，哈希由Git记录。
+
+## 10-26 13:36:05
+
+- Purpose: 按用户要求下载公开MIHIC至NFS供查看。
+- Changed: 新增数据审计记录及registry/goal下载条目；无模型代码变更。
+- Validation: 公开Zenodo metadata核实，NFS可用6.0TB；下载running PID3934475，最终MD5/CRC/样例检查待完成。
+- Artifacts: /nfs-medical3/zyh/MIHIC_1026_133434。
+- Docs record: docs/运行记录/数据审计/运行记录_MIHIC公开数据下载与查看_1026_133434.md。
+- Commit: 未提交；本任务仅数据下载与记录。
+
+## 10-26 14:22:59
+
+- Purpose: 确认MIHIC下载完成并提供样例。
+- Changed: 数据审计记录、registry、goal；无模型代码更改。
+- Validation: 7596524308字节/官方MD5一致，309698张PNG目录检查，42样例与preview.png已查看；全ZIP CRC仍在运行。
+- Artifacts: /nfs-medical3/zyh/MIHIC_1026_133434。
+- Docs record: docs/运行记录/数据审计/运行记录_MIHIC公开数据下载与查看_1026_133434.md。
+- Commit: 未提交，数据下载记录。
+
+最终验收 2026-10-26T14:23:24.844100：worker3944462结束，COMPLETE / EXIT_CODE=0；官方MD5、字节数和全ZIP CRC均通过；309698张PNG、42原尺寸样例与预览已核实。任务complete，目录`/nfs-medical3/zyh/MIHIC_1026_133434`。
+
+## 10-26 16:46:31
+
+- Purpose: 用户要求查明本地IHC哪些已标、哪些需补标，生成逐片表格。
+- Changed: 新数据审计记录；追加goal、registry和当前运行记录，无模型代码更改。
+- Validation: 全43路径/头清点，20份JSON独立精确去重重算通过；旧335/新96；明确6越界/5头失败/自交未检查及旧派生表权限限制，未认证临床标注质量。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/data_audit/ihc_inventory_1026_164228，含inventory.csv、report.md、inventory.json、independent_recount.json、acceptance.json及原失败/新脚本日志。
+- Docs record: docs/运行记录/数据审计/运行记录_本地IHC逐片标注与补标清单_1026_164228.md。
+- Commit: 未提交；数据审计和文档输出，不含仓库实现代码变更。
+
+## 10-26 17:11:20
+
+- Purpose: 下载公开CRC上皮分割13种IHC并检查区域mask。
+- Changed: 新运行记录、registry、goal/当前记录；无模型代码更改。
+- Validation: 13公开文件/官方MD5/总227121350446字节，NFS6TB空闲已核；真实下载worker785098运行，样例v2 PID792164运行，均非完成。
+- Artifacts: /nfs-medical3/zyh/CRC_IHC_Epithelium_1026_170750，脚本SHA保存在code_hashes.json，首次样例网络失败保留。
+- Docs record: docs/运行记录/数据审计/运行记录_公开CRC多染色IHC下载与区域掩膜检查_1026_170750.md。
+- Commit: 未提交，下载与记录任务。
+
+## 10-26 17:20:56
+
+- Purpose: 查看CRC公开IHC真实区域mask并保留全量下载。
+- Changed: 运行记录/registry/goal更新，无模型代码更改。
+- Validation: 两Ki67图mask原尺寸/二值0,1/成员CRC/独立重读及overlay目检通过；首版网络中断保留，短分段worker833141继续，全227GB下载与官方MD5未完成。
+- Artifacts: /nfs-medical3/zyh/CRC_IHC_Epithelium_1026_170750；样例预览/nfs-medical3/zyh/CRC_IHC_Epithelium_1026_170750/inspection/review_1026_171036/initial_Ki67_preview.png。
+- Docs record: docs/运行记录/数据审计/运行记录_公开CRC多染色IHC下载与区域掩膜检查_1026_170750.md。
+- Commit: 未提交，数据下载查看记录。
 
 ## 10-26 18:32:25
 
@@ -4686,6 +4773,13 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/运行记录_细胞门控残差融合_1107_005210.md
 - Commit: 本次提交。
 
+## 11-07 19:02:54
+
+- Purpose: 用户授权六卡WSI连续区域补充，先坐标与缓存前向验收。
+- Docs record: docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254
+- Validation: preparing，未宣称质量接受。
+
 ## 11-07 19:14:32
 
 - Purpose: Launch frozen three-method WSI continuous ROI comparison on all six GPUs.
@@ -4703,6 +4797,13 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_quality_1107_190254_coordfix
 - Docs record: docs/运行记录/模型实验/运行记录_WSI六卡连续区域质量_1107_190254.md
 - Commit: see commit containing this entry.
+
+## 11-07 22:19:35
+
+- Purpose: 同30任务扩展WSI安全空间范围，复用旧窗口，六卡补新增窗口。
+- Docs record: docs/运行记录/模型实验/运行记录_WSI扩展空间范围_1107_221801.md
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_extent_1107_221801
+- Validation: preparing，门控和质量尚待完成。
 
 ## 11-07 22:21:25
 
@@ -4731,6 +4832,13 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/诊断_WSI类别覆盖与低分_1108_005817.md
 - Commit: see commit containing this entry.
 
+## 11-08 01:04:13
+
+- Purpose: User requests >=10000 support-query tasks in parallel; plan11000per method.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128
+- Docs record: docs/运行记录/模型实验/运行记录_WSI一万任务六卡评估_1108_010128.md
+- Validation: preparing, not formal completion.
+
 ## 11-08 01:07:24
 
 - Purpose: Launch >=10000 distinct remote tasks on six GPUs with class-balanced coverage.
@@ -4739,6 +4847,13 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_taskscale_1108_010128
 - Docs record: docs/运行记录/模型实验/运行记录_WSI一万任务六卡评估_1108_010128.md
 - Commit: see commit containing this entry.
+
+## 11-08 01:42:01
+
+- Purpose: Terminate cross-slide study at user request, prepare strictly same-slide remote replacement.
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_same_slide_1108_013913
+- Docs record: docs/运行记录/模型实验/运行记录_同片远端一万任务重跑_1108_013913.md
+- Validation: own7PIDs terminated and no old worker remains; new preparation running, final gates pending.
 
 ## 11-08 01:45:16
 
@@ -5034,6 +5149,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/运行记录_支持点击细节注入双臂修复_1110_005747.md; prior failed 1110_005528 record preserved.
 - Commit: this scoped implementation commit; hash recorded in run record after commit.
 
+- 2026-11-10T01:48:08.234771+08:00 两臂256学习gate及4步smoke均accepted；GPU1正式PID2880508 1276/2000，GPU3 PID2880621 1276/2000，现场存活。近期约1.6秒/更新，余训练含末步监控/恢复约25–35min；两臂并行但各自两eval分片串行，历史Phikon11000评分合计约3.1h，暂估完整结果余3–4h（约05:00–06:00，随负载变动）；正式训练与质量尚未验收。 运行记录：docs/运行记录/模型实验/运行记录_支持点击细节注入双臂修复_1110_005747.md；本次只读核查及接续记录更新，无代码变更。
+
+- 2026-11-10T02:10:28.296094+08:00 两臂正式2000/8000训练complete_accepted：实际消费SHA现场核验匹配，冻结encoder未变、训练参数实际改变、fresh6重放接受；同片6任务eval gate均accepted。GPU1实际worker3090420、GPU3 worker3091459存活，分别75/11000、75/11000，双臂并行、每臂两分片串行。早期约1.1秒/任务，预计完整质量和独立评分余3–4h，约05:30–06:00（负载变化）。无最终Dice、不使用部分结果宣称改善。 运行记录：docs/运行记录/模型实验/运行记录_支持点击细节注入双臂修复_1110_005747.md；仅验收核查及连续记录更新，无代码变更。
+
+- 2026-11-10T13:29:40.769228+08:00 两臂全流程complete_accepted/EXIT0：各2000/8000正式训练及11000同片预测、磁盘mask评分/聚合接受。现场report/4rows/tasks SHA核对，11000任务类别宏独立复算。baseline 全体Dice32.4547/大目标59.4305/FPA2.3912%；point_detail33.2412/61.2354/FPA3.5140%；local_detail33.0721/60.8887/FPA3.8141%。大目标分别+1.8049/+1.4583pp，全体+.7866/+.6175pp；FPA增加1.1228/1.4229pp，均超过预登记+1pp守门，complete_accepted_not_promoted，保留原主模型。不能仅据单seed开发评估声称显著；BF1/小目标/脂肪及机制复核仍可补，但不挽回当前FPA门槛。第三辅助监督方案尚未启动，不自动新训练。比较复核/nfs-medical3/zyh/fewclick_v2/cvpr_research/support_token_repair_1110_005747/verified_comparison.json。 仅结果核查及记录更新，无代码变更。
+
 ## 11-10 13:37:25
 
 - Purpose: Test direct supervision of pre-matcher region predictions, alone and with point detail.
@@ -5043,6 +5164,8 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_133606.md.
 - Commit: scoped implementation commit; receipt written after commit.
 
+2026-11-10T13:51:45.982370+08:00 门控256训练已结束但报告对absent Dice NA求均值报错，原失败保留。仅修复统计，NA边界及region不达标停止检查通过；新root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144 GPU4/1 fresh工程→门控→正式→同片评估重跑已串联。预计余5–6h，约19–20点（共享负载可变），学习/质量仍未接受。
+
 ## 11-10 13:52:24
 
 - Purpose: Fix region auxiliary gate report handling of absent-task NA Dice.
@@ -5051,6 +5174,10 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144; fresh gated pipeline launched; prior completed256 checkpoints/report failure preserved.
 - Docs record: docs/运行记录/模型实验/运行记录_区域主分支辅助监督双臂_1110_135144.md.
 - Commit: this scoped reporting fix.
+
+2026-11-10T18:15:43.562923+08:00 两臂学习gate及2000/8000正式训练均accepted。aux_original11000全部complete_accepted/EXIT0，报告及两rows/taskSHA现场核对、宏Dice独立复算。全体Dice32.3509%、大目标60.1529%、FPA3.6663%；原32.4547/59.4305/FPA2.3912，大目标仅+.7224pp、全体-.1038pp且误报+1.2751pp，未达到原晋升守门，尚未超过SANSA。aux_detail GPU1真实2055897存活，5500+5025/11000，约95.5%；余推理与独立复算暂估15–25min。组合臂完整结果尚无，不以部分预测报质量；不自动新增配方。
+
+2026-11-10T18:57:44.304014+08:00 区域辅助监督两臂全流程complete_accepted/EXIT0：各2000/8000及11000同片mask/独立评分汇总接受。现场两个report/四rows/tasks SHA核对，整体/大面积Dice/FPA独立复算。aux_original32.3509/60.1529/FPA3.6663%；aux_detail33.2882/61.0677/FPA4.9385%。point_detail无辅助33.2412/61.2354/FPA3.5140，故叠加辅助后全体仅+.0470pp、大目标-.1677pp、误报+1.4245pp；不能证明实际收益。两臂未满足原守门、未超过SANSA，complete_accepted_not_promoted，保留原基线及细节候选原状态。不自动扫描系数/加seed/增加训练；本组已退出。收尾复核见 /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_auxiliary_1110_135144/verified_comparison.json。
 
 ## 11-10 19:01:49
 
@@ -5080,6 +5207,34 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/运行记录_同片9500三模型匹配重训_1110_204945.md.
 - Commit: this scoped retraining implementation.
 
+2026-11-11T00:14:33.674745+08:00 三组新同片学习gate全部accepted。original/detail2375更新/9500实际消费训练accepted，消费SHA现场一致、全部冻结state不变、fresh4重放通过；6同片evalgate通过，真实GPU3 PID3552502/4 PID3551383存活，评估约8450/8475各11000(77%)，估余45–60min含独立评分。SANSA GPU1真实3016718存活，正式1801/2375(76%)，近约6.1秒/更新，余训练含恢复约60–75min；之后11000串行两分片约2.5–3.5h，整轮预计04–05点（共享负载可变）。无完整质量结果，不按部分任务报Dice。
+
+2026-11-11T00:59:17.475250+08:00 两FewClick臂新2375/9500及11000同片评估全部complete_accepted/EXIT0；report/四rows/tasks及实际消费SHA现场核对、类宏Dice复算通过。original全体39.1935/大目标73.8085/FPA6.7115%；detail39.0879/73.5256/FPA6.5633%。旧原32.4547/59.4305/FPA2.3912，增+6.7388/+14.3780pp但FPA也+4.3203pp；新训练多因素同时改变，不单独归因同片，不自动晋升。SANSA GPU1真实3016718存活，正式2276/2375(94.8%)；近期约5.3秒/更新，余训练验收约15–25min，后续11000评估约2.5–3.5h，完整三方比较仍待完成。不能与旧8000 SANSA直接宣称公平反超。
+
+2026-11-11T02:02:10.353079+08:00 三组2375/9500正式训练全部accepted；SANSA实际消费SHA现场匹配两FewClick，冻结state/参数更新/fresh4接受，6同片推理gate接受。SANSA GPU1真实3571370存活，3325/11000任务(约30%)，当前约.94秒/任务；两分片串行余推理+复算约2–2.5h，预计04–05点完整三方结果。FewClick39.1935/大目标73.8085/FPA6.7115，detail39.0879/73.5256/FPA6.5633保持已接受，SANSA完整质量未出，不提供部分Dice冒充最终。
+
+2026-11-11T10:50:13.801835+08:00 新9500三模型全流程complete_accepted/EXIT0。三formal实际消费SHA、三report/六rows/tasks现场核对，三组11000任务类宏Dice/large/FPA独立复算全部一致。original39.1935/大目标73.8085/FPA6.7115%；detail39.0879/73.5256/FPA6.5633%；SANSA41.5429/77.2201/FPA14.7866%。原Few比SANSA全体低2.3494pp、大目标低3.4116pp，FPA低8.0751pp(约54.6%相对降低)；细节未优原模型，未实现Dice反超。三者同新9500/2375与11000评估；不同public预训练/视野/容量明确保留。原新旧FPA增幅超原守门，不自动晋升，不启动新训练；配对区间/BF1/分层机制仍可补。本组全部完成，保存verified_comparison.json。
+
+2026-11-11T10:54:07.477500+08:00 同片9500逐类复核完成：脂肪整体差6.17pp；大目标正常间质差9.36/fat8.43/黏膜下浆膜6.09pp。原Few大目标空仅23/2130，重点应转向覆盖与定位边界；淋巴总体优SANSA，稀有大目标n28/n12保留限制。未启动新训练。详见 docs/运行记录/模型实验/分析_同片9500逐类差距与改进空间_1111_105407.md
+
+## 2026-11-11T11:06:57.525231+08:00
+
+- Purpose: 同片9500剩余瓶颈及点击推理逻辑只读诊断。
+- Changed: 分析记录、registry、goal与当前run追加；模型代码未变。
+- Validation: CPU analyze.py exit0；六rows/masks SHA、支持/查询label SHA；2130大目标两方法tp/fp精确复算及宏Dice复现。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/weakness_review_1111_110224
+- Docs record: docs/运行记录/模型实验/分析_同片9500剩余瓶颈与点击迁移逻辑_1111_110224.md（诊断及推荐，新增训练planned而未执行）。
+- Commit: 无代码改动，未新增提交。
+
+## 2026-11-11T11:12:33.476477+08:00
+
+- Purpose: 三步改进具体方案，状态planned。
+- Changed: 方案、registry、goal和当前run；无模型代码变更。
+- Validation: 核对原loss/support→query实际路径与9500合同；JSON解析通过。
+- Docs record: docs/建议/模型与训练/方案_区域证据匹配与查询细化三步实验_1111_111031.md（推荐）。
+- Artifacts: 无新训练产物。
+- Commit: 未新增代码提交。
+
 ## 2026-11-11T11:20:50.862101+08:00
 
 - Purpose: 实现支持区域证据A及受控串联诊断、门控、训练、同片评估。
@@ -5098,6 +5253,10 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/运行记录_四卡支持匹配并行诊断_1111_113315.md
 - Commit: 本条随实现提交；全量诊断接受待完成。
 
+2026-11-11T11:48:06.783477+08:00 四卡诊断128x4全部complete/EXIT0，四rows/四mask SHA核验通过，summary=/nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_support_diagnostics_1111_113538/summary.json。remote_present仅30：原点Dice64.56%、预测区域直接池化62.34%、GT支持区域池化62.79%，均是旧checkpoint无重训干预，不代表A训练结果；旁路匹配Dice0表明当前路径依赖，不是模块必要性消融。3+2/3+1/1+1为64.56/63.75/63.12%；小支持23例正点region目标纯度10.33%。历史脚本82/128评分不精确相同继续保留，不跨脚本算收益；当前完整forward精确验证。A正式501/2375，真实426996存活，暂无完整质量。
+
+2026-11-11T16:31:57.791142+08:00 A全部2375/9500训练、11000同片mask/独立评分完成且EXIT0；现场消费/权重/两rows/两mask SHA通过，整体/large/FPA独立宏复算一致。Dice38.8760/large73.4130/FPA9.0527%，比原Few39.1935/73.8085/6.7115分别-.3175/-.3955/+2.3412pp，无收益、不晋升。保存/nfs-medical3/zyh/fewclick_v2/cvpr_research/region_evidence_1111_111943/verified_comparison.json；B/C未启动，不自动新训练。
+
 ## 2026-11-11T16:37:48.662395+08:00
 
 - Purpose: 用户授权B/C并行，实现带符号空间记忆及查询细化，沿用9500训练与11000同片评价。
@@ -5106,6 +5265,8 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/region_attention_1111_163607
 - Docs record: docs/运行记录/模型实验/运行记录_区域注意力B与查询细化C并行_1111_163607.md
 - Commit: 本条随实现提交，正式训练及质量待验收。
+
+2026-11-11T16:42:16.461080+08:00 完成SANSA差距后续路线分析，代码核实Phikon原生32网格插值64、旧最后层微调阴性；核对SANSA/HDMNet/SSP原文。推荐训练匹配特征区分、支持锚定query自适应，较大候选为保留原生SAM2 decoder；真实高分辨率有条件。B/C继续，无额外训练。记录 docs/建议/模型与训练/方案_SANSA差距后续四条路线_1111_164035.md。
 
 ## 2026-11-11T16:50:41.864523+08:00
 
@@ -5116,6 +5277,18 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/运行记录_判别匹配D并行训练_1111_164839.md
 - Commit: 本条随实现提交，功能学习/正式/质量尚未接受。
 
+2026-11-11T17:07:00.651670+08:00 B/C/D工程及256train功能门控全部accepted，fresh optimizer继续与最终32重放通过。正式训练现场PID存活：{"B": {"pid": 1538070, "step": 601, "total": 2375, "gate": "accepted", "same_present_train_Dice": 0.8293662436924776}, "C": {"pid": 1538156, "step": 601, "total": 2375, "gate": "accepted", "same_present_train_Dice": 0.8291724334458366}, "D": {"pid": 1582586, "step": 250, "total": 2375, "gate": "accepted", "same_present_train_Dice": 0.8078377434078476}}。门控Dice仅8个train同片present任务，非11000评估，不代表胜过SANSA；三组正式训练及完整质量仍未接受，原串联继续无重启。
+
+2026-11-11T19:42:58.531818+08:00 B/C/D2375/9500正式训练全部accepted；三组实际消费及checkpoint SHA现场核验通过，fresh4/冻结状态接受。三个6task evalgate已过，三GPU第二分片真实PID存活：{"B": {"status": "evaluation_running", "training": "accepted", "pid": 534158, "completed_tasks": 6125, "total": 11000}, "C": {"status": "evaluation_running", "training": "accepted", "pid": 533726, "completed_tasks": 6125, "total": 11000}, "D": {"status": "evaluation_running", "training": "accepted", "pid": 515983, "completed_tasks": 6475, "total": 11000}}。无完整11000分数，不按第一分片报最终Dice；预计余推理及评分1.5–2h，原串联继续。
+
+2026-11-11T21:08:04.676571+08:00 B/C/D全流程complete_accepted/EXIT0，不晋升。三formal消费/权重、六rows/六mask SHA与同11000任务SHA现场核对，整体/large/FPA宏独立复算通过。B38.2280/69.0190/FPA6.6577%；C39.1522/72.3006/FPA9.6111%；D38.4280/71.9176/FPA5.0756%。原Few39.1935/73.8085/FPA6.7115、SANSA41.5429/77.2201/FPA14.7866。三候选未超过原Few Dice或SANSA；D更低误报伴Dice代价。保留原Few，不自动新训练。接受凭据 /nfs-medical3/zyh/fewclick_v2/cvpr_research/BCD_closeout_1111_210804/verified_comparison.json。
+
+2026-11-11T21:14:24.797429+08:00 BCD完整只读失效分析完成：B召回下降广泛，D降低FPA但召回/precision均未改善；C常见若干类改善而淋巴/血液大幅下降，FPA增加，不能晋升。固定train8例不支持笼统训练失败/过拟合结论。75slide配对条件bootstrap与逐类/分尺度/precision/recall/BF1完成；仅开发集条件统计不代替独立测试/seed。保留原Few，B/D当前配方停止扩展；C独立细化对照可选，原生SAM2decoder为后续主建议，均未启动。详见docs/运行记录/模型实验/分析_BCD完整逐类失效与下一步决策_1111_211130.md，artifacts=/nfs-medical3/zyh/fewclick_v2/cvpr_research/BCD_analysis_1111_211130。
+
+2026-11-11T21:36:29.513018+08:00 用户授权优先赶超SANSA，F原生SAM2公开解码路线已预登记：单GPU3，原9500/2375及同片11000；SAM公开权重冻结、Few多尺度signed prior训练，native+coarse固定logits融合。准备工程→学习→正式→评价自动串联，当前preparing非通过；record=docs/运行记录/模型实验/运行记录_SAM2原生解码FewClickF_1111_213350.md；root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/native_sam2_1111_213350。
+
+2026-11-11T21:39:04.098978+08:00 初工程四组complete_accepted/EXIT0：与官方predictor全部native特征及原生logit精确，cached/full更新前后精确，原生dense梯度非零，SAM全state不变。发现复用trainer收据decoder_freeze_applicable仍false；实际检查已执行且通过，仅修正文档化字段为true。旧controller1002926及其自有workflow1007228/functional1007524显式停止，未进入正式训练；旧root完整保留metadata_revision_stop.json。新root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/native_sam2_1111_213802，新tmux=native_sam2_F_1111_213802，重新工程→原冻结学习/正式/评价流水线，不改变模型/配方/门槛。
+
 ## 2026-11-11T21:40:29.097658+08:00 Native SAM2 FewClick F implementation
 
 - Purpose: preserve public SAM2.0 native high-resolution decoding while training FewClick signed multiscale dense conditions; no query human prompts or GT inference.
@@ -5124,6 +5297,14 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/native_sam2_1111_213802; failed/superseded startup preserved at native_sam2_1111_213350 (receipt metadata revision only).
 - Docs record: docs/运行记录/模型实验/运行记录_SAM2原生解码FewClickF_1111_213350.md
 - Commit: recorded after isolated commit; no baseline or dataset artifacts staged.
+
+2026-11-11T21:41:28.781135+08:00 F新root工程四组accepted/EXIT0，官方predictor特征/native logit精确，native条件梯度和SAM全冻结验证；fresh optimizer继续精确检查accepted。GPU3功能学习256 gate真实PID1016418现场存活，尚非学习质量通过/正式训练完成；通过自动fresh4→fresh2375/9500→11000同片独立评分，失败停止。源码隔离commit=60156bf59e2c7f766c34d79c337bb89772c77a2a，launch_verified/quality_targets已保存；root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/native_sam2_1111_213802。
+
+2026-11-12T00:46:10.326874+08:00 F功能256门控accepted，fresh正式2375/9500训练complete_accepted/EXIT0；现场消费SHA与公共队列一致、checkpoint SHA核对。SAM全冻结与fresh4重放通过，6例同片evalgate接受。GPU3实际推理PID1602057现场存活，进度1550/11000；完整质量尚无，不用部分预测/8例train指标判定追平SANSA。预计余推理+独立评分约3.7h（含磁盘评分另留余量）。保留当前流水线，不重启/新增训练。
+
+2026-11-12T02:03:15.544032+08:00 用户询问F失效备选：完成条件路线建议，先完整F及coarse/native/fused诊断，停用则原Few+支持锚定query自适应优先；层级稠密匹配/真实高分辨率按错误证据后置。区分A/B/D已试阴性与新机制，SSP/HDMNet原文核对，不承诺反超、不追加训练。record=docs/建议/模型与训练/方案_原生SAM2候选失效后的备选顺序_1112_020315.md。
+
+2026-11-12T02:09:36.208542+08:00 用户授权三条备选立即并行，覆盖此前顺序建议。新E自支持GPU2/H层级稠密GPU5/G四子块fineGPU0独立原Few公共fresh9500/2375；F GPU3评价保持不变。每臂工程→功能256(新增E/H真实分支使用gate)→fresh正式→11000自动串联，当前preparing。root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_phikon_EHG_1112_020535；record=docs/运行记录/模型实验/运行记录_Phikon三路线EHG并行_1112_020535.md。
 
 ## 2026-11-12T02:11:35.977123+08:00 Parallel Phikon E/H/G candidates
 
@@ -5134,6 +5315,16 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/运行记录_Phikon三路线EHG并行_1112_020535.md
 - Commit: recorded after isolated source/status commit. No unrelated artifacts staged.
 
+2026-11-12T02:11:58.384740+08:00 E/H/G三工程均accepted/EXIT0：各四组真实输入、三次更新、冻结state、cache/full精确及支持交换；E/H parent初始state/预测精确，G单图6encoder调用/未改context精确/原生fine64格；E无证据严格零修正数值检查通过。三GPU功能256门控运行且真实worker现场存活：{"E": {"gpu": 2, "pid": 2080854, "progress": "initializing_and_replay"}, "H": {"gpu": 5, "pid": 2080744, "progress": "initializing_and_replay"}, "G": {"gpu": 0, "pid": 2080414, "progress": "initializing_and_replay"}}。F评估进程1602057存活=True，未干预。源码commit=32093c9a87c1a60853b329edd255ff5bf1d7a649；root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/parallel_phikon_EHG_1112_020535。学习/正式/质量尚未接受，不以工程通过判算法收益。
+
+2026-11-12T02:43:28.153037+08:00 E/H/G功能256及fresh4smoke全部accepted，E/H真实remote-present新分支usage gate通过；三臂fresh正式2375运行且真实PID存活：{"E": {"step": 276, "total": 2375, "recent_seconds_per_update": 4.21, "remaining_train_hours": 2.46, "pid": 2132778, "functional": "accepted", "smoke": "accepted", "status": "formal_running"}, "H": {"step": 326, "total": 2375, "recent_seconds_per_update": 4.21, "remaining_train_hours": 2.4, "pid": 2130078, "functional": "accepted", "smoke": "accepted", "status": "formal_running"}, "G": {"step": 226, "total": 2375, "recent_seconds_per_update": 5.25, "remaining_train_hours": 3.13, "pid": 2136566, "functional": "accepted", "smoke": "accepted", "status": "formal_running"}}。F仍GPU3评估，约5000/11000。当前共享六卡计算负载高，剩余整批时间应包含正式训练+每臂11000推理/独立评分，不将训练结束等同出完整结果。
+
+2026-11-12T11:41:04.215587+08:00 F/E/H/G全部2375/9500及11000同片评价complete_accepted/EXIT0；现场四组消费/权重、八rows/八mask/report/task SHA核验，三指标类宏独立复算一致。{"F": {"Dice": 25.2429, "large_Dice": 53.0666, "FPA": 27.3183}, "E": {"Dice": 39.7551, "large_Dice": 73.6234, "FPA": 6.6113}, "H": {"Dice": 39.969, "large_Dice": 76.5134, "FPA": 8.0987}, "G": {"Dice": 40.1631, "large_Dice": 74.6312, "FPA": 5.7414}}（单位%）。对照original39.1935/73.8085/FPA6.7115，SANSA41.5429/77.2201/FPA14.7866。F当前组合不晋升；E收益小且large未改善；H large76.5134最接近SANSA但FPA8.0987升于原；G整体40.1631/large74.6312/FPA5.7414较均衡。均未Dice反超SANSA，G/H保留候选，待逐类/配对不确定性及成本审查，不自动晋升或新训练。verified=/nfs-medical3/zyh/fewclick_v2/cvpr_research/FEHG_closeout_1112_114004/verified_comparison.json。
+
+2026-11-12T11:45:18.258605+08:00 H/G完整逐类、分尺寸、precision/recall/BF1、75slide配对分析完成。H主增覆盖(召回79.93/BF1 33.86)，G主增细节(BF1 39.85/FPA5.74)；H-SANSA大目标差-.71pp条件CI[-2.13,+.93]，不证明等效，正常间质/上皮/脂肪仍有差距。推荐单模型HG作为下一受控组合，H拒匹配后置；无新训练。record=docs/运行记录/模型实验/分析_HG互补与SANSA剩余差距_1112_114518.md；artifacts=/nfs-medical3/zyh/fewclick_v2/cvpr_research/HG_analysis_1112_114500。
+
+2026-11-12T11:57:58.538267+08:00 用户接受H现有8.0987%FPA并授权HG与可并行增益实验。预登记HG GPU3及HG_mix GPU5（同HG增加整幅fine/子块特征固定等权融合），同9500/2375；6/7 encoder调用、无扩展footprint。工程→功能→fresh正式→11000自动串联；评价分片分别3/0和5/2并行。root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539；record=docs/运行记录/模型实验/运行记录_HG组合与全图细节融合并行_1112_115539.md；当前preparing。
+
 ## 11-12 12:00:44
 
 - Purpose: Implement single-model HG and fixed whole-fine/tiled-fine fusion control HG_mix with parallel disjoint evaluation shards.
@@ -5142,6 +5333,12 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539.
 - Docs record: docs/运行记录/模型实验/运行记录_HG组合与全图细节融合并行_1112_115539.md.
 - Commit: recorded after commit below.
+
+HG/HG_mix源码隔离提交 `afc482a8a40327b0a348b1854e907056e55d9bb7`；启动后源码SHA复核一致，真实功能worker继续运行；凭据 `/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_combination_1112_115539/launch_verified.json`。
+
+2026-11-12T12:26:45.993285+08:00 HG/HG_mix功能256及fresh4 smoke均accepted，真实正式2375worker存活：{"HG": {"status": "formal_running", "worker_pid": 126926, "functional": "accepted", "smoke": "accepted", "progress": {"pid": 126926, "seconds": 611.5462104864419, "stage": "training", "step": 226, "total": 2375, "loss": 1.7741231620311737}}, "HG_mix": {"status": "formal_running", "worker_pid": 122735, "functional": "accepted", "smoke": "accepted", "progress": {"pid": 122735, "seconds": 625.0977771133184, "stage": "training", "step": 201, "total": 2375, "loss": 1.9614653587341309}}}。并行预登记H固定权重4条件推理拆解，GPU1/4，无新增训练。root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_diagnostic_1112_122321，record=docs/运行记录/模型实验/运行记录_H固定权重点击锚定与粗层先验拆解_1112_122321.md。完整11000控制重现与读盘重评分待验证，尚无机制结论。
+
+2026-11-12T12:28:10.755875+08:00 H拆解首root工程在加载模型前失败/EXIT1：启动漏传既有vendor/phikon-v2 PYTHONPATH，系统旧transformers不能识别dinov2；未加载权重、无评价或训练。旧root完整保留 /nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_diagnostic_1112_122321。新root /nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_diagnostic_1112_122744 明确使用与HG一致的transformers4.49.0/vendor路径与CUBLAS确定性环境，新增入口版本断言和environment.json；干预/预算/数据/权重/阈值完全不变，按原流程重新工程→6task gate→11000，仅此已定位环境修正，无自动恢复。
 
 ## 11-12 12:29:29
 
@@ -5152,6 +5349,18 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/运行记录_H固定权重点击锚定与粗层先验拆解_1112_122321.md.
 - Commit: recorded after commit below. No retraining or quality claim.
 
+2026-11-12T12:29:44.712032+08:00 H拆解源码提交 `6b77cd331671b10257b97dff9a3bfa9cafdb8d1a`；现场源码SHA不变与真实worker存活核验通过。凭据 /nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_diagnostic_1112_122744/launch_verified.json；stage=parallel_inference_running。
+
+2026-11-12T12:29:56.927259+08:00 固定6task gate complete_accepted/EXIT0：4条件cache/full概率精确，control与历史mask和指标逐位一致，24mask独立读盘重评分通过。完整11000×4诊断分片已并行：GPU1 PID174300、GPU4 PID174303，真实PID现场核验存活。当前running非完整接受，无新增训练，HG GPU3/5保持。
+
+2026-11-12T15:25:17.066432+08:00 H固定权重四条件完整11000×4=44000预测complete_accepted_inference_diagnostic/EXIT0；现场八mask/八rows/report/任务/权重SHA通过、11000control mask和metrics与原H完全相同，整体/large/FPA类宏独立复算通过。结果(%)={"control": {"Dice": 39.968974, "large_Dice": 76.513447, "FPA": 8.098681}, "no_anchor": {"Dice": 39.97622, "large_Dice": 76.599687, "FPA": 8.152057}, "no_coarse_prior": {"Dice": 39.982175, "large_Dice": 76.652266, "FPA": 8.214865}, "no_anchor_no_coarse_prior": {"Dice": 39.986573, "large_Dice": 76.722214, "FPA": 8.265274}}。去掉两项large+0.2088pp、整体+0.0176pp、FPA+0.1666pp；两项当前数值影响小，未显示正向Dice贡献，不能当已证实核心贡献；固定权重分布干预不替代同配方重训消融，不自动换方案/训练。凭据=/nfs-medical3/zyh/fewclick_v2/cvpr_research/h_component_closeout_1112_152422/verification.json。HG/HG_mix正式2375/9500训练accepted、消费/权重SHA核对，4实际评估worker现场存活；进度={"HG": 8425, "HG_mix": 7075}各/11000，尚无完整分数。
+
+2026-11-12T15:58:35.840533+08:00 HG正式2375/9500及11000同片评价complete_accepted，训练/消费/两分片rows及mask/report/task SHA现场核验、三指标类宏独立复算通过。HG整体40.8688%、large76.8358%、FPA7.0394%；对照H39.9690/76.5134/FPA8.0987，SANSA41.5429/77.2201/FPA14.7866。HG较H整体+0.8998pp、large+0.3223pp、FPA-1.0592pp；未超过SANSA，large差-0.3843pp、整体差-0.6741pp，暂无不确定性检验，不自动晋升。verification=/nfs-medical3/zyh/fewclick_v2/cvpr_research/HG_closeout_1112_155835/verification.json。HG_mix训练accepted，推理进度=10975/11000，完整评价待独立接受，保持原流水线无新训练。
+
+2026-11-12T16:26:38.176447+08:00 HG/HG_mix全流程complete_accepted，均2375/9500+11000同片评价。HG_mix controller/eval accepted，现场checkpoint/消费、两rows/两mask/input/report/task SHA核验、三指标类宏独立复算；SANSA原report SHA和同任务SHA核定。HG_mix整体42.1118%、large78.4937%、FPA7.7494%；SANSA41.5429/77.2201/FPA14.7866，差整体+0.5689pp、large+1.2736pp、FPA-7.0372pp。HG40.8688/76.8358/FPA7.0394%。当前单seed已暴露同片空间开发队列数值领先，不声称统计显著/独立泛化，不自动晋升或新增训练。verification=/nfs-medical3/zyh/fewclick_v2/cvpr_research/HG_mix_closeout_1112_162607/verification.json；后续待逐类、边界/成本及配对不确定性分析，冻结当前配方。
+
+2026-11-12T16:46:34.400114+08:00 用户明确将HG-mix作为固定研究方法（非自动门槛晋升），新canonical freeze=/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_mix_frozen_1112_163751/method_freeze.json，权重SHA=a95a17335c58eb93332d7bb5210ca34b3448afc5d69b76a11bd3a7e094e5e0c2、完整源码snapshot/训练消费/任务与结果绑定。H两辅助设计保留；不改现有权重/阈值/架构。本轮已完成三方案及论文主稿/补充材料41文件约42.26MiB只读复制、逐文件源目标SHA校验。计划1同9500 SAM/SAM2/WSISAM/Med2D，SANSA与HG-mix复用；计划2先补M闭合2x3及无跨尺度消息两臂，旧H固定权重拆解不冒充重训；计划3重写当前image-only稠密迁移与全图/子块融合论文，旧cell/SLIC/test/TLS/0.8不沿用。计划均planned未启动新训练/推理；新版正文尚未重写。新current_record=docs/运行记录/模型实验/运行记录_HGmix固定方法与三线规划_1112_163751.md；原HG实验记录完整保留。Native Goal paused记录不变。
+
 ## 11-12 16:48:04
 
 - Purpose: Fix user-selected HG-mix and prepare three bounded plans for matched SAM comparison, final-model attribution and paper migration/rewrite.
@@ -5160,6 +5369,10 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_mix_frozen_1112_163751/method_freeze.json, paper_migration_manifest.json and planning_acceptance.json.
 - Docs record: docs/运行记录/模型实验/运行记录_HGmix固定方法与三线规划_1112_163751.md.
 - Commit: recorded after commit below. Baseline/ablation compute and new manuscript正文 remain planned.
+
+2026-11-12T16:48:25.264751+08:00 三份方案及论文入口隔离提交 `61e43d728c37e88eb9bacb74baecaede92c7ab3f`；源论文41文件源目标SHA、链接和registry接续核验通过；本轮无新增实验worker。验收=/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_mix_frozen_1112_163751/planning_acceptance.json。
+
+2026-11-12T17:04:13.187414+08:00 用户追加整片一次正负点击Dice为必做，并澄清点击来自单支持patch；后续只推理同一张WSI其它patch，换WSI重新给支持点，不做跨WSI传播。新增方案=docs/建议/数据与评估/方案_HGmix整片WSI一次点击分割与评价_1112_165407.md，已联动SAM/消融/论文三计划与论文入口。整片唯一像素累计Dice与严格remote-only分表，不平均patchDice；边缘/padding/完整标注/支持footprint门控待做。30片header只读预审完成、固定15片/前3片试跑，当前训练/开发WSI交集0，估67451窗口。root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_once_click_inputfix_1112_170106；无新训练/长GPU推理或整片质量结果。旧PNG sequential读序失败保留，random读取后短CPU预审EXIT0；GT稀疏颜色合法不冒充配准/完整标注接受。
 
 ## 11-12 17:04:13
 
@@ -5170,6 +5383,16 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/数据审计/运行记录_HGmix整片WSI候选与标注预审_1112_165407.md.
 - Commit: recorded after commit below.
 
+整片同片一次支持方案提交 `42429f97c5e3fcc69d69be9aef8cb0012b145415`；同片范围澄清已同步，GPU整片评价尚未执行。
+
+2026-11-12T17:15:29.346820+08:00 用户授权执行sam/SAM2/WSI当前9500公平适配，GPU0/1/4，最多3训练/总6GPUworker。空余卡WSI先未见train/val审计及全片门控/试跑；HGmix不改，无新seed；只固定WSI桥当前预算复现不恢复旧cross。root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010；新record=docs/运行记录/模型实验/运行记录_SAM当前9500公平适配与WSI并行_1112_171010.md；当前preparing。
+
+2026-11-12T17:32:22.017496+08:00 30原始test通过已审计train/val未见核对、每片64原始索引坐标回放，正式15片152任务。新WSIroot=/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_current_1112_171010；record=docs/运行记录/模型实验/运行记录_未见trainval整片WSI试跑_1112_171010.md；GPU3/2/5与SAM0/1/4共享6槽，准备真实门控后3片完整配对试跑，失败停止；15正式等待SAM优先，快则原30扩充。HGmix不改/无新增WSI训练，BF1另待。
+
+2026-11-12T17:40:29.910464+08:00 SAM-Med2D真实CPU官方原生预处理/预测IoU候选/二值输出精确通过（CPU/GPU sigmoid舍入门槛预登记2e-6），当前同片train任务真实backward有限、encoder冻结；尚非学习接受。root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_med2d_current_1112_173751排队首三SAM终态后GPU0工程→功能256→fresh2375→同11000，eval0/1，共用6槽。native256与三视野信息/医学公共预训练差异明报，不按eval调整策略。原始医学imageencoder含adapter均冻结，native prompt/maskdecoder+固定signed桥训练，CPUprobe仅诊断未写正式权重。
+
+2026-11-12T17:51:03.908438+08:00 SAM三组四实际train工程/256功能gate/fresh4均accepted，正式2375运行且真实PID存活：{"sam": {"status": "formal_running", "gpu": 0, "worker_pid": 1299712, "engineering": "accepted", "functional": "accepted", "fresh4_smoke": "accepted", "formal_step": 576, "total": 2375, "recent_seconds_per_update": 2.233260967284441, "remaining_train_hours": 1.1160101333735304, "cmd": ["/home/zhaoyh/miniconda3/envs/aligner/bin/python", "-m", "benchmarks.v5.sam_current_fair.train", "--root", "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010", "--arm", "sam"]}, "sam2": {"status": "formal_running", "gpu": 1, "worker_pid": 1312291, "engineering": "accepted", "functional": "accepted", "fresh4_smoke": "accepted", "formal_step": 376, "total": 2375, "recent_seconds_per_update": 2.7900233083963393, "remaining_train_hours": 1.5492379426345229, "cmd": ["/home/zhaoyh/miniconda3/envs/aligner/bin/python", "-m", "benchmarks.v5.sam_current_fair.train", "--root", "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010", "--arm", "sam2"]}, "wsi": {"status": "formal_running", "gpu": 4, "worker_pid": 1277638, "engineering": "accepted", "functional": "accepted", "fresh4_smoke": "accepted", "formal_step": 1526, "total": 2375, "recent_seconds_per_update": 1.028030605018139, "remaining_train_hours": 0.2424438843501111, "cmd": ["/home/zhaoyh/miniconda3/envs/aligner/bin/python", "-m", "benchmarks.v5.sam_current_fair.train", "--root", "/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010", "--arm", "wsi"]}}。HGmix三WSI内区/边缘/角落/cache-full/历史支持RGB-GT/融合pack工程全部accepted，GPU3/2/5真实PID存活，当前HG整片推理仍running；实测约[1.051, 0.871, 1.106]秒/窗，完整配对先估2–4h，尚无整片Dice。SAM-Med2D官方native CPU/真实backward接受并已排队首三SAM终态后，未GPU训练。整片15片全152目标需等SANSA实测估时，可能1–3天，不将窗口数当任务数；快才扩原test30。snapshot=/nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010/progress_verified_1112_175103.json。
+
 ## 11-12 17:57:36
 
 - Purpose: Execute current9500 matched SAM baselines and full-WSI paired pilots on audited train/val-unseen original test slides; queue native SAM-Med2D.
@@ -5179,6 +5402,17 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/运行记录_SAM当前9500公平适配与WSI并行_1112_171010.md; docs/运行记录/模型实验/运行记录_未见trainval整片WSI试跑_1112_171010.md.
 - Commit: recorded after commit below. Formal baseline/evaluation and paired WSI pilot acceptance remain outstanding.
 
+2026-11-12T18:04:00.007193+08:00 执行源码隔离commit `66fef50966275a5685e248ca24b64ef71f8230af`；三SAM工程/256学习/fresh4均accepted，正式worker与三WSI完整推理worker现场存活，总6GPUworker。active_jobs已同步真实PID/命令/GPU，Med仅队列控制器不算正在GPU训练。源码hash与三个snapshot一致；全片质量尚无，后续需独立收尾。
+
+## 11-12 18:45:26
+
+- Purpose: 核验SAM当前公平对照及整片WSI试跑进展。
+- Changed: goal、当前registry、SAM与WSI运行记录；无执行源码修改。
+- Validation: 实际PID/进度检查；首片HG报告SHA、独立磁盘评分与全覆盖接受证据核对通过。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010/progress_verified_1112_184526.json
+- Docs record: docs/运行记录/模型实验/运行记录_SAM当前9500公平适配与WSI并行_1112_171010.md
+- Commit: 本次仅运行状态同步，无实现变更。
+
 ## 11-12 18:52:19
 
 - Purpose: 增补整片WSI四SAM对照，patch与WSI均只用最终当前公平适配权重。
@@ -5187,6 +5421,36 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_sam_final_1112_184727
 - Docs record: docs/运行记录/模型实验/运行记录_整片WSI六方法最终公平权重对照_1112_184727.md
 - Commit: 见本次提交；状态为queued/preparing，不代表WSI模型工程或质量接受。
+
+新增WSI公平队列源码提交：`9374f5940803ad40f50f4fa53e253821f68bef29`；GPU工程仍待，不提前标完成。
+
+2026-11-12 论文写作整理：用户要求将重写方案移至 `docs/建议/论文撰写/方案_HGmix论文迁移与重写_1112_163751.md`；移动前后正文SHA256一致（08be293c2ed7ce1b33afaf0f8f7d552c6f7f79a019ba1217fea4899ab61a7812），已同步接续链接。CVPR2027-v1官方模板已下载至 `论文/CVPR_HG_mix/toolkit/CVPR2027-v1_1112/`，ZIP CRC/逐文件SHA已记录。完成范围为文档移动、模板下载和重写简报；新版正文仍planned，本次未操作实验worker。
+
+## 11-12 19:24:08
+
+- Purpose: 核验公平适配与三WSI质量进展，修复新增队列CUDA确定性启动环境。
+- Changed: goal/registry/三运行记录，新增NFS envfix队列；执行源码不改。
+- Validation: 真实PID及进度；HG三报告SHA/独立mask评分证据通过。新增GPU模型工程原失败保留，新工程待资源，不标接受。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010/progress_verified_1112_192408.json；/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_sam_final_envfix_1112_192400
+- Docs record: docs/运行记录/模型实验/运行记录_整片WSI六方法最终公平权重对照_1112_184727.md
+- Commit: 无执行源码变化，仅运行配置与状态同步。
+
+## 11-12 20:07:21
+
+- Purpose: 核验六worker并行与后续自动队列，记录最终公平结果与首片WSI配对。
+- Changed: goal、registry、当前SAM/WSI/六方法运行记录；无源码修改。
+- Validation: 真实/proc命令/PID与nvidia-smi对照；WSI-SAM完整11000报告SHA、HG/SANSA已完成报告接受与SHA核对通过；envfix真实GPU工程accepted。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sam_current_fair_1112_171010/progress_verified_1112_200721.json
+- Docs record: docs/运行记录/模型实验/运行记录_SAM当前9500公平适配与WSI并行_1112_171010.md
+- Commit: 执行源码沿用9374f5940803ad40f50f4fa53e253821f68bef29；仅状态更新。
+
+## 11-12 20:17:33
+
+- Purpose: 记录当前队列总工期与实测/未测边界。
+- Changed: goal、registry、SAM/六方法运行记录；无源码修改。
+- Validation: 真实pilot窗口/编码/解码/评分耗时，调用冻结estimate得到15片HG/SANSA38.03h/三worker，25%余量47.54h；四SAM全片吞吐尚缺，六方法3–5天仅排期。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_eta_1112_201733/estimate.json
+- Docs record: docs/运行记录/模型实验/运行记录_SAM当前9500公平适配与WSI并行_1112_171010.md
 
 ## 11-12 21:45:40
 
@@ -5215,6 +5479,32 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/运行记录_WSI六卡优先与实验编号_1112_214500.md
 - Commit: 本次启动环境修复提交。
 
+## 11-12 23:24:31
+
+- Purpose: 汇总已验收六方法结果，未完成留空。
+- Changed: docs/运行记录/模型实验/结果表_当前六方法公平对照_1112_232431.md，goal/registry/current record。
+- Validation: 源报告acceptance SHA、11000任务SHA与WSI同例评分像素一致；部分样本不冒充完整均值。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/results_snapshot_1112_232431
+- Docs record: docs/运行记录/模型实验/结果表_当前六方法公平对照_1112_232431.md
+
+## 11-13 00:04:05
+
+- Purpose: 验收SAM/SAM2试跑并核对六卡正式WSI+Med训练状态。
+- Changed: goal/registry/两运行记录/时间戳结果表，无源码修改。
+- Validation: 真实PID、报告acceptance SHA、独立评分证据通过；HG修复后正式真推理正常，Med正式训练运行。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_six_gpu_envrestore_1112_232200/progress_verified_1113_000405.json
+- Docs record: docs/运行记录/模型实验/结果表_当前六方法公平对照_1113_000405.md
+
+## 11-13 00:39:16
+
+- Purpose: 持续推进WSI评估并记录Med最终训练验收。
+- Changed: goal/registry/当前运行记录，无源码变化。
+- Validation: 六槽实际锁与真实PID核对；Med2375/9500训练acceptance，WSI dispatcher运行无新失败；E10等待租约不标推理完成。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_six_gpu_envrestore_1112_232200/progress_verified_1113_003916.json
+- Docs record: docs/运行记录/模型实验/运行记录_SAM当前9500公平适配与WSI并行_1112_171010.md
+
+2026-11-13T00:41:03.080908+08:00 用户询问任务数与耗时：固定15不同WSI×六方法=90片方法推理，152组织任务/方法×6=912组织方法任务，不含pilot；同片多目标共享编码，不能用单目标全片时间直接乘152。基于四方法真实多目标formal和SANSA三pilot重估，详见/nfs-medical3/zyh/fewclick_v2/cvpr_research/whole_wsi_six_gpu_envrestore_1112_232200/time_accounting_1113_004103.json；Med2D全片吞吐尚缺，总工期从现在暂按2–3天排期，非保证上界。
+
 ## 11-13 00:50:35
 
 - Purpose: SANSA等价缓存与门控后自动接入未来WSI任务。
@@ -5224,6 +5514,66 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Docs record: docs/运行记录/模型实验/运行记录_SANSA缓存等价优化_1113_004500.md
 - Commit: 本次实现提交；结果门控pending。
 
+SANSA缓存真实严格等价门控通过并切换后续13个paired任务；当前worker全部保留。队列/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_cache_1113_004500/queue_1113_005000，controller 3090917；gate=/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_cache_1113_004500/acceptance.json。
+
+## 11-13 02:16:07
+
+- Purpose: 接受SANSA缓存严格等价门控、Med最终完整评估并更新WSI状态/结果表。
+- Changed: goal/registry/三运行记录与结果表，源码无修改。
+- Validation: gate概率maxerror0及24路径/冻结state接受；Med11000报告SHA通过；六真实worker存活。缓存源码faacb8bdb7827a7492f19000177dded6c4ff2319，未声明热decode为端到端加速。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_cache_1113_004500/queue_1113_005000/progress_verified_1113_021607.json
+- Docs record: docs/运行记录/模型实验/结果表_当前六方法公平对照_1113_021607.md
+
+2026-11-13T02:17:47.631766+08:00 SANSA缓存gate接受后WSI总工期更新：从现在暂估24–36h（约11月14日凌晨至下午），不含额外15片/消融；前2native SANSA保留，后13cached。完整cachedWSI吞吐尚未测得，门控warm decode .0315sec不作为全片端到端加速；该范围是预算排期非实测保证上界，首cached正式块后重估。记录=/nfs-medical3/zyh/fewclick_v2/cvpr_research/sansa_cache_1113_004500/ETA_1113_021747.json。
+
+## 11-13 11:45:49
+
+- Purpose: 汇总共同已接受7WSI的六方法阶段结果，并核对缓存生产效率。
+- Changed: 新阶段表/CSV/registry/goal/三运行记录；无源码修改。
+- Validation: 42报告SHA、独立磁盘评分接受、逐组织valid/positive一致；6真实PID存活，stage运行。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_common7_interim_1113_114549
+- Docs record: docs/运行记录/模型实验/结果表_WSI六方法共同前7片阶段结果_1113_114549.md
+
+2026-11-13T13:22:53.798792+08:00 论文里程碑：已按用户要求形成中文Markdown初稿 `论文/CVPR_HG_mix/中文初稿_1113.md`（SHA256=89bd59f82615a00975e182215f17c4e5e0be6346c01162cfaa6401c766b50712），等待用户内容审阅，确认后再转LaTeX。方法六份源码与冻结SHA一致；六方法远端表和五格已有消融据接受记录转录；正式15WSI、本图对照、未完成消融/效率/引用等留白。证据索引 `论文/CVPR_HG_mix/中文初稿_证据索引_1113.json`；本轮无新实验worker，实验状态保持各自记录。
+
+2026-11-13T13:26:35.430878+08:00 论文风格更新：按用户要求对照原AAAI稿修改中文初稿的摘要、引言、方法引入、结果分析与结论，保留所有表格行及空白单元格；调整前版本已归档。当前初稿SHA256=0d3c2093ba94d24d7506ec3fc64cd5ad9f32a56c45450f27bc471e6b4f6cd4e9，证据索引同步；继续等待中文内容确认后转LaTeX。
+
+## 11-13 16:54:46
+
+- Purpose: 核验六卡进度并汇总共同前10WSI阶段结果。
+- Changed: 新中期表/产物、goal/registry/运行记录；无源码变更。
+- Validation: 60报告SHA、独立评分接受、相同评分有效/正像素一致；6真实PID存活。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_common10_interim_1113_165446
+- Docs record: docs/运行记录/模型实验/结果表_WSI六方法共同前10片阶段结果_1113_165446.md
+
+2026-11-13T17:43:08.804569+08:00 只读小目标核算完成：HG-mix/SANSA同11000任务rows SHA及GT计数配对、Dice按TP/FP/FN复算通过。面积<20%的5204任务类宏Dice=28.1912/27.6477%，差+0.5435pp；<1%、1–5%、5–20%差+0.0894/+1.3852/+0.3823pp，逐类6胜5负，未作显著性结论。报告=docs/运行记录/模型实验/分析_HGmix与SANSA小目标面积分层_1113_174308.md；无新训练/推理。
+
+2026-11-13T19:21:54.352476+08:00 完成时间核验：HG/SANSA13/15paired接受、两片运行；SAM/SAM2/WSI14/15，Med13/15+一片近完成+最后一片待派。80/87调度工单完成（含pilot），六worker/no failed。按最后HG剩余+SANSA串行及独立评分/最终汇合暂估剩余3–5h，即11月13日22:30至14日00:30，非保证上界。
+
+## 11-13 19:37:30
+
+- Purpose: 用户请求最新Dice比较，统一共同13片阶段表。
+- Changed: 新阶段表/CSV、goal/registry/两运行记录，无源码变更。
+- Validation: 78份报告SHA与全覆盖/独立评分接受、相同valid/positive像素核对。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_common13_interim_1113_193730
+- Docs record: docs/运行记录/模型实验/结果表_WSI六方法共同前13片阶段结果_1113_193730.md
+
+2026-11-13T19:39:57.299460+08:00 追加15片六方法估时：基于已验收HG14/缓存SANSA11/四SAM各14片实际report，平均单方法每片约62–97分钟；新15片155任务/方法（930总），总106.6GPUh，六卡理想17.8h，25%余量22.2h，排期约20–26h。仅估算未启动；文档=docs/运行记录/模型实验/估时_追加15张WSI六方法实测外推_1113_193957.md，证据=/nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_extra15_measured_ETA_1113_193957/estimate.json。
+
+2026-11-13T20:02:39.751858+08:00 论文留白逐项盘点完成：docs/建议/论文撰写/梳理_HGmix论文留白与补齐工期_1113_200239.md。方法/协议/已有逐类小目标及rows统计可先补，15WSI尾部等待完整验收；核心新增缺口M与无跨尺度消息两臂planned未启动，本图/稳健性/缓存计时需独立协议和GPU预算。估时区分整理、计算、等待，本轮无新训练/推理。
+
+## 11-13 22:42:45
+
+- Purpose: WSI正式15片六方法最终质量验收收尾。
+- Changed: 最终结果表/closeout、goal/registry/三运行记录；无源码修改。
+- Validation: 87工单/EXIT0、90报告SHA、912任务join、共同评分像素、宏指标独立重算全部通过。保留原每mask独立磁盘评分证据，未宣称二次重hash所有mask。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/WSI_final15_closeout_1113_224245
+- Docs record: docs/运行记录/模型实验/结果表_WSI六方法正式15片最终结果_1113_224245.md
+
+2026-11-13T23:15:37.944764+08:00 用户授权WSI完结后执行两组论文核心消融。M GPU3、no_cross_scale GPU4，root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_paper_ablation_1113_230552，record=docs/运行记录/模型实验/运行记录_HGmix两组核心消融_1113_230552.md。已冻结源码snapshot/原训练及评价清单身份；当前工程准备，尚非学习/训练接受。接续256train-only门控→fresh4→fresh2375→6evalgate→两5500分片→磁盘重评分。no_cross_scale关闭编码层级消息与解码跨尺度边，三视野/7次编码/H保留。HG-mix主方法固定，无新seed或其它臂。
+
+2026-11-13T23:19:43.780394+08:00 两组消融当前有效root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_paper_ablation_envcomplete_1113_231852；原三次启动失败均为训练前环境配置并已完整保留。恢复原vendor Phikon4.49与CuBLAS确定性/线程环境后真实工程worker存活：{'M': 3795288, 'no_cross_scale': 3795286}。工程/功能/正式训练尚未接受；后续按已有流水线失败停止。
+
 ## 2026-11-13T23:20:35.264288+08:00 HG-mix核心消融实现与真实工程接受
 
 - Purpose: 执行用户授权的M/no_cross_scale两组固定9500/2375消融。
@@ -5232,6 +5582,121 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_paper_ablation_envcomplete_1113_231852；早期三次环境启动失败保留，0正式更新，最终恢复原Phikon vendor/CuBLAS环境。
 - Docs record: docs/运行记录/模型实验/运行记录_HGmix两组核心消融_1113_230552.md
 - Commit: 本条与实现一起隔离提交；hash见后续记录。
+
+2026-11-13T23:21:17.505631+08:00 两组论文核心消融工程accepted/EXIT0，四组真实输入及7次编码、共享初始化、有效梯度、冻结和cache/full精确均通过；no_cross_scale两条区域跨尺度路径identity/边0实证。当前train-only256功能门控running，M GPU3 PID3797713、no_cross_scale GPU4 PID3797320；exact optimizer继续已接受，功能学习/正式训练尚未完整接受。源码隔离commit=c98fab258ace2bd6aee07ca088475e7b9bb6a247，657源SHA现场一致，root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_paper_ablation_envcomplete_1113_231852；record=docs/运行记录/模型实验/运行记录_HGmix两组核心消融_1113_230552.md。门控通过自动fresh4→fresh2375→6evalgate→两5500评价→独立mask评分，失败停止，无新增其它臂。
+
+2026-11-14T00:37:09.710797+08:00 中文论文补充完成，待用户审阅：论文/CVPR_HG_mix/中文初稿_1114.md（SHA=bd010cb6a8041fc488113f1c7470fd3c9129fa2fe227d9cfea1df3c3c0d3a4ae），证据索引=论文/CVPR_HG_mix/中文初稿_证据索引_1114.json，record=docs/运行记录/模型实验/运行记录_中文论文证据补充_1114_003709.md。已填正式15WSI、区域/WSI公式、数据/基线接口、8引用、小目标/逐类/边界及条件配对区间和流程计时。Dice条件区间跨0，BF1低于SANSA，均如实披露。只读CPU分析=/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_supplement_1114_003157，无新GPU推理；两组消融functional accepted、formal running，分数继续留白。
+
+## 11-14 11:30:32
+
+- Purpose: 核验活动实验并同步两消融已完成状态。
+- Changed: registry/goal/运行记录，无源码修改。
+- Validation: 本项目进程无活动训练/评估；两arm controller complete与11000报告SHA验收通过。
+- Artifacts: goal.md
+- Docs record: docs/运行记录/模型实验/运行记录_HGmix两组核心消融_1113_230552.md
+
+2026-11-14T11:31:55.292430+08:00 核心消融结果表=docs/运行记录/模型实验/结果表_HGmix两组核心消融_1114_113155.md；HG-mix全部Dice最好，但FPA高于两消融；H大目标+3.13pp，区域跨尺度+0.83pp，仅单seed远端patch实验证据，非WSI消融/显著性结论。
+
+2026-11-14T11:35:38.628537+08:00 核心消融入稿完成：docs/运行记录/模型实验/运行记录_核心消融入稿核验_1114_113538.md，论文=论文/CVPR_HG_mix/中文初稿_1114.md（SHA=6280faee0c86323950fcf01c6bdddd5c738914213dce534e5f07964175e6ca19）。三模型checkpoint/实际9500消费、同11000任务、六分片rows/masks实际SHA匹配并独立类宏复算；M40.9151/75.3686/FPA5.6075，无区域消息41.6600/77.6648/FPA6.9011。H大目标+3.1251pp、区域消息+0.8289pp，均有误报代价，小目标变化仅约0.1–0.15pp。已更新摘要/引言/矩阵/结构表/讨论/结论，保留单seed和无WSI消融边界。无新GPU任务。
+
+2026-11-14T11:46:18.685728+08:00 中文稿措辞修订完成：论文/CVPR_HG_mix/中文初稿_1114.md（SHA=fb7e5e446a04c7a63d7d4dc54a3364c6ec3634a63c332eb6f101d3e63fe39c97）。按用户要求直接陈述已完成工作与数据，合并重复范围说明，重写结果分析/讨论/结论；表格单元格、公式与引用对比一致，旧稿及索引已备份。后续沿用该措辞规则；记录=docs/运行记录/模型实验/运行记录_中文稿措辞精简_1114_114618.md。无新实验，继续中文审阅。
+
+2026-11-14T12:13:39.996655+08:00 用户授权论文补充推理（耗时限100例均值），root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_inference_1114_121131，record=docs/运行记录/模型实验/运行记录_论文补充推理_1114_121131.md。本图302×6，提示330×5×2，计时100×6；当前preparing，冻结权重无训练。GPU0/1/4质量、GPU3串行计时，最多4worker，>=12288MiB共享；工程gate后正式评分，失败停止。
+
+2026-11-14T12:15:18.702950+08:00 四worker正在运行，初始HG本图/计时、SANSA本图、WSISAM本图均已通过7例真实输入精确门控；PID分别2444019/2444032/2444007/2444031，工程成功后进入推理。独立源码commit=9985bf975c4fad2eb59790692106628a8bfb5303；编译及git diff --check通过，命令/源码副本/status_snapshot已存/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_inference_1114_121131。
+
+2026-11-14T12:34:22.659219+08:00 论文补充推理complete_accepted：本图302×6、支持提示330×5×2，共5112份质量预测全量磁盘重评分；660份3+2对照精确复现。六方法同GPU3各100任务计时完成；HG平均首次1539.2ms、更换提示43.0ms、缓存16.39MiB。中文4.5/4.8/讨论入稿，SHA=2e038c2f0ef8976a6d2cc4c4efc8c88a037c6cd606e9f268a8c8eb95871b5a8e。record=docs/运行记录/模型实验/运行记录_论文补充推理_1114_121131.md；root=/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_inference_1114_121131。本组全部worker退出，无新训练；继续中文内容审阅。
+
+2026-11-14T13:49:13.388773+08:00 中文稿剩余空白核查完成：docs/建议/论文撰写/梳理_HGmix论文剩余空白_1114_134913.md。4处文字占位、2处图占位，图1已有草图；核心实验数值已齐。参数统计及预测展示可复用现有权重/掩码通过CPU整理，数据审批许可和完整LLM声明待实际作者资料。按用户要求仅列当前稿件实际空白。正文SHA=2e038c2f0ef8976a6d2cc4c4efc8c88a037c6cd606e9f268a8c8eb95871b5a8e保持不变，本轮无新训练/推理。
+
+2026-11-14T13:55:06.405511+08:00 参数表、图2、图3及失败分析已入中文稿，SHA=72f8d25839dd0cb7c77ad0204f31fdd5b6ddddcc772d7b39bb2d1d642a274f2e。六模型CPU严格加载并按named_parameters去重统计；24个图3预测的TP/FP/FN/有效域/目标像素独立重算一致。图2固定正式首片首目标，采样原始mask并按原完整footprint规则重建远端域。产物/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figures_1114_140000，论文图论文/CVPR_HG_mix/figures/existing_results_1114_135506。审批及声明继续留白，无新训练/推理。
+
+2026-11-14T14:10:41.326620+08:00 方法主图v1已生成待用户审阅：论文/CVPR_HG_mix/figures/method_v1_1114/FewClick_method_v1.svg，另有PDF/PNG及参考说明。已查看原AAAI主图、FiVE CVPR2024 Fig2和FOCUS CVPR2025 Fig1；按当前HG-mix绘制总览及三个模块展开，真实图像来自任务2675，其余token/对应为结构示意。未替换正文图1，无新实验。
+
+2026-11-14T14:15:44.853720+08:00 方法图v2待审阅：论文/CVPR_HG_mix/figures/method_v2_1114/FewClick_method_v2.svg。依用户反馈减少文字框，改为真实同心多尺度输入、整幅/四子块图像、示意区域与跨尺度图、支持→查询对应线和粗细迁移图。中间图明确标示机制示意，原始图像及最终预测来自任务2675；未替换正文，无新推理。
+
+2026-11-14T14:23:59.878888+08:00 方法主图v3待审阅：论文/CVPR_HG_mix/figures/method_v3_1114/FewClick_method_v3.svg。压缩为三栏，右侧绿色区域预测/点修正与橙色粗细概率迁移两路；明确支持概率、click anchors、p0反馈到残差头及logits相加后sigmoid。仅示意图调整，未替换正文、无新推理。
+
+2026-11-14T15:42:02.662040+08:00 用户原图参考生成AAAI版式方法图v4视觉预览：论文/CVPR_HG_mix/figures/method_v4_aaai_1114/FewClick_method_v4_preview.png。生成式示意图非实验可视化，正文未替换；待审阅版式后校正连接并矢量化。
+
+2026-11-14T15:49:09.460111+08:00 AAAI版式主图完成连接校正与原生矢量重绘：论文/CVPR_HG_mix/figures/method_v5_vector_1114/FewClick_method_corrected.svg，另有PDF/PNG、编辑说明和validation.json。SVG保留133文本节点、11独立内嵌病理位图，其余示意及连接为矢量对象；SHA=3aa359f5b9ea15ff1cc8ee2d180f6b0b72f3b4c8039dd526cd49403699321ca0。已对照DenseHierarchy/cached_decode核对两路、8通道残差输入、detach/anchors及sigmoid前残差相加。未替换正文，无新推理。
+
+2026-11-14T15:57:15.922927+08:00 用户要求拆取SVG素材已完成：论文/CVPR_HG_mix/figures/elements_1114_155639，ZIP=论文/CVPR_HG_mix/figures/elements_1114_155639.zip。119组件（含6完整组合模块），每件独立分组SVG+透明PNG，11原始病理图片，4页预览及分类HTML浏览。保留主图不变；素材导出校验alpha、SVG文本/内嵌图片及ZIP完整性通过。
+
+2026-11-15T00:54:02.282216+08:00 一页可编辑PPT完成：论文/CVPR_HG_mix/figures/editable_ppt_1115_005319/FewClick_方法主图_单页可编辑.pptx。沿用蓝绿橙三栏，111文本框、1582原生矢量形状、64组件组、11独立图片；LibreOffice实际渲染核对并修正阴影/图层，PDF和PNG预览同目录。正文不变，无新推理。
+
+2026-11-15T01:10:30.280001+08:00 方法主图通栏紧凑版完成：论文/CVPR_HG_mix/figures/paper_width_ppt_1115_010746/FewClick_通栏紧凑版_可编辑.pptx。按CVPR模板textwidth=6.875in设置为174.625×65.57毫米，压缩纵向留白约11.6%；保留111文本框、1582原生矢量形状、64组件组、11独立图片。清除主题阴影，LibreOffice导出PDF与PNG已核对，PPT单页回读和ZIP完整性通过；旧版保留，正文未替换，无新推理。
+
+2026-11-15T01:22:13.599909+08:00 方法主图9–10磅可读版完成：论文/CVPR_HG_mix/figures/readable_ppt_1115_012119/FewClick_通栏9pt_可编辑.pptx。通栏宽174.625mm，高128.76mm；正文9pt、标题10pt，全部显式线宽0.75/1pt。精简至47文本行，保留363原生对象，重排概率迁移区域；渲染检查并修正标签与多尺度/融合/概率路径连线交叠。PPT回读、ZIP和字号线宽自动检查通过；PDF及预览同目录。旧交付版保留，正文未替换，无实验运行。
+
+2026-11-15T01:34:18.139381+08:00 按用户反馈完成AAAI比例大字版方法图：论文/CVPR_HG_mix/figures/readable_ppt_1115_013308/FewClick_AAAI比例大字版_可编辑.pptx。恢复24×10.20英寸画布，常规文字相对图形放大约55%、最小13.5pt，缩短标签并修正重叠；111文本框、64组和11图片可独立编辑。PDF与PNG经LibreOffice渲染；正文不变。
+
+2026-11-15T01:41:48.541774+08:00 用户明确选择保留全部结构、PPT内9–10pt并缩小画布。完成 论文/CVPR_HG_mix/figures/arial9pt_ppt_1115_014119/FewClick_Arial9-10pt_可编辑.pptx：画布406.4×172.68mm（原24in缩至16in），Arial 9/10pt，可见线条0.75/1pt；XML逐项校验和LibreOffice导出预览通过。这里的字号为PPT原尺寸，论文缩放后同比缩小。
+
+2026-11-15T02:15:04.085662+08:00 基于用户认可的边框修正版完成分层可编辑重建：论文/CVPR_HG_mix/figures/method_final_generated_1115/editable_reconstruction_1115。98原生文字、80独立连接线、163矢量形状、34独立图片组件；SVG/PPT/PDF/预览与素材包齐备。纹理图像保持独立位图，未宣称完全矢量；图内影像为生成式机制示意。修正文字重叠并完成LibreOffice渲染、SVG元素计数及PPT包完整性校验。正文未替换。
+
+2026-11-15T02:23:10.191065+08:00 按用户要求仅简化可编辑图右下角公式：论文/CVPR_HG_mix/figures/method_final_generated_1115/editable_refinement_1115。改为Prediction Refinement，Initial prediction cues、Bounded residual refinement、Correction、Logit fusion及Mask prediction，保留加号与输出图。SVG前333元素一致，PPT重新渲染检查；SVG/PPT/PDF/预览已更新，旧版保留。
+
+2026-11-15T03:51:11.173976+08:00 用户确认中文稿并授权转CVPR英文LaTeX。完成 论文/CVPR_HG_mix/CVPR2027_English_1115：官方CVPR2027-v1匿名review样式，正文8页＋参考文献/声明1页，独立补充4页。方法主图使用确认的editable_refinement_1115 PDF；实验表1–5、图2–3及补充表S1–S9占位，已有结果写入英文分析。保留数据来源/审批/声明空白，无新增实验，无额外seed讨论。BibTeX9条；编译无未定义引用或溢出警告，样式SHA与官方一致；源码ZIP=论文/CVPR_HG_mix/FewClick_CVPR2027_English_1115.zip。来源与校验见translation_audit.json。
+
+2026-11-15T04:08:40.812317+08:00 按用户指定最终方法图.pptx替换CVPR主图，LibreOffice导出矢量PDF，LaTeX上下各裁72bp空白；main.pdf重新编译9页（正文8页），图1位于第3页，未定义引用/溢出检查通过。PPT本体未修改；旧图与旧PDF保存于稿件history目录，源码ZIP与输出SHA同步更新。
+
+2026-11-15T04:37:51.056797+08:00 用户上传Windows最新最终方法图.pptx（SHA256 8d650854fb2aed729100908a298cddc0efae8a8e49f3aa12b160489a68beadea）已复制至论文/CVPR_HG_mix/figures/最终方法图.pptx并替换CVPR主图；导出PDF、裁去上下白边后编译main.pdf成功，共9页，图1第3页。PPT内部未改；旧稿备份、源码ZIP和SHA同步更新。
+
+
+### 2026-11-15 方法图上传更新 1115_131359
+
+已使用用户附件 6bfb39c1-0dad-4869-911e-39b4aff85833/最终方法图.pptx 更新正式方法图（SHA256 7b5ec8fc9e7c90c05d2207172d9fbe59f621d4550a2a2a1c359fa6dab360ffce）。LibreOffice 导出后替换 CVPR2027_English_1115/figures/method.pdf，沿用上下72bp裁白；论文编译成功，主稿9页，Figure 1 位于第3页，无未定义引用或溢出。上一版已备份至 /home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/before_upload_1115_131359。仅更新论文图，不执行实验。
+
+
+### 2026-11-15 方法图上传更新 1115_200420
+
+用户附件 367254d5-fe93-4467-b1e4-26828a2d5d0d/最终方法图.pptx 已替换正式方法图，SHA256 1e08df035325b626feb2b82e5330f9133b4d3586df6c1d2301ad830d39c45dc1。LibreOffice 导出至 /home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/figures/uploaded_method_1115_200420/最终方法图.pdf，替换论文 figures/method.pdf，沿用上下72bp裁白。主稿编译成功9页、主图第3页，无未定义引用、溢出或编译警告。上一版备份：/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/before_upload_1115_200420。源码包同步更新；无实验执行。
+
+
+### 2026-11-15T21:17:46.862317+08:00 主图图注补充
+
+更新英文主稿Figure 1图注：明确软分配A、支持提示条件、点击相似度双分支、粗细对应网格、残差输入及logit相加与0.5阈值。中文对照存于 论文/CVPR_HG_mix/CVPR2027_English_1115/figures/method_caption_中文.md。重新编译主稿9页，无编译警告；第3页预览和源码包同步更新。未修改PPT或开展实验。
+
+
+### 2026-11-15T21:24:55.307973+08:00 英文稿实验图表第一批完成
+
+正文5张实验表、图2整片对比与图3失败案例已接入；补充S1参数/S5完整计时表完成。图像由真实已存预测CPU重绘，案例与分数和原JSON一致；未启动训练或GPU推理。正文8页+参考文献/声明1页，编译无警告。剩余7张补充表数据齐备待排版。清单：论文/CVPR_HG_mix/CVPR2027_English_1115/图表完成清单_1115.md。脚本：benchmarks/v5/paper_figures/typeset_results_batch.py、render_results_readable.py。
+
+
+### 2026-11-15T22:37:04.264028+08:00 移除本图交互评估
+
+按用户最新论文重点（同片远端迁移和WSI），移除正文原Table2、本图交互实验小节、补充本图接口与结果，以及中文稿对应段落；保留真实训练组成和原始实验数据。表号自动更新：远端1、WSI2、消融3、效率4。重编译正文8页+参考文献1页，无溢出和未定义引用；第6页为纯图表页。备份见 论文/CVPR_HG_mix/CVPR2027_English_1115/history/remove_local_experiment_1115_223624。
+
+
+### 2026-11-15T22:41:28.169434+08:00 CVPR引用扩充
+
+原AAAI29条、迁移稿9条；现恢复12条并新增4条，25条均实际引用。扩充引言/相关工作及集合编码方法依据，在线核对方法描述与来源，未恢复旧细胞/RNA机制或本图评估。正文8页+参考文献/声明2页，最终编译无警告。审计：论文/CVPR_HG_mix/CVPR2027_English_1115/引用扩充核对_1115.md。
+
+
+### 2026-11-15T23:13:11.933508+08:00 补充材料与逐组织WSI表完成
+
+S1–S8全部补齐；正文Table3六方法11组织整片Dice、S2严格远端逐组织Dice。132个原报告单元核对唯一，宏平均复核一致，无训练/推理。正文8页、总10页，补充4页，编译无警告。出处/审批/声明继续留白。清单与CSV位于CVPR2027_English_1115。
+
+
+### 2026-11-16T02:24:49.240390+08:00 审稿问题实验方案（建议记录）
+
+- 目的：回应系统公平性、模块必要性、patch/WSI增益差距三组问题。
+- 变更：`docs/建议/模型与训练/方案_HGmix审稿问题归因消融与WSI差距解释_1116_022112.md`；registry新增`reviewer_attribution_plan_1116_022112`；goal与当前运行记录追加planned接续记录。
+- 验证：aligner Python解析registry并确认全部旧键值不变；核对6臂预算14250/15810更新、66000 patch预测与45+30 WSI片方法；检查方案关键对照及源文件。均通过。
+- 文档SHA256：`1f020faa969c9f3d1e98535419157ff88a99ff1c527ff5eb2e3293ccda39d74b`。
+- 运行记录：`docs/运行记录/模型实验/运行记录_SAM当前9500公平适配与WSI并行_1112_171010.md`。
+- 实验产物/worker：无；本轮仅设计，无新增训练或GPU推理。Commit：本轮仅文档，未创建提交。
+
+
+### 2026-11-16T02:37:40.079465+08:00 时间受限抽样方案（planned）
+
+建议记录`docs/建议/模型与训练/方案_HGmix审稿问题归因消融与WSI差距解释_1116_022112.md`新增第7节：评价抽1100分层patch与原固定前3片完整WSI；优先Proto-MS/fixed-grid两新训练臂，仍保持每臂9500/2375，其余四臂暂缓。原15片主结果保留，3片仅机制诊断。新方案SHA256 `427c47d9f0662bb1f62ade20dc01c6713a36f170910c435a411823212cbde5fb`；registry保留旧设计快照并新增抽样记录。验证：JSON解析/旧键值不变、两臂4750正式更新与最多15片方法预算核算通过。未启动训练/推理，无worker，无提交。
+
+
+### 2026-11-16T02:54:50.763138+08:00 抽样实验工程接受与功能门控运行
+
+用户已授权两臂抽样执行。有效root=`/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000`，record=`docs/运行记录/模型实验/运行记录_抽样归因双臂与三片WSI_1116_024330.md`。首次中断root仅空目录；第二root因模板counts_json与真实标签不符在训练前停止；均保留记录，改为读取原PNG并核对array SHA后冻结1087任务（血液large仅12，不补别层），其它训练/评价规则不变。Proto-MS GPU3 PID2256252、fixed-grid GPU5 PID2256818正在train-only256功能门控；两臂真实四组工程、7编码、cache/full与真实梯度通过，exact optimizer继续通过。功能学习尚未接受，后续自动fresh4→fresh2375→6evalgate→两不交叠sample分片→磁盘重评分；失败停止。活跃参数Proto-MS3543809、fixed-grid6977785。三片WSI独立队列准备/启动在GPU0/1/2/4，最多六本项目GPU worker，Full/SANSA首片融合mask逐位复现后才扩片；Proto-MS待patch接受后接续。新代码仅v5，旧权重/源码不变。
 
 
 ### 2026-11-16T02:57:03.254584+08:00 抽样归因训练与WSI流水线实现
@@ -5244,6 +5709,109 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Commit: 本条随本次实现提交；提交hash写入运行root/source_commit.json及运行记录。
 
 
+### 2026-11-16T02:57:56.843655+08:00 后台队列已启动并核验
+
+源码隔离提交`e93fbce0fac6e06c2d70b7743fd2eee9b11384f9`。两新臂四组工程与exact optimizer继续接受，当前train-only功能门控running，正式学习/训练/评价尚未接受。四已训WSI方法真实工程全部接受，首片5177窗口/11目标的完整三读出推理已开始；PID/GPU/进度见`/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/status_verified.json`，本组计算worker共6个且现场存活。Full/SANSA旧mask子集1087逐项磁盘重评分已通过，M/no_cross_scale与原15片CPU配对区间继续处理。原15片主结果不变。功能门控通过自动fresh4→fresh2375→1087评价；Proto-MS patch接受后自动接入三片WSI；首片Full/SANSA融合输出逐位复现后才扩后两片。失败停止，无额外训练seed或其它消融。
+
+
+### 2026-11-16T10:53:09.560936+08:00 抽样归因全部完成并独立收尾
+
+2026-11-16 10:48:40最终验收完成，02:49:50启动，约7.98小时。本组无活动worker。两新臂均通过工程/功能/fresh4/9500任务2375更新及1087评价；5方法×3完整WSI=15片方法，32个slide-target/方法，共160组织方法任务；Full/SANSA融合mask与原正式输出逐位一致。checkpoint/消费清单、patch磁盘mask/rows、全部WSI报告/windows清单及跨方法unique-pixel域核验通过。证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/closeout_verified_1116_105309.json`；汇总`/nfs-medical3/zyh/fewclick_v2/cvpr_research/reviewer_sample_1116_025000/wsi_summary.json`。旧记录中的running/PID均为历史状态，不重启。
+
+| 方法 | 1087加权present Dice(%) | large Dice(%) | FPA(%) | 3WSI融合Dice(%) | strict-remote Dice(%) |
+|---|---:|---:|---:|---:|---:|
+| HG_mix | 42.3172 | 75.6706 | 6.3222 | 45.6522 | 43.0356 |
+| sansa | 41.5806 | 75.1602 | 13.0391 | 34.8548 | 31.2134 |
+| proto_ms | 40.8272 | 71.5045 | 5.1618 | 42.1301 | 39.5299 |
+| fixed_grid | 42.0397 | 76.0179 | 6.6728 | 未运行 | 未运行 |
+| M | 41.0956 | 72.3955 | 5.0352 | 41.7003 | 39.4207 |
+| no_cross_scale | 41.7028 | 75.0413 | 6.0336 | 44.2726 | 41.8910 |
+
+解释边界：同特征Proto-MS低于Full，但误报更低；fixed-grid与Full的present差仅0.28pp且large略高，学习区域必要性证据弱。三片上Full−SANSA窗口present差约0.42pp、融合整片差10.80pp；无融合整片差11.71pp，重叠平均并未扩大差距，不能归因融合增益。三片仅机制诊断，不能与原15片/完整11000主结果混用或声称统计显著。固定HG-mix未替换，无自动扩臂/新seed/后续训练。
+
+
+### 2026-11-16T11:08:59.065467+08:00 已完成抽样归因结论写入英文论文
+
+用户要求“当前已有的结论可以补充进论文，不需要后面的防御性措辞”。已更新`论文/CVPR_HG_mix/CVPR2027_English_1115/sec/4_experiments.tex`与`sec/supplement.tex`，新增表S3/S4/S11：同特征Proto-MS、fixed-grid、三片WSI窗口/owner/fused五方法与两评分域、原15片逐片配对差值和95%区间。原11000/15WSI主结果及测试患者未出现于训练/开发集声明保留。已完成结果直接表述；fixed-grid仅称present提升0.28pp，保留其large略高及Proto-MS FPA较低事实。未加入待做实验的防御性结尾。
+
+正文8页+文献等2页，补充6页；编译无warning/undefined/overfull，页面人工查看通过。为守8页，训练清单、完整跨尺度配置与原锚定/先验诊断移入补充材料，精简重复描述。源包逐文件与当前源码/PDF一致，ZIP完整性通过。旧稿及旧ZIP保存在`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/sampled_attribution_1116_110409`；来源/输出SHA、命令及独立FPA重算见`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_attribution_1116_110859/acceptance.json`。本次无训练或推理，实验状态未改，registry新增`paper_sampled_attribution_1116_110859`。
+
+
+### 2026-11-16T12:02:17.601078+08:00 用户指定写作skill已安装并应用
+
+用户指定GitHub `deathcats4/scientific-manuscript-editor` 并要求继续。已通过skill-installer安装v1.9.0至`/home/zhaoyh/.codex/skills/scientific-manuscript-editor`，读取Results、科学完整性、自然表达及连续性规则，完成新增实验分析的局部润色。正文与补充数值、标签、引用、交叉引用均保持一致；表S3/S4仅完善caption，数据体逐字一致。Proto-MS控制条件及指标对比更清楚；WSI窗口/唯一像素统计关系显式说明；精简重复收尾，保留原结论强度与用户“不需要防御性措辞”要求。新增论文内`MANUSCRIPT-CONTEXT.md`作为写作状态指针，实验接续仍以goal/registry为准。
+
+编译无warning/undefined/overfull，正文8页+文献等2页，补充6页，S3/S4视觉检查通过，ZIP同步与完整性检查通过。旧稿`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/scientific_editor_1116_115751`；源/输出SHA、diff及验证见`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_scientific_editor_1116_120217/acceptance.json`。本次无训练/推理。registry新增`paper_scientific_editor_1116_120217`，实验状态未变。
+
+
+### 2026-11-16T12:14:53.606139+08:00 英文正文完整中文译稿 main_ch.pdf 已生成
+
+用户要求整篇英文稿翻译成中文、专有名词保留，并编译main_ch.pdf。已以当前英文main.tex为唯一来源完成摘要至结论、3幅图注和5张表格的103个文本块翻译，中文源码独立于英文，输出`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/main_ch.pdf`。专名、公式、数值、引用和参考文献保留；独立英文补充材料不在main_ch内。
+
+XeLaTeX+xeCJK+Noto CJK编译通过：正文8页、总10页；无缺字、未定义引用或溢出警告。行间公式逐字一致、行内公式／数值／引用／标签／交叉引用一致，表格数字行一致；英文正文与PDF哈希与上次接受记录一致。已视觉检查第1/3/7/8页，源码ZIP已同步并校验。构建脚本`build_ch.sh`，核验`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_ch_translation_1116_121453/acceptance.json`，registry新增`paper_chinese_translation_1116_121453`。无新训练或推理。
+
+
+### 2026-11-16T12:47:55.601629+08:00 中英文摘要同步调整为WSI主结果优先
+
+按用户最新要求，英文与中文摘要突出单支持图像块正负点击、远端无需额外人工提示的整片能力，以及15WSI/152任务的整片与strict-remote Dice 43.75/40.98%、相对SANSA增益10.52/10.86pp。11000同片远端开发任务仅报告目标缺失FPA 14.79→7.75%（下降7.04pp）；摘要中的该队列Dice和patch消融数值移除，正文实验保持原样。两语言数字与正文证据核对一致。main.pdf/main_ch.pdf均编译通过、无警告，均8页正文+2页文献等；双语首页视觉检查通过。备份`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/abstract_wsi_1116_124636`，证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_abstract_wsi_1116_124755/acceptance.json`，源码ZIP同步通过。无新训练或推理。
+
+
+### 2026-11-16T12:56:46.464814+08:00 中英文摘要补充保持相当分割精度
+
+依用户要求，在摘要FPA下降结果后补充：同时，FewClick在包含目标的查询区域上保持了与SANSA相当的分割精度。 英文：Meanwhile, FewClick maintains segmentation accuracy comparable to SANSA on target-present queries. 表述对应原11000任务的目标存在Dice 42.11/41.54%，未新增指标或等效性检验。两版已编译，无警告，均8页正文+2页文献等；ZIP同步验证通过。备份`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/abstract_accuracy_1116_125611`，证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_abstract_accuracy_1116_125646/acceptance.json`。无新训练／推理。
+
+
+### 2026-11-16T13:01:36.880340+08:00 中英文引言贡献段补充Dice与目标缺失误报优势
+
+按用户要求，将引言末尾由绝对分数报告改为本实验对比方法中的排名：整片宏平均Dice最高43.75%，远端目标存在宏平均Dice最高42.11%，目标缺失FPA最低7.75%。六方法表1/2排名实际核对通过，限定“所比较的方法”；中英文同步，所有数值与引用保留。两PDF重新编译，无警告，均正文8页、总10页；ZIP同步验证通过。备份`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/intro_comparison_1116_130044`，证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_intro_comparison_1116_130136/acceptance.json`。无新训练／推理。
+
+
+### 2026-11-16T13:14:31.695526+08:00 中英文方法公式与冻结实现核验完成
+
+对照HG-mix冻结实现，18个源码哈希一致。同步修正融合特征记号、两类坐标范围、固定尺度索引与可学习嵌入的区别、停止梯度后的32网格支持概率、双端粗细对应展开及1e-8截断、矩阵尺寸、熵确定性、分配正则平均范围与指示函数字体；补充材料补齐实现细节。CPU代数核验粗/细迁移及确定性与实现差值均0，归一化误差<3e-7。压缩重复图注与说明，未修改模型及实验结果。两版11个行间公式块逐字一致，编译无warning/overfull/undefined，正文均8页、总10页，补充6页；方法页视觉检查通过。备份`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/method_audit_1116_131014`；证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_method_audit_1116_131014/acceptance.json`。无训练或数据集推理。
+
+
+### 2026-11-16T14:10:32.822405+08:00 图2浅绿色覆盖与两行四列布局
+
+按用户要求，图2由两行五列改为两行四列：支持点击、Ground truth + support box、FewClick、SANSA / SAM、SAM2、WSI-SAM、SAM-Med2D。移除Scoring domains面板，真实标注和预测统一浅绿色RGB(144,238,144)、alpha0.65，支持框保留青色。CPU读取原冻结预测重绘，选择病例、点击、掩码及六方法Dice不变，无新训练或推理。中英文图注及补充说明同步；两版编译无warning/overfull/undefined，均8页正文+2页文献等，补充6页；图与英文整页视觉检查通过。备份`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/figure2_green_1116_140702`，证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_green_1116_140702/acceptance.json`。
+
+
+### 2026-11-16T14:24:04.880985+08:00 图2点击与覆盖颜色加深
+
+按用户要求，正点击改深绿色#006400，负点击改深蓝色#003C9D，符号大小85、线宽2.2；真实标注和预测覆盖RGB由(144,238,144)调整为(64,180,96)，alpha仍0.65。两行四列与青色支持框保留。六方法采样掩码哈希及Dice与前版一致，无模型推理。中英文图注及补充配色说明同步；两版均8页正文、总10页，补充6页，编译无警告；新版图视觉检查通过。证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_contrast_1116_142257/acceptance.json`；备份`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/figure2_contrast_1116_142257`。
+
+
+### 2026-11-16T14:26:30.056603+08:00 图2中间绿色与红／天蓝点击
+
+按最新要求，覆盖取前两版RGB中点(104,209,120)，alpha仍0.65；正点击正红#FF0000，负点击天蓝#00BFFF，符号大小85、线宽2.2保持。两行四列及支持框保持。六方法采样掩码哈希与Dice一致，无新推理。中英文图注同步，编译无警告，两版正文8页／总10页，补充6页，独立图视觉检查通过。证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_midgreen_1116_142526/acceptance.json`；备份`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/figure2_midgreen_1116_142526`。
+
+
+### 2026-11-16T16:15:33.445952+08:00 图2扩展为四种组织、4行8列
+
+按用户要求选取FewClick表现较好的多个组织，与图3类似按行展示。保留首张正式WSI的肿瘤上皮86.4%，新增坏死84.0%、正常腺体81.4%、肌层93.3%；新增三类各选正式15WSI中FewClick整片Dice最高的案例。每行依次支持点击、Ground truth+支持框、FewClick、SANSA、SAM、SAM2、WSI-SAM、SAM-Med2D。红色正点击、天蓝负点击、RGB(104,209,120)/alpha0.65绿色覆盖保持。中英文图注明确选例规则，补充材料记录切片ID；wsi_selection.json同步为四案例。24个面板Dice与冻结报告逐项一致，源报告SHA校验通过，无新训练或推理。两版均8页正文、总10页，补充6页，编译无警告；独立图及英文整页视觉检查通过。备份`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/figure2_multitissue_1116_161205`，证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_multitissue_1116_161205/acceptance.json`。
+
+
+### 2026-11-16T16:29:14.159535+08:00 图2图注删句
+依用户要求，中英文图2图注同步删除“肿瘤上皮保留第一张正式切片……其余各行选用最高Dice案例”的选例句，其余图注与图保持。补充材料及选例记录仍保留准确来源。两版重新编译无警告、正文8页。证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_figure2_caption_1116_162850/acceptance.json`。
+
+
+### 2026-11-16T16:41:28.619074+08:00 表3表头与数值居中对齐
+按用户要求，中英文表3的n及六个方法列由右对齐改为居中，组织名称列保持左对齐。仅修改列格式，数值未变。两版重新编译无警告、正文8页；中文表3视觉检查通过。证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_table3_alignment_1116_164056/acceptance.json`。
+
+
+### 2026-11-16T21:07:02.883822+08:00 表3加宽并等宽排布
+按用户要求，中英文表3扩展至正文宽度；组织列占20%，n及六方法使用等宽居中X列。通过tabularx统一列中心间距，所有表头保持单行，数值不变。两版与补充编译无警告，正文8页；中文整页视觉检查通过。证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_table3_equalwidth_1116_210542/acceptance.json`。
+
+
+### 2026-11-16T21:08:44.193228+08:00 表1／表2方法顺序统一
+依用户要求，表2按表1顺序排列：SAM、SAM2、WSI-SAM、SAM-Med2D、SANSA、FewClick。中英文同步，整行移动、数据逐行校验不变。两版重新编译无警告、正文8页。证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_table2_order_1116_210819/acceptance.json`。
+
+
+### 2026-11-16T21:18:15.763536+08:00 实验正文整合关键补充证据与3.3标题精简
+
+依用户要求，中英文实验正文补充材料转引由10处减至1处，表5图注额外转引改为缓存定义。主文补入14/15WSI逐片优势、正常腺体／淋巴组织严格远端增益18.04/29.11pp、FPA相对下降47.6%、缓存减少92.3%、同特征子集构成与重加权、固定区域FPA、WSI消融strict-remote结果、提示样本构成、目标面积分层及误报示例。统计区间移至对应远端主结果，保持优势与边界的证据强度。新增数值来自原补充表与可复核算术，双语数值一致；无新实验。3.3改为Prompt-Conditioned Region Hierarchy／提示条件下的区域层级，英文单行显示。两版8页正文、总10页，补充6页，无编译警告；英文末页视觉检查通过。证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_experiment_summary_1116_211436/acceptance.json`；备份`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/experiment_summary_1116_211436`。
+
+
 ## 2026-11-16T21:55:03.705126+08:00
 
 - Purpose: Extend frozen Proto-MS and two core controls from first3 to original formal15 WSIs; no training.
@@ -5252,6 +5820,46 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full15_1116_214757`; 36 pending/running model-slide jobs, six active GPU workers; experiment not complete.
 - Docs record: `docs/运行记录/模型实验/运行记录_ProtoMS核心消融完整15WSI_1116_214757.md` (run record).
 - Commit: source_commit.json in the artifact root records the isolated implementation commit.
+
+- Full15 extension commit confirmed: `9c32f32986f008264a15a274da1600ad3496d8a6`; three real engineering gates accepted and six formal workers alive at 2026-11-16T21:56:09.729324+08:00. Live status: `/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full15_1116_214757/status_verified.json`.
+
+
+### 2026-11-16T22:14:48.355416+08:00 论文贡献重点调整为整片传播与覆盖–误检权衡
+依用户最新要求，中英文摘要、引言贡献、方法开头与讨论结论聚焦一个支持图像块的少量正负点击驱动同片整片传播，以及目标覆盖–误检权衡。区域层级定位为组织多尺度上下文的实现手段；方法段落名由可学习区域改为空间上下文池化，保留学习分配与全部公式。引言保留整片Dice与目标缺失FPA优势，结论明确密集迁移提高大目标Dice同时增加FPA，未宣称该模块单独降低误报。实验数据、表格、图片均保持；完整15WSI控制扩展继续运行，本文仍使用原三张控制结果。两版正文8页、总10页，补充6页，无编译警告。 证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_propagation_framing_1116_221217/acceptance.json`；备份`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/propagation_framing_1116_221217`。
+
+
+### 2026-11-16T23:27:27.666863+08:00 CVPR2027版式与引用审查
+英文正文8页、总10页；25文献键/25PDF目标/34正文引用链接正常，25篇均查到真实来源，官方sty/bst逐字匹配。发现明确提交阻断：LLM Usage Statement为空白；补充数据来源/权限仍占位、SAM-Med2D缺可见arXiv来源、PFENet旧URL404/缺页码、图3Type3字体待完善。没有修改论文或实验；audit complete不等于submission ready。报告`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_submission_audit_1116_232224/report_中文.md`。
+
+
+### 2026-11-16T23:46:14.205023+08:00 补全LLM声明与纠正位置
+依用户要求查询CVPR2027官方LLM Policy，并补全中英文LLM Usage Statement。明确工具ChatGPT/Codex、方法/实验规划、代码实现调试运行、结果分析、文献核查、图表制作及写作翻译的迭代辅助范围，保留作者责任，不虚构逐项人工验收。纠正此前审查遗漏的位置要求：声明须在正文后、参考文献前，已移至第9页。补充对应空白改为主文声明的位置说明。正文前8页提取文本完全不变；两版总10页、补充6页，无编译警告，25引用目标有效。其它数据来源/权限占位与字体/书目问题未在本次LLM声明任务中修改。 证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_llm_statement_1116_234442/acceptance.json`。
+
+
+### 2026-11-17T11:00:43.197339+08:00 最终PPTX替换论文方法图
+按用户指定，将figures/最终方法图.pptx通过LibreOffice Impress直接导出为单页矢量PDF并替换figures/method.pdf。源PPTX不变，原图与稿件已备份；页面尺寸与旧图相同，保留上下72bp空白裁切，无内容裁断。中英文重新编译，正文8页、总10页，无编译警告，英文第3页视觉检查通过。同步完整源码ZIP与纯英文Overleaf ZIP。未改动实验或方法文字。 证据`/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_method_pptx_1117_105922/acceptance.json`。
+
+
+### 2026-11-17T11:04:10.647006+08:00 完整15WSI补跑验收完成
+完整15WSI控制补跑已于2026-11-17T10:45:01.176983+08:00完成并接受，历时12.88小时。新增36/36模型切片任务及3工程门控退出0；加复用9组，共45模型切片/456组织方法结果。复核75源报告SHA、45控制验收/窗口SHA、权重身份与不变性、全覆盖及独立磁盘复评分标记，重算760条任务指标/宏平均并核对相同评分域，均通过；无剩余worker。 完整模型相对Proto-MS整片/严格远端增益+1.49/+1.75pp，相对无密集迁移+1.12/+1.07pp；无跨尺度消息版本比完整模型高0.98/1.14pp，前三张所见排序不在完整15张保持。三项控制的配对bootstrap95%区间均跨0；不能据此宣称跨尺度消息必需或完整模型显著优于这些控制。HG-mix继续固定，不按消融自动替换方法。相对SANSA+10.52/+10.86pp保持。论文尚未更新该15张控制结果。 记录：`docs/运行记录/模型实验/运行记录_ProtoMS核心消融完整15WSI_1116_214757.md`；证据：`/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full15_closeout_1117_110410/verification.json`。
+
+
+### 2026-11-17T11:07:17.731742+08:00 完整15WSI跨尺度消息差异诊断
+已接受结果CPU读出显示，无消息整片precision37.85>36.23、recall77.12<78.52、FP/valid5.26<5.90，8/11组织与12/15逐片平均更高。前三片的淋巴优势较大，新增12片正常腺体/间质转而支持无消息版本。属于覆盖–误报权衡与病例/组织异质性；上下文语义混合仅为机制假设，未验证过拟合。完整HG-mix固定、论文未变、无新训练/推理。证据：`/nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_crossscale_diagnostic_1117_110717/report.md`。
+
+
+### 2026-11-17T16:40:09.547613+08:00 参考文献与图3字体修复
+补齐SAM-Med2D可见arXiv来源、PFENet/PANet/SANSA/CyCTR正式页码，PFENet换正式DOI链接、CyCTR换官方论文集链接，TIGER补充文献显示DOI。图3从原CPU绘图脚本以pdf.fonttype=42重绘；4例选择及全部指标、36内嵌图像和PDF文字完全一致，PNG逐字节一致。最终图3字体为CID TrueType，带Unicode映射；三版PDF均无Type3、无编译警告或未定义引用。中英文正文8页/总10页，补充6页，图3及文献页视觉检查通过。无新训练或推理，15WSI新消融结果仍待同步。 同步完整源码与纯英文Overleaf ZIP。证据：`/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/references_figure3_1117_163643/acceptance.json`。
+
+
+## 2026-11-17T19:02:13.408191+08:00 四方法完整30WSI扩充准备
+
+- Purpose: 扩充到30张并估算时间，复用前15张，新增60方法切片推理。
+- Changed: benchmarks/v5/reviewer_sample/full30.py、prepare_full30.py。
+- Validation: py_compile通过；687源SHA、四权重、30病例身份、旧15张608任务方法行和bootstrap精确重现通过；GPU工程门控待执行。
+- Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543。
+- Docs record: docs/运行记录/模型实验/运行记录_四方法消融完整30WSI_1117_173543.md（run record）。
+- Commit: 待真实工程门控接受后隔离提交。
 
 
 ## 2026-11-17T19:24:15.414400+08:00 扩充四方法冻结消融至30张WSI
@@ -5262,3 +5870,15 @@ P3现场等待核验与接续摘要校正（2026-11-03T04:42:46.308116+08:00）�
 - Artifacts: /nfs-medical3/zyh/fewclick_v2/cvpr_research/wsi_controls_full30_1117_173543；60新增任务running，非实验完成。
 - Docs record: docs/运行记录/模型实验/运行记录_四方法消融完整30WSI_1117_173543.md（run record）。
 - Commit: 隔离提交记录见产物source_commit.json。
+
+- Full30 implementation commit: `66060e5df1e33b814dd66a0b0d5954f9a7f62f64`；真实四工程门控通过，六正式worker及滑窗进度已核验；实验仍running。
+
+
+## 2026-11-20T17:30:52.691290+08:00 仓库整理与版本归档
+
+- Purpose: 按用户要求清理中间文件，并提交现有代码、正式论文及实验记录。
+- Changed: `.gitignore`、`docs/仓库维护.md`、续接入口与 registry；此前未提交的论文/绘图源码/实验文档。
+- Validation: 归档逐文件 SHA-256 校验通过；新增 Python/JSON、论文依赖和 shell 语法检查通过；提交前执行 `git diff --cached --check`。未运行实验。
+- Artifacts: `/nfs-medical3/zyh/fewclick_v2/repository_cleanup_1120_172853`；manifest SHA-256 `7ebd8bf65b84459ab34620a2a76fe7c0b8e40b95d94d38bbbb72768a57fa140a`。
+- Docs record: `docs/仓库维护.md`。
+- Commit: 本条随仓库整理提交，提交号由 Git 历史查询。

@@ -1,0 +1,713 @@
+{
+  "rule": "Within each stated band, closest to HG median Dice (absent: FPA); ties ascending task index. Fixed before rendering; retrospective descriptive selection.",
+  "cases": [
+    {
+      "band": "Large",
+      "index": 2675,
+      "median": 0.8845200349952165,
+      "task": {
+        "dataset": "crc",
+        "target": 3,
+        "click_seed": 20261111,
+        "positive_xy": [
+          [
+            0.6630859375,
+            0.5283203125
+          ],
+          [
+            0.2021484375,
+            0.2841796875
+          ],
+          [
+            0.5869140625,
+            0.4794921875
+          ]
+        ],
+        "negative_xy": [
+          [
+            0.4677734375,
+            0.9111328125
+          ],
+          [
+            0.2509765625,
+            0.6083984375
+          ]
+        ],
+        "click_audit": {
+          "policy": "representative_1021_214456",
+          "positive": {
+            "limited_interior_space": false,
+            "source_components": 7,
+            "retained_components": 7,
+            "selected_labels": [
+              3,
+              3,
+              3
+            ],
+            "component_area_fraction": [
+              1.0,
+              0.7480653482373173,
+              1.0
+            ],
+            "clearance_um": [
+              4.500562570321289,
+              4.472695041879814,
+              3.041761485334776
+            ],
+            "frame_clearance_um": [
+              86.26078259782471,
+              51.75646955869483,
+              105.7632204025503
+            ],
+            "minimum_pair_distance_um": 23.165365314465244
+          },
+          "negative": {
+            "limited_interior_space": false,
+            "source_components": 12,
+            "retained_components": 1,
+            "selected_labels": [
+              0,
+              0
+            ],
+            "component_area_fraction": [
+              1.0,
+              1.0
+            ],
+            "clearance_um": [
+              21.103585794233467,
+              21.502687835979494
+            ],
+            "frame_clearance_um": [
+              22.752844105513187,
+              64.25803225403175
+            ],
+            "minimum_pair_distance_um": 95.33505153405375
+          },
+          "background_negative_required": false
+        },
+        "prompt_policy": "representative_1021_214456",
+        "support_id": "33cbd67cbcfc9838a0d83bac",
+        "query_id": "samewsi_3593ebc7334184c0a68cf892",
+        "split": "val",
+        "local": false,
+        "query_has_human_clicks": false,
+        "gt_simulated_clicks": true,
+        "query_positive_pixels": 154769,
+        "support_space": "crc|1339449-5-HE-DX1",
+        "query_space": "crc|1339449-5-HE-DX1",
+        "index": 2675
+      },
+      "scores": {
+        "HG_mix": {
+          "tp": 145394,
+          "fp": 28554,
+          "fn": 9375,
+          "positive": 154769,
+          "valid": 262144,
+          "dice": 0.884615033600331,
+          "false_positive_fraction": 0.10892486572265625,
+          "predicted_boundary_pixels": 4903,
+          "true_boundary_pixels": 10699,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.2593133480783325
+        },
+        "sansa": {
+          "tp": 150430,
+          "fp": 36069,
+          "fn": 4339,
+          "positive": 154769,
+          "valid": 262144,
+          "dice": 0.8815945239518501,
+          "false_positive_fraction": 0.13759231567382812,
+          "predicted_boundary_pixels": 8807,
+          "true_boundary_pixels": 10699,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.34400071313959707
+        },
+        "sam": {
+          "tp": 5824,
+          "fp": 3145,
+          "fn": 148945,
+          "positive": 154769,
+          "valid": 262144,
+          "dice": 0.0711380375966483,
+          "false_positive_fraction": 0.011997222900390625,
+          "predicted_boundary_pixels": 4324,
+          "true_boundary_pixels": 10699,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.09387683659636747
+        },
+        "sam2": {
+          "tp": 12734,
+          "fp": 1243,
+          "fn": 142035,
+          "positive": 154769,
+          "valid": 262144,
+          "dice": 0.15092505896436065,
+          "false_positive_fraction": 0.004741668701171875,
+          "predicted_boundary_pixels": 7183,
+          "true_boundary_pixels": 10699,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.19128490166511347
+        },
+        "wsi": {
+          "tp": 361,
+          "fp": 4902,
+          "fn": 154408,
+          "positive": 154769,
+          "valid": 262144,
+          "dice": 0.0045115976804639074,
+          "false_positive_fraction": 0.01869964599609375,
+          "predicted_boundary_pixels": 2248,
+          "true_boundary_pixels": 10699,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.03471887803042234
+        },
+        "med2d": {
+          "tp": 5699,
+          "fp": 27551,
+          "fn": 149070,
+          "positive": 154769,
+          "valid": 262144,
+          "dice": 0.06062153293018259,
+          "false_positive_fraction": 0.10509872436523438,
+          "predicted_boundary_pixels": 6508,
+          "true_boundary_pixels": 10699,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.07747879001882821
+        }
+      }
+    },
+    {
+      "band": "Small",
+      "index": 1651,
+      "median": 0.00511098439248981,
+      "task": {
+        "dataset": "crc",
+        "target": 1,
+        "click_seed": 20261109,
+        "positive_xy": [
+          [
+            0.6396484375,
+            0.3056640625
+          ],
+          [
+            0.6005859375,
+            0.2021484375
+          ],
+          [
+            0.5068359375,
+            0.0830078125
+          ]
+        ],
+        "negative_xy": [
+          [
+            0.6806640625,
+            0.9033203125
+          ],
+          [
+            0.8466796875,
+            0.4482421875
+          ]
+        ],
+        "click_audit": {
+          "policy": "representative_1021_214456",
+          "positive": {
+            "limited_interior_space": false,
+            "source_components": 5,
+            "retained_components": 5,
+            "selected_labels": [
+              1,
+              1,
+              1
+            ],
+            "component_area_fraction": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "clearance_um": [
+              8.486342167009445,
+              5.5908688023497675,
+              5.220805855187172
+            ],
+            "frame_clearance_um": [
+              78.25978247280909,
+              51.75646955869483,
+              21.252656582072756
+            ],
+            "minimum_pair_distance_um": 28.327559021414768
+          },
+          "negative": {
+            "limited_interior_space": false,
+            "source_components": 33,
+            "retained_components": 9,
+            "selected_labels": [
+              9,
+              0
+            ],
+            "component_area_fraction": [
+              1.0,
+              0.6324082673508902
+            ],
+            "clearance_um": [
+              18.556294852135984,
+              21.245301448929116
+            ],
+            "frame_clearance_um": [
+              24.753094136767093,
+              39.25490686335792
+            ],
+            "minimum_pair_distance_um": 124.02558343336807
+          },
+          "background_negative_required": false
+        },
+        "prompt_policy": "representative_1021_214456",
+        "support_id": "c3a1c99c019ec60496b90707",
+        "query_id": "samewsi_29812810830c13f1dcea693f",
+        "split": "val",
+        "local": false,
+        "query_has_human_clicks": false,
+        "gt_simulated_clicks": true,
+        "query_positive_pixels": 631,
+        "support_space": "crc|1411307-8-HE-DX1",
+        "query_space": "crc|1411307-8-HE-DX1",
+        "index": 1651
+      },
+      "scores": {
+        "HG_mix": {
+          "tp": 605,
+          "fp": 235509,
+          "fn": 26,
+          "positive": 631,
+          "valid": 262144,
+          "dice": 0.00511098439248981,
+          "false_positive_fraction": 0.8983955383300781,
+          "predicted_boundary_pixels": 5926,
+          "true_boundary_pixels": 370,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.0041756168068576485
+        },
+        "sansa": {
+          "tp": 631,
+          "fp": 257407,
+          "fn": 0,
+          "positive": 631,
+          "valid": 262144,
+          "dice": 0.004878821969389452,
+          "false_positive_fraction": 0.9819297790527344,
+          "predicted_boundary_pixels": 2799,
+          "true_boundary_pixels": 370,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.031070600089040938
+        },
+        "sam": {
+          "tp": 592,
+          "fp": 166226,
+          "fn": 39,
+          "positive": 631,
+          "valid": 262144,
+          "dice": 0.007070809619645384,
+          "false_positive_fraction": 0.6341018676757812,
+          "predicted_boundary_pixels": 38960,
+          "true_boundary_pixels": 370,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.011091525693034157
+        },
+        "sam2": {
+          "tp": 262,
+          "fp": 113431,
+          "fn": 369,
+          "positive": 631,
+          "valid": 262144,
+          "dice": 0.004583464539379308,
+          "false_positive_fraction": 0.4327049255371094,
+          "predicted_boundary_pixels": 56334,
+          "true_boundary_pixels": 370,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.015986828875393592
+        },
+        "wsi": {
+          "tp": 342,
+          "fp": 78434,
+          "fn": 289,
+          "positive": 631,
+          "valid": 262144,
+          "dice": 0.008613850164343195,
+          "false_positive_fraction": 0.29920196533203125,
+          "predicted_boundary_pixels": 57021,
+          "true_boundary_pixels": 370,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.018612297751742057
+        },
+        "med2d": {
+          "tp": 537,
+          "fp": 118742,
+          "fn": 94,
+          "positive": 631,
+          "valid": 262144,
+          "dice": 0.008956717538153615,
+          "false_positive_fraction": 0.45296478271484375,
+          "predicted_boundary_pixels": 21280,
+          "true_boundary_pixels": 370,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.0022186067149829905
+        }
+      }
+    },
+    {
+      "band": "Absent",
+      "index": 7902,
+      "median": 0.0040073394775390625,
+      "task": {
+        "dataset": "crc",
+        "target": 8,
+        "click_seed": 20261116,
+        "positive_xy": [
+          [
+            0.0947265625,
+            0.0322265625
+          ],
+          [
+            0.1259765625,
+            0.0302734375
+          ],
+          [
+            0.0126953125,
+            0.0126953125
+          ]
+        ],
+        "negative_xy": [
+          [
+            0.6123046875,
+            0.8466796875
+          ],
+          [
+            0.5751953125,
+            0.1181640625
+          ]
+        ],
+        "click_audit": {
+          "policy": "representative_1021_214456",
+          "positive": {
+            "limited_interior_space": false,
+            "source_components": 1,
+            "retained_components": 1,
+            "selected_labels": [
+              8,
+              8,
+              8
+            ],
+            "component_area_fraction": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "clearance_um": [
+              6.261853685193852,
+              3.8059851218008474,
+              3.4982523090259217
+            ],
+            "frame_clearance_um": [
+              8.245880442703958,
+              7.746130112843112,
+              3.2483771440954987
+            ],
+            "minimum_pair_distance_um": 8.011607254126869
+          },
+          "negative": {
+            "limited_interior_space": false,
+            "source_components": 17,
+            "retained_components": 2,
+            "selected_labels": [
+              0,
+              1
+            ],
+            "component_area_fraction": [
+              1.0,
+              0.32330381768036
+            ],
+            "clearance_um": [
+              19.902364734445367,
+              30.484770121511602
+            ],
+            "frame_clearance_um": [
+              39.2304008940764,
+              30.23489495658118
+            ],
+            "minimum_pair_distance_um": 186.64855265290282
+          },
+          "background_negative_required": false
+        },
+        "prompt_policy": "representative_1021_214456",
+        "support_id": "8089de86117b6b79c04b4168",
+        "query_id": "samewsi_59fce5e7d5781f6cf2fd1d30",
+        "split": "val",
+        "local": false,
+        "query_has_human_clicks": false,
+        "gt_simulated_clicks": true,
+        "query_positive_pixels": 0,
+        "support_space": "crc|1809337-8-HE-DX1",
+        "query_space": "crc|1809337-8-HE-DX1",
+        "index": 7902
+      },
+      "scores": {
+        "HG_mix": {
+          "tp": 0,
+          "fp": 1049,
+          "fn": 0,
+          "positive": 0,
+          "valid": 262144,
+          "dice": null,
+          "false_positive_fraction": 0.004001617431640625,
+          "predicted_boundary_pixels": 485,
+          "true_boundary_pixels": 0,
+          "boundary_evaluable": false,
+          "bf1_um2": null
+        },
+        "sansa": {
+          "tp": 0,
+          "fp": 27968,
+          "fn": 0,
+          "positive": 0,
+          "valid": 262144,
+          "dice": null,
+          "false_positive_fraction": 0.106689453125,
+          "predicted_boundary_pixels": 7514,
+          "true_boundary_pixels": 0,
+          "boundary_evaluable": false,
+          "bf1_um2": null
+        },
+        "sam": {
+          "tp": 0,
+          "fp": 58654,
+          "fn": 0,
+          "positive": 0,
+          "valid": 262144,
+          "dice": null,
+          "false_positive_fraction": 0.22374725341796875,
+          "predicted_boundary_pixels": 12712,
+          "true_boundary_pixels": 0,
+          "boundary_evaluable": false,
+          "bf1_um2": null
+        },
+        "sam2": {
+          "tp": 0,
+          "fp": 100670,
+          "fn": 0,
+          "positive": 0,
+          "valid": 262144,
+          "dice": null,
+          "false_positive_fraction": 0.38402557373046875,
+          "predicted_boundary_pixels": 39631,
+          "true_boundary_pixels": 0,
+          "boundary_evaluable": false,
+          "bf1_um2": null
+        },
+        "wsi": {
+          "tp": 0,
+          "fp": 36027,
+          "fn": 0,
+          "positive": 0,
+          "valid": 262144,
+          "dice": null,
+          "false_positive_fraction": 0.13743209838867188,
+          "predicted_boundary_pixels": 27467,
+          "true_boundary_pixels": 0,
+          "boundary_evaluable": false,
+          "bf1_um2": null
+        },
+        "med2d": {
+          "tp": 0,
+          "fp": 79235,
+          "fn": 0,
+          "positive": 0,
+          "valid": 262144,
+          "dice": null,
+          "false_positive_fraction": 0.3022575378417969,
+          "predicted_boundary_pixels": 14494,
+          "true_boundary_pixels": 0,
+          "boundary_evaluable": false,
+          "bf1_um2": null
+        }
+      }
+    },
+    {
+      "band": "Failure",
+      "index": 4046,
+      "median": 0.00525484295127371,
+      "task": {
+        "dataset": "crc",
+        "target": 5,
+        "click_seed": 20261113,
+        "positive_xy": [
+          [
+            0.5400390625,
+            0.5048828125
+          ],
+          [
+            0.5224609375,
+            0.5048828125
+          ],
+          [
+            0.5322265625,
+            0.5009765625
+          ]
+        ],
+        "negative_xy": [
+          [
+            0.2841796875,
+            0.3798828125
+          ],
+          [
+            0.5830078125,
+            0.7685546875
+          ]
+        ],
+        "click_audit": {
+          "policy": "representative_1021_214456",
+          "positive": {
+            "limited_interior_space": false,
+            "source_components": 1,
+            "retained_components": 1,
+            "selected_labels": [
+              5,
+              5,
+              5
+            ],
+            "component_area_fraction": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "clearance_um": [
+              4.497752968747614,
+              3.903174851829916,
+              4.525431709801176
+            ],
+            "frame_clearance_um": [
+              117.69120268222922,
+              122.18895565097684,
+              119.6902040016726
+            ],
+            "minimum_pair_distance_um": 2.2349514186935893
+          },
+          "negative": {
+            "limited_interior_space": false,
+            "source_components": 15,
+            "retained_components": 6,
+            "selected_labels": [
+              0,
+              1
+            ],
+            "component_area_fraction": [
+              1.0,
+              0.19184562246583572
+            ],
+            "clearance_um": [
+              29.105898548729165,
+              12.741183419424422
+            ],
+            "frame_clearance_um": [
+              72.71367299475308,
+              59.220414088510246
+            ],
+            "minimum_pair_distance_um": 125.44629214238057
+          },
+          "background_negative_required": false
+        },
+        "prompt_policy": "representative_1021_214456",
+        "support_id": "149ad8a63720a65dba759e0f",
+        "query_id": "samewsi_0b8266d28732568d0d5ca613",
+        "split": "val",
+        "local": false,
+        "query_has_human_clicks": false,
+        "gt_simulated_clicks": true,
+        "query_positive_pixels": 102,
+        "support_space": "crc|1712093-8-HE-DX1",
+        "query_space": "crc|1712093-8-HE-DX1",
+        "index": 4046
+      },
+      "scores": {
+        "HG_mix": {
+          "tp": 43,
+          "fp": 16139,
+          "fn": 59,
+          "positive": 102,
+          "valid": 262144,
+          "dice": 0.005281257676246622,
+          "false_positive_fraction": 0.061565399169921875,
+          "predicted_boundary_pixels": 3333,
+          "true_boundary_pixels": 120,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.03092249347980372
+        },
+        "sansa": {
+          "tp": 91,
+          "fp": 18792,
+          "fn": 11,
+          "positive": 102,
+          "valid": 262144,
+          "dice": 0.009586515670266,
+          "false_positive_fraction": 0.071685791015625,
+          "predicted_boundary_pixels": 6019,
+          "true_boundary_pixels": 120,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.04471566668466814
+        },
+        "sam": {
+          "tp": 0,
+          "fp": 21575,
+          "fn": 102,
+          "positive": 102,
+          "valid": 262144,
+          "dice": 0.0,
+          "false_positive_fraction": 0.08230209350585938,
+          "predicted_boundary_pixels": 7874,
+          "true_boundary_pixels": 120,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.0
+        },
+        "sam2": {
+          "tp": 2,
+          "fp": 14001,
+          "fn": 100,
+          "positive": 102,
+          "valid": 262144,
+          "dice": 0.0002835873803615739,
+          "false_positive_fraction": 0.053409576416015625,
+          "predicted_boundary_pixels": 6851,
+          "true_boundary_pixels": 120,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.00423968343697004
+        },
+        "wsi": {
+          "tp": 102,
+          "fp": 137344,
+          "fn": 0,
+          "positive": 102,
+          "valid": 262144,
+          "dice": 0.0014831186204088754,
+          "false_positive_fraction": 0.52392578125,
+          "predicted_boundary_pixels": 6047,
+          "true_boundary_pixels": 120,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.0
+        },
+        "med2d": {
+          "tp": 97,
+          "fp": 129828,
+          "fn": 5,
+          "positive": 102,
+          "valid": 262144,
+          "dice": 0.001491997815838249,
+          "false_positive_fraction": 0.4952545166015625,
+          "predicted_boundary_pixels": 7482,
+          "true_boundary_pixels": 120,
+          "boundary_evaluable": true,
+          "bf1_um2": 0.00869676702493643
+        }
+      }
+    }
+  ]
+}

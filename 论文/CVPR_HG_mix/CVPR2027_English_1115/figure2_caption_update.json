@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "completed_at": "2026-11-16T16:29:14.159535+08:00",
+  "scope": "Remove selection sentence from bilingual Figure 2 captions",
+  "body_pages": 8,
+  "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/figure2_caption_1116_162850",
+  "sha256": {
+    "sec/4_experiments.tex": "66a0cb7b4c6b06e0075039e6ceb6097a2d813d6e59b7fd7a3ffbc3e74ff47230",
+    "sec_ch/4_experiments.tex": "211fbca89b2c5b00fd4f8fd158d1046cdd83b91ff6237f422b4e9a5501b2b386",
+    "main.pdf": "85f420b89bde2448682e07c01ab428eccdeb0b84669f59f7859d04efa76762ed",
+    "main_ch.pdf": "8de6b3d0ac0689328602739b8c2f11f233174d07f690bb6a363a903eaeecc207"
+  }
+}

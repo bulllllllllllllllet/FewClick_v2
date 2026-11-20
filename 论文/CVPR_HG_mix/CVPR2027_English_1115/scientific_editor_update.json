@@ -1,0 +1,85 @@
+{
+  "status": "complete_accepted",
+  "updated_at": "2026-11-16T12:02:17.601078+08:00",
+  "skill_repository": "https://github.com/deathcats4/scientific-manuscript-editor",
+  "skill_version": "1.9.0",
+  "installed_path": "/home/zhaoyh/.codex/skills/scientific-manuscript-editor",
+  "skill_source_sha256": {
+    "SKILL.md": "727ce601729583b39567623ff08a9766a4f7e671778c2e70d7b064b51d7190bb",
+    "references/results.md": "34ccc8ac887b0d58087f00237bd701893ed8b06eebc23f46274bac340a6bf30b",
+    "references/manuscript-reasoning.md": "4265873dc4d93171b17d8cd813c512c37aeb7a790cd18bd980ae369269532a45",
+    "references/scientific-integrity.md": "497b1b4c736331503c0e0c7118c910de8006f64424d70684febd29116b3fe93a",
+    "references/style-source-contract.md": "4732c7b14df6908e6429ecb4c638d0f3ca1bb4366c35e9ea0a863b110edaa211",
+    "references/academic-protection.md": "b2993d9830227eae42c6c5d00bd43a5d60ed351e0592d6f2bbef1115edd99b5f",
+    "references/academic-naturalness.md": "1717229d2fe9f46ea03a78477c10c862ce65de18126c0577c7437511d4c50a10",
+    "references/scientific-review-axes.md": "b002e3fd76f9d8dd289ba7643a6c746223f940e04e2931290669168aa15bfbb4",
+    "references/manuscript-context.md": "05a97ac7e7f1b15c15635a7c0a6bc224a4e7558da2fd52d11aa339ee473e220a",
+    "references/continuity-and-consistency.md": "9909cb81337e9208b06d23e99ab24a4ebd49a5af7c2184226dca58f0678f5704"
+  },
+  "scope": [
+    "sec/4_experiments.tex",
+    "sec/supplement.tex",
+    "tables/sampled_controls.tex",
+    "tables/wsi_readouts.tex"
+  ],
+  "history": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/scientific_editor_1116_115751",
+  "evidence_root": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_scientific_editor_1116_120217",
+  "style_basis": "Current English manuscript; direct evidence-led results prose as requested by author",
+  "scientific_fidelity_checks": {
+    "sec/4_experiments.tex": {
+      "labels_preserved": true,
+      "citations_preserved": true,
+      "references_preserved": true,
+      "numeric_tokens_preserved": true
+    },
+    "sec/supplement.tex": {
+      "labels_preserved": true,
+      "citations_preserved": true,
+      "references_preserved": true,
+      "numeric_tokens_preserved": true
+    },
+    "tables/sampled_controls.tex": {
+      "labels_preserved": true,
+      "citations_preserved": true,
+      "references_preserved": true,
+      "table_body_exact": true
+    },
+    "tables/wsi_readouts.tex": {
+      "labels_preserved": true,
+      "citations_preserved": true,
+      "references_preserved": true,
+      "table_body_exact": true
+    }
+  },
+  "caption_definitions_source": "sec/4_experiments.tex metric rules and sec/supplement.tex three readouts; no new numerical result",
+  "compile_checks": {
+    "main": {
+      "warnings": [],
+      "pdf_pages": 10
+    },
+    "supplementary": {
+      "warnings": [],
+      "pdf_pages": 6
+    }
+  },
+  "main_text_pages": 8,
+  "visual_checks": [
+    "supplementary page 3: S3 caption and data",
+    "supplementary page 4: S4 caption and data"
+  ],
+  "build_command": "PATH=/home/zhaoyh/TinyTeX/bin/x86_64-linux:$PATH bash 论文/CVPR_HG_mix/CVPR2027_English_1115/build.sh",
+  "patient_test_statement_preserved": true,
+  "output_sha256": {
+    "sec/4_experiments.tex": "5fb5caf3cd96e9e63b2893ef31242817beb627cef8ed1d6216ad05fa74d805b2",
+    "sec/supplement.tex": "a07ad17359df9c89af3e8d8ba1b73355150c2bbf18de8e6612112259c88184eb",
+    "tables/sampled_controls.tex": "fff411b50540e188088b49d7a74f953dc7756e5f77b99931f06264bfc315e877",
+    "tables/wsi_readouts.tex": "230fc6d7893d36fe1f79be0f699dee0b1bcf61edef680b511a4c7da218872d3e",
+    "main.pdf": "1129a4b4cdd466340872ae74668656aca6b5f8253e5a7b5da7319bd7eb9ff52e",
+    "supplementary.pdf": "e4c06b7be015c96ccd24a0d6e34523acc5cf547cfac05efdd5ac419274e6bf37",
+    "MANUSCRIPT-CONTEXT.md": "da6c51070ce1b0a13278a3563625a7466683ca0e4f4a70128d35e3fa1abfa04d",
+    "README_中文.md": "2e7f154e2e36157e5b8878d6480f3c4d41e0480b7f99f3df8f20bf2c907675d1"
+  },
+  "diff_sha256": "345f4c3e8ab46c8cb9d80b666bdf1220edbfc23cd38dd6cecc7cec0c104ef39b",
+  "training_started": false,
+  "inference_started": false
+}

@@ -36,3 +36,25 @@ dist/
 *.swo
 .DS_Store
 Thumbs.db
+
+# Rebuildable LaTeX files (keep bibliography output and final PDFs).
+/论文/**/*.aux
+/论文/**/*.blg
+/论文/**/*.brf
+/论文/**/*.out
+/论文/**/*.log
+/论文/**/*.fls
+/论文/**/*.fdb_latexmk
+/论文/**/*.synctex.gz
+/论文/**/preview/
+
+# Local paper archives and generated exports; see docs/仓库维护.md.
+# Entries without a trailing slash also match local archive symlinks.
+/论文/CVPR_HG_mix/figures
+/论文/CVPR_HG_mix/CVPR2027_English_1115/history
+/论文/CVPR_HG_mix/历史版本
+/论文/**/*.zip
+/rebuttle
+/image.png
+/image copy.png
+/image copy 2.png

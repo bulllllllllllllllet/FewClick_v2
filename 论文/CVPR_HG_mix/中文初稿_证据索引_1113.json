@@ -1,0 +1,105 @@
+{
+  "created_at": "2026-11-13T13:22:53.798792+08:00",
+  "status": "chinese_markdown_draft_awaiting_user_review",
+  "draft": "论文/CVPR_HG_mix/中文初稿_1113.md",
+  "draft_sha256": "0d3c2093ba94d24d7506ec3fc64cd5ad9f32a56c45450f27bc471e6b4f6cd4e9",
+  "latex_conversion": "requires_user_content_confirmation",
+  "method_id": "FewClick_HG_mix_frozen_1112_163751",
+  "checkpoint_sha256": "a95a17335c58eb93332d7bb5210ca34b3448afc5d69b76a11bd3a7e094e5e0c2",
+  "evidence_scope": "Read-only source/document review; no new experiments and no independent re-scoring of all predictions in this writing turn. Result tables transcribed from accepted consolidated records.",
+  "sources": [
+    {
+      "path": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/hg_mix_frozen_1112_163751/method_freeze.json",
+      "sha256": "2663406cfc375987d2510c788caaba4badf2d7ce3ccb0f966f0c7afcdd8beb83",
+      "matches_method_freeze": null
+    },
+    {
+      "path": "benchmarks/v5/hg_combination_study/model.py",
+      "sha256": "20f0b05329fba64c365029901a3913dd2678690efa8e16cf6914da6ef038cf1c",
+      "matches_method_freeze": true
+    },
+    {
+      "path": "benchmarks/v5/parallel_phikon_study/model.py",
+      "sha256": "7872d2ae8e4c74e9ca4cb71b660752577863da850a9c40bae1b4c99e196ca2a5",
+      "matches_method_freeze": true
+    },
+    {
+      "path": "benchmarks/v5/support_match_study/model.py",
+      "sha256": "6e945937b20bdc3d381a7496ab80f3159d9631dd111cba546f094ff379d42605",
+      "matches_method_freeze": true
+    },
+    {
+      "path": "benchmarks/v5/hg_combination_study/train.py",
+      "sha256": "c08a46c01f1cc724c2d1bf40052f58e13fadfdb3bbb13ef4cf690f53e1ee6eb5",
+      "matches_method_freeze": true
+    },
+    {
+      "path": "benchmarks/v5/architecture_bridge/restored_loss.py",
+      "sha256": "8a5e437fdf12b7818a45a9650805f0e5c9907f4ca4d3afb69a4bbe34df322049",
+      "matches_method_freeze": true
+    },
+    {
+      "path": "benchmarks/v5/multidomain_training/losses.py",
+      "sha256": "5ecfcd429d1d89024eff243824abbd1c5c4a0d4c2d0458f9ee3dce758494d197",
+      "matches_method_freeze": true
+    },
+    {
+      "path": "docs/运行记录/模型实验/结果表_当前六方法公平对照_1113_021607.md",
+      "sha256": "475563543c772e7d7ed9b19000a99e23c8cf09d3c96aedc36d182372295954f8",
+      "matches_method_freeze": null
+    },
+    {
+      "path": "docs/运行记录/模型实验/结果表_WSI六方法共同前7片阶段结果_1113_114549.md",
+      "sha256": "eabd7615769304fd8a7c2c81a0a6aa8df1e3cdad22ba874dd3af955d988a329e",
+      "matches_method_freeze": null
+    },
+    {
+      "path": "docs/建议/模型与训练/方案_HGmix收益归因与最小消融_1112_163751.md",
+      "sha256": "caf46b1d512bede76e97b629395aac069031fbda524fdcf307d7e7ecbe73c4f5",
+      "matches_method_freeze": null
+    },
+    {
+      "path": "docs/建议/论文撰写/方案_HGmix论文迁移与重写_1112_163751.md",
+      "sha256": "08be293c2ed7ce1b33afaf0f8f7d552c6f7f79a019ba1217fea4899ab61a7812",
+      "matches_method_freeze": null
+    }
+  ],
+  "section_map": {
+    "3.2": "MixedFineBackbone / TiledFineBackbone and method_freeze architecture",
+    "3.3": "Architecture-level description only; detailed region formulas intentionally blank",
+    "3.4": "SignedMatcher.forward",
+    "3.5": "DenseHierarchy.forward / clicked_support_probability / cached_decode",
+    "3.6": "train.py, restored_loss.py and multidomain_training/losses.py",
+    "4.4": "结果表_当前六方法公平对照_1113_021607.md section A; fractions converted to percent",
+    "4.6": "Formal15 result table blank; common7 interim deliberately excluded from final results",
+    "4.7": "方案_HGmix收益归因与最小消融_1112_163751.md existing five cells and fixed-weight H diagnostic"
+  },
+  "remaining_blanks": [
+    "Verified references and novelty comparison",
+    "Dataset inventory and complete baseline information ledger",
+    "Region graph/assignment exact formulas",
+    "WSI geometry and fusion details",
+    "Local matched comparison",
+    "Final15 WSI results",
+    "M fusion-without-H and no-cross-scale-message retraining ablations",
+    "Efficiency, click robustness, class/boundary analysis, uncertainty and additional seeds",
+    "Full author-approved LLM usage statement"
+  ],
+  "style_revision": {
+    "reference": "论文/AAAI27_FewClick_paper/FewClick_AAAI27.tex",
+    "reference_sha256": "292f8683cf18be6846e004587f62092ec382ccd288905fa3f86a92135a1d492e",
+    "previous_draft": "论文/CVPR_HG_mix/历史版本/中文初稿_风格调整前_1113_132618.md",
+    "principles": [
+      "沿用原稿应用背景—具体挑战—关键观察—方法概述—贡献段的引言组织",
+      "方法小节由问题或动机引入，再说明操作与作用",
+      "实验按设置—数值—解释组织，保留证据适用范围",
+      "写作进度与核验说明集中在证据索引，未完成内容继续留白"
+    ],
+    "editorial_notes": [
+      "> 本节的模块存在性已由固定方法清单核对；详细公式在逐层核对底层实现后补齐，暂不沿用旧稿公式。",
+      "> 写作进度说明：已有共同前7张、72个组织任务的中期结果，存于证据索引。该子集不填入表2，也不替代最终结论。",
+      "> 待逐项核验原始论文后填入。旧稿引用不自动视为已核验，也不据此补写“首次”或全面优于既有方法的主张。"
+    ],
+    "latex_conversion": "after_user_confirmation"
+  }
+}

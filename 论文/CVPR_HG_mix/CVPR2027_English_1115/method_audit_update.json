@@ -1,0 +1,32 @@
+{
+  "main": {
+    "pages": 10,
+    "warnings": [],
+    "sha256": "b58923a6945adf9747ad96fc51976cb826a7afb87a6d0d3fa16b0ea9bb7dc269"
+  },
+  "main_ch": {
+    "pages": 10,
+    "warnings": [],
+    "sha256": "d98c1ca664026683b785eda1c3031b898d8fbb3ef76df04ef141df9745f308be"
+  },
+  "supplementary": {
+    "pages": 6,
+    "warnings": [],
+    "sha256": "4fdf1ec1969bbb5686249414397d004d3dbcdd5daa92989c73d6c5dc2b2b77f7"
+  },
+  "bilingual_display_equations_identical": true,
+  "display_blocks": 11,
+  "body_pages": 8,
+  "sec/3_method.tex": {
+    "sha256": "c6d4c8f477b2157b2e0042f24307e08f4ed43d152cc057af560d6c8b42f8a105"
+  },
+  "sec_ch/3_method.tex": {
+    "sha256": "e22b449de877a62e03c6599fe5178d14a377fc15b1ad48f21e04fcca57fb0391"
+  },
+  "sec/supplement.tex": {
+    "sha256": "53aa051af916ed2f9aa6e7b6477a8408cd0dc4211b62245c925dabae88622aaf"
+  },
+  "review": "/nfs-medical3/zyh/fewclick_v2/cvpr_research/paper_method_audit_1116_131014/method_review.json",
+  "status": "complete",
+  "no_training_or_dataset_inference": true
+}

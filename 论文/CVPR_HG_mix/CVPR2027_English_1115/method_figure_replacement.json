@@ -1,0 +1,22 @@
+{
+  "source": "/home/zhaoyh/.codex/attachments/367254d5-fe93-4467-b1e4-26828a2d5d0d/最终方法图.pptx",
+  "pptx": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/figures/最终方法图.pptx",
+  "out": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/figures/uploaded_method_1115_200420",
+  "sha256": "1e08df035325b626feb2b82e5330f9133b4d3586df6c1d2301ad830d39c45dc1",
+  "stamp": "1115_200420",
+  "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/before_upload_1115_200420",
+  "export_pdf": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/figures/uploaded_method_1115_200420/最终方法图.pdf",
+  "figure_pdf_sha256": "df00d68a7206fde13c1a30aa8b4545b4b02c276fa98dbc54b5e190bb606f5c3c",
+  "latex_trim_bp": [
+    0,
+    72,
+    0,
+    72
+  ],
+  "updated_at": "2026-11-15T20:05:28.346241+08:00",
+  "validation": {
+    "main_pages": 9,
+    "compile": "passed",
+    "method_page": 3
+  }
+}

@@ -1,0 +1,6 @@
+\section{Discussion and Conclusion}
+FewClick propagates a user-specified tissue across a WSI from a few signed clicks in one support patch. On 15 WSIs and 152 tissue tasks, full-slide and strict-remote macro Dice reach 43.75\% and 40.98\%, exceeding SANSA by 10.52 and 10.86 points. On the remote development queue, target-absent FPA decreases by 7.04 points with comparable target-present Dice.
+
+The ablations reveal a coverage--false-positive tradeoff: dense transfer improves large-target Dice by 3.13 points while raising absent FPA from 5.61\% to 7.75\%. Multiscale features and region context support this propagation pipeline. Cached prompt updates take 43.0\,ms. Tiny targets and fine contours remain challenging: Dice is 7.68\% below 1\% target area, and boundary F1 is 25.86\% overall.
+
+Future work will explore higher-resolution refinement and size-aware training for tiny targets and fine boundaries, while assessing absent-target false positives and retaining same-slide propagation without additional manual query prompts.

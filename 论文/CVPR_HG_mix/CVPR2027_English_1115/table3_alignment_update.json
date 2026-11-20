@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "completed_at": "2026-11-16T16:41:28.619074+08:00",
+  "scope": "Center Table 3 numeric columns and their headers in both languages",
+  "body_pages": 8,
+  "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/table3_alignment_1116_164056",
+  "sha256": {
+    "tables/wsi_tissue.tex": "f70abaada13b7b904fc349b25244aec75a02f6ecd63189a9c292dc9a356b209d",
+    "tables_ch/wsi_tissue.tex": "bca8724a6c4466e498a614f8ed996cded491a21b94c61459aeb82e683349e5f7",
+    "main.pdf": "f50dc57d6e0f5e43dbc7b8988f77216d61319fab5b0135ecfc606bc95e5d8c8a",
+    "main_ch.pdf": "5a0915e218b8be08a8a99d1a40a34365e06d9fcc016328db609a545277cb741a"
+  }
+}

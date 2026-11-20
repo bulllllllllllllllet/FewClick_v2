@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "timestamp": "2026-11-17T11:00:43.197339+08:00",
+  "summary": "按用户指定，将figures/最终方法图.pptx通过LibreOffice Impress直接导出为单页矢量PDF并替换figures/method.pdf。源PPTX不变，原图与稿件已备份；页面尺寸与旧图相同，保留上下72bp空白裁切，无内容裁断。中英文重新编译，正文8页、总10页，无编译警告，英文第3页视觉检查通过。同步完整源码ZIP与纯英文Overleaf ZIP。未改动实验或方法文字。",
+  "source": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/figures/最终方法图.pptx",
+  "source_sha256": "5360a934f13a2d8f42290875d833a537c93246a80d5c3dea024849c8446f51c0",
+  "method_pdf_sha256": "d60b9cb14d228ab0609f7cac70937b5ecd03b9082e4434d9fde3dc19f81e811f",
+  "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/method_pptx_1117_105922",
+  "body_pages": 8,
+  "total_pages": 10,
+  "compilation_warnings": [],
+  "source_pptx_unchanged": true,
+  "no_new_training_or_inference": true
+}

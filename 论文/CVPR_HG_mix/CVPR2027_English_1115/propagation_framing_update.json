@@ -1,0 +1,48 @@
+{
+  "status": "complete",
+  "timestamp": "2026-11-16T22:14:48.355416+08:00",
+  "summary": "依用户最新要求，中英文摘要、引言贡献、方法开头与讨论结论聚焦一个支持图像块的少量正负点击驱动同片整片传播，以及目标覆盖–误检权衡。区域层级定位为组织多尺度上下文的实现手段；方法段落名由可学习区域改为空间上下文池化，保留学习分配与全部公式。引言保留整片Dice与目标缺失FPA优势，结论明确密集迁移提高大目标Dice同时增加FPA，未宣称该模块单独降低误报。实验数据、表格、图片均保持；完整15WSI控制扩展继续运行，本文仍使用原三张控制结果。两版正文8页、总10页，补充6页，无编译警告。",
+  "backup": "/home/zhaoyh/FewClick_v2/论文/CVPR_HG_mix/CVPR2027_English_1115/history/propagation_framing_1116_221217",
+  "files": [
+    "sec/0_abstract.tex",
+    "sec/1_introduction.tex",
+    "sec/3_method.tex",
+    "sec/5_conclusion.tex",
+    "sec_ch/0_abstract.tex",
+    "sec_ch/1_introduction.tex",
+    "sec_ch/3_method.tex",
+    "sec_ch/5_conclusion.tex"
+  ],
+  "checks": {
+    "main": {
+      "pages": 10,
+      "warnings": []
+    },
+    "main_ch": {
+      "pages": 10,
+      "warnings": []
+    },
+    "supplementary": {
+      "pages": 6,
+      "warnings": []
+    },
+    "figures_tables_unchanged": true,
+    "equations_references_preserved": true,
+    "bilingual_numeric_multisets_match": true,
+    "visual_pages_checked": [
+      "English 1",
+      "English 8"
+    ]
+  },
+  "no_new_training_or_inference": true,
+  "source_sha256": {
+    "sec/0_abstract.tex": "467164e9a274f7c31483585cdeb8b9f25eaacee2faabf862b359c8505e06754a",
+    "sec/1_introduction.tex": "8c546ae4d4bab0ebda45537b345b5313020d126e31243196b4f52f5aba9ab40d",
+    "sec/3_method.tex": "b67a22361b81a159249f39e9c9487d35ad37b314a1f66590a203809195461271",
+    "sec/5_conclusion.tex": "f7ef9483eea7a51daf11fcfeaeda06d057314b0041d6d90e7c173549c2772e93",
+    "sec_ch/0_abstract.tex": "934155d8c0cf41aeca095a45c604cb1645cdb5f848612ad1b1953dbbb27877d2",
+    "sec_ch/1_introduction.tex": "71bc603ffadbabb6e504f045c598a2342e14820696cf0cbb521d227de3ee9c60",
+    "sec_ch/3_method.tex": "d0021c9c79308bbdf26b67eee495e03092bacdea0521f0889fa9681322b80f5d",
+    "sec_ch/5_conclusion.tex": "302283aa17ed95f10e9b32d2af83417db00d9c0adf63dcb4aacd4c4b20c80a0e"
+  }
+}

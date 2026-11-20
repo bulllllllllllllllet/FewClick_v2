@@ -34,6 +34,12 @@ AdamW lr.001/WD.0001，valid-pixel BCE+softDice；正式pilot固定1000更新×4
 
 按固定任务需要提取/缓存三臂冻结空间特征，保持图像/权重/清单/源码SHA；先实际小批后全范围，并保存各缓存接受。然后相同seed、相同公共head初始化和1000x4任务训练，梯度/实际消费/重载/逐任务评分独立接受后才比较local/remote。未运行正式实验，不把门控标成P1I完成。选定image底座后，验证LEMON连续细胞下游mask增益，再决定P2。
 
+## 1031_015107 正式冻结encoder pilot（先登记）
+
+image_pilot_1031_015107/contract.json绑定三臂、源码SHA、1737图像cache、1000x4实际任务与评分。单物理GPU3当前已核验空闲、CPU2；tmux fewclick_image_pilot_1031_015107。各臂cache→独立accept全1737→1000更新→fixed-final local/remote评分，串行，不自动重试/恢复。cache存FP16，逐例相对L2误差≤.001，训练恢复FP32，三臂同策略；缓存只读RGB，不读GT。
+
+local302 group0和remote80 pair：在任何新模型结果前按dataset/kind各前10 numeric pair_id冻结，见remote_selection.json；3+2主预算、1+1/5+1次预算，读取完整maximum点击清单再截取（不能把已截成3点的清单伪称5+1）。每臂1146行，保留packed原始预测mask供独立指标重放。GT仅训练监督/终端评价。训练逐条写actual consumed，SHA须与固定4000坐标一致；真实梯度/参数/最终模型重载检查。完成后仍须独立1146行验收，不能以启动/训练完成代替效果结论。
+
 
 ## 2026-10-31T02:05:43.215261+08:00 正式pilot接续
 

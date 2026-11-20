@@ -1,0 +1,25 @@
+\begin{table*}[t]
+\centering
+\caption{Full-slide Dice (\%) by tissue for all six methods on the same 15 WSIs. Each tissue score averages valid slide--target pairs; $n$ is the number of contributing slides. Macro average weights the 11 tissues equally. Bold marks the highest Dice in each row.}
+\label{tab:wsi_tissue}
+\small
+\setlength{\tabcolsep}{0.5pt}
+\begin{tabularx}{\textwidth}{@{}p{0.20\textwidth}*{7}{>{\centering\arraybackslash}X}@{}}
+\toprule
+Tissue & $n$ & SAM & SAM2 & WSI-SAM & SAM-Med2D & SANSA & FewClick \\
+\midrule
+Tumor epithelium & 15 & 50.02 & 58.79 & 35.53 & 36.87 & 78.97 & \textbf{79.17} \\
+Tumor stroma & 15 & 31.53 & 36.39 & 27.11 & 22.86 & 42.97 & \textbf{55.23} \\
+Necrosis & 15 & 15.09 & 20.29 & 14.83 & 11.72 & 32.91 & \textbf{44.10} \\
+Normal glands & 15 & 18.35 & 24.27 & 17.41 & 8.77 & 26.10 & \textbf{43.23} \\
+Normal stroma & 15 & 5.68 & 9.01 & 5.61 & 5.48 & 20.80 & \textbf{25.12} \\
+Submucosa/serosa & 15 & 22.75 & 25.18 & 19.94 & 19.47 & 36.15 & \textbf{49.83} \\
+Muscle & 15 & 31.82 & 37.27 & 29.46 & 23.50 & 51.27 & \textbf{61.32} \\
+Lymphoid aggregates & 7 & 2.17 & 2.61 & 1.51 & 1.96 & 5.46 & \textbf{34.24} \\
+Mucus & 15 & 3.82 & 6.92 & 3.79 & 3.05 & 9.23 & \textbf{18.76} \\
+Adipose & 15 & 22.96 & 30.58 & 16.14 & 13.59 & \textbf{49.51} & 48.67 \\
+Blood & 10 & 3.22 & 8.10 & 3.01 & 2.25 & 12.13 & \textbf{21.59} \\
+\midrule Macro average & -- & 18.86 & 23.58 & 15.85 & 13.59 & 33.23 & \textbf{43.75} \\
+\bottomrule
+\end{tabularx}
+\end{table*}

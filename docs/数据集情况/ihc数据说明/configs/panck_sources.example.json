@@ -1,0 +1,9 @@
+{
+  "sources": [
+    {
+      "case": "CASE_ER_TRAIN_1__ER",
+      "marker": "ER",
+      "supervision_table": "/cache/panck/CASE_ER_TRAIN_1__ER/tables/panck_epithelial_supervision.csv"
+    }
+  ]
+}

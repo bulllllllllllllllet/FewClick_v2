@@ -1,0 +1,27 @@
+{
+  "reason": "User focuses paper on same-slide remote transfer and WSI",
+  "backup": "论文/CVPR_HG_mix/CVPR2027_English_1115/history/remove_local_experiment_1115_223624",
+  "removed": [
+    "main local evaluation section and table",
+    "supplement local interfaces and results",
+    "Chinese local results section"
+  ],
+  "retained": [
+    "original raw results and experimental_table_data.json",
+    "local training task counts and method training paths"
+  ],
+  "updated_at": "2026-11-15T22:37:04.264028+08:00",
+  "validation": {
+    "main_pages": 8,
+    "total_pages": 9,
+    "unresolved_references": false,
+    "overfull": false,
+    "layout_note": "Page 6 contains figure/table floats only"
+  },
+  "new_table_numbers": {
+    "remote": 1,
+    "wsi": 2,
+    "ablation": 3,
+    "efficiency": 4
+  }
+}
